@@ -1,5 +1,6 @@
 require "isodoc"
 require "metanorma-iso"
+require_relative "base_convert"
 
 module IsoDoc
   module Iec
@@ -18,6 +19,8 @@ module IsoDoc
           scripts: html_doc_path("scripts.html"),
         }
       end
+
+      include BaseConvert
     end
   end
 end

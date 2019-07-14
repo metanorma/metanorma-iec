@@ -39,6 +39,16 @@ module Asciidoctor
         end
       end
 
+      def make_preface(x, s)
+        s.previous = boilerplate(x)
+        super
+      end
+
+      def boilerplate(_x_orig)
+        file = File.join(File.dirname(__FILE__),"iec_intro.xml")
+        File.read(file, encoding: "UTF-8")
+      end
+
       def html_converter(node)
         node.nil? ? IsoDoc::Iec::HtmlConvert.new({}) :
           IsoDoc::Iec::HtmlConvert.new(html_extract_attributes(node))
