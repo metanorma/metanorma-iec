@@ -84,6 +84,25 @@ module IsoDoc
         super
       end
 
+      def word_cleanup(docxml)
+        word_foreword_cleanup(docxml)
+        super
+      end
+
+      # Incredibly, the numbered boilerplate list in IEC is NOT A LIST,
+      # and it violates numbering conventions for ordered lists (arabic not alpha)
+      def word_foreword_cleanup(docxml)
+        docxml.xpath("//div[@class = 'boilerplate_legal']//li/p").each_with_index do |l, i|
+          l["class"] = "FOREWORD"
+          l.children.first.add_previous_sibling(%{#{i+1})<span style="mso-tab-count:1">&#xA0; </span>})
+        end
+        docxml.xpath("//div[@class = 'boilerplate_legal']//li").each do |l|
+          l.replace(l.children)
+        end
+        b = docxml.at("div[@class = 'boilerplate_legal']")
+        b.replace(b.children)
+      end
+
       include BaseConvert
     end
   end
