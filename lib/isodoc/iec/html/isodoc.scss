@@ -178,7 +178,7 @@ p.TableFootnote, div.TableFootnote, li.TableFootnote
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;}
 /* IEC: HEADINGNonumber */
-p.ForewordTitle, li.ForewordTitle, div.ForewordTitle
+p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	{mso-style-name:"Foreword Title";
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -189,6 +189,7 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle
 	margin-bottom:10.0pt;
 	margin-left:0cm;
 	text-align:center;
+	text-indent:0pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	mso-outline-level:1;
@@ -202,7 +203,7 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;}
 /* IEC: HEADINGNonumber */
-p.IntroTitle, li.IntroTitle, div.IntroTitle
+p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	{mso-style-name:"Intro Title";
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -213,6 +214,7 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle
 	margin-bottom:10.0pt;
 	margin-left:0cm;
 	text-align:center;
+	text-indent:0pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	mso-outline-level:1;
@@ -383,7 +385,7 @@ p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
-	font-weight:bold;}
+	font-weight:normal;}
 p.Quote, li.Quote, div.Quote
 	{mso-style-priority:99;
 	margin-top:0cm;
