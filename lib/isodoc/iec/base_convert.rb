@@ -35,7 +35,7 @@ module IsoDoc
         end
         if @meta.get[:doctitlepart]
           out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
-          out.p(**{ class: "zzSTDTitle1" }) do |p| 
+          out.p(**{ class: "zzSTDTitle2" }) do |p| 
             p.b { |b| b << title2 }
           end
         end
@@ -51,6 +51,12 @@ module IsoDoc
             end
         super.merge(y)
       end
+
+      def annex_name_lbl(clause, num)
+      obl = l10n("(#{@inform_annex_lbl})")
+      obl = l10n("(#{@norm_annex_lbl})") if clause["obligation"] == "normative"
+      l10n("<b>#{@annex_lbl} #{num}</b><br/><br/>#{obl}")
+    end
     end
   end
 end

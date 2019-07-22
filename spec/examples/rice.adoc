@@ -176,9 +176,6 @@ rice whose starch has been fully gelatinized by soaking _paddy_ (<<paddy>>) rice
 === waxy rice 
 variety of rice whose kernels have a white and opaque appearance 
 
-NOTE: The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking. 
-
-=== extraneous matter 
 alt:[EM]
 domain:[rice]
 

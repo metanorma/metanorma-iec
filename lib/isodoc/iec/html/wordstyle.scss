@@ -190,7 +190,7 @@ p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxS
 div.figure 
         {text-align: center;}
 
-h1
+h1.main
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-parent:Normal;
@@ -215,32 +215,36 @@ h1
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
+/* IEC: p.ANNEXtitle */
 h1.Annex
-	{mso-style-unhide:no;
+	{mso-style-name:ANNEX_title;
+	mso-style-unhide:no;
 	mso-style-qformat:yes;
-	mso-style-parent:Normal;
-	mso-style-next:Normal;
-	margin-top:10.0pt;
+	/* mso-style-parent:MAIN-TITLE; */
+	mso-style-next:ANNEX-heading1;
+	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:10.0pt;
-	margin-left:19.85pt;
-	text-align:left;
-	text-indent:-19.85pt;
+	margin-left:0cm;
+	text-align:center;
+	/* text-indent:25.5pt; */
+	page-break-before:always;
 	mso-pagination:widow-orphan;
-	page-break-after:avoid;
 	mso-outline-level:1;
-	mso-hyphenate:none;
-	tab-stops:list 19.85pt;
+	mso-list:l4 level1 lfo19;
 	layout-grid-mode:char;
-	font-size:11.0pt;
+	font-size:12.0pt;
 	font-family:"Arial",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
-	mso-font-kerning:0pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
-	font-weight:bold;}
+	/*font-weight:bold;*/
+	font-weight:normal;}
+/*
 h1
 	{ mso-list:l26 level1 lfo40;}
+*/
 .h2Annex, h2
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;

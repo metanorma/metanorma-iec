@@ -86,15 +86,68 @@ module IsoDoc
 
       def word_cleanup(docxml)
         word_foreword_cleanup(docxml)
+        word_table_cleanup(docxml)
         super
       end
 
+      def make_tr_attr(td, row, totalrows)
+        ret = super
+        css_class = td.name == "th" ? "TABLE-col-heading" : "TABLE-cell"
+        ret.merge( "class": css_class )
+      end
+
+      def tr_parse(node, out, ord, totalrows, header)
+        out.tr do |r|
+          node.elements.each do |td|
+            attrs = make_tr_attr(td, ord, totalrows - 1)
+            attrs[:class] = "TABLE-col-heading" if header
+            r.send td.name, **attr_code(attrs) do |entry|
+              td.children.each { |n| parse(n, entry) }
+            end
+          end
+        end
+      end
+
+      def word_table_cleanup(docxml)
+        %w(TABLE-col-heading TABLE-cell).each do |style|
+          word_table_cleanup1(docxml, style)
+        end
+      end
+
+      def word_table_cleanup1(docxml, style)
+        %w(td th).each do |tdh|
+          docxml.xpath("//#{tdh}[@class = '#{style}'][not(descendant::p)]").each do |td|
+            p = Nokogiri::XML::Element.new("p", docxml)
+            td.children.each { |c| c.parent = p }
+            p.parent = td
+          end
+          docxml.xpath("//#{tdh}[@class = '#{style}']//p").each do |p|
+            p["class"] = style
+          end
+        end
+      end
+
+      def word_annex_cleanup(docxml)
+        super
+        non_annex_h1(docxml)
+      end
+
+      def non_annex_h1(docxml)
+        docxml.xpath("//h1[not(@class)]").each do |h1|
+          h1["class"] = "main"
+        end
+      end
+
       # Incredibly, the numbered boilerplate list in IEC is NOT A LIST,
-      # and it violates numbering conventions for ordered lists (arabic not alpha)
+      # and it violates numbering conventions for ordered lists 
+      # (arabic not alpha)
+      BOILERPLATE_PARAS = "//div[@class = 'boilerplate_legal']//li/p".freeze
+
       def word_foreword_cleanup(docxml)
-        docxml.xpath("//div[@class = 'boilerplate_legal']//li/p").each_with_index do |l, i|
+        docxml.xpath(BOILERPLATE_PARAS).each_with_index do |l, i|
           l["class"] = "FOREWORD"
-          l.children.first.add_previous_sibling(%{#{i+1})<span style="mso-tab-count:1">&#xA0; </span>})
+          l.children.first.add_previous_sibling(
+            %{#{i+1})<span style="mso-tab-count:1">&#xA0; </span>})
         end
         docxml.xpath("//div[@class = 'boilerplate_legal']//li").each do |l|
           l.replace(l.children)
