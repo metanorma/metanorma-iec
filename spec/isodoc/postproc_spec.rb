@@ -111,10 +111,10 @@ RSpec.describe IsoDoc do
       sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
     expect(word).to be_equivalent_to <<~"OUTPUT"
            <div class="WordSection3">
-               <p class="zzSTDTitle1"></p>
+               #{IEC_TITLE}
                <p class="MsoNormal"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
                <div class="Section3"><a name="P" id="P"></a>
-                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+                 <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                  <div><a name="Q" id="Q"></a>
             <p class="h2Annex">A.1 Annex A.1</p>
        </div>
@@ -154,8 +154,8 @@ RSpec.describe IsoDoc do
       sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
     expect(word).to be_equivalent_to <<~"OUTPUT"
            <div class="WordSection3">
-               <p class="zzSTDTitle1"></p>
-               <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1>1<span style="mso-tab-count:1">&#xA0; </span>Terms and definitions</h1><p class="MsoNormal">For the purposes of this document,
+               #{IEC_TITLE}
+               <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and definitions</h1><p class="MsoNormal">For the purposes of this document,
            the following terms and definitions apply.</p>
        <p class="MsoNormal">ISO and IEC maintain terminological databases for use in
        standardization at the following addresses:</p>
@@ -214,18 +214,32 @@ RSpec.describe IsoDoc do
 
     INPUT
     word = File.read("test.doc").sub(/^.*An empty word intro page\./m, '').
-      sub(%r{<br clear="all" class="section"/>\s*<div class="WordSection3">.*$}m, "")
+      sub(%r{<p class="zzSTDTitle1">.*$}m, "")
     expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
        <p class="MsoToc1"><span lang="EN-GB" xml:lang="EN-GB"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&#xA0;</span>TOC
          \o "1-2" \h \z \u <span style="mso-element:field-separator"></span></span>
        <span class="MsoHyperlink"><span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
-       <a href="#_Toc">1 Clause 4<span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+       <a href="#_Toc">FOREWORD<span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
        <span style="mso-tab-count:1 dotted">. </span>
        </span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
        <span style="mso-element:field-begin"></span></span>
        <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"><span style="mso-element:field-separator"></span></span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
          <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"><span style="mso-element:field-end"></span></span></a></span></span></p>
+
+         <p class="MsoToc1">
+         <span class="MsoHyperlink">
+           <span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
+       <a href="#_Toc">1 Clause 4<span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+       <span style="mso-tab-count:1 dotted">. </span>
+       </span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">
+       <span style="mso-element:field-begin"></span></span>
+       <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"> PAGEREF _Toc \h </span>
+         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"><span style="mso-element:field-separator"></span></span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB">1</span>
+         <span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"></span><span lang="EN-GB" class="MsoTocTextSpan" xml:lang="EN-GB"><span style="mso-element:field-end"></span></span></a></span>
+         </span>
+       </p>
+
 
        <p class="MsoToc2">
          <span class="MsoHyperlink">
@@ -263,8 +277,9 @@ RSpec.describe IsoDoc do
        </p>
 
 
-               <p class="MsoNormal">&#xA0;</p>
-             </div>
+              <p class="MsoNormal">
+   <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+ </p>
     OUTPUT
   end
 
@@ -294,7 +309,13 @@ RSpec.describe IsoDoc do
       sub(%r{</main>.*$}m, "</main>")
     expect(html).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-             <p class="zzSTDTitle1"></p>
+           <br/>
+             #{IEC_TITLE}
+             <div id="">
+  <h1 class="ForewordTitle">FOREWORD</h1>
+  <div class="boilerplate_legal"></div>
+</div>
+        #{IEC_TITLE}
              <div>
                <h1>1&#xA0; Clause 4</h1>
                <a rel="footnote" href="#fn:3" epub:type="footnote" id="fnref:1">
@@ -344,15 +365,17 @@ RSpec.describe IsoDoc do
     expect(html.gsub(/\/[0-9a-f-]+\.png/, "/_.png")).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
              <br />
+             #{IEC_TITLE}
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"></div>
                <div id="_" class="figure">
                <img src="test_htmlimages/_.png" height="776" width="922" />
 <img src="test_htmlimages/_.png" height="800" width="53" />
 <img src="test_htmlimages/_.png" height="83" width="99" />
        <p class="FigureTitle" align="center">Figure 1&#xA0;&#x2014; Split-it-right sample divider</p></div>
              </div>
-             <p class="zzSTDTitle1"></p>
+             #{IEC_TITLE}
            </main>
     OUTPUT
 
@@ -436,7 +459,7 @@ RSpec.describe IsoDoc do
       sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
     expect(word).to be_equivalent_to <<~"OUTPUT"
          <div class="WordSection3">
-             <p class="zzSTDTitle1"></p>
+         #{IEC_TITLE}
              <p class="MsoNormal">
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
@@ -476,7 +499,7 @@ RSpec.describe IsoDoc do
       sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
     expect(word).to be_equivalent_to <<~"OUTPUT"
        <div class="WordSection3">
-             <p class="zzSTDTitle1"></p>
+             #{IEC_TITLE}
              <p class="MsoNormal">
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>

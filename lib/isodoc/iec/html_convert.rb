@@ -23,7 +23,7 @@ module IsoDoc
       def htmlstyle(docxml)
         docxml = super
         b = docxml.at("div[@class = 'boilerplate_legal']/ol")
-        b["type"] = "1"
+        b and b["type"] = "1"
         docxml
       end
 

@@ -56,10 +56,10 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+    <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#N">Clause 1, Note</a>
            <a href="#note1">3.1, Note  1</a>
            <a href="#note2">3.1, Note  2</a>
@@ -68,7 +68,7 @@ RSpec.describe IsoDoc do
            <a href="#Anote2">A.2, Note  2</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                  <div id="N" class="Note">
@@ -173,10 +173,10 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-    <br/>
-               <div id="fwd">
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+    <div id="fwd">
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#N">Figure 1</a>
            <a href="#note1">Figure 2</a>
            <a href="#note2">Figure 3</a>
@@ -185,7 +185,7 @@ RSpec.describe IsoDoc do
            <a href="#Anote2">Figure A.3</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                  <div id="N" class="figure">
@@ -300,10 +300,10 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-               <div id="fwd">
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+         <div id="fwd">
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
          <a href="#N">Figure 1</a>
          <a href="#note1">Figure 1-1</a>
          <a href="#note2">Figure 1-2</a>
@@ -312,7 +312,7 @@ RSpec.describe IsoDoc do
          <a href="#Anote2">Figure A.1-2</a>
          </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                </div>
@@ -419,10 +419,10 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
         #{HTML_HDR}
-      <br/>
-      <div>
-        <h1 class="ForewordTitle">Foreword</h1>
-        <p>
+         <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
     <a href="#N">Clause 1, Example</a>
     <a href="#note1">3.1, Example  1</a>
     <a href="#note2">3.1, Example  2</a>
@@ -431,7 +431,7 @@ RSpec.describe IsoDoc do
     <a href="#Anote2">A.2, Example  2</a>
     </p>
       </div>
-      <p class="zzSTDTitle1"/>
+      #{IEC_TITLE}
       <div id="scope">
         <h1>1&#160; Scope</h1>
         <div id="N" class="example">
@@ -543,10 +543,10 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+                  <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#N">Clause 1, Formula (1)</a>
            <a href="#note1">3.1, Formula (2)</a>
            <a href="#note2">3.1, Formula (3)</a>
@@ -555,7 +555,7 @@ standardization at the following addresses:</p>
            <a href="#Anote2">A.2, Formula (A.3)</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                  <div id="N" class="formula"><p><span class="stem">(#(r = 1 %)#)</span>&#160; (1)</p></div>
@@ -693,10 +693,10 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+                  <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
        <a href="#N">Table 1</a>
        <a href="#note1">Table 2</a>
        <a href="#note2">Table 3</a>
@@ -705,7 +705,7 @@ standardization at the following addresses:</p>
        <a href="#Anote2">Table A.3</a>
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                  <p class="TableTitle" align="center">
@@ -791,16 +791,16 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
             #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+             <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#note1">2.1, Note 1</a>
            <a href="#note2">2.2, Note 1</a>
            <a href="#note3">2.2, Note 2</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                </div>
@@ -909,9 +909,9 @@ standardization at the following addresses:</p>
        </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-    <div>
-    <h1 class="ForewordTitle">Foreword</h1>
+     <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
     <p id="A">This is a preamble
     <a href="#C">0.1</a>
          <a href="#C1">0.2</a>
@@ -933,13 +933,13 @@ standardization at the following addresses:</p>
     </div>
     <br/>
                  <div class="Section3" id="B">
-                 <h1 class="IntroTitle">0&#160; Introduction</h1>
+                 <h1 class="IntroTitle">0&#160; INTRODUCTION</h1>
                <div id="C">
                  <h2>0.1 Introduction Subsection</h2>
         </div>
         <div id="C1"><h2>0.2 </h2>Text</div>
              </div>
-    <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
     <div id="D">
     <h1>1&#160; Scope</h1>
       <p id="E">Text</p>
@@ -987,7 +987,7 @@ standardization at the following addresses:</p>
                </div>
                <br/>
                <div id="P" class="Section3">
-                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+                 <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                  <div id="Q">
           <h2>A.1 Annex A.1</h2>
           <div id="Q1">
@@ -1062,10 +1062,10 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+                  <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#N">Clause 1, List</a>
            <a href="#note1">3.1, List  1</a>
            <a href="#note2">3.1, List  2</a>
@@ -1074,7 +1074,7 @@ standardization at the following addresses:</p>
            <a href="#Anote2">A.2, List  2</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                <h1>1&#160; Scope</h1>
                <ol type="a" id="N">
@@ -1177,10 +1177,10 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
-                 <p>
+                  <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
            <a href="#N">Clause 1 a)</a>
            <a href="#note1">3.1 List  1 a)</a>
            <a href="#note2">3.1 List  2 a)</a>
@@ -1189,7 +1189,7 @@ standardization at the following addresses:</p>
            <a href="#Anote2">A.2 List  2 a)</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div id="scope">
                  <h1>1&#160; Scope</h1>
                <ol type="a" id="N1">
@@ -1280,10 +1280,10 @@ standardization at the following addresses:</p>
     </iso-standard>
     INPUT
         #{HTML_HDR}
-    <br/>
-                <div>
-                  <h1 class="ForewordTitle">Foreword</h1>
-                  <p>
+                   <div>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
+               <p>
         <a href="#N">Clause 1 a)</a>
         <a href="#note1">Clause 1 a.1)</a>
         <a href="#note2">Clause 1 a.1.i)</a>
@@ -1292,7 +1292,7 @@ standardization at the following addresses:</p>
         <a href="#Anote2">Clause 1 a.1.i.A.I.a)</a>
         </p>
                 </div>
-                <p class="zzSTDTitle1"/>
+                #{IEC_TITLE}
                 <div id="scope">
                   <h1>1&#160; Scope</h1>
                                    <ol type="a" id="N1">

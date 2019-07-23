@@ -69,21 +69,34 @@ RSpec.describe IsoDoc do
        </bibliography>
        </iso-standard>
     INPUT
-    #{HTML_HDR}
-                <br/>
+    <html xmlns:epub="http://www.idpf.org/2007/ops">
+         <head/>
+         <body lang="EN-US" link="blue" vlink="#954F72">
+           <div class="title-section">
+             <p>&#160;</p>
+           </div>
+           <br/>
+           <div class="prefatory-section">
+             <p>&#160;</p>
+           </div>
+           <br/>
+           <div class="main-section">
+             <br/>
+             #{IEC_TITLE}
                 <div>
-                  <h1 class="ForewordTitle">Foreword</h1>
+                  <h1 class="ForewordTitle">FOREWORD</h1>
+                  <div class="boilerplate_legal"/>
                   <p id="A">This is a preamble</p>
                 </div>
                 <br/>
                 <div class="Section3" id="B">
-                  <h1 class="IntroTitle">0&#160; Introduction</h1>
+                  <h1 class="IntroTitle">0&#160; INTRODUCTION</h1>
                   <div id="C">
            <h2>0.1 Introduction Subsection</h2>
          </div>
                   <p>This is patent boilerplate</p>
                 </div>
-                <p class="zzSTDTitle1"/>
+                #{IEC_TITLE}
                 <div id="D">
                   <h1>1&#160; Scope</h1>
                   <p id="E">Text</p>
@@ -131,7 +144,7 @@ RSpec.describe IsoDoc do
                 </div>
                 <br/>
                 <div id="P" class="Section3">
-                  <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+                  <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                   <div id="Q">
            <h2>A.1 Annex A.1</h2>
            <div id="Q1">
@@ -231,13 +244,15 @@ OUTPUT
              <p><br clear="all" class="section"/></p>
              <div class="WordSection2">
                <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+               #{IEC_TITLE}
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p id="A">This is a preamble</p>
                </div>
                <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
                <div class="Section3" id="B">
-                 <h1 class="IntroTitle">0<span style="mso-tab-count:1">&#160; </span>Introduction</h1>
+                 <h1 class="IntroTitle">0<span style="mso-tab-count:1">&#160; </span>INTRODUCTION</h1>
                  <div id="C">
           <h2>0.1 Introduction Subsection</h2>
         </div>
@@ -247,7 +262,7 @@ OUTPUT
              </div>
              <p><br clear="all" class="section"/></p>
              <div class="WordSection3">
-               <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
                <div id="D">
                  <h1>1<span style="mso-tab-count:1">&#160; </span>Scope</h1>
                  <p id="E">Text</p>
@@ -297,7 +312,7 @@ OUTPUT
                </div>
                <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
                <div id="P" class="Section3">
-                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+                 <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                  <div id="Q">
           <h2>A.1 Annex A.1</h2>
           <div id="Q1">
@@ -336,7 +351,11 @@ OUTPUT
         </iso-standard>
     INPUT
     #{HTML_HDR}
-               <p class="zzSTDTitle1"/>
+                <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"/>
+ </div>
+#{IEC_TITLE}
                <div id="H"><h1>1&#160; Terms and definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
        <p>ISO and IEC maintain terminological databases for use in
@@ -384,7 +403,11 @@ OUTPUT
         </iso-standard>
     INPUT
     #{HTML_HDR}
-               <p class="zzSTDTitle1"/>
+     <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"/>
+ </div>
+               #{IEC_TITLE}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
@@ -436,7 +459,11 @@ OUTPUT
         </iso-standard>
     INPUT
     #{HTML_HDR}
-               <p class="zzSTDTitle1"/>
+    <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"/>
+ </div>
+               #{IEC_TITLE}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
@@ -470,7 +497,11 @@ OUTPUT
         </iso-standard>
     INPUT
     #{HTML_HDR}
-               <p class="zzSTDTitle1"/>
+     <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"/>
+ </div>
+#{IEC_TITLE}
                <div id="H"><h1>1&#160; Terms and definitions</h1><p>No terms and definitions are listed in this document.</p>
        <p>ISO and IEC maintain terminological databases for use in
        standardization at the following addresses:</p>
@@ -503,7 +534,11 @@ OUTPUT
       </iso-standard>
     INPUT
     #{HTML_HDR}
-               <p class="zzSTDTitle1"/>
+    <div id="">
+  <h1 class="ForewordTitle">FOREWORD</h1>
+  <div class="boilerplate_legal"/>
+</div>
+               #{IEC_TITLE}
                <div id="M">
                  <h1>1&#160; Clause 4</h1>
                  <div id="N">
@@ -537,11 +572,19 @@ OUTPUT
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection2">
+            <p>
+  <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+        </p>
+        #{IEC_TITLE}
+            <div id="">
+  <h1 class="ForewordTitle">FOREWORD</h1>
+  <div class="boilerplate_legal"/>
+        </div>
               <p>&#160;</p>
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection3">
-              <p class="zzSTDTitle1"/>
+            #{IEC_TITLE}
             </div>
             <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
             <div class="colophon"/>
@@ -568,11 +611,19 @@ OUTPUT
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection2">
-              <p>&#160;</p>
+               <p>
+   <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+ </p>
+ #{IEC_TITLE}
+ <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"/>
+ </div>
+ <p>&#160;</p>
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection3">
-              <p class="zzSTDTitle1"/>
+              #{IEC_TITLE}
             </div>
           </body>
         </html>

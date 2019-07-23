@@ -24,7 +24,7 @@ RSpec.describe Metanorma::Iec::Processor do
   end
 
   it "generates IsoDoc XML from a blank document" do
-    expect(processor.input_to_isodoc(<<~"INPUT", nil)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(processor.input_to_isodoc(<<~"INPUT", nil))).to be_equivalent_to <<~"OUTPUT"
     #{ASCIIDOC_BLANK_HDR}
     INPUT
     #{BLANK_HDR}
@@ -48,7 +48,25 @@ RSpec.describe Metanorma::Iec::Processor do
     INPUT
     expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-             <p class="zzSTDTitle1"></p>
+              <br />
+ <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+ <p class="zzSTDTitle1">____________</p>
+ <p class="zzSTDTitle1">&#xA0;</p>
+ <p class="zzSTDTitle1">
+   <b></b>
+ </p>
+ <p class="zzSTDTitle1">&#xA0;</p>
+ <div id="">
+   <h1 class="ForewordTitle">FOREWORD</h1>
+   <div class="boilerplate_legal"></div>
+ </div>
+ <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+ <p class="zzSTDTitle1">____________</p>
+ <p class="zzSTDTitle1">&#xA0;</p>
+ <p class="zzSTDTitle1">
+   <b></b>
+ </p>
+ <p class="zzSTDTitle1">&#xA0;</p>
              <div id="H"><h1>1&#xA0; Terms and definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
        <p>ISO and IEC maintain terminological databases for use in
