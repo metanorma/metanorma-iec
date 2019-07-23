@@ -82,9 +82,9 @@ RSpec.describe IsoDoc::Iec do
     </iso-standard>
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
-    expect(html).to match(%r[Quote[^{]+\{[^{]+font-family: "Cambria", serif;]m)
-    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Cambria", serif;]m)
+    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New",monospace;]m)
+    expect(html).to match(%r[Quote[^{]+\{[^{]+font-family: "Arial", sans-serif;]m)
+    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Arial",sans-serif;]m)
   end
 
   it "does not include IEV in references" do
@@ -143,15 +143,15 @@ RSpec.describe IsoDoc::Iec do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-                 <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
          <a href="#IEV">IEV</a>
          <a href="#ISO20483">ISO 20483</a>
          </p>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
              <div>
                <h1>1&#160; Normative references</h1>
                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
@@ -175,14 +175,14 @@ end
     </iso-standard>
     INPUT
         #{HTML_HDR}
-                     <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE</span>&#160; Hello</p>
                </div>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
            </div>
          </body>
        </html>
@@ -204,9 +204,9 @@ end
     </iso-standard>
     INPUT
         #{HTML_HDR}
-             <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE  1</span>&#160; Hello</p>
                </div>
@@ -214,7 +214,7 @@ end
                  <p><span class="example_label">EXAMPLE  2</span>&#160; Hello</p>
                </div>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
            </div>
          </body>
        </html>
@@ -242,8 +242,10 @@ end
              <p>
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
+             #{IEC_TITLE}
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
@@ -254,7 +256,7 @@ end
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>
@@ -288,8 +290,10 @@ end
              <p>
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
+             #{IEC_TITLE}
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
@@ -303,7 +307,7 @@ end
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>

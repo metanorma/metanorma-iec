@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
   it "processes the Asciidoctor::ISO inline macros" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       #{ASCIIDOC_BLANK_HDR}
       alt:[term1]
       deprecated:[term1]

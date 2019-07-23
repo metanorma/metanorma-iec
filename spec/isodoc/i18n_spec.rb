@@ -73,20 +73,20 @@ RSpec.describe IsoDoc do
        </iso-standard>
         INPUT
         #{HTML_HDR}
-                     <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <p id="A">This is a preamble</p>
              </div>
              <br/>
              <div class="Section3" id="B">
-               <h1 class="IntroTitle">0&#160; Introduction</h1>
+               <h1 class="IntroTitle">0&#160; INTRODUCTION</h1>
                <div id="C"><h2>0.1 Introduction Subsection</h2>
 
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
              <div id="D">
                <h1>1&#160; Scope</h1>
                <p id="E">Text</p>
@@ -134,7 +134,7 @@ RSpec.describe IsoDoc do
              </div>
              <br/>
              <div id="P" class="Section3">
-               <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+               <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                <div id="Q"><h2>A.1 Annex A.1</h2>
 
           <div id="Q1"><h3>A.1.1 Annex A.1a</h3>
@@ -230,20 +230,20 @@ RSpec.describe IsoDoc do
        </iso-standard>
         INPUT
         #{HTML_HDR}
-                     <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword</h1>
+               <h1 class="ForewordTitle">FOREWORD</h1>
+               <div class="boilerplate_legal"/>
                <p id="A">This is a preamble</p>
              </div>
              <br/>
              <div class="Section3" id="B">
-               <h1 class="IntroTitle">0&#160; Introduction</h1>
+               <h1 class="IntroTitle">0&#160; INTRODUCTION</h1>
                <div id="C"><h2>0.1 Introduction Subsection</h2>
 
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE}
              <div id="D">
                <h1>1&#160; Scope</h1>
                <p id="E">Text</p>
@@ -291,7 +291,7 @@ RSpec.describe IsoDoc do
              </div>
              <br/>
              <div id="P" class="Section3">
-               <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+               <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                <div id="Q"><h2>A.1 Annex A.1</h2>
 
           <div id="Q1"><h3>A.1.1 Annex A.1a</h3>
@@ -386,21 +386,21 @@ RSpec.describe IsoDoc do
        </bibliography>
        </iso-standard>
         INPUT
-        #{HTML_HDR}
-             <br/>
+    #{HTML_HDR.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "COMMISSION ELECTROTECHNIQUE INTERNATIONALE")}
              <div>
-               <h1 class="ForewordTitle">Avant-propos</h1>
+               <h1 class="ForewordTitle">AVANT-PROPOS</h1>
+               <div class="boilerplate_legal"/>
                <p id="A">This is a preamble</p>
              </div>
              <br/>
              <div class="Section3" id="B">
-               <h1 class="IntroTitle">0&#160; Introduction</h1>
+               <h1 class="IntroTitle">0&#160; INTRODUCTION</h1>
                <div id="C"><h2>0.1 Introduction Subsection</h2>
 
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             <p class="zzSTDTitle1"/>
+             #{IEC_TITLE.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "COMMISSION ELECTROTECHNIQUE INTERNATIONALE")}
              <div id="D">
                <h1>1&#160; Domaine d'application</h1>
                <p id="E">Text</p>
@@ -447,7 +447,7 @@ RSpec.describe IsoDoc do
              </div>
              <br/>
              <div id="P" class="Section3">
-               <h1 class="Annex"><b>Annexe A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+               <h1 class="Annex"><b>Annexe A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
                <div id="Q"><h2>A.1 Annex A.1</h2>
 
           <div id="Q1"><h3>A.1.1 Annex A.1a</h3>
@@ -553,10 +553,10 @@ RSpec.describe IsoDoc do
        </bibliography>
        </iso-standard>
         INPUT
-        #{HTML_HDR}
-                     <br/>
+    #{HTML_HDR.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "国际电工委员会")}
              <div>
                <h1 class="ForewordTitle">&#21069;&#35328;</h1>
+               <div class="boilerplate_legal"/>
                <p id="A">This is a preamble</p>
              </div>
              <br/>
@@ -567,7 +567,7 @@ RSpec.describe IsoDoc do
               </div>
                <p>This is patent boilerplate</p>
              </div>
-             <p class="zzSTDTitle1"/>
+    #{IEC_TITLE.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "国际电工委员会")}
              <div id="D">
                <h1>1&#160; &#33539;&#22260;</h1>
                <p id="E">
@@ -615,7 +615,7 @@ RSpec.describe IsoDoc do
              </div>
              <br/>
              <div id="P" class="Section3">
-               <h1 class="Annex">&#38468;&#20214;A<br/>&#65288;&#35268;&#33539;&#24615;&#38468;&#24405;&#65289;<br/><br/><b>Annex</b></h1>
+               <h1 class="Annex">&#38468;&#20214;A<br/><br/>&#65288;&#35268;&#33539;&#24615;&#38468;&#24405;&#65289;<br/><br/><b>Annex</b></h1>
                <div id="Q"><h2>A.1 Annex A.1</h2>
      
                 <div id="Q1"><h3>A.1.1 Annex A.1a</h3>

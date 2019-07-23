@@ -18,7 +18,7 @@ RSpec.describe Asciidoctor::Iec do
   #end
 
   it "processes a blank document" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
     #{ASCIIDOC_BLANK_HDR}
     INPUT
     #{BLANK_HDR}
@@ -29,7 +29,7 @@ RSpec.describe Asciidoctor::Iec do
 
   it "converts a blank document" do
     FileUtils.rm_f "test.doc"
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -45,7 +45,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes default metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -161,6 +161,7 @@ RSpec.describe Asciidoctor::Iec do
 </structuredidentifier>
        </ext>
        </bibdata>
+       #{BOILERPLATE}
        <sections/>
        </iso-standard>
     OUTPUT
@@ -168,7 +169,7 @@ RSpec.describe Asciidoctor::Iec do
 
 
   it "processes complex metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~'OUTPUT'
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -273,13 +274,14 @@ RSpec.describe Asciidoctor::Iec do
          </structuredidentifier>
          </ext>
        </bibdata>
+       #{BOILERPLATE}
        <sections/>
        </iso-standard>
     OUTPUT
   end
 
     it "defaults substage" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -335,13 +337,14 @@ RSpec.describe Asciidoctor::Iec do
     </structuredidentifier>
   </ext>
 </bibdata>
+#{BOILERPLATE}
 <sections/>
 </iso-standard>
 OUTPUT
     end
 
         it "defaults substage for stage 60" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -397,13 +400,14 @@ OUTPUT
     </structuredidentifier>
   </ext>
 </bibdata>
+#{BOILERPLATE}
 <sections/>
 </iso-standard>
 OUTPUT
     end
 
   it "populates metadata for PRF" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author
       :docfile: test.adoc
@@ -460,6 +464,7 @@ OUTPUT
     </structuredidentifier>
   </ext>
 </bibdata>
+#{BOILERPLATE}
 <sections/>
 </iso-standard>
 OUTPUT

@@ -15,16 +15,16 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
        <i>A</i> <b>B</b> <sup>C</sup> <sub>D</sub> <tt>E</tt>
        <s>F</s> <span style="font-variant:small-caps;">G</span> <br/> <hr/>
        <a id="H"/> <br/>
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
              </div>
            </body>
        </html>
@@ -46,9 +46,9 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
        <a href="http://example.com">http://example.com</a>
        <a href="http://example.com">example</a>
@@ -56,7 +56,7 @@ RSpec.describe IsoDoc do
        <a href="mailto:fred@example.com">mailto:fred@example.com</a>
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
              </div>
            </body>
        </html>
@@ -75,14 +75,14 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
        <para><b role="strong">&lt;barry fred="http://example.com"&gt;example&lt;/barry&gt;</b></para>
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
              </div>
            </body>
        </html>
@@ -103,9 +103,9 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
        <span class="stem">(#(A)#)</span>
        <span class="stem"><m:math>
@@ -114,7 +114,7 @@ RSpec.describe IsoDoc do
        <span class="stem">Latex?</span>
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
              </div>
            </body>
        </html>
@@ -134,15 +134,15 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
        <span class="stem">(#(((A)#)))</span>
        (#((Hello))#)
        </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
              </div>
            </body>
        </html>
@@ -174,15 +174,15 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
            <sup><a href="#ISO712">A</a></sup>
            <a href="#ISO712">A</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
@@ -230,9 +230,9 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-               <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword</h1>
+                 <h1 class="ForewordTitle">FOREWORD</h1>
+                 <div class="boilerplate_legal"/>
                  <p>
            <a href="#IEV">IEV, 1-2-3</a>
            <a href="#ISO712">ISO 712</a>
@@ -249,7 +249,7 @@ RSpec.describe IsoDoc do
            <a href="#ISO712">A</a>
            </p>
                </div>
-               <p class="zzSTDTitle1"/>
+               #{IEC_TITLE}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
