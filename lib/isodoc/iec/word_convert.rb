@@ -109,6 +109,9 @@ module IsoDoc
       end
 
       def word_table_cleanup(docxml)
+        docxml.xpath("//table//*[@class = 'Sourcecode']").each do |p|
+          p["class"] = "CODE-TableCell"
+        end
         %w(TABLE-col-heading TABLE-cell).each do |style|
           word_table_cleanup1(docxml, style)
         end
@@ -122,7 +125,7 @@ module IsoDoc
             p.parent = td
           end
           docxml.xpath("//#{tdh}[@class = '#{style}']//p").each do |p|
-            p["class"] = style
+            p["class"] ||= style
           end
         end
       end

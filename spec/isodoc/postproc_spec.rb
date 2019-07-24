@@ -517,6 +517,53 @@ RSpec.describe IsoDoc do
     OUTPUT
   end
 
+    it "processes source code in tables (Word)" do
+                FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
+    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("test", <<~"INPUT", false)
+    <iso-standard xmlns="http://riboseinc.com/isoxml">
+        <annex id="P" inline-header="false" obligation="normative">
+    <sourcecode lang="ruby" id="A">puts "Hello, world."</sourcecode>
+    <table id="samplecode">
+    <tbody>
+    <tr><td>
+    <sourcecode lang="ruby" id="B">puts "Hello, world."</sourcecode>
+    </td></tr>
+    </tbody>
+</table>
+    </annex>
+    </iso-standard>
+    INPUT
+    word = File.read("test.doc").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
+      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
+    expect(word).to be_equivalent_to <<~"OUTPUT"
+       <div class="WordSection3">
+             #{IEC_TITLE}
+             <p class="MsoNormal">
+               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div class="Section3"><a name="P" id="P"></a>
+               <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
+               <p class="TableTitle" align="center">Table A.1</p>
+               <div align="center">
+                 <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;" class="MsoISOTable" border="1" cellspacing="0" cellpadding="0"><a name="samplecode" id="samplecode"></a>
+                   <tbody>
+                     <tr>
+                       <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
+           <p class="CODE-TableCell"><a name="B" id="B"></a>puts "Hello, world."</p>
+           </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+             </div>
+           </div>
+           <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
+           <div class="colophon"></div>
+
+    OUTPUT
+    end
+
 
 
 end
