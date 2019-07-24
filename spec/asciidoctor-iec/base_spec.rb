@@ -280,6 +280,46 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
+    it "processes boilerplate in English" do
+    doc = (strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docnumber: 1000
+      :partnumber: 1-1
+      :tc-docnumber: 2000
+      :language: en
+      :script: Latn
+      :publisher: IEC,IETF,ISO
+      :copyright-year: 2001
+    INPUT
+    expect(doc).to include "including individual experts"
+    expect(doc).not_to include "y compris ses experts particuliers"
+    end
+
+        it "processes boilerplate in French" do
+    doc = (strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docnumber: 1000
+      :partnumber: 1-1
+      :tc-docnumber: 2000
+      :language: fr
+      :script: Latn
+      :publisher: IEC,IETF,ISO
+      :copyright-year: 2001
+    INPUT
+    expect(doc).not_to include "including individual experts"
+    expect(doc).to include "y compris ses experts particuliers"
+    end
+
     it "defaults substage" do
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       = Document title

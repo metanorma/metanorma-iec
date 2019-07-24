@@ -44,8 +44,13 @@ module Asciidoctor
         super
       end
 
-      def boilerplate(_x_orig)
-        file = File.join(File.dirname(__FILE__),"iec_intro.xml")
+      def boilerplate(x_orig)
+        lang = case x_orig&.at("//bibdata/language")&.text
+               when "fr" then "fr"
+               else
+                 "en"
+               end
+        file = File.join(File.dirname(__FILE__),"iec_intro_#{lang}.xml")
         File.read(file, encoding: "UTF-8")
       end
 
