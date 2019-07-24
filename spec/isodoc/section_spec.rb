@@ -630,5 +630,57 @@ OUTPUT
       OUTPUT
    end
 
+  it "adds boilerplate to foreword" do 
+        expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+        <ext><doctype>International Standard</doctype></ext>
+      </bibdata>
+      <boilerplate>
+        <legal-statement>
+          <p>Boilerplate</p>
+        </legal-statement>
+      </boilerplate>
+      <sections/>
+      </iso-standard>
+    INPUT
+    #{HTML_HDR}
+    <div id="">
+  <h1 class="ForewordTitle">FOREWORD</h1>
+  <div class="boilerplate_legal">
+       <p>Boilerplate</p>
+                </div>
+</div>
+               #{IEC_TITLE}
+             </div>
+           </body>
+       </html>
+OUTPUT
+   end
+
+   it "does not add boilerplate to foreword in amendments" do
+        expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+        <ext><doctype>Amendment</doctype></ext>
+      </bibdata>
+      <boilerplate>
+        <legal-statement>
+          <p>Boilerplate</p>
+        </legal-statement>
+      </boilerplate>
+      <sections/>
+      </iso-standard>
+    INPUT
+    #{HTML_HDR}
+    <div id="">
+  <h1 class="ForewordTitle">FOREWORD</h1>
+</div>
+               #{IEC_TITLE}
+             </div>
+           </body>
+       </html>
+OUTPUT
+   end
 
 end

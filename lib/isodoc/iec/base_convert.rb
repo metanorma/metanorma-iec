@@ -7,12 +7,12 @@ module IsoDoc
       def foreword(isoxml, out)
         f = isoxml.at(ns("//foreword"))
         b = isoxml.at(ns("//boilerplate/legal-statement"))
-        id = f ? f["id"] : ""
         page_break(out)
         middle_title(out)
-        out.div **attr_code(id: id) do |s|
+        out.div **attr_code(id: f ? f["id"] : "") do |s|
           s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @foreword_lbl }
-          s.div **attr_code(class: "boilerplate_legal") do |s1|
+          @meta.get[:doctype] == "Amendment" or
+            s.div **attr_code(class: "boilerplate_legal") do |s1|
             b&.elements&.each { |e| parse(e, s1) }
           end
           f&.elements&.each { |e| parse(e, s) unless e.name == "title" }
@@ -22,13 +22,15 @@ module IsoDoc
       def middle_title(out)
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << @labels["IEC"] }
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "____________" }
-          out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
+        out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
         title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
-        @meta.get[:doctitleintro] and title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
+        @meta.get[:doctitleintro] and
+          title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
         if @meta.get[:doctitlepart]
           title1 += " &mdash;"
           title2 = @meta.get[:doctitlepart]&.sub(/\s+$/, "")
-          @meta.get[:doctitlepartlabel] and title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
+          @meta.get[:doctitlepartlabel] and
+            title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
         end
         out.p(**{ class: "zzSTDTitle1" }) do |p| 
           p.b { |b| b << title1 }
@@ -39,7 +41,7 @@ module IsoDoc
             p.b { |b| b << title2 }
           end
         end
-          out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
+        out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
       def load_yaml(lang, script)
@@ -49,7 +51,8 @@ module IsoDoc
             elsif lang == "fr"
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-fr.yaml"))
             elsif lang == "zh" && script == "Hans"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
+              YAML.load_file(File.join(File.dirname(__FILE__),
+                                       "i18n-zh-Hans.yaml"))
             else
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
             end
@@ -57,10 +60,10 @@ module IsoDoc
       end
 
       def annex_name_lbl(clause, num)
-      obl = l10n("(#{@inform_annex_lbl})")
-      obl = l10n("(#{@norm_annex_lbl})") if clause["obligation"] == "normative"
-      l10n("<b>#{@annex_lbl} #{num}</b><br/><br/>#{obl}")
-    end
+        obl = l10n("(#{@inform_annex_lbl})")
+        obl = l10n("(#{@norm_annex_lbl})") if clause["obligation"] == "normative"
+        l10n("<b>#{@annex_lbl} #{num}</b><br/><br/>#{obl}")
+      end
     end
   end
 end

@@ -1271,7 +1271,11 @@ p.MsoIndexHeading, li.MsoIndexHeading, div.MsoIndexHeading
 	mso-endnote-separator:url("file:///C:/Doc/FILENAME_files/header.html") es;
 	mso-endnote-continuation-separator:url("file:///C:/Doc/FILENAME_files/header.html") ecs;
 	mso-facing-pages:yes;
-    mso-page-orientation: portrait;
+        mso-page-orientation: portrait;
+        {% if stageabbr == "CD" or stageabbr == "CDV" %}
+        mso-line-numbers-count-by:1;
+        mso-line-numbers-restart:continuous;
+        {% endif %}
 	}
 @page WordSection1
 	{size:595.0pt 842.0pt;
