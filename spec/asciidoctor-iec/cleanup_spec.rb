@@ -668,7 +668,7 @@ r = 1 %</stem>
              <abbreviation>ISO</abbreviation>
            </organization>
          </contributor>
-         <note format="text/plain" reference="2">ISO DATE: The standard is in press</note>
+         <note format="text/plain">ISO DATE: The standard is in press</note>
        </bibitem>
       </references>
       </bibliography>

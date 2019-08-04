@@ -1,6 +1,6 @@
 module Metanorma
   module Iec
-    VERSION = "0.0.1"
+    VERSION = "0.0.2"
   end
 end
 
