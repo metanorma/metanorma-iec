@@ -546,7 +546,7 @@ RSpec.describe IsoDoc do
                <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
                <p class="TableTitle" style="text-align:center;">Table A.1</p>
                <div align="center">
-                 <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;" class="MsoISOTable" border="1" cellspacing="0" cellpadding="0"><a name="samplecode" id="samplecode"></a>
+                 <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" class="MsoISOTable"><a name="samplecode" id="samplecode"></a>
                    <tbody>
                      <tr>
                        <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
