@@ -373,7 +373,7 @@ RSpec.describe IsoDoc do
                <img src="test_htmlimages/_.png" height="776" width="922" />
 <img src="test_htmlimages/_.png" height="800" width="53" />
 <img src="test_htmlimages/_.png" height="83" width="99" />
-       <p class="FigureTitle" align="center">Figure 1&#xA0;&#x2014; Split-it-right sample divider</p></div>
+       <p class="FigureTitle" style="text-align:center;">Figure 1&#xA0;&#x2014; Split-it-right sample divider</p></div>
              </div>
              #{IEC_TITLE}
            </main>
@@ -508,7 +508,7 @@ RSpec.describe IsoDoc do
          <p class="MsoNormal">Hello</p>
          <p class="MsoNormal">Key</p>
          <p class="MsoNormal"><b>Key</b></p><div class="figdl"><table class="figdl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;" class="MsoNormal"><p class="MsoNormal">A</p></p></td><td valign="top"><p class="MsoNormal">B</p></td></tr></table></div>
-         <p class="FigureTitle" align="center">Figure A.1</p></div>
+         <p class="FigureTitle" style="text-align:center;">Figure A.1</p></div>
              </div>
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
@@ -544,7 +544,7 @@ RSpec.describe IsoDoc do
              </p>
              <div class="Section3"><a name="P" id="P"></a>
                <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
-               <p class="TableTitle" align="center">Table A.1</p>
+               <p class="TableTitle" style="text-align:center;">Table A.1</p>
                <div align="center">
                  <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;" class="MsoISOTable" border="1" cellspacing="0" cellpadding="0"><a name="samplecode" id="samplecode"></a>
                    <tbody>

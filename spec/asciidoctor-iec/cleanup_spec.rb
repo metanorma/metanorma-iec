@@ -649,7 +649,7 @@ r = 1 %</stem>
 
       <clause id="_" inline-header="false" obligation="normative">
         <title>Clause</title>
-        <p id="_"><fn reference="3">
+        <p id="_"><fn reference="2">
         <p id="_">Footnote2</p>
       </fn>
       </p>
