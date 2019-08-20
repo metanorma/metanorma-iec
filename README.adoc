@@ -1,4 +1,4 @@
-= metanorma-ogc: Metanorma processor for the Open Geospatial Consortium document class
+= metanorma-iec: Metanorma processor for the International Electrotechnical Commission
 
 image:https://img.shields.io/gem/v/metanorma-iec.svg["Gem Version", link="https://rubygems.org/gems/metanorma-iec"]
 image:https://img.shields.io/travis/metanorma/metanorma-iec/master.svg["Build Status", link="https://travis-ci.com/metanorma/metanorma-iec"]
