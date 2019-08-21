@@ -69,7 +69,7 @@ RSpec.describe IsoDoc do
        </bibliography>
        </iso-standard>
     INPUT
-    <html xmlns:epub="http://www.idpf.org/2007/ops">
+    <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
          <head/>
          <body lang="en">
            <div class="title-section">

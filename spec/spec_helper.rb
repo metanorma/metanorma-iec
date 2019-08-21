@@ -160,7 +160,7 @@ IEC_TITLE = <<~END
 END
 
 HTML_HDR = <<~END
-        <html xmlns:epub="http://www.idpf.org/2007/ops">
+        <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
           <head/>
           <body lang="en">
             <div class="title-section">

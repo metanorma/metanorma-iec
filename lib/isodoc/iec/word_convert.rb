@@ -90,16 +90,16 @@ module IsoDoc
         super
       end
 
-      def make_tr_attr(td, row, totalrows)
+      def make_tr_attr(td, row, totalrows, header)
         ret = super
-        css_class = td.name == "th" ? "TABLE-col-heading" : "TABLE-cell"
+        css_class = (td.name == "th" || header) ? "TABLE-col-heading" : "TABLE-cell"
         ret.merge( "class": css_class )
       end
 
       def tr_parse(node, out, ord, totalrows, header)
         out.tr do |r|
           node.elements.each do |td|
-            attrs = make_tr_attr(td, ord, totalrows - 1)
+            attrs = make_tr_attr(td, ord, totalrows - 1, header)
             attrs[:class] = "TABLE-col-heading" if header
             r.send td.name, **attr_code(attrs) do |entry|
               td.children.each { |n| parse(n, entry) }
