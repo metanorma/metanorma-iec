@@ -67,6 +67,8 @@ RSpec.describe Asciidoctor::Iec do
 
        <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
        </term>
@@ -186,6 +188,8 @@ RSpec.describe Asciidoctor::Iec do
      
        <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
        </term>
@@ -311,31 +315,5 @@ RSpec.describe Asciidoctor::Iec do
        </iso-standard>
      OUTPUT
   end
-
-    it "processes term document sources" do
-     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-
-      Foreword
-
-      [source="iso1234,iso5678"]
-      == Terms and Definitions
-
-     INPUT
-             #{BLANK_HDR}
-             <termdocsource bibitemid="iso1234"/><termdocsource bibitemid="iso5678"/>
-        <preface><foreword obligation="informative">
-         <title>Foreword</title>
-         <p id="_">Foreword</p>
-       </foreword></preface><sections>
-       <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
-
-
-       </terms></sections>
-       </iso-standard>
-
-     OUTPUT
-    end
 
 end

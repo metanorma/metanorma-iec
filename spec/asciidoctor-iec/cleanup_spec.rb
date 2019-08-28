@@ -31,6 +31,9 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, 
+       the following terms and definitions apply.</p>
+        #{TERMS_BOILERPLATE}
          <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><admitted><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>91</mn></msub></math></stem></admitted>
        <definition><p id="_">Time</p></definition></term>
        </terms>
@@ -52,6 +55,9 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, 
+       the following terms and definitions apply.</p>
+        #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Tempus</preferred>
          <domain>relativity</domain><definition><p id="_"> Time</p></definition>
@@ -87,6 +93,9 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, 
+       the following terms and definitions apply.</p>
+        #{TERMS_BOILERPLATE}
          <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><definition><formula id="_">
          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mi>A</mi></msub></math></stem>
        </formula><p id="_">This paragraph is extraneous</p></definition>
@@ -113,6 +122,9 @@ RSpec.describe Asciidoctor::Iec do
        #{BLANK_HDR}
               <sections>
          <terms id="_" obligation="normative"><title>Terms and definitions</title>
+         <p>For the purposes of this document, 
+       the following terms and definitions apply.</p>
+        #{TERMS_BOILERPLATE}
 
        <term id="_">
        <preferred>Time</preferred>
@@ -293,6 +305,8 @@ r = 1 %</stem>
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
+         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
          <termsource status="identical">
