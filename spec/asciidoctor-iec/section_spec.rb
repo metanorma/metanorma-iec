@@ -100,7 +100,7 @@ RSpec.describe Asciidoctor::Iec do
        <appendix id="_" inline-header="false" obligation="normative">
           <title>Appendix 1</title>
        </appendix></annex><bibliography><references id="_" obligation="informative">
-         <title>Normative References</title>
+         <title>Normative References</title><p>There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative">
@@ -222,7 +222,7 @@ RSpec.describe Asciidoctor::Iec do
        <appendix id="_" inline-header="false" obligation="normative">
          <title>Appendx 1</title>
        </appendix></annex><bibliography><references id="_" obligation="informative">
-         <title>Normative References</title>
+         <title>Normative References</title><p>There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative">

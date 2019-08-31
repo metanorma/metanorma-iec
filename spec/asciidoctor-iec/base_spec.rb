@@ -87,6 +87,7 @@ RSpec.describe Asciidoctor::Iec do
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
       :library-ics: 1,2,3
+      :translated-from: ABC 123
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -99,13 +100,8 @@ RSpec.describe Asciidoctor::Iec do
    <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
    <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
    <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-         <docidentifier type="iso">IEC/PreNWIP3 1000-1</docidentifier>
+         <docidentifier type="iso">IEC/3NWIP 1000-1</docidentifier>
 <docnumber>1000</docnumber>
-         <edition>2</edition>
-<version>
-         <revision-date>2000-01-01</revision-date>
-         <draft>0.3.4</draft>
-       </version>
          <contributor>
            <role type="author"/>
            <organization>
@@ -120,6 +116,11 @@ RSpec.describe Asciidoctor::Iec do
              <abbreviation>IEC</abbreviation>
            </organization>
          </contributor>
+         <edition>2</edition>
+<version>
+         <revision-date>2000-01-01</revision-date>
+         <draft>0.3.4</draft>
+       </version>
          <language>en</language>
          <script>Latn</script>
          <status>
@@ -136,6 +137,12 @@ RSpec.describe Asciidoctor::Iec do
              </organization>
            </owner>
          </copyright>
+         <relation type="translatedFrom">
+<bibitem>
+<title>--</title>
+<docidentifier>ABC 123</docidentifier>
+</bibitem>
+</relation>
          <ext>
          <doctype>article</doctype>
          <editorialgroup>
@@ -183,11 +190,12 @@ RSpec.describe Asciidoctor::Iec do
       :script: Grek
       :publisher: IEC,IETF,ISO
       :copyright-year: 2001
+      :docstage: A2CD
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iso-standard xmlns="http://riboseinc.com/isoxml">
        <bibdata type="standard">
-         <docidentifier type="iso">ISO/IEC/IETF 1000-1-1:2001</docidentifier>
+         <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
          <docnumber>1000</docnumber>
          <contributor>
@@ -233,8 +241,9 @@ RSpec.describe Asciidoctor::Iec do
          <language>el</language>
          <script>Grek</script>
          <status>
-           <stage>60</stage>
-           <substage>60</substage>
+           <stage>30</stage>
+           <substage>99</substage>
+           <iteration>2</iteration>
          </status>
          <copyright>
            <from>2001</from>
@@ -460,7 +469,7 @@ OUTPUT
     INPUT
 <iso-standard xmlns="http://riboseinc.com/isoxml">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC/PRF 1000</docidentifier>
+  <docidentifier type="iso">IEC 1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
