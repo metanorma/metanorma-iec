@@ -159,6 +159,18 @@ module IsoDoc
         b.replace(b.children)
       end
 
+      def make_body1(body, _docxml)
+      end
+
+      def make_body2(body, docxml)
+        FileUtils.rm_rf tmpimagedir
+        FileUtils.mkdir tmpimagedir
+        super
+      end
+
+      def word_cover(docxml)
+      end
+
       include BaseConvert
     end
   end
