@@ -231,12 +231,6 @@ end
     </iso-standard>
     INPUT
            <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
-             <p>&#160;</p>
-           </div>
-           <p>
-             <br clear="all" class="section"/>
-           </p>
            <div class="WordSection2">
              <p>
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
@@ -279,12 +273,6 @@ end
     </iso-standard>
     INPUT
            <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
-             <p>&#160;</p>
-           </div>
-           <p>
-             <br clear="all" class="section"/>
-           </p>
            <div class="WordSection2">
              <p>
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>

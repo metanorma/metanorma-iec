@@ -54,10 +54,6 @@ module Asciidoctor
         File.read(file, encoding: "UTF-8")
       end
 
-      def relaton_relations
-        super + %w(translated-from)
-      end
-
       def doctype_validate(xmldoc)
         doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
         %w(international-standard technical-specification technical-report 

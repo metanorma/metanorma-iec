@@ -87,7 +87,6 @@ RSpec.describe Asciidoctor::Iec do
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
       :library-ics: 1,2,3
-      :translated-from: ABC 123
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -137,12 +136,6 @@ RSpec.describe Asciidoctor::Iec do
              </organization>
            </owner>
          </copyright>
-         <relation type="translatedFrom">
-<bibitem>
-<title>--</title>
-<docidentifier>ABC 123</docidentifier>
-</bibitem>
-</relation>
          <ext>
          <doctype>article</doctype>
          <editorialgroup>
