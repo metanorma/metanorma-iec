@@ -135,53 +135,6 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
-  it "moves notes inside preceding blocks, if they are not at clause end, and the blocks are not delimited" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      [stem]
-      ++++
-      r = 1 %
-      r = 1 %
-      ++++
-
-      NOTE: That formula does not do much
-
-      Indeed.
-    INPUT
-       #{BLANK_HDR}
-    <sections><formula id="_">
-  <stem type="AsciiMath">r = 1 %
-r = 1 %</stem>
-<note id="_">
-  <p id="_">That formula does not do much</p>
-</note></formula>
-
-       <p id="_">Indeed.</p></sections>
-       </iso-standard>
-    OUTPUT
-  end
-
-  it "does not move notes inside preceding blocks, if they are at clause end" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      [source,ruby]
-      [1...x].each do |y|
-        puts y
-      end
-
-      NOTE: That loop does not do much
-    INPUT
-       #{BLANK_HDR}
-              <sections><sourcecode lang="ruby" id="_">[1...x].each do |y|
-         puts y
-       end</sourcecode>
-       <note id="_">
-         <p id="_">That loop does not do much</p>
-       </note></sections>
-       </iso-standard>
-    OUTPUT
-  end
-
   it "converts xrefs to references into erefs" do
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       #{ASCIIDOC_BLANK_HDR}
@@ -675,7 +628,7 @@ r = 1 %</stem>
         <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
         <bibitem id="iso123" type="standard">
          <title format="text/plain">Standard</title>
-         <docidentifier>ISO 123:—</docidentifier>
+         <docidentifier>ISO 123:–</docidentifier>
          <date type="published">
            <on>--</on>
          </date>
