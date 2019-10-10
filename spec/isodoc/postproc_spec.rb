@@ -23,7 +23,7 @@ RSpec.describe IsoDoc do
     INPUT
     expect(File.exist?("test.html")).to be true
     html = File.read("test.html", encoding: "UTF-8")
-    expect(html).to match(%r{<title>Cereals and pulses\&nbsp;\&mdash; Specifications and test methods\&nbsp;\&mdash; Rice</title>})
+    expect(html).to match(%r{<title>Cereals and pulses\&#xA0;\&#x2014; Specifications and test methods\&#xA0;\&#x2014; Rice</title>})
     expect(html).to match(%r{cdnjs\.cloudflare\.com/ajax/libs/mathjax/})
     expect(html).to match(/delimiters: \[\['\(#\(', '\)#\)'\]\]/)
   end
@@ -49,7 +49,7 @@ RSpec.describe IsoDoc do
     INPUT
     expect(File.exist?("test.html")).to be true
     html = File.read("test.html", encoding: "UTF-8")
-    expect(html).to match(%r{<title>Cereals and pulses\&nbsp;\&mdash; Specifications and test methods\&nbsp;\&mdash; Rice</title>})
+    expect(html).to match(%r{<title>Cereals and pulses\&#xA0;\&#x2014; Specifications and test methods\&#xA0;\&#x2014; Rice</title>})
     expect(html).to match(%r{cdnjs\.cloudflare\.com/ajax/libs/mathjax/})
     expect(html).to match(/delimiters: \[\['\(#\(', '\)#\)'\]\]/)
   end
@@ -158,7 +158,7 @@ RSpec.describe IsoDoc do
                <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and definitions</h1>
        <p class="TermNum"><a name="paddy1" id="paddy1"></a>1.1</p><p class="Terms" style="text-align:left;">paddy</p>
        <p class="MsoNormal"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
-       <p class="MsoNormal">[SOURCE: <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &mdash; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
+       <p class="MsoNormal">[SOURCE: <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
              </div>
              <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
         <div class="colophon"></div>
@@ -537,7 +537,7 @@ RSpec.describe IsoDoc do
                <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
                <p class="TableTitle" style="text-align:center;">Table A.1</p>
                <div align="center">
-                 <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" class="MsoISOTable" summary=""><a name="samplecode" id="samplecode"></a>
+                 <table style="mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-bspace:14.2pt;mso-table-anchor-vertical:paragraph;mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;" class="MsoISOTable"><a name="samplecode" id="samplecode"></a>
                    <tbody>
                      <tr>
                        <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
