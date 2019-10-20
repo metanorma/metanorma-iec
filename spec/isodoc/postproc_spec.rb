@@ -91,43 +91,6 @@ RSpec.describe IsoDoc do
     expect(word).to match(/<style>/)
   end
 
-  it "converts annex subheadings to h2Annex class for Word" do
-    FileUtils.rm_f "test.doc"
-    FileUtils.rm_f "test.html"
-    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("test", <<~"INPUT", false)
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
-    <annex id="P" inline-header="false" obligation="normative">
-         <title>Annex</title>
-         <clause id="Q" inline-header="false" obligation="normative">
-         <title>Annex A.1</title>
-         </clause>
-                <appendix id="Q2" inline-header="false" obligation="normative">
-         <title>An Appendix</title>
-       </appendix>
-    </annex>
-    </iso-standard>
-    INPUT
-    word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
-    expect(word).to be_equivalent_to <<~"OUTPUT"
-           <div class="WordSection3">
-               #{IEC_TITLE}
-               <p class="MsoNormal"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-               <div class="Section3"><a name="P" id="P"></a>
-                 <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
-                 <div><a name="Q" id="Q"></a>
-            <p class="h2Annex">A.1 Annex A.1</p>
-       </div>
-              <div><a name="Q2" id="Q2"></a>
-                <p class="h2Annex">Appendix 1 An Appendix</p>
-                </div>
-               </div>
-             </div>
-             <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-        <div class="colophon"></div>
-    OUTPUT
-  end
-
   it "populates Word template with terms reference labels" do
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.html"
@@ -314,10 +277,10 @@ RSpec.describe IsoDoc do
                </a>
                <div id="N">
 
-                <h2>1.1 Introduction to this<a rel="footnote" href="#fn:2" epub:type="footnote" id="fnref:2"><sup>2</sup></a></h2>
+                <h2>1.1&#160; Introduction to this<a rel="footnote" href="#fn:2" epub:type="footnote" id="fnref:2"><sup>2</sup></a></h2>
               </div>
                <div id="O">
-                <h2>1.2 Clause 4.2</h2>
+                <h2>1.2&#160; Clause 4.2</h2>
                 <p>A<a rel="footnote" href="#fn:2" epub:type="footnote"><sup>2</sup></a></p>
               </div>
              </div>
@@ -461,45 +424,6 @@ RSpec.describe IsoDoc do
                <div class="example"><a name="_63112cbc-cde0-435f-9553-e0b8c4f5851d" id="_63112cbc-cde0-435f-9553-e0b8c4f5851d"></a>
                  <p class="example"><span class="example_label">EXAMPLE  2</span><span style="mso-tab-count:1">&#xA0; </span>'2M', '02M', and '0002M' all describe the calendar month February.</p>
                </div>
-             </div>
-           </div>
-           <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-           <div class="colophon"></div>
-
-    OUTPUT
-  end
-
-    it "processes figure keys (Word)" do
-          FileUtils.rm_f "test.doc"
-    FileUtils.rm_f "test.html"
-    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("test", <<~"INPUT", false)
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
-        <annex id="P" inline-header="false" obligation="normative">
-    <figure id="samplecode">
-  <p>Hello</p>
-  <p>Key</p>
-  <dl>
-  <dt><p>A</p></dt>
-  <dd><p>B</p></dd>
-  </dl>
-</figure>
-    </annex>
-    </iso-standard>
-    INPUT
-    word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
-    expect(word).to be_equivalent_to <<~"OUTPUT"
-       <div class="WordSection3">
-             #{IEC_TITLE}
-             <p class="MsoNormal">
-               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-             </p>
-             <div class="Section3"><a name="P" id="P"></a>
-               <div class="figure"><a name="samplecode" id="samplecode"></a>
-         <p class="MsoNormal">Hello</p>
-         <p class="MsoNormal">Key</p>
-         <p class="MsoNormal"><b>Key</b></p><div class="figdl"><table class="figdl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;" class="MsoNormal"><p class="MsoNormal">A</p></p></td><td valign="top"><p class="MsoNormal">B</p></td></tr></table></div>
-         <p class="FigureTitle" style="text-align:center;">Figure A.1</p></div>
              </div>
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
