@@ -768,8 +768,7 @@ div.example {
 }
 */
 p.example, li.example, div.example, td.example
-	{	margin:0in;
-	margin-bottom:12.0pt;
+	{	
 	mso-pagination:none;
         tab-stops:70.9pt;
 	font-size:10.0pt;
@@ -781,6 +780,11 @@ td.example p.MsoListParagraph {
 
 div.example p.MsoListParagraph {
   font-size: 10.0pt;
+}
+
+div.example, td.example {
+  margin:0in;
+        margin-bottom:12.0pt;
 }
 
 span.note_label, span.example_label, td.example_label, td.note_label
