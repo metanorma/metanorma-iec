@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
   it "processes open blocks" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       --
       x
@@ -21,7 +21,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes stem blocks" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [stem]
       ++++
@@ -42,7 +42,6 @@ RSpec.describe Asciidoctor::Iec do
 
        <formula id="_">
          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
-       </stem>
        </formula>
        </sections>
        </iso-standard>
@@ -50,7 +49,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
     it "ignores review blocks unless document is in draft mode" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [[foreword]]
       .Foreword
@@ -71,7 +70,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
   it "processes review blocks if document is in draft mode" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).sub(/^.+<sections>/m, "")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)).sub(/^.+<sections>/m, "<sections>").sub(%r{</sections>.*$}m, "</sections>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc
@@ -91,16 +90,16 @@ RSpec.describe Asciidoctor::Iec do
       For further information on the Foreword, see *ISO/IEC Directives, Part 2, 2016, Clause 12.*
       ****
       INPUT
+      <sections>
        <p id="foreword">Foreword</p>
        <review reviewer="ISO" id="_" date="20170101T00:00:00Z" from="foreword" to="foreword"><p id="_">A Foreword shall appear in each document. The generic text is shown here. It does not contain requirements, recommendations or permissions.</p>
        <p id="_">For further information on the Foreword, see <strong>ISO/IEC Directives, Part 2, 2016, Clause 12.</strong></p></review></sections>
-       </iso-standard>
 
       OUTPUT
   end
 
   it "processes term notes" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -127,7 +126,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
     it "processes notes" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       NOTE: This is a note
       INPUT
@@ -143,7 +142,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes literals" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       ....
       LITERAL
@@ -160,7 +159,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes simple admonitions with Asciidoc names" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       CAUTION: Only use paddy or parboiled rice for the determination of husked rice yield.
       INPUT
@@ -177,7 +176,7 @@ RSpec.describe Asciidoctor::Iec do
 
 
     it "processes complex admonitions with non-Asciidoc names" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [CAUTION,type=Safety Precautions]
       .Safety Precautions
@@ -210,7 +209,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes term examples" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -239,7 +238,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes examples" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [example]
       ====
@@ -258,7 +257,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes preambles" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       This is a preamble
 
@@ -277,7 +276,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes images" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       .Split-it-right sample divider
       image::spec/examples/rice_images/rice_image1.png[]
@@ -295,7 +294,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "accepts width and height attributes on images" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [height=4,width=3]
       image::spec/examples/rice_images/rice_image1.png[]
@@ -312,7 +311,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "accepts auto for width and height attributes on images" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [height=4,width=auto]
       image::spec/examples/rice_images/rice_image1.png[]
@@ -329,7 +328,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "accepts alignment attribute on paragraphs" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [align=right]
       This para is right-aligned.
@@ -343,7 +342,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes blockquotes" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [quote, ISO, "ISO7301,section 1"]
       ____
@@ -363,7 +362,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes source code" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [source,ruby]
       --
@@ -385,7 +384,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes callouts" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [source,ruby]
       --
@@ -412,7 +411,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes unmodified term sources" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -440,7 +439,7 @@ RSpec.describe Asciidoctor::Iec do
     end
 
     it "processes modified term sources" do
-      expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 

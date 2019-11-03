@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
   it "removes empty text elements" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == {blank}
     INPUT
@@ -17,7 +17,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes stem-only terms as admitted" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -43,7 +43,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "moves term domains out of the term definition paragraph" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -69,7 +69,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "permits multiple blocks in term definition paragraph" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc
@@ -107,7 +107,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "strips any initial boilerplate from terms and definitions" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -135,84 +135,8 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
-  it "converts xrefs to references into erefs" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      <<iso216>>
-
-      [bibliography]
-      == Normative References
-      * [[[iso216,ISO 216:2001]]], _Reference_
-    INPUT
-      #{BLANK_HDR}
-        <preface><foreword obligation="informative">
-        <title>Foreword</title>
-        <p id="_">
-        <eref type="inline" bibitemid="iso216" citeas="ISO 216:2001"/>
-      </p>
-      </foreword></preface><sections>
-      </sections><bibliography><references id="_" obligation="informative">
-        <title>Normative References</title>
-        <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-        <bibitem id="iso216" type="standard">
-         <title format="text/plain">Reference</title>
-         <docidentifier>ISO 216:2001</docidentifier>
-         <date type="published">
-           <on>2001</on>
-         </date>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>International Organization for Standardization</name>
-             <abbreviation>ISO</abbreviation>
-           </organization>
-         </contributor>
-       </bibitem>
-      </references>
-      </bibliography
-      </iso-standard>
-    OUTPUT
-  end
-
-  it "extracts localities from erefs" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      <<iso216,whole,clause=3,example=9-11,locality:prelude=33,locality:entirety:the reference>>
-
-      [bibliography]
-      == Normative References
-      * [[[iso216,ISO 216]]], _Reference_
-    INPUT
-      #{BLANK_HDR}
-      <preface><foreword obligation="informative">
-        <title>Foreword</title>
-        <p id="_">
-        <eref type="inline" bibitemid="iso216" citeas="ISO 216"><locality type="whole"/><locality type="clause"><referenceFrom>3</referenceFrom></locality><locality type="example"><referenceFrom>9</referenceFrom><referenceTo>11</referenceTo></locality><locality type="locality:prelude"><referenceFrom>33</referenceFrom></locality><locality type="locality:entirety"/>the reference</eref>
-        </p>
-      </foreword></preface><sections>
-      </sections><bibliography><references id="_" obligation="informative">
-        <title>Normative References</title>
-        <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-        <bibitem id="iso216" type="standard">
-         <title format="text/plain">Reference</title>
-         <docidentifier>ISO 216</docidentifier>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>International Organization for Standardization</name>
-             <abbreviation>ISO</abbreviation>
-           </organization>
-         </contributor>
-       </bibitem>
-      </references>
-      </bibliography>
-      </iso-standard>
-    OUTPUT
-  end
-
-
   it "strips type from xrefs" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       <<iso216>>
 
@@ -247,7 +171,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes localities in term sources" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -275,7 +199,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "removes extraneous material from Normative References" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [bibliography]
       == Normative References
@@ -306,7 +230,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "inserts IDs into paragraphs" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       Paragraph
     INPUT
@@ -319,7 +243,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "inserts IDs into notes" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [example]
       ====
@@ -339,7 +263,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "moves table key inside table" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       |===
       |a |b |c
@@ -371,7 +295,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes headerrows attribute for table without header rows" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [headerrows=3]
       |===
@@ -410,7 +334,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "processes headerrows attribute for table with header rows" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [headerrows=3]
       |===
@@ -454,38 +378,8 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
-  it "moves table notes inside table" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-      #{ASCIIDOC_BLANK_HDR}
-      |===
-      |a |b |c
-      |===
-
-      NOTE: Note 1
-
-      NOTE: Note 2
-    INPUT
-       #{BLANK_HDR}
-              <sections><table id="_">
-         <tbody>
-           <tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr>
-         </tbody>
-       <note id="_">
-         <p id="_">Note 1</p>
-       </note><note id="_">
-         <p id="_">Note 2</p>
-       </note></table>
-
-       </sections>
-    OUTPUT
-  end
-
   it "moves formula key inside formula" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       [stem]
       ++++
@@ -512,7 +406,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "moves footnotes inside figures" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       image::spec/examples/rice_images/rice_image1.png[]
 
@@ -536,7 +430,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "moves figure key inside figure" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       image::spec/examples/rice_images/rice_image1.png[]
 
@@ -561,7 +455,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "numbers bibliographic notes and footnotes sequentially" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
       footnote:[Footnote]
 
@@ -613,7 +507,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "defaults section obligations" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
 
       == Clause
@@ -638,7 +532,7 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "extends clause levels past 5" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     #{ASCIIDOC_BLANK_HDR}
 
     == Clause1

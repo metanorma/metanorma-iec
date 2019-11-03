@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc do
   it "processes section names" do
-    expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <preface>
       <foreword obligation="informative">
@@ -159,7 +159,7 @@ OUTPUT
   end
 
   it "processes section names (Word)" do
-    expect(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <preface>
       <foreword obligation="informative">
@@ -308,12 +308,11 @@ OUTPUT
              <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
              <div class="colophon"/>
            </body>
-       </html>
 OUTPUT
   end
 
   it "processes simple terms & definitions" do
-        expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+        expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
                <iso-standard xmlns="http://riboseinc.com/isoxml">
        <sections>
        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
@@ -341,7 +340,7 @@ OUTPUT
   end
 
     it "processes inline section headers" do
-    expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <sections>
        <clause id="M" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
@@ -376,7 +375,7 @@ OUTPUT
     end
 
    it "adds colophon to published standard (Word)" do
-    expect(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ")).to be_equivalent_to <<~"OUTPUT"
+     expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <status>
@@ -406,12 +405,11 @@ OUTPUT
             <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
             <div class="colophon"/>
           </body>
-        </html>
       OUTPUT
    end
 
       it "does not add colophon to draft standard (Word)" do
-    expect(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <status>
@@ -439,12 +437,11 @@ OUTPUT
               #{IEC_TITLE}
             </div>
           </body>
-        </html>
       OUTPUT
    end
 
   it "adds boilerplate to foreword" do 
-        expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+        expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <ext><doctype>International Standard</doctype></ext>
@@ -472,7 +469,7 @@ OUTPUT
    end
 
    it "does not add boilerplate to foreword in amendments" do
-        expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+        expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <ext><doctype>Amendment</doctype></ext>

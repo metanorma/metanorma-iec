@@ -114,8 +114,8 @@ RSpec.describe IsoDoc do
 
     INPUT
     word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
-    expect(word).to be_equivalent_to <<~"OUTPUT"
+      sub(%r{<br.*$}m, "")
+    expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <div class="WordSection3">
                #{IEC_TITLE}
                <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and definitions</h1>
@@ -123,8 +123,6 @@ RSpec.describe IsoDoc do
        <p class="MsoNormal"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
        <p class="MsoNormal">[SOURCE: <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
              </div>
-             <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-        <div class="colophon"></div>
     OUTPUT
   end
 
@@ -169,7 +167,8 @@ RSpec.describe IsoDoc do
     INPUT
     word = File.read("test.doc", encoding: "UTF-8").sub(/^.*An empty word intro page\./m, '').
       sub(%r{<p class="zzSTDTitle1">.*$}m, "")
-    expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
+    expect(xmlpp("<div>" + word.gsub(/_Toc\d\d+/, "_Toc") + "</div>")).to be_equivalent_to xmlpp(<<~'OUTPUT')
+    <div>
        <p class="MsoToc1"><span lang="EN-GB" xml:lang="EN-GB"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&#xA0;</span>TOC
          \o "1-2" \h \z \u <span style="mso-element:field-separator"></span></span>
        <span class="MsoHyperlink"><span lang="EN-GB" style="mso-no-proof:yes" xml:lang="EN-GB">
@@ -234,6 +233,7 @@ RSpec.describe IsoDoc do
               <p class="MsoNormal">
    <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
  </p>
+ </div>
     OUTPUT
   end
 
@@ -259,10 +259,10 @@ RSpec.describe IsoDoc do
         </sections>
         </iso-standard>
     INPUT
-    html = File.read("test.html", encoding: "UTF-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
+    html = File.read("test.html", encoding: "UTF-8").sub(/^.*<main class="main-section">/m, '<main xmlns:epub="epub" class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(html).to be_equivalent_to <<~"OUTPUT"
-           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    expect(xmlpp(html)).to be_equivalent_to xmlpp(<<~"OUTPUT")
+           <main xmlns:epub="epub" class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
            <br/>
              #{IEC_TITLE}
              <div id="">
@@ -316,7 +316,7 @@ RSpec.describe IsoDoc do
     html = File.read("test.html", encoding: "UTF-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
     expect(`ls test_htmlimages`).to match(/\.png$/)
-    expect(html.gsub(/\/[0-9a-f-]+\.png/, "/_.png")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(html.gsub(/\/[0-9a-f-]+\.png/, "/_.png"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
              <br />
              #{IEC_TITLE}
@@ -410,8 +410,8 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
-    expect(word).to be_equivalent_to <<~"OUTPUT"
+      sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
+    expect((word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
          <div class="WordSection3">
          #{IEC_TITLE}
              <p class="MsoNormal">
@@ -426,9 +426,6 @@ RSpec.describe IsoDoc do
                </div>
              </div>
            </div>
-           <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-           <div class="colophon"></div>
-
     OUTPUT
   end
 
@@ -450,8 +447,8 @@ RSpec.describe IsoDoc do
     </iso-standard>
     INPUT
     word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<div style="mso-element:footnote-list"/>.*$}m, "")
-    expect(word).to be_equivalent_to <<~"OUTPUT"
+      sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
+    expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
        <div class="WordSection3">
     #{IEC_TITLE.gsub(/\&#160;/, "&#xA0;")}
              <p class="MsoNormal">
@@ -473,9 +470,6 @@ RSpec.describe IsoDoc do
                </div>
              </div>
            </div>
-           <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-           <div class="colophon"></div>
-
     OUTPUT
     end
 
