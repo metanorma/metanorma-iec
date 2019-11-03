@@ -87,84 +87,8 @@ RSpec.describe IsoDoc::Iec do
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Arial",sans-serif;]m)
   end
 
-  it "does not include IEV in references" do
-    expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
-    <preface><foreword>
-  <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
-  <eref bibitemid="IEV"/>
-  <eref bibitemid="ISO20483"/>
-  </p>
-    </foreword></preface>
-    <bibliography><references id="_normative_references" obligation="informative"><title>Normative References</title>
-          <bibitem type="international-standard" id="IEV">
-  <title format="text/plain" language="en" script="Latn">Electropedia: 
-  The World's Online Electrotechnical Vocabulary</title>
-  <uri type="src">http://www.electropedia.org</uri>
-  <docidentifier>IEV</docidentifier>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Electrotechnical Commission</name>
-      <abbreviation>IEC</abbreviation>
-      <uri>www.iec.ch</uri>
-    </organization>
-  </contributor>
-  <language>en</language> <language>fr</language>
-  <script>Latn</script>
-  <copyright>
-    <owner>
-      <organization>
-      <name>International Electrotechnical Commission</name>
-      <abbreviation>IEC</abbreviation>
-      <uri>www.iec.ch</uri>
-      </organization>
-    </owner>
-  </copyright>
-  <relation type="updates">
-    <bibitem>
-      <formattedref>IEC 60050</formattedref>
-    </bibitem>
-  </relation>
-</bibitem>
-<bibitem id="ISO20483" type="standard">
-  <title format="text/plain">Cereals and pulses</title>
-  <docidentifier>ISO 20483</docidentifier>
-  <date type="published"><from>2013</from><to>2014</to></date>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Organization for Standardization</name>
-    </organization>
-  </contributor>
-</bibitem>
-</references>
-</bibliography>
-    </iso-standard>
-    INPUT
-    #{HTML_HDR}
-             <div>
-               <h1 class="ForewordTitle">FOREWORD</h1>
-               <div class="boilerplate_legal"/>
-               <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
-         <a href="#IEV">IEV</a>
-         <a href="#ISO20483">ISO 20483</a>
-         </p>
-             </div>
-             #{IEC_TITLE}
-             <div>
-               <h1>1&#160; Normative references</h1>
-               <p id="ISO20483" class="NormRef">ISO 20483, <i> Cereals and pulses</i></p>
-             </div>
-           </div>
-         </body>
-       </html>
-
-    OUTPUT
-end
-
   it "processes examples" do
-    expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
@@ -190,7 +114,7 @@ end
 
 
   it "processes sequences of examples" do
-    expect(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true)).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
@@ -221,7 +145,7 @@ end
   end
 
     it "processes examples (Word)" do
-    expect(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body/m, "<body")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
@@ -254,13 +178,12 @@ end
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>
          </body>
-       </html>
     OUTPUT
   end
 
 
   it "processes sequences of examples (Word)" do
-    expect(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body/m, "<body")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(/^.*<body/m, "<body").sub(%r{</body>.*$}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
@@ -299,7 +222,6 @@ end
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>
          </body>
-       </html>
     OUTPUT
   end
 

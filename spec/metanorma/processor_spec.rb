@@ -24,7 +24,7 @@ RSpec.describe Metanorma::Iec::Processor do
   end
 
   it "generates IsoDoc XML from a blank document" do
-    expect(strip_guid(processor.input_to_isodoc(<<~"INPUT", nil))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(strip_guid(processor.input_to_isodoc(<<~"INPUT", nil)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     #{ASCIIDOC_BLANK_HDR}
     INPUT
     #{BLANK_HDR}
@@ -46,7 +46,7 @@ RSpec.describe Metanorma::Iec::Processor do
         </sections>
         </iso-standard>
     INPUT
-    expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
               <br />
  <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
