@@ -1,11 +1,11 @@
 = metanorma-iec: Metanorma processor for the International Electrotechnical Commission
 
 image:https://img.shields.io/gem/v/metanorma-iec.svg["Gem Version", link="https://rubygems.org/gems/metanorma-iec"]
-image:https://img.shields.io/travis/metanorma/metanorma-iec/master.svg["Build Status", link="https://travis-ci.com/metanorma/metanorma-iec"]
-image:https://ci.appveyor.com/api/projects/status/odgc3ltblokvd6e7?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/ribose/metanorma-iec"]
+image:https://travis-ci.com/metanorma/metanorma-iec.svg["Build Status", link="https://travis-ci.com/metanorma/metanorma-iec"]
+image:https://ci.appveyor.com/api/projects/status/030ike7d50201e7m?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/metanorma/metanorma-iec"]
 image:https://codeclimate.com/github/metanorma/metanorma-iec/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-iec"]
-
-WARNING: This gem is still under development.
+image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-iec.svg["Pull Requests", link="https://github.com/metanorma/metanorma-iec/pulls"]
+image:https://img.shields.io/github/commits-since/metanorma/metanorma-iec/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-iec/releases"]
 
 == Functionality
 
