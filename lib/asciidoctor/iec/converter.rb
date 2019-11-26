@@ -147,7 +147,7 @@ module Asciidoctor
         abbr
       end
 
-def load_yaml(lang, script)
+      def load_yaml(lang, script)
         y = if @i18nyaml then YAML.load_file(@i18nyaml)
             elsif lang == "en"
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
@@ -159,6 +159,9 @@ def load_yaml(lang, script)
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
             end
         super.merge(y)
+      end
+
+      def initial_boilerplate(xmldoc)
       end
 
       def html_converter(node)
