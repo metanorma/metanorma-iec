@@ -4,8 +4,12 @@ require "metanorma-iso"
 module IsoDoc
   module Iec
     module BaseConvert
-       def metadata_init(lang, script, labels)
+      def metadata_init(lang, script, labels)
         @meta = Metadata.new(lang, script, labels)
+      end
+
+      def boilerplate(node, out)
+        # processed in foreword instead
       end
 
       def foreword(isoxml, out)
