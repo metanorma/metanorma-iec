@@ -77,11 +77,8 @@ Please refer to the Metanorma-ISO documentation for general documentation.
 
 See https://www.metanorma.com/author/iso/[Write ISO documents with Metanorma]
 
-////
 == Examples
 
-* link:spec/examples/rfc6350.adoc[] is an Metanorma AsciiDoc version of https://tools.ietf.org/html/rfc6350[RFC 6350].
-* link:spec/examples/rfc6350.html[] is an HTML file generated from the Asciidoctor.
-* link:spec/examples/rfc6350.doc[] is a Word document generated from the Asciidoctor.
-////
+* Example documents are avalable at the https://github.com/metanorma/mn-samples-iec[mn-samples-iec] repository.
+* Document templates are available at the https://github.com/metanorma/mn-templates-iec[mn-templates-iec] repository.
 
