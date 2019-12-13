@@ -264,7 +264,8 @@ RSpec.describe IsoDoc do
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div class="Section3"><a name="P" id="P"></a>
-               <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
+               <p class="Sourcecode" style='page-break-after:avoid;'><a name="A" id="A"></a>puts "Hello, world."</p>
+               <p class='SourceTitle' style='text-align:center;'>Figure A.1</p>
                <p class="TableTitle" style="text-align:center;">Table A.1</p>
                           <div align='center' class='table_container'>
              <table class='MsoISOTable' style='mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
@@ -272,7 +273,8 @@ RSpec.describe IsoDoc do
                    <tbody>
                      <tr>
                        <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
-           <p class="CODE-TableCell"><a name="B" id="B"></a>puts "Hello, world."</p>
+           <p class="CODE-TableCell"  style='page-break-after:avoid;'><a name="B" id="B"></a>puts "Hello, world."</p>
+           <p class='SourceTitle' style='text-align:center;'>Figure A.2</p>
            </td>
                      </tr>
                    </tbody>
