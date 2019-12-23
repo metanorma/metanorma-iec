@@ -273,8 +273,7 @@ RSpec.describe IsoDoc do
                    <tbody>
                      <tr>
                        <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
-           <p class="CODE-TableCell"  style='page-break-after:avoid;'><a name="B" id="B"></a>puts "Hello, world."</p>
-           <p class='SourceTitle' style='text-align:center;'>Figure A.2</p>
+           <p class="CODE-TableCell"><a name="B" id="B"></a>puts "Hello, world."</p>
            </td>
                      </tr>
                    </tbody>
