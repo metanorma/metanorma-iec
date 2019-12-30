@@ -36,7 +36,7 @@ RSpec.describe Asciidoctor::Iec do
        <strike>strike</strike>
        <smallcap>smallcap</smallcap>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -55,7 +55,7 @@ RSpec.describe Asciidoctor::Iec do
        line break</p>
        <hr/>
        <pagebreak/></sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -72,7 +72,7 @@ RSpec.describe Asciidoctor::Iec do
        <link target="http://example.com"/>
        <link target="http://example.com">Link</link></p>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -85,7 +85,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections>
          <p id="_">Text <bookmark id="bookmark"/> Text</p>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
     end
 
@@ -110,7 +110,7 @@ RSpec.describe Asciidoctor::Iec do
        Footnoted Reference with Text to <xref target="reference">text</xref></p>
        </clause>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -140,7 +140,7 @@ RSpec.describe Asciidoctor::Iec do
        </bibitem>
        </references>
        </bibliography>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -155,7 +155,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">Footnote text</p>
        </fn></p>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 

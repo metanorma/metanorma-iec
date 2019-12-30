@@ -31,7 +31,7 @@ RSpec.describe Asciidoctor::Iec do
          </tbody>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -70,7 +70,7 @@ RSpec.describe Asciidoctor::Iec do
          </tbody>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -107,7 +107,7 @@ RSpec.describe Asciidoctor::Iec do
          </tbody>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -300,7 +300,7 @@ RSpec.describe Asciidoctor::Iec do
          </tfoot>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 end

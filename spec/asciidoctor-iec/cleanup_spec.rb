@@ -12,7 +12,7 @@ RSpec.describe Asciidoctor::Iec do
 
        </clause>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -38,33 +38,7 @@ RSpec.describe Asciidoctor::Iec do
        <definition><p id="_">Time</p></definition></term>
        </terms>
        </sections>
-       </iso-standard>
-    OUTPUT
-  end
-
-  it "moves term domains out of the term definition paragraph" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      == Terms and Definitions
-
-      === Tempus
-
-      domain:[relativity] Time
-    INPUT
-       #{BLANK_HDR}
-              <sections>
-         <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
-         <p>For the purposes of this document, 
-       the following terms and definitions apply.</p>
-        #{TERMS_BOILERPLATE}
-         <term id="_">
-         <preferred>Tempus</preferred>
-         <domain>relativity</domain><definition><p id="_"> Time</p></definition>
-       </term>
-       </terms>
-       </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -102,7 +76,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -131,7 +105,7 @@ RSpec.describe Asciidoctor::Iec do
          <definition><p id="_">This paragraph is extraneous</p></definition>
        </term></terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -166,7 +140,7 @@ RSpec.describe Asciidoctor::Iec do
   </contributor>
 </bibitem>
 </references></bibliography>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -194,7 +168,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
   end
 
@@ -225,7 +199,7 @@ RSpec.describe Asciidoctor::Iec do
        </bibitem>
       </references>
       </bibliography>
-      </iso-standard>
+      </iec-standard>
     OUTPUT
   end
 
@@ -238,7 +212,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections>
          <p id="_">Paragraph</p>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -258,7 +232,7 @@ RSpec.describe Asciidoctor::Iec do
        </note>
        </example>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -290,7 +264,7 @@ RSpec.describe Asciidoctor::Iec do
        </dl></table>
 
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -329,7 +303,7 @@ RSpec.describe Asciidoctor::Iec do
          </tbody>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -374,7 +348,7 @@ RSpec.describe Asciidoctor::Iec do
          </tbody>
        </table>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -401,7 +375,7 @@ RSpec.describe Asciidoctor::Iec do
        </dl></formula>
 
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -425,7 +399,7 @@ RSpec.describe Asciidoctor::Iec do
 
        </sections>
 
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -450,7 +424,7 @@ RSpec.describe Asciidoctor::Iec do
 
        </sections>
 
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -502,7 +476,7 @@ RSpec.describe Asciidoctor::Iec do
        </bibitem>
       </references>
       </bibliography>
-      </iso-standard>
+      </iec-standard>
     OUTPUT
   end
 
@@ -527,7 +501,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Clause</title>
          <p id="_">Text</p>
        </annex>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -590,7 +564,7 @@ RSpec.describe Asciidoctor::Iec do
 </clause>
 </clause>
 </sections>
-</iso-standard>
+</iec-standard>
     OUTPUT
   end
 end

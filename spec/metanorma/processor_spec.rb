@@ -29,14 +29,14 @@ RSpec.describe Metanorma::Iec::Processor do
     INPUT
     #{BLANK_HDR}
 <sections/>
-</iso-standard>
+</iec-standard>
     OUTPUT
   end
 
   it "generates HTML from IsoDoc XML" do
     FileUtils.rm_f "test.xml"
     processor.output(<<~"INPUT", "test.html", :html)
-               <iso-standard xmlns="http://riboseinc.com/isoxml">
+               <iec-standard xmlns="http://riboseinc.com/isoxml">
        <sections>
        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
          <term id="J">
@@ -44,7 +44,7 @@ RSpec.describe Metanorma::Iec::Processor do
        </term>
         </terms>
         </sections>
-        </iso-standard>
+        </iec-standard>
     INPUT
     expect(xmlpp(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
