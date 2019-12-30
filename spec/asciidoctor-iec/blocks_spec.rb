@@ -16,7 +16,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections><p id="_">x</p>
        <p id="_">y</p>
        <p id="_">z</p></sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -44,7 +44,7 @@ RSpec.describe Asciidoctor::Iec do
          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
        </formula>
        </sections>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -65,7 +65,7 @@ RSpec.describe Asciidoctor::Iec do
               #{BLANK_HDR}
        <sections><p id="foreword">Foreword</p>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -121,7 +121,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
   end
 
@@ -136,7 +136,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">This is a note</p>
        </note>
        </sections>
-       </iso-standard>
+       </iec-standard>
 
       OUTPUT
     end
@@ -154,7 +154,7 @@ RSpec.describe Asciidoctor::Iec do
   <pre id="_">LITERAL</pre>
 </figure>
 </sections>
-</iso-standard>
+</iec-standard>
       OUTPUT
     end
 
@@ -169,7 +169,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
        </admonition>
        </sections>
-       </iso-standard>
+       </iec-standard>
 
       OUTPUT
     end
@@ -203,7 +203,7 @@ RSpec.describe Asciidoctor::Iec do
          </li>
        </ol></admonition>
        </sections>
-       </iso-standard>
+       </iec-standard>
 
       OUTPUT
     end
@@ -232,7 +232,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
 
       OUTPUT
     end
@@ -252,7 +252,7 @@ RSpec.describe Asciidoctor::Iec do
          <example id="_"><p id="_">This is an example</p>
        <p id="_">Amen</p></example>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -271,7 +271,7 @@ RSpec.describe Asciidoctor::Iec do
        <clause id="_" inline-header="false" obligation="normative">
          <title>Section 1</title>
        </clause></sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -289,7 +289,7 @@ RSpec.describe Asciidoctor::Iec do
                   <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
        </figure>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -306,7 +306,7 @@ RSpec.describe Asciidoctor::Iec do
          <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="3"/>
        </figure>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -323,7 +323,7 @@ RSpec.describe Asciidoctor::Iec do
          <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="auto"/>
        </figure>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -337,7 +337,7 @@ RSpec.describe Asciidoctor::Iec do
       <sections>
          <p align="right" id="_">This para is right-aligned.</p>
        </sections>
-      </iso-standard>
+      </iec-standard>
       OUTPUT
     end
 
@@ -357,7 +357,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">Block quotation</p>
        </quote>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -379,7 +379,7 @@ RSpec.describe Asciidoctor::Iec do
          puts x
        end</sourcecode>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -406,7 +406,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">This is another callout</p>
        </annotation></sourcecode>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -434,7 +434,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 
@@ -465,7 +465,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        </sections>
-       </iso-standard>
+       </iec-standard>
       OUTPUT
     end
 

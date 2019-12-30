@@ -108,7 +108,7 @@ RSpec.describe Asciidoctor::Iec do
        </references>
        </clause>
        </bibliography>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -240,7 +240,7 @@ RSpec.describe Asciidoctor::Iec do
              </references>
            </clause>
          </bibliography>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -271,7 +271,7 @@ RSpec.describe Asciidoctor::Iec do
        </sections><annex id="_" inline-header="false" obligation="informative">
          <title>Annex</title>
        </annex>
-       </iso-standard>
+       </iec-standard>
      OUTPUT
   end
 
@@ -302,7 +302,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Clause Aa</title>
        </clause>
        </annex>
-       </iso-standard>
+       </iec-standard>
      OUTPUT
     end
 
@@ -322,7 +322,7 @@ RSpec.describe Asciidoctor::Iec do
        </clause>
        </clause>
        </sections>
-       </iso-standard>
+       </iec-standard>
      OUTPUT
   end
 

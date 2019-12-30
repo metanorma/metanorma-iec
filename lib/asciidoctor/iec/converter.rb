@@ -70,6 +70,12 @@ module Asciidoctor
         warn "IEC Document Attributes: #{doctype} is not a recognised document type"
       end
 
+      def validate(doc)
+        content_validate(doc)
+        schema_validate(formattedstr_strip(doc.dup),
+                        File.join(File.dirname(__FILE__), "iec.rng"))
+      end
+
       STAGE_CODES = {
         "PNW" => "1000",
         "ANW" => "2000",
@@ -170,6 +176,14 @@ module Asciidoctor
       end
 
       def initial_boilerplate(xmldoc)
+      end
+
+      def makexml1(node)
+        result = ["<?xml version='1.0' encoding='UTF-8'?>\n<iec-standard>"]
+        result << noko { |ixml| front node, ixml }
+        result << noko { |ixml| middle node, ixml }
+        result << "</iec-standard>"
+        textcleanup(result)
       end
 
       def html_converter(node)

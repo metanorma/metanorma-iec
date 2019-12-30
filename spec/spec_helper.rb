@@ -127,7 +127,7 @@ BOILERPLATE
 
 BLANK_HDR = <<~"HDR"
 <?xml version="1.0" encoding="UTF-8"?>
-<iso-standard xmlns="http://riboseinc.com/isoxml">
+<iec-standard xmlns="http://riboseinc.com/isoxml">
 <bibdata type="standard">
   <contributor>
     <role type="author"/>

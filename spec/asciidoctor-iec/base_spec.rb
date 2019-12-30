@@ -23,7 +23,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
     #{BLANK_HDR}
 <sections/>
-</iso-standard>
+</iec-standard>
     OUTPUT
   end
 
@@ -38,7 +38,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
     #{BLANK_HDR}
 <sections/>
-</iso-standard>
+</iec-standard>
     OUTPUT
     expect(File.exist?("test.doc")).to be true
     expect(File.exist?("htmlstyle.css")).to be false
@@ -89,7 +89,7 @@ RSpec.describe Asciidoctor::Iec do
       :library-ics: 1,2,3
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iso-standard xmlns="http://riboseinc.com/isoxml">
+       <iec-standard xmlns="http://riboseinc.com/isoxml">
        <bibdata type="standard">
    <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
    <title language="en" format="text/plain" type="title-intro">Introduction</title>
@@ -163,7 +163,7 @@ RSpec.describe Asciidoctor::Iec do
        </bibdata>
        #{BOILERPLATE}
        <sections/>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -186,7 +186,7 @@ RSpec.describe Asciidoctor::Iec do
       :docstage: A2CD
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iso-standard xmlns="http://riboseinc.com/isoxml">
+       <iec-standard xmlns="http://riboseinc.com/isoxml">
        <bibdata type="standard">
          <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
@@ -278,7 +278,7 @@ RSpec.describe Asciidoctor::Iec do
        </bibdata>
        #{BOILERPLATE}
        <sections/>
-       </iso-standard>
+       </iec-standard>
     OUTPUT
   end
 
@@ -333,7 +333,7 @@ RSpec.describe Asciidoctor::Iec do
       :docnumber: 1000
       :docstage: 50
     INPUT
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
+    <iec-standard xmlns="http://riboseinc.com/isoxml">
 <bibdata type="standard">
   <docidentifier type="iso">IEC/FDIS 1000</docidentifier>
   <docnumber>1000</docnumber>
@@ -381,7 +381,7 @@ RSpec.describe Asciidoctor::Iec do
 </bibdata>
 #{BOILERPLATE}
 <sections/>
-</iso-standard>
+</iec-standard>
 OUTPUT
     end
 
@@ -396,7 +396,7 @@ OUTPUT
       :docnumber: 1000
       :docstage: 60
     INPUT
-<iso-standard xmlns="http://riboseinc.com/isoxml">
+<iec-standard xmlns="http://riboseinc.com/isoxml">
 <bibdata type="standard">
   <docidentifier type="iso">IEC 1000</docidentifier>
   <docnumber>1000</docnumber>
@@ -444,7 +444,7 @@ OUTPUT
 </bibdata>
 #{BOILERPLATE}
 <sections/>
-</iso-standard>
+</iec-standard>
 OUTPUT
     end
 
@@ -460,7 +460,7 @@ OUTPUT
       :docstage: 60
       :docsubstage: 00
     INPUT
-<iso-standard xmlns="http://riboseinc.com/isoxml">
+<iec-standard xmlns="http://riboseinc.com/isoxml">
 <bibdata type="standard">
   <docidentifier type="iso">IEC 1000</docidentifier>
   <docnumber>1000</docnumber>
@@ -508,7 +508,7 @@ OUTPUT
 </bibdata>
 #{BOILERPLATE}
 <sections/>
-</iso-standard>
+</iec-standard>
 OUTPUT
     end
 
