@@ -428,58 +428,6 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
-  it "numbers bibliographic notes and footnotes sequentially" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      footnote:[Footnote]
-
-      [bibliography]
-      == Normative References
-
-      * [[[iso123,ISO 123:--]]] footnote:[The standard is in press] _Standard_
-
-      == Clause
-      footnote:[Footnote2]
-    INPUT
-      #{BLANK_HDR}
-      <preface><foreword obligation="informative">
-        <title>Foreword</title>
-        <p id="_"><fn reference="1">
-        <p id="_">Footnote</p>
-      </fn>
-      </p>
-      </foreword></preface><sections>
-
-      <clause id="_" inline-header="false" obligation="normative">
-        <title>Clause</title>
-        <p id="_"><fn reference="2">
-        <p id="_">Footnote2</p>
-      </fn>
-      </p>
-      </clause></sections><bibliography><references id="_" obligation="informative">
-        <title>Normative References</title>
-        <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-        <bibitem id="iso123" type="standard">
-         <title format="text/plain">Standard</title>
-         <docidentifier>ISO 123:–</docidentifier>
-         <date type="published">
-           <on>--</on>
-         </date>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>International Organization for Standardization</name>
-             <abbreviation>ISO</abbreviation>
-           </organization>
-         </contributor>
-         <note format="text/plain">ISO DATE: The standard is in press</note>
-       </bibitem>
-      </references>
-      </bibliography>
-      </iec-standard>
-    OUTPUT
-  end
-
   it "defaults section obligations" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
