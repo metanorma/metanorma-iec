@@ -96,13 +96,13 @@ VALIDATING_BLANK_HDR = <<~"HDR"
 HDR
 
 TERMS_BOILERPLATE = <<~"BOILERPLATE"
-       <p>ISO and IEC maintain terminological databases for use in
+       <p id="_">ISO and IEC maintain terminological databases for use in
        standardization at the following addresses:</p>
        
-        <ul>
-        <li> <p>ISO Online browsing platform: available at
+        <ul id="_">
+        <li> <p id="_">ISO Online browsing platform: available at
           <link target="http://www.iso.org/obp"/></p> </li>
-        <li> <p>IEC Electropedia: available at
+        <li> <p id="_">IEC Electropedia: available at
         <link target="http://www.electropedia.org"/>
         </p> </li> </ul>
 BOILERPLATE

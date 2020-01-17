@@ -111,7 +111,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -222,7 +222,7 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -424,7 +424,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -452,7 +452,7 @@ RSpec.describe Asciidoctor::Iec do
             <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>

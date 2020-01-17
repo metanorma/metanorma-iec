@@ -31,7 +31,7 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, 
+         <p id="_">For the purposes of this document, 
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
          <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><admitted><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>91</mn></msub></math></stem></admitted>
@@ -67,7 +67,7 @@ RSpec.describe Asciidoctor::Iec do
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, 
+         <p id="_">For the purposes of this document, 
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
          <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><definition><formula id="_">
@@ -96,7 +96,7 @@ RSpec.describe Asciidoctor::Iec do
        #{BLANK_HDR}
               <sections>
          <terms id="_" obligation="normative"><title>Terms and definitions</title>
-         <p>For the purposes of this document, 
+         <p id="_">For the purposes of this document, 
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
 
@@ -158,7 +158,7 @@ RSpec.describe Asciidoctor::Iec do
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -185,7 +185,7 @@ RSpec.describe Asciidoctor::Iec do
       #{BLANK_HDR}
       <sections></sections>
       <bibliography><references id="_" obligation="informative"><title>Normative References</title>
-      <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+      <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
              <bibitem id="iso216" type="standard">
          <title format="text/plain">Reference</title>
          <docidentifier>ISO 216</docidentifier>
