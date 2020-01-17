@@ -67,7 +67,7 @@ RSpec.describe Asciidoctor::Iec do
 
        <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -100,7 +100,7 @@ RSpec.describe Asciidoctor::Iec do
        <appendix id="_" inline-header="false" obligation="normative">
           <title>Appendix 1</title>
        </appendix></annex><bibliography><references id="_" obligation="informative">
-         <title>Normative References</title><p>There are no normative references in this document.</p>
+         <title>Normative References</title><p id="_">There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative">
@@ -188,7 +188,7 @@ RSpec.describe Asciidoctor::Iec do
      
        <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
-         <p>For the purposes of this document, the following terms and definitions apply.</p>
+         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_">
          <preferred>Term1</preferred>
@@ -231,7 +231,7 @@ RSpec.describe Asciidoctor::Iec do
          <bibliography>
            <references id='_' obligation='informative'>
              <title>Normative References</title>
-             <p>There are no normative references in this document.</p>
+             <p id="_">There are no normative references in this document.</p>
            </references>
            <clause id='_' obligation='informative'>
              <title>Bibliography</title>
