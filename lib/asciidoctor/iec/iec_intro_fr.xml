@@ -1,5 +1,33 @@
 <boilerplate>
-  <legal-statement>
+  <copyright-statement>
+    <clause>
+      <p id="boilerplate-year">
+    &copy; {{ agency }} {{ docyear }}, Published in Switzerland
+  </p>
+
+  <p id="boilerplate-message">
+    All rights
+reserved. Unless otherwise specified, no part of this publication may be
+reproduced or utilized otherwise in any form or by any means, electronic or
+mechanical, including photocopying, or posting on the internet or an intranet,
+without prior written permission. Permission can be requested from either IEC
+at the address below or IEC's member body in the country of the requester.
+  </p>
+
+  <p id="boilerplate-name">IEC Central Office</p>
+
+  <p id="boilerplate-address" align="left">
+    3, rue de Varemb&eacute;<br/>
+    CH-1211 Geneva 20, Switzerland<br/>
+    Tel.&nbsp;&nbsp;+ 41 22 919 02 11<br/>
+    Fax&nbsp;&nbsp;+ 41 22 919 03 00<br/>
+    info@iec.ch<br/>
+    www.iec.ch
+  </p>
+</clause>
+</copyright-statement>
+<legal-statement>
+  <clause>
     <ol>
       <li><p>La Commission Electrotechnique Internationale (IEC) est une organisation mondiale de normalisation composée de l'ensemble des comités électrotechniques nationaux (Comités nationaux de l’IEC). L’IEC a pour objet de favoriser la coopération internationale pour toutes les questions de normalisation dans les domaines de l'électricité et de l'électronique. A cet effet, l’IEC – entre autres activités – publie des Normes internationales, des Spécifications techniques, des Rapports techniques, des Spécifications accessibles au public (PAS) et des Guides (ci-après dénommés "Publication(s) de l’IEC"). Leur élaboration est confiée à des comités d'études, aux travaux desquels tout Comité national intéressé par le sujet traité peut participer. Les organisations internationales, gouvernementales et non gouvernementales, en liaison avec l’IEC, participent également aux travaux. L’IEC collabore étroitement avec l'Organisation Internationale de Normalisation (ISO), selon des conditions fixées par accord entre les deux organisations.</p></li>
       <li><p>Les décisions ou accords officiels de l’IEC concernant les questions techniques représentent, dans la mesure du possible, un accord international sur les sujets étudiés, étant donné que les Comités nationaux de l’IEC intéressés sont représentés dans chaque comité d’études.</p></li>
@@ -10,6 +38,24 @@
       <li><p>Aucune responsabilité ne doit être imputée à l’IEC, à ses administrateurs, employés, auxiliaires ou mandataires, y compris ses experts particuliers et les membres de ses comités d'études et des Comités nationaux de l’IEC, pour tout préjudice causé en cas de dommages corporels et matériels, ou de tout autre dommage de quelque nature que ce soit, directe ou indirecte, ou pour supporter les coûts (y compris les frais de justice) et les dépenses découlant de la publication ou de l'utilisation de cette Publication de l’IEC ou de toute autre Publication de l’IEC, ou au crédit qui lui est accordé.</p></li>
       <li><p>L'attention est attirée sur les références normatives citées dans cette publication. L'utilisation de publications référencées est obligatoire pour une application correcte de la présente publication.</p></li>
       <li><p>L’attention est attirée sur le fait que certains des éléments de la présente Publication de l’IEC peuvent faire l’objet de droits de brevet. L’IEC ne saurait être tenue pour responsable de ne pas avoir identifié de tels droits de brevets et de ne pas avoir signalé leur existence.</p></li>
-</ol>
+    </ol>
+  </clause>
 </legal-statement>
+ {% if unpublished %}
+<license-statement>
+  <clause>
+  <title>Warning for CDs, CDVs and FDISs</title>
+
+<p>This
+document is not an IEC International Standard. It is distributed for review and
+comment. It is subject to change without notice and may not be referred to as
+an International Standard.</p>
+
+<p>Recipients
+of this draft are invited to submit, with their comments, notification of any
+relevant patent rights of which they are aware and to provide supporting
+documentation.</p>
+</clause>
+</license-statement>
+{% endif %}
 </boilerplate>

@@ -161,7 +161,7 @@ RSpec.describe Asciidoctor::Iec do
 </structuredidentifier>
        </ext>
        </bibdata>
-       #{BOILERPLATE}
+       #{UNPUBLISHED_BOILERPLATE}
        <sections/>
        </iec-standard>
     OUTPUT
@@ -276,7 +276,7 @@ RSpec.describe Asciidoctor::Iec do
          </structuredidentifier>
          </ext>
        </bibdata>
-       #{BOILERPLATE}
+    #{UNPUBLISHED_BOILERPLATE.sub(/IEC #{Date.today.year}/, "ISO/IEC/IETF 2001")}
        <sections/>
        </iec-standard>
     OUTPUT
@@ -379,7 +379,7 @@ RSpec.describe Asciidoctor::Iec do
     </structuredidentifier>
   </ext>
 </bibdata>
-#{BOILERPLATE}
+#{UNPUBLISHED_BOILERPLATE}
 <sections/>
 </iec-standard>
 OUTPUT
