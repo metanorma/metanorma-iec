@@ -47,19 +47,20 @@ module Asciidoctor
         xml.docidentifier dn, **attr_code(type: "iso")
       end
 
+=begin
       def make_preface(x, s)
         s.previous = boilerplate(x)
         super
       end
+=end
 
-      def boilerplate(x_orig)
+      def boilerplate_file(x_orig)
         lang = case x_orig&.at("//bibdata/language")&.text
                when "fr" then "fr"
                else
                  "en"
                end
-        file = File.join(File.dirname(__FILE__),"iec_intro_#{lang}.xml")
-        File.read(file, encoding: "UTF-8")
+          File.join(@libdir, "iec_intro_#{lang}.xml")
       end
 
       def doctype_validate(xmldoc)
@@ -173,9 +174,6 @@ module Asciidoctor
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
             end
         super.merge(y)
-      end
-
-      def initial_boilerplate(xmldoc)
       end
 
       def makexml1(node)
