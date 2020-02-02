@@ -643,6 +643,20 @@ p.MsoHeader, li.MsoHeader, div.MsoHeader
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;}
+p.MsoHeaderLandscape, li.MsoHeaderLandscape, div.MsoHeaderLandscape
+        {mso-style-unhide:no;
+        margin:0cm;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        mso-pagination:widow-orphan;
+        tab-stops:center 331.0pt right 662.0pt;
+        layout-grid-mode:char;
+        font-size:10.0pt;
+        font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";
+        letter-spacing:.4pt;
+        mso-ansi-language:EN-GB;
+        mso-fareast-language:ZH-CN;}
 p.MsoFooter, li.MsoFooter, div.MsoFooter
 	{mso-style-noshow:yes;
 	mso-style-priority:29;
@@ -660,6 +674,23 @@ p.MsoFooter, li.MsoFooter, div.MsoFooter
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;}
+p.MsoFooterLandscape, li.MsoFooterLandscape, div.MsoFooterLandscape
+        {mso-style-noshow:yes;
+        mso-style-priority:29;
+        mso-style-unhide:no;
+        mso-style-parent:Header;
+        margin:0cm;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        mso-pagination:widow-orphan;
+        tab-stops:center 331.0pt right 662.0pt;
+        layout-grid-mode:char;
+        font-size:10.0pt;
+        font-family:"Arial",sans-serif;
+        mso-fareast-font-family:"Times New Roman";
+        letter-spacing:.4pt;
+        mso-ansi-language:EN-GB;
+        mso-fareast-language:ZH-CN;}
 span.MsoFootnoteReference
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
