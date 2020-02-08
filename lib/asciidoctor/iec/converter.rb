@@ -5,9 +5,19 @@ module Asciidoctor
   module Iec
     class Converter < ISO::Converter
       XML_ROOT_TAG = "iec-standard".freeze
-      XML_NAMESPACE = "http://riboseinc.com/isoxml".freeze
+      XML_NAMESPACE = "https://www.metanorma.org/ns/iec".freeze
 
       register_for "iec"
+
+      def makexml(node)
+        @draft = node.attributes.has_key?("draft")
+        #super
+        result = makexml1(node)
+        ret1 = cleanup(Nokogiri::XML(result))
+        ret1.root.add_namespace(nil, self.class::XML_NAMESPACE)
+        validate(ret1) unless @novalid
+        ret1
+      end
 
       def metadata_author(node, xml)
         publishers = node.attr("publisher") || "IEC"
