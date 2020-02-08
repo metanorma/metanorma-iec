@@ -4,6 +4,8 @@ require "metanorma-iso"
 module Asciidoctor
   module Iec
     class Converter < ISO::Converter
+      XML_ROOT_TAG = "iec-standard".freeze
+      XML_NAMESPACE = "http://riboseinc.com/isoxml".freeze
 
       register_for "iec"
 
@@ -46,13 +48,6 @@ module Asciidoctor
         dn = id_stage_prefix(dn, node)
         xml.docidentifier dn, **attr_code(type: "iso")
       end
-
-=begin
-      def make_preface(x, s)
-        s.previous = boilerplate(x)
-        super
-      end
-=end
 
       def boilerplate_file(x_orig)
         lang = case x_orig&.at("//bibdata/language")&.text
@@ -174,14 +169,6 @@ module Asciidoctor
               YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
             end
         super.merge(y)
-      end
-
-      def makexml1(node)
-        result = ["<?xml version='1.0' encoding='UTF-8'?>\n<iec-standard>"]
-        result << noko { |ixml| front node, ixml }
-        result << noko { |ixml| middle node, ixml }
-        result << "</iec-standard>"
-        textcleanup(result)
       end
 
       def html_converter(node)
