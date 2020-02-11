@@ -180,6 +180,11 @@ module Asciidoctor
         node.nil? ? IsoDoc::Iec::WordConvert.new({}) :
           IsoDoc::Iec::WordConvert.new(doc_extract_attributes(node))
       end
+
+      def pdf_converter(node)
+        node.nil? ? IsoDoc::Iec::PdfConvert.new({}) :
+          IsoDoc::Iec::PdfConvert.new(doc_extract_attributes(node))
+      end
     end
   end
 end
