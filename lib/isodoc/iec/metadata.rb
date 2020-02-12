@@ -56,7 +56,7 @@ module IsoDoc
                                isoxml&.at(ns("//bibdata/status/iteration"))&.text,
                                isoxml&.at(ns("//bibdata/ext/doctype"))&.text,
                                isoxml&.at(ns("//version/draft"))&.text)
-          set(:stageabbr, abbr)
+          set(:statusabbr, abbr)
         end
         revdate = isoxml.at(ns("//version/revision-date"))
         set(:revdate, revdate&.text)
