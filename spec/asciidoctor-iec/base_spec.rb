@@ -89,7 +89,7 @@ RSpec.describe Asciidoctor::Iec do
       :library-ics: 1,2,3
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+       <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
    <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
    <title language="en" format="text/plain" type="title-intro">Introduction</title>
@@ -186,7 +186,7 @@ RSpec.describe Asciidoctor::Iec do
       :docstage: A2CD
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+       <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
          <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
@@ -333,7 +333,7 @@ RSpec.describe Asciidoctor::Iec do
       :docnumber: 1000
       :docstage: 50
     INPUT
-    <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+    <iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
   <docidentifier type="iso">IEC/FDIS 1000</docidentifier>
   <docnumber>1000</docnumber>
@@ -396,7 +396,7 @@ OUTPUT
       :docnumber: 1000
       :docstage: 60
     INPUT
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
   <docidentifier type="iso">IEC 1000</docidentifier>
   <docnumber>1000</docnumber>
@@ -460,7 +460,7 @@ OUTPUT
       :docstage: 60
       :docsubstage: 00
     INPUT
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
   <docidentifier type="iso">IEC 1000</docidentifier>
   <docnumber>1000</docnumber>
