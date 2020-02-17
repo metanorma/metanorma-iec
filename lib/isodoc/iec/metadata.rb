@@ -19,7 +19,13 @@ module IsoDoc
         "99" => {"00" => "DELPUB", "60" => "DELPUB"},
       }.freeze
 
-      def stage_abbrev1(stage, substage, iter, doctype, draft)
+      def stage_abbr(stage)
+        ret = STAGE_ABBRS.dig(stage, "00") || "??"
+        ret = "PPUB" if stage == "60"
+        ret
+      end
+
+      def status_abbrev1(stage, substage, iter, doctype, draft)
         return "" unless stage
         abbr = STAGE_ABBRS.dig(stage, substage) || "??"
         if stage == "35" && substage == "92"
@@ -50,16 +56,21 @@ module IsoDoc
         if docstatus
           set(:stage, docstatus.text)
           set(:stage_int, docstatus.text.to_i)
-          set(:unpublished, docstatus.text.to_i > 0 && docstatus.text.to_i < 60)
-          abbr = stage_abbrev1(docstatus.text,
-                               isoxml&.at(ns("//bibdata/status/substage"))&.text,
-                               isoxml&.at(ns("//bibdata/status/iteration"))&.text,
-                               isoxml&.at(ns("//bibdata/ext/doctype"))&.text,
-                               isoxml&.at(ns("//version/draft"))&.text)
-          set(:statusabbr, abbr)
+          set(:unpublished, unpublished(docstatus.text))
+          set(:statusabbr, status_abbrev1(docstatus.text,
+                                          isoxml&.at(ns("//bibdata/status/substage"))&.text,
+                                          isoxml&.at(ns("//bibdata/status/iteration"))&.text,
+                                          isoxml&.at(ns("//bibdata/ext/doctype"))&.text,
+                                          isoxml&.at(ns("//version/draft"))&.text))
+          unpublished(docstatus.text) and
+            set(:stageabbr, stage_abbr(docstatus.text))
         end
         revdate = isoxml.at(ns("//version/revision-date"))
         set(:revdate, revdate&.text)
+      end
+
+      def unpublished(status)
+        status.to_i > 0 && status.to_i < 60
       end
     end
   end
