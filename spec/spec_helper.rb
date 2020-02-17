@@ -140,7 +140,7 @@ UNPUBLISHED_BOILERPLATE = BOILERPLATE.sub(/<\/boilerplate>/, "#{BOILERPLATE_LICE
 
 BLANK_HDR = <<~"HDR"
 <?xml version="1.0" encoding="UTF-8"?>
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
   <contributor>
     <role type="author"/>

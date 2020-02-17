@@ -5,7 +5,7 @@ module Asciidoctor
   module Iec
     class Converter < ISO::Converter
       XML_ROOT_TAG = "iec-standard".freeze
-      XML_NAMESPACE = "https://www.metanorma.com/ns/iec".freeze
+      XML_NAMESPACE = "https://www.metanorma.org/ns/iec".freeze
 
       register_for "iec"
 
