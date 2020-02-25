@@ -100,11 +100,12 @@ TERMS_BOILERPLATE = <<~"BOILERPLATE"
        standardization at the following addresses:</p>
        
         <ul id="_">
-        <li> <p id="_">ISO Online browsing platform: available at
-          <link target="http://www.iso.org/obp"/></p> </li>
         <li> <p id="_">IEC Electropedia: available at
         <link target="http://www.electropedia.org"/>
-        </p> </li> </ul>
+        </p> </li> 
+                <li> <p id="_">ISO Online browsing platform: available at
+          <link target="http://www.iso.org/obp"/></p> </li>
+</ul>
 BOILERPLATE
 
 BOILERPLATE =
