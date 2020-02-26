@@ -35,11 +35,9 @@ module IsoDoc
         toc = ""
         toc += make_WordToC(docxml, level)
         if docxml.at("//p[@class = 'TableTitle']")
-          #toc += %{<p class="TOCTitle">List of Tables</p>}
           toc += make_TableWordToC(docxml)
         end
         if docxml.at("//p[@class = 'FigureTitle']")
-          #toc += %{<p class="TOCTitle">List of Figures</p>}
           toc += make_FigureWordToC(docxml)
         end
         intro.sub(/WORDTOC/, toc)
@@ -162,11 +160,11 @@ module IsoDoc
       def make_body1(body, _docxml)
       end
 
-      def make_body2(body, docxml)
-        FileUtils.rm_rf tmpimagedir
-        FileUtils.mkdir tmpimagedir
-        super
-      end
+      #def make_body2(body, docxml)
+        #FileUtils.rm_rf tmpimagedir
+        #FileUtils.mkdir tmpimagedir
+        #super
+      #end
 
       def word_cover(docxml)
       end
