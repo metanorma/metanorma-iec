@@ -511,13 +511,13 @@ p.NormRef {
 */
 
 .figure,
-.Sourcecode,
+pre,
 .pseudocode {
     @include pseudocodeBlock(#f7f7f7);
     font-size: 1em;
 }
 
-.Sourcecode {
+pre {
     @include monospaceBlockStyle()
 }
 
@@ -570,7 +570,7 @@ p.NormRef {
         margin-top: 0;
     }
 
-    .Sourcecode,
+    pre,
     .pseudocode {
         background: none;
     }
