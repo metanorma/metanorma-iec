@@ -536,7 +536,7 @@ OUTPUT
       :no-isobib:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Cambria", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Cambria", serif;]m)
   end
@@ -551,7 +551,7 @@ OUTPUT
       :no-isobib:
     INPUT
     html = File.read("test_alt.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Space Mono", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Space Mono", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
   end
@@ -567,7 +567,7 @@ OUTPUT
       :script: Hans
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "SimSun", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "SimHei", sans-serif;]m)
   end
@@ -586,7 +586,7 @@ OUTPUT
       :monospace-font: Andale Mono
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: Andale Mono;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: Andale Mono;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: Zapf Chancery;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: Comic Sans;]m)
   end
