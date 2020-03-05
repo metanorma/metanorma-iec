@@ -53,7 +53,7 @@ RSpec.describe Asciidoctor::Iec do
       === Bibliography Subsection
     INPUT
             #{BLANK_HDR}
-       <preface><foreword obligation="informative">
+       <preface><foreword id="_" obligation="informative">
          <title>Foreword</title>
          <p id="_">Text</p>
        </foreword><introduction id="_" obligation="informative"><title>Introduction</title><clause id="_" inline-header="false" obligation="informative">
@@ -190,7 +190,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
             #{BLANK_HDR}
        <preface>     
-       <foreword obligation="informative">
+       <foreword id="_" obligation="informative">
          <title>Foreword</title>
          <p id="_">Text</p>
        </foreword>
