@@ -675,6 +675,10 @@ ol > li > p:before {
     @include formulaBlock(#f7f7f7)
 }
 
+dl.formula_dl {
+background-color: #f7f7f7;
+}
+
 /*
 Keywords
 */
