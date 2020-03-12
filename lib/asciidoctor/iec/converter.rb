@@ -70,7 +70,7 @@ module Asciidoctor
         %w(international-standard technical-specification technical-report 
         publicly-available-specification international-workshop-agreement 
         guide interpretation-sheet).include? doctype or
-        warn "IEC Document Attributes: #{doctype} is not a recognised document type"
+        @log.add("Document Attributes", nil, "#{doctype} is not a recognised document type")
       end
 
       def validate(doc)
