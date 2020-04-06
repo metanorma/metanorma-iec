@@ -285,14 +285,17 @@ div.figure > img {
 */
 
 .document-type-band {
-    @include docBand(2, 100%, 180px);
+    @include docBand($order: 2, $offset: 180px);
+
+    .document-type {
+        top: 20px;
+    }
 }
 
 .document-stage-band {
     @include docBand(1, 210px);
 }
 
-p.document-type,
 p.document-stage {
     @include docBandTitle(210px);
 }
