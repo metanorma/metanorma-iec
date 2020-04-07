@@ -9,6 +9,11 @@ module Asciidoctor
 
       register_for "iec"
 
+      def init(node)
+        super
+        @is_iev = node.attr("docnumber") == "60050"
+      end
+
       def metadata_author(node, xml)
         publishers = node.attr("publisher") || "IEC"
         publishers.split(/,[ ]?/).each do |p|
