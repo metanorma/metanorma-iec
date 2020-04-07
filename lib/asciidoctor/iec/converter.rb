@@ -192,6 +192,12 @@ module Asciidoctor
         node.nil? ? IsoDoc::Iec::WordConvert.new({}) :
           IsoDoc::Iec::WordConvert.new(doc_extract_attributes(node))
       end
+
+      def norm_ref_preface(f)
+        return super unless @is_iev
+        f.at("./title").next =
+          "<p>#{@norm_empty_pref}</p>"
+      end
     end
   end
 end
