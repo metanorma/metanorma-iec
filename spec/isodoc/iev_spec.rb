@@ -145,7 +145,6 @@ OUTPUT
     <terms id="_general" obligation="normative"><title>General</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
-<domain>rice</domain>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
   <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
@@ -169,6 +168,7 @@ OUTPUT
 <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
+<domain>rice</domain>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
   <ul>
@@ -204,7 +204,7 @@ INPUT
           </p>
           <p class='TermNum' id='paddy1'>192-01-01</p>
           <p class='Terms' style='text-align:left;'>paddy</p>
-          <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>&lt;rice&gt; rice retaining its husk after threshing</p>
+          <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
           <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example'>
             <p>
               <span class='example_label'>EXAMPLE 1</span>
@@ -230,10 +230,10 @@ INPUT
             Note 1 to entry is not included here [/TERMREF]
           </p>
           <p class='TermNum' id='paddy'>192-01-02</p>
-          <p class='Terms' style='text-align:left;'>paddy</p>
-          <p class='AltTerms' style='text-align:left;'>paddy rice</p>
-          <p class='AltTerms' style='text-align:left;'>rough rice</p>
-          <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
+          <p class='Terms' style='text-align:left;'>paddy, &lt;rice&gt;</p>
+          <p class='AltTerms' style='text-align:left;'>paddy rice, &lt;rice&gt;</p>
+          <p class='AltTerms' style='text-align:left;'>rough rice, &lt;rice&gt;</p>
+          <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice, &lt;rice&gt;</p>
           <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
           <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
             <p>
