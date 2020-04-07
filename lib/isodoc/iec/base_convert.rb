@@ -89,18 +89,21 @@ module IsoDoc
         out.div **{ class: "Section3", id: f["id"] } do |div|
           clause_name(nil, @labels["introduction_iev"], div, title_attr)
           f.elements.each do |e|
-              parse(e, div) unless e.name == "title"
+            parse(e, div) unless e.name == "title"
           end
         end
       end
 
       def introduction_names(clause)
+        return super unless @is_iev
       end
 
       def bibliography(isoxml, out)
+        return super unless @is_iev
       end
 
       def biblio_list(f, div, biblio)
+        return super unless @is_iev
         i = 0
         f.children.each do |b|
           parse(b, div) unless %w(title bibitem).include? b.name
@@ -146,12 +149,47 @@ module IsoDoc
       end
 
       def textcleanup(docxml)
-      docxml.
-        gsub(/\[TERMREF\]\s*/, l10n("#{@source_lbl}: ")).
-        gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@modified_lbl} [/TERMREF]")).
-        gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
-        gsub(/\s*\[MODIFICATION\]/, l10n(", #{@modified_lbl} &mdash; "))
-    end
+        return super unless @is_iev
+        docxml.
+          gsub(/\[TERMREF\]\s*/, l10n("#{@source_lbl}: ")).
+          gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@modified_lbl} [/TERMREF]")).
+          gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
+          gsub(/\s*\[MODIFICATION\]/, l10n(", #{@modified_lbl} &mdash; "))
+      end
+
+      def set_termdomain(termdomain)
+        return super unless @is_iev
+      end
+
+      def term_suffix(node, out)
+        return unless @is_iev
+        domain = node&.at(ns("../domain"))&.text
+        return unless domain
+        out << ", &lt;#{domain}&gt;"
+      end
+
+      def deprecated_term_parse(node, out)
+        out.p **{ class: "DeprecatedTerms", style:"text-align:left;" } do |p|
+          p << l10n("#{@deprecated_lbl}: ")
+          node.children.each { |c| parse(c, p) }
+          term_suffix(node, p)
+        end
+      end
+
+      def admitted_term_parse(node, out)
+        out.p **{ class: "AltTerms", style:"text-align:left;" } do |p|
+          node.children.each { |c| parse(c, p) }
+          term_suffix(node, p)
+        end
+      end
+
+      def term_parse(node, out)
+        return super unless @is_iev
+        out.p **{ class: "Terms", style:"text-align:left;" } do |p|
+          node.children.each { |c| parse(c, p) }
+          term_suffix(node, p)
+        end
+      end
     end
   end
 end
