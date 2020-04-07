@@ -94,6 +94,16 @@ module IsoDoc
 
       def introduction_names(clause)
       end
+
+      def bibliography(isoxml, out)
+      end
+
+      def biblio_list(f, div, biblio)
+        i = 0
+        f.children.each do |b|
+          parse(b, div) unless %w(title bibitem).include? b.name
+        end
+      end
     end
   end
 end
