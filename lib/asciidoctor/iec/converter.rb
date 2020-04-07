@@ -198,6 +198,10 @@ module Asciidoctor
         f.at("./title").next =
           "<p>#{@norm_empty_pref}</p>"
       end
+
+      def term_defs_boilerplate(div, source, term, preface, isodoc)
+        return super unless @is_iev
+      end
     end
   end
 end

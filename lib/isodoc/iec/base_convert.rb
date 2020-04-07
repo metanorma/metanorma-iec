@@ -76,11 +76,13 @@ module IsoDoc
       def convert1(docxml, filename, dir)
         id = docxml&.at(ns("//bibdata/docnumber"))&.text
         @is_iev = id == "60050"
+        id = docxml&.at(ns("//bibdata/docidentifier[@type = 'iso']"))&.text
+        m = /60050-(\d+)/.match(id) and @iev_part = m[1]
         super
       end
 
       def introduction(isoxml, out)
-        return super if !@is_iev
+        return super unless @is_iev
         f = isoxml.at(ns("//introduction")) || return
         title_attr = { class: "IntroTitle" }
         page_break(out)
@@ -104,6 +106,52 @@ module IsoDoc
           parse(b, div) unless %w(title bibitem).include? b.name
         end
       end
+
+      def terms_parse(node, out)
+        return super unless @is_iev
+        page_break(out)
+        out.div **attr_code(id: node["id"]) do |div|
+          out.p(**{ class: "zzSTDTitle2" }) do |p|
+            p.b do |b|
+              b << "#{anchor(node['id'], :label)} "
+              node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
+            end
+          end
+          node.children.reject { |c1| c1.name == "title" }.each do |c1|
+            parse(c1, div)
+          end
+        end
+      end
+
+      def initial_anchor_names(d)
+        super
+        return unless @is_iev
+        terms_iev_names(d)
+        middle_section_asset_names(d)
+        termnote_anchor_names(d)
+        termexample_anchor_names(d)
+      end
+
+      def terms_iev_names(d)
+        d.xpath(ns("//sections/clause/terms")).each_with_index do |t, i|
+          num = "#{@iev_part}-%02d" % [i+1]
+          @anchors[t["id"]] =
+            { label: num, xref: l10n("#{@labels["section_iev"]}-#{num}"), level: 2,
+              type: "clause" }
+          t.xpath(ns("./term")).each_with_index do |c, i|
+            num2 = "%02d" % [i+1]
+            section_names1(c, "#{num}-#{num2}", 3)
+          end
+        end
+      end
+
+      def textcleanup(docxml)
+      docxml.
+        gsub(/\[TERMREF\]\s*/, l10n("#{@source_lbl}: ")).
+        gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@modified_lbl} [/TERMREF]")).
+        gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
+        gsub(/\s*\[MODIFICATION\]/, l10n(", #{@modified_lbl} &mdash; "))
+    end
     end
   end
 end
