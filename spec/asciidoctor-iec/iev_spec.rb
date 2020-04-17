@@ -39,8 +39,8 @@ RSpec.describe Asciidoctor::Iec do
            <language>en</language>
            <script>Latn</script>
            <status>
-             <stage>60</stage>
-             <substage>60</substage>
+             <stage abbreviation="PPUB">60</stage>
+             <substage abbreviation="PPUB">60</substage>
            </status>
            <copyright>
              <from>2020</from>
@@ -61,6 +61,7 @@ RSpec.describe Asciidoctor::Iec do
              <structuredidentifier>
                <project-number>IEC 60050</project-number>
              </structuredidentifier>
+                   <stagename>International standard</stagename>
            </ext>
          </bibdata>
          #{BOILERPLATE}
@@ -116,8 +117,8 @@ INPUT
     <language>en</language>
     <script>Latn</script>
     <status>
-      <stage>60</stage>
-      <substage>60</substage>
+      <stage abbreviation="PPUB">60</stage>
+      <substage abbreviation="PPUB">60</substage>
     </status>
     <copyright>
       <from>2020</from>
@@ -138,6 +139,7 @@ INPUT
       <structuredidentifier>
         <project-number>IEC 60050</project-number>
       </structuredidentifier>
+      <stagename>International standard</stagename>
     </ext>
   </bibdata>
            #{BOILERPLATE}
