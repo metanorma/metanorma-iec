@@ -160,8 +160,8 @@ BLANK_HDR = <<~"HDR"
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>60</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="PPUB">60</substage>
   </status>
   <copyright>
     <from>#{Time.new.year}</from>
@@ -179,6 +179,7 @@ BLANK_HDR = <<~"HDR"
     <subcommittee/>
     <workgroup/>
   </editorialgroup>
+  <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}

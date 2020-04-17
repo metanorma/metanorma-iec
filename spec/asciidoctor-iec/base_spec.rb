@@ -123,8 +123,8 @@ RSpec.describe Asciidoctor::Iec do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>10</stage>
-           <substage>20</substage>
+           <stage abbreviation="NWIP">10</stage>
+           <substage abbreviation="??">20</substage>
            <iteration>3</iteration>
          </status>
          <copyright>
@@ -159,6 +159,7 @@ RSpec.describe Asciidoctor::Iec do
 <structuredidentifier>
   <project-number part="1">IEC 1000</project-number>
 </structuredidentifier>
+<stagename>New work item proposal</stagename>
        </ext>
        </bibdata>
        #{UNPUBLISHED_BOILERPLATE}
@@ -234,8 +235,8 @@ RSpec.describe Asciidoctor::Iec do
          <language>el</language>
          <script>Grek</script>
          <status>
-           <stage>30</stage>
-           <substage>99</substage>
+           <stage abbreviation="CD">30</stage>
+           <substage abbreviation="A22CD">99</substage>
            <iteration>2</iteration>
          </status>
          <copyright>
@@ -274,6 +275,7 @@ RSpec.describe Asciidoctor::Iec do
          <structuredidentifier>
            <project-number part="1" subpart="1">ISO/IEC/IETF 1000</project-number>
          </structuredidentifier>
+         <stagename>Committee draft</stagename>
          </ext>
        </bibdata>
     #{UNPUBLISHED_BOILERPLATE.sub(/IEC #{Date.today.year}/, "ISO/IEC/IETF 2001")}
@@ -355,8 +357,8 @@ RSpec.describe Asciidoctor::Iec do
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>50</stage>
-    <substage>00</substage>
+    <stage abbreviation="FDIS">50</stage>
+    <substage abbreviation="RFDIS">00</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -377,6 +379,7 @@ RSpec.describe Asciidoctor::Iec do
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>Final draft international standard</stagename>
   </ext>
 </bibdata>
 #{UNPUBLISHED_BOILERPLATE}
@@ -418,8 +421,8 @@ OUTPUT
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>60</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="PPUB">60</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -440,6 +443,7 @@ OUTPUT
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}
@@ -482,8 +486,8 @@ OUTPUT
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>00</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="BPUB">00</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -504,6 +508,7 @@ OUTPUT
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}

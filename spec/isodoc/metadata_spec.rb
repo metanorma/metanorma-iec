@@ -46,8 +46,8 @@ RSpec.describe IsoDoc::Iec::Metadata do
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>35</stage>
-    <substage>20</substage>
+    <stage abbreviation="CD">35</stage>
+    <substage abbreviation="3CD">20</substage>
     <iteration>3</iteration>
   </status>
   <copyright>
@@ -121,8 +121,8 @@ OUTPUT
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>50</stage>
-    <substage>20</substage>
+    <stage abbreviation="FDIS">50</stage>
+    <substage abbreviation="CFDIS">20</substage>
   </status>
   <copyright>
     <from>2016</from>
@@ -152,7 +152,7 @@ OUTPUT
 </bibdata>
 </iso-standard>
 INPUT
-{:agency=>"ISO/IEC", :authors=>[], :authors_affiliations=>{}, :docnumber=>"ISO/IEC/CD 17301-1-3", :docnumeric=>nil, :docsubtitle=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&nbsp;&mdash; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&nbsp;&mdash; Partie&nbsp;1&ndash;3: Riz", :docsubtitleintro=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses", :docsubtitlemain=>"Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai", :docsubtitlepart=>"Riz", :docsubtitlepartlabel=>"Partie&nbsp;1&ndash;3", :doctitle=>"Cereals and pulses&nbsp;&mdash; Specifications and test methods&nbsp;&mdash; Part&nbsp;1&ndash;3: Rice", :doctitleintro=>"Cereals and pulses", :doctitlemain=>"Specifications and test methods", :doctitlepart=>"Rice", :doctitlepartlabel=>"Part&nbsp;1&ndash;3", :doctype=>"Technical Report", :docyear=>"2016", :draft=>nil, :draftinfo=>"", :edition=>nil, :editorialgroup=>["ABC 34", "DEF 4", "GHI 3"], :ics=>"1.2.3, 1.2.3", :obsoletes=>"IEC 8121", :obsoletes_part=>"3.1", :publisher=>"International Organization for Standardization and International Electrotechnical Commission", :revdate=>nil, :revdate_monthyear=>nil, :sc=>"DEF 4", :secretariat=>"XXXX", :stage=>"50", :stage_int=>50, :stageabbr=>"RFDIS", :statusabbr=>"CFDIS", :tc=>"ABC 34", :tc_docnumber=>["17301"], :unpublished=>true, :wg=>"GHI 3"}
+{:agency=>"ISO/IEC", :authors=>[], :authors_affiliations=>{}, :docnumber=>"ISO/IEC/CD 17301-1-3", :docnumeric=>nil, :docsubtitle=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&nbsp;&mdash; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&nbsp;&mdash; Partie&nbsp;1&ndash;3: Riz", :docsubtitleintro=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses", :docsubtitlemain=>"Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai", :docsubtitlepart=>"Riz", :docsubtitlepartlabel=>"Partie&nbsp;1&ndash;3", :doctitle=>"Cereals and pulses&nbsp;&mdash; Specifications and test methods&nbsp;&mdash; Part&nbsp;1&ndash;3: Rice", :doctitleintro=>"Cereals and pulses", :doctitlemain=>"Specifications and test methods", :doctitlepart=>"Rice", :doctitlepartlabel=>"Part&nbsp;1&ndash;3", :doctype=>"Technical Report", :docyear=>"2016", :draft=>nil, :draftinfo=>"", :edition=>nil, :editorialgroup=>["ABC 34", "DEF 4", "GHI 3"], :ics=>"1.2.3, 1.2.3", :obsoletes=>"IEC 8121", :obsoletes_part=>"3.1", :publisher=>"International Organization for Standardization and International Electrotechnical Commission", :revdate=>nil, :revdate_monthyear=>nil, :sc=>"DEF 4", :secretariat=>"XXXX", :stage=>"50", :stage_int=>50, :stageabbr=>"FDIS", :statusabbr=>"CFDIS", :tc=>"ABC 34", :tc_docnumber=>["17301"], :unpublished=>true, :wg=>"GHI 3"}
 OUTPUT
   end
 
