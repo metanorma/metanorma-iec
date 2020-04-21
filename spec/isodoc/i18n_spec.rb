@@ -5,6 +5,7 @@ RSpec.describe IsoDoc do
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
+      <docnumber>1</docnumber>
       <language>en</language>
       </bibdata>
       <preface>
