@@ -89,7 +89,7 @@ RSpec.describe Asciidoctor::Iec do
       :library-ics: 1,2,3
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+       <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
    <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
    <title language="en" format="text/plain" type="title-intro">Introduction</title>
@@ -99,7 +99,7 @@ RSpec.describe Asciidoctor::Iec do
    <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
    <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
    <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-         <docidentifier type="iso">IEC/3NWIP 1000-1</docidentifier>
+         <docidentifier type="iso">IEC/3NWIP 1000-1 ED 2</docidentifier>
 <docnumber>1000</docnumber>
          <contributor>
            <role type="author"/>
@@ -123,8 +123,8 @@ RSpec.describe Asciidoctor::Iec do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>10</stage>
-           <substage>20</substage>
+           <stage abbreviation="NWIP">10</stage>
+           <substage abbreviation="??">20</substage>
            <iteration>3</iteration>
          </status>
          <copyright>
@@ -159,6 +159,7 @@ RSpec.describe Asciidoctor::Iec do
 <structuredidentifier>
   <project-number part="1">IEC 1000</project-number>
 </structuredidentifier>
+<stagename>New work item proposal</stagename>
        </ext>
        </bibdata>
        #{UNPUBLISHED_BOILERPLATE}
@@ -186,9 +187,9 @@ RSpec.describe Asciidoctor::Iec do
       :docstage: A2CD
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+       <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
-         <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1</docidentifier>
+         <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1 ED 1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
          <docnumber>1000</docnumber>
          <contributor>
@@ -234,8 +235,8 @@ RSpec.describe Asciidoctor::Iec do
          <language>el</language>
          <script>Grek</script>
          <status>
-           <stage>30</stage>
-           <substage>99</substage>
+           <stage abbreviation="CD">30</stage>
+           <substage abbreviation="A22CD">99</substage>
            <iteration>2</iteration>
          </status>
          <copyright>
@@ -274,6 +275,7 @@ RSpec.describe Asciidoctor::Iec do
          <structuredidentifier>
            <project-number part="1" subpart="1">ISO/IEC/IETF 1000</project-number>
          </structuredidentifier>
+         <stagename>Committee draft</stagename>
          </ext>
        </bibdata>
     #{UNPUBLISHED_BOILERPLATE.sub(/IEC #{Date.today.year}/, "ISO/IEC/IETF 2001")}
@@ -333,9 +335,9 @@ RSpec.describe Asciidoctor::Iec do
       :docnumber: 1000
       :docstage: 50
     INPUT
-    <iec-standard xmlns="https://www.metanorma.com/ns/iec">
+    <iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC/FDIS 1000</docidentifier>
+  <docidentifier type="iso">IEC/FDIS 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -355,8 +357,8 @@ RSpec.describe Asciidoctor::Iec do
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>50</stage>
-    <substage>00</substage>
+    <stage abbreviation="FDIS">50</stage>
+    <substage abbreviation="RFDIS">00</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -377,6 +379,7 @@ RSpec.describe Asciidoctor::Iec do
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>Final draft international standard</stagename>
   </ext>
 </bibdata>
 #{UNPUBLISHED_BOILERPLATE}
@@ -396,9 +399,9 @@ OUTPUT
       :docnumber: 1000
       :docstage: 60
     INPUT
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC 1000</docidentifier>
+  <docidentifier type="iso">IEC 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -418,8 +421,8 @@ OUTPUT
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>60</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="PPUB">60</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -440,6 +443,7 @@ OUTPUT
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}
@@ -460,9 +464,9 @@ OUTPUT
       :docstage: 60
       :docsubstage: 00
     INPUT
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC 1000</docidentifier>
+  <docidentifier type="iso">IEC 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -482,8 +486,8 @@ OUTPUT
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>00</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="BPUB">00</substage>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -504,6 +508,7 @@ OUTPUT
     <structuredidentifier>
       <project-number>IEC 1000</project-number>
     </structuredidentifier>
+    <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}
@@ -536,7 +541,7 @@ OUTPUT
       :no-isobib:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Cambria", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Cambria", serif;]m)
   end
@@ -551,7 +556,7 @@ OUTPUT
       :no-isobib:
     INPUT
     html = File.read("test_alt.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Space Mono", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Space Mono", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
   end
@@ -567,7 +572,7 @@ OUTPUT
       :script: Hans
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "SimSun", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "SimHei", sans-serif;]m)
   end
@@ -586,7 +591,7 @@ OUTPUT
       :monospace-font: Andale Mono
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: Andale Mono;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: Andale Mono;]m)
     expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: Zapf Chancery;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: Comic Sans;]m)
   end

@@ -379,7 +379,8 @@ OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <status>
-          <stage>60</stage>
+          <stage abbreviation="PPUB">60</stage>
+          <substage abbreviation="PPUB">60</substage>
         </status>
       </bibdata>
       <sections>
@@ -413,7 +414,8 @@ OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
         <status>
-          <stage>30</stage>
+          <stage abbreviation="CD">30</stage>
+          <substage abbreviation="CD">00</substage>
         </status>
       </bibdata>
       <sections>

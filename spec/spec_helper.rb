@@ -100,11 +100,12 @@ TERMS_BOILERPLATE = <<~"BOILERPLATE"
        standardization at the following addresses:</p>
        
         <ul id="_">
-        <li> <p id="_">ISO Online browsing platform: available at
-          <link target="http://www.iso.org/obp"/></p> </li>
         <li> <p id="_">IEC Electropedia: available at
         <link target="http://www.electropedia.org"/>
-        </p> </li> </ul>
+        </p> </li> 
+                <li> <p id="_">ISO Online browsing platform: available at
+          <link target="http://www.iso.org/obp"/></p> </li>
+</ul>
 BOILERPLATE
 
 BOILERPLATE =
@@ -140,7 +141,7 @@ UNPUBLISHED_BOILERPLATE = BOILERPLATE.sub(/<\/boilerplate>/, "#{BOILERPLATE_LICE
 
 BLANK_HDR = <<~"HDR"
 <?xml version="1.0" encoding="UTF-8"?>
-<iec-standard xmlns="https://www.metanorma.com/ns/iec">
+<iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
   <contributor>
     <role type="author"/>
@@ -159,8 +160,8 @@ BLANK_HDR = <<~"HDR"
   <language>en</language>
   <script>Latn</script>
   <status>
-    <stage>60</stage>
-    <substage>60</substage>
+    <stage abbreviation="PPUB">60</stage>
+    <substage abbreviation="PPUB">60</substage>
   </status>
   <copyright>
     <from>#{Time.new.year}</from>
@@ -178,6 +179,7 @@ BLANK_HDR = <<~"HDR"
     <subcommittee/>
     <workgroup/>
   </editorialgroup>
+  <stagename>International standard</stagename>
   </ext>
 </bibdata>
 #{BOILERPLATE}
