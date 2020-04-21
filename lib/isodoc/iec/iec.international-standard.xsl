@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:iec="http://riboseinc.com/isoxml" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" version="1.0">
+<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:iec="https://www.metanorma.org/ns/iec" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" version="1.0">
 
 	<xsl:output method="xml" encoding="UTF-8" indent="no"/>
 	
@@ -1562,13 +1562,13 @@
 		<xsl:value-of select="$section"/>
 	</xsl:template>
 
-<xsl:variable xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable><xsl:variable xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable><xsl:variable xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="en_chars" select="concat($lower,$upper,',.`1234567890-=~!@#$%^*()_+[]{}\|?/')"/><xsl:variable xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="linebreak" select="'&#8232;'"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="text()">
+<xsl:variable xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable><xsl:variable xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable><xsl:variable xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="en_chars" select="concat($lower,$upper,',.`1234567890-=~!@#$%^*()_+[]{}\|?/')"/><xsl:variable xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="linebreak" select="'&#8232;'"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="text()">
 		<xsl:value-of select="."/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='br']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='br']">
 		<xsl:value-of select="$linebreak"/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='td']//text() | *[local-name()='th']//text()" priority="1">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='td']//text() | *[local-name()='th']//text()" priority="1">
 		<xsl:call-template name="add-zero-spaces"/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']">
 	
 		<xsl:variable name="simple-table">
 			<!-- <xsl:copy> -->
@@ -1595,6 +1595,7 @@
 						
 						
 						
+						
 						<xsl:text>Table </xsl:text>
 						<xsl:choose>
 							<xsl:when test="ancestor::*[local-name()='executivesummary']"> <!-- NIST -->
@@ -1614,10 +1615,11 @@
 								<!-- <xsl:number format="1"/> -->
 								<xsl:number format="A." count="*[local-name()='annex']"/>
 								<!-- <xsl:number format="1" level="any" count="*[local-name()='sections']//*[local-name()='table'][not(@unnumbered) or @unnumbered != 'true']"/> -->
-								<xsl:number format="1" level="any" count="//*[local-name()='table']                                          [not(ancestor::*[local-name()='annex']) and not(ancestor::*[local-name()='executivesummary'])]                                          [not(@unnumbered) or @unnumbered != 'true']"/>
+								<xsl:number format="1" level="any" count="//*[local-name()='table']                                          [not(ancestor::*[local-name()='annex'])                                           and not(ancestor::*[local-name()='executivesummary'])                                          and not(ancestor::*[local-name()='bibdata'])]                                          [not(@unnumbered) or @unnumbered != 'true']"/>
 							</xsl:otherwise>
 						</xsl:choose>
 						<xsl:if test="*[local-name()='name']">
+							
 							
 							
 								<xsl:text> — </xsl:text>
@@ -1627,7 +1629,8 @@
 					</fo:block>
 				
 				
-				<xsl:call-template name="fn_name_display"/>
+					<xsl:call-template name="fn_name_display"/>
+				
 			</xsl:otherwise>
 		</xsl:choose>
 		
@@ -1680,9 +1683,13 @@
 			
 			
 			
+			
+			
 			<fo:table id="{@id}" table-layout="fixed" width="100%" margin-left="{$margin-left}mm" margin-right="{$margin-left}mm">
 				
 					<xsl:attribute name="border">1.5pt solid black</xsl:attribute>
+				
+				
 				
 				
 				
@@ -1704,15 +1711,15 @@
 				<xsl:apply-templates/>
 			</fo:table>
 		</fo:block-container>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']/*[local-name()='name']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']/*[local-name()='name']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']/*[local-name()='name']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']/*[local-name()='name']" mode="process">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="calculate-columns-numbers">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="calculate-columns-numbers">
 		<xsl:param name="table-row"/>
 		<xsl:variable name="columns-count" select="count($table-row/*)"/>
 		<xsl:variable name="sum-colspans" select="sum($table-row/*/@colspan)"/>
 		<xsl:variable name="columns-with-colspan" select="count($table-row/*[@colspan])"/>
 		<xsl:value-of select="$columns-count + $sum-colspans - $columns-with-colspan"/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="calculate-column-widths">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="calculate-column-widths">
 		<xsl:param name="table"/>
 		<xsl:param name="cols-count"/>
 		<xsl:param name="curr-col" select="1"/>
@@ -1799,14 +1806,14 @@
 				<xsl:with-param name="table" select="$table"/>
 			</xsl:call-template>
 		</xsl:if>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table2']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='thead']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='thead']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table2']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='thead']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='thead']" mode="process">
 		<!-- <fo:table-header font-weight="bold">
 			<xsl:apply-templates />
 		</fo:table-header> -->
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tfoot']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tfoot']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tfoot']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tfoot']" mode="process">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tbody']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tbody']">
 		<xsl:variable name="cols-count">
 			<xsl:choose>
 				<xsl:when test="../*[local-name()='thead']">
@@ -1846,7 +1853,7 @@
 				
 			</xsl:if>
 		</fo:table-body>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tr']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tr']">
 		<xsl:variable name="parent-name" select="local-name(..)"/>
 		<!-- <xsl:variable name="namespace" select="substring-before(name(/*), '-')"/> -->
 		<fo:table-row min-height="4mm">
@@ -1879,12 +1886,14 @@
 						<xsl:attribute name="border-right">solid black 1pt</xsl:attribute>
 					
 				</xsl:if>
+				
 			<xsl:apply-templates/>
 		</fo:table-row>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='th']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='th']">
 		<fo:table-cell text-align="{@align}" font-weight="bold" border="solid black 1pt" padding-left="1mm" display-align="center">
 			
 				<xsl:attribute name="padding-top">1mm</xsl:attribute>
+			
 			
 			
 			
@@ -1904,7 +1913,7 @@
 				<xsl:apply-templates/>
 			</fo:block>
 		</fo:table-cell>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='td']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='td']">
 		<fo:table-cell text-align="{@align}" display-align="center" border="solid black 1pt" padding-left="1mm">
 			 <!--  and ancestor::*[local-name() = 'thead'] -->
 				<xsl:attribute name="padding-top">0.5mm</xsl:attribute>
@@ -1914,6 +1923,7 @@
 				<xsl:if test="ancestor::*[local-name() = 'tfoot']">
 					<xsl:attribute name="border">solid black 0</xsl:attribute>
 				</xsl:if>
+			
 			
 			
 			
@@ -1943,7 +1953,7 @@
 			
 			
 		</fo:table-cell>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']/*[local-name()='note']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']/*[local-name()='note']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']/*[local-name()='note']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']/*[local-name()='note']" mode="process">
 		
 		
 			<fo:block font-size="10pt" margin-bottom="12pt">
@@ -1961,12 +1971,13 @@
 				<xsl:apply-templates mode="process"/>
 			</fo:block>
 		
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='table']/*[local-name()='note']/*[local-name()='p']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='table']/*[local-name()='note']/*[local-name()='p']" mode="process">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="fn_display">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="fn_display">
 		<xsl:variable name="references">
 			<xsl:for-each select="..//*[local-name()='fn'][local-name(..) != 'name']">
 				<fn reference="{@reference}" id="{@reference}_{ancestor::*[@id][1]/@id}">
+					
 					
 					<xsl:apply-templates/>
 				</fn>
@@ -1997,7 +2008,7 @@
 				</fo:block>
 			</xsl:if>
 		</xsl:for-each>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="fn_name_display">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="fn_name_display">
 		<!-- <xsl:variable name="references">
 			<xsl:for-each select="*[local-name()='name']//*[local-name()='fn']">
 				<fn reference="{@reference}" id="{@reference}_{ancestor::*[@id][1]/@id}">
@@ -2013,7 +2024,7 @@
 				<xsl:apply-templates/>
 			</fo:block>
 		</xsl:for-each>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="fn_display_figure">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="fn_display_figure">
 		<xsl:variable name="key_iso">
 			true <!-- and (not(@class) or @class !='pseudocode') -->
 		</xsl:variable>
@@ -2070,7 +2081,7 @@
 			</fo:block>
 		</xsl:if>
 		
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='fn']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='fn']">
 		<!-- <xsl:variable name="namespace" select="substring-before(name(/*), '-')"/> -->
 		<fo:inline font-size="80%" keep-with-previous.within-line="always">
 			
@@ -2083,14 +2094,15 @@
 			
 			
 			<fo:basic-link internal-destination="{@reference}_{ancestor::*[@id][1]/@id}" fox:alt-text="{@reference}"> <!-- @reference   | ancestor::*[local-name()='clause'][1]/@id-->
+				
 				<xsl:value-of select="@reference"/>
 			</fo:basic-link>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='fn']/*[local-name()='p']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='fn']/*[local-name()='p']">
 		<fo:inline>
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dl']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dl']">
 		<xsl:variable name="parent" select="local-name(..)"/>
 		
 		<xsl:variable name="key_iso">
@@ -2142,7 +2154,6 @@
 				
 				
 				<fo:block>
-					
 					
 					<!-- create virtual html table for dl/[dt and dd] -->
 					<xsl:variable name="html-table">
@@ -2216,7 +2227,7 @@
 				</fo:block>
 			</fo:block>
 		</xsl:if>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dl']/*[local-name()='note']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dl']/*[local-name()='note']">
 		<xsl:param name="key_iso"/>
 		
 		<!-- <tr>
@@ -2241,7 +2252,7 @@
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dt']" mode="dl">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dt']" mode="dl">
 		<tr>
 			<td>
 				<xsl:apply-templates/>
@@ -2254,7 +2265,7 @@
 			</td>
 		</tr>
 		
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dt']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dt']">
 		<xsl:param name="key_iso"/>
 		
 		<fo:table-row>
@@ -2266,6 +2277,7 @@
 							<xsl:attribute name="margin-top">5pt</xsl:attribute>
 						
 					</xsl:if>
+					
 					
 					<xsl:apply-templates/>
 				</fo:block>
@@ -2281,37 +2293,37 @@
 			</fo:table-cell>
 		</fo:table-row>
 		
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dd']" mode="dl"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dd']" mode="dl_process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dd']" mode="dl"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dd']" mode="dl_process">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dd']"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dd']" mode="process">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dd']"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dd']" mode="process">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='dd']/*[local-name()='p']" mode="inline">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='dd']/*[local-name()='p']" mode="inline">
 		<fo:inline><xsl:apply-templates/></fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='em']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='em']">
 		<fo:inline font-style="italic">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='strong']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='strong']">
 		<fo:inline font-weight="bold">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='sup']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='sup']">
 		<fo:inline font-size="80%" vertical-align="super">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='sub']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='sub']">
 		<fo:inline font-size="80%" vertical-align="sub">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tt']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tt']">
 		<fo:inline font-family="Courier" font-size="10pt">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='del']">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='del']">
 		<fo:inline font-size="10pt" color="red" text-decoration="line-through">
 			<xsl:apply-templates/>
 		</fo:inline>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="text()[ancestor::*[local-name()='smallcap']]">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="text()[ancestor::*[local-name()='smallcap']]">
 		<xsl:variable name="text" select="normalize-space(.)"/>
 		<fo:inline font-size="75%">
 				<xsl:if test="string-length($text) &gt; 0">
@@ -2320,7 +2332,7 @@
 					</xsl:call-template>
 				</xsl:if>
 			</fo:inline> 
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="recursiveSmallCaps">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="recursiveSmallCaps">
     <xsl:param name="text"/>
     <xsl:variable name="char" select="substring($text,1,1)"/>
     <xsl:variable name="upperCase" select="translate($char, $lower, $upper)"/>
@@ -2339,7 +2351,7 @@
         <xsl:with-param name="text" select="substring($text,2)"/>
       </xsl:call-template>
     </xsl:if>
-  </xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="tokenize">
+  </xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="tokenize">
 		<xsl:param name="text"/>
 		<xsl:param name="separator" select="' '"/>
 		<xsl:choose>
@@ -2387,7 +2399,7 @@
 				</xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="max_length">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="max_length">
 		<xsl:param name="words"/>
 		<xsl:for-each select="$words//word">
 				<xsl:sort select="." data-type="number" order="descending"/>
@@ -2395,11 +2407,12 @@
 						<xsl:value-of select="."/>
 				</xsl:if>
 		</xsl:for-each>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="add-zero-spaces">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="add-zero-spaces">
 		<xsl:param name="text" select="."/>
 		<xsl:variable name="zero-space-after-chars">-</xsl:variable>
 		<xsl:variable name="zero-space-after-dot">.</xsl:variable>
 		<xsl:variable name="zero-space-after-colon">:</xsl:variable>
+		<xsl:variable name="zero-space-after-equal">=</xsl:variable>
 		<xsl:variable name="zero-space">​</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains($text, $zero-space-after-chars)">
@@ -2426,11 +2439,45 @@
 					<xsl:with-param name="text" select="substring-after($text, $zero-space-after-colon)"/>
 				</xsl:call-template>
 			</xsl:when>
+			<xsl:when test="contains($text, $zero-space-after-equal)">
+				<xsl:value-of select="substring-before($text, $zero-space-after-equal)"/>
+				<xsl:value-of select="$zero-space-after-equal"/>
+				<xsl:value-of select="$zero-space"/>
+				<xsl:call-template name="add-zero-spaces">
+					<xsl:with-param name="text" select="substring-after($text, $zero-space-after-equal)"/>
+				</xsl:call-template>
+			</xsl:when>
 			<xsl:otherwise>
 				<xsl:value-of select="$text"/>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="getSimpleTable">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="add-zero-spaces-equal">
+		<xsl:param name="text" select="."/>
+		<xsl:variable name="zero-space-after-equals">==========</xsl:variable>
+		<xsl:variable name="zero-space-after-equal">=</xsl:variable>
+		<xsl:variable name="zero-space">​</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="contains($text, $zero-space-after-equals)">
+				<xsl:value-of select="substring-before($text, $zero-space-after-equals)"/>
+				<xsl:value-of select="$zero-space-after-equals"/>
+				<xsl:value-of select="$zero-space"/>
+				<xsl:call-template name="add-zero-spaces-equal">
+					<xsl:with-param name="text" select="substring-after($text, $zero-space-after-equals)"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:when test="contains($text, $zero-space-after-equal)">
+				<xsl:value-of select="substring-before($text, $zero-space-after-equal)"/>
+				<xsl:value-of select="$zero-space-after-equal"/>
+				<xsl:value-of select="$zero-space"/>
+				<xsl:call-template name="add-zero-spaces-equal">
+					<xsl:with-param name="text" select="substring-after($text, $zero-space-after-equal)"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$text"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="getSimpleTable">
 		<xsl:variable name="simple-table">
 		
 			<!-- Step 1. colspan processing -->
@@ -2457,9 +2504,9 @@
 			</xsl:choose> -->
 		</xsl:variable>
 		<xsl:copy-of select="$simple-table"/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='thead'] | *[local-name()='tbody']" mode="simple-table-colspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='thead'] | *[local-name()='tbody']" mode="simple-table-colspan">
 		<xsl:apply-templates mode="simple-table-colspan"/>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='fn']" mode="simple-table-colspan"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='th'] | *[local-name()='td']" mode="simple-table-colspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='fn']" mode="simple-table-colspan"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='th'] | *[local-name()='td']" mode="simple-table-colspan">
 		<xsl:choose>
 			<xsl:when test="@colspan">
 				<xsl:variable name="td">
@@ -2481,16 +2528,16 @@
 				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="@colspan" mode="simple-table-colspan"/><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="*[local-name()='tr']" mode="simple-table-colspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="@colspan" mode="simple-table-colspan"/><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="*[local-name()='tr']" mode="simple-table-colspan">
 		<xsl:element name="tr">
 			<xsl:apply-templates select="@*" mode="simple-table-colspan"/>
 			<xsl:apply-templates mode="simple-table-colspan"/>
 		</xsl:element>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="@*|node()" mode="simple-table-colspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="@*|node()" mode="simple-table-colspan">
 		<xsl:copy>
 				<xsl:apply-templates select="@*|node()" mode="simple-table-colspan"/>
 		</xsl:copy>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="repeatNode">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="repeatNode">
 		<xsl:param name="count"/>
 		<xsl:param name="node"/>
 		
@@ -2501,18 +2548,18 @@
 			</xsl:call-template>
 			<xsl:copy-of select="$node"/>
 		</xsl:if>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="@*|node()" mode="simple-table-rowspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="@*|node()" mode="simple-table-rowspan">
 		<xsl:copy>
 				<xsl:apply-templates select="@*|node()" mode="simple-table-rowspan"/>
 		</xsl:copy>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="tbody" mode="simple-table-rowspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="tbody" mode="simple-table-rowspan">
 		<xsl:copy>
 				<xsl:copy-of select="tr[1]"/>
 				<xsl:apply-templates select="tr[2]" mode="simple-table-rowspan">
 						<xsl:with-param name="previousRow" select="tr[1]"/>
 				</xsl:apply-templates>
 		</xsl:copy>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" match="tr" mode="simple-table-rowspan">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" match="tr" mode="simple-table-rowspan">
 		<xsl:param name="previousRow"/>
 		<xsl:variable name="currentRow" select="."/>
 	
@@ -2546,10 +2593,28 @@
 		<xsl:apply-templates select="following-sibling::tr[1]" mode="simple-table-rowspan">
 				<xsl:with-param name="previousRow" select="$newRow"/>
 		</xsl:apply-templates>
-	</xsl:template><xsl:template xmlns:iso="http://riboseinc.com/isoxml" xmlns:itu="https://open.ribose.com/standards/itu" xmlns:nist="http://www.nist.gov/metanorma" xmlns:un="https://open.ribose.com/standards/unece" xmlns:csd="https://www.calconnect.org/standards/csd" name="getLang">
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="getLang">
 		<xsl:variable name="language" select="//*[local-name()='bibdata']//*[local-name()='language']"/>
 		<xsl:choose>
 			<xsl:when test="$language = 'English'">en</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$language"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template xmlns:iso="https://www.metanorma.org/ns/iso" xmlns:itu="https://www.metanorma.org/ns/itu" xmlns:nist="https://www.metanorma.org/ns/nist" xmlns:un="https://www.metanorma.org/ns/un" xmlns:csd="https://www.metanorma.org/ns/csd" xmlns:ogc="https://www.metanorma.org/ns/ogc" name="capitalizeWords">
+		<xsl:param name="str"/>
+		<xsl:variable name="str2" select="translate($str, '-', ' ')"/>
+		<xsl:choose>
+			<xsl:when test="contains($str2, ' ')">
+				<xsl:variable name="substr" select="substring-before($str2, ' ')"/>
+				<xsl:value-of select="translate(substring($substr, 1, 1), $lower, $upper)"/>
+				<xsl:value-of select="substring($substr, 2)"/>
+				<xsl:text> </xsl:text>
+				<xsl:call-template name="capitalizeWords">
+					<xsl:with-param name="str" select="substring-after($str2, ' ')"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="translate(substring($str2, 1, 1), $lower, $upper)"/>
+				<xsl:value-of select="substring($str2, 2)"/>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template></xsl:stylesheet>
