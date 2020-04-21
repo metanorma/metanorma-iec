@@ -120,7 +120,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
        #{BLANK_HDR}
        <preface>
-       <foreword obligation="informative">
+       <foreword id="_" obligation="informative">
          <title>Foreword</title>
          <p id="_">
          <eref type="inline" bibitemid="iso216" citeas="ISO 216"/>
@@ -163,7 +163,11 @@ RSpec.describe Asciidoctor::Iec do
          <term id="_">
          <preferred>Term1</preferred>
          <termsource status="identical">
-         <origin bibitemid="ISO2191" type="inline" citeas=""><locality type="section"><referenceFrom>1</referenceFrom></locality></origin>
+         <origin bibitemid="ISO2191" type="inline" citeas="">
+         <localityStack>
+        <locality type="section"><referenceFrom>1</referenceFrom></locality>
+         </localityStack>
+        </origin>
        </termsource>
        </term>
        </terms>
@@ -263,90 +267,6 @@ RSpec.describe Asciidoctor::Iec do
          </dd>
        </dl></table>
 
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
-  it "processes headerrows attribute for table without header rows" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      [headerrows=3]
-      |===
-      |a |b |c
-      |a |b |c
-      |a |b |c
-      |a |b |c
-      |===
-    INPUT
-       #{BLANK_HDR}
-       <sections>
-             <table id="_"><thead><tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr><tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr><tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr></thead>
-         <tbody>
-           <tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr>
-         </tbody>
-       </table>
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
-  it "processes headerrows attribute for table with header rows" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      [headerrows=3]
-      |===
-      |a |b |c
-
-      |a |b |c
-      |a |b |c
-      |a |b |c
-      |===
-    INPUT
-       #{BLANK_HDR}
-       <sections>
-         <table id="_">
-         <thead>
-           <tr>
-             <th align="left">a</th>
-             <th align="left">b</th>
-             <th align="left">c</th>
-           </tr>
-         <tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr><tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr></thead>
-         <tbody>
-
-
-           <tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
-           </tr>
-         </tbody>
-       </table>
        </sections>
        </iec-standard>
     OUTPUT

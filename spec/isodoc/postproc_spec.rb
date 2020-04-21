@@ -226,13 +226,22 @@ RSpec.describe IsoDoc do
     INPUT
     word = File.read("test.doc", encoding: "UTF-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
       sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
-    expect((word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
          <div class="WordSection3">
-         #{IEC_TITLE}
+    #{IEC_TITLE.gsub(/\&#160;/, "&#xA0;")}
              <p class="MsoNormal">
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div class="Section3"><a name="P" id="P"></a>
+             <h1 class='Annex'>
+  <b>Annex A</b>
+  <br/>
+  <br/>
+  (normative)
+  <br/>
+  <br/>
+  <b/>
+</h1>
                <div class="example"><a name="_63112cbc-cde0-435f-9553-e0b8c4f5851c" id="_63112cbc-cde0-435f-9553-e0b8c4f5851c"></a>
                  <p class="example"><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#xA0; </span>'1M', '01M', and '0001M' all describe the calendar month January.</p>
                </div>
@@ -270,11 +279,20 @@ RSpec.describe IsoDoc do
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div class="Section3"><a name="P" id="P"></a>
+             <h1 class='Annex'>
+  <b>Annex A</b>
+  <br/>
+  <br/>
+  (normative)
+  <br/>
+  <br/>
+  <b/>
+</h1>
                <p class="Sourcecode" style='page-break-after:avoid;'><a name="A" id="A"></a>puts "Hello, world."</p>
                <p class='SourceTitle' style='text-align:center;'>Figure A.1</p>
                <p class="TableTitle" style="text-align:center;">Table A.1</p>
                           <div align='center' class='table_container'>
-             <table class='MsoISOTable' style='mso-table-lspace:15.0cm;margin-left:423.0pt;mso-table-rspace:15.0cm;margin-right:423.0pt;mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
+             <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
               <a name='samplecode' id='samplecode'/>
                    <tbody>
                      <tr>
