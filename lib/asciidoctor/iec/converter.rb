@@ -62,6 +62,11 @@ module Asciidoctor
           IsoDoc::Iec::WordConvert.new(doc_extract_attributes(node))
       end
 
+      def pdf_converter(node)
+        node.nil? ? IsoDoc::Iec::PdfConvert.new({}) :
+          IsoDoc::Iec::PdfConvert.new(doc_extract_attributes(node))
+      end
+        
       def norm_ref_preface(f)
         return super unless @is_iev
         f.at("./title").next =
