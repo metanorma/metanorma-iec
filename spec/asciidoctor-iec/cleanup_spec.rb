@@ -131,6 +131,7 @@ RSpec.describe Asciidoctor::Iec do
   <bibitem id="iso216" type="standard">
   <title format="text/plain">Reference</title>
   <docidentifier>ISO 216</docidentifier>
+  <docnumber>216</docnumber>
   <contributor>
     <role type="publisher"/>
     <organization>
@@ -193,6 +194,7 @@ RSpec.describe Asciidoctor::Iec do
              <bibitem id="iso216" type="standard">
          <title format="text/plain">Reference</title>
          <docidentifier>ISO 216</docidentifier>
+         <docnumber>216</docnumber>
          <contributor>
            <role type="publisher"/>
            <organization>
