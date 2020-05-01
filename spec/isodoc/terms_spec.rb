@@ -5,7 +5,7 @@ RSpec.describe IsoDoc do
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
 <domain>rice</domain>
@@ -98,7 +98,7 @@ OUTPUT
     expect((IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", true).sub(%r{^.*<div id="_terms_and_definitions">}m, '<div id="_terms_and_definitions">').sub(%r{<br[^>]*>\s*<div class="colophon"/>.*$}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
 <domain>rice</domain>

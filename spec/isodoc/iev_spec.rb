@@ -141,7 +141,7 @@ OUTPUT
            <docnumber>60050</docnumber>
     </bibdata>
     <sections>
-    <clause id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <clause id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <terms id="_general" obligation="normative"><title>General</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
@@ -286,7 +286,7 @@ end
            <docnumber>60050</docnumber>
     </bibdata>
     <sections>
-    <clause id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <clause id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <terms id="_general" obligation="normative"><title>General</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
