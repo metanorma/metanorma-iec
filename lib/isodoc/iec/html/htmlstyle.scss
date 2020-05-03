@@ -195,11 +195,11 @@ p.Terms {
 /* Navigation*/
 
 nav {
-    @include sidebarNav(#f7f7f7, 278px, 20px);
+    @include sidebarNav(#f5faff, 278px, 20px);
 }
 
 #toggle {
-    @include sidebarNavToggle(black, #f7f7f7)
+    @include sidebarNavToggle(black, #f5faff)
 }
 
 #toc {
@@ -516,7 +516,7 @@ p.NormRef {
 .figure,
 pre,
 .pseudocode {
-    @include pseudocodeBlock(#f7f7f7);
+    @include pseudocodeBlock(#f5faff);
     font-size: 1em;
 }
 
@@ -667,7 +667,7 @@ ol > li > p:before {
 */
 
 .Quote {
-    @include blockquoteBlock(#f7f7f7);
+    @include blockquoteBlock(#f5faff);
 }
 
 /*
@@ -675,11 +675,11 @@ ol > li > p:before {
 */
 
 .formula {
-    @include formulaBlock(#f7f7f7)
+    @include formulaBlock(#f5faff)
 }
 
 dl.formula_dl {
-background-color: #f7f7f7;
+background-color: #f5faff;
 }
 
 /*
