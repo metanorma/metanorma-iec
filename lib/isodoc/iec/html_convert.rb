@@ -10,6 +10,14 @@ module IsoDoc
         @libdir = File.dirname(__FILE__)
       end
 
+      def default_fonts(options)
+        {
+          bodyfont: (options[:script] == "Hans" ? '"SimSun",serif' : '"Arial",sans-serif'),
+        headerfont: (options[:script] == "Hans" ? '"SimHei",sans-serif' : '"Arial",sans-serif'),
+        monospacefont: ('"Courier New",monospace'),
+        }
+      end
+
       def default_file_locations(options)
         @libdir = File.dirname(__FILE__)
         {

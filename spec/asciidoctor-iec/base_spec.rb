@@ -542,23 +542,8 @@ OUTPUT
     INPUT
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
-    expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Cambria", serif;]m)
-    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Cambria", serif;]m)
-  end
-
-  it "uses default fonts for alt doc" do
-    FileUtils.rm_f "test_alt.html"
-    Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
-      = Document title
-      Author
-      :docfile: test.adoc
-      :novalid:
-      :no-isobib:
-    INPUT
-    html = File.read("test_alt.html", encoding: "utf-8")
-    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Space Mono", monospace;]m)
-    expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
-    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Lato", sans-serif;]m)
+    expect(html).to match(%r[blockquote[^{]+\{[^{]+font-family: "Arial", sans-serif;]m)
+    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Arial", sans-serif;]m)
   end
 
   it "uses Chinese fonts" do
