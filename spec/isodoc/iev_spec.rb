@@ -93,7 +93,7 @@ RSpec.describe IsoDoc do
          </bibdata>
          <sections> </sections>
          <bibliography>
-           <references id='_' obligation='informative'>
+           <references id='_' obligation='informative' normative="true">
              <title>Normative References</title>
              <p id='_'>There are no normative references in this document.</p>
              <bibitem id='A'>
@@ -103,7 +103,7 @@ RSpec.describe IsoDoc do
                <docidentifier>B</docidentifier>
              </bibitem>
            </references>
-           <references id='_' obligation='informative'>
+           <references id='_' obligation='informative' normative="false">
              <title>Bibliography</title>
              <p id='_'>There are no normative references in this document.</p>
              <bibitem id='A'>

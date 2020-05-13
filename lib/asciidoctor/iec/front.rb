@@ -37,7 +37,7 @@ module Asciidoctor
         return unless node.attr("docnumber")
         part, subpart = node&.attr("partnumber")&.split(/-/)
         dn = add_id_parts(node.attr("docnumber"), part, subpart)
-        dn = id_stage_prefix(dn, node)
+        dn = id_stage_prefix(dn, node, false)
         dn = id_edition_suffix(dn, node)
         xml.docidentifier dn, **attr_code(type: "iso")
       end

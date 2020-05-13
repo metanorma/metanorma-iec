@@ -34,7 +34,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">For the purposes of this document, 
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
-         <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><admitted><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>91</mn></msub></math></stem></admitted>
+         <term id="term-t90"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><admitted><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>91</mn></msub></math></stem></admitted>
        <definition><p id="_">Time</p></definition></term>
        </terms>
        </sections>
@@ -70,7 +70,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">For the purposes of this document, 
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
-         <term id="_"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><definition><formula id="_">
+         <term id="term-t90"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mn>90</mn></msub></math></stem></preferred><definition><formula id="_">
          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mi>A</mi></msub></math></stem>
        </formula><p id="_">This paragraph is extraneous</p></definition>
        </term>
@@ -100,7 +100,7 @@ RSpec.describe Asciidoctor::Iec do
        the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
 
-       <term id="_">
+       <term id="term-time">
        <preferred>Time</preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>
        </term></terms>
@@ -126,7 +126,7 @@ RSpec.describe Asciidoctor::Iec do
          <eref type="inline" bibitemid="iso216" citeas="ISO 216"/>
        </p>
        </foreword></preface><sections>
-       </sections><bibliography><references id="_" obligation="informative">
+       </sections><bibliography><references id="_" obligation="informative" normative="false">
   <title>Bibliography</title>
   <bibitem id="iso216" type="standard">
   <title format="text/plain">Reference</title>
@@ -161,7 +161,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
-         <term id="_">
+         <term id="term-term1">
          <preferred>Term1</preferred>
          <termsource status="identical">
          <origin bibitemid="ISO2191" type="inline" citeas="">
@@ -189,7 +189,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
       #{BLANK_HDR}
       <sections></sections>
-      <bibliography><references id="_" obligation="informative"><title>Normative References</title>
+      <bibliography><references id="_" obligation="informative" normative="true"><title>Normative References</title>
       <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
              <bibitem id="iso216" type="standard">
          <title format="text/plain">Reference</title>
