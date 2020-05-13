@@ -69,7 +69,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
-         <term id="_">
+         <term id="term-term1">
          <preferred>Term1</preferred>
        </term>
        </terms>
@@ -94,7 +94,7 @@ RSpec.describe Asciidoctor::Iec do
         </p>
       </li>
     </ul>
-         <term id="_">
+         <term id="term-term2">
          <preferred>Term2</preferred>
        </term>
        </terms>
@@ -118,11 +118,11 @@ RSpec.describe Asciidoctor::Iec do
        </clause>
        <appendix id="_" inline-header="false" obligation="normative">
           <title>Appendix 1</title>
-       </appendix></annex><bibliography><references id="_" obligation="informative">
+       </appendix></annex><bibliography><references id="_" obligation="informative" normative="true">
          <title>Normative References</title><p id="_">There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
-         <references id="_" obligation="informative">
+         <references id="_" obligation="informative" normative="false">
          <title>Bibliography Subsection</title>
        </references>
        </clause>
@@ -209,7 +209,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
-         <term id="_">
+         <term id="term-term1">
          <preferred>Term1</preferred>
        </term>
        </terms>
@@ -236,7 +236,7 @@ RSpec.describe Asciidoctor::Iec do
      </p>
    </li>
  </ul>
-               <term id='_'>
+               <term id='term-term2'>
                  <preferred>Term2</preferred>
                </term>
              </terms>
@@ -267,13 +267,13 @@ RSpec.describe Asciidoctor::Iec do
            </appendix>
          </annex>
          <bibliography>
-           <references id='_' obligation='informative'>
+           <references id='_' obligation='informative' normative="true">
              <title>Normative References</title>
              <p id="_">There are no normative references in this document.</p>
            </references>
            <clause id='_' obligation='informative'>
              <title>Bibliography</title>
-             <references id='_' obligation='informative'>
+             <references id='_' obligation='informative' normative="false">
                <title>Bibliography Subsection</title>
              </references>
            </clause>

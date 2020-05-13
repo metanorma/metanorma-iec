@@ -67,7 +67,7 @@ RSpec.describe Asciidoctor::Iec do
          #{BOILERPLATE}
          <sections> </sections>
          <bibliography>
-           <references id='_' obligation='informative'>
+           <references id='_' obligation='informative' normative="true">
              <title>Normative References</title>
              <p id='_'>There are no normative references in this document.</p>
              <bibitem id='A'>
@@ -148,7 +148,7 @@ INPUT
       <title>Terms and definitions</title>
       <terms id='_' obligation='normative'>
         <title>General</title>
-        <term id='_'>
+        <term id='term-term-1'>
           <preferred>Term 1</preferred>
         </term>
       </terms>
