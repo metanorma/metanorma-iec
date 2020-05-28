@@ -185,11 +185,12 @@ RSpec.describe Asciidoctor::Iec do
       :publisher: IEC,IETF,ISO
       :copyright-year: 2001
       :docstage: A2CD
+      :doctype: technical-specification
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
-         <docidentifier type="iso">ISO/IEC/IETF/2CD 1000-1-1 ED 1</docidentifier>
+         <docidentifier type="iso">ISO/IEC/IETF/2CD TS 1000-1-1 ED 1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
          <docnumber>1000</docnumber>
          <contributor>
@@ -266,7 +267,7 @@ RSpec.describe Asciidoctor::Iec do
            </owner>
          </copyright>
          <ext>
-         <doctype>article</doctype>
+         <doctype>technical-specification</doctype>
          <editorialgroup>
            <technical-committee/>
            <subcommittee/>
