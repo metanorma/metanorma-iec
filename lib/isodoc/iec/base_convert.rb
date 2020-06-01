@@ -148,9 +148,10 @@ module IsoDoc
         end
       end
 
-      def textcleanup(docxml)
+      def termref_cleanup(docxml)
         return super unless @is_iev
         docxml.
+          gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, "; ").
           gsub(/\[TERMREF\]\s*/, l10n("#{@source_lbl}: ")).
           gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@modified_lbl} [/TERMREF]")).
           gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
