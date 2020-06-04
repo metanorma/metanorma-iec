@@ -325,10 +325,11 @@ p.AltTerms, li.AltTerms, div.AltTerms
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:17.0pt;
+        /* https://github.com/metanorma/metanorma-iec/issues/62 */
+	/* margin-left:17.0pt; */ /* suppress to line up math terms */
 	margin-bottom:.0001pt;
 	text-align:justify;
-	text-indent:-17.0pt;
+	/* text-indent:-17.0pt; */ /* suppress to line up math terms */
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	layout-grid-mode:char;
@@ -529,8 +530,6 @@ p.QuoteAttribution
 p.Admonition, li.Admonition, div.Admonition
 	{mso-style-priority:99;
 	mso-pagination:widow-orphan;
-	border:none;
-	padding:0cm;
 	font-size:10.0pt;
 	font-family:$bodyfont;
 	mso-ascii-font-family:$bodyfont;
@@ -541,10 +540,14 @@ p.Admonition, li.Admonition, div.Admonition
 	mso-hansi-theme-font:minor-latin;
 	mso-bidi-font-family:$bodyfont;
 	mso-bidi-theme-font:minor-bidi;
+        mso-element:para-border-div;
+        border:solid windowtext 1.0pt;
+        mso-border-alt:solid windowtext .5pt;
+        padding:1.0pt 4.0pt 1.0pt 4.0pt;
         font-weight:bold;
 	mso-ansi-language:EN-AU;}
 /* IEC:PARAEQUATION */
-p.Formula, li.Formula, div.Formula
+p.formula, li.formula, div.formula
 	{mso-style-name:Formula;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -652,8 +655,6 @@ table.MsoTableGrid
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
 	font-family:$bodyfont;}
-div.formula
-    {tab-stops:right 487.45pt;}
 body 
     {tab-interval:36.0pt;}
 .coverpage_docnumber
