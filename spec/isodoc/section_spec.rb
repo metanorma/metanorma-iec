@@ -307,6 +307,43 @@ OUTPUT
 OUTPUT
   end
 
+  it "processes subclauses with and without titles" do
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+       <sections>
+       <clause id="D" obligation="normative">
+         <title>Scope</title>
+<clause id="D1" obligation="normative">
+         <title>Scope 1</title>
+         </clause>
+<clause id="D2" obligation="normative">
+         </clause>
+       </clause>
+       </sections>
+       </iso-standard>
+INPUT
+    #{HTML_HDR}
+    <div id=''>
+  <h1 class='ForewordTitle'>FOREWORD</h1>
+  <div class='boilerplate_legal'/>
+</div>
+#{IEC_TITLE}
+      <div id='D'>
+        <h1>1&#160; Scope</h1>
+        <div id='D1'>
+          <h2>1.1&#160; Scope 1</h2>
+        </div>
+        <div id='D2'>
+          <h2>1.2&#160; </h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+OUTPUT
+    end
+
+
   it "processes simple terms & definitions" do
         expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
                <iso-standard xmlns="http://riboseinc.com/isoxml">

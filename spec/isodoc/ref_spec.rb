@@ -125,14 +125,14 @@ RSpec.describe IsoDoc::Iec do
     </iso-standard>
     INPUT
     #{HTML_HDR}
-          <br/>
       <div>
-        <h1 class='ForewordTitle'>Foreword</h1>
+        <h1 class='ForewordTitle'>FOREWORD</h1>
+        <div class='boilerplate_legal'/>
         <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f'>
           <a href='#ISO712'>[110]</a>
           <a href='#ISBN'>[1]</a>
           <a href='#ISSN'>[2]</a>
-          <a href='#ISO16634'>ISO 16634:-- (all parts)</a>
+          <a href='#ISO16634'>ISO 16634:--</a>
           <a href='#ref1'>ICC 167</a>
           <a href='#ref10'>[10]</a>
           <a href='#ref12'>Citn</a>
@@ -141,7 +141,7 @@ RSpec.describe IsoDoc::Iec do
       </div>
       #{IEC_TITLE}
       <div>
-        <h1>1.&#160; Normative references</h1>
+        <h1>1&#160; Normative references</h1>
         <p>
           The following documents are referred to in the text in such a way that
           some or all of their content constitutes requirements of this
@@ -189,12 +189,12 @@ RSpec.describe IsoDoc::Iec do
       <br/>
       <div>
         <h1 class='Section3'>Bibliography</h1>
-        <p id='ISBN' class='Biblio'>
-          [1]&#160;
+        <p id='ISBN' class='NormRef'>
+          [1],
           <i>Chemicals for analytical laboratory use</i>
         </p>
-        <p id='ISSN' class='Biblio'>
-          [2]&#160;
+        <p id='ISSN' class='NormRef'>
+          [2],
           <i>Instruments for analytical laboratory use</i>
         </p>
         <div id='' class='Note'>
@@ -209,12 +209,12 @@ RSpec.describe IsoDoc::Iec do
             &#160; This is another annotation of document ISSN.
           </p>
         </div>
-        <p id='ISO3696' class='Biblio'>
-          [3]&#160; ISO 3696,
+        <p id='ISO3696' class='NormRef'>
+          ISO 3696,
           <i>Water for analytical laboratory use</i>
         </p>
-        <p id='ref10' class='Biblio'>
-          [10]&#160;
+        <p id='ref10' class='NormRef'>
+          [10],
           <span style='font-variant:small-caps;'>Standard No I.C.C 167</span>
           .
           <i>
@@ -226,12 +226,12 @@ RSpec.describe IsoDoc::Iec do
           <a href='http://www.icc.or.at'>http://www.icc.or.at</a>
           )
         </p>
-        <p id='ref11' class='Biblio'>
-          [5]&#160; IETF RFC 10,
+        <p id='ref11' class='NormRef'>
+          IETF RFC 10,
           <i>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</i>
         </p>
-        <p id='ref12' class='Biblio'>
-          [6]&#160; Citn, IETF RFC 20, CitationWorks. 2019.
+        <p id='ref12' class='NormRef'>
+          Citn, IETF RFC 20, CitationWorks. 2019.
           <i>How to cite a reference</i>
           .
         </p>
