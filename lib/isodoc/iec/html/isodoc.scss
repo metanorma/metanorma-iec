@@ -182,7 +182,6 @@ p.TableTitle
 /* IEC: NOTE */
 p.Note, div.Note, li.Note
 	{mso-style-unhide:no;
-	mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -824,9 +823,15 @@ div.example, td.example {
         margin-bottom:12.0pt;
 }
 
-span.note_label, span.example_label, td.example_label, td.note_label
+span.example_label, td.example_label
 {
 font-size: 10.0pt;
+font-family:$bodyfont;
+}
+
+span.note_label, td.note_label
+{
+font-size: 8.0pt;
 font-family:$bodyfont;
 }
 
