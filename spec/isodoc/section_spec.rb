@@ -398,7 +398,7 @@ OUTPUT
           <h2>1.1&#160; Introduction</h2>
         </div>
                  <div id="O">
-          <span class="zzMoveToFollowing"><b>1.2&#160; Clause 4.2 </b></span>
+          <span class="zzMoveToFollowing"><b>1.2&#160; Clause 4.2&#160; </b></span>
         </div>
                </div>
              </div>

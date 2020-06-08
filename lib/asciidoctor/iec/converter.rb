@@ -76,6 +76,9 @@ module Asciidoctor
       def term_defs_boilerplate(div, source, term, preface, isodoc)
         return super unless @is_iev
       end
+
+      def sts_converter(node)
+      end
     end
   end
 end

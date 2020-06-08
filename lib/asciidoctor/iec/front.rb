@@ -175,7 +175,7 @@ module Asciidoctor
         DOC_STAGE[stage.to_sym] || "??"
       end
 
-      def stage_name(stage, substage, _doctype)
+      def stage_name(stage, substage, _doctype, _iteration)
         STAGE_NAMES[stage.to_sym]
       end
 
