@@ -195,7 +195,7 @@ module IsoDoc
       def admonition_parse(node, out)
         type = node["type"]
         name = admonition_name(node, type)
-        out.div **{ id: node["id"], class: admonition_class(node) } do |div|
+        out.div **admonition_attrs(node) do |div|
           node.first_element_child.name == "p" ?
             admonition_p_parse(node, div, name) : admonition_parse1(node, div, name)
         end
