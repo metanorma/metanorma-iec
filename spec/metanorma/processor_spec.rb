@@ -60,9 +60,6 @@ RSpec.describe Metanorma::Iec::Processor do
    <h1 class="ForewordTitle" id="toc0">FOREWORD</h1>
    <div class="boilerplate_legal"></div>
  </div>
- <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
- <p class="zzSTDTitle1">____________</p>
- <p class="zzSTDTitle1">&#xA0;</p>
  <p class="zzSTDTitle1">
    <b></b>
  </p>

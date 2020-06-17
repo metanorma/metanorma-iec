@@ -16,6 +16,7 @@ module IsoDoc
         f = isoxml.at(ns("//foreword"))
         b = isoxml.at(ns("//boilerplate/legal-statement"))
         page_break(out)
+        iec_orgname(out)
         middle_title(out)
         out.div **attr_code(id: f ? f["id"] : "") do |s|
           s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @foreword_lbl }
@@ -27,10 +28,13 @@ module IsoDoc
         end
       end
 
-      def middle_title(out)
+      def iec_orgname(out)
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << @labels["IEC"] }
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "____________" }
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
+      end
+
+      def middle_title(out)
         title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
         @meta.get[:doctitleintro] and
           title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
@@ -76,7 +80,7 @@ module IsoDoc
       def convert1(docxml, filename, dir)
         id = docxml&.at(ns("//bibdata/docnumber"))&.text
         @is_iev = id == "60050"
-        id = docxml&.at(ns("//bibdata/docidentifier[@type = 'iso']"))&.text
+        id = docxml&.at(ns("//bibdata/docidentifier[@type = 'ISO']"))&.text
         m = /60050-(\d+)/.match(id) and @iev_part = m[1]
         super
       end
