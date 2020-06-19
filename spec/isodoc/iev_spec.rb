@@ -248,14 +248,14 @@ INPUT
               <li>A</li>
             </ul>
           </div>
-          <div class='Note'>
+          <div class='Note' id='_671a1994-4783-40d0-bc81-987d06ffb74e'>
             <p>
               Note 1 to entry: The starch of waxy rice consists almost entirely
               of amylopectin. The kernels have a tendency to stick together
               after cooking.
             </p>
           </div>
-          <div class='Note'>
+          <div class='Note' id='_671a1994-4783-40d0-bc81-987d06ffb74f'>
             <p>
               Note 2 to entry:
               <ul>

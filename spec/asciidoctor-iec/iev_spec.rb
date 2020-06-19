@@ -20,7 +20,7 @@ RSpec.describe Asciidoctor::Iec do
 <?xml version='1.0' encoding='UTF-8'?>
        <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
          <bibdata type='standard'>
-           <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
+           <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
            <docnumber>60050</docnumber>
            <contributor>
              <role type='author'/>
@@ -98,7 +98,7 @@ RSpec.describe Asciidoctor::Iec do
 INPUT
 <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
   <bibdata type='standard'>
-    <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
+    <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
     <docnumber>60050</docnumber>
     <contributor>
       <role type='author'/>
