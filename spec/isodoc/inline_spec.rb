@@ -24,7 +24,7 @@ RSpec.describe IsoDoc do
        <a id="H"/> <br/>
        </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -56,7 +56,7 @@ RSpec.describe IsoDoc do
        <a href="mailto:fred@example.com">mailto:fred@example.com</a>
        </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -82,7 +82,7 @@ RSpec.describe IsoDoc do
        <para><b role="strong">&lt;barry fred="http://example.com"&gt;example&lt;/barry&gt;</b></para>
        </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -114,7 +114,7 @@ RSpec.describe IsoDoc do
        <span class="stem">Latex?</span>
        </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -142,7 +142,7 @@ RSpec.describe IsoDoc do
        (#((Hello))#)
        </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -182,7 +182,7 @@ RSpec.describe IsoDoc do
            <a href="#ISO712">A</a>
            </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p id="ISO712" class="NormRef">ISO 712, <i> Cereals and cereal products</i></p>
@@ -248,7 +248,7 @@ RSpec.describe IsoDoc do
            <a href="#ISO712">A</a>
            </p>
                </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
                <div>
                  <h1>1&#160; Normative references</h1>
                  <p id="ISO712" class="NormRef">ISO 712, <i> Cereals and cereal products</i></p>

@@ -88,7 +88,7 @@ RSpec.describe IsoDoc::Iec do
                  <p><span class="example_label">EXAMPLE</span>&#160; Hello</p>
                </div>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
          </body>
        </html>
@@ -120,7 +120,7 @@ RSpec.describe IsoDoc::Iec do
                  <p><span class="example_label">EXAMPLE  2</span>&#160; Hello</p>
                </div>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
          </body>
        </html>
@@ -156,7 +156,7 @@ RSpec.describe IsoDoc::Iec do
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>
@@ -200,7 +200,7 @@ RSpec.describe IsoDoc::Iec do
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
            <div class="colophon"/>

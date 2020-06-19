@@ -85,7 +85,7 @@ RSpec.describe IsoDoc do
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
              <div id="D">
                <h1>1&#160; Scope</h1>
                <p id="E">Text</p>
@@ -229,7 +229,7 @@ RSpec.describe IsoDoc do
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
              <div id="D">
                <h1>1&#160; Scope</h1>
                <p id="E">Text</p>
@@ -374,7 +374,7 @@ RSpec.describe IsoDoc do
         </div>
                <p>This is patent boilerplate</p>
              </div>
-             #{IEC_TITLE.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "COMMISSION ELECTROTECHNIQUE INTERNATIONALE")}
+             #{IEC_TITLE1}
              <div id="D">
                <h1>1&#160; Domaine d'application</h1>
                <p id="E">Text</p>
@@ -529,7 +529,7 @@ RSpec.describe IsoDoc do
               </div>
                <p>This is patent boilerplate</p>
              </div>
-    #{IEC_TITLE.sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, "&#22269;&#38469;&#30005;&#24037;&#22996;&#21592;&#20250;")}
+    #{IEC_TITLE1}
              <div id="D">
                <h1>1&#160; &#33539;&#22260;</h1>
                <p id="E">

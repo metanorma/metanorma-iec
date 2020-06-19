@@ -94,7 +94,7 @@ RSpec.describe IsoDoc do
          </div>
                   <p>This is patent boilerplate</p>
                 </div>
-                #{IEC_TITLE}
+                #{IEC_TITLE1}
                 <div id="D">
                   <h1>1&#160; Scope</h1>
                   <p id="E">Text</p>
@@ -243,7 +243,7 @@ OUTPUT
              </div>
              <p><br clear="all" class="section"/></p>
              <div class="WordSection3">
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
                <div id="D">
                  <h1>1<span style="mso-tab-count:1">&#160; </span>Scope</h1>
                  <p id="E">Text</p>
@@ -327,7 +327,7 @@ INPUT
   <h1 class='ForewordTitle'>FOREWORD</h1>
   <div class='boilerplate_legal'/>
 </div>
-#{IEC_TITLE}
+#{IEC_TITLE1}
       <div id='D'>
         <h1>1&#160; Scope</h1>
         <div id='D1'>
@@ -361,7 +361,7 @@ OUTPUT
    <h1 class="ForewordTitle">FOREWORD</h1>
    <div class="boilerplate_legal"/>
  </div>
-#{IEC_TITLE}
+#{IEC_TITLE1}
                <div id="H"><h1>1&#160; Terms, Definitions, Symbols and Abbreviated Terms</h1>
        <p class="TermNum" id="J">1.1</p>
          <p class="Terms" style="text-align:left;">Term2</p>
@@ -391,7 +391,7 @@ OUTPUT
   <h1 class="ForewordTitle">FOREWORD</h1>
   <div class="boilerplate_legal"/>
 </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
                <div id="M">
                  <h1>1&#160; Clause 4</h1>
                  <div id="N">
@@ -434,7 +434,7 @@ OUTPUT
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection3">
-            #{IEC_TITLE}
+            #{IEC_TITLE1}
             </div>
             <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
             <div class="colophon"/>
@@ -469,7 +469,7 @@ OUTPUT
             </div>
             <p><br clear="all" class="section"/></p>
             <div class="WordSection3">
-              #{IEC_TITLE}
+              #{IEC_TITLE1}
             </div>
           </body>
       OUTPUT
@@ -496,7 +496,7 @@ OUTPUT
        <p>Boilerplate</p>
                 </div>
 </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>
@@ -521,7 +521,7 @@ OUTPUT
     <div id="">
   <h1 class="ForewordTitle">FOREWORD</h1>
 </div>
-               #{IEC_TITLE}
+               #{IEC_TITLE1}
              </div>
            </body>
        </html>

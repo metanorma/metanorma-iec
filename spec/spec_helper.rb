@@ -195,6 +195,13 @@ IEC_TITLE = <<~END
              <p class="zzSTDTitle1">&#160;</p>
 END
 
+IEC_TITLE1 = <<~END
+             <p class="zzSTDTitle1">
+               <b/>
+             </p>
+             <p class="zzSTDTitle1">&#160;</p>
+END
+
 HTML_HDR = <<~END
         <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
           <head/>
