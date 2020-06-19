@@ -37,7 +37,7 @@ RSpec.describe IsoDoc do
           <h2>Introduction Subsection</h2>
         </div>
       </div>
-      #{IEC_TITLE}
+      #{IEC_TITLE1}
     </div>
   </body>
 </html>
@@ -122,7 +122,7 @@ INPUT
   <h1 class='ForewordTitle'>FOREWORD</h1>
   <div class='boilerplate_legal'/>
 </div>
-      #{IEC_TITLE}
+      #{IEC_TITLE1}
       <div>
   <h1>1&#160; Normative references</h1>
   <p id='_'>There are no normative references in this document.</p>
@@ -141,7 +141,7 @@ OUTPUT
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
      <bibdata type='standard'>
-           <docidentifier type='iso'>IEC 60050-192 ED 1</docidentifier>
+           <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
            <docnumber>60050</docnumber>
     </bibdata>
     <sections>
@@ -198,7 +198,7 @@ INPUT
         <h1 class='ForewordTitle'>FOREWORD</h1>
         <div class='boilerplate_legal'/>
       </div>
-            #{IEC_TITLE}
+            #{IEC_TITLE1}
       <div id='_terms_and_definitions'>
         <h1>1&#160; Terms and definitions</h1>
         <br/>
@@ -286,7 +286,7 @@ end
     IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", false)
         <iso-standard xmlns="http://riboseinc.com/isoxml">
         <bibdata type='standard'>
-           <docidentifier type='iso'>IEC 60050-192 ED 1</docidentifier>
+           <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
            <docnumber>60050</docnumber>
     </bibdata>
     <sections>
@@ -312,9 +312,6 @@ end
       sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <div class='WordSection3'>
-         <p class='zzSTDTitle1'>INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-         <p class='zzSTDTitle1'>____________</p>
-         <p class='zzSTDTitle1'>&#xA0;</p>
          <p class='zzSTDTitle1'>
            <b/>
          </p>

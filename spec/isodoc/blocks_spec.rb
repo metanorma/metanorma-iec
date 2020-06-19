@@ -25,7 +25,7 @@ RSpec.describe IsoDoc::Iec do
                  <p id='_e94663cc-2473-4ccc-9a72-983a74d989f3'>Para 2.</p>
                </div>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
          </body>
        </html>
@@ -58,7 +58,7 @@ RSpec.describe IsoDoc::Iec do
                  <p id='_e94663cc-2473-4ccc-9a72-983a74d989f2'>Only use paddy or parboiled rice for the determination of husked rice yield.</p>
                </div>
              </div>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
          </body>
        </html>
@@ -148,7 +148,7 @@ RSpec.describe IsoDoc::Iec do
              <br clear='all' class='section'/>
            </p>
            <div class='WordSection3'>
-             #{IEC_TITLE}
+             #{IEC_TITLE1}
            </div>
            <br clear='all' style='page-break-before:left;mso-break-type:section-break'/>
            <div class='colophon'/>

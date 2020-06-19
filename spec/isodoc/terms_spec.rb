@@ -57,7 +57,7 @@ RSpec.describe IsoDoc do
         <h1 class="ForewordTitle">FOREWORD</h1>
         <div class="boilerplate_legal"/>
         </div>
-        #{IEC_TITLE}
+        #{IEC_TITLE1}
              <div id="_terms_and_definitions"><h1>1&#160; Terms and definitions</h1>
        <p class="TermNum" id="paddy1">1.1</p><p class="Terms" style="text-align:left;">paddy</p>
 

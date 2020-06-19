@@ -139,7 +139,7 @@ RSpec.describe IsoDoc::Iec do
           <a href='#zip_ffs'>[5]</a>
         </p>
       </div>
-      #{IEC_TITLE}
+      #{IEC_TITLE1}
       <div>
         <h1>1&#160; Normative references</h1>
         <p>
