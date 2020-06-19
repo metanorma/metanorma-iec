@@ -44,7 +44,7 @@ RSpec.describe IsoDoc::Iec do
       <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
-  <note format="text/plain" reference="1">ISO DATE: Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+  <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
   <extent type="part">
   <referenceFrom>all</referenceFrom>
   </extent>
@@ -178,7 +178,7 @@ RSpec.describe IsoDoc::Iec do
           <a href='http://www.icc.or.at'>http://www.icc.or.at</a>
           )
         </p>
-        <div id='' class='Note'>
+        <div class='Note'>
           <p>
             <span class='note_label'>NOTE</span>
             &#160; This is an annotation of ISO 20483:2013-2014
@@ -197,13 +197,13 @@ RSpec.describe IsoDoc::Iec do
           [2],
           <i>Instruments for analytical laboratory use</i>
         </p>
-        <div id='' class='Note'>
+        <div class='Note'>
           <p>
             <span class='note_label'>NOTE</span>
             &#160; This is an annotation of document ISSN.
           </p>
         </div>
-        <div id='' class='Note'>
+        <div class='Note'>
           <p>
             <span class='note_label'>NOTE</span>
             &#160; This is another annotation of document ISSN.

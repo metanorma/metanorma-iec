@@ -99,7 +99,7 @@ RSpec.describe Asciidoctor::Iec do
    <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
    <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
    <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-         <docidentifier type="iso">IEC/3NWIP 1000-1 ED 2</docidentifier>
+         <docidentifier type="ISO">IEC/3NWIP 1000-1 ED 2</docidentifier>
 <docnumber>1000</docnumber>
          <contributor>
            <role type="author"/>
@@ -190,7 +190,7 @@ RSpec.describe Asciidoctor::Iec do
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec">
        <bibdata type="standard">
-         <docidentifier type="iso">ISO/IEC/IETF/2CDTS 1000-1-1 ED 1</docidentifier>
+         <docidentifier type="ISO">ISO/IEC/IETF/2CDTS 1000-1-1 ED 1</docidentifier>
          <docidentifier type="iso-tc">2000</docidentifier>
          <docnumber>1000</docnumber>
          <contributor>
@@ -338,7 +338,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
     <iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC/FDIS 1000 ED 1</docidentifier>
+  <docidentifier type="ISO">IEC/FDIS 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -402,7 +402,7 @@ OUTPUT
     INPUT
 <iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC 1000 ED 1</docidentifier>
+  <docidentifier type="ISO">IEC 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -467,7 +467,7 @@ OUTPUT
     INPUT
 <iec-standard xmlns="https://www.metanorma.org/ns/iec">
 <bibdata type="standard">
-  <docidentifier type="iso">IEC 1000 ED 1</docidentifier>
+  <docidentifier type="ISO">IEC 1000 ED 1</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
