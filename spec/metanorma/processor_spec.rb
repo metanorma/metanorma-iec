@@ -35,7 +35,7 @@ RSpec.describe Metanorma::Iec::Processor do
 
   it "generates HTML from IsoDoc XML" do
     FileUtils.rm_f "test.xml"
-    processor.output(<<~"INPUT", "test.html", :html)
+    processor.output(<<~"INPUT", "test.xml", "test.html", :html)
                <iec-standard xmlns="http://riboseinc.com/isoxml">
        <sections>
        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>

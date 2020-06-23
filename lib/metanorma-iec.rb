@@ -4,6 +4,7 @@ require_relative "metanorma/iec/version"
 require "isodoc/iec/html_convert"
 require "isodoc/iec/word_convert"
 require "isodoc/iec/pdf_convert"
+require "isodoc/iec/presentation_xml_convert"
 require "isodoc/iec/metadata"
 
 if defined? Metanorma
