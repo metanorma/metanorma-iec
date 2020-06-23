@@ -1,11 +1,12 @@
 module IsoDoc
   module Iec
-    class Xref < IsoDoc::Iec::Xref
+    class Xref < IsoDoc::Iso::Xref
       def parse(docxml)
         id = docxml&.at(ns("//bibdata/docnumber"))&.text
         @is_iev = id == "60050"
         id = docxml&.at(ns("//bibdata/docidentifier[@type = 'ISO']"))&.text
         m = /60050-(\d+)/.match(id) and @iev_part = m[1]
+        super
       end
 
       def introduction_names(clause)
@@ -32,6 +33,12 @@ module IsoDoc
             section_names1(c, "#{num}-#{num2}", 3)
           end
         end
+      end
+
+      def annex_name_lbl(clause, num)
+        obl = l10n("(#{@labels["inform_annex"]})")
+        obl = l10n("(#{@labels["norm_annex"]})") if clause["obligation"] == "normative"
+        l10n("<b>#{@labels["annex"]} #{num}</b><br/><br/>#{obl}")
       end
     end
   end
