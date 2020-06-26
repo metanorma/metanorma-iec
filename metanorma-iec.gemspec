@@ -28,8 +28,8 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.add_dependency "ruby-jing"
-  spec.add_dependency "isodoc", "~> 1.0.0"
-  spec.add_dependency "metanorma-iso", "~> 1.3.0"
+  spec.add_dependency "isodoc", "~> 1.1.0"
+  spec.add_dependency "metanorma-iso", "~> 1.4.0"
 
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
