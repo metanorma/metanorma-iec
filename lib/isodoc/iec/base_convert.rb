@@ -8,6 +8,10 @@ module IsoDoc
         @meta = Metadata.new(lang, script, labels)
       end
 
+      def xref_init(lang, script, klass, labels, options)
+        @xrefs = Xref.new(lang, script, klass, labels, options)
+      end
+
       def boilerplate(node, out)
         # processed in foreword instead
       end
@@ -71,17 +75,9 @@ module IsoDoc
         super.merge(y)
       end
 
-      def annex_name_lbl(clause, num)
-        obl = l10n("(#{@inform_annex_lbl})")
-        obl = l10n("(#{@norm_annex_lbl})") if clause["obligation"] == "normative"
-        l10n("<b>#{@annex_lbl} #{num}</b><br/><br/>#{obl}")
-      end
-
       def convert1(docxml, filename, dir)
         id = docxml&.at(ns("//bibdata/docnumber"))&.text
         @is_iev = id == "60050"
-        id = docxml&.at(ns("//bibdata/docidentifier[@type = 'ISO']"))&.text
-        m = /60050-(\d+)/.match(id) and @iev_part = m[1]
         super
       end
 
@@ -96,10 +92,6 @@ module IsoDoc
             parse(e, div) unless e.name == "title"
           end
         end
-      end
-
-      def introduction_names(clause)
-        return super unless @is_iev
       end
 
       def bibliography(isoxml, out)
@@ -120,34 +112,12 @@ module IsoDoc
         out.div **attr_code(id: node["id"]) do |div|
           out.p(**{ class: "zzSTDTitle2" }) do |p|
             p.b do |b|
-              b << "#{anchor(node['id'], :label)} "
+              b << "#{@xrefs.anchor(node['id'], :label)} "
               node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
             end
           end
           node.children.reject { |c1| c1.name == "title" }.each do |c1|
             parse(c1, div)
-          end
-        end
-      end
-
-      def initial_anchor_names(d)
-        super
-        return unless @is_iev
-        terms_iev_names(d)
-        middle_section_asset_names(d)
-        termnote_anchor_names(d)
-        termexample_anchor_names(d)
-      end
-
-      def terms_iev_names(d)
-        d.xpath(ns("//sections/clause/terms")).each_with_index do |t, i|
-          num = "#{@iev_part}-%02d" % [i+1]
-          @anchors[t["id"]] =
-            { label: num, xref: l10n("#{@labels["section_iev"]}-#{num}"), level: 2,
-              type: "clause" }
-          t.xpath(ns("./term")).each_with_index do |c, i|
-            num2 = "%02d" % [i+1]
-            section_names1(c, "#{num}-#{num2}", 3)
           end
         end
       end
