@@ -1,6 +1,7 @@
 require "isodoc"
 require "metanorma-iso"
 require_relative "base_convert"
+require_relative "init"
 
 module IsoDoc
   module Iec
@@ -181,6 +182,7 @@ module IsoDoc
       end
 
       include BaseConvert
+      include Init
     end
   end
 end
