@@ -172,7 +172,7 @@ module IsoDoc
           div.p **attr_code(class: "formula") do |p|
             insert_tab(div, 1)
             parse(node.at(ns("./stem")), div)
-            lbl = @xrefs.anchor(node['id'], :label, false)
+            lbl = node&.at(ns("./name"))&.text
             unless lbl.nil?
               insert_tab(div, 1)
               div << "(#{lbl})"
