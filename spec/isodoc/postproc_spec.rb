@@ -288,8 +288,7 @@ RSpec.describe IsoDoc do
   <br/>
   <b/>
 </h1>
-               <p class="Sourcecode" style='page-break-after:avoid;'><a name="A" id="A"></a>puts "Hello, world."</p>
-               <p class='SourceTitle' style='text-align:center;'>Figure A.1</p>
+               <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
                <p class="TableTitle" style="text-align:center;">Table A.1</p>
                           <div align='center' class='table_container'>
              <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
