@@ -243,10 +243,10 @@ RSpec.describe IsoDoc do
   <b/>
 </h1>
                <div class="example"><a name="_63112cbc-cde0-435f-9553-e0b8c4f5851c" id="_63112cbc-cde0-435f-9553-e0b8c4f5851c"></a>
-                 <p class="example"><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#xA0; </span>'1M', '01M', and '0001M' all describe the calendar month January.</p>
+                 <p class="example"><span style="mso-tab-count:1">&#xA0; </span>'1M', '01M', and '0001M' all describe the calendar month January.</p>
                </div>
                <div class="example"><a name="_63112cbc-cde0-435f-9553-e0b8c4f5851d" id="_63112cbc-cde0-435f-9553-e0b8c4f5851d"></a>
-                 <p class="example"><span class="example_label">EXAMPLE  2</span><span style="mso-tab-count:1">&#xA0; </span>'2M', '02M', and '0002M' all describe the calendar month February.</p>
+                 <p class="example"><span style="mso-tab-count:1">&#xA0; </span>'2M', '02M', and '0002M' all describe the calendar month February.</p>
                </div>
              </div>
            </div>
@@ -289,7 +289,6 @@ RSpec.describe IsoDoc do
   <b/>
 </h1>
                <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
-               <p class="TableTitle" style="text-align:center;">Table A.1</p>
                           <div align='center' class='table_container'>
              <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
               <a name='samplecode' id='samplecode'/>

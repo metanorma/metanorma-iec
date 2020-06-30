@@ -80,6 +80,7 @@ RSpec.describe IsoDoc::Iec do
   </dd>
 </dl>
     <note id="_83083c7a-6c85-43db-a9fa-4d8edd0c9fc0">
+    <name>NOTE</name>
   <p id="_511aaa98-4116-42af-8e5b-c87cdf5bfdc8">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
 </note>
     </formula>
