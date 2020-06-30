@@ -75,6 +75,7 @@ RSpec.describe IsoDoc::Iec do
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
+    <name>EXAMPLE</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -101,9 +102,11 @@ RSpec.describe IsoDoc::Iec do
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
+    <name>EXAMPLE 1</name>
   <p>Hello</p>
 </example>
     <example id="samplecode2">
+    <name>EXAMPLE 2</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -132,6 +135,7 @@ RSpec.describe IsoDoc::Iec do
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
+    <name>EXAMPLE</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -170,9 +174,11 @@ RSpec.describe IsoDoc::Iec do
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <preface><foreword>
     <example id="samplecode">
+    <name>EXAMPLE 1</name>
   <p>Hello</p>
 </example>
     <example id="samplecode2">
+    <name>EXAMPLE 2</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
