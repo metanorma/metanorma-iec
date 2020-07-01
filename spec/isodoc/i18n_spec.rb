@@ -454,7 +454,7 @@ RSpec.describe IsoDoc do
        </introduction></preface><sections>
        <clause id="D" obligation="normative">
          <title>Scope</title>
-         <p id="E"><eref type="inline" bibitemid="ISO712"><locality type="table"><referenceFrom>1</referenceFrom><referenceTo>1</referenceTo></locality></eref></p>
+         <p id="E"><eref type="inline" bibitemid="ISO712"/></p>
        </clause>
 
        <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
@@ -533,7 +533,7 @@ RSpec.describe IsoDoc do
              <div id="D">
                <h1>1&#160; &#33539;&#22260;</h1>
                <p id="E">
-                 <a href="#ISO712">ISO 712&#12289;&#31532;1&#8211;<referenceto>1</referenceto>&#34920;</a>
+                 <a href="#ISO712"/>
                </p>
              </div>
              <div>
