@@ -27,6 +27,12 @@ module IsoDoc
             end
         super.merge(y)
       end
+
+      def convert1(docxml, filename, dir)
+        id = docxml&.at(ns("//bibdata/docnumber"))&.text
+        @is_iev = id == "60050"
+        super
+      end
     end
   end
 end

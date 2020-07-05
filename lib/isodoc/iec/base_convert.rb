@@ -52,12 +52,6 @@ module IsoDoc
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
-      def convert1(docxml, filename, dir)
-        id = docxml&.at(ns("//bibdata/docnumber"))&.text
-        @is_iev = id == "60050"
-        super
-      end
-
       def introduction(isoxml, out)
         return super unless @is_iev
         f = isoxml.at(ns("//introduction")) || return
@@ -89,7 +83,6 @@ module IsoDoc
         out.div **attr_code(id: node["id"]) do |div|
           out.p(**{ class: "zzSTDTitle2" }) do |p|
             p.b do |b|
-              b << "#{@xrefs.anchor(node['id'], :label)} "
               node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
             end
           end
@@ -141,10 +134,6 @@ module IsoDoc
           node.children.each { |c| parse(c, p) }
           term_suffix(node, p)
         end
-      end
-
-      def clause_parse_title(node, div, c1, out)
-        IsoDoc::Common.instance_method(:clause_parse_title).bind(self).call(node, div, c1, out)
       end
 
       def biblio_list(f, div, biblio)

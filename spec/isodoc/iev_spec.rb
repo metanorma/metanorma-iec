@@ -2,7 +2,7 @@ require "spec_helper"
   
 RSpec.describe IsoDoc do
   it "processes introductions under IEV" do
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
       <docidentifier type="iso">IEC/PWI 60050-871 ED 2</docidentifier>
@@ -20,6 +20,30 @@ RSpec.describe IsoDoc do
        </introduction></preface><sections/>
        </iso-standard>
        INPUT
+
+       presxml = <<~OUTPUT
+       <iso-standard xmlns='http://riboseinc.com/isoxml'>
+  <bibdata>
+    <docidentifier type='iso'>IEC/PWI 60050-871 ED 2</docidentifier>
+    <docnumber>60050</docnumber>
+  </bibdata>
+  <preface>
+    <foreword obligation='informative'>
+      <title>Foreword</title>
+      <p id='A'>This is a preamble</p>
+    </foreword>
+    <introduction id='B' obligation='informative'>
+      <title depth='1'>Introduction</title>
+      <clause id='C' inline-header='false' obligation='informative'>
+        <title depth='2'>Introduction Subsection</title>
+      </clause>
+    </introduction>
+  </preface>
+  <sections/>
+</iso-standard>
+OUTPUT
+
+       html = <<~OUTPUT
        #{HTML_HDR}
       <div>
         <h1 class='ForewordTitle'>FOREWORD</h1>
@@ -42,10 +66,12 @@ RSpec.describe IsoDoc do
   </body>
 </html>
        OUTPUT
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
   end
 
   it "processes bibliographies under IEV" do
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    input = <<~INPUT
  <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
          <bibdata type='standard'>
            <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
@@ -93,7 +119,7 @@ RSpec.describe IsoDoc do
          </bibdata>
          <sections> </sections>
          <bibliography>
-           <references id='_' obligation='informative' normative="true">
+           <references obligation='informative' normative="true" id="X">
              <title>Normative References</title>
              <p id='_'>There are no normative references in this document.</p>
              <bibitem id='A'>
@@ -116,7 +142,79 @@ RSpec.describe IsoDoc do
 
          </bibliography>
        </iec-standard>
-INPUT
+       INPUT
+       presxml = <<~OUTPUT
+       <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+         <bibdata type='standard'>
+           <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
+           <docnumber>60050</docnumber>
+           <contributor>
+             <role type='author'/>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <abbreviation>IEC</abbreviation>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <abbreviation>IEC</abbreviation>
+             </organization>
+           </contributor>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>60</stage>
+             <substage>60</substage>
+           </status>
+           <copyright>
+             <from>2020</from>
+             <owner>
+               <organization>
+                 <name>International Electrotechnical Commission</name>
+                 <abbreviation>IEC</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>article</doctype>
+             <editorialgroup>
+               <technical-committee/>
+               <subcommittee/>
+               <workgroup/>
+             </editorialgroup>
+             <structuredidentifier>
+               <project-number>IEC 60050</project-number>
+             </structuredidentifier>
+           </ext>
+         </bibdata>
+         <sections> </sections>
+         <bibliography>
+           <references obligation='informative' normative='true' id="X">
+           <title depth='1'>1<tab/>Normative References</title>
+             <p id='_'>There are no normative references in this document.</p>
+             <bibitem id='A'>
+               <formattedref format='application/x-isodoc+xml'>
+                 <em>TITLE</em>
+               </formattedref>
+               <docidentifier>B</docidentifier>
+             </bibitem>
+           </references>
+           <references id='_' obligation='informative' normative='false'>
+             <title depth='1'>Bibliography</title>
+             <p id='_'>There are no normative references in this document.</p>
+             <bibitem id='A'>
+               <formattedref format='application/x-isodoc+xml'>
+                 <em>TITLE</em>
+               </formattedref>
+               <docidentifier>B</docidentifier>
+             </bibitem>
+           </references>
+         </bibliography>
+       </iec-standard>
+       OUTPUT
+       html = <<~OUTPUT
  #{HTML_HDR}
  <div id=''>
   <h1 class='ForewordTitle'>FOREWORD</h1>
@@ -124,7 +222,7 @@ INPUT
 </div>
       #{IEC_TITLE1}
       <div>
-  <h1>1&#160; Normative references</h1>
+  <h1>1&#160; Normative References</h1>
   <p id='_'>There are no normative references in this document.</p>
   <p id='A' class='NormRef'>
   B,
@@ -135,10 +233,12 @@ INPUT
   </body>
 </html>
 OUTPUT
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
   end
 
     it "processes IEV terms" do
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+      input = <<~INPUT
     <iso-standard xmlns="http://riboseinc.com/isoxml">
      <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
@@ -149,6 +249,65 @@ OUTPUT
     <terms id="_general" obligation="normative"><title>General</title>
 
 <term id="paddy1"><preferred>paddy</preferred>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+<termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
+  <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
+  <ul>
+  <li>A</li>
+  </ul>
+</termexample>
+<termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f894">
+  <ul>
+  <li>A</li>
+  </ul>
+</termexample>
+
+<termsource status="modified">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
+    <modification>
+    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+  </modification>
+</termsource></term>
+
+<term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<admitted>rough rice</admitted>
+<deprecates>cargo rice</deprecates>
+<domain>rice</domain>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+<termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
+  <ul>
+  <li>A</li>
+  </ul>
+</termexample>
+<termnote id="_671a1994-4783-40d0-bc81-987d06ffb74e">
+  <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+</termnote>
+<termnote id="_671a1994-4783-40d0-bc81-987d06ffb74f">
+<ul><li>A</li></ul>
+  <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+</termnote>
+<termsource status="identical">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
+</termsource></term>
+</terms>
+</clause>
+</sections>
+</iso-standard>
+INPUT
+
+presxml = <<~INPUT
+    <iso-standard xmlns="http://riboseinc.com/isoxml">
+     <bibdata type='standard'>
+           <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
+           <docnumber>60050</docnumber>
+    </bibdata>
+    <sections>
+    <clause id="_terms_and_definitions" obligation="normative"><title depth="1">1<tab/>Terms and definitions</title>
+    <terms id="_general" obligation="normative"><title>192-01 General</title>
+
+<term id="paddy1">
+<name>192-01-01</name>
+<preferred>paddy</preferred>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
 <name>EXAMPLE 1</name>
@@ -171,7 +330,9 @@ OUTPUT
   </modification>
 </termsource></term>
 
-<term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<term id="paddy">
+<name>192-01-02</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
 <domain>rice</domain>
@@ -195,9 +356,12 @@ OUTPUT
   <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
 </termsource></term>
 </terms>
+</clause>
 </sections>
 </iso-standard>
 INPUT
+
+html = <<~OUTPUT
  #{HTML_HDR}
       <div id=''>
         <h1 class='ForewordTitle'>FOREWORD</h1>
@@ -283,12 +447,14 @@ INPUT
   </body>
 </html>
     OUTPUT
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
 end
 
      it "populates Word template with terms reference labels" do
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.html"
-    IsoDoc::Iec::WordConvert.new({}).convert("test", <<~"INPUT", false)
+    input = <<~INPUT
         <iso-standard xmlns="http://riboseinc.com/isoxml">
         <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
@@ -311,8 +477,46 @@ end
 </clause>
 </sections>
 </iso-standard>
-
     INPUT
+    presxml = <<~OUTPUT
+    <iso-standard xmlns='http://riboseinc.com/isoxml'>
+  <bibdata type='standard'>
+    <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
+    <docnumber>60050</docnumber>
+  </bibdata>
+  <sections>
+    <clause id='_terms_and_definitions' obligation='normative'>
+      <title depth='1'>1<tab/>Terms and definitions</title>
+      <terms id='_general' obligation='normative'>
+        <title>192-01 General</title>
+        <term id='paddy1'>
+          <name>192-01-01</name>
+          <preferred>paddy</preferred>
+          <definition>
+            <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
+          </definition>
+          <termsource status='modified'>
+            <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
+              <locality type='clause'>
+                <referenceFrom>3.1</referenceFrom>
+              </locality>
+              ISO 7301:2011, 3.1
+            </origin>
+            <modification>
+              <p id='_e73a417d-ad39-417d-a4c8-20e4e2529489'>
+                The term "cargo rice" is shown as deprecated, and Note 1 to
+                entry is not included here
+              </p>
+            </modification>
+          </termsource>
+        </term>
+      </terms>
+    </clause>
+  </sections>
+</iso-standard>
+OUTPUT
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    IsoDoc::Iec::WordConvert.new({}).convert("test", presxml, false)
     word = File.read("test.doc").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
       sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")

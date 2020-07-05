@@ -103,9 +103,11 @@ RSpec.describe IsoDoc do
     IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("test", <<~"INPUT", false)
         <iso-standard xmlns="http://riboseinc.com/isoxml">
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1<tab/>Terms and Definitions</title>
 
-<term id="paddy1"><preferred>paddy</preferred>
+<term id="paddy1">
+<name>1.1</name>
+<preferred>paddy</preferred>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
   <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
@@ -156,9 +158,11 @@ RSpec.describe IsoDoc do
     IsoDoc::Iec::HtmlConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("test", <<~"INPUT", false)
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1<tab/>Terms and Definitions</title>
 
-<term id="paddy1"><preferred>paddy</preferred>
+<term id="paddy1">
+<name>1.1</name>
+<preferred>paddy</preferred>
 <domain>rice</domain>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
@@ -180,7 +184,9 @@ RSpec.describe IsoDoc do
   </modification>
 </termsource></term>
 
-<term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<term id="paddy">
+<name>1.2</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
@@ -233,15 +239,6 @@ RSpec.describe IsoDoc do
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div class="Section3"><a name="P" id="P"></a>
-             <h1 class='Annex'>
-  <b>Annex A</b>
-  <br/>
-  <br/>
-  (normative)
-  <br/>
-  <br/>
-  <b/>
-</h1>
                <div class="example"><a name="_63112cbc-cde0-435f-9553-e0b8c4f5851c" id="_63112cbc-cde0-435f-9553-e0b8c4f5851c"></a>
                  <p class="example"><span style="mso-tab-count:1">&#xA0; </span>'1M', '01M', and '0001M' all describe the calendar month January.</p>
                </div>
@@ -279,15 +276,6 @@ RSpec.describe IsoDoc do
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div class="Section3"><a name="P" id="P"></a>
-             <h1 class='Annex'>
-  <b>Annex A</b>
-  <br/>
-  <br/>
-  (normative)
-  <br/>
-  <br/>
-  <b/>
-</h1>
                <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
                           <div align='center' class='table_container'>
              <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
