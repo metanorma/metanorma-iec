@@ -60,7 +60,7 @@ RSpec.describe Asciidoctor::Iec do
          <title>Introduction Subsection</title>
        </clause>
        </introduction></preface><sections>
-       <clause id="_" obligation="normative">
+       <clause id="_" obligation="normative" type="scope">
          <title>Scope</title>
          <p id="_">Text</p>
        </clause>
@@ -98,8 +98,8 @@ RSpec.describe Asciidoctor::Iec do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="_"><title>Symbols and Abbreviated Terms</title></definitions></clause>
-       <definitions id="_"><title>Symbols and Abbreviated Terms</title></definitions>
+       <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions></clause>
+       <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions>
        <clause id="_" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="_" inline-header="false" obligation="normative">
          <title>Introduction</title>
        </clause>
@@ -200,7 +200,7 @@ RSpec.describe Asciidoctor::Iec do
        </introduction>
        </preface>
        <sections>
-       <clause id="_" obligation="normative">
+       <clause id="_" obligation="normative" type="scope">
          <title>Scope</title>
          <p id="_">Text</p>
        </clause>
@@ -240,11 +240,11 @@ RSpec.describe Asciidoctor::Iec do
                  <preferred>Term2</preferred>
                </term>
              </terms>
-             <definitions id='_'>
+             <definitions id='_' obligation="normative">
                <title>Σύμβολα και Συντομογραφίες</title>
              </definitions>
            </clause>
-           <definitions id='_'>
+           <definitions id='_' obligation="normative">
              <title>Σύμβολα και Συντομογραφίες</title>
            </definitions>
            <clause id='_' inline-header='false' obligation='normative'>

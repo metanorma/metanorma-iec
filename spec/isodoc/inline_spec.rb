@@ -149,50 +149,6 @@ RSpec.describe IsoDoc do
     OUTPUT
   end
 
-  it "processes eref types" do
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
-    <preface><foreword>
-    <p>
-    <eref type="footnote" bibitemid="ISO712" citeas="ISO 712">A</stem>
-    <eref type="inline" bibitemid="ISO712" citeas="ISO 712">A</stem>
-    </p>
-    </foreword></preface>
-    <bibliography><references id="_normative_references" obligation="informative"  normative="true"><title>Normative References</title>
-<bibitem id="ISO712" type="standard">
-  <title format="text/plain">Cereals and cereal products</title>
-  <docidentifier>ISO 712</docidentifier>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <abbreviation>ISO</abbreviation>
-    </organization>
-  </contributor>
-</bibitem>
-    </references>
-    </bibliography>
-    </iso-standard>
-    INPUT
-    #{HTML_HDR}
-               <div>
-                 <h1 class="ForewordTitle">FOREWORD</h1>
-                 <div class="boilerplate_legal"/>
-                 <p>
-           <sup><a href="#ISO712">A</a></sup>
-           <a href="#ISO712">A</a>
-           </p>
-               </div>
-               #{IEC_TITLE1}
-               <div>
-                 <h1>1&#160; Normative references</h1>
-                 <p id="ISO712" class="NormRef">ISO 712, <i> Cereals and cereal products</i></p>
-               </div>
-             </div>
-           </body>
-       </html>
-    OUTPUT
-  end
-
   it "processes eref content" do
 expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -306,7 +262,11 @@ expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INP
          </preface>
          <bibliography>
            <references id='_normative_references' obligation='informative' normative='true'>
-             <title>Normative References</title>
+           <title depth='1'>
+  1
+  <tab/>
+  Normative References
+</title>
              <bibitem id='ISO712' type='standard'>
                <title format='text/plain'>Cereals and cereal products</title>
                <docidentifier>ISO 712</docidentifier>
