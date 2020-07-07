@@ -5,8 +5,7 @@ module IsoDoc
   module Iec
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
       def clause(docxml)
-        docxml.xpath(ns("//clause[not(ancestor::boilerplate)]"\
-                        "[not(ancestor::annex)] | "\
+        docxml.xpath(ns("//clause[not(ancestor::annex)] | "\
                         "//definitions | //references | "\
                         "//preface/introduction[clause]")).
         each do |f|
@@ -19,7 +18,7 @@ module IsoDoc
 
       def termclause1(f)
         return clause1(f) unless @is_iev
-        return if @suppressheadingnumbers
+        return if @suppressheadingnumbers || f["unnumbered"]
         lbl = @xrefs.anchor(f['id'], :label, true) or return
         prefix_name(f, " ", "#{lbl}#{clausedelim}", "title")
       end
