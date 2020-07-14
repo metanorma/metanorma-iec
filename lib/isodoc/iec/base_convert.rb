@@ -15,7 +15,7 @@ module IsoDoc
         iec_orgname(out)
         middle_title(out)
         out.div **attr_code(id: f ? f["id"] : "") do |s|
-          s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @foreword_lbl }
+          s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @i18n.foreword }
           @meta.get[:doctype] == "Amendment" or
             s.div **attr_code(class: "boilerplate_legal") do |s1|
             b&.elements&.each { |e| parse(e, s1) }
@@ -25,7 +25,7 @@ module IsoDoc
       end
 
       def iec_orgname(out)
-        out.p(**{ class: "zzSTDTitle1" }) { |p| p << @labels["IEC"] }
+        out.p(**{ class: "zzSTDTitle1" }) { |p| p << @i18n.get["IEC"] }
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "____________" }
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
@@ -58,7 +58,7 @@ module IsoDoc
         title_attr = { class: "IntroTitle" }
         page_break(out)
         out.div **{ class: "Section3", id: f["id"] } do |div|
-          clause_name(nil, @labels["introduction_iev"], div, title_attr)
+          clause_name(nil, @i18n.get["introduction_iev"], div, title_attr)
           f.elements.each do |e|
             parse(e, div) unless e.name == "title"
           end
@@ -96,10 +96,10 @@ module IsoDoc
         return super unless @is_iev
         docxml.
           gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, "; ").
-          gsub(/\[TERMREF\]\s*/, l10n("#{@source_lbl}: ")).
-          gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@modified_lbl} [/TERMREF]")).
+          gsub(/\[TERMREF\]\s*/, l10n("#{@i18n.source}: ")).
+          gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@i18n.modified} [/TERMREF]")).
           gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
-          gsub(/\s*\[MODIFICATION\]/, l10n(", #{@modified_lbl} &mdash; "))
+          gsub(/\s*\[MODIFICATION\]/, l10n(", #{@i18n.modified} &mdash; "))
       end
 
       def set_termdomain(termdomain)
@@ -115,7 +115,7 @@ module IsoDoc
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "DeprecatedTerms", style:"text-align:left;" } do |p|
-          p << l10n("#{@deprecated_lbl}: ")
+          p << l10n("#{@i18n.deprecated}: ")
           node.children.each { |c| parse(c, p) }
           term_suffix(node, p)
         end

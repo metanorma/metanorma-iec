@@ -633,7 +633,7 @@ RSpec.describe IsoDoc do
              </div>
              <br/>
              <div>
-               <h1 class="Section3">Bibliographie</h1>
+               <h1 class="Section3">Bibliography</h1>
                <div>
                  <h2 class="Section3">Bibliography Subsection</h2>
                </div>
