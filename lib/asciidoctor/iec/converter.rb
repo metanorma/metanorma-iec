@@ -38,20 +38,6 @@ module Asciidoctor
                         File.join(File.dirname(__FILE__), "iec.rng"))
       end
 
-      def load_yaml(lang, script)
-        y = if @i18nyaml then YAML.load_file(@i18nyaml)
-            elsif lang == "en"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
-            elsif lang == "fr"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-fr.yaml"))
-            elsif lang == "zh" && script == "Hans"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
-            else
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
-            end
-        super.merge(y)
-      end
-
       def html_converter(node)
         node.nil? ? IsoDoc::Iec::HtmlConvert.new({}) :
           IsoDoc::Iec::HtmlConvert.new(html_extract_attributes(node))
@@ -75,7 +61,7 @@ module Asciidoctor
       def norm_ref_preface(f)
         return super unless @is_iev
         f.at("./title").next =
-          "<p>#{@norm_empty_pref}</p>"
+          "<p>#{@i18n.norm_empty_pref}</p>"
       end
 
       def term_defs_boilerplate(div, source, term, preface, isodoc)
