@@ -7,5 +7,5 @@ source "https://rubygems.org"
 gem 'isodoc',
     git: 'https://github.com/metanorma/isodoc.git',
     branch: 'feature/sassc-gem-dependecey-removal',
-    ref: '536191fb46f9334e749bb56579901d784b25b751'
+    ref: '963c80b0c0c4f223fb461d159fea5a9a2e46be3f'
 gemspec
