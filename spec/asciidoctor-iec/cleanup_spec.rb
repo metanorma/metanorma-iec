@@ -121,7 +121,7 @@ RSpec.describe Asciidoctor::Iec do
        #{BLANK_HDR}
        <preface>
        <foreword id="_" obligation="informative">
-         <title>Foreword</title>
+         <title>FOREWORD</title>
          <p id="_">
          <eref type="inline" bibitemid="iso216" citeas="ISO 216"/>
        </p>
@@ -189,7 +189,7 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
       #{BLANK_HDR}
       <sections></sections>
-      <bibliography><references id="_" obligation="informative" normative="true"><title>Normative References</title>
+      <bibliography><references id="_" obligation="informative" normative="true"><title>Normative references</title>
       <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
              <bibitem id="iso216" type="standard">
          <title format="text/plain">Reference</title>

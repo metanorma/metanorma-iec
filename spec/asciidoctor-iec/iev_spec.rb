@@ -68,7 +68,7 @@ RSpec.describe Asciidoctor::Iec do
          <sections> </sections>
          <bibliography>
            <references id='_' obligation='informative' normative="true">
-             <title>Normative References</title>
+             <title>Normative references</title>
              <p id='_'>There are no normative references in this document.</p>
              <bibitem id='A'>
                <formattedref format='application/x-isodoc+xml'>
@@ -158,4 +158,77 @@ INPUT
 
 OUTPUT
   end
+
+      it "uses IEV introduction title" do
+     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docnumber: 60050
+
+      == Introduction
+
+      Text
+    INPUT
+    <?xml version='1.0' encoding='UTF-8'?>
+    <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+         <bibdata type='standard'>
+           <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
+           <docnumber>60050</docnumber>
+           <contributor>
+             <role type='author'/>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <abbreviation>IEC</abbreviation>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <abbreviation>IEC</abbreviation>
+             </organization>
+           </contributor>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage abbreviation='PPUB'>60</stage>
+             <substage abbreviation='PPUB'>60</substage>
+           </status>
+           <copyright>
+             <from>2020</from>
+             <owner>
+               <organization>
+                 <name>International Electrotechnical Commission</name>
+                 <abbreviation>IEC</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>article</doctype>
+             <editorialgroup>
+               <technical-committee/>
+               <subcommittee/>
+               <workgroup/>
+             </editorialgroup>
+             <structuredidentifier>
+               <project-number>IEC 60050</project-number>
+             </structuredidentifier>
+             <stagename>International standard</stagename>
+           </ext>
+         </bibdata>
+         #{BOILERPLATE}
+         <preface>
+           <introduction id='_' obligation='informative'>
+             <title>INTRODUCTION&lt;br/&gt;Principles and rules followed</title>
+             <p id='_'>Text</p>
+           </introduction>
+         </preface>
+         <sections> </sections>
+       </iec-standard>
+OUTPUT
+      end
 end

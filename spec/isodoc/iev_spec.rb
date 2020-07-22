@@ -53,9 +53,7 @@ OUTPUT
       <br/>
       <div class='Section3' id='B'>
         <h1 class='IntroTitle'>
-          INTRODUCTION
-          <br/>
-          Principles and rules followed
+          Introduction
         </h1>
         <div id='C'>
           <h2>Introduction Subsection</h2>

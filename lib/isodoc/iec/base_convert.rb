@@ -52,6 +52,7 @@ module IsoDoc
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
+=begin
       def introduction(isoxml, out)
         return super unless @is_iev
         f = isoxml.at(ns("//introduction")) || return
@@ -64,6 +65,7 @@ module IsoDoc
           end
         end
       end
+=end
 
       def bibliography(isoxml, out)
         return super unless @is_iev
