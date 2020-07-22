@@ -70,6 +70,11 @@ module Asciidoctor
 
       def sts_converter(node)
       end
+
+      def sections_names_cleanup(x)
+        super
+        @is_iev and replace_title(x, "//introduction", @i18n&.introduction_iev)
+      end
     end
   end
 end

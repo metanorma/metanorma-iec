@@ -54,13 +54,14 @@ RSpec.describe Asciidoctor::Iec do
     INPUT
             #{BLANK_HDR}
        <preface><foreword id="_" obligation="informative">
-         <title>Foreword</title>
+         <title>FOREWORD</title>
          <p id="_">Text</p>
-       </foreword><introduction id="_" obligation="informative"><title>Introduction</title><clause id="_" inline-header="false" obligation="informative">
+       </foreword><introduction id="_" obligation="informative">
+<title>INTRODUCTION</title><clause id="_" inline-header="false" obligation="informative">
          <title>Introduction Subsection</title>
        </clause>
        </introduction></preface><sections>
-       <clause id="_" obligation="normative" type="scope">
+       <clause id="_" obligation="normative" type="scope" inline-header='false'>
          <title>Scope</title>
          <p id="_">Text</p>
        </clause>
@@ -98,8 +99,8 @@ RSpec.describe Asciidoctor::Iec do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions></clause>
-       <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions>
+       <definitions id="_" obligation="normative"><title>Symbols and abbreviated terms</title></definitions></clause>
+       <definitions id="_" obligation="normative"><title>Symbols and abbreviated terms</title></definitions>
        <clause id="_" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="_" inline-header="false" obligation="normative">
          <title>Introduction</title>
        </clause>
@@ -119,7 +120,7 @@ RSpec.describe Asciidoctor::Iec do
        <appendix id="_" inline-header="false" obligation="normative">
           <title>Appendix 1</title>
        </appendix></annex><bibliography><references id="_" obligation="informative" normative="true">
-         <title>Normative References</title><p id="_">There are no normative references in this document.</p>
+         <title>Normative references</title><p id="_">There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative" normative="false">
@@ -191,16 +192,17 @@ RSpec.describe Asciidoctor::Iec do
             #{BLANK_HDR}
        <preface>     
        <foreword id="_" obligation="informative">
-         <title>Foreword</title>
+         <title>FOREWORD</title>
          <p id="_">Text</p>
        </foreword>
-       <introduction id="_" obligation="informative"><title>Introduction</title><clause id="_" inline-header="false" obligation="informative">
+       <introduction id="_" obligation="informative">
+<title>INTRODUCTION</title><clause id="_" inline-header="false" obligation="informative">
          <title>Introduction Subsection</title>
        </clause>
        </introduction>
        </preface>
        <sections>
-       <clause id="_" obligation="normative" type="scope">
+       <clause id="_" obligation="normative" type="scope" inline-header='false'>
          <title>Scope</title>
          <p id="_">Text</p>
        </clause>
@@ -214,7 +216,7 @@ RSpec.describe Asciidoctor::Iec do
        </term>
        </terms>
        <clause id='_' obligation='normative'>
-             <title>Terms and definitions</title>
+             <title>Terms, definitions, symbols and abbreviated terms</title>
              <terms id='_' obligation='normative'>
                <title>Normal Terms</title>
                 <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
@@ -241,11 +243,11 @@ RSpec.describe Asciidoctor::Iec do
                </term>
              </terms>
              <definitions id='_' obligation="normative">
-               <title>Σύμβολα και Συντομογραφίες</title>
+               <title>Symbols and abbreviated terms</title>
              </definitions>
            </clause>
            <definitions id='_' obligation="normative">
-             <title>Σύμβολα και Συντομογραφίες</title>
+             <title>Symbols and abbreviated terms</title>
            </definitions>
            <clause id='_' inline-header='false' obligation='normative'>
              <title>Clause 4</title>
@@ -268,7 +270,7 @@ RSpec.describe Asciidoctor::Iec do
          </annex>
          <bibliography>
            <references id='_' obligation='informative' normative="true">
-             <title>Normative References</title>
+             <title>Normative references</title>
              <p id="_">There are no normative references in this document.</p>
            </references>
            <clause id='_' obligation='informative'>

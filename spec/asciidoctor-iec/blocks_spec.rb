@@ -265,7 +265,7 @@ RSpec.describe Asciidoctor::Iec do
       INPUT
       #{BLANK_HDR}
              <preface><foreword id="_" obligation="informative">
-         <title>Foreword</title>
+         <title>FOREWORD</title>
          <p id="_">This is a preamble</p>
        </foreword></preface><sections>
        <clause id="_" inline-header="false" obligation="normative">
