@@ -112,7 +112,7 @@ RSpec.describe IsoDoc do
          </clause></clause>
 
          </sections><annex id="P" inline-header="false" obligation="normative">
-           <title><strong>Annex A</strong><br/><br/>(normative)<br/><br/><strong>Annex</strong></title>
+           <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
            <clause id="Q" inline-header="false" obligation="normative">
            <title depth="2">A.1<tab/>Annex A.1</title>
            <clause id="Q1" inline-header="false" obligation="normative">
@@ -199,7 +199,7 @@ RSpec.describe IsoDoc do
                 </div>
                 <br/>
                 <div id="P" class="Section3">
-                  <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
+                  <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
                   <div id="Q">
            <h2>A.1&#160; Annex A.1</h2>
            <div id="Q1">
@@ -284,7 +284,7 @@ OUTPUT
                </div>
                <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
                <div id="P" class="Section3">
-                 <h1 class="Annex"><b>Annex A</b><br/><br/>(normative)<br/><br/><b>Annex</b></h1>
+                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
                  <div id="Q">
           <h2>A.1<span style="mso-tab-count:1">&#160; </span>Annex A.1</h2>
           <div id="Q1">
