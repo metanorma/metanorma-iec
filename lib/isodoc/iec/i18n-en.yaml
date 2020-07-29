@@ -2,6 +2,8 @@ introduction: INTRODUCTION
 introduction_iev: INTRODUCTION<br/>Principles and rules followed
 foreword: FOREWORD
 IEC: INTERNATIONAL ELECTROTECHNICAL COMMISSION
+formula: Equation
+inequality: Inequality
 section_iev: Section
 term_def_boilerplate: |
       <p>ISO and IEC maintain terminological databases for use in
