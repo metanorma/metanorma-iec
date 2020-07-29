@@ -38,7 +38,7 @@ module IsoDoc
       def annex_name_lbl(clause, num)
         obl = l10n("(#{@labels["inform_annex"]})")
         obl = l10n("(#{@labels["norm_annex"]})") if clause["obligation"] == "normative"
-        l10n("<strong>#{@labels["annex"]} #{num}</strong><br/><br/>#{obl}")
+        l10n("<strong>#{@labels["annex"]} #{num}</strong><br/>#{obl}")
       end
     end
   end
