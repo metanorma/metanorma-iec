@@ -1,6 +1,8 @@
 introduction: INTRODUCTION
 introduction_iev: INTRODUCTION<br/>Principes d’établissement et règles suivies
 foreword: AVANT-PROPOS
+formula: Equation
+inequality: Inégalité
 IEC: COMMISSION ELECTROTECHNIQUE INTERNATIONALE
 section_iev: Section
 term_def_boilerplate: |

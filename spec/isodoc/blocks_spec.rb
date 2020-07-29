@@ -152,4 +152,68 @@ RSpec.describe IsoDoc::Iec do
     OUTPUT
   end
 
+     it "cross-references formulae" do
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+            <iso-standard xmlns="http://riboseinc.com/isoxml">
+            <preface>
+    <foreword>
+    <p>
+    <xref target="N1"/>
+    <xref target="N2"/>
+    </p>
+    </foreword>
+    </preface>
+    <sections>
+    <clause id="intro"><title>First</title>
+    <formula id="N1">
+  <stem type="AsciiMath">r = 1 %</stem>
+  </formula>
+  <clause id="xyz"><title>Preparatory</title>
+    <formula id="N2" inequality="true">
+  <stem type="AsciiMath">r = 1 %</stem>
+  </formula>
+    <xref target="N2"/>
+</clause>
+</sections>
+    </iso-standard>
+    INPUT
+    <iso-standard xmlns='http://riboseinc.com/isoxml'>
+         <preface>
+           <foreword>
+             <p>
+               <xref target='N1'>Clause 1, Equation (1)</xref>
+               <xref target='N2'>1.1, Inequality (2)</xref>
+             </p>
+           </foreword>
+         </preface>
+         <sections>
+           <clause id='intro'>
+             <title depth='1'>
+               1
+               <tab/>
+               First
+             </title>
+             <formula id='N1'>
+               <name>1</name>
+               <stem type='AsciiMath'>r = 1 %</stem>
+             </formula>
+             <clause id='xyz'>
+               <title depth='2'>
+                 1.1
+                 <tab/>
+                 Preparatory
+               </title>
+               <formula id='N2' inequality='true'>
+                 <name>2</name>
+                 <stem type='AsciiMath'>r = 1 %</stem>
+               </formula>
+               <xref target='N2'>Inequality (2)</xref>
+             </clause>
+           </clause>
+         </sections>
+       </iso-standard>
+    OUTPUT
+       end
+
+
 end
