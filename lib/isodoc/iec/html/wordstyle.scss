@@ -258,7 +258,6 @@ h1
 	text-indent:-31.2pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:2;
 	mso-hyphenate:none;
 	tab-stops:list 31.2pt;
 	layout-grid-mode:char;
@@ -269,7 +268,9 @@ h1
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
 h2
-	{ mso-list:l26 level2 lfo40;}
+	{ mso-list:l26 level2 lfo40;
+	mso-outline-level:2;
+        }
 .h3Annex, h3
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -283,7 +284,6 @@ h2
 	text-indent:-42.55pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:3;
 	mso-hyphenate:none;
 	tab-stops:list 42.55pt;
 	layout-grid-mode:char;
@@ -293,7 +293,9 @@ h2
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
-h3      {mso-list:l26 level3 lfo40;}
+h3      {mso-list:l26 level3 lfo40;
+	mso-outline-level:3;
+        }
 .h4Annex, h4
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -307,7 +309,6 @@ h3      {mso-list:l26 level3 lfo40;}
 	text-indent:-53.85pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:4;
 	mso-hyphenate:none;
 	tab-stops:list 53.85pt;
 	layout-grid-mode:char;
@@ -317,7 +318,9 @@ h3      {mso-list:l26 level3 lfo40;}
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
-h4      {mso-list:l26 level2 lfo40;}
+h4      {mso-list:l26 level2 lfo40;
+	mso-outline-level:4;
+        }
 .h5Annex, h5
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -331,7 +334,6 @@ h4      {mso-list:l26 level2 lfo40;}
 	text-indent:-65.2pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:5;
 	mso-hyphenate:none;
 	tab-stops:list 65.2pt;
 	layout-grid-mode:char;
@@ -341,7 +343,9 @@ h4      {mso-list:l26 level2 lfo40;}
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
-h5      {mso-list:l26 level5 lfo40;}
+h5      {mso-list:l26 level5 lfo40;
+	mso-outline-level:5;
+        }
 h6
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -355,7 +359,6 @@ h6
 	text-indent:-76.55pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:6;
 	mso-hyphenate:none;
 	tab-stops:list 76.55pt;
 	layout-grid-mode:char;
@@ -365,7 +368,9 @@ h6
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
-h6      {mso-list:l26 level6 lfo40;}
+h6      {mso-list:l26 level6 lfo40;
+	mso-outline-level:6;
+        }
 p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;

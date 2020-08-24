@@ -52,21 +52,6 @@ module IsoDoc
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
-=begin
-      def introduction(isoxml, out)
-        return super unless @is_iev
-        f = isoxml.at(ns("//introduction")) || return
-        title_attr = { class: "IntroTitle" }
-        page_break(out)
-        out.div **{ class: "Section3", id: f["id"] } do |div|
-          clause_name(nil, @i18n.get["introduction_iev"], div, title_attr)
-          f.elements.each do |e|
-            parse(e, div) unless e.name == "title"
-          end
-        end
-      end
-=end
-
       def bibliography(isoxml, out)
         return super unless @is_iev
       end
