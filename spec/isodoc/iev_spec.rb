@@ -222,10 +222,6 @@ OUTPUT
       <div>
   <h1>1&#160; Normative References</h1>
   <p id='_'>There are no normative references in this document.</p>
-  <p id='A' class='NormRef'>
-  B,
-  <i>TITLE</i>
-</p>
 </div>
     </div>
   </body>

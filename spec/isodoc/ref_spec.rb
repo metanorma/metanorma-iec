@@ -314,12 +314,12 @@ RSpec.describe IsoDoc::Iec do
       <br/>
       <div>
         <h1 class='Section3'>Bibliography</h1>
-        <p id='ISBN' class='NormRef'>
-          [1],
+        <p id='ISBN' class='Biblio'>
+          [1]&#160;
           <i>Chemicals for analytical laboratory use</i>
         </p>
-        <p id='ISSN' class='NormRef'>
-          [2],
+        <p id='ISSN' class='Biblio'>
+          [2]&#160;
           <i>Instruments for analytical laboratory use</i>
         </p>
         <div class='Note'>
@@ -334,12 +334,12 @@ RSpec.describe IsoDoc::Iec do
             &#160; This is another annotation of document ISSN.
           </p>
         </div>
-        <p id='ISO3696' class='NormRef'>
-          ISO 3696,
+        <p id='ISO3696' class='Biblio'>
+          [3]&#160; ISO 3696,
           <i>Water for analytical laboratory use</i>
         </p>
-        <p id='ref10' class='NormRef'>
-          [10],
+        <p id='ref10' class='Biblio'>
+          [10]&#160;
           <span style='font-variant:small-caps;'>Standard No I.C.C 167</span>
           .
           <i>
@@ -351,12 +351,12 @@ RSpec.describe IsoDoc::Iec do
           <a href='http://www.icc.or.at'>http://www.icc.or.at</a>
           )
         </p>
-        <p id='ref11' class='NormRef'>
-          IETF RFC 10,
+        <p id='ref11' class='Biblio'>
+          [5]&#160; IETF RFC 10,
           <i>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</i>
         </p>
-        <p id='ref12' class='NormRef'>
-          Citn, IETF RFC 20, CitationWorks. 2019.
+        <p id='ref12' class='Biblio'>
+          Citn&#160; IETF RFC 20, CitationWorks. 2019.
           <i>How to cite a reference</i>
           .
         </p>

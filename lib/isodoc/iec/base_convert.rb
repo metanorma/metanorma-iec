@@ -122,11 +122,6 @@ module IsoDoc
           term_suffix(node, p)
         end
       end
-
-      def biblio_list(f, div, biblio)
-        biblio = false
-        super
-      end
     end
   end
 end
