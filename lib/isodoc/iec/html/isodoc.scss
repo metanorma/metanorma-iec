@@ -816,7 +816,22 @@ div.example p.MsoListParagraph {
 
 div.Note p.MsoListParagraph {
   font-size: 8.0pt;
+  margin-left: 1.0cm;
 }
+
+div.Note span.stem {
+  font-size: 8.0pt; }
+
+div.Note p.Sourcecode, div.Note pre.Sourcecode  {
+  font-size: 8.0pt;
+  margin-left: 1.0cm;
+}
+
+div.Note table.dl  {
+  font-size: 8.0pt;
+  margin-left: 1.0cm;
+}
+
 
 div.example, td.example {
   margin:0in;
