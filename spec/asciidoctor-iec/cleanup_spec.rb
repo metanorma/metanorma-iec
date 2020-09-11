@@ -281,9 +281,9 @@ RSpec.describe Asciidoctor::Iec do
        <sections><table id="_">
          <tbody>
            <tr>
-             <td align="left">a</td>
-             <td align="left">b</td>
-             <td align="left">c</td>
+             <td valign="top" align="left">a</td>
+             <td valign="top" align="left">b</td>
+             <td valign="top" align="left">c</td>
            </tr>
          </tbody>
        <dl id="_">
