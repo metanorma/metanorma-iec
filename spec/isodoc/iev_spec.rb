@@ -22,7 +22,7 @@ RSpec.describe IsoDoc do
        INPUT
 
        presxml = <<~OUTPUT
-       <iso-standard xmlns='http://riboseinc.com/isoxml'>
+       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
   <bibdata>
     <docidentifier type='iso'>IEC/PWI 60050-871 ED 2</docidentifier>
     <docnumber>60050</docnumber>
@@ -142,7 +142,7 @@ OUTPUT
        </iec-standard>
        INPUT
        presxml = <<~OUTPUT
-       <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="presentation">
          <bibdata type='standard'>
            <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
            <docnumber>60050</docnumber>
@@ -290,7 +290,7 @@ OUTPUT
 INPUT
 
 presxml = <<~INPUT
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
+    <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
      <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
            <docnumber>60050</docnumber>
@@ -473,7 +473,7 @@ end
 </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-    <iso-standard xmlns='http://riboseinc.com/isoxml'>
+    <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
   <bibdata type='standard'>
     <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
     <docnumber>60050</docnumber>
