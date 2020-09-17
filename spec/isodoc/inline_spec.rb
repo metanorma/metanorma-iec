@@ -185,7 +185,7 @@ expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INP
     </iso-standard>
     INPUT
 <?xml version='1.0'?>
-       <iso-standard xmlns='http://riboseinc.com/isoxml'>
+       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
            <foreword>
              <p>
