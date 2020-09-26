@@ -78,6 +78,10 @@ RSpec.describe IsoDoc do
        <docnumber>1</docnumber>
        <language>en</language>
        </bibdata>
+       <local_bibdata>
+       <docnumber>1</docnumber>
+       <language>en</language>
+       </local_bibdata>
        <preface>
        <foreword obligation="informative">
           <title>Foreword</title>
@@ -293,6 +297,9 @@ RSpec.describe IsoDoc do
          <bibdata>
            <language>tlh</language>
          </bibdata>
+         <local_bibdata>
+           <language>tlh</language>
+         </local_bibdata>
          <preface>
            <foreword obligation='informative'>
              <title>Foreword</title>
@@ -502,6 +509,9 @@ RSpec.describe IsoDoc do
        <bibdata>
        <language>fr</language>
        </bibdata>
+       <local_bibdata>
+       <language>fr</language>
+       </local_bibdata>
        <preface>
        <foreword obligation="informative">
           <title>Foreword</title>
