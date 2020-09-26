@@ -69,7 +69,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~OUTPUT
-    <iso-standard xmlns="http://riboseinc.com/isoxml">
+    <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
         <preface>
         <foreword obligation="informative">
            <title>Foreword</title>
@@ -327,7 +327,7 @@ OUTPUT
        </sections>
        </iso-standard>
 INPUT
-<iso-standard xmlns='http://riboseinc.com/isoxml'>
+<iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
   <sections>
     <clause id='D' obligation='normative'>
       <title depth='1'>
