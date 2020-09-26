@@ -18,7 +18,7 @@ RSpec.describe Asciidoctor::Iec do
       * [[[A,B]]], _TITLE_
     INPUT
 <?xml version='1.0' encoding='UTF-8'?>
-       <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
          <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
            <docnumber>60050</docnumber>
@@ -96,7 +96,7 @@ RSpec.describe Asciidoctor::Iec do
       === General
       ==== Term 1
 INPUT
-<iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+<iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
   <bibdata type='standard'>
     <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
     <docnumber>60050</docnumber>
@@ -174,7 +174,7 @@ OUTPUT
       Text
     INPUT
     <?xml version='1.0' encoding='UTF-8'?>
-    <iec-standard xmlns='https://www.metanorma.org/ns/iec'>
+    <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
          <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
            <docnumber>60050</docnumber>
