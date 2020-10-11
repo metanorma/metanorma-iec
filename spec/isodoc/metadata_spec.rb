@@ -7,7 +7,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
     arr = c.convert_init(<<~"INPUT", "test", false)
     <iec-standard xmlns="http://riboseinc.com/isoxml">
     INPUT
-    expect(Hash[c.info(Nokogiri::XML(<<~"INPUT"), nil).sort].to_s.gsub(/, :/, ",\n:")).to be_equivalent_to <<~"OUTPUT"
+    expect(metadata(c.info(Nokogiri::XML(<<~"INPUT"), nil)).to_s.gsub(/, :/, ",\n:")).to be_equivalent_to <<~"OUTPUT"
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <bibdata type="standard">
     <title type="title-intro" language="en" format="text/plain">Cereals and pulses</title>
@@ -76,12 +76,8 @@ INPUT
 {:accesseddate=>"2012",
 :activateddate=>"2013",
 :agency=>"ISO",
-:authors=>[],
-:authors_affiliations=>{},
 :createddate=>"2010&ndash;2011",
 :docnumber=>"ISO/PreCD3 17301-1",
-:docnumber_lang=>nil,
-:docnumber_reference=>nil,
 :docnumeric=>"1730",
 :docsubtitle=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&nbsp;&mdash; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&nbsp;&mdash; Partie&nbsp;1: Riz",
 :docsubtitleintro=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
@@ -99,11 +95,7 @@ INPUT
 :draftinfo=>" (draft 0.4, 2016-05-01)",
 :edition=>"2",
 :editorialgroup=>["TC 34", "SC 4", "WG 3"],
-:ics=>nil,
-:keywords=>[],
 :obsoleteddate=>"2014",
-:obsoletes=>nil,
-:obsoletes_part=>nil,
 :publisheddate=>"2011",
 :publisher=>"International Organization for Standardization",
 :revdate=>"2016-05-01",
@@ -126,7 +118,7 @@ OUTPUT
     arr = c.convert_init(<<~"INPUT", "test", false)
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     INPUT
-    expect(Hash[c.info(Nokogiri::XML(<<~"INPUT"), nil).sort].to_s.gsub(/, :/, ",\n:")).to be_equivalent_to <<~"OUTPUT"
+    expect(metadata(c.info(Nokogiri::XML(<<~"INPUT"), nil)).to_s.gsub(/, :/, ",\n:")).to be_equivalent_to <<~"OUTPUT"
     <iso-standard xmlns="http://riboseinc.com/isoxml">
     <bibdata type="standard">
   <title>
@@ -197,12 +189,7 @@ OUTPUT
 </iso-standard>
 INPUT
 {:agency=>"ISO/IEC",
-:authors=>[],
-:authors_affiliations=>{},
 :docnumber=>"ISO/IEC/CD 17301-1-3",
-:docnumber_lang=>nil,
-:docnumber_reference=>nil,
-:docnumeric=>nil,
 :docsubtitle=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&nbsp;&mdash; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&nbsp;&mdash; Partie&nbsp;1&ndash;3: Riz",
 :docsubtitleintro=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
 :docsubtitlemain=>"Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai",
@@ -215,17 +202,11 @@ INPUT
 :doctitlepartlabel=>"Part&nbsp;1&ndash;3",
 :doctype=>"Technical Report",
 :docyear=>"2016",
-:draft=>nil,
-:draftinfo=>"",
-:edition=>nil,
 :editorialgroup=>["ABC 34", "DEF 4", "GHI 3"],
 :ics=>"1.2.3, 1.2.3",
-:keywords=>[],
 :obsoletes=>"IEC 8121",
 :obsoletes_part=>"3.1",
 :publisher=>"International Organization for Standardization and International Electrotechnical Commission",
-:revdate=>nil,
-:revdate_monthyear=>nil,
 :sc=>"DEF 4",
 :secretariat=>"XXXX",
 :stage=>"50",
