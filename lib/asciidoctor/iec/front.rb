@@ -6,7 +6,7 @@ module Asciidoctor
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
             c.role **{ type: "author" }
-            c.organization { |a| organization(a, p) }
+            c.organization { |a| organization(a, p, node, !node.attr("publisher")) }
           end
         end
       end
@@ -16,7 +16,7 @@ module Asciidoctor
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
             c.role **{ type: "publisher" }
-            c.organization { |a| organization(a, p) }
+            c.organization { |a| organization(a, p, node, !node.attr("publisher")) }
           end
         end
       end
@@ -27,7 +27,9 @@ module Asciidoctor
           xml.copyright do |c|
             c.from (node.attr("copyright-year") || Date.today.year)
             c.owner do |owner|
-              owner.organization { |o| organization(o, p) }
+              owner.organization do |o|
+                organization(o, p, node, !node.attr("copyright-holder") || node.attr("publisher"))
+              end
             end
           end
         end
