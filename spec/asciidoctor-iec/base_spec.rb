@@ -29,6 +29,8 @@ RSpec.describe Asciidoctor::Iec do
 
   it "converts a blank document" do
     FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
+    FileUtils.rm_f "test.pdf"
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
@@ -40,6 +42,8 @@ RSpec.describe Asciidoctor::Iec do
 <sections/>
 </iec-standard>
     OUTPUT
+    expect(File.exist?("test.pdf")).to be true
+    expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
     expect(File.exist?("htmlstyle.css")).to be false
   end
@@ -527,6 +531,7 @@ OUTPUT
       :docfile: test.adoc
       :novalid:
       :no-isobib:
+      :no-pdf:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r{<script>})
@@ -540,6 +545,7 @@ OUTPUT
       :docfile: test.adoc
       :novalid:
       :no-isobib:
+      :no-pdf:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
@@ -556,6 +562,7 @@ OUTPUT
       :novalid:
       :no-isobib:
       :script: Hans
+      :no-pdf:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
@@ -575,6 +582,7 @@ OUTPUT
       :body-font: Zapf Chancery
       :header-font: Comic Sans
       :monospace-font: Andale Mono
+      :no-pdf:
     INPUT
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: Andale Mono;]m)
@@ -591,6 +599,7 @@ OUTPUT
       :docfile: test.adoc
       :novalid:
       :no-isobib:
+      :no-pdf:
     INPUT
     word = File.read("test.doc", encoding: "utf-8")
     html = File.read("test.html", encoding: "utf-8")
