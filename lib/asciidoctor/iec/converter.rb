@@ -49,6 +49,7 @@ module Asciidoctor
       end
 
       def pdf_converter(node)
+        return if node.attr("no-pdf")
         node.nil? ? IsoDoc::Iec::PdfConvert.new({}) :
           IsoDoc::Iec::PdfConvert.new(doc_extract_attributes(node))
       end
