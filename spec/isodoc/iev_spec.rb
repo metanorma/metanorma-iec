@@ -27,10 +27,6 @@ RSpec.describe IsoDoc do
     <docidentifier type='iso'>IEC/PWI 60050-871 ED 2</docidentifier>
     <docnumber>60050</docnumber>
   </bibdata>
-  <local_bibdata>
-    <docidentifier type='iso'>IEC/PWI 60050-871 ED 2</docidentifier>
-    <docnumber>60050</docnumber>
-  </local_bibdata>
   <preface>
     <foreword obligation='informative'>
       <title>Foreword</title>
@@ -68,7 +64,7 @@ OUTPUT
   </body>
 </html>
        OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
   end
 
@@ -164,11 +160,11 @@ OUTPUT
                <abbreviation>IEC</abbreviation>
              </organization>
            </contributor>
-           <language>en</language>
-           <script>Latn</script>
+           <language current="true">en</language>
+           <script current="true">Latn</script>
            <status>
-             <stage>60</stage>
-             <substage>60</substage>
+             <stage language="">60</stage>
+             <substage language="">60</substage>
            </status>
            <copyright>
              <from>2020</from>
@@ -180,7 +176,7 @@ OUTPUT
              </owner>
            </copyright>
            <ext>
-             <doctype>article</doctype>
+             <doctype language="">article</doctype>
              <editorialgroup>
                <technical-committee/>
                <subcommittee/>
@@ -191,50 +187,6 @@ OUTPUT
              </structuredidentifier>
            </ext>
          </bibdata>
-         <local_bibdata type='standard'>
-           <docidentifier type='iso'>IEC 60050 ED 1</docidentifier>
-           <docnumber>60050</docnumber>
-           <contributor>
-             <role type='author'/>
-             <organization>
-               <name>International Electrotechnical Commission</name>
-               <abbreviation>IEC</abbreviation>
-             </organization>
-           </contributor>
-           <contributor>
-             <role type='publisher'/>
-             <organization>
-               <name>International Electrotechnical Commission</name>
-               <abbreviation>IEC</abbreviation>
-             </organization>
-           </contributor>
-           <language>en</language>
-           <script>Latn</script>
-           <status>
-             <stage>60</stage>
-             <substage>60</substage>
-           </status>
-           <copyright>
-             <from>2020</from>
-             <owner>
-               <organization>
-                 <name>International Electrotechnical Commission</name>
-                 <abbreviation>IEC</abbreviation>
-               </organization>
-             </owner>
-           </copyright>
-           <ext>
-             <doctype>article</doctype>
-             <editorialgroup>
-               <technical-committee/>
-               <subcommittee/>
-               <workgroup/>
-             </editorialgroup>
-             <structuredidentifier>
-               <project-number>IEC 60050</project-number>
-             </structuredidentifier>
-           </ext>
-         </local_bibdata>
          <sections> </sections>
          <bibliography>
            <references obligation='informative' normative='true' id="X">
@@ -275,7 +227,7 @@ OUTPUT
   </body>
 </html>
 OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
   end
 
@@ -343,10 +295,6 @@ presxml = <<~INPUT
            <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
            <docnumber>60050</docnumber>
     </bibdata>
-     <local_bibdata type='standard'>
-           <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
-           <docnumber>60050</docnumber>
-    </local_bibdata>
     <sections>
     <clause id="_terms_and_definitions" obligation="normative"><title depth="1">1<tab/>Terms and definitions</title>
     <terms id="_general" obligation="normative"><title>192-01 General</title>
@@ -493,7 +441,7 @@ html = <<~OUTPUT
   </body>
 </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
 end
 
@@ -530,10 +478,6 @@ end
     <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
     <docnumber>60050</docnumber>
   </bibdata>
-  <local_bibdata type='standard'>
-    <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
-    <docnumber>60050</docnumber>
-  </local_bibdata>
   <sections>
     <clause id='_terms_and_definitions' obligation='normative'>
       <title depth='1'>1<tab/>Terms and definitions</title>
@@ -565,7 +509,7 @@ end
   </sections>
 </iso-standard>
 OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     IsoDoc::Iec::WordConvert.new({}).convert("test", presxml, false)
     word = File.read("test.doc").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
       sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")

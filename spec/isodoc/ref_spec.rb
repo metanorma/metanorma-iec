@@ -128,11 +128,8 @@ RSpec.describe IsoDoc::Iec do
     presxml = <<~OUTPUT
     <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
             <bibdata>
-            <language>en</language>
+            <language current="true">en</language>
             </bibdata>
-            <local_bibdata>
-            <language>en</language>
-            </local_bibdata>
             <preface><foreword>
           <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
           <eref bibitemid="ISO712">[110]</eref>
@@ -372,7 +369,7 @@ RSpec.describe IsoDoc::Iec do
 </html>
 
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
   end
 
