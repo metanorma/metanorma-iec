@@ -10,7 +10,8 @@ image:https://img.shields.io/github/commits-since/metanorma/metanorma-iec/latest
 
 == Functionality
 
-This gem processes Metanorma documents into the IEC document class.
+This gem processes https://www.metanorma.com[Metanorma documents] following
+the Metanorma model for generating IEC standards.
 
 The gem is basically the https://github.com/metanorma/metanorma-iso gem, with some tweaking of rendering to meet the particular requirements of the IEC.
 
