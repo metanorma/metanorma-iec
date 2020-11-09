@@ -266,65 +266,6 @@ RSpec.describe Asciidoctor::Iec do
     OUTPUT
   end
 
-  it "moves table key inside table" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      |===
-      |a |b |c
-      |===
-
-      Key
-
-      a:: b
-    INPUT
-       #{BLANK_HDR}
-       <sections><table id="_">
-         <tbody>
-           <tr>
-             <td valign="top" align="left">a</td>
-             <td valign="top" align="left">b</td>
-             <td valign="top" align="left">c</td>
-           </tr>
-         </tbody>
-       <dl id="_">
-         <dt>a</dt>
-         <dd>
-           <p id="_">b</p>
-         </dd>
-       </dl></table>
-
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
-  it "moves formula key inside formula" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      [stem]
-      ++++
-      Formula
-      ++++
-
-      where
-
-      a:: b
-    INPUT
-       #{BLANK_HDR}
-       <sections><formula id="_">
-          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi><mi>or</mi><mi>μ</mi><mi>l</mi><mi>a</mi></math></stem>
-       <dl id="_">
-         <dt>a</dt>
-         <dd>
-           <p id="_">b</p>
-         </dd>
-       </dl></formula>
-
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
   it "moves footnotes inside figures" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -342,31 +283,6 @@ RSpec.describe Asciidoctor::Iec do
        </fn><fn reference="b">
          <p id="_">This is another footnote to a figure</p>
        </fn></figure>
-
-       </sections>
-
-       </iec-standard>
-    OUTPUT
-  end
-
-  it "moves figure key inside figure" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      image::spec/examples/rice_images/rice_image1.png[]
-
-      Key
-
-      a:: b
-    INPUT
-       #{BLANK_HDR}
-       <sections><figure id="_">
-         <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
-       <dl id="_">
-         <dt>a</dt>
-         <dd>
-           <p id="_">b</p>
-         </dd>
-       </dl></figure>
 
        </sections>
 
