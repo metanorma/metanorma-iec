@@ -44,7 +44,7 @@ RSpec.describe IsoDoc::Iec do
       <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
-  <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+  <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
   <extent type="part">
   <referenceFrom>all</referenceFrom>
   </extent>
@@ -167,7 +167,7 @@ RSpec.describe IsoDoc::Iec do
               <abbreviation>ISO</abbreviation>
             </organization>
           </contributor>
-          <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+          <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
           <extent type="part">
           <referenceFrom>all</referenceFrom>
           </extent>
