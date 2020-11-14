@@ -119,7 +119,9 @@ BOILERPLATE =
   gsub(/\{% if unpublished %\}.*\{% endif %\}/m, "").
   gsub(/(?<=\p{Alnum})'(?=\p{Alpha})/, "’").
   gsub(/<p>/, "<p id='_'>").
-  gsub(/<ol>/, "<ol id='_'>")
+  gsub(/<ol>/, "<ol id='_'>").
+  gsub(/ - /, " — ").
+  gsub(/\.\.\./, "…")
 )
 
 BOILERPLATE_LICENSE = <<~END

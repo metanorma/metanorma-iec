@@ -2,25 +2,24 @@
   <copyright-statement>
     <clause>
       <p id="boilerplate-year">
-    &copy; {{ agency }} {{ docyear }}, Published in Switzerland
+    © {{ agency }} {{ docyear }}, Publié en Suisse
   </p>
 
   <p id="boilerplate-message">
-    All rights
-reserved. Unless otherwise specified, no part of this publication may be
-reproduced or utilized otherwise in any form or by any means, electronic or
-mechanical, including photocopying, or posting on the internet or an intranet,
-without prior written permission. Permission can be requested from either IEC
-at the address below or IEC's member body in the country of the requester.
+Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne
+peut être reproduite ni utilisée sous quelque forme que ce soit et par aucun procédé, électronique
+ou mécanique, y compris la photocopie, l’affichage sur l’internet ou sur un Intranet, sans
+autorisation écrite préalable. Les demandes d’autorisation peuvent être adressées à l’IEC à
+l’adresse ci-après ou au comité membre de l’IEC dans le pays du demandeur.
   </p>
 
   <p id="boilerplate-name">IEC Central Office</p>
 
   <p id="boilerplate-address" align="left">
-    3, rue de Varemb&eacute;<br/>
+    3, rue de Varembé<br/>
     CH-1211 Geneva 20, Switzerland<br/>
-    Tel.&nbsp;&nbsp;+ 41 22 919 02 11<br/>
-    Fax&nbsp;&nbsp;+ 41 22 919 03 00<br/>
+    Tel.&#xa0;&#xa0;+ 41 22 919 02 11<br/>
+    Fax&#xa0;&#xa0;+ 41 22 919 03 00<br/>
     info@iec.ch<br/>
     www.iec.ch
   </p>
@@ -44,18 +43,43 @@ at the address below or IEC's member body in the country of the requester.
  {% if unpublished %}
 <license-statement>
   <clause>
-  <title>Warning for CDs, CDVs and FDISs</title>
+  <title>Avertissement</title>
 
-<p>This
-document is not an IEC International Standard. It is distributed for review and
-comment. It is subject to change without notice and may not be referred to as
-an International Standard.</p>
-
-<p>Recipients
-of this draft are invited to submit, with their comments, notification of any
-relevant patent rights of which they are aware and to provide supporting
-documentation.</p>
+<p>Ce document n'est pas une Norme internationale de l'ISO. Il est distribué pour examen et observations. Il est susceptible de modification sans préavis et ne peut être cité comme Norme internationale.</p>
+<p>Les destinataires du présent projet sont invités à présenter, avec leurs observations, notification des droits de propriété dont ils auraient éventuellement connaissance et à fournir une documentation explicative.</p>
 </clause>
 </license-statement>
 {% endif %}
+<feedback-statement>
+<clause>
+  <title>A propos de l'IEC</title>
+  <p>La Commission Electrotechnique Internationale (IEC) est la première organisation mondiale qui élabore et publie des Normes internationales pour tout ce qui a trait à l'électricité, à l'électronique et aux technologies apparentées.</p>
+</clause>
+<clause>
+  <title>A propos des publications IEC</title>
+  <p>Le contenu technique des publications IEC est constamment revu. Veuillez vous assurer que vous possédez l’édition la plus récente, un corrigendum ou amendement peut avoir été publié.</p>
+</clause>
+<clause>
+  <clause>
+    <title>Catalogue IEC - <link target="https://webstore.iec.ch/catalogue">webstore.iec.ch/catalogue</link></title>
+    <p>Application autonome pour consulter tous les renseignements bibliographiques sur les Normes internationales, Spécifications techniques, Rapports techniques et autres documents de l'IEC. Disponible pour PC, Mac OS, tablettes Android et iPad.</p>
+  </clause>
+  <clause><title>Recherche de publications IEC - <link target="https://www.iec.ch/searchpub">www.iec.ch/searchpub</link></title>
+    <p>La recherche avancée permet de trouver des publications IEC en utilisant différents critères (numéro de référence, texte, comité d’études,...). Elle donne aussi des informations sur les projets et les publications remplacées ou retirées.</p>
+  </clause>
+  <clause><title>IEC Just Published - <link target="https://webstore.iec.ch/justpublished">webstore.iec.ch/justpublished</link></title>
+    <p>Restez informé sur les nouvelles publications IEC. Just Published détaille les nouvelles publications parues. Disponible en ligne et aussi une fois par mois par email.</p>
+  </clause>
+  <clause><title>Electropedia - <link target="http://www.electropedia.org">www.electropedia.org</link></title>
+    <p>Le premier dictionnaire en ligne de termes électroniques et électriques. Il contient plus de 30 000 termes et définitions en anglais et en français, ainsi que les termes équivalents dans 14 langues additionnelles. Egalement appelé Vocabulaire Electrotechnique International (IEV) en ligne.</p>
+  </clause>
+  <clause><title>Glossaire IEC - <link target="http://std.iec.ch/glossary">std.iec.ch/glossary</link></title>
+    <p>Plus de 55 000 entrées terminologiques électrotechniques, en anglais et en français, extraites des articles Termes et Définitions des publications IEC parues depuis 2002. Plus certaines entrées antérieures extraites des publications des CE 37, 77, 86 et CISPR de l'IEC.</p>
+  </clause>
+  <clause><title>Service Clients - <link target="https://webstore.iec.ch/csc">webstore.iec.ch/csc</link></title>
+    <p>Si vous désirez nous donner des commentaires sur cette publication ou si vous avez des questions contactez-nous: <link target="mailto://csc@iec.ch">csc@iec.ch</link>.</p>
+  </clause>
+</clause>
+</feedback-statement>
 </boilerplate>
+
