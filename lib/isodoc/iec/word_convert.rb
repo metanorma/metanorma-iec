@@ -161,6 +161,12 @@ module IsoDoc
         b.replace(b.children)
       end
 
+      def authority_cleanup(docxml)
+        auth = docxml.at("//div[@id = 'boilerplate-feedback' or @class = 'boilerplate-feedback']")
+        auth&.remove
+        super
+      end
+
       def make_body1(body, _docxml)
       end
 
