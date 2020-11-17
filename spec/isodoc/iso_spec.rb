@@ -65,9 +65,9 @@ RSpec.describe IsoDoc::Iec do
     </iso-standard>
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New",monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[Quote[^{]+\{[^{]+font-family: "Arial", sans-serif;]m)
-    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Arial",sans-serif;]m)
+    expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Arial", sans-serif;]m)
   end
 
   it "processes examples" do

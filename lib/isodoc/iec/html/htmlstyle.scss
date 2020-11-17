@@ -517,7 +517,7 @@ p.NormRef {
 pre,
 .pseudocode {
     @include pseudocodeBlock(#f5faff);
-    font-size: 1em;
+    font-size: $monospacefontsize;
 }
 
 pre {
@@ -618,7 +618,7 @@ a.footnote-number, a.TableFootnoteRef, span.TableFootnoteRef {
 }
 
 .footnote {
-    font-size: 0.9em;
+    font-size: $footnotefontsize;
 }
 
 sup a {
@@ -626,7 +626,7 @@ sup a {
     font-size: 0.8em;
 }
 #footnote_box {
-    font-size: 14px;
+    font-size: $footnotefontsize;
     background: white;
     padding: 0 10px;
     margin: 10px;
@@ -642,7 +642,7 @@ ol.footnotes-list, aside.footnote {
 }
 
 ol.footnotes-list li, aside.footnote {
-    font-size: 0.9em;
+    font-size: $footnotefontsize;
     vertical-align: top;
     list-style:decimal;
     margin-bottom: 1em;

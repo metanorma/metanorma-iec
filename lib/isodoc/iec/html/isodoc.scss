@@ -10,9 +10,9 @@ p.Sourcecode, li.Sourcecode, div.Sourcecode, pre.Sourcecode
 	text-align:left;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:9.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Courier New",monospace;
+	font-size:$monospacefontsize;
+	mso-bidi-font-size:$normalfontsize;
+	font-family:$monospacefont;
 	mso-fareast-font-family:"Times New Roman";
 	mso-bidi-font-family:Arial;
 	letter-spacing:-.1pt;
@@ -30,9 +30,9 @@ p.pseudocode, li.pseudocode, div.pseudocode
         text-align:left;
         mso-pagination:widow-orphan;
         layout-grid-mode:char;
-        font-size:10.0pt;
-        mso-bidi-font-size:10.0pt;
-        font-family:"Arial",sans-serif;
+        font-size:$normalfontsize;
+        mso-bidi-font-size:$normalfontsize;
+        font-family:$bodyfont;
         mso-fareast-font-family:"Times New Roman";
         mso-bidi-font-family:Arial;
         letter-spacing:-.1pt;
@@ -52,9 +52,9 @@ p.CODE-TableCell, li.CODE-TableCell, div.CODE-TableCell, pre.CODE-TableCell
 	text-align:left;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Courier New";
+	font-size:$smallerfontsize;
+	mso-bidi-font-size:$normalfontsize;
+	font-family:$monospacefontsize;
 	mso-fareast-font-family:"Times New Roman";
 	mso-bidi-font-family:Arial;
 	letter-spacing:-.1pt;
@@ -68,7 +68,7 @@ p.Biblio, li.Biblio, div.Biblio
 	mso-style-parent:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:34.0pt;
 	text-align:justify;
 	text-indent:-34.0pt;
@@ -77,8 +77,8 @@ p.Biblio, li.Biblio, div.Biblio
 	/* mso-list:l6 level1 lfo20; */
 	tab-stops:list 34.0pt;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -89,7 +89,7 @@ p.NormRef, li.NormRef, div.NormRef
 	mso-style-parent:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0pt;
 	text-align:justify;
 	mso-pagination:widow-orphan;
@@ -97,8 +97,8 @@ p.NormRef, li.NormRef, div.NormRef
 	/* mso-list:l6 level1 lfo20; */
 	tab-stops:list 34.0pt;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -110,13 +110,13 @@ p.FigureTitle
 	mso-style-next:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -128,13 +128,13 @@ p.AdmonitionTitle, p.RecommendationTitle
 	mso-style-next:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -146,13 +146,13 @@ p.SourceTitle
 	mso-style-next:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -166,14 +166,14 @@ p.TableTitle
 	mso-style-next:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -191,8 +191,8 @@ p.Note, div.Note, li.Note
 	text-align:justify;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -212,8 +212,8 @@ p.TableFootnote, div.TableFootnote, li.TableFootnote
 	mso-pagination:widow-orphan;
 	tab-stops:14.2pt;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -227,7 +227,7 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	mso-style-next:Normal;
 	margin-top:0cm;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	text-indent:0pt;
@@ -237,8 +237,8 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	mso-hyphenate:none;
 	layout-grid-mode:char;
 	font-size:12.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	mso-bidi-font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -252,7 +252,7 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	mso-style-next:Normal;
 	margin-top:0cm;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:center;
 	text-indent:0pt;
@@ -262,8 +262,8 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	mso-hyphenate:none;
 	layout-grid-mode:char;
 	font-size:12.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	mso-bidi-font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -275,7 +275,7 @@ p.TitlePageSubhead, li.TitlePageSubhead, div.TitlePageSubhead {
         mso-style-next:Normal;
         margin-top:0cm;
         margin-right:0cm;
-        margin-bottom:10.0pt;
+        margin-bottom:$normalfontsize;
         margin-left:0cm;
         text-align:center;
         text-indent:0pt;
@@ -284,8 +284,8 @@ p.TitlePageSubhead, li.TitlePageSubhead, div.TitlePageSubhead {
         mso-hyphenate:none;
         layout-grid-mode:char;
         font-size:12.0pt;
-        mso-bidi-font-size:10.0pt;
-        font-family:"Arial",sans-serif;
+        mso-bidi-font-size:$normalfontsize;
+        font-family:$headerfont;
         mso-fareast-font-family:"Times New Roman";
         letter-spacing:.4pt;
         mso-ansi-language:EN-GB;
@@ -307,8 +307,8 @@ p.Terms, li.Terms, div.Terms
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -332,8 +332,8 @@ p.AltTerms, li.AltTerms, div.AltTerms
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -353,8 +353,8 @@ p.DeprecatedTerms, li.DeprecatedTerms, div.DeprecatedTerms
 	text-align:justify;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -380,8 +380,8 @@ p.TermNum, li.TermNum, div.TermNum
 	mso-hyphenate:none;
 	tab-stops:list 31.2pt;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -445,7 +445,7 @@ p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
 	font-size:12.0pt;
-	font-family:"Arial",sans-serif;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -463,7 +463,7 @@ p.zzSTDTitle2, li.zzSTDTitle2, div.zzSTDTitle2
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
 	font-size:12.0pt;
-	font-family:"Arial",sans-serif;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -482,8 +482,8 @@ p.TABLE-col-heading, li.TABLE-col-heading, div.TABLE-col-heading
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	font-family:$headerfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -501,9 +501,9 @@ p.TABLE-cell, li.TABLE-cell, div.TABLE-cell
 	text-align:left;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	mso-bidi-font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -519,7 +519,7 @@ p.Quote, li.Quote, div.Quote
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:10.0pt;
+	font-size:$normalfontsize;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
@@ -529,7 +529,7 @@ p.QuoteAttribution
 p.Admonition, li.Admonition, div.Admonition
 	{mso-style-priority:99;
 	mso-pagination:widow-orphan;
-	font-size:10.0pt;
+	font-size:$normalfontsize;
 	font-family:$bodyfont;
 	mso-ascii-font-family:$bodyfont;
 	mso-ascii-theme-font:minor-latin;
@@ -551,16 +551,16 @@ p.formula, li.formula, div.formula
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-next:Normal;
-	margin-top:10.0pt;
+	margin-top:$normalfontsize;
 	margin-right:0cm;
-	margin-bottom:10.0pt;
+	margin-bottom:$normalfontsize;
 	margin-left:0cm;
 	text-align:justify;
 	mso-pagination:widow-orphan;
 	tab-stops:center 8.0cm right 16.0cm;
 	layout-grid-mode:char;
-	font-size:10.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -580,8 +580,8 @@ p.FOREWORD, li.FOREWORD, div.FOREWORD
 	mso-pagination:widow-orphan;
 	tab-stops:14.2pt;
 	layout-grid-mode:char;
-	font-size:8.0pt;
-	font-family:"Arial",sans-serif;
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
 	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
@@ -626,7 +626,7 @@ table.MsoISOTable, table.MsoISOTableBig
 	mso-yfti-tbllook:480;
 	mso-border-insideh:.75pt solid windowtext;
 	mso-border-insidev:.75pt solid windowtext;
-	font-size:10.0pt;
+	font-size:$normalfontsize;
 	font-family:$bodyfont;}
 table.MsoISOTable th, table.MsoISOTableBig th
     {border:solid windowtext 1pt;
@@ -637,7 +637,7 @@ table.MsoISOTable td, table.MsoISOTableBig td
     mso-border-alt:solid windowtext 1pt;
     padding:0cm 2.85pt 0cm 2.85pt;}
 table.MsoISOTable p, table.MsoISOTableBig p
-{font-size:10.0pt; }
+{font-size:$normalfontsize; }
 table.MsoTableGrid
 	{mso-style-name:"Table Grid";
 	mso-tstyle-rowband-size:0;
@@ -652,7 +652,7 @@ table.MsoTableGrid
 	mso-para-margin:0cm;
 	mso-para-margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
-	font-size:10.0pt;
+	font-size:$normalfontsize;
 	font-family:$bodyfont;}
 body 
     {tab-interval:36.0pt;}
@@ -679,7 +679,7 @@ div.coverpage_warning
     margin-right:4.25pt}
 .coverpage_warning
     {color:#485094;
-    font-size:10.0pt;}
+    font-size:$normalfontsize;}
 .coverpage {
   text-align: center;
   margin: 2em 0;
@@ -778,7 +778,7 @@ a.TableFootnoteRef, span.TableFootnoteRef
         vertical-align:super;}
 
 aside {
-          font-size:10.0pt;
+          font-size:$footnotefontsize;
 }
 
 /*
@@ -786,9 +786,9 @@ div.example {
 	border:solid black .25pt;
 	mso-border-alt:solid black .25pt;
 	padding:10pt;
-	mso-padding-alt:10.0pt 10.0pt 10.0pt 10.0pt;
+	mso-padding-alt:$normalfontsize 10.0pt 10.0pt 10.0pt;
 	margin:10pt;
-	mso-margin-alt:10.0pt 10.0pt 10.0pt 10.0pt;
+	mso-margin-alt:$normalfontsize 10.0pt 10.0pt 10.0pt;
 }
 */
 
@@ -803,32 +803,32 @@ p.example, li.example, div.example, td.example
 	{	
 	mso-pagination:none;
         tab-stops:70.9pt;
-	font-size:10.0pt;
+	font-size:$normalfontsize;
 	font-family:$bodyfont;}
 
 td.example p.MsoListParagraph {
-  font-size: 10.0pt;
+  font-size: $normalfontsize;
 }
 
 div.example p.MsoListParagraph {
-  font-size: 10.0pt;
+  font-size: $normalfontsize;
 }
 
 div.Note p.MsoListParagraph {
-  font-size: 8.0pt;
+  font-size: $smallerfontsize;
   margin-left: 1.0cm;
 }
 
 div.Note span.stem {
-  font-size: 8.0pt; }
+  font-size: $smallerfontsize; }
 
 div.Note p.Sourcecode, div.Note pre.Sourcecode  {
-  font-size: 8.0pt;
+  font-size: $smallerfontsize;
   margin-left: 1.0cm;
 }
 
 div.Note table.dl  {
-  font-size: 8.0pt;
+  font-size: $smallerfontsize;
   margin-left: 1.0cm;
 }
 
@@ -840,12 +840,12 @@ div.example, td.example {
 
 span.example_label, td.example_label
 {
-font-size: 10.0pt;
+font-size: $normalfontsize;
 font-family:$bodyfont;
 }
 
 span.note_label, td.note_label
 {
-font-size: 8.0pt;
+font-size: $smallerfontsize;
 font-family:$bodyfont;
 }
