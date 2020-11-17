@@ -16,6 +16,10 @@ module IsoDoc
           bodyfont: (options[:script] == "Hans" ? '"SimSun",serif' : '"Arial",sans-serif'),
           headerfont: (options[:script] == "Hans" ? '"SimHei",sans-serif' : '"Arial",sans-serif'),
           monospacefont: '"Courier New",monospace',
+          normalfontsize: "10.0pt",
+          footnotefontsize: "8.0pt",
+          smallerfontsize: "8.0pt",
+          monospacefontsize: "9.0pt",
         }
       end
 
