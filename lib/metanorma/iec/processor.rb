@@ -2,14 +2,6 @@ require "metanorma/processor"
 
 module Metanorma
   module Iec
-    def self.fonts_used
-      {
-        html: ["Arial", "Times New Roman", "HanSans", "Courier New"],
-        doc: ["Arial", "Times New Roman", "HanSans", "Courier New"],
-        pdf: ["Arial", "Times New Roman", "HanSans", "Courier New"],
-      }
-    end
-
     class Processor < Metanorma::Processor
 
       def initialize
