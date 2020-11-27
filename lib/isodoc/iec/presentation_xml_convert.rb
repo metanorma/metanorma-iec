@@ -28,6 +28,18 @@ module IsoDoc
           call(f)
       end
 
+      def bibdata_i18n(b)
+        fr = IsoDoc::Iec::I18n.new("fr", "Latn")
+        en = IsoDoc::Iec::I18n.new("en", "Latn")
+        [{ lang: "en", i18n: en }, { lang: "fr", i18n: fr }].each do |v|
+          hash_translate(b, v[:i18n].get["doctype_dict"], "./ext/doctype", v[:lang])
+          hash_translate(b, v[:i18n].get["stage_dict"], "./status/stage", v[:lang])
+          hash_translate(b, v[:i18n].get["substage_dict"], "./status/substage", v[:lang])
+          hash_translate(b, v[:i18n].get["function_dict"], "./ext/function", v[:lang])
+          hash_translate(b, v[:i18n].get["horizontal_dict"], "./ext/horizontal", v[:lang])
+        end
+      end
+
       include Init
     end
   end
