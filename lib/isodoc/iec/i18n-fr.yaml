@@ -16,3 +16,20 @@ term_def_boilerplate: |
       <li> <p>ISO Online browsing platform: disponible à l'adresse
         <link target="http://www.iso.org/obp"/></p> </li>
       </ul>
+doctype_dict:
+  international-standard: Norme international
+  technical-specification: Spécification technique
+  technical-report: Rapport technique
+  publicly-available-specification: Spécification disponible publiquement
+  international-workshop-agreement: Accord internationale d’atelier
+  guide: Guide
+  interpretation-sheet: Feuille d’interprétation
+function_dict:
+  emc: Publication fondamentale en CEM
+  safety: Publication fondamentale de sécurité
+  environment: Publication fondamentale sur l’environnement
+  quality-assurance: Publication fondamentale sur l’assurance de la qualité
+horizontal_dict:
+  "true": Norme horizontale
+  "false":
+

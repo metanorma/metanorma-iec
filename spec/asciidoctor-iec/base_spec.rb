@@ -142,6 +142,7 @@ RSpec.describe Asciidoctor::Iec do
          </copyright>
          <ext>
          <doctype>article</doctype>
+         <horizontal>false</horizontal>
          <editorialgroup>
            <technical-committee number="1" type="A">TC</technical-committee>
            <technical-committee number="11" type="A1">TC1</technical-committee>
@@ -190,6 +191,8 @@ RSpec.describe Asciidoctor::Iec do
       :copyright-year: 2001
       :docstage: A2CD
       :doctype: technical-specification
+      :function: emc
+      :horizontal: true
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
@@ -272,6 +275,8 @@ RSpec.describe Asciidoctor::Iec do
          </copyright>
          <ext>
          <doctype>technical-specification</doctype>
+         <horizontal>true</horizontal>
+         <function>emc</function>
          <editorialgroup>
            <technical-committee/>
            <subcommittee/>
@@ -376,6 +381,7 @@ RSpec.describe Asciidoctor::Iec do
   </copyright>
   <ext>
     <doctype>article</doctype>
+             <horizontal>false</horizontal>
     <editorialgroup>
       <technical-committee/>
       <subcommittee/>
@@ -440,6 +446,7 @@ OUTPUT
   </copyright>
   <ext>
     <doctype>article</doctype>
+             <horizontal>false</horizontal>
     <editorialgroup>
       <technical-committee/>
       <subcommittee/>
@@ -505,6 +512,7 @@ OUTPUT
   </copyright>
   <ext>
     <doctype>article</doctype>
+             <horizontal>false</horizontal>
     <editorialgroup>
       <technical-committee/>
       <subcommittee/>

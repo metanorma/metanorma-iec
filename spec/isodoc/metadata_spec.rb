@@ -59,7 +59,15 @@ RSpec.describe IsoDoc::Iec::Metadata do
     </owner>
   </copyright>
   <ext>
-  <doctype>international-standard</doctype>
+  <doctype language=''>international-standard</doctype>
+  <doctype language='fr'>Norme international</doctype>
+  <doctype language='en'>International Standard</doctype>
+<horizontal language=''>true</horizontal>
+<horizontal language='fr'>Norme horizontale</horizontal>
+<horizontal language='en'>Horizontal Standard</horizontal>
+<function language=''>emc</function>
+<function language='fr'>Publication fondamentale en CEM</function>
+<function language='en'>Basic EMC Publication</function>
   <editorialgroup>
     <technical-committee number="34">Food products</technical-committee>
     <subcommittee number="4">Cereals and pulses</subcommittee>
@@ -94,11 +102,21 @@ INPUT
 :doctitlepartlabel=>"Part&nbsp;1",
 :doctype=>"International Standard",
 :doctype_display=>"International Standard",
+:doctype_en=>"International Standard",
+:doctype_fr=>"Norme International",
 :docyear=>"2016",
 :draft=>"0.4",
 :draftinfo=>" (draft 0.4, 2016-05-01)",
 :edition=>"2",
 :editorialgroup=>["TC 34", "SC 4", "WG 3"],
+:function=>"Emc",
+:function_display=>"Basic Emc Publication",
+:function_en=>"Basic Emc Publication",
+:function_fr=>"Publication Fondamentale En Cem",
+:horizontal=>"True",
+:horizontal_display=>"Horizontal Standard",
+:horizontal_en=>"Horizontal Standard",
+:horizontal_fr=>"Norme Horizontale",
 :implementeddate=>"XXX",
 :issueddate=>"XXX",
 :lang=>"en",
@@ -188,6 +206,7 @@ OUTPUT
   </relation>
   <ext>
   <doctype>technical-report</doctype>
+  <horizontal>false</horizontal>
   <editorialgroup>
     <technical-committee number="34" type="ABC">Food products</technical-committee>
     <subcommittee number="4" type="DEF">Cereals and pulses</subcommittee>
@@ -221,8 +240,11 @@ INPUT
 :doctitlepartlabel=>"Part&nbsp;1&ndash;3",
 :doctype=>"Technical Report",
 :doctype_display=>"Technical Report",
+:doctype_en=>"Technical Report",
+:doctype_fr=>"Technical Report",
 :docyear=>"2016",
 :editorialgroup=>["ABC 34", "DEF 4", "GHI 3"],
+:horizontal=>"False",
 :ics=>"1.2.3, 1.2.3",
 :implementeddate=>"XXX",
 :issueddate=>"XXX",
