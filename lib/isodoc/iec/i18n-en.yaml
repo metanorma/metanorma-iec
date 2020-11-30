@@ -16,3 +16,19 @@ term_def_boilerplate: |
       <li> <p>ISO Online browsing platform: available at
         <link target="http://www.iso.org/obp"/></p> </li>
       </ul>
+doctype_dict:
+  international-standard: International Standard
+  technical-specification: Technical Specification
+  technical-report: Technical Report
+  publicly-available-specification: Publicly Available Specification
+  international-workshop-agreement: International Workshop Agreement
+  guide: Guide
+  interpretation-sheet: Interpretation Sheet
+function_dict:
+  emc: Basic EMC Publication
+  safety: Basic Safety Publication
+  environment: Basic Environment Publication
+  quality-assurance: Basic Quality Assurance Publication
+horizontal_dict:
+  "true": Horizontal Standard
+  "false": 

@@ -30,6 +30,10 @@ module Asciidoctor
         publicly-available-specification international-workshop-agreement 
         guide interpretation-sheet).include? doctype or
         @log.add("Document Attributes", nil, "#{doctype} is not a recognised document type")
+        if function = xmldoc&.at("//bibdata/ext/function")&.text
+          %w(emc quality-assurance safety environment).include? function or 
+            @log.add("Document Attributes", nil, "#{function} is not a recognised document function")
+        end
       end
 
       def validate(doc)
@@ -58,7 +62,7 @@ module Asciidoctor
         node.nil? ? IsoDoc::Iec::PresentationXMLConvert.new({}) :
           IsoDoc::Iec::PresentationXMLConvert.new(doc_extract_attributes(node))
       end
-        
+
       def norm_ref_preface(f)
         return super unless @is_iev
         f.at("./title").next =

@@ -53,6 +53,7 @@ RSpec.describe Asciidoctor::Iec do
            </copyright>
            <ext>
              <doctype>article</doctype>
+                      <horizontal>false</horizontal>
              <editorialgroup>
                <technical-committee/>
                <subcommittee/>
@@ -131,6 +132,7 @@ INPUT
     </copyright>
     <ext>
       <doctype>article</doctype>
+                      <horizontal>false</horizontal>
       <editorialgroup>
         <technical-committee/>
         <subcommittee/>
@@ -209,6 +211,7 @@ OUTPUT
            </copyright>
            <ext>
              <doctype>article</doctype>
+                      <horizontal>false</horizontal>
              <editorialgroup>
                <technical-committee/>
                <subcommittee/>
