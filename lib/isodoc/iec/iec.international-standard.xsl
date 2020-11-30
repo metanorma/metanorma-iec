@@ -32,7 +32,7 @@
 	<xsl:variable name="title-main-fr" select="/iec:iec-standard/iec:bibdata/iec:title[@language = 'fr' and @type = 'title-main']"/>
 	<xsl:variable name="part" select="/iec:iec-standard/iec:bibdata/iec:ext/iec:structuredidentifier/iec:project-number/@part"/>
 	
-	<xsl:variable name="doctype_uppercased" select="java:toUpperCase(java:java.lang.String.new(translate(/iec:iec-standard/iec:bibdata/iec:ext/iec:doctype,'-',' ')))"/>
+	<xsl:variable name="doctype_uppercased" select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:doctype[@language = $lang]))"/>
 	 
 	
 	 	
@@ -136,7 +136,7 @@
 		<xsl:call-template name="namespaceCheck"/>
 		<!-- https://stackoverflow.com/questions/25261949/xsl-fo-letter-spacing-with-text-align -->
 		<!-- https://xmlgraphics.apache.org/fop/knownissues.html -->
-		<fo:root font-family="Arial, Times New Roman, STIX Two Math, HanSans" font-size="10pt" xml:lang="{$lang}">
+		<fo:root font-family="Arial, Times New Roman, STIX Two Math, Source Han Sans" font-size="10pt" xml:lang="{$lang}">
 			<fo:layout-master-set>
 				<!-- cover pages -->
 				<fo:simple-page-master master-name="cover" page-width="{$pageWidth}" page-height="{$pageHeight}">
@@ -763,13 +763,28 @@
 															<xsl:with-param name="text" select="'Functions concerned:'"/>
 														</xsl:call-template>
 													</fo:block>
+													<!-- function: { emc | safety | environment | quality-assurance } -->
 													<fo:block font-size="6.5pt">
-														<xsl:call-template name="insertCheckBoxOff"/>
+														<xsl:choose>
+															<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:function = 'emc'">
+																<xsl:call-template name="insertCheckBoxOn"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:call-template name="insertCheckBoxOff"/>
+															</xsl:otherwise>
+														</xsl:choose>
 														<xsl:call-template name="addLetterSpacingSmallCaps">
 															<xsl:with-param name="text" select="'EMC'"/>
 														</xsl:call-template>
 														<fo:inline padding-right="33mm"> </fo:inline>
-														<xsl:call-template name="insertCheckBoxOff"/>
+														<xsl:choose>
+															<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:function = 'environment'">
+																<xsl:call-template name="insertCheckBoxOn"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:call-template name="insertCheckBoxOff"/>
+															</xsl:otherwise>
+														</xsl:choose>
 														<xsl:call-template name="addLetterSpacingSmallCaps">
 															<xsl:with-param name="text" select="'Environment'"/>
 														</xsl:call-template>
@@ -778,12 +793,26 @@
 												<fo:table-cell padding="1.5mm" padding-bottom="0mm">
 													<fo:block font-size="6.5pt" margin-bottom="6pt"> </fo:block>
 													<fo:block font-size="6.5pt">
-														<xsl:call-template name="insertCheckBoxOff"/>
+														<xsl:choose>
+															<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:function = 'quality-assurance'">
+																<xsl:call-template name="insertCheckBoxOn"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:call-template name="insertCheckBoxOff"/>
+															</xsl:otherwise>
+														</xsl:choose>
 														<xsl:call-template name="addLetterSpacingSmallCaps">
 															<xsl:with-param name="text" select="'Quality assurance'"/>
 														</xsl:call-template>
 														<fo:inline padding-right="13mm"> </fo:inline>
-														<xsl:call-template name="insertCheckBoxOn"/>
+														<xsl:choose>
+															<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:function = 'safety'">
+																<xsl:call-template name="insertCheckBoxOn"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:call-template name="insertCheckBoxOff"/>
+															</xsl:otherwise>
+														</xsl:choose>
 														<xsl:call-template name="addLetterSpacingSmallCaps">
 															<xsl:with-param name="text" select="'Safety'"/>
 														</xsl:call-template>
@@ -1103,14 +1132,15 @@
 					
 					</fo:block>
 				</fo:block-container> 
-				<xsl:if test="/iec:iec-standard/iec:bibdata/iec:title[@language = 'fr']">
+				<xsl:if test="/iec:iec-standard/iec:bibdata/iec:title[@language = 'fr'] and $lang != 'fr'">
 					<fo:block-container height="26mm" margin-top="10pt" display-align="after">
 						<xsl:if test="$stage &gt;= 60">
 							<xsl:attribute name="width">100mm</xsl:attribute>
 						</xsl:if>
 						<fo:block color="{$color_gray}">
 							<xsl:if test="$stage &gt;= 60">
-								<xsl:text>NORME INTERNATIONALE</xsl:text>
+								<!-- <xsl:text>NORME INTERNATIONALE</xsl:text> -->
+								<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:doctype[@language = 'fr']))"/>
 							</xsl:if>
 						</fo:block>
 					</fo:block-container>
@@ -1126,16 +1156,32 @@
 				</fo:block-container>
 				<fo:block-container border-bottom="0.5pt solid {$color_gray}" margin-top="4mm" margin-bottom="16pt" height="14mm" display-align="center">
 					<fo:block font-size="10pt" color="{$color_blue}" margin-bottom="4pt">
-						Example: BASIC EMC PUBLICATION
+						<xsl:choose>
+							<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:horizontal = 'true'">
+								<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:horizontal[@language = $lang]))"/>
+							</xsl:when>
+							<xsl:otherwise><!-- horizontal is false -->
+								<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:function[@language = $lang]))"/>
+							</xsl:otherwise>
+						</xsl:choose>
+						<!-- Example: BASIC EMC PUBLICATION -->
 						<!-- HORIZONTAL STANDARD -->
 						<!-- Basic EMC Publication
 						Basic Safety Publication
 						Basic Environment Publication
 						Basic Quality Assurance Publication -->
 					</fo:block>
-					<xsl:if test="/iec:iec-standard/iec:bibdata/iec:title[@language = 'fr']">
+					<xsl:if test="/iec:iec-standard/iec:bibdata/iec:title[@language = 'fr'] and $lang != 'fr'">
 						<fo:block font-size="10pt" margin-bottom="10pt">
-							Example: PUBLICATION FONDAMENTALE EN CEM
+							<xsl:choose>
+								<xsl:when test="/iec:iec-standard/iec:bibdata/iec:ext/iec:horizontal = 'true'">
+									<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:horizontal[@language = 'fr']))"/>
+								</xsl:when>
+								<xsl:otherwise><!-- horizontal is false -->
+									<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(/iec:iec-standard/iec:bibdata/iec:ext/iec:function[@language = 'fr']))"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							<!-- Example: PUBLICATION FONDAMENTALE EN CEM -->
 							<!-- NORME HORIZONTALE -->
 						</fo:block>
 					</xsl:if>
@@ -3954,6 +4000,7 @@
 		</fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='strong'] | *[local-name()='b']">
 		<fo:inline font-weight="bold">
+			
 			<xsl:apply-templates/>
 		</fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='sup']">
@@ -4628,7 +4675,7 @@
 		<xsl:apply-templates mode="bookmarks"/>
 	</xsl:template><xsl:template match="*[local-name() = 'stem']" mode="contents">
 		<xsl:apply-templates select="."/>
-	</xsl:template><xsl:template match="*[local-name() = 'stem']" mode="bookmarks">
+	</xsl:template><xsl:template match="*[local-name() = 'references'][@hidden='true']" mode="contents" priority="3"/><xsl:template match="*[local-name() = 'stem']" mode="bookmarks">
 		<xsl:apply-templates mode="bookmarks"/>
 	</xsl:template><xsl:template name="addBookmarks">
 		<xsl:param name="contents"/>
@@ -5390,7 +5437,7 @@
 		<fo:block id="{@id}">
 			<xsl:apply-templates/>
 		</fo:block>
-	</xsl:template><xsl:template match="/*/*[local-name() = 'bibliography']/*[local-name() = 'references'][@normative='true']">
+	</xsl:template><xsl:template match="*[local-name() = 'references'][@hidden='true']" priority="3"/><xsl:template match="*[local-name() = 'bibitem'][@hidden='true']" priority="3"/><xsl:template match="/*/*[local-name() = 'bibliography']/*[local-name() = 'references'][@normative='true']">
 		
 		<fo:block id="{@id}">
 			<xsl:apply-templates/>
