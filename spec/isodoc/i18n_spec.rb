@@ -7,6 +7,11 @@ RSpec.describe IsoDoc do
       <bibdata>
       <docnumber>1</docnumber>
       <language>en</language>
+      <ext>
+      <doctype>international-standard</doctype>
+      <horizontal>true</horizontal>
+      <function>emc</function>
+      </ext>
       </bibdata>
       <preface>
       <foreword obligation="informative">
@@ -77,6 +82,17 @@ RSpec.describe IsoDoc do
        <bibdata>
        <docnumber>1</docnumber>
        <language current="true">en</language>
+       <ext>
+  <doctype language=''>international-standard</doctype>
+  <doctype language='fr'>Norme international</doctype>
+  <doctype language='en'>International Standard</doctype>
+<horizontal language=''>true</horizontal>
+<horizontal language='fr'>Norme horizontale</horizontal>
+<horizontal language='en'>Horizontal Standard</horizontal>
+<function language=''>emc</function>
+<function language='fr'>Publication fondamentale en CEM</function>
+<function language='en'>Basic EMC Publication</function>
+</ext>
        </bibdata>
        <preface>
        <foreword obligation="informative">
@@ -432,6 +448,11 @@ RSpec.describe IsoDoc do
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
       <language>fr</language>
+      <ext>
+      <doctype>international-standard</doctype>
+      <horizontal>false</horizontal>
+      <function>emc</function>
+      </ext>
       </bibdata>
       <preface>
       <foreword obligation="informative">
@@ -501,6 +522,15 @@ RSpec.describe IsoDoc do
 <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
        <bibdata>
        <language current="true">fr</language>
+       <ext>
+  <doctype language=''>international-standard</doctype>
+  <doctype language='fr'>Norme international</doctype>
+  <doctype language='en'>International Standard</doctype>
+  <horizontal language=''>false</horizontal>
+  <function language=''>emc</function>
+  <function language='fr'>Publication fondamentale en CEM</function>
+  <function language='en'>Basic EMC Publication</function>
+</ext>
        </bibdata>
        <preface>
        <foreword obligation="informative">

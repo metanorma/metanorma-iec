@@ -180,6 +180,7 @@ BLANK_HDR = <<~"HDR"
   </copyright>
   <ext>
     <doctype>article</doctype>
+    <horizontal>false</horizontal>
   <editorialgroup>
     <technical-committee/>
     <subcommittee/>

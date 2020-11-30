@@ -217,6 +217,12 @@ module Asciidoctor
           node.attr("iteration") && (s.iteration node.attr("iteration"))
         end
       end
+
+      def metadata_doctype(node, xml)
+        xml.doctype doctype(node)
+        xml.horizontal (node.attr("horizontal") || "false")
+        a = node.attr("function") and xml.function a
+      end
     end
   end
 end
