@@ -5,6 +5,7 @@ IEC: INTERNATIONAL ELECTROTECHNICAL COMMISSION
 formula: Equation
 inequality: Inequality
 section_iev: Section
+price-code: Price Code
 term_def_boilerplate: |
       <p>ISO and IEC maintain terminological databases for use in
       standardization at the following addresses:</p>
