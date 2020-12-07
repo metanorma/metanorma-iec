@@ -223,6 +223,11 @@ module Asciidoctor
         xml.horizontal (node.attr("horizontal") || "false")
         a = node.attr("function") and xml.function a
       end
+
+      def metadata_ext(node, xml)
+        super
+        a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
+      end
     end
   end
 end

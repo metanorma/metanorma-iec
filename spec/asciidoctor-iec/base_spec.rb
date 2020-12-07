@@ -91,6 +91,7 @@ RSpec.describe Asciidoctor::Iec do
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
       :library-ics: 1,2,3
+      :accessibility-color-inside: true
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
@@ -165,6 +166,7 @@ RSpec.describe Asciidoctor::Iec do
   <project-number part="1">IEC 1000</project-number>
 </structuredidentifier>
 <stagename>New work item proposal</stagename>
+<accessibility-color-inside>true</accessibility-color-inside>
        </ext>
        </bibdata>
        #{UNPUBLISHED_BOILERPLATE}
