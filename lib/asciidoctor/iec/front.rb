@@ -227,6 +227,7 @@ module Asciidoctor
       def metadata_ext(node, xml)
         super
         a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
+        a = node.attr("price-code") and xml.price_code a
       end
     end
   end
