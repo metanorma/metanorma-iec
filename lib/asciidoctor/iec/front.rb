@@ -228,6 +228,7 @@ module Asciidoctor
         super
         a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
         a = node.attr("price-code") and xml.price_code a
+        a = node.attr("cen-processing") and xml.cen_processing a
       end
     end
   end
