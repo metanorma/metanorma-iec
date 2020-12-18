@@ -93,6 +93,7 @@ RSpec.describe Asciidoctor::Iec do
       :library-ics: 1,2,3
       :accessibility-color-inside: true
       :price-code: XC
+      :cen-processing: true
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
@@ -169,6 +170,7 @@ RSpec.describe Asciidoctor::Iec do
 <stagename>New work item proposal</stagename>
 <accessibility-color-inside>true</accessibility-color-inside>
 <price-code>XC</price-code>
+<cen-processing>true</cen-processing>
        </ext>
        </bibdata>
        #{UNPUBLISHED_BOILERPLATE}

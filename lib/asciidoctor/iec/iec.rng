@@ -40,6 +40,9 @@
       <optional>
         <ref name="price-code"/>
       </optional>
+      <optional>
+        <ref name="cen-processing"/>
+      </optional>
     </define>
   </include>
   <!-- end overrides -->
@@ -53,11 +56,6 @@
       </choice>
     </element>
   </define>
-  <define name="horizontal">
-    <element name="horizontal">
-      <data type="boolean"/>
-    </element>
-  </define>
   <define name="accessibility-color-inside">
     <element name="accessibility-color-inside">
       <data type="boolean"/>
@@ -66,6 +64,11 @@
   <define name="price-code">
     <element name="price-code">
       <text/>
+    </element>
+  </define>
+  <define name="cen-processing">
+    <element name="cen-processing">
+      <data type="boolean"/>
     </element>
   </define>
   <!--
