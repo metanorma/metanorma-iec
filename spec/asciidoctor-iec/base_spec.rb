@@ -193,7 +193,7 @@ RSpec.describe Asciidoctor::Iec do
       :tc-docnumber: 2000
       :language: el
       :script: Grek
-      :publisher: IEC,IETF,ISO
+      :publisher: IEC;IETF;ISO
       :copyright-year: 2001
       :docstage: A2CD
       :doctype: technical-specification
