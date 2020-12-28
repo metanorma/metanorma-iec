@@ -94,6 +94,8 @@ RSpec.describe Asciidoctor::Iec do
       :accessibility-color-inside: true
       :price-code: XC
       :cen-processing: true
+      :secretary: Fred Nerk
+      :interest-to-committees: TC 6121, SC 12
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
@@ -171,6 +173,8 @@ RSpec.describe Asciidoctor::Iec do
 <accessibility-color-inside>true</accessibility-color-inside>
 <price-code>XC</price-code>
 <cen-processing>true</cen-processing>
+<secretary>Fred Nerk</secretary>
+<interest-to-committees>TC 6121, SC 12</interest-to-committees>
        </ext>
        </bibdata>
        #{UNPUBLISHED_BOILERPLATE}
