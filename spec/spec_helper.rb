@@ -112,38 +112,17 @@ TERMS_BOILERPLATE = <<~"BOILERPLATE"
 </ul>
 BOILERPLATE
 
-BOILERPLATE =
-  HTMLEntities.new.decode(
-  File.read(File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iec", "iec_intro_en.xml"), encoding: "utf-8").
-  gsub(/\{\{ agency \}\}/, "IEC").gsub(/\{\{ docyear \}\}/, Date.today.year.to_s).
-  gsub(/\{% if unpublished %\}.*\{% endif %\}/m, "").
-  gsub(/(?<=\p{Alnum})'(?=\p{Alpha})/, "’").
-  gsub(/<p>/, "<p id='_'>").
-  gsub(/<ol>/, "<ol id='_'>").
-  gsub(/ - /, " — ").
-  gsub(/\.\.\./, "…")
-)
-
-BOILERPLATE_LICENSE = <<~END
-<license-statement>
-  <clause>
-    <title>Warning for CDs, CDVs and FDISs</title>
-    <p id='_'>
-      This document is not an IEC International Standard. It is distributed
-      for review and comment. It is subject to change without notice and may
-      not be referred to as an International Standard.
-    </p>
-    <p id='_'>
-      Recipients of this draft are invited to submit, with their comments,
-      notification of any relevant patent rights of which they are aware and
-      to provide supporting documentation.
-    </p>
-  </clause>
-</license-statement>
-END
-
-UNPUBLISHED_BOILERPLATE = BOILERPLATE.sub(/<\/boilerplate>/, "#{BOILERPLATE_LICENSE}</boilerplate>")
-
+def boilerplate(xmldoc)
+  file = File.read(File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iec", "iec_intro_en.xml"), encoding: "utf-8")
+  conv = Asciidoctor::Iec::Converter.new(nil, backend: :iec, header_footer: true)
+  conv.init(Asciidoctor::Document.new [])
+  ret = Nokogiri::XML(
+    conv.boilerplate_isodoc(xmldoc).populate_template(file, nil).
+    gsub(/<p>/, "<p id='_'>").
+    gsub(/<ol>/, "<ol id='_'>"))
+  conv.smartquotes_cleanup(ret)
+  HTMLEntities.new.decode(ret.to_xml)
+end
 
 BLANK_HDR = <<~"HDR"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -189,8 +168,15 @@ BLANK_HDR = <<~"HDR"
   <stagename>International standard</stagename>
   </ext>
 </bibdata>
-#{BOILERPLATE}
 HDR
+
+def blank_hdr_gen
+<<~"HDR"
+#{BLANK_HDR}
+#{boilerplate(Nokogiri::XML(BLANK_HDR + "</iec-standard>"))}
+HDR
+end
+
 
 IEC_TITLE = <<~END
  <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>

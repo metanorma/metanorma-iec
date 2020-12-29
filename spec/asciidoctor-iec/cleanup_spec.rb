@@ -1,6 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
+   before(:all) do
+  @blank_hdr = blank_hdr_gen
+end
+
   it "moves note from TC/SC officers to metadata" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -67,7 +71,7 @@ RSpec.describe Asciidoctor::Iec do
 </tc-sc-officers-note>
   </ext>
 </bibdata>
-#{BOILERPLATE}
+#{boilerplate(Nokogiri::XML(BLANK_HDR + "</iec-standard>"))}
               <sections>
          <clause id="_" inline-header="false" obligation="normative">
 
@@ -82,7 +86,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       == {blank}
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
               <sections>
          <clause id="_" inline-header="false" obligation="normative">
 
@@ -103,7 +107,7 @@ RSpec.describe Asciidoctor::Iec do
 
       Time
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -151,7 +155,7 @@ RSpec.describe Asciidoctor::Iec do
 
       This paragraph is extraneous
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -193,7 +197,7 @@ RSpec.describe Asciidoctor::Iec do
 
       This paragraph is extraneous
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
               <sections>
          <terms id="_" obligation="normative"><title>Terms and definitions</title>
          <p id="_">For the purposes of this document, 
@@ -223,7 +227,7 @@ RSpec.describe Asciidoctor::Iec do
       == Clause
       * [[[iso216,ISO 216]]], _Reference_
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
        <preface>
        <foreword id="_" obligation="informative">
          <title>FOREWORD</title>
@@ -260,7 +264,7 @@ RSpec.describe Asciidoctor::Iec do
       [.source]
       <<ISO2191,section=1>>
       INPUT
-              #{BLANK_HDR}
+              #{@blank_hdr}
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -292,7 +296,7 @@ RSpec.describe Asciidoctor::Iec do
 
       * [[[iso216,ISO 216]]], _Reference_
     INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
       <sections></sections>
       <bibliography><references id="_" obligation="informative" normative="true"><title>Normative references</title>
       <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
@@ -319,7 +323,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       Paragraph
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
        <sections>
          <p id="_">Paragraph</p>
        </sections>
@@ -335,7 +339,7 @@ RSpec.describe Asciidoctor::Iec do
       NOTE: This note has no ID
       ====
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
        <sections>
          <example id="_">
          <note id="_">
@@ -356,7 +360,7 @@ RSpec.describe Asciidoctor::Iec do
 
       footnote:[This is another footnote to a figure]
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
        <sections><figure id="_">
          <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
        <fn reference="a">
@@ -383,7 +387,7 @@ RSpec.describe Asciidoctor::Iec do
 
       Text
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
        <sections><clause id="_" inline-header="false" obligation="normative">
          <title>Clause</title>
          <p id="_">Text</p>
@@ -425,7 +429,7 @@ RSpec.describe Asciidoctor::Iec do
     ====== Clause 5B
 
     INPUT
-    #{BLANK_HDR}
+    #{@blank_hdr}
     <sections>
   <clause id="_" inline-header="false" obligation="normative">
   <title>Clause1</title>
