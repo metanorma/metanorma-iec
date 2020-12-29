@@ -1,6 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
+  before(:all) do
+  @blank_hdr = blank_hdr_gen
+end
+
   it "processes open blocks" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -12,7 +16,7 @@ RSpec.describe Asciidoctor::Iec do
       z
       --
     INPUT
-        #{BLANK_HDR}
+        #{@blank_hdr}
        <sections><p id="_">x</p>
        <p id="_">y</p>
        <p id="_">z</p></sections>
@@ -34,7 +38,7 @@ RSpec.describe Asciidoctor::Iec do
       <mml:math><mml:msub xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">F</mml:mi> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">&#x0391;</mml:mi> </mml:mrow> </mml:mrow> </mml:msub> </mml:math>
       ++++
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <formula id="_">
          <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mn>1</mn><mi>%</mi><mi>r</mi><mo>=</mo><mn>1</mn><mi>%</mi></math></stem>
@@ -62,7 +66,7 @@ RSpec.describe Asciidoctor::Iec do
       For further information on the Foreword, see *ISO/IEC Directives, Part 2, 2016, Clause 12.*
       ****
       INPUT
-              #{BLANK_HDR}
+              #{@blank_hdr}
        <sections><p id="foreword">Foreword</p>
        </sections>
        </iec-standard>
@@ -107,7 +111,7 @@ RSpec.describe Asciidoctor::Iec do
 
       NOTE: This is a note
       INPUT
-              #{BLANK_HDR}
+              #{@blank_hdr}
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -130,7 +134,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       NOTE: This is a note
       INPUT
-              #{BLANK_HDR}
+              #{@blank_hdr}
        <sections>
          <note id="_">
          <p id="_">This is a note</p>
@@ -148,7 +152,7 @@ RSpec.describe Asciidoctor::Iec do
       LITERAL
       ....
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
 <sections>
   <figure id="_">
   <pre id="_">LITERAL</pre>
@@ -163,7 +167,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       CAUTION: Only use paddy or parboiled rice for the determination of husked rice yield.
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
        <sections>
          <admonition id="_" type="caution">
          <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
@@ -188,7 +192,7 @@ RSpec.describe Asciidoctor::Iec do
       . Celery makes them sad.
       ====
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
       <sections>
          <admonition id="_" type="safety precautions"><name>Safety Precautions</name><p id="_">While werewolves are hardy community members, keep in mind the following dietary concerns:</p>
        <ol id="_">
@@ -218,7 +222,7 @@ RSpec.describe Asciidoctor::Iec do
       [example]
       This is an example
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
               <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -247,7 +251,7 @@ RSpec.describe Asciidoctor::Iec do
       Amen
       ====
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
        <sections>
          <example id="_"><p id="_">This is an example</p>
        <p id="_">Amen</p></example>
@@ -263,7 +267,7 @@ RSpec.describe Asciidoctor::Iec do
 
       == Section 1
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
              <preface><foreword id="_" obligation="informative">
          <title>FOREWORD</title>
          <p id="_">This is a preamble</p>
@@ -282,7 +286,7 @@ RSpec.describe Asciidoctor::Iec do
       image::spec/examples/rice_images/rice_image1.png[]
 
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
               <sections>
          <figure id="_">
          <name>Split-it-right sample divider</name>
@@ -300,7 +304,7 @@ RSpec.describe Asciidoctor::Iec do
       image::spec/examples/rice_images/rice_image1.png[]
 
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
               <sections>
          <figure id="_">
          <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="3"/>
@@ -317,7 +321,7 @@ RSpec.describe Asciidoctor::Iec do
       image::spec/examples/rice_images/rice_image1.png[]
 
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
               <sections>
          <figure id="_">
          <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="auto"/>
@@ -333,7 +337,7 @@ RSpec.describe Asciidoctor::Iec do
       [align=right]
       This para is right-aligned.
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
       <sections>
          <p align="right" id="_">This para is right-aligned.</p>
        </sections>
@@ -349,7 +353,7 @@ RSpec.describe Asciidoctor::Iec do
       Block quotation
       ____
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
        <sections>
          <quote id="_">
          <source type="inline" bibitemid="ISO7301" citeas=""><localityStack><locality type="section"><referenceFrom>1</referenceFrom></locality></localityStack></source>
@@ -372,7 +376,7 @@ RSpec.describe Asciidoctor::Iec do
       end
       --
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
        <sections>
          <sourcecode lang="ruby" id="_">puts "Hello, world."
        %w{a b c}.each do |x|
@@ -396,7 +400,7 @@ RSpec.describe Asciidoctor::Iec do
       <1> This is one callout
       <2> This is another callout
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
               <sections><sourcecode lang="ruby" id="_">puts "Hello, world." <callout target="_">1</callout>
        %w{a b c}.each do |x|
          puts x <callout target="_">2</callout>
@@ -420,7 +424,7 @@ RSpec.describe Asciidoctor::Iec do
       [.source]
       <<ISO2191,section=1>>
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
        <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
@@ -452,7 +456,7 @@ RSpec.describe Asciidoctor::Iec do
       [.source]
       <<ISO2191,section=1>>, with adjustments
       INPUT
-      #{BLANK_HDR}
+      #{@blank_hdr}
             <sections>
          <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
