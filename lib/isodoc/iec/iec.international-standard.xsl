@@ -2994,7 +2994,12 @@
 			
 			<xsl:variable name="table_attributes">
 				<attribute name="table-layout">fixed</attribute>
-				<attribute name="width">100%</attribute>
+				<attribute name="width">
+					<xsl:choose>
+						<xsl:when test="@width"><xsl:value-of select="@width"/></xsl:when>
+						<xsl:otherwise>100%</xsl:otherwise>
+					</xsl:choose>
+				</attribute>
 				<attribute name="margin-left"><xsl:value-of select="$margin-left"/>mm</attribute>
 				<attribute name="margin-right"><xsl:value-of select="$margin-left"/>mm</attribute>
 				
@@ -4237,6 +4242,10 @@
 					</xsl:choose>
 				</xsl:attribute>
 			</xsl:if>
+			<xsl:apply-templates/>
+		</fo:inline>
+	</xsl:template><xsl:template match="*[local-name()='underline']">
+		<fo:inline text-decoration="underline">
 			<xsl:apply-templates/>
 		</fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='del']">
