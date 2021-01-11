@@ -49,7 +49,7 @@ end
              <substage abbreviation="PPUB">60</substage>
            </status>
            <copyright>
-             <from>2020</from>
+             <from>#{Time.now.year}</from>
              <owner>
                <organization>
                  <name>International Electrotechnical Commission</name>
@@ -128,7 +128,7 @@ INPUT
       <substage abbreviation="PPUB">60</substage>
     </status>
     <copyright>
-      <from>2020</from>
+      <from>#{Time.now.year}</from>
       <owner>
         <organization>
           <name>International Electrotechnical Commission</name>
@@ -207,7 +207,7 @@ OUTPUT
              <substage abbreviation='PPUB'>60</substage>
            </status>
            <copyright>
-             <from>2020</from>
+             <from>#{Time.now.year}</from>
              <owner>
                <organization>
                  <name>International Electrotechnical Commission</name>

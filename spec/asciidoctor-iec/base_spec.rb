@@ -186,7 +186,7 @@ end
            <copyright-statement>
              <clause>
                <p id='_'>
-                 <strong>Copyright © 2020 International Electrotechnical Commission, IEC.</strong>
+                 <strong>Copyright © #{Time.now.year} International Electrotechnical Commission, IEC.</strong>
                   All rights reserved. It is permitted to download this electronic
                  file, to make a copy and to print out the content for the sole purpose
                  of preparing National Committee positions. You may not copy or
@@ -673,7 +673,7 @@ end
            <copyright-statement>
              <clause>
                <p id='_'>
-                 <strong>Copyright © 2020 International Electrotechnical Commission, IEC.</strong>
+                 <strong>Copyright © #{Time.now.year} International Electrotechnical Commission, IEC.</strong>
                   All rights reserved. It is permitted to download this electronic
                  file, to make a copy and to print out the content for the sole purpose
                  of preparing National Committee positions. You may not copy or
