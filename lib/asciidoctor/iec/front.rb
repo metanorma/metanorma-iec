@@ -183,8 +183,7 @@ module Asciidoctor
 
       def get_stage(node)
         stage = node.attr("status") || node.attr("docstage") || "60"
-        m = /([0-9])CD$/.match(stage) and
-          node.set_attr("iteration", m[1])
+        m = /([0-9])CD$/.match(stage) and node.set_attr("iteration", m[1])
         STAGE_CODES[stage] and stage = STAGE_CODES[stage][0..1]
         stage
       end
@@ -193,9 +192,7 @@ module Asciidoctor
         st = node.attr("status") || node.attr("docstage")
         stage = get_stage(node)
         node.attr("docsubstage") ||
-          ( stage == "60" ? "60" :
-           STAGE_CODES[st] ? STAGE_CODES[st][2..3] :
-           "00" )
+          ( stage == "60" ? "60" : STAGE_CODES[st] ? STAGE_CODES[st][2..3] : "00" )
       end
 
       def id_stage_abbr(stage, substage, node)
@@ -211,8 +208,7 @@ module Asciidoctor
         xml.status do |s|
           s.stage stage, **attr_code(abbreviation: stage_abbr(stage, substage))
           s.substage substage,
-            **attr_code(abbreviation: status_abbrev1(stage, substage,
-                                                     node.attr("iteration"), 
+            **attr_code(abbreviation: status_abbrev1(stage, substage, node.attr("iteration"), 
                                                      doctype(node),node.attr("draft")))
           node.attr("iteration") && (s.iteration node.attr("iteration"))
         end
@@ -229,6 +225,8 @@ module Asciidoctor
         a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
         a = node.attr("price-code") and xml.price_code a
         a = node.attr("cen-processing") and xml.cen_processing a
+        a = node.attr("secretary") and xml.secretary a
+        a = node.attr("interest-to-committees") and xml.interest_to_committees a
       end
     end
   end

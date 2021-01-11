@@ -1,6 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
+   before(:all) do
+  @blank_hdr = blank_hdr_gen
+end
+
   it "processes simple lists" do
     output = Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
       #{ASCIIDOC_BLANK_HDR}
@@ -17,7 +21,7 @@ RSpec.describe Asciidoctor::Iec do
 
     INPUT
     expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <ul id="_">
          <li>
@@ -99,7 +103,7 @@ RSpec.describe Asciidoctor::Iec do
 
     INPUT
     expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections><ul id="id">
          <li>
            <p id="_">First</p>
@@ -172,7 +176,7 @@ RSpec.describe Asciidoctor::Iec do
       * Hello [[id3]] List item
 
      INPUT
-             #{BLANK_HDR}
+             #{@blank_hdr}
              <sections>
               <ul id="id1">
          <li id="id2">
