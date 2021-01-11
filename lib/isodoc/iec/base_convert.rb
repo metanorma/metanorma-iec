@@ -13,7 +13,7 @@ module IsoDoc
         b = isoxml.at(ns("//boilerplate/legal-statement"))
         page_break(out)
         iec_orgname(out)
-        middle_title(out)
+        middle_title(isoxml, out)
         out.div **attr_code(id: f ? f["id"] : "") do |s|
           s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @i18n.foreword }
           @meta.get[:doctype] == "Amendment" or
@@ -30,7 +30,7 @@ module IsoDoc
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
-      def middle_title(out)
+      def middle_title(_isoxml, out)
         title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
         @meta.get[:doctitleintro] and
           title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
