@@ -5816,6 +5816,8 @@
 		<xsl:value-of select="translate(.,'. ','')"/>
 	</xsl:template><xsl:template match="*[local-name() = 'name']/*[local-name() = 'forename']/text()" mode="strip">
 		<xsl:value-of select="substring(.,1,1)"/>
+	</xsl:template><xsl:template match="*[local-name() = 'title']" mode="title">
+		<fo:inline><xsl:apply-templates/></fo:inline>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
@@ -6093,6 +6095,11 @@
 			<xsl:call-template name="getLang"/>
 		</xsl:variable>
 		
-		<xsl:value-of select="/*/*[local-name() = 'localized-strings']/*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang]"/>
+		<xsl:choose>
+			<xsl:when test="/*/*[local-name() = 'localized-strings']/*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang]">
+				<xsl:value-of select="/*/*[local-name() = 'localized-strings']/*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang]"/>
+			</xsl:when>
+			<xsl:otherwise><xsl:value-of select="$key"/></xsl:otherwise>
+		</xsl:choose>
 		
 	</xsl:template></xsl:stylesheet>
