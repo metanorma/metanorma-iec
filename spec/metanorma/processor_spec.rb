@@ -27,7 +27,7 @@ RSpec.describe Metanorma::Iec::Processor do
     expect(xmlpp(strip_guid(processor.input_to_isodoc(<<~"INPUT", nil)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     #{ASCIIDOC_BLANK_HDR}
     INPUT
-    #{BLANK_HDR}
+    #{blank_hdr_gen}
 <sections/>
 </iec-standard>
     OUTPUT
