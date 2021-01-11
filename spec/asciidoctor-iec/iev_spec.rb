@@ -2,6 +2,12 @@ require "spec_helper"
 require "fileutils"
 
 RSpec.describe Asciidoctor::Iec do
+before(:all) do
+  @boilerplate = boilerplate(Nokogiri::XML(BLANK_HDR + "</iec-standard>"))
+end
+
+
+
   it "generates reference boilerplate for IEV" do
      expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
@@ -65,7 +71,7 @@ RSpec.describe Asciidoctor::Iec do
                    <stagename>International standard</stagename>
            </ext>
          </bibdata>
-         #{BOILERPLATE}
+         #{@boilerplate}
          <sections> </sections>
          <bibliography>
            <references id='_' obligation='informative' normative="true">
@@ -144,7 +150,7 @@ INPUT
       <stagename>International standard</stagename>
     </ext>
   </bibdata>
-           #{BOILERPLATE}
+           #{@boilerplate}
   <sections>
     <clause id='_' obligation='normative'>
       <title>Terms and definitions</title>
@@ -223,7 +229,7 @@ OUTPUT
              <stagename>International standard</stagename>
            </ext>
          </bibdata>
-         #{BOILERPLATE}
+         #{@boilerplate}
          <preface>
            <introduction id='_' obligation='informative'>
              <title>INTRODUCTION&lt;br/&gt;Principles and rules followed</title>

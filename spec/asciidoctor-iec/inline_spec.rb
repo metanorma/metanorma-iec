@@ -1,6 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
+   before(:all) do
+  @blank_hdr = blank_hdr_gen
+end
+
   it "processes inline_quoted formatting" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -19,7 +23,7 @@ RSpec.describe Asciidoctor::Iec do
       [strike]#strike#
       [smallcap]#smallcap#
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <em>emphasis</em>
        <strong>strong</strong>
@@ -56,7 +60,7 @@ RSpec.describe Asciidoctor::Iec do
 
       <<<
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections><p id="_">Line break<br/>
        line break</p>
        <hr/>
@@ -72,7 +76,7 @@ RSpec.describe Asciidoctor::Iec do
       http://example.com[]
       http://example.com[Link]
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <p id="_">mailto:fred@example.com
        <link target="http://example.com"/>
@@ -87,7 +91,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       Text [[bookmark]] Text
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <p id="_">Text <bookmark id="bookmark"/> Text</p>
        </sections>
@@ -106,7 +110,7 @@ RSpec.describe Asciidoctor::Iec do
       Inline Reference with Text to <<reference,text>>
       Footnoted Reference with Text to <<reference,fn: text>>
     INPUT
-       #{BLANK_HDR}
+       #{@blank_hdr}
         <sections>
          <clause id="reference" inline-header="false" obligation="normative">
          <title>Section</title>
@@ -130,7 +134,7 @@ RSpec.describe Asciidoctor::Iec do
       * [[[ISO713]]] Reference
 
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
 
        </sections><bibliography><references id="_" obligation="informative" normative="true">
@@ -156,7 +160,7 @@ RSpec.describe Asciidoctor::Iec do
       #{ASCIIDOC_BLANK_HDR}
       Hello!footnote:[Footnote text]
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <sections>
          <p id="_">Hello!<fn reference="1">
          <p id="_">Footnote text</p>
