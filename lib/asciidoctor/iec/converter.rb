@@ -80,6 +80,23 @@ module Asciidoctor
         super
         @is_iev and replace_title(x, "//introduction", @i18n&.introduction_iev)
       end
+
+      def note(n)
+        if n.title == "Note from TC/SC Officers"
+          noko do |xml|
+            xml.tc_sc_officers_note do |c|
+              wrap_in_para(n, c)
+            end
+          end.join("\n")
+        else
+          super
+        end
+      end
+
+      def note_cleanup(xmldoc)
+        super
+        n = xmldoc.at("//tc-sc-officers-note") and xmldoc.at("//bibdata/ext").add_child(n.remove)
+      end
     end
   end
 end

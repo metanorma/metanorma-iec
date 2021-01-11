@@ -1,6 +1,13 @@
 <boilerplate>
   <copyright-statement>
-    <clause>
+    <clause>  
+      {% if unpublished %}
+      <p><strong>Copyright © {{ docyear }} International Electrotechnical Commission, IEC.</strong>
+        All rights reserved. It is permitted to download this electronic file, to make a copy and to
+        print out the content for the sole purpose of preparing National Committee positions. You
+        may not copy or "mirror" the file or printed version of the document, or any part of it,
+        for any other purpose without permission in writing from IEC.
+      {% else %}
       <p id="boilerplate-year">
         © {{ agency }} {{ docyear }}, Published in Switzerland
       </p>
@@ -20,6 +27,7 @@
         Fax&#xa0;&#xa0;+ 41 22 919 03 00<br/>
         info@iec.ch<br/>
         www.iec.ch
+      {% endif %}
       </p>
     </clause>
   </copyright-statement>
@@ -41,21 +49,37 @@
   {% if unpublished %}
   <license-statement>
     <clause>
-      <title>Warning for CDs, CDVs and FDISs</title>
-
-      <p>This
-        document is not an IEC International Standard. It is distributed for review and
-        comment. It is subject to change without notice and may not be referred to as
-        an International Standard.</p>
-
-      <p>Recipients
-        of this draft are invited to submit, with their comments, notification of any
-        relevant patent rights of which they are aware and to provide supporting
-        documentation.</p>
+      {% if stage_int < 50 %}
+      <p>This document is still under study and subject to change. It should not be used for reference purposes.</p>
+      until published as such.</p>
+    {% endif %}
+      {% if stage_int >= 50 %}
+      <p>This document is a draft distributed for approval. It may not be referred to as an International Standard
+        until published as such.</p>
+      {% endif %}
+      {% if stage_int >= 50 %}
+      <p>In addition to their evaluation as being acceptable for industrial, technological, commercial and user
+        purposes, Final Draft International Standards may on occasion have to be considered in the light of their
+        potential to become standards to which reference may be made in national regulations.</p>
+      {% endif %}
+      <p>Recipients of this document are invited to submit, with their comments, notification of any relevant
+        patent rights of which they are aware and to provide supporting documentation.</p>
     </clause>
   </license-statement>
   {% endif %}
   <feedback-statement>
+    {% if unpublished %}
+    <clause id="boilerplate-cenelec-attention">
+      <title>Attention IEC-CENELEC parallel voting</title>
+      <p>The attention of IEC National Committees, members of CENELEC, is drawn to the fact that this
+        {% if stage_int >= 30 and stage_int < 40 %}Committee Draft{% endif %}
+        {% if stage_int >= 40 and stage_int < 50 %}Committee Draft For Vote{% endif %}
+        {% if stage_int >= 50 and stage_int < 60 %}Final Draft International Standard{% endif %}
+        ({{ stageabbr }})
+        is submitted for parallel voting.</p>
+      <p>The CENELEC members are invited to vote through the CENELEC voting system.</p>
+    </clause>
+    {% else %}
     <clause>
       <title>About the IEC</title>
       <p>The International Electrotechnical Commission (IEC) is the leading global organization that prepares and publishes International Standards for all electrical, electronic and related technologies.</p>
@@ -85,6 +109,7 @@
         <p>If you wish to give us your feedback on this publication or need further assistance, please contact the Customer Service Centre: <link target="mailto://csc@iec.ch">csc@iec.ch</link>.</p>
       </clause>
     </clause>
+    {% endif %}
   </feedback-statement>
 </boilerplate>
 

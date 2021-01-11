@@ -1,6 +1,10 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Iec do
+   before(:all) do
+  @blank_hdr = blank_hdr_gen
+end
+
   it "processes sections" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -52,7 +56,7 @@ RSpec.describe Asciidoctor::Iec do
 
       === Bibliography Subsection
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <preface><foreword id="_" obligation="informative">
          <title>FOREWORD</title>
          <p id="_">Text</p>
@@ -189,7 +193,7 @@ RSpec.describe Asciidoctor::Iec do
 
       === Bibliography Subsection
     INPUT
-            #{BLANK_HDR}
+            #{@blank_hdr}
        <preface>     
        <foreword id="_" obligation="informative">
          <title>FOREWORD</title>
@@ -298,7 +302,7 @@ RSpec.describe Asciidoctor::Iec do
       [appendix,obligation=informative]
       == Annex
      INPUT
-             #{BLANK_HDR}
+             #{@blank_hdr}
        <sections><clause id="_" inline-header="false" obligation="informative">
          <title>Clause 1</title>
          <clause id="_" inline-header="false" obligation="informative">
@@ -329,7 +333,7 @@ RSpec.describe Asciidoctor::Iec do
       [%inline-header]
       === Clause Aa
      INPUT
-             #{BLANK_HDR}
+             #{@blank_hdr}
        <sections><clause id="_" inline-header="false" obligation="normative">
          <title>Clause 1</title>
          <clause id="_" inline-header="true" obligation="normative">
@@ -354,7 +358,7 @@ RSpec.describe Asciidoctor::Iec do
       === {blank}
 
      INPUT
-             #{BLANK_HDR}
+             #{@blank_hdr}
        <sections>
          <clause id="_" inline-header="false" obligation="normative">
          <title>Clause 1</title>
