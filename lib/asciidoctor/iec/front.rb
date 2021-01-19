@@ -182,6 +182,10 @@ module Asciidoctor
         a = node.attr("function") and xml.function a
       end
 
+      def relaton_relations
+        super + %w(obsoletes)
+      end
+
       def metadata_ext(node, xml)
         super
         a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
