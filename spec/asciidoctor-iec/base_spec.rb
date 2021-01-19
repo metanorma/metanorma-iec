@@ -101,6 +101,7 @@ end
       :cen-processing: true
       :secretary: Fred Nerk
       :interest-to-committees: TC 6121, SC 12
+      :obsoletes: ABC; DEF
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
        <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
@@ -150,6 +151,18 @@ end
              </organization>
            </owner>
          </copyright>
+         <relation type='obsoletes'>
+  <bibitem>
+    <title>--</title>
+    <docidentifier>ABC</docidentifier>
+  </bibitem>
+</relation>
+<relation type='obsoletes'>
+  <bibitem>
+    <title>--</title>
+    <docidentifier>DEF</docidentifier>
+  </bibitem>
+</relation>
          <ext>
          <doctype>article</doctype>
          <horizontal>false</horizontal>
