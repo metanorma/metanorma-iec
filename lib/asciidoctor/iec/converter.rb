@@ -97,6 +97,9 @@ module Asciidoctor
         super
         n = xmldoc.at("//tc-sc-officers-note") and xmldoc.at("//bibdata/ext").add_child(n.remove)
       end
+
+      def image_name_validate(xmldoc)
+      end
     end
   end
 end
