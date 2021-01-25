@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "metanorma-iec lets you write IEC standards "\
     "in AsciiDoc."
   spec.description   = <<~DESCRIPTION
-    metanorma-iso lets you write IEC standards in AsciiDoc syntax.
+    metanorma-iec lets you write IEC standards in AsciiDoc syntax.
 
     This gem is in active development.
   DESCRIPTION
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.add_dependency "ruby-jing"
-  spec.add_dependency "metanorma-iso", "~> 1.6.1"
+  spec.add_dependency "metanorma-iso", "~> 1.7.0"
 
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "sassc", "2.4.0"
