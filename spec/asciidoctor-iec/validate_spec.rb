@@ -18,39 +18,39 @@ RSpec.describe Asciidoctor::Iec do
         mock_pdf
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "iec", :"agree-to-terms" => true)
+          .compile("spec/assets/xref_error.adoc", type: "iec", no_install_fonts: true)
       end.to(change { File.exist?("spec/assets/xref_error.err") }
               .from(false).to(true))
     end
   end
 
-it "Warns of illegal doctype" do
+  it "Warns of illegal doctype" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
-  = Document title
-  Author
-  :docfile: test.adoc
-  :nodoc:
-  :no-isobib:
-  :doctype: pizza
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :doctype: pizza
 
-  text
-  INPUT
+      text
+    INPUT
     expect(File.read("test.err")).to include "pizza is not a recognised document type"
-end
+  end
 
-it "Warns of illegal function" do
+  it "Warns of illegal function" do
     FileUtils.rm_f "test.err"
     Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
-  = Document title
-  Author
-  :docfile: test.adoc
-  :nodoc:
-  :no-isobib:
-  :function: pizza
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :function: pizza
 
-  text
-  INPUT
+      text
+    INPUT
     expect(File.read("test.err")).to include "pizza is not a recognised document function"
-end
+  end
 end
