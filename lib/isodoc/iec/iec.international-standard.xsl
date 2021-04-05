@@ -2954,7 +2954,7 @@
 				
 	</xsl:attribute-set><xsl:attribute-set name="admitted-style">
 		
-	
+		
 	</xsl:attribute-set><xsl:attribute-set name="deprecates-style">
 		
 			<xsl:attribute name="font-size">8pt</xsl:attribute>
