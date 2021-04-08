@@ -74,7 +74,7 @@ RSpec.describe IsoDoc do
   it "generates HTML output docs with null configuration from file" do
     FileUtils.rm_f "spec/assets/iso.doc"
     FileUtils.rm_f "spec/assets/iso.html"
-    IsoDoc::Iec::HtmlConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("spec/assets/iso.xml", nil, false)
+    IsoDoc::Iec::HtmlConvert.new({wordstylesheet: "word.css", htmlstylesheet: "html.css"}).convert("spec/assets/iso.xml", nil, false)
     expect(File.exist?("spec/assets/iso.html")).to be true
     html = File.read("spec/assets/iso.html", encoding: "UTF-8")
     expect(html).to match(/<style>/)
@@ -84,7 +84,7 @@ RSpec.describe IsoDoc do
 
   it "generates Word output docs with null configuration from file" do
     FileUtils.rm_f "spec/assets/iso.doc"
-    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("spec/assets/iso.xml", nil, false)
+    IsoDoc::Iec::WordConvert.new({wordstylesheet: "word.css", htmlstylesheet: "html.css"}).convert("spec/assets/iso.xml", nil, false)
     expect(File.exist?("spec/assets/iso.doc")).to be true
     word = File.read("spec/assets/iso.doc", encoding: "UTF-8")
     expect(word).to match(/<w:WordDocument>/)
