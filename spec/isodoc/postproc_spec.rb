@@ -74,7 +74,7 @@ RSpec.describe IsoDoc do
   it "generates HTML output docs with null configuration from file" do
     FileUtils.rm_f "spec/assets/iso.doc"
     FileUtils.rm_f "spec/assets/iso.html"
-    IsoDoc::Iec::HtmlConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("spec/assets/iso.xml", nil, false)
+    IsoDoc::Iec::HtmlConvert.new({wordstylesheet: "word.css", htmlstylesheet: "html.css"}).convert("spec/assets/iso.xml", nil, false)
     expect(File.exist?("spec/assets/iso.html")).to be true
     html = File.read("spec/assets/iso.html", encoding: "UTF-8")
     expect(html).to match(/<style>/)
@@ -84,7 +84,7 @@ RSpec.describe IsoDoc do
 
   it "generates Word output docs with null configuration from file" do
     FileUtils.rm_f "spec/assets/iso.doc"
-    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css"}).convert("spec/assets/iso.xml", nil, false)
+    IsoDoc::Iec::WordConvert.new({wordstylesheet: "word.css", htmlstylesheet: "html.css"}).convert("spec/assets/iso.xml", nil, false)
     expect(File.exist?("spec/assets/iso.doc")).to be true
     word = File.read("spec/assets/iso.doc", encoding: "UTF-8")
     expect(word).to match(/<w:WordDocument>/)
@@ -132,24 +132,6 @@ RSpec.describe IsoDoc do
        <p class="MsoNormal">[SOURCE: <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
              </div>
     OUTPUT
-  end
-
-  it "populates Word header" do
-    FileUtils.rm_f "test.doc"
-    IsoDoc::Iec::WordConvert.new({wordstylesheet: "spec/assets/word.css", htmlstylesheet: "spec/assets/html.css", header: "spec/assets/header.html"}).convert("test", <<~"INPUT", false)
-        <iso-standard xmlns="http://riboseinc.com/isoxml">
-               <bibdata type="article">
-                        <docidentifier>
-           <project-number part="1">1000</project-number>
-         </docidentifier>
-        </bibdata>
-</iso-standard>
-
-    INPUT
-    word = File.read("test.doc", encoding: "UTF-8").sub(%r{^.*Content-Location: file:///C:/Doc/test_files/header.html}m, "Content-Location: file:///C:/Doc/test_files/header.html").
-      sub(/------=_NextPart.*$/m, "")
-    #expect(word).to include(%{Content-Location: file:///C:/Doc/test_files/header.html\nContent-Transfer-Encoding: base64\nContent-Type: text/html charset="utf-8" })
-    expect(word).to include(%{Content-Location: file:///C:/Doc/test_files/header.html})
   end
 
   it "processes IsoXML terms for HTML" do
