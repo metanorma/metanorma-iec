@@ -6,7 +6,7 @@ module Asciidoctor
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
             c.role **{ type: "author" }
-            c.organization { |a| organization(a, p, node, !node.attr("publisher")) }
+            c.organization { |a| organization(a, p, false, node, !node.attr("publisher")) }
           end
         end
       end
@@ -16,19 +16,21 @@ module Asciidoctor
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
             c.role **{ type: "publisher" }
-            c.organization { |a| organization(a, p, node, !node.attr("publisher")) }
+            c.organization { |a| organization(a, p, true, node, !node.attr("publisher")) }
           end
         end
       end
 
       def metadata_copyright(node, xml)
-        publishers = node.attr("copyright-holder") || node.attr("publisher") || "IEC"
+        publishers = node.attr("copyright-holder") || node.attr("publisher") ||
+          "IEC"
         csv_split(publishers)&.each do |p|
           xml.copyright do |c|
             c.from (node.attr("copyright-year") || Date.today.year)
             c.owner do |owner|
               owner.organization do |o|
-                organization(o, p, node, !node.attr("copyright-holder") || node.attr("publisher"))
+                organization(o, p, true, node, !node.attr("copyright-holder") ||
+                             node.attr("publisher"))
               end
             end
           end
@@ -37,6 +39,7 @@ module Asciidoctor
 
       def iso_id(node, xml)
         return unless node.attr("docnumber")
+
         part, subpart = node&.attr("partnumber")&.split(/-/)
         dn = add_id_parts(node.attr("docnumber"), part, subpart)
         dn = id_stage_prefix(dn, node, false)
@@ -111,6 +114,7 @@ module Asciidoctor
 
       def status_abbrev1(stage, substage, iter, doctype, draft)
         return "" unless stage
+
         abbr = STAGE_ABBRS.dig(stage, substage) || "??"
         if stage == "35" && substage == "92"
           iter = (iter.to_i + 1) % "02"
@@ -136,6 +140,7 @@ module Asciidoctor
 
       def stage_abbr(stage, substage)
         return "PPUB" if stage == "60"
+
         DOC_STAGE[stage.to_sym] || "??"
       end
 
@@ -188,7 +193,8 @@ module Asciidoctor
 
       def metadata_ext(node, xml)
         super
-        a = node.attr("accessibility-color-inside") and xml.accessibility_color_inside a
+        a = node.attr("accessibility-color-inside") and
+          xml.accessibility_color_inside a
         a = node.attr("price-code") and xml.price_code a
         a = node.attr("cen-processing") and xml.cen_processing a
         a = node.attr("secretary") and xml.secretary a
