@@ -50,7 +50,7 @@
   <license-statement>
     <clause>
       {% if stage_int < 50 %}
-      <p>This document is still under study and subject to change. It should not be used for reference purposes.</p>
+      <p>This document is still under study and subject to change. It should not be used for reference purposes.
       until published as such.</p>
     {% endif %}
       {% if stage_int >= 50 %}
