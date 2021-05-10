@@ -4457,6 +4457,7 @@
 				
 				
 				
+				
 						
 			</xsl:variable>
 			<xsl:variable name="font-size" select="normalize-space($_font-size)"/>		
@@ -5533,6 +5534,7 @@
 												
 						
 						9
+						
 						
 						
 						
@@ -6738,6 +6740,7 @@
 	</xsl:template><xsl:template name="namespaceCheck">
 		<xsl:variable name="documentNS" select="namespace-uri(/*)"/>
 		<xsl:variable name="XSLNS">			
+			
 			
 			
 				<xsl:value-of select="document('')//*/namespace::iec"/>
