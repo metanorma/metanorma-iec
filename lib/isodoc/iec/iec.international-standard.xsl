@@ -2611,6 +2611,9 @@
 		<title-continued lang="en">(continued)</title-continued>
 		<title-continued lang="fr">(continué)</title-continued>
 		
+	</xsl:variable><xsl:variable name="bibdata">
+		<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'bibdata']"/>
+		<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'localized-strings']"/>
 	</xsl:variable><xsl:variable name="tab_zh">　</xsl:variable><xsl:template name="getTitle">
 		<xsl:param name="name"/>
 		<xsl:param name="lang"/>
@@ -2787,12 +2790,14 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="eref-style">
 		
 		
 		
 		
 	</xsl:attribute-set><xsl:attribute-set name="note-style">
+		
 		
 		
 		
@@ -2812,6 +2817,7 @@
 		
 		
 	</xsl:attribute-set><xsl:variable name="note-body-indent">10mm</xsl:variable><xsl:variable name="note-body-indent-table">5mm</xsl:variable><xsl:attribute-set name="note-name-style">
+		
 		
 		
 		
@@ -2845,6 +2851,7 @@
 	</xsl:attribute-set><xsl:attribute-set name="termnote-style">
 		
 		
+		
 			<xsl:attribute name="font-size">8pt</xsl:attribute>
 			<xsl:attribute name="margin-top">5pt</xsl:attribute>
 			<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
@@ -2853,6 +2860,7 @@
 		
 		
 	</xsl:attribute-set><xsl:attribute-set name="termnote-name-style">		
+		
 				
 		
 	</xsl:attribute-set><xsl:attribute-set name="quote-style">		
@@ -2878,6 +2886,7 @@
 			<xsl:attribute name="margin-right">12mm</xsl:attribute>			 
 				
 	</xsl:attribute-set><xsl:attribute-set name="termsource-style">
+		
 		
 		
 			<xsl:attribute name="margin-bottom">8pt</xsl:attribute>
@@ -2966,6 +2975,7 @@
 		
 		
 			<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+		
 		
 	</xsl:attribute-set><xsl:variable name="color-added-text">
 		<xsl:text>rgb(0, 255, 0)</xsl:text>
@@ -4839,10 +4849,14 @@
 		</xsl:apply-templates>
 	</xsl:template><xsl:template name="getLang">
 		<xsl:variable name="language_current" select="normalize-space(//*[local-name()='bibdata']//*[local-name()='language'][@current = 'true'])"/>
+		<xsl:variable name="language_current_2" select="normalize-space(xalan:nodeset($bibdata)//*[local-name()='bibdata']//*[local-name()='language'][@current = 'true'])"/>
 		<xsl:variable name="language">
 			<xsl:choose>
 				<xsl:when test="$language_current != ''">
 					<xsl:value-of select="$language_current"/>
+				</xsl:when>
+				<xsl:when test="$language_current_2 != ''">
+					<xsl:value-of select="$language_current_2"/>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:value-of select="//*[local-name()='bibdata']//*[local-name()='language']"/>
@@ -5491,6 +5505,8 @@
 				</fo:list-item-body>
 			</fo:list-item>
 		</fo:list-block>
+	</xsl:template><xsl:template name="extractSection">
+		<xsl:value-of select="*[local-name() = 'tab'][1]/preceding-sibling::node()"/>
 	</xsl:template><xsl:template name="extractTitle">
 		<xsl:choose>
 				<xsl:when test="*[local-name() = 'tab']">
@@ -5894,7 +5910,6 @@
 					
 					
 					
-					
 						<xsl:call-template name="getTitle">
 							<xsl:with-param name="name" select="'title-source'"/>
 						</xsl:call-template>
@@ -6105,7 +6120,6 @@
 						
 			
 			
-			
 			<xsl:apply-templates/>
 		</fo:block>
 		
@@ -6148,7 +6162,7 @@
 		<xsl:value-of select="java:replaceAll(java:java.lang.String.new(.),' ',' ')"/>
 	</xsl:template><xsl:template match="*[local-name() = 'ul'] | *[local-name() = 'ol']">
 		<xsl:choose>
-			<xsl:when test="parent::*[local-name() = 'note']">
+			<xsl:when test="parent::*[local-name() = 'note'] or parent::*[local-name() = 'termnote']">
 				<fo:block-container>
 					<xsl:attribute name="margin-left">
 						<xsl:choose>
@@ -6156,6 +6170,7 @@
 							<xsl:otherwise><xsl:value-of select="$note-body-indent-table"/></xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute>
+					
 					
 					
 					<fo:block-container margin-left="0mm">
@@ -6813,13 +6828,18 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template><xsl:template name="getLocalizedString">
-		<xsl:param name="key"/>		
+		<xsl:param name="key"/>	
 		
 		<xsl:variable name="curr_lang">
 			<xsl:call-template name="getLang"/>
 		</xsl:variable>
 		
+		<xsl:variable name="data_value" select="normalize-space(xalan:nodeset($bibdata)//*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang])"/>
+		
 		<xsl:choose>
+			<xsl:when test="$data_value != ''">
+				<xsl:value-of select="$data_value"/>
+			</xsl:when>
 			<xsl:when test="/*/*[local-name() = 'localized-strings']/*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang]">
 				<xsl:value-of select="/*/*[local-name() = 'localized-strings']/*[local-name() = 'localized-string'][@key = $key and @language = $curr_lang]"/>
 			</xsl:when>
