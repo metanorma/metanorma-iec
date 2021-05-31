@@ -2774,6 +2774,7 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="appendix-style">
 		
 		
@@ -2975,11 +2976,13 @@
 	</xsl:attribute-set><xsl:attribute-set name="admitted-style">
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="deprecates-style">
 		
 			<xsl:attribute name="font-size">8pt</xsl:attribute>
 			<xsl:attribute name="margin-top">5pt</xsl:attribute>
 			<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
+		
 		
 	</xsl:attribute-set><xsl:attribute-set name="definition-style">
 		
@@ -3772,6 +3775,7 @@
 			
 			
 			
+			
 			<xsl:if test="$lang = 'ar'">
 				<xsl:attribute name="padding-right">1mm</xsl:attribute>
 			</xsl:if>
@@ -4180,6 +4184,7 @@
 							
 								<xsl:attribute name="font-size">8pt</xsl:attribute>
 								<xsl:attribute name="margin-bottom">8pt</xsl:attribute>
+							
 							
 							
 							<xsl:variable name="title-key">
