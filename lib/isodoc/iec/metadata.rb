@@ -16,7 +16,7 @@ module IsoDoc
           unpublished(docstatus.text) and
             set(:stageabbr, docstatus["abbreviation"])
         end
-        revdate = isoxml.at(ns("//version/revision-date"))
+        revdate = isoxml.at(ns("//bibdata/version/revision-date"))
         set(:revdate, revdate&.text)
       end
 
