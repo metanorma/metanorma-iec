@@ -11,10 +11,16 @@ module IsoDoc
         @libdir = File.dirname(__FILE__)
       end
 
+      def font_choice(options)
+        if options[:script] == "Hans" then '"Source Han Sans",serif'
+        else '"Arial",sans-serif'
+        end
+      end
+
       def default_fonts(options)
         {
-          bodyfont: (options[:script] == "Hans" ? '"Source Han Sans",serif' : '"Arial",sans-serif'),
-          headerfont: (options[:script] == "Hans" ? '"Source Han Sans",sans-serif' : '"Arial",sans-serif'),
+          bodyfont: font_choice(options),
+          headerfont: font_choice(options),
           monospacefont: '"Courier New",monospace',
           normalfontsize: "10.0pt",
           footnotefontsize: "8.0pt",
@@ -23,7 +29,7 @@ module IsoDoc
         }
       end
 
-      def default_file_locations(options)
+      def default_file_locations(_options)
         @libdir = File.dirname(__FILE__)
         {
           wordstylesheet: html_doc_path("wordstyle.scss"),
@@ -70,7 +76,7 @@ module IsoDoc
           toc += word_toc_entry(1, header_strip(h))
         end
         toc.sub(/(<p class="MsoToc1">)/,
-                %{\\1#{WORD_TOC_TABLE_PREFACE1}}) +  WORD_TOC_SUFFIX1
+                %{\\1#{WORD_TOC_TABLE_PREFACE1}}) + WORD_TOC_SUFFIX1
       end
 
       def make_FigureWordToC(docxml)
@@ -79,11 +85,21 @@ module IsoDoc
           toc += word_toc_entry(1, header_strip(h))
         end
         toc.sub(/(<p class="MsoToc1">)/,
-                %{\\1#{WORD_TOC_FIGURE_PREFACE1}}) +  WORD_TOC_SUFFIX1
+                %{\\1#{WORD_TOC_FIGURE_PREFACE1}}) + WORD_TOC_SUFFIX1
       end
 
-      def header_strip(h)
-        h = h.to_s.gsub(/<\/?p[^>]*>/, "")
+      def word_toc_preface(level)
+        <<~TOC.freeze
+          <span lang="EN-GB"><span
+            style='mso-element:field-begin'></span><span
+            style='mso-spacerun:yes'>&#xA0;</span>TOC
+            \\o &quot;1-#{level}&quot; \\h \\z \\u <span
+            style='mso-element:field-separator'></span></span>
+        TOC
+      end
+
+      def header_strip(hdr)
+        hdr = hdr.to_s.gsub(/<\/?p[^>]*>/, "")
         super
       end
 
@@ -93,10 +109,11 @@ module IsoDoc
         super
       end
 
-      def make_tr_attr(td, row, totalrows, header)
+      def make_tr_attr(cell, row, totalrows, header)
         ret = super
-        css_class = (td.name == "th" || header) ? "TABLE-col-heading" : "TABLE-cell"
-        ret.merge( "class": css_class )
+        css_class =
+          cell.name == "th" || header ? "TABLE-col-heading" : "TABLE-cell"
+        ret.merge("class": css_class)
       end
 
       def tr_parse(node, out, ord, totalrows, header)
@@ -122,7 +139,8 @@ module IsoDoc
 
       def word_table_cleanup1(docxml, style)
         %w(td th).each do |tdh|
-          docxml.xpath("//#{tdh}[@class = '#{style}'][not(descendant::p)]").each do |td|
+          docxml.xpath("//#{tdh}[@class = '#{style}'][not(descendant::p)]")
+            .each do |td|
             p = Nokogiri::XML::Element.new("p", docxml)
             td.children.each { |c| c.parent = p }
             p.parent = td
@@ -148,7 +166,7 @@ module IsoDoc
       end
 
       # Incredibly, the numbered boilerplate list in IEC is NOT A LIST,
-      # and it violates numbering conventions for ordered lists 
+      # and it violates numbering conventions for ordered lists
       # (arabic not alpha)
       BOILERPLATE_PARAS = "//div[@class = 'boilerplate_legal']//li/p".freeze
 
@@ -156,7 +174,8 @@ module IsoDoc
         docxml.xpath(BOILERPLATE_PARAS).each_with_index do |l, i|
           l["class"] = "FOREWORD"
           l.children.first.add_previous_sibling(
-            %{#{i+1})<span style="mso-tab-count:1">&#xA0; </span>})
+            %{#{i + 1})<span style="mso-tab-count:1">&#xA0; </span>},
+          )
         end
         docxml.xpath("//div[@class = 'boilerplate_legal']//li").each do |l|
           l.replace(l.children)
@@ -166,24 +185,55 @@ module IsoDoc
       end
 
       def authority_cleanup(docxml)
-        auth = docxml.at("//div[@id = 'boilerplate-feedback' or @class = 'boilerplate-feedback']")
+        auth = docxml.at("//div[@id = 'boilerplate-feedback' or "\
+                         "@class = 'boilerplate-feedback']")
         auth&.remove
         super
       end
 
-      def make_body1(body, _docxml)
+      def make_body1(body, _docxml); end
+
+      def word_cover(docxml); end
+
+      def style_cleanup(docxml); end
+
+      def bibliography_attrs
+        { class: "Section3" }
       end
 
-      def word_cover(docxml)
+      def termref_attrs
+        {}
+      end
+
+      def figure_name_attrs(_node)
+        { class: "FigureTitle", style: "text-align:center;" }
+      end
+
+      def table_title_attrs(_node)
+        { class: "TableTitle", style: "text-align:center;" }
+      end
+
+      def para_class(_node)
+        classtype = nil
+        classtype = "MsoCommentText" if in_comment
+        classtype = "Sourcecode" if @annotation
+        classtype
+      end
+
+      def annex_name(_annex, name, div)
+        return if name.nil?
+
+        div.h1 **{ class: "Annex" } do |t|
+          name.children.each { |c2| parse(c2, t) }
+        end
       end
 
       def formula_parse1(node, out)
         out.div **attr_code(class: "formula") do |div|
-          div.p **attr_code(class: "formula") do |p|
+          div.p **attr_code(class: "formula") do |_p|
             insert_tab(div, 1)
             parse(node.at(ns("./stem")), div)
-            lbl = node&.at(ns("./name"))&.text
-            unless lbl.nil?
+            if lbl = node&.at(ns("./name"))&.text
               insert_tab(div, 1)
               div << "(#{lbl})"
             end
