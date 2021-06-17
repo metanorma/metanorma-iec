@@ -1,7 +1,5 @@
 require "spec_helper"
 
-OPTIONS = [backend: :iec, header_footer: true].freeze
-
 RSpec.describe Asciidoctor::Iec do
   before(:all) do
     @blank_hdr = blank_hdr_gen

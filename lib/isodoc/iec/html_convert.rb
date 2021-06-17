@@ -14,14 +14,14 @@ module IsoDoc
       def default_fonts(options)
         {
           bodyfont: (options[:script] == "Hans" ? '"Source Han Sans",serif' : '"Arial",sans-serif'),
-        headerfont: (options[:script] == "Hans" ? '"Source Han Sans",sans-serif' : '"Arial",sans-serif'),
-        monospacefont: ('"Courier New",monospace'),
-        monospacefontsize: "1.0em",
-        footnotefontsize: "0.9em",
+          headerfont: (options[:script] == "Hans" ? '"Source Han Sans",sans-serif' : '"Arial",sans-serif'),
+          monospacefont: '"Courier New",monospace',
+          monospacefontsize: "1.0em",
+          footnotefontsize: "0.9em",
         }
       end
 
-      def default_file_locations(options)
+      def default_file_locations(_options)
         @libdir = File.dirname(__FILE__)
         {
           htmlstylesheet: html_doc_path("htmlstyle.scss"),
@@ -30,7 +30,7 @@ module IsoDoc
         }
       end
 
-      def htmlstyle(docxml)
+      def htmlstyle(_docxml)
         docxml = super
         b = docxml.at("div[@class = 'boilerplate_legal']/ol")
         b and b["type"] = "1"

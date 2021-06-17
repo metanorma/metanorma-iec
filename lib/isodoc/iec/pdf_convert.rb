@@ -13,7 +13,7 @@ module IsoDoc
         super
       end
 
-      def pdf_stylesheet(docxml)
+      def pdf_stylesheet(_docxml)
         "iec.international-standard.xsl"
       end
     end
