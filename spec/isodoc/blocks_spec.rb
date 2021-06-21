@@ -179,7 +179,7 @@ RSpec.describe IsoDoc::Iec do
     INPUT
     <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
-           <foreword>
+           <foreword displayorder="1">
              <p>
                <xref target='N1'>Clause 1, Equation (1)</xref>
                <xref target='N2'>1.1, Inequality (2)</xref>
@@ -187,7 +187,7 @@ RSpec.describe IsoDoc::Iec do
            </foreword>
          </preface>
          <sections>
-           <clause id='intro'>
+           <clause id='intro' displayorder="2">
              <title depth='1'>
                1
                <tab/>
