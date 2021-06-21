@@ -56,7 +56,7 @@ RSpec.describe IsoDoc do
     presxml = <<~INPUT
     <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title depth="1">1<tab/>Terms and definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative" displayorder="1"><title depth="1">1<tab/>Terms and definitions</title>
 
 <term id="paddy1">
 <name>1.1</name><preferred>paddy</preferred>

@@ -187,7 +187,7 @@ expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INP
 <?xml version='1.0'?>
        <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
-           <foreword>
+           <foreword displayorder="1">
              <p>
                <eref type='inline' bibitemid='IEV' citeas='IEV'>
                  <locality type='clause'>
@@ -261,7 +261,7 @@ expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", <<~"INP
            </foreword>
          </preface>
          <bibliography>
-           <references id='_normative_references' obligation='informative' normative='true'>
+           <references id='_normative_references' obligation='informative' normative='true' displayorder="2">
            <title depth='1'>
   1
   <tab/>
