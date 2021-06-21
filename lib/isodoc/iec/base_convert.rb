@@ -18,8 +18,8 @@ module IsoDoc
           s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @i18n.foreword }
           @meta.get[:doctype] == "Amendment" or
             s.div **attr_code(class: "boilerplate_legal") do |s1|
-            b&.elements&.each { |e| parse(e, s1) }
-          end
+              b&.elements&.each { |e| parse(e, s1) }
+            end
           f&.elements&.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
@@ -40,12 +40,12 @@ module IsoDoc
           @meta.get[:doctitlepartlabel] and
             title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
         end
-        out.p(**{ class: "zzSTDTitle1" }) do |p| 
+        out.p(**{ class: "zzSTDTitle1" }) do |p|
           p.b { |b| b << title1 }
         end
         if @meta.get[:doctitlepart]
           out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
-          out.p(**{ class: "zzSTDTitle2" }) do |p| 
+          out.p(**{ class: "zzSTDTitle2" }) do |p|
             p.b { |b| b << title2 }
           end
         end
@@ -58,7 +58,7 @@ module IsoDoc
 
       def biblio_list(f, div, biblio)
         return super unless @is_iev
-        i = 0
+
         f.children.each do |b|
           parse(b, div) unless %w(title bibitem).include? b.name
         end
@@ -66,6 +66,7 @@ module IsoDoc
 
       def terms_parse(node, out)
         return super unless @is_iev
+
         page_break(out)
         out.div **attr_code(id: node["id"]) do |div|
           out.p(**{ class: "zzSTDTitle2" }) do |p|
@@ -81,12 +82,14 @@ module IsoDoc
 
       def termref_cleanup(docxml)
         return super unless @is_iev
-        docxml.
-          gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, "; ").
-          gsub(/\[TERMREF\]\s*/, l10n("#{@i18n.source}: ")).
-          gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/, l10n(", #{@i18n.modified} [/TERMREF]")).
-          gsub(/\s*\[\/TERMREF\]\s*/, l10n("")).
-          gsub(/\s*\[MODIFICATION\]/, l10n(", #{@i18n.modified} &mdash; "))
+
+        docxml
+          .gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, "; ")
+          .gsub(/\[TERMREF\]\s*/, l10n("#{@i18n.source}: "))
+          .gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/,
+                l10n(", #{@i18n.modified} [/TERMREF]"))
+          .gsub(/\s*\[\/TERMREF\]\s*/, l10n(""))
+          .gsub(/\s*\[MODIFICATION\]/, l10n(", #{@i18n.modified} &mdash; "))
       end
 
       def set_termdomain(termdomain)
@@ -95,13 +98,15 @@ module IsoDoc
 
       def term_suffix(node, out)
         return unless @is_iev
+
         domain = node&.at(ns("../domain"))&.text
         return unless domain
+
         out << ", &lt;#{domain}&gt;"
       end
 
       def deprecated_term_parse(node, out)
-        out.p **{ class: "DeprecatedTerms", style:"text-align:left;" } do |p|
+        out.p **{ class: "DeprecatedTerms", style: "text-align:left;" } do |p|
           p << l10n("#{@i18n.deprecated}: ")
           node.children.each { |c| parse(c, p) }
           term_suffix(node, p)
@@ -109,7 +114,7 @@ module IsoDoc
       end
 
       def admitted_term_parse(node, out)
-        out.p **{ class: "AltTerms", style:"text-align:left;" } do |p|
+        out.p **{ class: "AltTerms", style: "text-align:left;" } do |p|
           node.children.each { |c| parse(c, p) }
           term_suffix(node, p)
         end
@@ -117,7 +122,8 @@ module IsoDoc
 
       def term_parse(node, out)
         return super unless @is_iev
-        out.p **{ class: "Terms", style:"text-align:left;" } do |p|
+
+        out.p **{ class: "Terms", style: "text-align:left;" } do |p|
           node.children.each { |c| parse(c, p) }
           term_suffix(node, p)
         end
