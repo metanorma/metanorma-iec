@@ -101,7 +101,11 @@
           <ref name="definitions"/>
         </optional>
         <oneOrMore>
-          <ref name="clause"/>
+          <choice>
+            <ref name="clause"/>
+            <ref name="term-clause"/>
+            <ref name="terms"/>
+          </choice>
         </oneOrMore>
       </element>
     </define>
@@ -136,7 +140,7 @@
       <optional>
         <ref name="section-title"/>
       </optional>
-      <group>
+      <choice>
         <choice>
           <group>
             <oneOrMore>
@@ -151,7 +155,7 @@
         <oneOrMore>
           <ref name="clause-subsection"/>
         </oneOrMore>
-      </group>
+      </choice>
     </define>
     <define name="term">
       <element name="term">
