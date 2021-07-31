@@ -24,7 +24,7 @@ module Metanorma
           "Times New Roman" => nil,
           "STIX Two Math" => nil,
           "Source Han Sans" => nil,
-          "Courier" => nil,
+          "Source Han Sans Normal" => nil,
           "Courier New" => nil,
         }
       end
