@@ -41,6 +41,8 @@ def xmlpp(x)
   s
 end
 
+OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze
+
 ASCIIDOC_BLANK_HDR = <<~"HDR"
       = Document title
       Author
