@@ -2657,7 +2657,7 @@
 		
 		
 		
-			<xsl:attribute name="font-family">Courier</xsl:attribute>			
+			<xsl:attribute name="font-family">Courier New</xsl:attribute>			
 			<xsl:attribute name="margin-top">5pt</xsl:attribute>
 			<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
 		
@@ -2974,7 +2974,7 @@
 	</xsl:attribute-set><xsl:attribute-set name="tt-style">
 		
 		
-			<xsl:attribute name="font-family">Courier</xsl:attribute>			
+			<xsl:attribute name="font-family">Courier New</xsl:attribute>			
 		
 		
 	</xsl:attribute-set><xsl:attribute-set name="sourcecode-name-style">
