@@ -2323,7 +2323,7 @@
 
 	
 	<xsl:template name="insertHeaderFooter">
-		<fo:static-content flow-name="header-even">
+		<fo:static-content flow-name="header-even" role="artifact">
 			<fo:block-container height="25mm" display-align="after">
 				<fo:table table-layout="fixed" width="100%">
 					<fo:table-column column-width="45%"/>
@@ -2348,7 +2348,7 @@
 			</fo:block-container>
 		</fo:static-content>
 		
-		<fo:static-content flow-name="header-odd">
+		<fo:static-content flow-name="header-odd" role="artifact">
 			<fo:block-container height="25mm" display-align="after">
 				<fo:table table-layout="fixed" width="100%">
 					<fo:table-column column-width="45%"/>
