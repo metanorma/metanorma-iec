@@ -25,218 +25,224 @@ RSpec.configure do |config|
   end
 end
 
-def metadata(x)
-  Hash[x.sort].delete_if{ |k, v| v.nil? || v.respond_to?(:empty?) && v.empty? }
+def metadata(xml)
+  xml.sort.to_h.delete_if do |_k, v|
+    v.nil? || v.respond_to?(:empty?) && v.empty?
+  end
 end
 
-def strip_guid(x)
-  x.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"}, ' target="_"')
+def strip_guid(xml)
+  xml.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"},
+                                             ' target="_"')
 end
 
-def xmlpp(x)
+def xmlpp(xml)
   s = ""
   f = REXML::Formatters::Pretty.new(2)
   f.compact = true
-  f.write(REXML::Document.new(x),s)
+  f.write(REXML::Document.new(xml), s)
   s
 end
 
 OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze
 
-ASCIIDOC_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :no-isobib:
+ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :no-isobib:
 
 HDR
 
-ISOBIB_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :no-isobib-cache:
+ISOBIB_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :no-isobib-cache:
 
 HDR
 
-FLUSH_CACHE_ISOBIB_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :flush-caches:
+FLUSH_CACHE_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :flush-caches:
 
 HDR
 
-CACHED_ISOBIB_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
+CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
 
 HDR
 
-LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :local-cache:
+LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :novalid:
+  :local-cache:
 
 HDR
 
-VALIDATING_BLANK_HDR = <<~"HDR"
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :no-isobib:
+VALIDATING_BLANK_HDR = <<~"HDR".freeze
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :no-isobib:
 
 HDR
 
-TERMS_BOILERPLATE = <<~"BOILERPLATE"
-       <p id="_">ISO and IEC maintain terminological databases for use in
-       standardization at the following addresses:</p>
-       
-        <ul id="_">
-        <li> <p id="_">IEC Electropedia: available at
-        <link target="http://www.electropedia.org"/>
-        </p> </li> 
-                <li> <p id="_">ISO Online browsing platform: available at
-          <link target="http://www.iso.org/obp"/></p> </li>
-</ul>
+TERMS_BOILERPLATE = <<~"BOILERPLATE".freeze
+           <p id="_">ISO and IEC maintain terminological databases for use in
+           standardization at the following addresses:</p>
+  #{'         '}
+            <ul id="_">
+            <li> <p id="_">IEC Electropedia: available at
+            <link target="http://www.electropedia.org"/>
+            </p> </li>#{' '}
+                    <li> <p id="_">ISO Online browsing platform: available at
+              <link target="http://www.iso.org/obp"/></p> </li>
+    </ul>
 BOILERPLATE
 
 def boilerplate(xmldoc)
-  file = File.read(File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iec", "iec_intro_en.xml"), encoding: "utf-8")
-  conv = Asciidoctor::Iec::Converter.new(nil, backend: :iec, header_footer: true)
-  conv.init(Asciidoctor::Document.new [])
+  file = File.read(
+    File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iec",
+              "iec_intro_en.xml"), encoding: "utf-8"
+  )
+  conv = Asciidoctor::Iec::Converter.new(nil, backend: :iec,
+                                              header_footer: true)
+  conv.init(Asciidoctor::Document.new([]))
   ret = Nokogiri::XML(
-    conv.boilerplate_isodoc(xmldoc).populate_template(file, nil).
-    gsub(/<p>/, "<p id='_'>").
-    gsub(/<ol>/, "<ol id='_'>"))
+    conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
+    .gsub(/<p>/, "<p id='_'>")
+    .gsub(/<ol>/, "<ol id='_'>"),
+  )
   conv.smartquotes_cleanup(ret)
   HTMLEntities.new.decode(ret.to_xml)
 end
 
-BLANK_HDR = <<~"HDR"
-<?xml version="1.0" encoding="UTF-8"?>
-<iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
-<bibdata type="standard">
-  <contributor>
-    <role type="author"/>
-    <organization>
-      <name>International Electrotechnical Commission</name>
-      <abbreviation>IEC</abbreviation>
-    </organization>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Electrotechnical Commission</name>
-      <abbreviation>IEC</abbreviation>
-    </organization>
-  </contributor>
-  <language>en</language>
-  <script>Latn</script>
-  <status>
-    <stage abbreviation="PPUB">60</stage>
-    <substage abbreviation="PPUB">60</substage>
-  </status>
-  <copyright>
-    <from>#{Time.new.year}</from>
-    <owner>
+BLANK_HDR = <<~"HDR".freeze
+  <?xml version="1.0" encoding="UTF-8"?>
+  <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
+  <bibdata type="standard">
+    <contributor>
+      <role type="author"/>
       <organization>
         <name>International Electrotechnical Commission</name>
         <abbreviation>IEC</abbreviation>
       </organization>
-    </owner>
-  </copyright>
-  <ext>
-    <doctype>article</doctype>
-    <horizontal>false</horizontal>
-  <editorialgroup>
-    <technical-committee/>
-    <subcommittee/>
-    <workgroup/>
-  </editorialgroup>
-  <stagename>International standard</stagename>
-  </ext>
-</bibdata>
+    </contributor>
+    <contributor>
+      <role type="publisher"/>
+      <organization>
+        <name>International Electrotechnical Commission</name>
+        <abbreviation>IEC</abbreviation>
+      </organization>
+    </contributor>
+    <language>en</language>
+    <script>Latn</script>
+    <status>
+      <stage abbreviation="PPUB">60</stage>
+      <substage abbreviation="PPUB">60</substage>
+    </status>
+    <copyright>
+      <from>#{Time.new.year}</from>
+      <owner>
+        <organization>
+          <name>International Electrotechnical Commission</name>
+          <abbreviation>IEC</abbreviation>
+        </organization>
+      </owner>
+    </copyright>
+    <ext>
+      <doctype>article</doctype>
+      <horizontal>false</horizontal>
+    <editorialgroup>
+      <technical-committee/>
+      <subcommittee/>
+      <workgroup/>
+    </editorialgroup>
+    <stagename>International standard</stagename>
+    </ext>
+  </bibdata>
 HDR
 
 def blank_hdr_gen
-<<~"HDR"
-#{BLANK_HDR}
-#{boilerplate(Nokogiri::XML(BLANK_HDR + "</iec-standard>"))}
-HDR
+  <<~"HDR"
+    #{BLANK_HDR}
+    #{boilerplate(Nokogiri::XML("#{BLANK_HDR}</iec-standard>"))}
+  HDR
 end
 
+IEC_TITLE = <<~TITLE.freeze
+  <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+              <p class="zzSTDTitle1">____________</p>
+              <p class="zzSTDTitle1">&#160;</p>
+              <p class="zzSTDTitle1">
+                <b/>
+              </p>
+              <p class="zzSTDTitle1">&#160;</p>
+TITLE
 
-IEC_TITLE = <<~END
- <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-             <p class="zzSTDTitle1">____________</p>
-             <p class="zzSTDTitle1">&#160;</p>
-             <p class="zzSTDTitle1">
-               <b/>
-             </p>
-             <p class="zzSTDTitle1">&#160;</p>
-END
+IEC_TITLE1 = <<~TITLE.freeze
+  <p class="zzSTDTitle1">
+    <b/>
+  </p>
+  <p class="zzSTDTitle1">&#160;</p>
+TITLE
 
-IEC_TITLE1 = <<~END
-             <p class="zzSTDTitle1">
-               <b/>
-             </p>
-             <p class="zzSTDTitle1">&#160;</p>
-END
+HTML_HDR = <<~HDR.freeze
+  <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
+    <head/>
+    <body lang="en">
+      <div class="title-section">
+        <p>&#160;</p>
+      </div>
+      <br/>
+      <div class="prefatory-section">
+        <p>&#160;</p>
+      </div>
+      <br/>
+      <div class="main-section">
+       <br/>
+       #{IEC_TITLE}
+HDR
 
-HTML_HDR = <<~END
-        <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
-          <head/>
-          <body lang="en">
-            <div class="title-section">
-              <p>&#160;</p>
-            </div>
-            <br/>
-            <div class="prefatory-section">
-              <p>&#160;</p>
-            </div>
-            <br/>
-            <div class="main-section">
-             <br/>
-             #{IEC_TITLE}
-END
-
-WORD_HDR = <<~END
-       <html xmlns:epub="http://www.idpf.org/2007/ops">
-          <head>
-            <title>test</title>
-          </head>
-         <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
-             <p>&#160;</p>
-           </div>
-           <p><br clear="all" class="section"/></p>
-           <div class="WordSection2">
-             <p>&#160;</p>
-           </div>
-           <p><br clear="all" class="section"/></p>
-           <div class="WordSection3">
-END
-
+WORD_HDR = <<~HDR.freeze
+  <html xmlns:epub="http://www.idpf.org/2007/ops">
+     <head>
+       <title>test</title>
+     </head>
+    <body lang="EN-US" link="blue" vlink="#954F72">
+      <div class="WordSection1">
+        <p>&#160;</p>
+      </div>
+      <p><br clear="all" class="section"/></p>
+      <div class="WordSection2">
+        <p>&#160;</p>
+      </div>
+      <p><br clear="all" class="section"/></p>
+      <div class="WordSection3">
+HDR
 
 def stub_fetch_ref(**opts)
   xml = ""
 
   hit = double("hit")
-  expect(hit).to receive(:"[]").with("title") do
+  expect(hit).to receive(:[]).with("title") do
     Nokogiri::XML(xml).at("//docidentifier").content
   end.at_least(:once)
 
@@ -254,8 +260,8 @@ def stub_fetch_ref(**opts)
   hit_pages = double("hit_pages")
   expect(hit_pages).to receive(:first).and_return(hit_page).at_least :once
 
-  expect(Isobib::IsoBibliography).to receive(:search).
-    and_wrap_original do |search, *args|
+  expect(Isobib::IsoBibliography).to receive(:search)
+    .and_wrap_original do |search, *args|
     code = args[0]
     expect(code).to be_instance_of String
     xml = get_xml(search, code, opts)
@@ -264,7 +270,7 @@ def stub_fetch_ref(**opts)
 end
 
 def mock_pdf
-  allow(::Mn2pdf).to receive(:convert) do |url, output, c, d|
+  allow(::Mn2pdf).to receive(:convert) do |url, output, _c, _d|
     FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
   end
 end
@@ -272,7 +278,7 @@ end
 private
 
 def get_xml(search, code, opts)
-  c = code.gsub(%r{[\/\s:-]}, "_").sub(%r{_+$}, "").downcase
+  c = code.gsub(%r{[/\s:-]}, "_").sub(%r{_+$}, "").downcase
   o = opts.keys.join "_"
   file = "spec/examples/#{[c, o].join '_'}.xml"
   if File.exist? file
@@ -287,11 +293,10 @@ def get_xml(search, code, opts)
 end
 
 def mock_open_uri(code)
-  #expect(OpenURI).to receive(:open_uri).and_wrap_original do |m, *args|
+  # expect(OpenURI).to receive(:open_uri).and_wrap_original do |m, *args|
   expect(Iev).to receive(:get).with(code, "en") do |m, *args|
     file = "spec/examples/#{code.tr('-', '_')}.html"
     File.write file, m.call(*args).read unless File.exist? file
     File.read file
   end.at_least :once
 end
-
