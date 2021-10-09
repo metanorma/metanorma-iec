@@ -1,6 +1,7 @@
 /* IEC: CODE */
 p.Sourcecode, li.Sourcecode, div.Sourcecode, pre.Sourcecode
 	{mso-style-unhide:no;
+        mso-style-name:"CODE";
 	mso-style-unhide:no;
 	margin-top:5.0pt;
 	margin-right:0cm;
@@ -182,6 +183,7 @@ p.TableTitle
 /* IEC: NOTE */
 p.Note, div.Note, li.Note
 	{mso-style-unhide:no;
+        mso-style-name:"NOTE";
 	mso-style-qformat:yes;
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -293,7 +295,7 @@ p.TitlePageSubhead, li.TitlePageSubhead, div.TitlePageSubhead {
 }
 /* IEC: TERM */
 p.Terms, li.Terms, div.Terms
-	{mso-style-name:"Term\(s\)";
+	{mso-style-name:"TERM";
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-next:TERM-definition;
@@ -473,7 +475,7 @@ p.TABLE-col-heading, li.TABLE-col-heading, div.TABLE-col-heading
 	{mso-style-name:TABLE-col-heading;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
-	mso-style-parent:PARAGRAPH;
+	mso-style-parent:Normal;
 	margin-top:3.0pt;
 	margin-right:0cm;
 	margin-bottom:3.0pt;
@@ -493,7 +495,7 @@ p.TABLE-cell, li.TABLE-cell, div.TABLE-cell
 	{mso-style-name:TABLE-cell;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
-	mso-style-parent:PARAGRAPH;
+	mso-style-parent:Normal;
 	margin-top:3.0pt;
 	margin-right:0cm;
 	margin-bottom:3.0pt;
