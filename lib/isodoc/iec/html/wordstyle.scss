@@ -193,6 +193,7 @@ div.figure, p.figure
 h1.main
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 1";
 	mso-style-parent:Normal;
 	mso-style-next:Normal;
 	margin-top:$normalfontsize;
@@ -249,6 +250,7 @@ h1
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-parent:"Heading 1";
+        mso-style-name:"Heading 2";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
 	margin-right:0cm;
@@ -274,6 +276,7 @@ h2
 .h3Annex, h3
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 3";
 	mso-style-parent:"Heading 2";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -299,6 +302,7 @@ h3      {mso-list:l26 level3 lfo40;
 .h4Annex, h4
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 4";
 	mso-style-parent:"Heading 3";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -324,6 +328,7 @@ h4      {mso-list:l26 level2 lfo40;
 .h5Annex, h5
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 5";
 	mso-style-parent:"Heading 4";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -349,6 +354,7 @@ h5      {mso-list:l26 level5 lfo40;
 h6
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 6";
 	mso-style-parent:"Heading 5";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -374,6 +380,7 @@ h6      {mso-list:l26 level6 lfo40;
 p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 7";
 	mso-style-parent:"Heading 6";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -399,6 +406,7 @@ p.MsoHeading7      {mso-list:l26 level7 lfo40;}
 p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 8";
 	mso-style-parent:"Heading 7";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -424,6 +432,7 @@ p.MsoHeading8      {mso-list:l26 level8 lfo40;}
 p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"Heading 9";
 	mso-style-parent:"Heading 8";
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -449,6 +458,7 @@ p.MsoHeading9      {mso-list:l26 level9 lfo40;}
 p.MsoToc1, li.MsoToc1, div.MsoToc1
 	{	mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 1";
 	margin-top:0cm;
 	margin-right:34.0pt;
 	margin-bottom:5.0pt;
@@ -469,6 +479,7 @@ p.MsoToc1, li.MsoToc1, div.MsoToc1
 p.MsoToc2, li.MsoToc2, div.MsoToc2
 	{mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 2";
 	mso-style-parent:"TOC 1";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -490,6 +501,7 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 p.MsoToc3, li.MsoToc3, div.MsoToc3
 	{mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 3";
 	mso-style-parent:"TOC 2";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -511,6 +523,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 p.MsoToc4, li.MsoToc4, div.MsoToc4
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 4";
 	mso-style-parent:"TOC 3";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -532,6 +545,7 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 p.MsoToc5, li.MsoToc5, div.MsoToc5
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 5";
 	mso-style-parent:"TOC 4";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -553,6 +567,7 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 p.MsoToc6, li.MsoToc6, div.MsoToc6
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 6";
 	mso-style-parent:"TOC 5";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -574,6 +589,7 @@ p.MsoToc6, li.MsoToc6, div.MsoToc6
 p.MsoToc7, li.MsoToc7, div.MsoToc7
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 7";
 	mso-style-parent:"TOC 6";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -595,6 +611,7 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 p.MsoToc8, li.MsoToc8, div.MsoToc8
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 8";
 	mso-style-parent:"TOC 7";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -616,6 +633,7 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 p.MsoToc9, li.MsoToc9, div.MsoToc9
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 9";
 	mso-style-parent:"TOC 8";
 	margin-top:0cm;
 	margin-right:34.0pt;
@@ -636,6 +654,7 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	mso-no-proof:yes;}
 p.MsoHeader, li.MsoHeader, div.MsoHeader
 	{mso-style-unhide:no;
+        mso-style-name:"Header";
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-align:justify;
@@ -700,6 +719,7 @@ span.MsoFootnoteReference
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
 	mso-style-parent:"";
+        mso-style-name:"Footnote Reference";
 	mso-ansi-font-size:8.0pt;
 	mso-bidi-font-size:8.0pt;
 	font-family:$bodyfont;
@@ -712,6 +732,7 @@ span.MsoFootnoteReference
 p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+        mso-style-name:"MsoFootnoteText";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:5.0pt;
@@ -730,6 +751,7 @@ a:link, span.MsoHyperlink
 	{mso-style-priority:99;
 	mso-style-unhide:no;
 	mso-style-parent:"";
+        mso-style-name:"Hyperlink";
 	color:windowtext;
 	text-decoration:none;
 	text-underline:none;}
@@ -990,6 +1012,7 @@ span.BodyTextChar
 p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
 	{mso-style-noshow:yes;
 	mso-style-priority:99;
+        mso-style-name:"Comment Text";
 	mso-style-link:"Comment Text Char";
 	margin-top:0cm;
 	margin-right:0cm;
@@ -1057,6 +1080,7 @@ p.Tablebody, li.Tablebody, div.Tablebody
  p.MsoList, li.MsoList, div.MsoList
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
+        mso-style-name:"List";
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:5.0pt;
