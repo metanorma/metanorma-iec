@@ -1,6 +1,6 @@
 module Metanorma
   module Iec
-    VERSION = "1.3.12".freeze
+    VERSION = "1.3.13".freeze
   end
 end
 
