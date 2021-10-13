@@ -133,7 +133,7 @@ RSpec.describe Asciidoctor::Iec do
         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
         <term id="term-term1">
-        <preferred>Term1</preferred>
+        <preferred><expression><name>Term1</name></expression></preferred>
         <termnote id="_">
         <p id="_">This is a note</p>
       </termnote>
@@ -255,7 +255,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
          <termexample id="_">
          <p id="_">This is an example</p>
        </termexample>
@@ -486,7 +486,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
          <termsource status="identical">
          <origin bibitemid="ISO2191" type="inline" citeas="">
          <localityStack>
@@ -521,7 +521,7 @@ RSpec.describe Asciidoctor::Iec do
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
          <termsource status="modified">
          <origin bibitemid="ISO2191" type="inline" citeas="">
          <localityStack>
