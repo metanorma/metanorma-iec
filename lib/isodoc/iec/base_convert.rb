@@ -56,10 +56,10 @@ module IsoDoc
         return super unless @is_iev
       end
 
-      def biblio_list(f, div, biblio)
+      def biblio_list(elem, div, biblio)
         return super unless @is_iev
 
-        f.children.each do |b|
+        elem.children.each do |b|
           parse(b, div) unless %w(title bibitem).include? b.name
         end
       end
