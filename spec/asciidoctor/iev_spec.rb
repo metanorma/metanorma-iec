@@ -9,7 +9,7 @@ end
 
 
   it "generates reference boilerplate for IEV" do
-     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc
@@ -90,7 +90,7 @@ end
   end
 
       it "generates terms boilerplate for IEV" do
-     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc
@@ -157,7 +157,7 @@ INPUT
       <terms id='_' obligation='normative'>
         <title>General</title>
         <term id='term-term-1'>
-          <preferred>Term 1</preferred>
+          <preferred><expression><name>Term 1</name></expression></preferred>
         </term>
       </terms>
     </clause>
@@ -168,7 +168,7 @@ OUTPUT
   end
 
       it "uses IEV introduction title" do
-     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc

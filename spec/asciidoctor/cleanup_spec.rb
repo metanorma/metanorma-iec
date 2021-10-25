@@ -96,94 +96,6 @@ end
     OUTPUT
   end
 
-  it "processes stem-only terms as admitted" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      == Terms and Definitions
-
-      === stem:[t_90]
-
-      stem:[t_91]
-
-      Time
-    INPUT
-       #{@blank_hdr}
-              <sections>
-         <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
-         <p id="_">For the purposes of this document, 
-       the following terms and definitions apply.</p>
-        #{TERMS_BOILERPLATE}
-         <term id="term-t90"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>t</mi>
-</mrow>
-<mrow>
-  <mn>90</mn>
-</mrow>
-</msub></math></stem></preferred><admitted><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>t</mi>
-</mrow>
-<mrow>
-  <mn>91</mn>
-</mrow>
-</msub></math></stem></admitted>
-       <definition><p id="_">Time</p></definition></term>
-       </terms>
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
-  it "permits multiple blocks in term definition paragraph" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :stem:
-      :no-isobib:
-
-      == Terms and Definitions
-
-      === stem:[t_90]
-
-      [stem]
-      ++++
-      t_A
-      ++++
-
-      This paragraph is extraneous
-    INPUT
-       #{@blank_hdr}
-              <sections>
-         <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
-         <p id="_">For the purposes of this document, 
-       the following terms and definitions apply.</p>
-        #{TERMS_BOILERPLATE}
-         <term id="term-t90"><preferred><stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>t</mi>
-</mrow>
-<mrow>
-  <mn>90</mn>
-</mrow>
-</msub></math></stem></preferred><definition><formula id="_">
-         <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>t</mi>
-</mrow>
-<mrow>
-  <mi>A</mi>
-</mrow>
-</msub></math></stem>
-       </formula><p id="_">This paragraph is extraneous</p></definition>
-       </term>
-       </terms>
-       </sections>
-       </iec-standard>
-    OUTPUT
-  end
-
   it "keeps any initial boilerplate from terms and definitions" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ASCIIDOC_BLANK_HDR}
@@ -210,7 +122,7 @@ end
   </li>
 </ul>
        <term id="term-time">
-       <preferred>Time</preferred>
+       <preferred><expression><name>Time</name></expression></preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>
        </term></terms>
        </sections>
@@ -271,7 +183,7 @@ end
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
          <termsource status="identical">
          <origin bibitemid="ISO2191" type="inline" citeas="">
          <localityStack>

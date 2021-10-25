@@ -75,13 +75,13 @@ end
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
        </term>
        </terms>
        <clause id="_" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="_" obligation="normative">
          <title>Normal Terms</title>
          <term id="term-term2">
-         <preferred>Term2</preferred>
+         <preferred><expression><name>Term2</name></expression></preferred>
        </term>
        </terms>
        <definitions id="_" obligation="normative"><title>Symbols and abbreviated terms</title></definitions></clause>
@@ -197,7 +197,7 @@ end
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="term-term1">
-         <preferred>Term1</preferred>
+         <preferred><expression><name>Term1</name></expression></preferred>
        </term>
        </terms>
        <clause id='_' obligation='normative'>
@@ -205,7 +205,7 @@ end
              <terms id='_' obligation='normative'>
                <title>Normal Terms</title>
                <term id='term-term2'>
-                 <preferred>Term2</preferred>
+                 <preferred><expression><name>Term2</name></expression></preferred>
                </term>
              </terms>
              <definitions id='_' obligation="normative">
