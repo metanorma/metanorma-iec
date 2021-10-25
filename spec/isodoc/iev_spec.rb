@@ -242,7 +242,7 @@ RSpec.describe IsoDoc do
           <clause id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
           <terms id="_general" obligation="normative"><title>General</title>
       <term id="paddy1"><preferred>paddy</preferred>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
         <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
         <ul>
@@ -264,7 +264,7 @@ RSpec.describe IsoDoc do
       <admitted>rough rice</admitted>
       <deprecates>cargo rice</deprecates>
       <domain>rice</domain>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
         <ul>
         <li>A</li>
@@ -452,7 +452,7 @@ RSpec.describe IsoDoc do
           <clause id="_terms_and_definitions" obligation="normative" displayorder="1"><title>Terms and definitions</title>
           <terms id="_general" obligation="normative"><title>General</title>
       <term id="paddy1"><preferred>paddy</preferred>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
       <termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
           <modification>

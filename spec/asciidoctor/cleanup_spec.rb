@@ -123,7 +123,7 @@ end
 </ul>
        <term id="term-time">
        <preferred><expression><name>Time</name></expression></preferred>
-         <definition><p id="_">This paragraph is extraneous</p></definition>
+         <definition><verbaldefinition><p id="_">This paragraph is extraneous</p></verbaldefinition></definition>
        </term></terms>
        </sections>
        </iec-standard>
@@ -164,38 +164,6 @@ end
 </references></bibliography>
        </iec-standard>
     OUTPUT
-  end
-
-  it "processes localities in term sources" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      #{ASCIIDOC_BLANK_HDR}
-      == Terms and Definitions
-
-      === Term1
-
-      [.source]
-      <<ISO2191,section=1>>
-      INPUT
-              #{@blank_hdr}
-       <sections>
-         <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
-         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
-         #{TERMS_BOILERPLATE}
-         <term id="term-term1">
-         <preferred><expression><name>Term1</name></expression></preferred>
-         <termsource status="identical">
-         <origin bibitemid="ISO2191" type="inline" citeas="">
-         <localityStack>
-        <locality type="section"><referenceFrom>1</referenceFrom></locality>
-         </localityStack>
-        </origin>
-       </termsource>
-       </term>
-       </terms>
-       </sections>
-       </iec-standard>
-      OUTPUT
   end
 
   it "removes extraneous material from Normative References" do
