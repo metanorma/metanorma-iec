@@ -215,7 +215,7 @@ module IsoDoc
 
       def para_class(_node)
         classtype = nil
-        classtype = "MsoCommentText" if in_comment
+        classtype = "MsoCommentText" if @in_comment
         classtype = "Sourcecode" if @annotation
         classtype
       end
