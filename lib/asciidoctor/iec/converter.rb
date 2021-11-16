@@ -1,6 +1,6 @@
 require "asciidoctor"
 require "metanorma-iso"
-require_relative "./front.rb"
+require_relative "./front"
 
 module Asciidoctor
   module Iec
@@ -26,13 +26,15 @@ module Asciidoctor
 
       def doctype_validate(xmldoc)
         doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
-        %w(international-standard technical-specification technical-report 
-        publicly-available-specification international-workshop-agreement 
-        guide interpretation-sheet).include? doctype or
-        @log.add("Document Attributes", nil, "#{doctype} is not a recognised document type")
+        %w(international-standard technical-specification technical-report
+           publicly-available-specification international-workshop-agreement
+           guide interpretation-sheet).include? doctype or
+          @log.add("Document Attributes", nil,
+                   "#{doctype} is not a recognised document type")
         if function = xmldoc&.at("//bibdata/ext/function")&.text
-          %w(emc quality-assurance safety environment).include? function or 
-            @log.add("Document Attributes", nil, "#{function} is not a recognised document function")
+          %w(emc quality-assurance safety environment).include? function or
+            @log.add("Document Attributes", nil,
+                     "#{function} is not a recognised document function")
         end
       end
 
@@ -43,28 +45,42 @@ module Asciidoctor
       end
 
       def html_converter(node)
-        node.nil? ? IsoDoc::Iec::HtmlConvert.new({}) :
+        if node.nil?
+          IsoDoc::Iec::HtmlConvert.new({})
+        else
           IsoDoc::Iec::HtmlConvert.new(html_extract_attributes(node))
+        end
       end
 
       def doc_converter(node)
-        node.nil? ? IsoDoc::Iec::WordConvert.new({}) :
+        if node.nil?
+          IsoDoc::Iec::WordConvert.new({})
+        else
           IsoDoc::Iec::WordConvert.new(doc_extract_attributes(node))
+        end
       end
 
       def pdf_converter(node)
         return if node.attr("no-pdf")
-        node.nil? ? IsoDoc::Iec::PdfConvert.new({}) :
+
+        if node.nil?
+          IsoDoc::Iec::PdfConvert.new({})
+        else
           IsoDoc::Iec::PdfConvert.new(doc_extract_attributes(node))
+        end
       end
 
       def presentation_xml_converter(node)
-        node.nil? ? IsoDoc::Iec::PresentationXMLConvert.new({}) :
+        if node.nil?
+          IsoDoc::Iec::PresentationXMLConvert.new({})
+        else
           IsoDoc::Iec::PresentationXMLConvert.new(doc_extract_attributes(node))
+        end
       end
 
       def norm_ref_preface(f)
         return super unless @is_iev
+
         f.at("./title").next =
           "<p>#{@i18n.norm_empty_pref}</p>"
       end
@@ -73,19 +89,16 @@ module Asciidoctor
         return super unless @is_iev
       end
 
-      def sts_converter(node)
-      end
-
-      def sections_names_cleanup(x)
+      def sections_names_cleanup(xml)
         super
-        @is_iev and replace_title(x, "//introduction", @i18n&.introduction_iev)
+        @is_iev and replace_title(xml, "//introduction", @i18n&.introduction_iev)
       end
 
-      def note(n)
-        if n.title == "Note from TC/SC Officers"
+      def note(note)
+        if note.title == "Note from TC/SC Officers"
           noko do |xml|
             xml.tc_sc_officers_note do |c|
-              wrap_in_para(n, c)
+              wrap_in_para(note, c)
             end
           end.join("\n")
         else
@@ -95,11 +108,11 @@ module Asciidoctor
 
       def note_cleanup(xmldoc)
         super
-        n = xmldoc.at("//tc-sc-officers-note") and xmldoc.at("//bibdata/ext").add_child(n.remove)
+        n = xmldoc.at("//tc-sc-officers-note") and
+          xmldoc.at("//bibdata/ext").add_child(n.remove)
       end
 
-      def image_name_validate(xmldoc)
-      end
+      def image_name_validate(xmldoc); end
     end
   end
 end
