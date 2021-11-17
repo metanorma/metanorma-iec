@@ -60,6 +60,7 @@ end
            <ext>
              <doctype>article</doctype>
                       <horizontal>false</horizontal>
+                      <subdoctype>vocabulary</subdoctype>
              <editorialgroup>
                <technical-committee/>
                <subcommittee/>
@@ -139,6 +140,7 @@ INPUT
     <ext>
       <doctype>article</doctype>
                       <horizontal>false</horizontal>
+                      <subdoctype>vocabulary</subdoctype>
       <editorialgroup>
         <technical-committee/>
         <subcommittee/>
@@ -218,6 +220,7 @@ OUTPUT
            <ext>
              <doctype>article</doctype>
                       <horizontal>false</horizontal>
+                      <subdoctype>vocabulary</subdoctype>
              <editorialgroup>
                <technical-committee/>
                <subcommittee/>
