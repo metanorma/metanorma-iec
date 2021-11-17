@@ -135,8 +135,8 @@ RSpec.describe Asciidoctor::Iec do
              </copyright>
              <ext>
                <doctype>article</doctype>
-                        <horizontal>false</horizontal>
                         <subdoctype>vocabulary</subdoctype>
+                        <horizontal>false</horizontal>
                <editorialgroup>
                  <technical-committee/>
                  <subcommittee/>
