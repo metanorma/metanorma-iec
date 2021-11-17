@@ -15,7 +15,6 @@ module Metanorma
           doc: "doc",
           pdf: "pdf",
           sts: "sts.xml",
-          isosts: "iso.sts.xml",
         )
       end
 
@@ -48,9 +47,6 @@ module Metanorma
         when :sts
           IsoDoc::Iso::StsConvert.new(options).convert(inname, isodoc_node,
                                                        nil, outname)
-        when :isosts
-          IsoDoc::Iso::IsoStsConvert.new(options).convert(inname, isodoc_node,
-                                                          nil, outname)
         when :presentation
           IsoDoc::Iec::PresentationXMLConvert.new(options)
             .convert(inname, isodoc_node, nil, outname)

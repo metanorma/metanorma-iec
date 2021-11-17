@@ -164,11 +164,8 @@ RSpec.describe Metanorma::Iec::Processor do
   it "generates STS from Metanorma XML" do
     FileUtils.rm_f "test.xml"
     FileUtils.rm_f "test.sts.xml"
-    FileUtils.rm_f "test.iso.sts.xml"
     File.open("test.xml", "w") { |f| f.write inputxml }
     processor.output(inputxml, "test.xml", "test.sts.xml", :sts)
-    processor.output(inputxml, "test.xml", "test.iso.sts.xml", :isosts)
     expect(File.exist?("test.sts.xml")).to be true
-    expect(File.exist?("test.iso.sts.xml")).to be true
   end
 end
