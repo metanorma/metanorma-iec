@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "metanorma-iso", "~> 1.10.0"
   spec.add_dependency "ruby-jing"
 
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
