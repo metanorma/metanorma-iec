@@ -546,4 +546,43 @@ RSpec.describe IsoDoc do
          </div>
     OUTPUT
   end
+
+  it "convert termbase references to the current document to xrefs" do
+    input = <<~INPUT
+              <iso-standard xmlns="http://riboseinc.com/isoxml">
+              <bibdata type='standard'>
+                 <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
+                 <docnumber>60050</docnumber>
+                 <ext>
+                    <doctype>international-standard</doctype>
+                                        <horizontal>false</horizontal>
+                    <structuredidentifier>
+                    <project-number part="192">IEC 60050</project-number>
+                    </structuredidentifier>
+                    <stagename>International standard</stagename>
+                    </ext>
+          </bibdata>
+          <sections>
+          <clause id="_terms_and_definitions" obligation="normative" displayorder="1"><title>Terms and definitions</title>
+          <terms id="_general" obligation="normative"><title>General</title>
+      <term id="term-durability"><preferred><expression><name>durability</name></expression><field-of-application>of an item</field-of-application></preferred>
+      <definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
+      <termnote id="_5f49cfad-e57e-5029-78cf-5b7e3e10a3b3">
+<p id="_8c830e60-8f09-73a2-6393-2a27d9c5b1ce">Dependability includes availability (<concept><refterm>192-01-02</refterm><renderterm>192-01-02</renderterm><termref base="IEV" target="192-01-02"/></concept>)
+      </termnote>
+      </term>
+      <term id="term-sub-item"><preferred><expression><name>sub item</name></expression></preferred><definition><verbal-definition><p id="_6952e988-8803-159d-a32e-57147fbf3d86">part of the subject being considered</p></verbal-definition></definition>
+      </term>
+      </terms>
+      </clause>
+      </sections>
+      </iso-standard>
+    INPUT
+    presxml = <<~PRESXML
+    PRESXML
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_equivalent_to xmlpp(presxml)
+end
 end
