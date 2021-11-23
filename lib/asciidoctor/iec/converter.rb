@@ -81,6 +81,13 @@ module Asciidoctor
         end
       end
 
+      def norm_ref_preface(node)
+        return super unless @is_iev
+
+        node.at("./title").next =
+          "<p>#{@i18n.norm_empty_pref}</p>"
+      end
+
       def term_defs_boilerplate(div, source, term, preface, isodoc)
         return super unless @is_iev
       end
