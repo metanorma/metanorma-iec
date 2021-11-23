@@ -59,6 +59,7 @@ RSpec.describe Asciidoctor::Iec do
                  <ext>
                    <doctype>article</doctype>
                             <horizontal>false</horizontal>
+                            <subdoctype>vocabulary</subdoctype>
                    <editorialgroup>
                      <technical-committee/>
                      <subcommittee/>
@@ -168,11 +169,6 @@ RSpec.describe Asciidoctor::Iec do
       </iec-standard>
 
     OUTPUT
-  end
-
-  it "uses IEV introduction title" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
   end
 
   it "uses IEV introduction title" do
