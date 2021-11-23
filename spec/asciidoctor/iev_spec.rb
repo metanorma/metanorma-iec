@@ -3,11 +3,95 @@ require "fileutils"
 
 RSpec.describe Asciidoctor::Iec do
   before(:all) do
-    @boilerplate = boilerplate(Nokogiri::XML(BLANK_HDR + "</iec-standard>"))
+    @boilerplate = boilerplate(Nokogiri::XML("#{BLANK_HDR}</iec-standard>"))
+  end
+
+  it "generates reference boilerplate for IEV" do
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docnumber: 60050
+
+      [bibliography]
+      == Normative References
+
+      * [[[A,B]]], _TITLE_
+    INPUT
+    output = <<~OUTPUT
+      <?xml version='1.0' encoding='UTF-8'?>
+             <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
+               <bibdata type='standard'>
+                 <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
+                 <docnumber>60050</docnumber>
+                 <contributor>
+                   <role type='author'/>
+                   <organization>
+                     <name>International Electrotechnical Commission</name>
+                     <abbreviation>IEC</abbreviation>
+                   </organization>
+                 </contributor>
+                 <contributor>
+                   <role type='publisher'/>
+                   <organization>
+                     <name>International Electrotechnical Commission</name>
+                     <abbreviation>IEC</abbreviation>
+                   </organization>
+                 </contributor>
+                 <language>en</language>
+                 <script>Latn</script>
+                 <status>
+                   <stage abbreviation="PPUB">60</stage>
+                   <substage abbreviation="PPUB">60</substage>
+                 </status>
+                 <copyright>
+                   <from>#{Time.now.year}</from>
+                   <owner>
+                     <organization>
+                       <name>International Electrotechnical Commission</name>
+                       <abbreviation>IEC</abbreviation>
+                     </organization>
+                   </owner>
+                 </copyright>
+                 <ext>
+                   <doctype>article</doctype>
+                            <horizontal>false</horizontal>
+                   <editorialgroup>
+                     <technical-committee/>
+                     <subcommittee/>
+                     <workgroup/>
+                   </editorialgroup>
+                   <structuredidentifier>
+                     <project-number>IEC 60050</project-number>
+                   </structuredidentifier>
+                         <stagename>International standard</stagename>
+                 </ext>
+               </bibdata>
+               #{@boilerplate}
+               <sections> </sections>
+               <bibliography>
+                 <references id='_' obligation='informative' normative="true">
+                   <title>Normative references</title>
+                   <p id='_'>There are no normative references in this document.</p>
+                   <bibitem id='A'>
+                     <formattedref format='application/x-isodoc+xml'>
+                       <em>TITLE</em>
+                     </formattedref>
+                     <docidentifier>B</docidentifier>
+                   </bibitem>
+                 </references>
+               </bibliography>
+             </iec-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
   end
 
   it "generates terms boilerplate for IEV" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    input = <<~INPUT
       = Document title
       Author
       :docfile: test.adoc
@@ -20,6 +104,7 @@ RSpec.describe Asciidoctor::Iec do
       === General
       ==== Term 1
     INPUT
+    output = <<~OUTPUT
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
         <bibdata type='standard'>
           <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
@@ -86,7 +171,12 @@ RSpec.describe Asciidoctor::Iec do
   end
 
   it "uses IEV introduction title" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "uses IEV introduction title" do
+    input = <<~INPUT
       = Document title
       Author
       :docfile: test.adoc
@@ -99,6 +189,7 @@ RSpec.describe Asciidoctor::Iec do
 
       Text
     INPUT
+    output = <<~OUTPUT
       <?xml version='1.0' encoding='UTF-8'?>
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
            <bibdata type='standard'>
@@ -151,12 +242,14 @@ RSpec.describe Asciidoctor::Iec do
            #{@boilerplate}
            <preface>
              <introduction id='_' obligation='informative'>
-               <title>INTRODUCTION&lt;br/&gt;Principles and rules followed</title>
-               <p id='_'>Text</p>
-             </introduction>
-           </preface>
-           <sections> </sections>
-         </iec-standard>
+               <title>INTRODUCTION<br/>Principles and rules followed</title>
+                 <p id='_'>Text</p>
+               </introduction>
+             </preface>
+             <sections> </sections>
+           </iec-standard>
     OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
   end
 end
