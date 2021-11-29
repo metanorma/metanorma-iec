@@ -95,39 +95,6 @@ module IsoDoc
       def set_termdomain(termdomain)
         return super unless @is_iev
       end
-
-      def term_suffix(node, out)
-        return unless @is_iev
-
-        domain = node&.at(ns("../domain"))&.text
-        return unless domain
-
-        out << ", &lt;#{domain}&gt;"
-      end
-
-      def deprecated_term_parse(node, out)
-        out.p **{ class: "DeprecatedTerms", style: "text-align:left;" } do |p|
-          p << l10n("#{@i18n.deprecated}: ")
-          node.children.each { |c| parse(c, p) }
-          term_suffix(node, p)
-        end
-      end
-
-      def admitted_term_parse(node, out)
-        out.p **{ class: "AltTerms", style: "text-align:left;" } do |p|
-          node.children.each { |c| parse(c, p) }
-          term_suffix(node, p)
-        end
-      end
-
-      def term_parse(node, out)
-        return super unless @is_iev
-
-        out.p **{ class: "Terms", style: "text-align:left;" } do |p|
-          node.children.each { |c| parse(c, p) }
-          term_suffix(node, p)
-        end
-      end
     end
   end
 end

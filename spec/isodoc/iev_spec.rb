@@ -64,11 +64,13 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(
-                   %r{<localized-strings>.*</localized-strings>}m, ""
-                 ))).to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml,
-                                                          true))).to be_equivalent_to xmlpp(html)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", presxml, true)))
+      .to be_equivalent_to xmlpp(html)
   end
 
   it "processes bibliographies under IEV" do
@@ -230,11 +232,13 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(
-                   %r{<localized-strings>.*</localized-strings>}m, ""
-                 ))).to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml,
-                                                          true))).to be_equivalent_to xmlpp(html)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", presxml, true)))
+      .to be_equivalent_to xmlpp(html)
   end
 
   it "processes IEV terms" do
@@ -247,7 +251,7 @@ RSpec.describe IsoDoc do
           <sections>
           <clause id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
           <terms id="_general" obligation="normative"><title>General</title>
-      <term id="paddy1"><preferred>paddy</preferred>
+      <term id="paddy1"><preferred><expression><name>paddy</name></expression></preferred>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
         <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
@@ -266,9 +270,10 @@ RSpec.describe IsoDoc do
           <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
         </modification>
       </termsource></term>
-      <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
-      <admitted>rough rice</admitted>
-      <deprecates>cargo rice</deprecates>
+      <term id="paddy"><preferred><expression><name>paddy</name></expression></preferred>
+      <admitted><expression><name>paddy rice</name></expression></admitted>
+      <admitted><expression><name>rough rice</name></expression></admitted>
+      <deprecates><expression><name>cargo rice</name></expression></deprecates>
       <domain>rice</domain>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
@@ -293,6 +298,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~INPUT
+          <?xml version='1.0'?>
           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
            <bibdata type='standard'>
                  <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
@@ -303,7 +309,7 @@ RSpec.describe IsoDoc do
           <terms id="_general" obligation="normative"><title>192-01 General</title>
       <term id="paddy1">
       <name>192-01-01</name>
-      <preferred>paddy</preferred>
+      <preferred><strong>paddy</strong></preferred>
       <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
       <name>EXAMPLE 1</name>
@@ -326,11 +332,10 @@ RSpec.describe IsoDoc do
       </termsource></term>
       <term id="paddy">
       <name>192-01-02</name>
-      <preferred>paddy</preferred><admitted>paddy rice</admitted>
+      <preferred><strong>paddy</strong></preferred><admitted>paddy rice</admitted>
       <admitted>rough rice</admitted>
       <deprecates>cargo rice</deprecates>
-      <domain>rice</domain>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">&#x3c;rice&#x3e; rice retaining its husk after threshing</p></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
       <name>EXAMPLE</name>
         <ul>
@@ -370,7 +375,7 @@ RSpec.describe IsoDoc do
                   <b>192-01 General</b>
                 </p>
                 <p class='TermNum' id='paddy1'>192-01-01</p>
-                <p class='Terms' style='text-align:left;'>paddy</p>
+                <p class='Terms' style='text-align:left;'><b>paddy</b></p>
                 <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
                 <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f892' class='example'>
                   <p>
@@ -397,11 +402,11 @@ RSpec.describe IsoDoc do
                   Note 1 to entry is not included here [/TERMREF]
                 </p>
                 <p class='TermNum' id='paddy'>192-01-02</p>
-                <p class='Terms' style='text-align:left;'>paddy, &lt;rice&gt;</p>
-                <p class='AltTerms' style='text-align:left;'>paddy rice, &lt;rice&gt;</p>
-                <p class='AltTerms' style='text-align:left;'>rough rice, &lt;rice&gt;</p>
-                <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice, &lt;rice&gt;</p>
-                <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
+                <p class='Terms' style='text-align:left;'><b>paddy</b></p>
+                <p class='AltTerms' style='text-align:left;'>paddy rice</p>
+                <p class='AltTerms' style='text-align:left;'>rough rice</p>
+                <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
+                <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>&lt;rice&gt; rice retaining its husk after threshing</p>
                 <div id='_bd57bbf1-f948-4bae-b0ce-73c00431f893' class='example'>
                   <p>
                     <span class='example_label'>EXAMPLE</span>
@@ -441,11 +446,13 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(
-                   %r{<localized-strings>.*</localized-strings>}m, ""
-                 ))).to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml,
-                                                          true))).to be_equivalent_to xmlpp(html)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", presxml, true)))
+      .to be_equivalent_to xmlpp(html)
   end
 
   it "populates Word template with terms reference labels" do
@@ -460,7 +467,7 @@ RSpec.describe IsoDoc do
           <sections>
           <clause id="_terms_and_definitions" obligation="normative" displayorder="1"><title>Terms and definitions</title>
           <terms id="_general" obligation="normative"><title>General</title>
-      <term id="paddy1"><preferred>paddy</preferred>
+      <term id="paddy1"><preferred><expression><name>paddy</name></expression></preferred>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
       <termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
@@ -486,7 +493,7 @@ RSpec.describe IsoDoc do
               <title>192-01 General</title>
               <term id='paddy1'>
                 <name>192-01-01</name>
-                <preferred>paddy</preferred>
+                <preferred><strong>paddy</strong></preferred>
                 <definition>
                   <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
                 </definition>
@@ -510,11 +517,13 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(
-                   %r{<localized-strings>.*</localized-strings>}m, ""
-                 ))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_equivalent_to xmlpp(presxml)
     IsoDoc::Iec::WordConvert.new({}).convert("test", presxml, false)
-    word = File.read("test.doc").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
+    word = File.read("test.doc")
+      .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
       <div class='WordSection3'>
@@ -541,7 +550,7 @@ RSpec.describe IsoDoc do
                  <a name='paddy1' id='paddy1'/>
                  192-01-01
                </p>
-               <p class='Terms' style='text-align:left;'>paddy</p>
+               <p class='Terms' style='text-align:left;'><b>paddy</b></p>
                <p class='MsoNormal'>
                  <a name='_eb29b35e-123e-4d1c-b50b-2714d41e747f' id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'/>
                  rice retaining its husk after threshing
@@ -613,8 +622,12 @@ RSpec.describe IsoDoc do
               <title>192-01 General</title>
               <term id='term-durability'>
                 <name>192-01-01</name>
-                <preferred>durability, &lt;of an item&gt;</preferred>
-                <definition/>
+                <preferred><strong>durability, &#x3c;of an item&#x3e;</strong></preferred>
+                <definition>
+            <verbaldefinition>
+              <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
+            </verbaldefinition>
+          </definition>
                 <termnote id='_5f49cfad-e57e-5029-78cf-5b7e3e10a3b3'>
                   <name>Note 1 to entry</name>
                   <p id='_8c830e60-8f09-73a2-6393-2a27d9c5b1ce'>Dependability includes availability (<em>192-01-02</em>
@@ -626,7 +639,7 @@ RSpec.describe IsoDoc do
               </term>
               <term id='term-sub-item'>
                 <name>192-01-02</name>
-                <preferred>sub item</preferred>
+                <preferred><strong>sub item</strong></preferred>
                 <definition>
                   <p id='_6952e988-8803-159d-a32e-57147fbf3d86'>part of the subject being considered</p>
                 </definition>
