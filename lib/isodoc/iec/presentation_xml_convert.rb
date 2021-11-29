@@ -29,16 +29,43 @@ module IsoDoc
           .call(elem)
       end
 
+      DICT_PATHS = { doctype_dict: "./ext/doctype", stage_dict: "./status/stage",
+                     substage_dict: "./status/substage",
+                     function_dict: "./ext/function",
+                     horizontal_dict: "./ext/horizontal" }.freeze
+
       def bibdata_i18n(bib)
         fr = IsoDoc::Iec::I18n.new("fr", "Latn")
         en = IsoDoc::Iec::I18n.new("en", "Latn")
         [{ lang: "en", i18n: en }, { lang: "fr", i18n: fr }].each do |v|
-          { doctype_dict: "./ext/doctype", stage_dict: "./status/stage",
-            substage_dict: "./status/substage", function_dict: "./ext/function",
-            horizontal_dict: "./ext/horizontal" }.each do |lbl, xpath|
-              hash_translate(bib, v[:i18n].get[lbl.to_s], xpath, v[:lang])
-            end
+          DICT_PATHS.each do |lbl, xpath|
+            hash_translate(bib, v[:i18n].get[lbl.to_s], xpath, v[:lang])
+          end
         end
+      end
+
+      def concept(docxml)
+        @is_iev and concept_iev(docxml)
+        super
+      end
+
+      def concept_iev(docxml)
+        labels = @xrefs.get_anchors.each_with_object({}) do |(k, v), m|
+          m[v[:label]] = k
+        end
+        docpart = docxml&.at(ns("//bibdata/ext/structuredidentifier/"\
+                                "project-number/@part"))&.text or return
+        docxml.xpath(ns("//concept/termref[@base = 'IEV']")).each do |t|
+          concept_iev1(t, docpart, labels)
+        end
+      end
+
+      def concept_iev1(termref, docpart, labels)
+        /^#{docpart}-/.match?(termref["target"]) or return
+        newtarget = labels[termref["target"]] or return
+        termref.name = "xref"
+        termref.delete("base")
+        termref["target"] = newtarget
       end
 
       include Init

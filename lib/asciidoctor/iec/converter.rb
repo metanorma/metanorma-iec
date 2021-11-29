@@ -12,7 +12,10 @@ module Asciidoctor
 
       def init(node)
         super
-        @is_iev = node.attr("docnumber") == "60050"
+        if @is_iev = node.attr("docnumber") == "60050"
+          @vocab = true
+          node.set_attr("docsubtype", "vocabulary")
+        end
       end
 
       def boilerplate_file(x_orig)
@@ -78,13 +81,21 @@ module Asciidoctor
         end
       end
 
+      def norm_ref_preface(node)
+        return super unless @is_iev
+
+        node.at("./title").next =
+          "<p>#{@i18n.norm_empty_pref}</p>"
+      end
+
       def term_defs_boilerplate(div, source, term, preface, isodoc)
         return super unless @is_iev
       end
 
       def sections_names_cleanup(xml)
         super
-        @is_iev and replace_title(xml, "//introduction", @i18n&.introduction_iev)
+        @is_iev and replace_title(xml, "//introduction",
+                                  @i18n&.introduction_iev)
       end
 
       def note(note)
