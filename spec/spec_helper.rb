@@ -27,7 +27,7 @@ end
 
 def metadata(xml)
   xml.sort.to_h.delete_if do |_k, v|
-    v.nil? || v.respond_to?(:empty?) && v.empty?
+    v.nil? || (v.respond_to?(:empty?) && v.empty?)
   end
 end
 
@@ -105,16 +105,15 @@ VALIDATING_BLANK_HDR = <<~"HDR".freeze
 HDR
 
 TERMS_BOILERPLATE = <<~"BOILERPLATE".freeze
-           <p id="_">ISO and IEC maintain terminological databases for use in
-           standardization at the following addresses:</p>
-  #{'         '}
-            <ul id="_">
-            <li> <p id="_">IEC Electropedia: available at
-            <link target="http://www.electropedia.org"/>
-            </p> </li>#{' '}
-                    <li> <p id="_">ISO Online browsing platform: available at
-              <link target="http://www.iso.org/obp"/></p> </li>
-    </ul>
+         <p id="_">ISO and IEC maintain terminological databases for use in
+         standardization at the following addresses:</p>
+          <ul id="_">
+          <li> <p id="_">IEC Electropedia: available at
+          <link target="http://www.electropedia.org"/>
+          </p> </li>
+                  <li> <p id="_">ISO Online browsing platform: available at
+            <link target="http://www.iso.org/obp"/></p> </li>
+  </ul>
 BOILERPLATE
 
 def boilerplate(xmldoc)
@@ -169,7 +168,6 @@ BLANK_HDR = <<~"HDR".freeze
     </copyright>
     <ext>
       <doctype>article</doctype>
-      <horizontal>false</horizontal>
     <editorialgroup>
       <technical-committee/>
       <subcommittee/>

@@ -166,7 +166,6 @@ RSpec.describe Asciidoctor::Iec do
           </relation>
           <ext>
             <doctype>article</doctype>
-            <horizontal>false</horizontal>
             <editorialgroup>
               <technical-committee number='1' type='A'>TC</technical-committee>
               <technical-committee number='11' type='A1'>TC1</technical-committee>
@@ -675,7 +674,6 @@ RSpec.describe Asciidoctor::Iec do
         </copyright>
         <ext>
           <doctype>article</doctype>
-                   <horizontal>false</horizontal>
           <editorialgroup>
             <technical-committee/>
             <subcommittee/>
@@ -879,7 +877,6 @@ RSpec.describe Asciidoctor::Iec do
         </copyright>
         <ext>
           <doctype>article</doctype>
-                   <horizontal>false</horizontal>
           <editorialgroup>
             <technical-committee/>
             <subcommittee/>
@@ -947,7 +944,6 @@ RSpec.describe Asciidoctor::Iec do
         </copyright>
         <ext>
           <doctype>article</doctype>
-                   <horizontal>false</horizontal>
           <editorialgroup>
             <technical-committee/>
             <subcommittee/>
