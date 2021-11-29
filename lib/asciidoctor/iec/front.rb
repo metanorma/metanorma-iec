@@ -199,8 +199,8 @@ module Asciidoctor
         end
       end
 
-      def metadata_doctype(node, xml)
-        xml.doctype doctype(node)
+      def metadata_subdoctype(node, xml)
+        super
         xml.horizontal (node.attr("horizontal") || "false")
         a = node.attr("function") and xml.function a
       end

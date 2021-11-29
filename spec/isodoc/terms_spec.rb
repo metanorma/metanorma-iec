@@ -9,7 +9,7 @@ RSpec.describe IsoDoc do
 
 <term id="paddy1"><preferred>paddy</preferred>
 <domain>rice</domain>
-<definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
+<definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
 <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
   <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
   <ul>
@@ -33,7 +33,7 @@ RSpec.describe IsoDoc do
 <preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
-<definition><verbaldefinition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbaldefinition></definition>
+<definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></verbal-definition></definition>
 <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74e">
   <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
 </termnote>
