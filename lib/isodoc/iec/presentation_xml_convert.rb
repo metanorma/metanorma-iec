@@ -68,6 +68,63 @@ module IsoDoc
         termref["target"] = newtarget
       end
 
+      def terms(docxml)
+        otherlang_designations(docxml)
+        super
+        merge_fr_into_en_term(docxml)
+      end
+
+      def merge_fr_into_en_term(docxml)
+        return unless @is_iev
+
+        docxml.xpath(ns("//term[@language = 'en'][@tag]")).each do |en|
+          fr = docxml.at(ns("//term[@language = 'fr'][@tag = '#{en['tag']}']"))
+          merge_fr_into_en_term1(en, fr) if fr
+        end
+        @xrefs.parse docxml
+        docxml.xpath(ns("//term/name")).each(&:remove)
+        term(docxml)
+      end
+
+      def merge_fr_into_en_term1(en_term, fr_term)
+        dl = en_term&.at(ns("./dl[@type = 'other-lang']"))&.remove
+        en_term << fr_term.remove.children
+        en_term << dl if dl
+        en_term["language"] = "en,fr"
+        en_term.delete("tag")
+      end
+
+      def otherlang_designations(docxml)
+        return unless @is_iev
+
+        docxml.xpath(ns("//term")).each do |t|
+          otherlang_designations1(t, t["language"]&.split(/,/) || %w(en fr))
+        end
+      end
+
+      def extract_otherlang_designations(term, lgs)
+        term.xpath(ns(".//preferred/expression[@language]"))
+          .each_with_object([]) do |d, m|
+          lg = d["language"]
+          d.delete("language")
+          next if lgs.include?(lg)
+
+          p = d.parent
+          designation_annotate(p, d.at(ns("./name")))
+          m << { lang: lg, designation: p.remove }
+        end
+      end
+
+      def otherlang_designations1(term, lgs)
+        pr = extract_otherlang_designations(term, lgs)
+        return if pr.empty?
+
+        prefs = pr.map do |p|
+          "<dt>#{p[:lang]}</dt><dd>#{p[:designation].to_xml}</dd>"
+        end
+        term << "<dl type='other-lang'>#{prefs.join}</dl>"
+      end
+
       include Init
     end
   end
