@@ -5,3 +5,5 @@ source "https://rubygems.org"
 
 # Specify your gem's dependencies in gemspec
 gemspec
+
+gem "reline", "~> 0.2.8.pre.11"

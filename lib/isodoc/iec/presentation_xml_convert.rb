@@ -153,17 +153,27 @@ module IsoDoc
         @i18n = @i18n_lg["default"]
       end
 
+      def termsource_modification(node)
+        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
+        super
+        @i18n = @i18n_lg["default"]
+      end
+
       def termsource1(node)
         lg = node&.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
-        if @is_iev
-          mod = elem.at(ns("./modification")) and
-            termsource_modification(mod)
-          elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
-          elem&.next_element&.name == "termsource" and elem.next = "; "
+        if @is_iev then termsource1_iev(node)
         else super
         end
         @i18n = @i18n_lg["default"]
+      end
+
+      def termsource1_iev(elem)
+        while elem&.next_element&.name == "termsource"
+          elem << "; #{elem.next_element.remove.children.to_xml}"
+        end
+        elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
       end
 
       def termexample(docxml)
