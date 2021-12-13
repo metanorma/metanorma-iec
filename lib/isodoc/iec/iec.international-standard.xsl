@@ -2058,6 +2058,7 @@
 					<!-- <xsl:if test="ancestor::iec:dl and ancestor::iec:figure">
 						<xsl:attribute name="margin-bottom">10pt</xsl:attribute>
 					</xsl:if> -->
+					<xsl:apply-templates select="@language"/>
 					<xsl:apply-templates/>
 				</xsl:element>
 			</xsl:when>
@@ -4863,6 +4864,7 @@
 	</xsl:template><xsl:template match="*[local-name()='dd']" mode="dl"/><xsl:template match="*[local-name()='dd']" mode="dl_process">
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template match="*[local-name()='dd']"/><xsl:template match="*[local-name()='dd']" mode="process">
+		<xsl:apply-templates select="@language"/>
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template match="*[local-name()='dd']/*[local-name()='p']" mode="inline">
 		<fo:inline><xsl:text> </xsl:text><xsl:apply-templates/></fo:inline>
@@ -7510,6 +7512,8 @@
 					</svg>
 				</fo:instream-foreign-object>	
 		</fo:inline>
+	</xsl:template><xsl:template match="@language">
+		<xsl:copy-of select="."/>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
