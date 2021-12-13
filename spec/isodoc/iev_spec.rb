@@ -836,7 +836,7 @@ RSpec.describe IsoDoc do
                  </termsource>
                  <dl type='other-lang'>
                    <dt>ar</dt>
-                   <dd>
+                   <dd language="ar" script="Arab">
                      <preferred>
                                       <strong>&#x61C;&#x646;&#x638;&#x627;&#x645;&#x60C;&#x61C;</strong>
                &#x61C;, &#x3c;&#x641;&#x64A;
@@ -844,21 +844,21 @@ RSpec.describe IsoDoc do
                      </preferred>
                    </dd>
                    <dt>de</dt>
-                   <dd>
+                   <dd language="de" script="Latn">
                      <preferred>
                        <strong>Betrachtungseinheit</strong>
                        , f
                      </preferred>
                    </dd>
                    <dt>de</dt>
-                   <dd>
+                   <dd language="de" script="Latn">
                      <preferred>
                        <strong>Einheit</strong>
                        , f
                      </preferred>
                    </dd>
                    <dt>ja</dt>
-                   <dd>
+                   <dd language="ja" script="Jpan">
                      <preferred>
                        <strong>&#x30A2;&#x30A4;&#x30C6;&#x30E0;</strong>
                      </preferred>
