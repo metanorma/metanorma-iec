@@ -80,18 +80,6 @@ module IsoDoc
         end
       end
 
-      def termref_cleanup(docxml)
-        return super unless @is_iev
-
-        docxml
-          .gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, "; ")
-          .gsub(/\[TERMREF\]\s*/, l10n("#{@i18n.source}: "))
-          .gsub(/\s*\[MODIFICATION\]\s*\[\/TERMREF\]/,
-                l10n(", #{@i18n.modified} [/TERMREF]"))
-          .gsub(/\s*\[\/TERMREF\]\s*/, l10n(""))
-          .gsub(/\s*\[MODIFICATION\]/, l10n(", #{@i18n.modified} &mdash; "))
-      end
-
       def set_termdomain(termdomain)
         return super unless @is_iev
       end
