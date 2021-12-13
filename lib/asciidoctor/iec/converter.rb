@@ -69,7 +69,7 @@ module Asciidoctor
         if node.nil?
           IsoDoc::Iec::PdfConvert.new({})
         else
-          IsoDoc::Iec::PdfConvert.new(doc_extract_attributes(node))
+          IsoDoc::Iec::PdfConvert.new(pdf_extract_attributes(node))
         end
       end
 
