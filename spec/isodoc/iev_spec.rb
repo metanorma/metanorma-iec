@@ -622,7 +622,7 @@ RSpec.describe IsoDoc do
               <title>192-01 General</title>
               <term id='term-durability'>
                 <name>192-01-01</name>
-                <preferred><strong>durability, &#x3c;of an item&#x3e;</strong></preferred>
+                <preferred><strong>durability</strong>, &#x3c;of an item&#x3e;</preferred>
                 <definition>
             <verbaldefinition>
               <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>rice retaining its husk after threshing</p>
@@ -666,14 +666,15 @@ RSpec.describe IsoDoc do
           <clause id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
           <terms id="_general" obligation="normative"><title>General</title>
       <term id="item" language="en" tag="item">
-      <preferred><expression language="en"><name>system</name><field-of-application>in dependability</field-of-application></expression></preferred>
-      <preferred><expression language="cs"><name>objekt</name></expression></preferred>
+      <preferred><expression language="en"><name>system</name></expression><field-of-application>in dependability</field-of-application></preferred>
+      <preferred><expression language="ar"><name>نظام،</name></expression><field-of-application>في الاعتمادیة</field-of-application></preferred>
       <preferred><expression language="de"><name>Betrachtungseinheit</name<grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="de"><name>Einheit</name><grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="ja"><name>アイテム</name></expression></preferred>
       <admitted><expression><name>paddy rice</name></expression></admitted>
       <admitted><expression><name>rough rice</name></expression></admitted>
       <deprecates><expression><name>cargo rice</name></expression></deprecates>
+      <related type='contrast'><preferred><expression><name>Fifth Designation</name></expression></preferred><xref target="paddy1"/></related>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">set of interrelated items that collectively fulfil a requirement</p></verbal-definition></definition>
       <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74e">
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">A system is considered to have a defined real or abstract boundary.</p>
@@ -681,14 +682,18 @@ RSpec.describe IsoDoc do
       <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74d">
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">External resources (from outside the system boundary) may be required for the system to operate.</p>
       </termnote>
+      <termexample id="_671a1994-4783-40d0-bc81-987d06ffb740">
+        <p id="_19830f33-e46c-42cc-94ca-a5ef101132d0">External resources (from outside the system boundary) may be required for the system to operate.</p>
+      </termexample>
       <termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
         <modification>modified by extension to suit the dependability context</modification>
       </termsource></term>
       <term id="item-fr" language="fr" tag="item">
-      <preferred><expression language="fr"><name>entité</name>
+      <preferred><expression language="fr"><name>entité</name<grammar><gender>masculine</gender></grammar></expression>
       <field-of-application>en sûreté de fonctionnement</field-of-application>
-      <grammar><gender>masculine</gender></grammar></expression></preferred>
+      </preferred>
+      <related type='contrast'><preferred><expression><name>Designation cinquième</name></expression></preferred><xref target="paddy1"/></related>
       <definition><verbal-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747d">ensemble d’entités reliées entre elles qui satisfont collectivement à une exigence</p></verbal-definition></definition>
       <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74c">
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">Un système est considéré comme ayant une frontière définie, réelle ou abstraite.</p>
@@ -696,6 +701,9 @@ RSpec.describe IsoDoc do
       <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74b">
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">Des ressources externes (provenant d’au-delà de la frontière) peuvent être nécessaires au fonctionnement du système.</p>
       </termnote>
+      <termexample id="_671a1994-4783-40d0-bc81-987d06ffb741">
+        <p id="_19830f33-e46c-42cc-94ca-a5ef101132d1">External resources (from outside the system boundary) may be required for the system to operate.</p>
+      </termexample>
       <termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
         <modification>modifié pour adapter au contexte de la sûreté de fonctionnement</modification>
@@ -710,7 +718,6 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~PRESXML
-      <?xml version='1.0'?>
        <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
          <bibdata type='standard'>
            <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
@@ -729,10 +736,22 @@ RSpec.describe IsoDoc do
                  <name>192-01-01</name>
                  <preferred>
                    <strong>system</strong>
+                   , &#x3c;in dependability&#x3e;
                  </preferred>
                  <admitted>paddy rice</admitted>
                  <admitted>rough rice</admitted>
                  <deprecates>cargo rice</deprecates>
+                 <p>
+                   <strong>CONTRAST:</strong>
+                   <em>
+                     <preferred>
+                       <strong>Fifth Designation</strong>
+                     </preferred>
+                   </em>
+                    (
+                   <xref target='paddy1'>192-01-02</xref>
+                   )
+                 </p>
                  <definition>
                    <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>set of interrelated items that collectively fulfil a requirement</p>
                  </definition>
@@ -747,6 +766,13 @@ RSpec.describe IsoDoc do
                      required for the system to operate.
                    </p>
                  </termnote>
+                 <termexample id='_671a1994-4783-40d0-bc81-987d06ffb740'>
+                   <name>EXAMPLE</name>
+                   <p id='_19830f33-e46c-42cc-94ca-a5ef101132d0'>
+                     External resources (from outside the system boundary) may be
+                     required for the system to operate.
+                   </p>
+                 </termexample>
                  <termsource status='modified'>
                    <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                      <locality type='clause'>
@@ -758,8 +784,19 @@ RSpec.describe IsoDoc do
                  </termsource>
                  <preferred>
                    <strong>entit&#xE9;</strong>
-                   , m
+                   , &#x3c;en s&#xFB;ret&#xE9; de fonctionnement&#x3e;, m
                  </preferred>
+                 <p>
+                   <strong>CONTRASTEZ:</strong>
+                   <em>
+                     <preferred>
+                       <strong>Designation cinqui&#xE8;me</strong>
+                     </preferred>
+                   </em>
+                    (
+                   <xref target='paddy1'>192-01-02</xref>
+                   )
+                 </p>
                  <definition>
                    <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747d'>
                      ensemble d&#x2019;entit&#xE9;s reli&#xE9;es entre elles qui
@@ -767,20 +804,27 @@ RSpec.describe IsoDoc do
                    </p>
                  </definition>
                  <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74c'>
-                   <name>Note 1 to entry</name>
+                   <name>Note 1 &#xE0; l&#x2019;article</name>
                    <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
                      Un syst&#xE8;me est consid&#xE9;r&#xE9; comme ayant une
                      fronti&#xE8;re d&#xE9;finie, r&#xE9;elle ou abstraite.
                    </p>
                  </termnote>
                  <termnote id='_671a1994-4783-40d0-bc81-987d06ffb74b'>
-                   <name>Note 2 to entry</name>
+                   <name>Note 2 &#xE0; l&#x2019;article</name>
                    <p id='_19830f33-e46c-42cc-94ca-a5ef101132d5'>
                      Des ressources externes (provenant d&#x2019;au-del&#xE0; de la
                      fronti&#xE8;re) peuvent &#xEA;tre n&#xE9;cessaires au
                      fonctionnement du syst&#xE8;me.
                    </p>
                  </termnote>
+                 <termexample id='_671a1994-4783-40d0-bc81-987d06ffb741'>
+                   <name>EXEMPLE</name>
+                   <p id='_19830f33-e46c-42cc-94ca-a5ef101132d1'>
+                     External resources (from outside the system boundary) may be
+                     required for the system to operate.
+                   </p>
+                 </termexample>
                  <termsource status='modified'>
                    <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                      <locality type='clause'>
@@ -791,10 +835,12 @@ RSpec.describe IsoDoc do
                    <modification>modifi&#xE9; pour adapter au contexte de la s&#xFB;ret&#xE9; de fonctionnement</modification>
                  </termsource>
                  <dl type='other-lang'>
-                   <dt>cs</dt>
+                   <dt>ar</dt>
                    <dd>
                      <preferred>
-                       <strong>objekt</strong>
+                                      <strong>&#x61C;&#x646;&#x638;&#x627;&#x645;&#x60C;&#x61C;</strong>
+               &#x61C;, &#x3c;&#x641;&#x64A;
+               &#x627;&#x644;&#x627;&#x639;&#x62A;&#x645;&#x627;&#x62F;&#x6CC;&#x629;&#x3e;&#x61C;
                      </preferred>
                    </dd>
                    <dt>de</dt>

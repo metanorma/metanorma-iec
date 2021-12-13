@@ -4,6 +4,14 @@ require "isodoc"
 module IsoDoc
   module Iec
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
+      def i18n_init(lang, script, i18nyaml = nil)
+        super
+        @i18n_lg = {}
+        @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml || @i18nyaml)
+        @i18n_lg["fr"] = I18n.new("fr", "Latn", i18nyaml || @i18nyaml)
+        @i18n_lg["default"] = @i18n
+      end
+
       def clause(docxml)
         docxml.xpath(ns("//clause[not(ancestor::annex)] | "\
                         "//definitions | //references | "\
@@ -111,8 +119,18 @@ module IsoDoc
 
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
-          m << { lang: lg, designation: p.remove }
+          m << { lang: lg, designation: l10n_recursive(p.remove, lg) }
         end
+      end
+
+      def l10n_recursive(xml, lang)
+        script = Metanorma::Utils.default_script(lang)
+        xml.traverse do |x|
+          next unless x.text?
+
+          x.replace(l10n(x, lang, script))
+        end
+        xml
       end
 
       def otherlang_designations1(term, lgs)
@@ -123,6 +141,49 @@ module IsoDoc
           "<dt>#{p[:lang]}</dt><dd>#{p[:designation].to_xml}</dd>"
         end
         term << "<dl type='other-lang'>#{prefs.join}</dl>"
+      end
+
+      def related1(node)
+        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
+        super
+        @i18n = @i18n_lg["default"]
+      end
+
+      def termsource1(node)
+        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
+        if @is_iev
+          mod = elem.at(ns("./modification")) and
+            termsource_modification(mod)
+          elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
+          elem&.next_element&.name == "termsource" and elem.next = "; "
+        else super
+        end
+        @i18n = @i18n_lg["default"]
+      end
+
+      def termexample(docxml)
+        docxml.xpath(ns("//termexample")).each do |f|
+          termexample1(f)
+        end
+      end
+
+      def termexample1(elem)
+        lg = elem&.at("./ancestor::xmlns:term/@language")&.text
+        @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
+        example1(elem)
+        @i18n = @i18n_lg["default"]
+      end
+
+      def termnote1(elem)
+        lg = elem&.at("./ancestor::xmlns:term/@language")&.text
+        @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
+
+        val = @xrefs.anchor(elem["id"], :value) || "???"
+        lbl = @i18n.termnote.gsub(/%/, val)
+        prefix_name(elem, "", lower2cap(lbl), "name")
+        @i18n = @i18n_lg["default"]
       end
 
       include Init
