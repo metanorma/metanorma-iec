@@ -63,7 +63,7 @@ module IsoDoc
         end
         docpart = docxml&.at(ns("//bibdata/ext/structuredidentifier/"\
                                 "project-number/@part"))&.text or return
-        docxml.xpath(ns("//concept/termref[@base = 'IEV']")).each do |t|
+        docxml.xpath(ns("//termref[@base = 'IEV']")).each do |t|
           concept_iev1(t, docpart, labels)
         end
       end
@@ -139,7 +139,7 @@ module IsoDoc
       def merge_otherlang_designations(desgn)
         h = desgn.each_with_object({}) do |e, m|
           if m[e[:lang]]
-            m[e[:lang]][:designation] += "<br/>#{e[:designation]}"
+            m[e[:lang]][:designation] += e[:designation]
           else m[e[:lang]] = e
           end
         end
@@ -160,10 +160,26 @@ module IsoDoc
         term << "<dl type='other-lang'>#{prefs.join}</dl>"
       end
 
+      def related(docxml)
+        docxml.xpath(ns("//term[related]")).each { |f| move_related(f) }
+        super
+      end
+
+      def move_related(term)
+        defn = term.at(ns("./definition")) or return
+        term.xpath(ns("./related")).reverse.each do |r|
+          defn.next = r.remove
+        end
+      end
+
       def related1(node)
         lg = node&.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
-        super
+        p = node.at(ns("./preferred"))
+        ref = node.at(ns("./xref | ./eref | ./termref"))
+        label = @i18n.relatedterms[node["type"]].upcase
+        node.replace(l10n("<p>#{label}: "\
+                          "#{p.children.to_xml} (#{ref.to_xml})</p>"))
         @i18n = @i18n_lg["default"]
       end
 
