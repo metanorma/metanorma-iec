@@ -14,13 +14,17 @@ module IsoDoc
         page_break(out)
         iec_orgname(out)
         middle_title(isoxml, out)
-        out.div **attr_code(id: f ? f["id"] : "") do |s|
+        foreword1(f, b, out)
+      end
+
+      def foreword1(sect, boilerplate, out)
+        out.div **attr_code(id: sect ? sect["id"] : "") do |s|
           s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @i18n.foreword }
           @meta.get[:doctype] == "Amendment" or
             s.div **attr_code(class: "boilerplate_legal") do |s1|
-              b&.elements&.each { |e| parse(e, s1) }
+              boilerplate&.elements&.each { |e| parse(e, s1) }
             end
-          f&.elements&.each { |e| parse(e, s) unless e.name == "title" }
+          sect&.elements&.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
 
@@ -31,25 +35,31 @@ module IsoDoc
       end
 
       def middle_title(_isoxml, out)
-        title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
-        @meta.get[:doctitleintro] and
-          title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
-        if @meta.get[:doctitlepart]
-          title1 += " &mdash;"
-          title2 = @meta.get[:doctitlepart]&.sub(/\s+$/, "")
-          @meta.get[:doctitlepartlabel] and
-            title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
-        end
+        title1, title2 = middle_title_parts(out)
         out.p(**{ class: "zzSTDTitle1" }) do |p|
           p.b { |b| b << title1 }
         end
-        if @meta.get[:doctitlepart]
+        if title2
           out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
           out.p(**{ class: "zzSTDTitle2" }) do |p|
             p.b { |b| b << title2 }
           end
         end
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
+      end
+
+      def middle_title_parts(out)
+        title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
+        @meta.get[:doctitleintro] and
+          title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
+        title2 = nil
+        if @meta.get[:doctitlepart]
+          title1 += " &mdash;"
+          title2 = @meta.get[:doctitlepart]&.sub(/\s+$/, "")
+          @meta.get[:doctitlepartlabel] and
+            title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
+        end
+        [title1, title2]
       end
 
       def bibliography(isoxml, out)
