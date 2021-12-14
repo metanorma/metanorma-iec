@@ -665,6 +665,7 @@ RSpec.describe IsoDoc do
       <preferred><expression language="de"><name>Betrachtungseinheit</name<grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="de"><name>Einheit</name><grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="ja"><name>アイテム</name></expression></preferred>
+      <preferred><expression language="zh"><name>&#20135;&#21697;</name></expression><field-of-application>在可靠性方面</field-of-application></preferred>
       <admitted><expression><name>paddy rice</name></expression></admitted>
       <admitted><expression><name>rough rice</name></expression></admitted>
       <deprecates><expression><name>cargo rice</name></expression></deprecates>
@@ -857,6 +858,12 @@ RSpec.describe IsoDoc do
                        <strong>&#x30A2;&#x30A4;&#x30C6;&#x30E0;</strong>
                      </preferred>
                    </dd>
+                   <dt>zh</dt>
+                    <dd language='zh' script='Hans'>
+                      <preferred>
+                        <strong>&#x4EA7;&#x54C1;</strong> &#x3001;&#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;&#x3e;
+                      </preferred>
+                    </dd>
                  </dl>
                </term>
                <term id='paddy1'>

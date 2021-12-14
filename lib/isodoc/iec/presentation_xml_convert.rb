@@ -126,10 +126,12 @@ module IsoDoc
 
       def l10n_recursive(xml, lang)
         script = Metanorma::Utils.default_script(lang)
+        c = HTMLEntities.new
         xml.traverse do |x|
           next unless x.text?
 
-          x.replace(l10n(x, lang, script))
+          text = c.encode(c.decode(x.text), :hexadecimal)
+          x.replace(cleanup_entities(l10n(text, lang, script), is_xml: false))
         end
         xml
       end
@@ -141,7 +143,7 @@ module IsoDoc
         prefs = pr.map do |p|
           "<dt>#{p[:lang]}</dt>"\
             "<dd language='#{p[:lang]}' script='#{p[:script]}'>"\
-            "#{p[:designation].to_xml}</dd>"
+            "#{cleanup_entities(p[:designation].to_xml)}</dd>"
         end
         term << "<dl type='other-lang'>#{prefs.join}</dl>"
       end
@@ -171,7 +173,7 @@ module IsoDoc
 
       def termsource1_iev(elem)
         while elem&.next_element&.name == "termsource"
-          elem << "; #{elem.next_element.remove.children.to_xml}"
+          elem << l10n("; #{elem.next_element.remove.children.to_xml}")
         end
         elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
       end
