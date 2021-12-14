@@ -120,7 +120,7 @@ module IsoDoc
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
           m << { lang: lg, script: Metanorma::Utils.default_script(lg),
-                 designation: l10n_recursive(p.remove, lg) }
+                 designation: l10n_recursive(p.remove, lg).to_xml.strip }
         end
       end
 
@@ -136,14 +136,26 @@ module IsoDoc
         xml
       end
 
+      def merge_otherlang_designations(desgn)
+        h = desgn.each_with_object({}) do |e, m|
+          if m[e[:lang]]
+            m[e[:lang]][:designation] += "<br/>#{e[:designation]}"
+          else m[e[:lang]] = e
+          end
+        end
+        h.keys.sort.each_with_object([]) { |k, m| m << h[k] }
+      end
+
       def otherlang_designations1(term, lgs)
-        pr = extract_otherlang_designations(term, lgs)
+        pr = merge_otherlang_designations(
+          extract_otherlang_designations(term, lgs),
+        )
         return if pr.empty?
 
         prefs = pr.map do |p|
           "<dt>#{p[:lang]}</dt>"\
             "<dd language='#{p[:lang]}' script='#{p[:script]}'>"\
-            "#{cleanup_entities(p[:designation].to_xml)}</dd>"
+            "#{cleanup_entities(p[:designation])}</dd>"
         end
         term << "<dl type='other-lang'>#{prefs.join}</dl>"
       end

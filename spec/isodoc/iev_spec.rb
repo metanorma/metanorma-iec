@@ -661,11 +661,11 @@ RSpec.describe IsoDoc do
           <terms id="_general" obligation="normative"><title>General</title>
       <term id="item" language="en" tag="item">
       <preferred><expression language="en"><name>system</name></expression><field-of-application>in dependability</field-of-application></preferred>
-      <preferred><expression language="ar"><name>نظام،</name></expression><field-of-application>في الاعتمادیة</field-of-application></preferred>
       <preferred><expression language="de"><name>Betrachtungseinheit</name<grammar><gender>feminine</gender></grammar></expression></preferred>
-      <preferred><expression language="de"><name>Einheit</name><grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="ja"><name>アイテム</name></expression></preferred>
+      <preferred><expression language="de"><name>Einheit</name><grammar><gender>feminine</gender></grammar></expression></preferred>
       <preferred><expression language="zh"><name>&#20135;&#21697;</name></expression><field-of-application>在可靠性方面</field-of-application></preferred>
+      <preferred><expression language="ar"><name>نظام،</name></expression><field-of-application>في الاعتمادیة</field-of-application></preferred>
       <admitted><expression><name>paddy rice</name></expression></admitted>
       <admitted><expression><name>rough rice</name></expression></admitted>
       <deprecates><expression><name>cargo rice</name></expression></deprecates>
@@ -844,9 +844,7 @@ RSpec.describe IsoDoc do
                        <strong>Betrachtungseinheit</strong>
                        , f
                      </preferred>
-                   </dd>
-                   <dt>de</dt>
-                   <dd language="de" script="Latn">
+                     <br/>
                      <preferred>
                        <strong>Einheit</strong>
                        , f
