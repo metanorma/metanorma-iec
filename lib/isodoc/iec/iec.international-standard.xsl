@@ -1459,6 +1459,9 @@
 						<xsl:if test="@type = 'indexsect'">
 							<xsl:attribute name="space-before">16pt</xsl:attribute>
 						</xsl:if>
+						<xsl:if test="@type = 'references'">
+							<xsl:attribute name="space-before">5pt</xsl:attribute>
+						</xsl:if>
 						<!-- <xsl:if test="@level &gt;= 2 and @section != ''">
 							<xsl:attribute name="margin-left">5mm</xsl:attribute>
 						</xsl:if> -->
@@ -1468,6 +1471,7 @@
 								<fo:list-block>
 									<xsl:attribute name="margin-left">
 										<xsl:choose>
+											<xsl:when test="title/@variant-title = 'true'">0mm</xsl:when>
 											<xsl:when test="@level = 2">8mm</xsl:when>
 											<xsl:when test="@level &gt;= 3"><xsl:value-of select="(@level - 2) * 23"/>mm</xsl:when>
 											<xsl:otherwise>0mm</xsl:otherwise>
@@ -1751,6 +1755,10 @@
 				<xsl:call-template name="getName"/>
 			</xsl:variable>
 			
+			<xsl:variable name="variant_title">
+				<xsl:copy-of select="iec:variant-title/node()"/>
+			</xsl:variable>
+			
 			<item id="{@id}" level="{$level}" section="{$section}" type="{$type}" display="{$display}">
 				<xsl:if test="$type ='appendix'">
 					<xsl:attribute name="section"/>
@@ -1763,6 +1771,10 @@
 						<!-- <xsl:when test="$type = 'foreword' or $type = 'introduction'">
 							<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($title))"/>
 						</xsl:when> -->
+						<xsl:when test="normalize-space($variant_title) != ''">
+							<xsl:attribute name="variant-title">true</xsl:attribute>
+							<xsl:apply-templates select="xalan:nodeset($variant_title)" mode="contents_item"/>
+						</xsl:when>
 						<xsl:when test="$type = 'indexsect'">
 							<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($title))"/>
 						</xsl:when>
@@ -7551,7 +7563,7 @@
 			</td>
 		</xsl:for-each>
 		<td>333</td> <!-- page number, just for fill -->
-	</xsl:template><xsl:template match="*[local-name() = 'variant-title'][@type = 'sub']"/><xsl:template match="*[local-name() = 'variant-title'][@type = 'sub']" mode="subtitle">
+	</xsl:template><xsl:template match="*[local-name() = 'variant-title']"/><xsl:template match="*[local-name() = 'variant-title'][@type = 'sub']" mode="subtitle">
 		<fo:inline padding-right="5mm"> </fo:inline>
 		<fo:inline><xsl:apply-templates/></fo:inline>
 	</xsl:template><xsl:template match="*[local-name() = 'blacksquare']" name="blacksquare">
