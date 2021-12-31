@@ -211,6 +211,7 @@ RSpec.describe IsoDoc do
               <formattedref format='application/x-isodoc+xml'>
                 <em>TITLE</em>
               </formattedref>
+              <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
             </bibitem>
           </references>
@@ -369,9 +370,9 @@ RSpec.describe IsoDoc do
                <h1>1&#160; Terms and definitions</h1>
                <br/>
                <div id='_general'>
-                 <p class='zzSTDTitle2'>
+                 <h2 class='zzSTDTitle2'>
                    <b>192-01 General</b>
-                 </p>
+                 </h2>
                  <p class='TermNum' id='paddy1'>192-01-01</p>
                  <p class='Terms' style='text-align:left;'>
                    <b>paddy</b>
@@ -537,9 +538,9 @@ RSpec.describe IsoDoc do
              </p>
              <div>
                <a name='_general' id='_general'/>
-               <p class='zzSTDTitle2'>
+               <h2 class='zzSTDTitle2'>
                  <b>192-01 General</b>
-               </p>
+               </h2>
                <p class='TermNum'>
                  <a name='paddy1' id='paddy1'/>
                  192-01-01
