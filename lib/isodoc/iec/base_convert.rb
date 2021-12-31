@@ -48,7 +48,7 @@ module IsoDoc
         out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&nbsp;" }
       end
 
-      def middle_title_parts(out)
+      def middle_title_parts(_out)
         title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
         @meta.get[:doctitleintro] and
           title1 = "#{@meta.get[:doctitleintro]} &mdash; #{title1}"
@@ -79,7 +79,8 @@ module IsoDoc
 
         page_break(out)
         out.div **attr_code(id: node["id"]) do |div|
-          out.p(**{ class: "zzSTDTitle2" }) do |p|
+          depth = clause_title_depth(node, nil)
+          out.send "h#{depth}", **{ class: "zzSTDTitle2" } do |p|
             p.b do |b|
               node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
             end
