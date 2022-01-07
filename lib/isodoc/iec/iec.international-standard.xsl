@@ -520,6 +520,7 @@
 								</xsl:if>
 							</fo:block-container>
 							
+							<xsl:variable name="price_code_value" select="//iec:iec-standard/iec:bibdata/iec:ext/iec:price-code"/>
 							<fo:table table-layout="fixed" width="102%" margin-top="-9mm" margin-bottom="2mm">
 								<fo:table-column column-width="148mm"/>
 								<fo:table-column column-width="16mm"/>
@@ -527,29 +528,31 @@
 									<fo:table-row border-bottom="0.5pt solid {$color_gray}" height="16mm">
 										<fo:table-cell font-size="8pt" text-align="right" display-align="center">
 											<fo:block>
-												<fo:block color="{$color_blue}" margin-bottom="3pt">
-													<!-- PRICE CODE -->
-													<xsl:variable name="price_code">
-														<!-- <xsl:call-template name="getLocalizedString">
-															<xsl:with-param name="key">price-code</xsl:with-param>																			
-														</xsl:call-template> -->
-														<xsl:value-of select="(//iec:iec-standard)[1]/iec:localized-strings/iec:localized-string[@key='price-code' and @language=$lang]"/>
-													</xsl:variable>
-													<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($price_code))"/>
-												</fo:block>
-												<!-- <xsl:if test="$lang != 'fr'">
-													<fo:block>CODE PRIX</fo:block>
-												</xsl:if> -->
-												<fo:block>
-													<xsl:variable name="price_code">
-														<xsl:value-of select="(//iec:iec-standard)[2]/iec:localized-strings/iec:localized-string[@key='price-code' and @language=$lang_second]"/>
-													</xsl:variable>
-													<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($price_code))"/>
-												</fo:block>
+												<xsl:if test="normalize-space($price_code_value) != ''">
+													<fo:block color="{$color_blue}" margin-bottom="3pt">
+														<!-- PRICE CODE -->
+														<xsl:variable name="price_code">
+															<!-- <xsl:call-template name="getLocalizedString">
+																<xsl:with-param name="key">price-code</xsl:with-param>																			
+															</xsl:call-template> -->
+															<xsl:value-of select="(//iec:iec-standard)[1]/iec:localized-strings/iec:localized-string[@key='price-code' and @language=$lang]"/>
+														</xsl:variable>
+														<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($price_code))"/>
+													</fo:block>
+													<!-- <xsl:if test="$lang != 'fr'">
+														<fo:block>CODE PRIX</fo:block>
+													</xsl:if> -->
+													<fo:block>
+														<xsl:variable name="price_code">
+															<xsl:value-of select="(//iec:iec-standard)[2]/iec:localized-strings/iec:localized-string[@key='price-code' and @language=$lang_second]"/>
+														</xsl:variable>
+														<xsl:value-of select="java:toUpperCase(java:java.lang.String.new($price_code))"/>
+													</fo:block>
+												</xsl:if>
 											</fo:block>
 										</fo:table-cell>
 										<fo:table-cell font-size="25pt" font-weight="bold" color="{$color_gray}" text-align="right" display-align="center">
-											<fo:block padding-top="1mm"><xsl:value-of select="//iec:iec-standard/iec:bibdata/iec:ext/iec:price-code"/></fo:block>
+											<fo:block padding-top="1mm"><xsl:value-of select="$price_code_value"/></fo:block>
 										</fo:table-cell>
 									</fo:table-row>
 								</fo:table-body>
@@ -2213,7 +2216,10 @@
 			<xsl:call-template name="getLevelTermName"/>
 		</xsl:variable>
 		<fo:block line-height="1.1" space-before="14pt" role="H{$levelTerm}">
-			<xsl:if test="parent::iec:term">
+			<xsl:if test="preceding-sibling::*[1][self::iec:preferred]">
+				<xsl:attribute name="space-before">1pt</xsl:attribute>
+			</xsl:if>
+			<xsl:if test="parent::iec:term and not(preceding-sibling::iec:preferred)"> <!-- if first preffered in term, then display term's name -->
 				<fo:block font-weight="bold" keep-with-next="always">
 					<xsl:apply-templates select="ancestor::iec:term[1]/iec:name" mode="presentation"/>				
 				</fo:block>
@@ -2767,6 +2773,10 @@
 		
 		
 		
+			<xsl:attribute name="space-before">8pt</xsl:attribute>
+			<xsl:attribute name="space-after">8pt</xsl:attribute>
+		
+		
 		
 		
 		
@@ -2779,7 +2789,11 @@
 		
 		
 		
+			<xsl:attribute name="margin-left">10mm</xsl:attribute>
+		
+		
 	</xsl:attribute-set><xsl:attribute-set name="example-name-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		
 		
 		
@@ -2802,6 +2816,9 @@
 		
 		
 		
+		
+		
+			<xsl:attribute name="margin-top">5pt</xsl:attribute>
 		
 		
 		
@@ -5460,9 +5477,9 @@
 		<fo:inline role="H{$level}"><xsl:apply-templates/></fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='appendix']//*[local-name()='example']" priority="2">
 		<fo:block id="{@id}" xsl:use-attribute-sets="appendix-example-style">			
-			<xsl:apply-templates select="*[local-name()='name']" mode="presentation"/>
+			<xsl:apply-templates select="*[local-name()='name']"/>
 		</fo:block>
-		<xsl:apply-templates/>
+		<xsl:apply-templates select="node()[not(local-name()='name')]"/>
 	</xsl:template><xsl:template match="*[local-name() = 'callout']">		
 		<fo:basic-link internal-destination="{@target}" fox:alt-text="{@target}">&lt;<xsl:apply-templates/>&gt;</fo:basic-link>
 	</xsl:template><xsl:template match="*[local-name() = 'annotation']">
@@ -6688,42 +6705,54 @@
 		<fo:block id="{@id}" xsl:use-attribute-sets="example-style">
 			
 			
-			<xsl:apply-templates select="*[local-name()='name']" mode="presentation"/>
-			
-			<xsl:variable name="element">
+			<xsl:variable name="fo_element">
+				<xsl:if test=".//*[local-name() = 'table'] or .//*[local-name() = 'dl']">block</xsl:if> 
 								
-				inline
-				<xsl:if test=".//*[local-name() = 'table']">block</xsl:if> 
+				
+				
+					<xsl:choose>
+						<!-- if example contains only one (except 'name') element (paragraph for example), then display it on the same line as EXAMPLE title -->
+						<xsl:when test="count(*[not(local-name() = 'name')]) = 1">inline</xsl:when>
+						<xsl:otherwise>block</xsl:otherwise>
+					</xsl:choose>
+				
 			</xsl:variable>
 			
+			<!-- display 'EXAMPLE' -->
+			<xsl:apply-templates select="*[local-name()='name']">
+				<xsl:with-param name="fo_element" select="$fo_element"/>
+			</xsl:apply-templates>
+			
 			<xsl:choose>
-				<xsl:when test="contains(normalize-space($element), 'block')">
-					<fo:block xsl:use-attribute-sets="example-body-style">
-						<xsl:apply-templates/>
-					</fo:block>
+				<xsl:when test="contains(normalize-space($fo_element), 'block')">
+					<fo:block-container xsl:use-attribute-sets="example-body-style">
+						<fo:block-container margin-left="0mm" margin-right="0mm">
+							<xsl:apply-templates select="node()[not(local-name() = 'name')]">
+								<xsl:with-param name="fo_element" select="$fo_element"/>
+							</xsl:apply-templates>
+						</fo:block-container>
+					</fo:block-container>
 				</xsl:when>
 				<xsl:otherwise>
 					<fo:inline>
-						<xsl:apply-templates/>
+						<xsl:apply-templates select="node()[not(local-name() = 'name')]">
+							<xsl:with-param name="fo_element" select="$fo_element"/>
+						</xsl:apply-templates>
 					</fo:inline>
 				</xsl:otherwise>
 			</xsl:choose>
 			
 		</fo:block>
-	</xsl:template><xsl:template match="*[local-name() = 'example']/*[local-name() = 'name']"/><xsl:template match="*[local-name() = 'example']/*[local-name() = 'name']" mode="presentation">
-
-		<xsl:variable name="element">
-			
-			inline
-			<xsl:if test="following-sibling::*[1][local-name() = 'table']">block</xsl:if> 
-		</xsl:variable>		
+	</xsl:template><xsl:template match="*[local-name() = 'example']/*[local-name() = 'name']">
+		<xsl:param name="fo_element">block</xsl:param>
+	
 		<xsl:choose>
 			<xsl:when test="ancestor::*[local-name() = 'appendix']">
 				<fo:inline>
 					<xsl:apply-templates/>
 				</fo:inline>
 			</xsl:when>
-			<xsl:when test="contains(normalize-space($element), 'block')">
+			<xsl:when test="contains(normalize-space($fo_element), 'block')">
 				<fo:block xsl:use-attribute-sets="example-name-style">
 					<xsl:apply-templates/>
 				</fo:block>
@@ -6736,14 +6765,15 @@
 		</xsl:choose>
 
 	</xsl:template><xsl:template match="*[local-name() = 'example']/*[local-name() = 'p']">
+		<xsl:param name="fo_element">block</xsl:param>
+		
 		<xsl:variable name="num"><xsl:number/></xsl:variable>
 		<xsl:variable name="element">
-			block
 			
-			
+			<xsl:value-of select="$fo_element"/>
 		</xsl:variable>		
 		<xsl:choose>			
-			<xsl:when test="normalize-space($element) = 'block'">
+			<xsl:when test="starts-with(normalize-space($element), 'block')">
 				<fo:block xsl:use-attribute-sets="example-p-style">
 					
 					<xsl:apply-templates/>
