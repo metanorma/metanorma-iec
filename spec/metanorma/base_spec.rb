@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Asciidoctor::Iec do
+RSpec.describe Metanorma::Iec do
   before(:all) do
     @blank_hdr = blank_hdr_gen
   end
