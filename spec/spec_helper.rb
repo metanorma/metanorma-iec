@@ -118,10 +118,10 @@ BOILERPLATE
 
 def boilerplate(xmldoc)
   file = File.read(
-    File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iec",
+    File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "iec",
               "iec_intro_en.xml"), encoding: "utf-8"
   )
-  conv = Asciidoctor::Iec::Converter.new(nil, backend: :iec,
+  conv = Metanorma::Iec::Converter.new(nil, backend: :iec,
                                               header_footer: true)
   conv.init(Asciidoctor::Document.new([]))
   ret = Nokogiri::XML(

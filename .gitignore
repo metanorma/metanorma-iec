@@ -4,3 +4,17 @@
 coverage/
 
 .rubocop-https--*
+
+/Gemfile.devel
+/Gemfile.lock
+/spec/assets/iso.doc
+/spec/assets/iso.html
+/spec/assets/iso.pdf
+/test.doc
+/test.err
+/test.html
+/test.pdf
+/test.presentation.xml
+/test.sts.xml
+/test.xml
+/test_alt.html

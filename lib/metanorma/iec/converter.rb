@@ -1,8 +1,9 @@
 require "asciidoctor"
 require "metanorma-iso"
+require "metanorma/iso/converter"
 require_relative "./front"
 
-module Asciidoctor
+module Metanorma
   module Iec
     class Converter < ISO::Converter
       XML_ROOT_TAG = "iec-standard".freeze
