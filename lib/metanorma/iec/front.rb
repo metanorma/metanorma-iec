@@ -1,4 +1,4 @@
-module Asciidoctor
+module Metanorma
   module Iec
     class Converter < ISO::Converter
       def metadata_author(node, xml)
