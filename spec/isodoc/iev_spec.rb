@@ -211,6 +211,7 @@ RSpec.describe IsoDoc do
               <formattedref format='application/x-isodoc+xml'>
                 <em>TITLE</em>
               </formattedref>
+              <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
             </bibitem>
           </references>
