@@ -7,3 +7,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "reline", "~> 0.2.8.pre.11"
+
+if File.exist? "Gemfile.devel"
+  eval File.read("Gemfile.devel"), nil, "Gemfile.devel" # rubocop:disable Security/Eval
+end
