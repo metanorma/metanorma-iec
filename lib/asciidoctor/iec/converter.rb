@@ -117,6 +117,26 @@ module Asciidoctor
       end
 
       def image_name_validate(xmldoc); end
+
+      def toc_cleanup(xmldoc)
+        toc_iev_cleanup(xmldoc) if @is_iev
+        super
+      end
+
+      def toc_iev_cleanup(xmldoc)
+        iev_variant_titles(xmldoc)
+      end
+
+      def iev_variant_titles(xmldoc)
+        id = xmldoc&.at("//bibdata/docidentifier[@type = 'ISO']")&.text
+        m = /60050-(\d+)/.match(id) or return
+        xmldoc.xpath("//sections/clause/terms/title").each_with_index do |t, i|
+          num = "%02d" % [i + 1]
+          t.next = "<variant-title type='toc'>"\
+                   "#{@i18n.section_iev} #{m[1]}-#{num} &#x2013; "\
+                   "#{t.children.to_xml}</variant-title>"
+        end
+      end
     end
   end
 end

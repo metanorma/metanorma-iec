@@ -371,10 +371,12 @@ RSpec.describe IsoDoc::Iec do
       </html>
 
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({}).convert("test", input, true).sub(
-                   %r{<localized-strings>.*</localized-strings>}m, ""
-                 ))).to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", presxml,
-                                                          true))).to be_equivalent_to xmlpp(html)
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true).sub(
+        %r{<localized-strings>.*</localized-strings>}m, ""
+      ))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", presxml,
+               true))).to be_equivalent_to xmlpp(html)
   end
 end
