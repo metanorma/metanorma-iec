@@ -601,7 +601,7 @@ RSpec.describe IsoDoc do
           <docnumber>60050</docnumber>
           <ext>
             <doctype language=''>international-standard</doctype>
-            <doctype language='fr'>Norme international</doctype>
+            <doctype language='fr'>Norme internationale</doctype>
             <doctype language='en'>International Standard</doctype>
             <horizontal language=''>false</horizontal>
             <structuredidentifier>

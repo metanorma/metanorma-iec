@@ -83,7 +83,7 @@ RSpec.describe IsoDoc do
       <docnumber>1</docnumber>
       <language current="true">en</language>
       <ext>
-      <doctype language="">international-standard</doctype><doctype language="fr">Norme international</doctype><doctype language="en">International Standard</doctype>
+      <doctype language="">international-standard</doctype><doctype language="fr">Norme internationale</doctype><doctype language="en">International Standard</doctype>
       <horizontal language="">true</horizontal><horizontal language="fr">Norme horizontale</horizontal><horizontal language="en">Horizontal Standard</horizontal>
       <function language="">emc</function><function language="fr">Publication fondamentale en CEM</function><function language="en">Basic EMC Publication</function>
       </ext>
@@ -444,7 +444,7 @@ RSpec.describe IsoDoc do
       <bibdata>
       <language current="true">fr</language>
       <ext>
-      <doctype language="">international-standard</doctype><doctype language="fr">Norme international</doctype><doctype language="en">International Standard</doctype>
+      <doctype language="">international-standard</doctype><doctype language="fr">Norme internationale</doctype><doctype language="en">International Standard</doctype>
       <horizontal language="">false</horizontal>
       <function language="">emc</function><function language="fr">Publication fondamentale en CEM</function><function language="en">Basic EMC Publication</function>
       </ext>
