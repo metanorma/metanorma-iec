@@ -221,10 +221,12 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
+        preceding_floating_titles(name, div)
         return if name.nil?
 
         div.h1 **{ class: "Annex" } do |t|
           name.children.each { |c2| parse(c2, t) }
+          clause_parse_subtitle(name, t)
         end
       end
 
