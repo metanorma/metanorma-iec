@@ -75,7 +75,13 @@ RSpec.describe Metanorma::Iec do
                <bibliography>
                  <references id='_' obligation='informative' normative="true">
                    <title>Normative references</title>
-                   <p id='_'>There are no normative references in this document.</p>
+                   <p id='_'>
+                    The following documents are referred to in the text in such a way that
+                    some or all of their content constitutes requirements of this document.
+                    For dated references, only the edition cited applies. For undated
+                    references, the latest edition of the referenced document (including any
+                    amendments) applies.
+                  </p>
                    <bibitem id='A'>
                      <formattedref format='application/x-isodoc+xml'>
                        <em>TITLE</em>
@@ -167,6 +173,8 @@ RSpec.describe Metanorma::Iec do
       </iec-standard>
 
     OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to xmlpp(output)
   end
 
   it "uses IEV introduction title" do
