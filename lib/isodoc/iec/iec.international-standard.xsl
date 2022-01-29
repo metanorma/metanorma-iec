@@ -344,6 +344,7 @@
 									<xsl:call-template name="getLocalizedString">
 										<xsl:with-param name="key">IEC</xsl:with-param>
 										<xsl:with-param name="lang"><xsl:value-of select="$lang_second"/></xsl:with-param>
+										<xsl:with-param name="returnEmptyIfNotFound">true</xsl:with-param>
 									</xsl:call-template>
 								</xsl:variable>
 								
@@ -1086,11 +1087,12 @@
 								<xsl:call-template name="getLocalizedString">
 									<xsl:with-param name="key">locality.part</xsl:with-param>
 									<xsl:with-param name="lang"><xsl:value-of select="$lang_second"/></xsl:with-param>
+									<xsl:with-param name="returnEmptyIfNotFound">true</xsl:with-param>
 								</xsl:call-template>
 							</xsl:variable>
 							
 							<xsl:choose>
-								<xsl:when test="normalize-space($locality_part_lang_second)">
+								<xsl:when test="normalize-space($locality_part_lang_second) != ''">
 									<xsl:variable name="localized_part">
 										<xsl:value-of select="$locality_part_lang_second"/>
 									</xsl:variable>
@@ -8177,10 +8179,12 @@
 		<xsl:param name="key"/>
 		<xsl:param name="formatted">false</xsl:param>
 		<xsl:param name="lang"/>
+		<xsl:param name="returnEmptyIfNotFound">false</xsl:param>
 		
 		<xsl:variable name="curr_lang">
 			<xsl:choose>
 				<xsl:when test="$lang != ''"><xsl:value-of select="$lang"/></xsl:when>
+				<xsl:when test="$returnEmptyIfNotFound = 'true'"/>
 				<xsl:otherwise>
 					<xsl:call-template name="getLang"/>
 				</xsl:otherwise>
@@ -8215,6 +8219,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:when>
+			<xsl:when test="$returnEmptyIfNotFound = 'true'"/>
 			<xsl:otherwise>
 				<xsl:variable name="key_">
 					<xsl:call-template name="capitalize">
