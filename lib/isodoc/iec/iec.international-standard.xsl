@@ -2199,11 +2199,12 @@
 		
 		
 	</xsl:attribute-set><xsl:attribute-set name="example-name-style">
-		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		
 		
 		
 		
+		
+			<xsl:attribute name="keep-with-next">always</xsl:attribute>
 			<xsl:attribute name="padding-right">9mm</xsl:attribute>
 		
 		
