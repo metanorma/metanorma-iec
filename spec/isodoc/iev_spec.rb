@@ -169,6 +169,8 @@ RSpec.describe IsoDoc do
           <script current="true">Latn</script>
           <status>
             <stage language="">60</stage>
+                  <stage language='fr'>Norme internationale</stage>
+                  <stage language='en'>International standard</stage>
             <substage language="">60</substage>
           </status>
           <copyright>

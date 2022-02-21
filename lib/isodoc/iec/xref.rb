@@ -13,22 +13,22 @@ module IsoDoc
         return super unless @is_iev
       end
 
-      def initial_anchor_names(d)
+      def initial_anchor_names(docxml)
         super
         return unless @is_iev
 
-        terms_iev_names(d)
-        middle_section_asset_names(d)
-        termnote_anchor_names(d)
-        termexample_anchor_names(d)
+        terms_iev_names(docxml)
+        middle_section_asset_names(docxml)
+        termnote_anchor_names(docxml)
+        termexample_anchor_names(docxml)
       end
 
-      def terms_iev_names(d)
-        d.xpath(ns("//sections/clause/terms")).each_with_index do |t, i|
+      def terms_iev_names(docxml)
+        docxml.xpath(ns("//sections/clause/terms")).each_with_index do |t, i|
           num = "#{@iev_part}-%02d" % [i + 1]
           @anchors[t["id"]] =
             { label: num, xref: l10n("#{@labels['section_iev']} #{num}"),
-              level: 2, type: "clause" }
+              level: 2, type: "clause", elem: @labels["section_iev"] }
           t.xpath(ns("./term")).each_with_index do |c, j|
             num2 = "%02d" % [j + 1]
             section_names1(c, "#{num}-#{num2}", 3)
@@ -38,7 +38,8 @@ module IsoDoc
 
       def annex_name_lbl(clause, num)
         obl = l10n("(#{@labels['inform_annex']})")
-        obl = l10n("(#{@labels['norm_annex']})") if clause["obligation"] == "normative"
+        clause["obligation"] == "normative" and
+          obl = l10n("(#{@labels['norm_annex']})")
         l10n("<strong>#{@labels['annex']} #{num}</strong><br/>#{obl}")
       end
     end
