@@ -129,7 +129,7 @@ RSpec.describe IsoDoc do
          </div>
 
          <p>[SOURCE:
-           <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &#8211; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
+           ISO 7301:2011, 3.1, modified &#8211; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
          </p><p class="TermNum" id="paddy">1.2</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
          <p class="AltTerms" style="text-align:left;">rough rice</p>
          <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
@@ -141,8 +141,7 @@ RSpec.describe IsoDoc do
          </div>
          <div id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><p>Note 1 to entry: The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></div>
          <div id='_671a1994-4783-40d0-bc81-987d06ffb74f' class="Note"><p>Note 2 to entry: <ul><li>A</li></ul><p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p></div>
-         <p>[SOURCE:
-           <a href="#ISO7301">ISO 7301:2011, 3.1</a>]</p></div>
+         <p>[SOURCE: ISO 7301:2011, 3.1]</p></div>
              </div>
            </body>
          </html>
@@ -162,8 +161,7 @@ RSpec.describe IsoDoc do
            </ul>
          </div>
 
-         <p>[SOURCE:
-           <a href="#ISO7301">ISO 7301:2011, 3.1</a>, modified &#8211;
+         <p>[SOURCE: ISO 7301:2011, 3.1, modified &#8211;
              The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p><p class="TermNum" id="paddy">1.2</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
          <p class="AltTerms" style="text-align:left;">rough rice</p>
          <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
@@ -176,8 +174,7 @@ RSpec.describe IsoDoc do
 
 
 
-         <p>[SOURCE:
-           <a href="#ISO7301">ISO 7301:2011, 3.1</a>]</p></div>
+         <p>[SOURCE: ISO 7301:2011, 3.1]</p></div>
     OUTPUT
     expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
       .convert("test", input, true)))
