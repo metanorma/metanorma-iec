@@ -399,9 +399,7 @@ RSpec.describe IsoDoc do
                    </ul>
                  </div>
                  <p>
-                   SOURCE: 
-                   <a href='#ISO7301'>ISO 7301:2011, 3.1</a>
-                   , modified &#8211; The term "cargo rice" is shown as deprecated, and
+                   SOURCE: ISO 7301:2011, 3.1, modified &#8211; The term "cargo rice" is shown as deprecated, and
                    Note 1 to entry is not included here
                  </p>
                  <p class='TermNum' id='paddy'>192-01-02</p>
@@ -440,10 +438,7 @@ RSpec.describe IsoDoc do
                      </p>
                    </p>
                  </div>
-                 <p>
-                   SOURCE: 
-                   <a href='#ISO7301'>ISO 7301:2011, 3.1</a>
-                 </p>
+                 <p>SOURCE: ISO 7301:2011, 3.1 </p>
                </div>
              </div>
            </div>
@@ -553,9 +548,7 @@ RSpec.describe IsoDoc do
                  rice retaining its husk after threshing
                </p>
                <p class='MsoNormal'>
-                 SOURCE:
-                 <a href='#ISO7301'>ISO 7301:2011, 3.1</a>
-                 , modified &#x2013; The term "cargo rice" is shown as deprecated, and
+                 SOURCE: ISO 7301:2011, 3.1, modified &#x2013; The term "cargo rice" is shown as deprecated, and
                  Note 1 to entry is not included here
                </p>
              </div>
