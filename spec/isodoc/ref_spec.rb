@@ -220,7 +220,7 @@ RSpec.describe IsoDoc::Iec do
           <note><name>NOTE</name><p>This is another annotation of document ISSN.</p></note>
           <bibitem id="ISO3696" type="standard">
             <title format="text/plain">Water for analytical laboratory use</title>
-            <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
+            <docidentifier type='metanorma-ordinal'>[3]</docidentifier>
             <docidentifier type="ISO">ISO 3696</docidentifier>
             <contributor>
               <role type="publisher"/>
@@ -235,7 +235,7 @@ RSpec.describe IsoDoc::Iec do
           </bibitem>
           <bibitem id="ref11">
             <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
-            <docidentifier type='metanorma-ordinal'>[2]</docidentifier>
+            <docidentifier type='metanorma-ordinal'>[4]</docidentifier>
             <docidentifier type="IETF">IETF RFC 10</docidentifier>
           </bibitem>
           <bibitem id="ref12">
@@ -337,7 +337,7 @@ RSpec.describe IsoDoc::Iec do
                 </p>
               </div>
               <p id='ISO3696' class='Biblio'>
-                [1]&#160; ISO 3696,
+                [3]&#160; ISO 3696,
                 <i>Water for analytical laboratory use</i>
               </p>
               <p id='ref10' class='Biblio'>
@@ -354,7 +354,7 @@ RSpec.describe IsoDoc::Iec do
                 )
               </p>
               <p id='ref11' class='Biblio'>
-                [2]&#160; IETF RFC 10,
+                [4]&#160; IETF RFC 10,
                 <i>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</i>
               </p>
               <p id='ref12' class='Biblio'>
