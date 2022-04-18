@@ -132,7 +132,7 @@ RSpec.describe Metanorma::Iec do
         <title>Terms and definitions</title>
         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
-        <term id="term-term1">
+        <term id="term-Term1">
         <preferred><expression><name>Term1</name></expression></preferred>
         <termnote id="_">
         <p id="_">This is a note</p>
@@ -254,7 +254,7 @@ RSpec.describe Metanorma::Iec do
          <title>Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
-         <term id="term-term1">
+         <term id="term-Term1">
          <preferred><expression><name>Term1</name></expression></preferred>
          <termexample id="_">
          <p id="_">This is an example</p>

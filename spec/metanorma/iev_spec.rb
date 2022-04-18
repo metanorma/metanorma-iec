@@ -164,7 +164,7 @@ RSpec.describe Metanorma::Iec do
             <title>Terms and definitions</title>
             <terms id='_' obligation='normative'>
               <title>General</title>
-              <term id='term-term-1'>
+              <term id='term-Term-1'>
                 <preferred><expression><name>Term 1</name></expression></preferred>
               </term>
             </terms>
