@@ -127,7 +127,7 @@ RSpec.describe Metanorma::Iec do
           <p id='_'>So am I</p>
         </li>
       </ul>
-             <term id="term-time">
+             <term id="term-Time">
              <preferred><expression><name>Time</name></expression></preferred>
                <definition><verbal-definition><p id="_">This paragraph is extraneous</p></verbal-definition></definition>
              </term></terms>
