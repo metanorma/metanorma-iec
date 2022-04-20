@@ -23,7 +23,7 @@ RSpec.describe Metanorma::Iec do
       <pagebreak/></sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -43,7 +43,7 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -59,7 +59,7 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -87,7 +87,7 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -121,7 +121,7 @@ RSpec.describe Metanorma::Iec do
       </bibliography>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -139,7 +139,7 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, OPTIONS))))
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
   end
 end
