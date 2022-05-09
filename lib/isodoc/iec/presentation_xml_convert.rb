@@ -7,8 +7,8 @@ module IsoDoc
       def i18n_init(lang, script, i18nyaml = nil)
         super
         @i18n_lg = {}
-        @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml || @i18nyaml)
-        @i18n_lg["fr"] = I18n.new("fr", "Latn", i18nyaml || @i18nyaml)
+        @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml: i18nyaml || @i18nyaml)
+        @i18n_lg["fr"] = I18n.new("fr", "Latn", i18nyaml: i18nyaml || @i18nyaml)
         @i18n_lg["default"] = @i18n
       end
 
