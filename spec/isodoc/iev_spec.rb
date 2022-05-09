@@ -621,7 +621,7 @@ RSpec.describe IsoDoc do
                 <termnote id='_5f49cfad-e57e-5029-78cf-5b7e3e10a3b3'>
                   <name>Note 1 to entry</name>
                   <p id='_8c830e60-8f09-73a2-6393-2a27d9c5b1ce'>Dependability includes availability (<em>192-01-02</em>
-                     (<xref target='term-sub-item'>192-01-02</xref>),
+                     (<xref target='term-sub-item'><span class='citesec'>192-01-02</span></xref>),
                     <em>191-01-02</em>
                      [term defined in
                     <termref base='IEV' target='191-01-02'/>])</p>
@@ -740,7 +740,7 @@ RSpec.describe IsoDoc do
                    CONTRAST: 
                    <strong>Fifth Designation</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <termexample id='_671a1994-4783-40d0-bc81-987d06ffb740'>
@@ -786,14 +786,14 @@ RSpec.describe IsoDoc do
                    CONTRASTEZ: 
                    <strong>Designation cinqui&#xE8;me</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <p>
                    VOIR: 
                    <strong>Designation sixi&#xE8;me</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <termexample id='_671a1994-4783-40d0-bc81-987d06ffb741'>

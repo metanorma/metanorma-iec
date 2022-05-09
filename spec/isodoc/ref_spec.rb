@@ -145,17 +145,17 @@ RSpec.describe IsoDoc::Iec do
               <bibliography><references id="_normative_references" obligation="informative" normative="true" displayorder="2"><title depth="1">1<tab/>Normative References</title>
               <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
           <bibitem id="ISO712" type="standard">
-            <formattedref><em>Cereals and cereal products</em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Cereals and cereal products</span></em></formattedref>
             <docidentifier type="ISO">ISO 712</docidentifier>
             <docidentifier type="metanorma">[110]</docidentifier>
           </bibitem>
           <bibitem id="ISO16634" type="standard">
-            <formattedref><em>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></em></formattedref>
             <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
             <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
           </bibitem>
           <bibitem id="ISO20483" type="standard">
-            <formattedref><em>Cereals and pulses</em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Cereals and pulses</span></em></formattedref>
             <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
           </bibitem>
           <bibitem id="ref1">
@@ -179,7 +179,7 @@ RSpec.describe IsoDoc::Iec do
           <note><name>NOTE</name><p>This is an annotation of document ISSN.</p></note>
           <note><name>NOTE</name><p>This is another annotation of document ISSN.</p></note>
           <bibitem id="ISO3696" type="standard">
-            <formattedref><em>Water for analytical laboratory use</em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Water for analytical laboratory use</span></em></formattedref>
             <docidentifier type='metanorma-ordinal'>[3]</docidentifier>
             <docidentifier type="ISO">ISO 3696</docidentifier>
           </bibitem>

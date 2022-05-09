@@ -212,22 +212,24 @@ RSpec.describe IsoDoc do
             <locality type='clause'>
               <referenceFrom>1-2-3</referenceFrom>
             </locality>
-            IEV, 1-2-3
+            <span class='stdpublisher'>IEV</span>, <span class='citesec'>1-2-3</span>
           </eref>
-          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>ISO 712</eref>
+          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'><span class='stdpublisher'>ISO</span>
+            <span class='stddocNumber'>712</span>
+          </eref>
           <eref type='inline' bibitemid='ISO712'>ISO 712</eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, Table 1
+            ISO 712, <span class='citetbl'>Table 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
               <referenceTo>1</referenceTo>
             </locality>
-            ISO 712, Table 1&#x2013;1
+            ISO 712, <span class='citetbl'>Table 1&#x2013;1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
@@ -236,7 +238,7 @@ RSpec.describe IsoDoc do
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, Clause 1, Table 1
+            ISO 712, <span class='citesec'>Clause 1</span>, <span class='citetbl'>Table 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
@@ -245,19 +247,19 @@ RSpec.describe IsoDoc do
             <locality type='list'>
               <referenceFrom>a</referenceFrom>
             </locality>
-            ISO 712, Clause 1 a)
+            ISO 712, <span class='citesec'>Clause 1</span> a)
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, Clause 1
+            ISO 712, <span class='citesec'>Clause 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
               <referenceFrom>1.5</referenceFrom>
             </locality>
-            ISO 712, 1.5
+            ISO 712, <span class='citesec'>1.5</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
