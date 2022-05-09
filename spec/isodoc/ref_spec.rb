@@ -166,13 +166,13 @@ RSpec.describe IsoDoc::Iec do
               <bibitem id="zip_ffs"><formattedref format="application/x-isodoc+xml">Title 5</formattedref><docidentifier type="metanorma">[5]</docidentifier></bibitem>
           </references><references id="_bibliography" obligation="informative" normative="false" displayorder="3">
             <title depth="1">Bibliography</title>
-              <bibitem id='ISBN' type='book'>
-        <formattedref><em>Chemicals for analytical laboratory use</em>. ISBN.</formattedref>
+          <bibitem id="ISBN" type="book">
+            <formattedref><em>Chemicals for analytical laboratory use</em>. ISBN.</formattedref>
             <docidentifier type="ISBN">ISBN</docidentifier>
             <docidentifier type="metanorma">[1]</docidentifier>
           </bibitem>
           <bibitem id="ISSN" type="journal">
-                 <formattedref><em>Instruments for analytical laboratory use</em>. ISSN.</formattedref>
+            <formattedref><em>Instruments for analytical laboratory use</em>. ISSN.</formattedref>
             <docidentifier type="ISSN">ISSN</docidentifier>
             <docidentifier type="metanorma">[2]</docidentifier>
           </bibitem>
