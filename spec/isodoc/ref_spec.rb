@@ -164,8 +164,6 @@ RSpec.describe IsoDoc::Iec do
           </bibitem>
           <note><name>NOTE</name><p>This is an annotation of ISO 20483:2013-2014</p></note>
               <bibitem id="zip_ffs"><formattedref format="application/x-isodoc+xml">Title 5</formattedref><docidentifier type="metanorma">[5]</docidentifier></bibitem>
-
-
           </references><references id="_bibliography" obligation="informative" normative="false" displayorder="3">
             <title depth="1">Bibliography</title>
           <bibitem id="ISBN" type="book">
@@ -191,7 +189,6 @@ RSpec.describe IsoDoc::Iec do
           </bibitem>
           <bibitem id="ref11">
             <formattedref><em>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</em>.</formattedref>
-
             <docidentifier type='metanorma-ordinal'>[4]</docidentifier>
             <docidentifier type="IETF">IETF RFC 10</docidentifier>
           </bibitem>
@@ -200,8 +197,6 @@ RSpec.describe IsoDoc::Iec do
             <docidentifier type="metanorma">[Citn]</docidentifier>
             <docidentifier type="IETF">IETF RFC 20</docidentifier>
           </bibitem>
-
-
           </references>
           </bibliography>
               </iso-standard>
