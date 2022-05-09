@@ -171,7 +171,7 @@ RSpec.describe IsoDoc do
             <stage language="">60</stage>
                   <stage language='fr'>Norme internationale</stage>
                   <stage language='en'>International standard</stage>
-            <substage language="">60</substage>
+            <substage>60</substage>
           </status>
           <copyright>
             <from>2020</from>
@@ -183,7 +183,7 @@ RSpec.describe IsoDoc do
             </owner>
           </copyright>
           <ext>
-            <doctype language="">article</doctype>
+            <doctype>article</doctype>
             <editorialgroup>
               <technical-committee/>
               <subcommittee/>
@@ -598,7 +598,7 @@ RSpec.describe IsoDoc do
             <doctype language=''>international-standard</doctype>
             <doctype language='fr'>Norme internationale</doctype>
             <doctype language='en'>International Standard</doctype>
-            <horizontal language=''>false</horizontal>
+            <horizontal>false</horizontal>
             <structuredidentifier>
               <project-number part='192'>IEC 60050</project-number>
             </structuredidentifier>

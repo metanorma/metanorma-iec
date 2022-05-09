@@ -357,7 +357,7 @@ RSpec.describe Metanorma::Iec do
            <?xml version="1.0" encoding="UTF-8"?>
             <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
                      <bibdata type='standard'>
-          <docidentifier type='ISO'>ISO/IEC/IETF/2CDTS 1000-1-1 ED 1</docidentifier>
+          <docidentifier type='ISO'>IEC/IETF/ISO/2CDTS 1000-1-1 ED 1</docidentifier>
           <docidentifier type='iso-tc'>2000</docidentifier>
           <docnumber>1000</docnumber>
           <contributor>
@@ -443,7 +443,7 @@ RSpec.describe Metanorma::Iec do
               <workgroup/>
             </editorialgroup>
             <structuredidentifier>
-              <project-number part='1' subpart='1'>ISO/IEC/IETF 1000</project-number>
+              <project-number part='1' subpart='1'>IEC/IETF/ISO 1000</project-number>
             </structuredidentifier>
             <stagename>Committee draft</stagename>
           </ext>

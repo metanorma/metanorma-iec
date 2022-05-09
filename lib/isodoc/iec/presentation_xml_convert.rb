@@ -89,7 +89,7 @@ module IsoDoc
           fr = docxml.at(ns("//term[@language = 'fr'][@tag = '#{en['tag']}']"))
           merge_fr_into_en_term1(en, fr) if fr
         end
-        @xrefs.parse docxml
+        @xrefs.parse_inclusions(clauses: true).parse docxml
         docxml.xpath(ns("//term/name")).each(&:remove)
         term(docxml)
       end
