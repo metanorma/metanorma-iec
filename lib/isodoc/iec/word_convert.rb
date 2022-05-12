@@ -58,7 +58,7 @@ module IsoDoc
                           <span lang="EN-GB"><span
         style='mso-element:field-begin'></span><span
         style='mso-spacerun:yes'>&#xA0;</span>TOC
-        \\h \\z \\t &quot;TableTitle,tabletitle&quot; <span
+        \\h \\z \\t "TableTitle,tabletitle" <span
         style='mso-element:field-separator'></span></span>
       TOC
 
@@ -66,7 +66,7 @@ module IsoDoc
                                       <span lang="EN-GB"><span
         style='mso-element:field-begin'></span><span
         style='mso-spacerun:yes'>&#xA0;</span>TOC
-        \\h \\z \\t &quot;FigureTitle,figuretitle&quot; <span
+        \\h \\z \\t "FigureTitle,figuretitle" <span
         style='mso-element:field-separator'></span></span>
       TOC
 
@@ -93,7 +93,7 @@ module IsoDoc
           <span lang="EN-GB"><span
             style='mso-element:field-begin'></span><span
             style='mso-spacerun:yes'>&#xA0;</span>TOC
-            \\o &quot;1-#{level}&quot; \\h \\z \\u <span
+            \\o "1-#{level}" \\h \\z \\u <span
             style='mso-element:field-separator'></span></span>
         TOC
       end
