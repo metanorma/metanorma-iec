@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["open.source@ribose.com"]
 
   spec.summary       = "metanorma-iec lets you write IEC standards "\
-    "in AsciiDoc."
+                       "in AsciiDoc."
   spec.description   = <<~DESCRIPTION
     metanorma-iec lets you write IEC standards in AsciiDoc syntax.
 
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = `git ls-files -- {spec}/*`.split("\n")
   spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
-  spec.add_dependency "metanorma-iso", "~> 2.1.0"
+  spec.add_dependency "metanorma-iso", "~> 2.1.1"
   spec.add_dependency "ruby-jing"
 
   spec.add_development_dependency "debug"
@@ -41,4 +41,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sassc", "2.4.0"
   spec.add_development_dependency "simplecov", "~> 0.15"
   spec.add_development_dependency "timecop", "~> 0.9"
+  # spec.metadata["rubygems_mfa_required"] = "true"
 end
