@@ -3,7 +3,7 @@ require "metanorma-iso"
 
 module IsoDoc
   module Iec
-    class  Metadata < IsoDoc::Iso::Metadata
+    class Metadata < IsoDoc::Iso::Metadata
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//bibdata/status/stage"))
         substage = isoxml.at(ns("//bibdata/status/substage"))
@@ -22,7 +22,7 @@ module IsoDoc
 
       def doctype(isoxml, _out)
         super
-        b = isoxml&.at(ns("//bibdata/ext/doctype#{NOLANG}"))&.text 
+        b = isoxml&.at(ns("//bibdata/ext/doctype#{NOLANG}"))&.text
         b1 = isoxml&.at(ns("//bibdata/ext/doctype[@language = 'en']"))&.text || b
         b1 and set(:doctype_en, status_print(b1))
         b1 = isoxml&.at(ns("//bibdata/ext/doctype[@language = 'fr']"))&.text || b
