@@ -131,6 +131,11 @@ module Metanorma
                    "#{t.children.to_xml}</variant-title>"
         end
       end
+
+      def ol_attrs(node)
+        attr_code(keep_attrs(node)
+                  .merge(id: ::Metanorma::Utils::anchor_or_uuid(node)))
+      end
     end
   end
 end
