@@ -183,7 +183,6 @@ p.TableTitle
 /* IEC: NOTE */
 p.Note, div.Note, li.Note
 	{mso-style-unhide:no;
-        mso-style-name:"NOTE";
 	mso-style-qformat:yes;
 	mso-style-next:Normal;
 	margin-top:5.0pt;
@@ -193,12 +192,15 @@ p.Note, div.Note, li.Note
 	text-align:justify;
 	mso-pagination:widow-orphan;
 	layout-grid-mode:char;
-	font-size:$smallerfontsize;
-	font-family:$bodyfont;
 	mso-fareast-font-family:"Times New Roman";
-	letter-spacing:.4pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;}
+p.Note, li.Note {
+        mso-style-name:"NOTE";
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
+	letter-spacing:.4pt;
+        }
 /* IEC: TABFIGfootnote */
 p.TableFootnote, div.TableFootnote, li.TableFootnote
 	/* may need to be revised */
@@ -520,18 +522,18 @@ p.Quote, li.Quote, div.Quote
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:$normalfontsize;
-	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-GB;}
+p.Quote, li.Quote, div.Quote {
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
+        }
 p.QuoteAttribution
         {text-align:right;}
 p.Admonition, li.Admonition, div.Admonition
 	{mso-style-priority:99;
 	mso-pagination:widow-orphan;
-	font-size:$normalfontsize;
-	font-family:$bodyfont;
 	mso-ascii-font-family:$bodyfont;
 	mso-ascii-theme-font:minor-latin;
 	mso-fareast-font-family:$bodyfont;
@@ -544,8 +546,12 @@ p.Admonition, li.Admonition, div.Admonition
         border:solid windowtext 1.0pt;
         mso-border-alt:solid windowtext .5pt;
         padding:1.0pt 4.0pt 1.0pt 4.0pt;
-        font-weight:bold;
 	mso-ansi-language:EN-AU;}
+p.Admonition, li.Admonition {
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
+        font-weight:bold;
+        }
 /* IEC:PARAEQUATION */
 p.formula, li.formula, div.formula
 	{mso-style-name:Formula;
@@ -804,8 +810,11 @@ p.example, li.example, div.example, td.example
 	{	
 	mso-pagination:none;
         tab-stops:70.9pt;
-	font-size:$normalfontsize;
-	font-family:$bodyfont;}
+a       }
+p.example, li.example, td.example {
+  font-size:$normalfontsize;
+        font-family:$bodyfont;
+}
 
 td.example p.MsoListParagraph {
   font-size: $normalfontsize;
