@@ -3353,7 +3353,7 @@
 			</xsl:for-each>
 		</figures>
 	</xsl:template><xsl:template name="processPrefaceSectionsDefault">
-		<xsl:for-each select="/*/*[local-name()='preface']/*">
+		<xsl:for-each select="/*/*[local-name()='preface']/*[not(local-name() = 'note' or local-name() = 'admonition')]">
 			<xsl:sort select="@displayorder" data-type="number"/>
 			<xsl:apply-templates select="."/>
 		</xsl:for-each>
@@ -8940,26 +8940,23 @@
 				<xsl:if test=".//*[local-name() = 'fn']">
 					<xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
 				</xsl:if>
+				
+				<!-- display document identifier, not number [1] -->
 				<xsl:variable name="docidentifier">
 					<xsl:choose>
 						<xsl:when test="*[local-name() = 'docidentifier']/@type = 'metanorma'"/>
 						<xsl:otherwise><xsl:value-of select="*[local-name() = 'docidentifier'][not(@type = 'metanorma-ordinal')]"/></xsl:otherwise>
 					</xsl:choose>
 				</xsl:variable>
-				<fo:inline><xsl:value-of select="$docidentifier"/></fo:inline>
+				<xsl:value-of select="$docidentifier"/>
+				
 				<xsl:apply-templates select="*[local-name() = 'note']"/>
-				<xsl:if test="normalize-space($docidentifier) != ''">, </xsl:if>
-				<xsl:choose>
-					<xsl:when test="*[local-name() = 'title'][@type = 'main' and @language = $lang]">
-						<xsl:apply-templates select="*[local-name() = 'title'][@type = 'main' and @language = $lang]"/>
-					</xsl:when>
-					<xsl:when test="*[local-name() = 'title'][@type = 'main' and @language = 'en']">
-						<xsl:apply-templates select="*[local-name() = 'title'][@type = 'main' and @language = 'en']"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:apply-templates select="*[local-name() = 'title']"/>
-					</xsl:otherwise>
-				</xsl:choose>
+				
+				<xsl:if test="normalize-space($docidentifier) != '' and *[local-name() = 'formattedref']">
+					<xsl:text>,</xsl:text>
+					<xsl:text> </xsl:text>
+				</xsl:if>
+				
 				<xsl:apply-templates select="*[local-name() = 'formattedref']"/>
 				<!-- end bibitem processing -->
 			
