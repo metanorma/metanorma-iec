@@ -113,7 +113,7 @@ module IsoDoc
         ret = super
         css_class =
           cell.name == "th" || header ? "TABLE-col-heading" : "TABLE-cell"
-        ret.merge("class": css_class)
+        ret.merge(class: css_class)
       end
 
       def tr_parse(node, out, ord, totalrows, header)

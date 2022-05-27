@@ -8,11 +8,9 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
               <bibdata>
-              <title>
                   <title type="title-intro" language="en" format="text/plain">Cereals and pulses</title>
           <title type="title-main" language="en" format="text/plain">Specifications and test methods</title>
           <title type="title-part" language="en" format="text/plain">Rice</title>
-        </title>
         </bibdata>
           <preface><foreword>
           <note>
@@ -38,11 +36,9 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
               <bibdata>
-              <title>
                   <title type="title-intro" language="en" format="text/plain">Cereals and pulses</title>
           <title type="title-main" language="en" format="text/plain">Specifications and test methods</title>
           <title type="title-part" language="en" format="text/plain">Rice</title>
-        </title>
         </bibdata>
           <preface><foreword>
           <note>
