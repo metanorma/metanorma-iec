@@ -109,7 +109,7 @@ RSpec.describe IsoDoc do
                   </owner>
                 </copyright>
                 <ext>
-                  <doctype>article</doctype>
+                  <doctype>international-standard</doctype>
                   <editorialgroup>
                     <technical-committee/>
                     <subcommittee/>
@@ -170,7 +170,7 @@ RSpec.describe IsoDoc do
           <status>
             <stage language="">60</stage>
                   <stage language='fr'>Norme internationale</stage>
-                  <stage language='en'>International standard</stage>
+                  <stage language='en'>International Standard</stage>
             <substage>60</substage>
           </status>
           <copyright>
@@ -183,7 +183,9 @@ RSpec.describe IsoDoc do
             </owner>
           </copyright>
           <ext>
-            <doctype>article</doctype>
+            <doctype language=''>international-standard</doctype>
+            <doctype language='fr'>Norme internationale</doctype>
+            <doctype language='en'>International Standard</doctype>
             <editorialgroup>
               <technical-committee/>
               <subcommittee/>
