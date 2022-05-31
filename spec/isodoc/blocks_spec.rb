@@ -160,4 +160,41 @@ RSpec.describe IsoDoc::Iec do
       .gsub(%r{</body>.*}m, "</body>")))
       .to be_equivalent_to xmlpp(output)
   end
+
+  it "does not ignore intervening ul in numbering ol" do
+        input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <preface><foreword>
+      <ul>
+      <li>A</li>
+      <li>
+      <ol>
+      <li>List</li>
+      </ol>
+      </li>
+      </ul>
+      </foreword></preface>
+      </iso-standard>
+    INPUT
+    presxml = <<~INPUT
+           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+         <preface>
+           <foreword displayorder='1'>
+             <ul>
+               <li>A</li>
+               <li>
+                 <ol type='arabic'>
+                   <li>List</li>
+                 </ol>
+               </li>
+             </ul>
+           </foreword>
+         </preface>
+       </iso-standard>
+    INPUT
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+      .convert("test", input, true)))
+      .to be_equivalent_to xmlpp(presxml)
+
+  end
 end
