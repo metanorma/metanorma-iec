@@ -60,6 +60,7 @@ RSpec.describe Metanorma::Iec do
                    <doctype>article</doctype>
                             <subdoctype>vocabulary</subdoctype>
                    <editorialgroup>
+                     <agency>IEC</agency>
                      <technical-committee/>
                      <subcommittee/>
                      <workgroup/>
@@ -148,6 +149,7 @@ RSpec.describe Metanorma::Iec do
             <doctype>article</doctype>
                             <subdoctype>vocabulary</subdoctype>
             <editorialgroup>
+              <agency>IEC</agency>
               <technical-committee/>
               <subcommittee/>
               <workgroup/>
@@ -230,6 +232,7 @@ RSpec.describe Metanorma::Iec do
                <doctype>article</doctype>
                         <subdoctype>vocabulary</subdoctype>
                <editorialgroup>
+                 <agency>IEC</agency>
                  <technical-committee/>
                  <subcommittee/>
                  <workgroup/>
