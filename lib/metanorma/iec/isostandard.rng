@@ -446,6 +446,11 @@
       <data type="int"/>
     </element>
   </define>
+  <define name="approvalgroup">
+    <element name="approvalgroup">
+      <ref name="IsoWorkgroup"/>
+    </element>
+  </define>
   <define name="subcommittee">
     <element name="subcommittee">
       <ref name="IsoWorkgroup"/>
