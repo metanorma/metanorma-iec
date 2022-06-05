@@ -167,6 +167,7 @@ RSpec.describe Metanorma::Iec do
           <ext>
             <doctype>article</doctype>
             <editorialgroup>
+              <agency>IEC</agency>
               <technical-committee number='1' type='A'>TC</technical-committee>
               <technical-committee number='11' type='A1'>TC1</technical-committee>
               <subcommittee number='2' type='B'>SC</subcommittee>
@@ -438,6 +439,9 @@ RSpec.describe Metanorma::Iec do
             <horizontal>true</horizontal>
             <function>emc</function>
             <editorialgroup>
+              <agency>IEC</agency>
+              <agency>IETF</agency>
+              <agency>ISO</agency>
               <technical-committee/>
               <subcommittee/>
               <workgroup/>
@@ -675,6 +679,7 @@ RSpec.describe Metanorma::Iec do
         <ext>
           <doctype>article</doctype>
           <editorialgroup>
+            <agency>IEC</agency>
             <technical-committee/>
             <subcommittee/>
             <workgroup/>
@@ -878,6 +883,7 @@ RSpec.describe Metanorma::Iec do
         <ext>
           <doctype>article</doctype>
           <editorialgroup>
+            <agency>IEC</agency>
             <technical-committee/>
             <subcommittee/>
             <workgroup/>
@@ -945,6 +951,7 @@ RSpec.describe Metanorma::Iec do
         <ext>
           <doctype>article</doctype>
           <editorialgroup>
+            <agency>IEC</agency>
             <technical-committee/>
             <subcommittee/>
             <workgroup/>
