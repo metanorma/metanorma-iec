@@ -37,18 +37,20 @@ module IsoDoc
           .call(elem)
       end
 
-      DICT_PATHS = { doctype_dict: "./ext/doctype", stage_dict: "./status/stage",
+      DICT_PATHS = { doctype_dict: "./ext/doctype",
                      substage_dict: "./status/substage",
                      function_dict: "./ext/function",
                      horizontal_dict: "./ext/horizontal" }.freeze
 
       def bibdata_i18n(bib)
-        fr = IsoDoc::Iec::I18n.new("fr", "Latn")
-        en = IsoDoc::Iec::I18n.new("en", "Latn")
-        [{ lang: "en", i18n: en }, { lang: "fr", i18n: fr }].each do |v|
+        [{ lang: "en", i18n: IsoDoc::Iec::I18n.new("en", "Latn") },
+         { lang: "fr", i18n: IsoDoc::Iec::I18n.new("fr", "Latn") }].each do |v|
           DICT_PATHS.each do |lbl, xpath|
             hash_translate(bib, v[:i18n].get[lbl.to_s], xpath, v[:lang])
           end
+          bibdata_i18n_stage(bib, bib.at(ns("./status/stage")),
+                             bib.at(ns("./ext/doctype")),
+                             lang: v[:lang], i18n: v[:i18n])
         end
       end
 
