@@ -535,6 +535,7 @@ pre {
 
 @include admonitionBlock();
 @include recommendationBlock();
+@include listBlock();
 
 .FigureTitle,
 .SourceTitle {
