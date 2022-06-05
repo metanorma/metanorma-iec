@@ -54,6 +54,7 @@ RSpec.describe Metanorma::Iec do
         <ext>
           <doctype>article</doctype>
         <editorialgroup>
+          <agency>IEC</agency>
           <technical-committee/>
           <subcommittee/>
           <workgroup/>
