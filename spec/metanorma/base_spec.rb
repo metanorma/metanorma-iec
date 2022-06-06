@@ -165,7 +165,7 @@ RSpec.describe Metanorma::Iec do
             </bibitem>
           </relation>
           <ext>
-            <doctype>article</doctype>
+            <doctype>standard</doctype>
             <editorialgroup>
               <agency>IEC</agency>
               <technical-committee number='1' type='A'>TC</technical-committee>
@@ -677,7 +677,7 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
             <technical-committee/>
@@ -881,7 +881,7 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
             <technical-committee/>
@@ -949,7 +949,7 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
             <technical-committee/>
