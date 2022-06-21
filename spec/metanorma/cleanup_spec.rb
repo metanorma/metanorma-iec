@@ -52,12 +52,9 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
         <editorialgroup>
           <agency>IEC</agency>
-          <technical-committee/>
-          <subcommittee/>
-          <workgroup/>
         </editorialgroup>
         <stagename>International standard</stagename>
         <tc-sc-officers-note>

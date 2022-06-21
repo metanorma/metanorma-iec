@@ -57,13 +57,10 @@ RSpec.describe Metanorma::Iec do
                    </owner>
                  </copyright>
                  <ext>
-                   <doctype>article</doctype>
+                   <doctype>standard</doctype>
                             <subdoctype>vocabulary</subdoctype>
                    <editorialgroup>
                      <agency>IEC</agency>
-                     <technical-committee/>
-                     <subcommittee/>
-                     <workgroup/>
                    </editorialgroup>
                    <structuredidentifier>
                      <project-number>IEC 60050</project-number>
@@ -146,13 +143,10 @@ RSpec.describe Metanorma::Iec do
             </owner>
           </copyright>
           <ext>
-            <doctype>article</doctype>
+            <doctype>standard</doctype>
                             <subdoctype>vocabulary</subdoctype>
             <editorialgroup>
               <agency>IEC</agency>
-              <technical-committee/>
-              <subcommittee/>
-              <workgroup/>
             </editorialgroup>
             <structuredidentifier>
               <project-number>IEC 60050</project-number>
@@ -229,13 +223,10 @@ RSpec.describe Metanorma::Iec do
                </owner>
              </copyright>
              <ext>
-               <doctype>article</doctype>
+               <doctype>standard</doctype>
                         <subdoctype>vocabulary</subdoctype>
                <editorialgroup>
                  <agency>IEC</agency>
-                 <technical-committee/>
-                 <subcommittee/>
-                 <workgroup/>
                </editorialgroup>
                <structuredidentifier>
                  <project-number>IEC 60050</project-number>

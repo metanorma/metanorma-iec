@@ -442,9 +442,6 @@ RSpec.describe Metanorma::Iec do
               <agency>IEC</agency>
               <agency>IETF</agency>
               <agency>ISO</agency>
-              <technical-committee/>
-              <subcommittee/>
-              <workgroup/>
             </editorialgroup>
             <structuredidentifier>
               <project-number part='1' subpart='1'>IEC/IETF/ISO 1000</project-number>
@@ -680,9 +677,6 @@ RSpec.describe Metanorma::Iec do
           <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
@@ -884,9 +878,6 @@ RSpec.describe Metanorma::Iec do
           <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
@@ -952,9 +943,6 @@ RSpec.describe Metanorma::Iec do
           <doctype>standard</doctype>
           <editorialgroup>
             <agency>IEC</agency>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>

@@ -177,9 +177,6 @@ BLANK_HDR = <<~"HDR".freeze
       <doctype>standard</doctype>
     <editorialgroup>
       <agency>IEC</agency>
-      <technical-committee/>
-      <subcommittee/>
-      <workgroup/>
     </editorialgroup>
     <stagename>International standard</stagename>
     </ext>
