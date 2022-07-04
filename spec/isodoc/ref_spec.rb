@@ -263,7 +263,7 @@ RSpec.describe IsoDoc::Iec do
                   &#160; This is an annotation of ISO 20483:2013-2014
                 </p>
               </div>
-              <p id='zip_ffs' class='NormRef'>[5], Title 5</p>
+              <p id='zip_ffs' class='NormRef'>[5] Title 5</p>
             </div>
             <br/>
             <div>
