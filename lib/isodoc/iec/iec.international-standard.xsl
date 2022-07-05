@@ -3245,7 +3245,9 @@
 	</xsl:attribute-set><xsl:attribute-set name="bibitem-normative-list-body-style">
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="bibitem-non-normative-list-body-style">
+		
 		
 		
 		
