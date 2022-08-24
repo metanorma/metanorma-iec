@@ -89,7 +89,6 @@ RSpec.describe Metanorma::Iec do
       :title-intro-fr: Introduction Française
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
-      :library-ics: 1,2,3
       :accessibility-color-inside: true
       :price-code: XC
       :cen-processing: true
@@ -176,15 +175,6 @@ RSpec.describe Metanorma::Iec do
               <workgroup number='31' type='C1'>WG1</workgroup>
               <secretariat>SECRETARIAT</secretariat>
             </editorialgroup>
-            <ics>
-              <code>1</code>
-            </ics>
-            <ics>
-              <code>2</code>
-            </ics>
-            <ics>
-              <code>3</code>
-            </ics>
             <structuredidentifier>
               <project-number part='1'>IEC 1000</project-number>
             </structuredidentifier>
