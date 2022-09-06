@@ -137,7 +137,7 @@ RSpec.describe IsoDoc::Iec do
             <eref bibitemid="ISSN">[2]</eref>
             <eref bibitemid="ISO16634">ISO 16634:--</eref>
             <eref bibitemid="ref1">ICC 167</eref>
-            <eref bibitemid="ref10">[10]</eref>
+            <eref bibitemid="ref10">[4]</eref>
             <eref bibitemid="ref12">Citn</eref>
             <eref bibitemid="zip_ffs">[5]</eref>
             </p>
@@ -168,13 +168,13 @@ RSpec.describe IsoDoc::Iec do
             <title depth="1">Bibliography</title>
           <bibitem id="ISBN" type="book">
             <formattedref><em>Chemicals for analytical laboratory use</em>. n.p.: n.d. ISBN.</formattedref>
+            <docidentifier type="metanorma-ordinal">[1]</docidentifier>
             <docidentifier type="ISBN">ISBN</docidentifier>
-            <docidentifier type="metanorma">[1]</docidentifier>
           </bibitem>
           <bibitem id="ISSN" type="journal">
             <formattedref><em>Instruments for analytical laboratory use</em>. n.d. ISSN.</formattedref>
+            <docidentifier type="metanorma-ordinal">[2]</docidentifier>
             <docidentifier type="ISSN">ISSN</docidentifier>
-            <docidentifier type="metanorma">[2]</docidentifier>
           </bibitem>
           <note><name>NOTE</name><p>This is an annotation of document ISSN.</p></note>
           <note><name>NOTE</name><p>This is another annotation of document ISSN.</p></note>
@@ -185,11 +185,11 @@ RSpec.describe IsoDoc::Iec do
           </bibitem>
           <bibitem id="ref10">
             <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
-            <docidentifier type="metanorma">[10]</docidentifier>
+            <docidentifier type="metanorma-ordinal">[4]</docidentifier>
           </bibitem>
           <bibitem id="ref11">
             <formattedref><em><span class='stddocTitle'>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></em></formattedref>
-            <docidentifier type='metanorma-ordinal'>[4]</docidentifier>
+            <docidentifier type='metanorma-ordinal'>[5]</docidentifier>
             <docidentifier type="IETF">IETF RFC 10</docidentifier>
           </bibitem>
           <bibitem id="ref12" type="standard">
@@ -203,7 +203,7 @@ RSpec.describe IsoDoc::Iec do
     OUTPUT
 
     html = <<~OUTPUT
-          #{HTML_HDR}
+      #{HTML_HDR}
             <div>
               <h1 class='ForewordTitle'>FOREWORD</h1>
               <div class='boilerplate_legal'/>
@@ -213,7 +213,7 @@ RSpec.describe IsoDoc::Iec do
                 <a href='#ISSN'>[2]</a>
                 <a href='#ISO16634'>ISO 16634:--</a>
                 <a href='#ref1'>ICC 167</a>
-                <a href='#ref10'>[10]</a>
+                <a href='#ref10'>[4]</a>
                 <a href='#ref12'>Citn</a>
                 <a href='#zip_ffs'>[5]</a>
               </p>
@@ -295,7 +295,7 @@ RSpec.describe IsoDoc::Iec do
                  <i>Water for analytical laboratory use</i>
                </p>
                <p id='ref10' class='Biblio'>
-                 [10]&#xa0; 
+                 [4]&#xa0; 
                  <span style='font-variant:small-caps;'>Standard No I.C.C 167</span>
                  . 
                  <i>
@@ -308,7 +308,7 @@ RSpec.describe IsoDoc::Iec do
                  )
                </p>
                <p id='ref11' class='Biblio'>
-                 [4]&#xa0; IETF RFC 10, 
+                 [5]&#xa0; IETF RFC 10, 
                  <i>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</i>
                </p>
                <p id='ref12' class='Biblio'>
