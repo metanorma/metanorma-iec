@@ -7,8 +7,9 @@ require "isodoc/iec/pdf_convert"
 require "isodoc/iec/presentation_xml_convert"
 require "isodoc/iec/metadata"
 require "isodoc/iec/xref"
+require "metanorma"
 
-if defined? Metanorma
+if defined? Metanorma::Registry
   require_relative "metanorma/iec"
   Metanorma::Registry.instance.register(Metanorma::Iec::Processor)
 end
