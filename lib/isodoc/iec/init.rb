@@ -6,8 +6,8 @@ require_relative "i18n"
 module IsoDoc
   module Iec
     module Init
-      def metadata_init(lang, script, labels)
-        @meta = Metadata.new(lang, script, labels)
+      def metadata_init(lang, script, locale, labels)
+        @meta = Metadata.new(lang, script, locale, labels)
       end
 
       def xref_init(lang, script, _klass, labels, options)
@@ -16,8 +16,9 @@ module IsoDoc
                           labels, options)
       end
 
-      def i18n_init(lang, script, i18nyaml = nil)
-        @i18n = I18n.new(lang, script, i18nyaml: i18nyaml || @i18nyaml)
+      def i18n_init(lang, script, locale, i18nyaml = nil)
+        @i18n = I18n.new(lang, script, locale: locale,
+                                       i18nyaml: i18nyaml || @i18nyaml)
       end
 
       def convert1(docxml, filename, dir)
