@@ -4,7 +4,7 @@ require "isodoc"
 module IsoDoc
   module Iec
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
-      def i18n_init(lang, script, i18nyaml = nil)
+      def i18n_init(lang, script, locale, i18nyaml = nil)
         super
         @i18n_lg = {}
         @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml: i18nyaml || @i18nyaml)
