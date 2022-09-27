@@ -203,7 +203,7 @@ module IsoDoc
 
       def termsource1_iev(elem)
         while elem&.next_element&.name == "termsource"
-          elem << l10n("; #{elem.next_element.remove.children.to_xml}")
+          elem << "; #{elem.next_element.remove.children.to_xml}"
         end
         elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
       end
