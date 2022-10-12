@@ -101,43 +101,6 @@ RSpec.describe IsoDoc do
       .to be_equivalent_to xmlpp(output)
   end
 
-  it "processes AsciiMath and MathML" do
-    input = <<~INPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <preface><foreword>
-      <p>
-      <stem type="AsciiMath">A</stem>
-      <stem type="MathML"><m:math><m:row>X</m:row></m:math></stem>
-      <stem type="None">Latex?</stem>
-      </p>
-      </foreword></preface>
-      <sections>
-      </iso-standard>
-    INPUT
-    output = <<~OUTPUT
-      #{HTML_HDR.sub(/<html/, "<html xmlns:m='m'")}
-                 <div>
-                   <h1 class="ForewordTitle">FOREWORD</h1>
-                   <div class="boilerplate_legal"/>
-                   <p>
-         <span class="stem">(#(A)#)</span>
-         <span class="stem"><m:math>
-           <m:row>X</m:row>
-         </m:math></span>
-         <span class="stem">Latex?</span>
-         </p>
-                 </div>
-                 #{IEC_TITLE1}
-               </div>
-             </body>
-         </html>
-    OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", input, true)
-      .sub(/<html/, "<html xmlns:m='m'")))
-      .to be_equivalent_to xmlpp(output)
-  end
-
   it "overrides AsciiMath delimiters" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
