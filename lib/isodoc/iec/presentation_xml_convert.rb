@@ -13,10 +13,12 @@ module IsoDoc
       end
 
       def clause(docxml)
-        docxml.xpath(ns("//clause[not(ancestor::annex)] | "\
-                        "//definitions | //references | "\
+        docxml.xpath(ns("//clause[not(ancestor::annex)] | " \
+                        "//definitions | //references | " \
                         "//preface/introduction[clause]"))
           .each do |f|
+          f.parent.name == "annex" &&
+            @xrefs.klass.single_term_clause?(f.parent) and next
           clause1(f)
         end
         docxml.xpath(ns("//terms")).each do |f|
@@ -63,7 +65,7 @@ module IsoDoc
         labels = @xrefs.get_anchors.each_with_object({}) do |(k, v), m|
           m[v[:label]] = k
         end
-        docpart = docxml&.at(ns("//bibdata/ext/structuredidentifier/"\
+        docpart = docxml&.at(ns("//bibdata/ext/structuredidentifier/" \
                                 "project-number/@part"))&.text or return
         docxml.xpath(ns("//termref[@base = 'IEV']")).each do |t|
           concept_iev1(t, docpart, labels)
@@ -155,8 +157,8 @@ module IsoDoc
         return if pr.empty?
 
         prefs = pr.map do |p|
-          "<dt>#{p[:lang]}</dt>"\
-            "<dd language='#{p[:lang]}' script='#{p[:script]}'>"\
+          "<dt>#{p[:lang]}</dt>" \
+            "<dd language='#{p[:lang]}' script='#{p[:script]}'>" \
             "#{cleanup_entities(p[:designation])}</dd>"
         end
         term << "<dl type='other-lang'>#{prefs.join}</dl>"
@@ -180,7 +182,7 @@ module IsoDoc
         p = node.at(ns("./preferred"))
         ref = node.at(ns("./xref | ./eref | ./termref"))
         label = @i18n.relatedterms[node["type"]].upcase
-        node.replace(l10n("<p>#{label}: "\
+        node.replace(l10n("<p>#{label}: " \
                           "#{p.children.to_xml} (#{ref.to_xml})</p>"))
         @i18n = @i18n_lg["default"]
       end
