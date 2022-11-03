@@ -366,7 +366,7 @@
 							</fo:block-container>
 
 							<xsl:variable name="price_code_value" select="//iec:iec-standard/iec:bibdata/iec:ext/iec:price-code"/>
-							<fo:table table-layout="fixed" width="102%" margin-top="-9mm" margin-bottom="2mm">
+							<fo:table table-layout="fixed" width="102%" margin-top="-9mm" margin-bottom="2mm" id="__internal_layout__price_code">
 								<fo:table-column column-width="148mm"/>
 								<fo:table-column column-width="16mm"/>
 								<fo:table-body>
@@ -478,7 +478,7 @@
 						</fo:block>
 						<fo:block-container margin-left="57mm">
 							<fo:block-container margin-left="0mm">
-								<fo:table table-layout="fixed" width="118mm" background-color="rgb(219, 229, 241)">
+								<fo:table table-layout="fixed" width="118mm" background-color="rgb(219, 229, 241)" id="__internal_layout__project_{generate-id()}">
 									<fo:table-column column-width="50%"/>
 									<fo:table-column column-width="50%"/>
 									<fo:table-body>
@@ -1708,6 +1708,9 @@
 					<xsl:if test="ancestor::iec:dl">
 						<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
 					</xsl:if>
+					<xsl:if test="@id">
+						<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+					</xsl:if>
 
 					<xsl:apply-templates select="@language"/>
 					<xsl:apply-templates>
@@ -2503,8 +2506,6 @@
 	<xsl:attribute-set name="table-style">
 		<xsl:attribute name="table-omit-footer-at-break">true</xsl:attribute>
 		<xsl:attribute name="table-layout">fixed</xsl:attribute>
-		<xsl:attribute name="margin-left">0mm</xsl:attribute>
-		<xsl:attribute name="margin-right">0mm</xsl:attribute>
 
 			<xsl:attribute name="border">0.5pt solid black</xsl:attribute>
 
@@ -3659,10 +3660,18 @@
 				<xsl:variable name="table_attributes">
 
 					<xsl:element name="table_attributes" use-attribute-sets="table-style">
+
+						<xsl:if test="$margin-side != 0">
+							<xsl:attribute name="margin-left">0mm</xsl:attribute>
+							<xsl:attribute name="margin-right">0mm</xsl:attribute>
+						</xsl:if>
+
 						<xsl:attribute name="width"><xsl:value-of select="normalize-space($table_width)"/></xsl:attribute>
 
-							<xsl:attribute name="margin-left"><xsl:value-of select="$margin-side"/>mm</xsl:attribute>
-							<xsl:attribute name="margin-right"><xsl:value-of select="$margin-side"/>mm</xsl:attribute>
+							<xsl:if test="$margin-side != 0">
+								<xsl:attribute name="margin-left"><xsl:value-of select="$margin-side"/>mm</xsl:attribute>
+								<xsl:attribute name="margin-right"><xsl:value-of select="$margin-side"/>mm</xsl:attribute>
+							</xsl:if>
 
 					</xsl:element>
 				</xsl:variable>
@@ -10790,13 +10799,14 @@
 	</xsl:template>
 
 	<xsl:template name="setId">
+		<xsl:param name="prefix"/>
 		<xsl:attribute name="id">
 			<xsl:choose>
 				<xsl:when test="@id">
-					<xsl:value-of select="@id"/>
+					<xsl:value-of select="concat($prefix, @id)"/>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="generate-id()"/>
+					<xsl:value-of select="concat($prefix, generate-id())"/>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
