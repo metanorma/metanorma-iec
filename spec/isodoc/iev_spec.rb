@@ -203,7 +203,7 @@ RSpec.describe IsoDoc do
             <p id='_'>There are no normative references in this document.</p>
             <bibitem id='A'>
               <formattedref format='application/x-isodoc+xml'>
-                <em>TITLE</em> [B]
+                <em>TITLE</em>
               </formattedref>
               <docidentifier>B</docidentifier>
             </bibitem>
@@ -213,7 +213,7 @@ RSpec.describe IsoDoc do
             <p id='_'>There are no normative references in this document.</p>
             <bibitem id='A'>
               <formattedref format='application/x-isodoc+xml'>
-                <em>TITLE</em> [B]
+                <em>TITLE</em>
               </formattedref>
               <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
