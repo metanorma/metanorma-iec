@@ -44,11 +44,7 @@ def xmlpp(xml)
     else n
     end
   end.join
-  s = ""
-  f = REXML::Formatters::Pretty.new(2)
-  f.compact = true
-  f.write(REXML::Document.new(xml), s)
-  s
+  Nokogiri::XML(xml).to_xml(indent: 2, encoding: "UTF-8")
 end
 
 OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze
