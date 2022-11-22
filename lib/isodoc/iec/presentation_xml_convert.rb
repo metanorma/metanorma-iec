@@ -124,7 +124,7 @@ module IsoDoc
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
           m << { lang: lg, script: Metanorma::Utils.default_script(lg),
-                 designation: l10n_recursive(p.remove, lg).to_xml.strip }
+                 designation: to_xml(l10n_recursive(p.remove, lg)).strip }
         end
       end
 
@@ -183,7 +183,7 @@ module IsoDoc
         ref = node.at(ns("./xref | ./eref | ./termref"))
         label = @i18n.relatedterms[node["type"]].upcase
         node.replace(l10n("<p>#{label}: " \
-                          "#{p.children.to_xml} (#{ref.to_xml})</p>"))
+                          "#{to_xml(p.children)} (#{to_xml(ref)})</p>"))
         @i18n = @i18n_lg["default"]
       end
 
@@ -205,9 +205,9 @@ module IsoDoc
 
       def termsource1_iev(elem)
         while elem&.next_element&.name == "termsource"
-          elem << "; #{elem.next_element.remove.children.to_xml}"
+          elem << "; #{to_xml(elem.next_element.remove.children)}"
         end
-        elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
+        elem.children = l10n("#{@i18n.source}: #{to_xml(elem.children).strip}")
       end
 
       def termexample(docxml)
