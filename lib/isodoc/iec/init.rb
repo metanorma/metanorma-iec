@@ -26,6 +26,10 @@ module IsoDoc
         @is_iev = id == "60050"
         super
       end
+
+      def std_docid_semantic(text)
+        text
+      end
     end
   end
 end
