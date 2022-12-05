@@ -1,2 +1,2 @@
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "fix/biblio-tag"
-gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "fix/biblio-tag"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
+gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "main"
