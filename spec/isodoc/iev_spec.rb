@@ -206,6 +206,7 @@ RSpec.describe IsoDoc do
                 <em>TITLE</em>
               </formattedref>
               <docidentifier>B</docidentifier>
+              <biblio-tag>B, </biblio-tag>
             </bibitem>
           </references>
           <references id='_' obligation='informative' normative='false' displayorder="2">
@@ -217,6 +218,7 @@ RSpec.describe IsoDoc do
               </formattedref>
               <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
+              <biblio-tag>[1]<tab/>B, </biblio-tag>
             </bibitem>
           </references>
         </bibliography>

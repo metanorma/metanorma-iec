@@ -175,11 +175,9 @@ RSpec.describe IsoDoc do
             <locality type='clause'>
               <referenceFrom>1-2-3</referenceFrom>
             </locality>
-            <span class='stdpublisher'>IEV</span>, <span class='citesec'>1-2-3</span>
+            IEV, <span class='citesec'>1-2-3</span>
           </eref>
-          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'><span class='stdpublisher'>ISO</span>
-            <span class='stddocNumber'>712</span>
-          </eref>
+          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>ISO 712</eref>
           <eref type='inline' bibitemid='ISO712'>ISO 712</eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
