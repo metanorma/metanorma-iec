@@ -75,7 +75,7 @@ RSpec.describe IsoDoc do
          <title>Foreword</title>
          <p id="A">This is a preamble</p>
        </foreword>
-        <introduction id="B" obligation="informative" displayorder="2"><title depth="1">0<tab/>Introduction</title><clause id="C" inline-header="false" obligation="informative">
+        <introduction id="B" obligation="informative" displayorder="2"><title depth="1">Introduction</title><clause id="C" inline-header="false" obligation="informative">
          <title depth="2">0.1<tab/>Introduction Subsection</title>
        </clause>
        <p>This is patent boilerplate</p>
@@ -156,7 +156,7 @@ RSpec.describe IsoDoc do
                   </div>
                   <br/>
                   <div class="Section3" id="B">
-                    <h1 class="IntroTitle">0&#160; Introduction</h1>
+                    <h1 class="IntroTitle">Introduction</h1>
                     <div id="C">
              <h2>0.1&#160; Introduction Subsection</h2>
            </div>
@@ -233,7 +233,7 @@ RSpec.describe IsoDoc do
               </div>
               <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
               <div class="Section3" id="B">
-                <h1 class="IntroTitle">0<span style="mso-tab-count:1">&#160; </span>Introduction</h1>
+                <h1 class="IntroTitle">Introduction</h1>
                 <div id="C">
          <h2>0.1<span style="mso-tab-count:1">&#160; </span>Introduction Subsection</h2>
        </div>

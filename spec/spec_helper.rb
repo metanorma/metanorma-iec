@@ -54,6 +54,8 @@ def xmlpp(xml)
   XSL
   Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
     .to_xml(indent: 2, encoding: "UTF-8")
+    .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
+    .gsub(%r{ schema-version="[^"]+"}, "")
 end
 
 OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze

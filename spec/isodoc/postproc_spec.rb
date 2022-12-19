@@ -289,7 +289,7 @@ RSpec.describe IsoDoc do
                 <a name='samplecode' id='samplecode'/>
                      <tbody>
                        <tr>
-                         <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
+                         <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;" class="TABLE-cell">
              <p class="CODE-TableCell"><a name="B" id="B"></a>puts "Hello, world."</p>
              </td>
                        </tr>
