@@ -151,7 +151,7 @@ RSpec.describe IsoDoc::Iec do
             <biblio-tag>[110], ISO 712, </biblio-tag>
           </bibitem>
           <bibitem id="ISO16634" type="standard">
-            <formattedref><em><span class='stddocTitle'>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></em>.</formattedref>
             <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
             <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
             <biblio-tag>ISO 16634:-- (all parts)<fn reference="1"><p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p></fn>, </biblio-tag>
@@ -187,7 +187,7 @@ RSpec.describe IsoDoc::Iec do
           <note><name>NOTE</name><p>This is an annotation of document ISSN.</p></note>
           <note><name>NOTE</name><p>This is another annotation of document ISSN.</p></note>
           <bibitem id="ISO3696" type="standard">
-            <formattedref><em><span class='stddocTitle'>Water for analytical laboratory use</span></em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Water for analytical laboratory use</span></em>.</formattedref>
             <docidentifier type='metanorma-ordinal'>[3]</docidentifier>
             <docidentifier type="ISO">ISO 3696</docidentifier>
             <biblio-tag>[3]<tab/>ISO 3696, </biblio-tag>
@@ -198,7 +198,7 @@ RSpec.describe IsoDoc::Iec do
             <biblio-tag>[4]<tab/></biblio-tag>
           </bibitem>
           <bibitem id="ref11">
-            <formattedref><em><span class='stddocTitle'>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></em></formattedref>
+            <formattedref><em><span class='stddocTitle'>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></em>.</formattedref>
             <docidentifier type='metanorma-ordinal'>[5]</docidentifier>
             <docidentifier type="IETF">IETF RFC 10</docidentifier>
             <biblio-tag>[5]<tab/>IETF RFC 10, </biblio-tag>
@@ -235,7 +235,7 @@ RSpec.describe IsoDoc::Iec do
                <h1>1  Normative References</h1>
                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
                <p id="ISO712" class="NormRef">[110], ISO 712, <i><span class="stddocTitle">Cereals and cereal products</span></i></p>
-               <p id="ISO16634" class="NormRef">ISO 16634:-- (all parts)<a class="FootnoteRef" href="#fn:1"><sup>1</sup></a>, <i><span class="stddocTitle">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></i></p>
+               <p id="ISO16634" class="NormRef">ISO 16634:-- (all parts)<a class="FootnoteRef" href="#fn:1"><sup>1</sup></a>, <i><span class="stddocTitle">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></i>.</p>
                <p id="ISO20483" class="NormRef">ISO 20483:2013-2014, <i><span class="stddocTitle">Cereals and pulses</span></i></p>
                <p id="ref1" class="NormRef">ICC 167, <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
                <div class="Note">
@@ -254,9 +254,9 @@ RSpec.describe IsoDoc::Iec do
                <div class="Note">
                  <p><span class="note_label">NOTE</span>  This is another annotation of document ISSN.</p>
                </div>
-               <p id="ISO3696" class="Biblio">[3]  ISO 3696, <i><span class="stddocTitle">Water for analytical laboratory use</span></i></p>
+               <p id="ISO3696" class="Biblio">[3]  ISO 3696, <i><span class="stddocTitle">Water for analytical laboratory use</span></i>.</p>
                <p id="ref10" class="Biblio">[4]  <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
-               <p id="ref11" class="Biblio">[5]  IETF RFC 10, <i><span class="stddocTitle">Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></i></p>
+               <p id="ref11" class="Biblio">[5]  IETF RFC 10, <i><span class="stddocTitle">Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></i>.</p>
                <p id="ref12" class="Biblio">Citn  IETF RFC 20, CitationWorks. 2019. <i>How to cite a reference</i>.</p>
              </div>
              <aside id="fn:1" class="footnote">
