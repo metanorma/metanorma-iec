@@ -1697,10 +1697,14 @@
 				<xsl:element name="{$element-name}">
 					<xsl:attribute name="text-align">
 						<xsl:choose>
-							<xsl:when test="@align"><xsl:value-of select="@align"/></xsl:when>
+							<xsl:when test="@align = 'justified'">justify</xsl:when>
+							<xsl:when test="@align and not(@align = 'indent')"><xsl:value-of select="@align"/></xsl:when>
 							<xsl:otherwise>justify</xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute>
+					<xsl:if test="@align = 'indent'">
+						<xsl:attribute name="margin-left">7mm</xsl:attribute>
+					</xsl:if>
 					<xsl:attribute name="margin-top">5pt</xsl:attribute>
 					<xsl:if test="ancestor::iec:definition">
 						<xsl:attribute name="margin-top">1pt</xsl:attribute>
@@ -3708,6 +3712,8 @@
 								<xsl:attribute name="margin-right"><xsl:value-of select="$margin-side"/>mm</xsl:attribute>
 							</xsl:if>
 
+						<xsl:call-template name="setBordersTableArray"/>
+
 					</xsl:element>
 				</xsl:variable>
 
@@ -3849,6 +3855,15 @@
 				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
+
+	</xsl:template>
+
+	<xsl:template name="setBordersTableArray">
+
+			<xsl:if test="starts-with(@id, 'array_') or starts-with(ancestor::*[local-name() = 'table'][1]/@id, 'array_')">
+				<!-- array - table without borders -->
+				<xsl:attribute name="border">none</xsl:attribute>
+			</xsl:if>
 
 	</xsl:template>
 
@@ -4326,6 +4341,8 @@
 						<fo:table-row>
 							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}">
 
+								<xsl:call-template name="setBordersTableArray"/>
+
 								<!-- fn will be processed inside 'note' processing -->
 
 									<xsl:if test="../*[local-name()='note']">
@@ -4342,6 +4359,7 @@
 
 									<xsl:if test="../*[local-name()='note']">
 										<fo:block-container border-top="0.5pt solid black" padding-left="1mm" padding-right="1mm">
+											<xsl:call-template name="setBordersTableArray"/>
 											<fo:block font-size="1pt"> </fo:block>
 										</fo:block-container>
 									</xsl:if>
@@ -4457,6 +4475,8 @@
 	<xsl:template match="*[local-name()='thead']/*[local-name()='tr']" priority="2">
 		<fo:table-row xsl:use-attribute-sets="table-header-row-style">
 
+			<xsl:call-template name="setBordersTableArray"/>
+
 			<xsl:call-template name="setTableRowAttributes"/>
 
 			<xsl:apply-templates/>
@@ -4479,6 +4499,8 @@
 			<xsl:if test="count(*) = count(*[local-name() = 'th'])"> <!-- row contains 'th' only -->
 				<xsl:attribute name="keep-with-next">always</xsl:attribute>
 			</xsl:if>
+
+			<xsl:call-template name="setBordersTableArray"/>
 
 			<xsl:call-template name="setTableRowAttributes"/>
 			<xsl:apply-templates/>
@@ -4503,6 +4525,8 @@
 				<xsl:if test="ancestor::*[local-name()='preface']">
 					<xsl:attribute name="font-weight">normal</xsl:attribute>
 				</xsl:if>
+
+			<xsl:call-template name="setBordersTableArray"/>
 
 			<xsl:if test="$lang = 'ar'">
 				<xsl:attribute name="padding-right">1mm</xsl:attribute>
@@ -4559,6 +4583,8 @@
 				<xsl:if test="ancestor::*[local-name()='preface']">
 					<xsl:attribute name="text-align">center</xsl:attribute>
 				</xsl:if>
+
+			<xsl:call-template name="setBordersTableArray"/>
 
 			<xsl:if test=".//*[local-name() = 'table']"> <!-- if there is nested table -->
 				<xsl:attribute name="padding-right">1mm</xsl:attribute>
@@ -11294,6 +11320,7 @@
 			<xsl:choose>
 				<xsl:when test="$lang = 'ar' and $align = 'left'">start</xsl:when>
 				<xsl:when test="$lang = 'ar' and $align = 'right'">end</xsl:when>
+				<xsl:when test="$align = 'justified'">justify</xsl:when>
 				<xsl:when test="$align != '' and not($align = 'indent')"><xsl:value-of select="$align"/></xsl:when>
 				<xsl:when test="ancestor::*[local-name() = 'td']/@align"><xsl:value-of select="ancestor::*[local-name() = 'td']/@align"/></xsl:when>
 				<xsl:when test="ancestor::*[local-name() = 'th']/@align"><xsl:value-of select="ancestor::*[local-name() = 'th']/@align"/></xsl:when>
