@@ -136,7 +136,7 @@ RSpec.describe IsoDoc::Iec do
             <eref bibitemid="ISBN">[1]</eref>
             <eref bibitemid="ISSN">[2]</eref>
             <eref bibitemid="ISO16634">ISO 16634:--</eref>
-            <eref bibitemid="ref1">ICC 167</eref>
+            <eref bibitemid="ref1">ICC&#xa0;167</eref>
             <eref bibitemid="ref10">[4]</eref>
             <eref bibitemid="ref12">Citn</eref>
             <eref bibitemid="zip_ffs">[5]</eref>
@@ -146,9 +146,9 @@ RSpec.describe IsoDoc::Iec do
               <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
           <bibitem id="ISO712" type="standard">
             <formattedref><em><span class='stddocTitle'>Cereals and cereal products</span></em></formattedref>
-            <docidentifier type="ISO">ISO 712</docidentifier>
+            <docidentifier type="ISO">ISO&#xa0;712</docidentifier>
             <docidentifier type="metanorma">[110]</docidentifier>
-            <biblio-tag>[110], ISO 712, </biblio-tag>
+            <biblio-tag>[110], ISO&#xa0;712, </biblio-tag>
           </bibitem>
           <bibitem id="ISO16634" type="standard">
             <formattedref><em><span class='stddocTitle'>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></em>.</formattedref>
@@ -158,13 +158,13 @@ RSpec.describe IsoDoc::Iec do
           </bibitem>
           <bibitem id="ISO20483" type="standard">
             <formattedref><em><span class='stddocTitle'>Cereals and pulses</span></em></formattedref>
-            <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
-            <biblio-tag>ISO 20483:2013-2014, </biblio-tag>
+            <docidentifier type="ISO">ISO&#xa0;20483:2013-2014</docidentifier>
+            <biblio-tag>ISO&#xa0;20483:2013-2014, </biblio-tag>
           </bibitem>
           <bibitem id="ref1">
             <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
-            <docidentifier type="ICC">ICC 167</docidentifier>
-            <biblio-tag>ICC 167, </biblio-tag>
+            <docidentifier type="ICC">ICC&#xa0;167</docidentifier>
+            <biblio-tag>ICC&#xa0;167, </biblio-tag>
           </bibitem>
           <note><name>NOTE</name><p>This is an annotation of ISO 20483:2013-2014</p></note>
               <bibitem id="zip_ffs"><formattedref format="application/x-isodoc+xml">Title 5</formattedref><docidentifier type="metanorma">[5]</docidentifier>
@@ -189,8 +189,8 @@ RSpec.describe IsoDoc::Iec do
           <bibitem id="ISO3696" type="standard">
             <formattedref><em><span class='stddocTitle'>Water for analytical laboratory use</span></em>.</formattedref>
             <docidentifier type='metanorma-ordinal'>[3]</docidentifier>
-            <docidentifier type="ISO">ISO 3696</docidentifier>
-            <biblio-tag>[3]<tab/>ISO 3696, </biblio-tag>
+            <docidentifier type="ISO">ISO&#xa0;3696</docidentifier>
+            <biblio-tag>[3]<tab/>ISO&#xa0;3696, </biblio-tag>
           </bibitem>
           <bibitem id="ref10">
             <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
@@ -200,14 +200,14 @@ RSpec.describe IsoDoc::Iec do
           <bibitem id="ref11">
             <formattedref><em><span class='stddocTitle'>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></em>.</formattedref>
             <docidentifier type='metanorma-ordinal'>[5]</docidentifier>
-            <docidentifier type="IETF">IETF RFC 10</docidentifier>
-            <biblio-tag>[5]<tab/>IETF RFC 10, </biblio-tag>
+            <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;10</docidentifier>
+            <biblio-tag>[5]<tab/>IETF&#xa0;RFC&#xa0;10, </biblio-tag>
           </bibitem>
           <bibitem id="ref12" type="standard">
             <formattedref format="application/x-isodoc+xml">CitationWorks. 2019. <em>How to cite a reference</em>.</formattedref>
             <docidentifier type="metanorma">[Citn]</docidentifier>
-            <docidentifier type="IETF">IETF RFC 20</docidentifier>
-            <biblio-tag>Citn<tab/>IETF RFC 20, </biblio-tag>
+            <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;20</docidentifier>
+            <biblio-tag>Citn<tab/>IETF&#xa0;RFC&#xa0;20, </biblio-tag>
           </bibitem>
           </references>
           </bibliography>
@@ -224,7 +224,7 @@ RSpec.describe IsoDoc::Iec do
                 <a href='#ISBN'>[1]</a>
                 <a href='#ISSN'>[2]</a>
                 <a href='#ISO16634'>ISO 16634:--</a>
-                <a href='#ref1'>ICC 167</a>
+                <a href='#ref1'>ICC&#xa0;167</a>
                 <a href='#ref10'>[4]</a>
                 <a href='#ref12'>Citn</a>
                 <a href='#zip_ffs'>[5]</a>
@@ -234,10 +234,10 @@ RSpec.describe IsoDoc::Iec do
                          <div>
                <h1>1  Normative References</h1>
                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-               <p id="ISO712" class="NormRef">[110], ISO 712, <i><span class="stddocTitle">Cereals and cereal products</span></i></p>
+               <p id="ISO712" class="NormRef">[110], ISO&#xa0;712, <i><span class="stddocTitle">Cereals and cereal products</span></i></p>
                <p id="ISO16634" class="NormRef">ISO 16634:-- (all parts)<a class="FootnoteRef" href="#fn:1"><sup>1</sup></a>, <i><span class="stddocTitle">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</span></i>.</p>
-               <p id="ISO20483" class="NormRef">ISO 20483:2013-2014, <i><span class="stddocTitle">Cereals and pulses</span></i></p>
-               <p id="ref1" class="NormRef">ICC 167, <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
+               <p id="ISO20483" class="NormRef">ISO&#xa0;20483:2013-2014, <i><span class="stddocTitle">Cereals and pulses</span></i></p>
+               <p id="ref1" class="NormRef">ICC&#xa0;167, <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
                <div class="Note">
                  <p><span class="note_label">NOTE</span>  This is an annotation of ISO 20483:2013-2014</p>
                </div>
@@ -254,10 +254,10 @@ RSpec.describe IsoDoc::Iec do
                <div class="Note">
                  <p><span class="note_label">NOTE</span>  This is another annotation of document ISSN.</p>
                </div>
-               <p id="ISO3696" class="Biblio">[3]  ISO 3696, <i><span class="stddocTitle">Water for analytical laboratory use</span></i>.</p>
+               <p id="ISO3696" class="Biblio">[3]  ISO&#xa0;3696, <i><span class="stddocTitle">Water for analytical laboratory use</span></i>.</p>
                <p id="ref10" class="Biblio">[4]  <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
-               <p id="ref11" class="Biblio">[5]  IETF RFC 10, <i><span class="stddocTitle">Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></i>.</p>
-               <p id="ref12" class="Biblio">Citn  IETF RFC 20, CitationWorks. 2019. <i>How to cite a reference</i>.</p>
+               <p id="ref11" class="Biblio">[5]  IETF&#xa0;RFC&#xa0;10, <i><span class="stddocTitle">Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span></i>.</p>
+               <p id="ref12" class="Biblio">Citn  IETF&#xa0;RFC&#xa0;20, CitationWorks. 2019. <i>How to cite a reference</i>.</p>
              </div>
              <aside id="fn:1" class="footnote">
                <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
@@ -266,10 +266,11 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
-      .gsub(%r{reference="[^"]+"}m, 'reference="1"'))).to be_equivalent_to xmlpp(presxml)
+      .gsub(%r{reference="[^"]+"}m, 'reference="1"')))
+      .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml,
                true))).to be_equivalent_to xmlpp(html)
