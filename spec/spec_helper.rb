@@ -60,6 +60,10 @@ end
 
 OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze
 
+def presxml_options
+  { semanticxmlinsert: "false" }
+end
+
 ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
   = Document title
   Author

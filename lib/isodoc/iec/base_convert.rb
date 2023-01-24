@@ -19,7 +19,7 @@ module IsoDoc
 
       def foreword1(sect, boilerplate, out)
         out.div **attr_code(id: sect ? sect["id"] : "") do |s|
-          s.h1(**{ class: "ForewordTitle" }) { |h1| h1 << @i18n.foreword }
+          s.h1(class: "ForewordTitle") { |h1| h1 << @i18n.foreword }
           @meta.get[:doctype] == "Amendment" or
             s.div **attr_code(class: "boilerplate_legal") do |s1|
               boilerplate&.elements&.each { |e| parse(e, s1) }
@@ -29,23 +29,23 @@ module IsoDoc
       end
 
       def iec_orgname(out)
-        out.p(**{ class: "zzSTDTitle1" }) { |p| p << @i18n.get["IEC"] }
-        out.p(**{ class: "zzSTDTitle1" }) { |p| p << "____________" }
-        out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&#xa0;" }
+        out.p(class: "zzSTDTitle1") { |p| p << @i18n.get["IEC"] }
+        out.p(class: "zzSTDTitle1") { |p| p << "____________" }
+        out.p(class: "zzSTDTitle1") { |p| p << "&#xa0;" }
       end
 
       def middle_title(_isoxml, out)
         title1, title2 = middle_title_parts(out)
-        out.p(**{ class: "zzSTDTitle1" }) do |p|
+        out.p(class: "zzSTDTitle1") do |p|
           p.b { |b| b << title1 }
         end
         if title2
-          out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&#xa0;" }
-          out.p(**{ class: "zzSTDTitle2" }) do |p|
+          out.p(class: "zzSTDTitle1") { |p| p << "&#xa0;" }
+          out.p(class: "zzSTDTitle2") do |p|
             p.b { |b| b << title2 }
           end
         end
-        out.p(**{ class: "zzSTDTitle1" }) { |p| p << "&#xa0;" }
+        out.p(class: "zzSTDTitle1") { |p| p << "&#xa0;" }
       end
 
       def middle_title_parts(_out)
@@ -80,7 +80,7 @@ module IsoDoc
         page_break(out)
         out.div **attr_code(id: node["id"]) do |div|
           depth = clause_title_depth(node, nil)
-          out.send "h#{depth}", **{ class: "zzSTDTitle2" } do |p|
+          out.send "h#{depth}", class: "zzSTDTitle2" do |p|
             p.b do |b|
               node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
             end

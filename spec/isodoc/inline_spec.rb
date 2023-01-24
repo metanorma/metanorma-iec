@@ -177,20 +177,20 @@ RSpec.describe IsoDoc do
             </locality>
             IEV, <span class='citesec'>1-2-3</span>
           </eref>
-          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>ISO 712</eref>
-          <eref type='inline' bibitemid='ISO712'>ISO 712</eref>
+          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>ISO&#xa0;712</eref>
+          <eref type='inline' bibitemid='ISO712'>ISO&#xa0;712</eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, <span class='citetbl'>Table 1</span>
+            ISO&#xa0;712, <span class='citetbl'>Table 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
               <referenceTo>1</referenceTo>
             </locality>
-            ISO 712, <span class='citetbl'>Table 1&#x2013;1</span>
+            ISO&#xa0;712, <span class='citetbl'>Table 1&#x2013;1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
@@ -199,7 +199,7 @@ RSpec.describe IsoDoc do
             <locality type='table'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, <span class='citesec'>Clause 1</span>, <span class='citetbl'>Table 1</span>
+            ISO&#xa0;712, <span class='citesec'>Clause 1</span>, <span class='citetbl'>Table 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
@@ -208,19 +208,19 @@ RSpec.describe IsoDoc do
             <locality type='list'>
               <referenceFrom>a</referenceFrom>
             </locality>
-            ISO 712, <span class='citesec'>Clause 1</span> a)
+            ISO&#xa0;712, <span class='citesec'>Clause 1</span> a)
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
               <referenceFrom>1</referenceFrom>
             </locality>
-            ISO 712, <span class='citesec'>Clause 1</span>
+            ISO&#xa0;712, <span class='citesec'>Clause 1</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='clause'>
               <referenceFrom>1.5</referenceFrom>
             </locality>
-            ISO 712, <span class='citesec'>1.5</span>
+            ISO&#xa0;712, <span class='citesec'>1.5</span>
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='table'>
@@ -230,13 +230,13 @@ RSpec.describe IsoDoc do
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='whole'/>
-            ISO 712, Whole of text
+            ISO&#xa0;712, Whole of text
           </eref>
           <eref type='inline' bibitemid='ISO712'>
             <locality type='locality:prelude'>
               <referenceFrom>7</referenceFrom>
             </locality>
-            ISO 712, Prelude 7
+            ISO&#xa0;712, Prelude 7
           </eref>
           <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>A</eref>
         </p>
@@ -244,7 +244,7 @@ RSpec.describe IsoDoc do
     OUTPUT
     expect(xmlpp(
              Nokogiri::XML(
-               IsoDoc::Iec::PresentationXMLConvert.new({})
+               IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
                .convert("test", input, true),
              )
                .at("//xmlns:foreword").to_xml,

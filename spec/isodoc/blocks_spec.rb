@@ -50,7 +50,7 @@ RSpec.describe IsoDoc::Iec do
                        </p>
                      </div>
                      <span class='zzMoveToFollowing'>
-        where#{' '}
+        where
         <span class='stem'>(#(r)#)</span>
       </span>
       <p id='_1b99995d-ff03-40f5-8f2e-ab9665a69b77'>is the repeatability limit.</p>
@@ -154,7 +154,7 @@ RSpec.describe IsoDoc::Iec do
            </sections>
          </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
@@ -162,7 +162,7 @@ RSpec.describe IsoDoc::Iec do
   end
 
   it "does not ignore intervening ul in numbering ol" do
-        input = <<~INPUT
+    input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <preface><foreword>
       <ul>
@@ -177,24 +177,23 @@ RSpec.describe IsoDoc::Iec do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-         <preface>
-           <foreword displayorder='1'>
-             <ul>
-               <li>A</li>
-               <li>
-                 <ol type='arabic'>
-                   <li>List</li>
-                 </ol>
-               </li>
-             </ul>
-           </foreword>
-         </preface>
-       </iso-standard>
+          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+        <preface>
+          <foreword displayorder='1'>
+            <ul>
+              <li>A</li>
+              <li>
+                <ol type='arabic'>
+                  <li>List</li>
+                </ol>
+              </li>
+            </ul>
+          </foreword>
+        </preface>
+      </iso-standard>
     INPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
-
   end
 end

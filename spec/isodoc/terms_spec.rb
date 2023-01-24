@@ -176,7 +176,7 @@ RSpec.describe IsoDoc do
 
          <p>[SOURCE: ISO 7301:2011, 3.1]</p></div>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})

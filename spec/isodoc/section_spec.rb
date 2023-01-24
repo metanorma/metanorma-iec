@@ -305,7 +305,7 @@ RSpec.describe IsoDoc do
             <div class="colophon"/>
           </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
@@ -353,7 +353,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))).to be_equivalent_to xmlpp(output)
   end
 
