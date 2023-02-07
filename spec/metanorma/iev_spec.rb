@@ -65,7 +65,7 @@ RSpec.describe Metanorma::Iec do
                    <structuredidentifier>
                      <project-number>IEC 60050</project-number>
                    </structuredidentifier>
-                         <stagename>International standard</stagename>
+                         <stagename>International Standard</stagename>
                  </ext>
                </bibdata>
                #{@boilerplate}
@@ -151,27 +151,26 @@ RSpec.describe Metanorma::Iec do
             <structuredidentifier>
               <project-number>IEC 60050</project-number>
             </structuredidentifier>
-            <stagename>International standard</stagename>
+            <stagename>International Standard</stagename>
           </ext>
         </bibdata>
                  #{@boilerplate}
-        <sections>
-          <terms id='_' obligation='normative'>
-            <title>Terms and definitions</title>
-            <term id='term-General'>
-             <preferred>
-         <expression>
-           <name>General</name>
-         </expression>
-       </preferred>
-              <term id='term-Term-1'>
-                <preferred><expression><name>Term 1</name></expression></preferred>
-              </term>
-            </term>
-          </terms>
-        </sections>
-      </iec-standard>
-
+                 <sections>
+           <terms id="_" obligation="normative">
+             <title>Terms and definitions</title>
+             <terms id="_" obligation="normative">
+               <title>General</title>
+               <term id="term-Term-1">
+                 <preferred>
+                   <expression>
+                     <name>Term 1</name>
+                   </expression>
+                 </preferred>
+               </term>
+             </terms>
+           </terms>
+         </sections>
+       </iec-standard>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
@@ -235,7 +234,7 @@ RSpec.describe Metanorma::Iec do
                <structuredidentifier>
                  <project-number>IEC 60050</project-number>
                </structuredidentifier>
-               <stagename>International standard</stagename>
+               <stagename>International Standard</stagename>
              </ext>
            </bibdata>
            #{@boilerplate}

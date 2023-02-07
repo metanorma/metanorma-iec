@@ -186,7 +186,7 @@ RSpec.describe IsoDoc do
             <doctype language=''>international-standard</doctype>
             <doctype language='fr'>Norme internationale</doctype>
             <doctype language='en'>International Standard</doctype>
-             <editorialgroup identifier=' / / '>
+             <editorialgroup identifier='//'>
               <technical-committee/>
               <subcommittee/>
               <workgroup/>

@@ -68,7 +68,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
       <function language=''>emc</function>
       <function language='fr'>Publication fondamentale en CEM</function>
       <function language='en'>Basic EMC Publication</function>
-        <editorialgroup>
+        <editorialgroup identifier="TC 34/SC 4/WG 3">
           <technical-committee number="34">Food products</technical-committee>
           <subcommittee number="4">Cereals and pulses</subcommittee>
           <workgroup number="3">Rice Group</workgroup>
@@ -106,7 +106,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
       :draft=>"0.4",
       :draftinfo=>" (draft 0.4, 2016-05-01)",
       :edition=>"2",
-      :editorialgroup=>["TC 34", "SC 4", "WG 3"],
+      :editorialgroup=>"TC 34/SC 4/WG 3",
       :function=>"Emc",
       :function_display=>"Basic Emc Publication",
       :function_en=>"Basic Emc Publication",
@@ -227,7 +227,6 @@ RSpec.describe IsoDoc::Iec::Metadata do
       :doctype_en=>"Technical Report",
       :doctype_fr=>"Technical Report",
       :docyear=>"2016",
-      :editorialgroup=>["ABC 34", "DEF 4", "GHI 3"],
       :horizontal=>"False",
       :ics=>"1.2.3, 1.2.3",
       :lang=>"en",

@@ -178,7 +178,7 @@ RSpec.describe Metanorma::Iec do
             <structuredidentifier>
               <project-number part='1'>IEC 1000</project-number>
             </structuredidentifier>
-            <stagename>New work item proposal</stagename>
+            <stagename abbreviation="NP">New Proposal International Standard</stagename>
             <accessibility-color-inside>true</accessibility-color-inside>
             <price-code>XC</price-code>
             <cen-processing>true</cen-processing>
@@ -436,7 +436,7 @@ RSpec.describe Metanorma::Iec do
             <structuredidentifier>
               <project-number part='1' subpart='1'>IEC/IETF/ISO 1000</project-number>
             </structuredidentifier>
-            <stagename>Committee draft</stagename>
+            <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
           </ext>
         </bibdata>
         <boilerplate>
@@ -671,7 +671,7 @@ RSpec.describe Metanorma::Iec do
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>Final draft international standard</stagename>
+          <stagename abbreviation="FDIS">Final Draft International Standard</stagename>
         </ext>
       </bibdata>
          <boilerplate>
@@ -872,7 +872,7 @@ RSpec.describe Metanorma::Iec do
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>International standard</stagename>
+          <stagename>International Standard</stagename>
         </ext>
       </bibdata>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
@@ -937,7 +937,7 @@ RSpec.describe Metanorma::Iec do
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>International standard</stagename>
+          <stagename abbreviation="PRF">Proof of a new International Standard</stagename>
         </ext>
       </bibdata>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
