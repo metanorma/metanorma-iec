@@ -5,7 +5,7 @@ module Metanorma
         publishers = node.attr("publisher") || "IEC"
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
-            c.role **{ type: "author" }
+            c.role type: "author"
             c.organization do |a|
               organization(a, p, false, node, !node.attr("publisher"))
             end
@@ -17,7 +17,7 @@ module Metanorma
         publishers = node.attr("publisher") || "IEC"
         csv_split(publishers)&.each do |p|
           xml.contributor do |c|
-            c.role **{ type: "publisher" }
+            c.role type: "publisher"
             c.organization do |a|
               organization(a, p, true, node, !node.attr("publisher"))
             end
@@ -49,6 +49,37 @@ module Metanorma
         dn = id_stage_prefix(dn, node)
         dn = id_edition_suffix(dn, node)
         xml.docidentifier dn, **attr_code(type: "ISO")
+      end
+
+      def add_id_parts(docnum, part, subpart)
+        docnum += "-#{part}" if part
+        docnum += "-#{subpart}" if subpart
+        docnum
+      end
+
+      def id_stage_prefix(docnum, node)
+        stage = get_stage(node)
+        typeabbr = get_typeabbr(node)&.upcase
+        if stage && (stage.to_i < 60)
+          docnum = unpub_stage_prefix(docnum, stage, typeabbr, node)
+        elsif typeabbr == "DIR " then docnum = "#{typeabbr}#{docnum}"
+        elsif typeabbr && !@amd then docnum = "/#{typeabbr}#{docnum}"
+        end
+        docnum
+      end
+
+      def unpub_stage_prefix(docnum, stage, typeabbr, node)
+        abbr = id_stage_abbr(stage, get_substage(node), node)
+        %w(40 50).include?(stage) && i = node.attr("iteration") and
+          itersuffix = ".#{i}"
+        return docnum if abbr.nil? || abbr.empty? # prefixes added in cleanup
+
+        typeabbr = "" if %w(DTS FDTS).include?(abbr.sub(/\s+$/, ""))
+        return "/#{abbr}#{typeabbr} #{docnum}#{itersuffix}" unless @amd
+
+        a = docnum.split(%r{/})
+        a[-1] = "#{abbr}#{a[-1]}#{itersuffix}"
+        a.join("/")
       end
 
       def id_edition_suffix(docnum, node)
@@ -151,7 +182,7 @@ module Metanorma
         abbr
       end
 
-      def stage_abbr(stage, _substage)
+      def stage_abbr(stage, _substage, _doctype)
         return "PPUB" if stage == "60"
 
         DOC_STAGE[stage.to_sym] || "??"
@@ -191,7 +222,8 @@ module Metanorma
         stage = get_stage(node)
         substage = get_substage(node)
         xml.status do |s|
-          s.stage stage, **attr_code(abbreviation: stage_abbr(stage, substage))
+          s.stage stage,
+                  **attr_code(abbreviation: stage_abbr(stage, substage, nil))
           subst = status_abbrev1(stage, substage, node.attr("iteration"),
                                  doctype(node), node.attr("draft"))
           s.substage substage, **attr_code(abbreviation: subst)

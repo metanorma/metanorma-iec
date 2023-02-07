@@ -189,7 +189,7 @@ BLANK_HDR = <<~"HDR".freeze
     <editorialgroup>
       <agency>IEC</agency>
     </editorialgroup>
-    <stagename>International standard</stagename>
+    <stagename>International Standard</stagename>
     </ext>
   </bibdata>
 HDR
