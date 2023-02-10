@@ -5,7 +5,6 @@ coverage/
 
 .rubocop-https--*
 
-/Gemfile.devel
 /Gemfile.lock
 /spec/assets/iso.doc
 /spec/assets/iso.html

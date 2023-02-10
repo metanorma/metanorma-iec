@@ -126,9 +126,37 @@ module Metanorma
         m = /60050-(\d+)/.match(id) or return
         xmldoc.xpath("//sections/clause/terms/title").each_with_index do |t, i|
           num = "%02d" % [i + 1]
-          t.next = "<variant-title type='toc'>"\
-                   "#{@i18n.section_iev} #{m[1]}-#{num} &#x2013; "\
+          t.next = "<variant-title type='toc'>" \
+                   "#{@i18n.section_iev} #{m[1]}-#{num} &#x2013; " \
                    "#{t.children.to_xml}</variant-title>"
+        end
+      end
+
+      def ol_attrs(node)
+        attr_code(keep_attrs(node)
+                  .merge(id: ::Metanorma::Utils::anchor_or_uuid(node)))
+      end
+
+      # TODO remove when I adopt pubid-iec
+      #
+      def get_id_prefix(xmldoc)
+        xmldoc.xpath("//bibdata/contributor[role/@type = 'publisher']" \
+                     "/organization").each_with_object([]) do |x, prefix|
+          x1 = x.at("abbreviation")&.text || x.at("name")&.text
+          #(x1 == "IEC" and prefix.unshift("IEC")) or prefix << x1
+          prefix << x1
+        end
+      end
+#
+      def docidentifier_cleanup(xmldoc)
+        prefix = get_id_prefix(xmldoc)
+        id = xmldoc.at("//bibdata/docidentifier[@type = 'ISO']") or return
+        id.content = id_prefix(prefix, id)
+        id = xmldoc.at("//bibdata/ext/structuredidentifier/project-number") and
+          id.content = id_prefix(prefix, id)
+        %w(iso-with-lang iso-reference iso-undated).each do |t|
+          id = xmldoc.at("//bibdata/docidentifier[@type = '#{t}']") and
+            id.content = id_prefix(prefix, id)
         end
       end
     end

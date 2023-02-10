@@ -11,7 +11,6 @@ require "equivalent-xml"
 require "metanorma"
 require "metanorma/iec"
 require "iev"
-require "rexml/document"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -37,14 +36,33 @@ def strip_guid(xml)
 end
 
 def xmlpp(xml)
-  s = ""
-  f = REXML::Formatters::Pretty.new(2)
-  f.compact = true
-  f.write(REXML::Document.new(xml), s)
-  s
+  c = HTMLEntities.new
+  xml &&= xml.split(/(&\S+?;)/).map do |n|
+    if /^&\S+?;$/.match?(n)
+      c.encode(c.decode(n), :hexadecimal)
+    else n
+    end
+  end.join
+  xsl = <<~XSL
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+      <xsl:strip-space elements="*"/>
+      <xsl:template match="/">
+        <xsl:copy-of select="."/>
+      </xsl:template>
+    </xsl:stylesheet>
+  XSL
+  Nokogiri::XSLT(xsl).transform(Nokogiri::XML(xml, &:noblanks))
+    .to_xml(indent: 2, encoding: "UTF-8")
+    .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
+    .gsub(%r{ schema-version="[^"]+"}, "")
 end
 
 OPTIONS = [backend: :iec, header_footer: true, agree_to_terms: true].freeze
+
+def presxml_options
+  { semanticxmlinsert: "false" }
+end
 
 ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
   = Document title
@@ -122,7 +140,7 @@ def boilerplate(xmldoc)
               "iec_intro_en.xml"), encoding: "utf-8"
   )
   conv = Metanorma::Iec::Converter.new(nil, backend: :iec,
-                                              header_footer: true)
+                                            header_footer: true)
   conv.init(Asciidoctor::Document.new([]))
   ret = Nokogiri::XML(
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
@@ -167,13 +185,11 @@ BLANK_HDR = <<~"HDR".freeze
       </owner>
     </copyright>
     <ext>
-      <doctype>article</doctype>
+      <doctype>standard</doctype>
     <editorialgroup>
-      <technical-committee/>
-      <subcommittee/>
-      <workgroup/>
+      <agency>IEC</agency>
     </editorialgroup>
-    <stagename>International standard</stagename>
+    <stagename>International Standard</stagename>
     </ext>
   </bibdata>
 HDR

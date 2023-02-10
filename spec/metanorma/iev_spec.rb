@@ -57,17 +57,15 @@ RSpec.describe Metanorma::Iec do
                    </owner>
                  </copyright>
                  <ext>
-                   <doctype>article</doctype>
+                   <doctype>standard</doctype>
                             <subdoctype>vocabulary</subdoctype>
                    <editorialgroup>
-                     <technical-committee/>
-                     <subcommittee/>
-                     <workgroup/>
+                     <agency>IEC</agency>
                    </editorialgroup>
                    <structuredidentifier>
                      <project-number>IEC 60050</project-number>
                    </structuredidentifier>
-                         <stagename>International standard</stagename>
+                         <stagename>International Standard</stagename>
                  </ext>
                </bibdata>
                #{@boilerplate}
@@ -145,33 +143,34 @@ RSpec.describe Metanorma::Iec do
             </owner>
           </copyright>
           <ext>
-            <doctype>article</doctype>
+            <doctype>standard</doctype>
                             <subdoctype>vocabulary</subdoctype>
             <editorialgroup>
-              <technical-committee/>
-              <subcommittee/>
-              <workgroup/>
+              <agency>IEC</agency>
             </editorialgroup>
             <structuredidentifier>
               <project-number>IEC 60050</project-number>
             </structuredidentifier>
-            <stagename>International standard</stagename>
+            <stagename>International Standard</stagename>
           </ext>
         </bibdata>
                  #{@boilerplate}
-        <sections>
-          <clause id='_' obligation='normative'>
-            <title>Terms and definitions</title>
-            <terms id='_' obligation='normative'>
-              <title>General</title>
-              <term id='term-Term-1'>
-                <preferred><expression><name>Term 1</name></expression></preferred>
-              </term>
-            </terms>
-          </clause>
-        </sections>
-      </iec-standard>
-
+                 <sections>
+           <terms id="_" obligation="normative">
+             <title>Terms and definitions</title>
+             <terms id="_" obligation="normative">
+               <title>General</title>
+               <term id="term-Term-1">
+                 <preferred>
+                   <expression>
+                     <name>Term 1</name>
+                   </expression>
+                 </preferred>
+               </term>
+             </terms>
+           </terms>
+         </sections>
+       </iec-standard>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
@@ -227,17 +226,15 @@ RSpec.describe Metanorma::Iec do
                </owner>
              </copyright>
              <ext>
-               <doctype>article</doctype>
+               <doctype>standard</doctype>
                         <subdoctype>vocabulary</subdoctype>
                <editorialgroup>
-                 <technical-committee/>
-                 <subcommittee/>
-                 <workgroup/>
+                 <agency>IEC</agency>
                </editorialgroup>
                <structuredidentifier>
                  <project-number>IEC 60050</project-number>
                </structuredidentifier>
-               <stagename>International standard</stagename>
+               <stagename>International Standard</stagename>
              </ext>
            </bibdata>
            #{@boilerplate}

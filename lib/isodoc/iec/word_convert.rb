@@ -42,50 +42,24 @@ module IsoDoc
         }
       end
 
-      def insert_toc(intro, docxml, level)
+      def make_table_word_toc(docxml)
+        docxml.at(table_toc_xpath) or return ""
         toc = ""
-        toc += make_WordToC(docxml, level)
-        if docxml.at("//p[@class = 'TableTitle']")
-          toc += make_TableWordToC(docxml)
-        end
-        if docxml.at("//p[@class = 'FigureTitle']")
-          toc += make_FigureWordToC(docxml)
-        end
-        intro.sub(/WORDTOC/, toc)
-      end
-
-      WORD_TOC_TABLE_PREFACE1 = <<~TOC.freeze
-                          <span lang="EN-GB"><span
-        style='mso-element:field-begin'></span><span
-        style='mso-spacerun:yes'>&#xA0;</span>TOC
-        \\h \\z \\t &quot;TableTitle,tabletitle&quot; <span
-        style='mso-element:field-separator'></span></span>
-      TOC
-
-      WORD_TOC_FIGURE_PREFACE1 = <<~TOC.freeze
-                                      <span lang="EN-GB"><span
-        style='mso-element:field-begin'></span><span
-        style='mso-spacerun:yes'>&#xA0;</span>TOC
-        \\h \\z \\t &quot;FigureTitle,figuretitle&quot; <span
-        style='mso-element:field-separator'></span></span>
-      TOC
-
-      def make_TableWordToC(docxml)
-        toc = ""
-        docxml.xpath("//p[@class = 'TableTitle']").each do |h|
+        docxml.xpath(table_toc_xpath).each do |h|
           toc += word_toc_entry(1, header_strip(h))
         end
         toc.sub(/(<p class="MsoToc1">)/,
-                %{\\1#{WORD_TOC_TABLE_PREFACE1}}) + WORD_TOC_SUFFIX1
+                %{\\1#{word_toc_table_preface1}}) + WORD_TOC_SUFFIX1
       end
 
-      def make_FigureWordToC(docxml)
+      def make_figure_word_toc(docxml)
+        docxml.at(figure_toc_xpath) or return ""
         toc = ""
-        docxml.xpath("//p[@class = 'FigureTitle']").each do |h|
+        docxml.xpath(figure_toc_xpath).each do |h|
           toc += word_toc_entry(1, header_strip(h))
         end
         toc.sub(/(<p class="MsoToc1">)/,
-                %{\\1#{WORD_TOC_FIGURE_PREFACE1}}) + WORD_TOC_SUFFIX1
+                %{\\1#{word_toc_figure_preface1}}) + WORD_TOC_SUFFIX1
       end
 
       def word_toc_preface(level)
@@ -93,7 +67,7 @@ module IsoDoc
           <span lang="EN-GB"><span
             style='mso-element:field-begin'></span><span
             style='mso-spacerun:yes'>&#xA0;</span>TOC
-            \\o &quot;1-#{level}&quot; \\h \\z \\u <span
+            \\o "1-#{level}" \\h \\z \\u <span
             style='mso-element:field-separator'></span></span>
         TOC
       end
@@ -109,17 +83,19 @@ module IsoDoc
         super
       end
 
-      def make_tr_attr(cell, row, totalrows, header)
+      def make_tr_attr(cell, row, totalrows, header, bordered)
         ret = super
         css_class =
           cell.name == "th" || header ? "TABLE-col-heading" : "TABLE-cell"
-        ret.merge("class": css_class)
+        ret.merge(class: css_class)
       end
 
       def tr_parse(node, out, ord, totalrows, header)
+        c = node.parent.parent["class"]
+        bordered = %w(modspec).include?(c) || !c
         out.tr do |r|
           node.elements.each do |td|
-            attrs = make_tr_attr(td, ord, totalrows - 1, header)
+            attrs = make_tr_attr(td, ord, totalrows - 1, header, bordered)
             attrs[:class] = "TABLE-col-heading" if header
             r.send td.name, **attr_code(attrs) do |entry|
               td.children.each { |n| parse(n, entry) }
@@ -185,7 +161,7 @@ module IsoDoc
       end
 
       def authority_cleanup(docxml)
-        auth = docxml.at("//div[@id = 'boilerplate-feedback' or "\
+        auth = docxml.at("//div[@id = 'boilerplate-feedback' or " \
                          "@class = 'boilerplate-feedback']")
         auth&.remove
         super

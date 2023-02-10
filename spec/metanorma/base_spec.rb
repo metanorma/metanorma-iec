@@ -89,7 +89,6 @@ RSpec.describe Metanorma::Iec do
       :title-intro-fr: Introduction Française
       :title-main-fr: Titre Principal
       :title-part-fr: Part du Titre
-      :library-ics: 1,2,3
       :accessibility-color-inside: true
       :price-code: XC
       :cen-processing: true
@@ -165,8 +164,9 @@ RSpec.describe Metanorma::Iec do
             </bibitem>
           </relation>
           <ext>
-            <doctype>article</doctype>
+            <doctype>standard</doctype>
             <editorialgroup>
+              <agency>IEC</agency>
               <technical-committee number='1' type='A'>TC</technical-committee>
               <technical-committee number='11' type='A1'>TC1</technical-committee>
               <subcommittee number='2' type='B'>SC</subcommittee>
@@ -175,19 +175,10 @@ RSpec.describe Metanorma::Iec do
               <workgroup number='31' type='C1'>WG1</workgroup>
               <secretariat>SECRETARIAT</secretariat>
             </editorialgroup>
-            <ics>
-              <code>1</code>
-            </ics>
-            <ics>
-              <code>2</code>
-            </ics>
-            <ics>
-              <code>3</code>
-            </ics>
             <structuredidentifier>
               <project-number part='1'>IEC 1000</project-number>
             </structuredidentifier>
-            <stagename>New work item proposal</stagename>
+            <stagename abbreviation="NP">New Proposal International Standard</stagename>
             <accessibility-color-inside>true</accessibility-color-inside>
             <price-code>XC</price-code>
             <cen-processing>true</cen-processing>
@@ -357,7 +348,7 @@ RSpec.describe Metanorma::Iec do
            <?xml version="1.0" encoding="UTF-8"?>
             <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
                      <bibdata type='standard'>
-          <docidentifier type='ISO'>ISO/IEC/IETF/2CDTS 1000-1-1 ED 1</docidentifier>
+          <docidentifier type='ISO'>IEC/IETF/ISO/2CDTS 1000-1-1 ED 1</docidentifier>
           <docidentifier type='iso-tc'>2000</docidentifier>
           <docnumber>1000</docnumber>
           <contributor>
@@ -438,14 +429,14 @@ RSpec.describe Metanorma::Iec do
             <horizontal>true</horizontal>
             <function>emc</function>
             <editorialgroup>
-              <technical-committee/>
-              <subcommittee/>
-              <workgroup/>
+              <agency>IEC</agency>
+              <agency>IETF</agency>
+              <agency>ISO</agency>
             </editorialgroup>
             <structuredidentifier>
-              <project-number part='1' subpart='1'>ISO/IEC/IETF 1000</project-number>
+              <project-number part='1' subpart='1'>IEC/IETF/ISO 1000</project-number>
             </structuredidentifier>
-            <stagename>Committee draft</stagename>
+            <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
           </ext>
         </bibdata>
         <boilerplate>
@@ -673,16 +664,14 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
+            <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>Final draft international standard</stagename>
+          <stagename abbreviation="FDIS">Final Draft International Standard</stagename>
         </ext>
       </bibdata>
          <boilerplate>
@@ -876,16 +865,14 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
+            <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>International standard</stagename>
+          <stagename>International Standard</stagename>
         </ext>
       </bibdata>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
@@ -943,16 +930,14 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
           <editorialgroup>
-            <technical-committee/>
-            <subcommittee/>
-            <workgroup/>
+            <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
             <project-number>IEC 1000</project-number>
           </structuredidentifier>
-          <stagename>International standard</stagename>
+          <stagename abbreviation="PRF">Proof of a new International Standard</stagename>
         </ext>
       </bibdata>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}

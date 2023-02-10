@@ -33,9 +33,10 @@
       <param name="pattern">([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?</param>
     </data>
   </define>
-  <start>
-    <ref name="bibitem"/>
-  </start>
+  <!-- start = bibitem -->
+  <define name="BibData">
+    <ref name="BibliographicItem"/>
+  </define>
   <define name="status">
     <element name="status">
       <ref name="stage"/>
@@ -73,8 +74,14 @@
       <text/>
     </element>
   </define>
-  <define name="script">
+  <define name="locale">
     <a:documentation>ISO-639</a:documentation>
+    <element name="locale">
+      <text/>
+    </element>
+  </define>
+  <define name="script">
+    <a:documentation>ISO-3166</a:documentation>
     <element name="script">
       <text/>
     </element>
@@ -92,6 +99,9 @@
     <optional>
       <!-- multiple languages and scripts possible: comma delimit them if so -->
       <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="locale"/>
     </optional>
     <optional>
       <attribute name="script"/>
@@ -137,6 +147,9 @@
       <attribute name="language"/>
     </optional>
     <optional>
+      <attribute name="locale"/>
+    </optional>
+    <optional>
       <attribute name="script"/>
     </optional>
     <oneOrMore>
@@ -158,27 +171,30 @@
   </define>
   <define name="contributor">
     <element name="contributor">
-      <zeroOrMore>
+      <oneOrMore>
         <ref name="role"/>
-      </zeroOrMore>
+      </oneOrMore>
       <ref name="ContributorInfo"/>
     </element>
   </define>
   <define name="role">
     <element name="role">
-      <optional>
-        <attribute name="type">
-          <choice>
-            <value>author</value>
-            <value>performer</value>
-            <value>publisher</value>
-            <value>editor</value>
-            <value>adapter</value>
-            <value>translator</value>
-            <value>distributor</value>
-          </choice>
-        </attribute>
-      </optional>
+      <attribute name="type">
+        <choice>
+          <value>author</value>
+          <value>performer</value>
+          <value>publisher</value>
+          <value>editor</value>
+          <value>adapter</value>
+          <value>translator</value>
+          <value>distributor</value>
+          <value>realizer</value>
+          <value>owner</value>
+          <value>authorizer</value>
+          <value>enabler</value>
+          <value>subject</value>
+        </choice>
+      </attribute>
       <zeroOrMore>
         <ref name="roledescription"/>
       </zeroOrMore>
@@ -225,9 +241,9 @@
         <zeroOrMore>
           <ref name="forename"/>
         </zeroOrMore>
-        <zeroOrMore>
-          <ref name="initial"/>
-        </zeroOrMore>
+        <optional>
+          <ref name="formatted-initials"/>
+        </optional>
         <ref name="surname"/>
         <zeroOrMore>
           <ref name="addition"/>
@@ -247,8 +263,8 @@
       <ref name="LocalizedString"/>
     </element>
   </define>
-  <define name="initial">
-    <element name="initial">
+  <define name="formatted-initials">
+    <element name="formatted-initials">
       <ref name="LocalizedString"/>
     </element>
   </define>
@@ -264,6 +280,9 @@
   </define>
   <define name="forename">
     <element name="forename">
+      <optional>
+        <attribute name="initial"/>
+      </optional>
       <ref name="LocalizedString"/>
     </element>
   </define>
@@ -497,6 +516,17 @@
   </define>
   <define name="localityStack">
     <element name="localityStack">
+      <optional>
+        <attribute name="connective">
+          <choice>
+            <value>and</value>
+            <value>or</value>
+            <value>from</value>
+            <value>to</value>
+            <value/>
+          </choice>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <ref name="locality"/>
       </zeroOrMore>
@@ -509,6 +539,17 @@
   </define>
   <define name="sourceLocalityStack">
     <element name="sourceLocalityStack">
+      <optional>
+        <attribute name="connective">
+          <choice>
+            <value>and</value>
+            <value>or</value>
+            <value>from</value>
+            <value>to</value>
+            <value/>
+          </choice>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <ref name="sourceLocality"/>
       </zeroOrMore>
@@ -612,14 +653,114 @@
       </attribute>
     </optional>
     <optional>
+      <attribute name="schema-version"/>
+    </optional>
+    <optional>
       <ref name="fetched"/>
     </optional>
-    <choice>
-      <oneOrMore>
-        <ref name="btitle"/>
-      </oneOrMore>
+    <optional>
       <ref name="formattedref"/>
-    </choice>
+    </optional>
+    <oneOrMore>
+      <ref name="btitle"/>
+    </oneOrMore>
+    <zeroOrMore>
+      <ref name="bsource"/>
+    </zeroOrMore>
+    <oneOrMore>
+      <ref name="docidentifier"/>
+    </oneOrMore>
+    <optional>
+      <ref name="docnumber"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="bdate"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="contributor"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="edition"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="version"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="biblionote"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="language"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="locale"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="script"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="bibabstract"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="status"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="copyright"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="docrelation"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="series"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="medium"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="bplace"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="bprice"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="extent"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="bibliographic_size"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="accesslocation"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="license"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="bclassification"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="bkeyword"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="validity"/>
+    </optional>
+  </define>
+  <define name="ReducedBibliographicItem">
+    <optional>
+      <attribute name="type">
+        <ref name="BibItemType"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="schema-version"/>
+    </optional>
+    <optional>
+      <ref name="fetched"/>
+    </optional>
+    <optional>
+      <ref name="formattedref"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="btitle"/>
+    </zeroOrMore>
     <zeroOrMore>
       <ref name="bsource"/>
     </zeroOrMore>
@@ -638,14 +779,17 @@
     <optional>
       <ref name="edition"/>
     </optional>
-    <optional>
+    <zeroOrMore>
       <ref name="version"/>
-    </optional>
+    </zeroOrMore>
     <zeroOrMore>
       <ref name="biblionote"/>
     </zeroOrMore>
     <zeroOrMore>
       <ref name="language"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="locale"/>
     </zeroOrMore>
     <zeroOrMore>
       <ref name="script"/>
@@ -760,6 +904,15 @@
     <optional>
       <attribute name="type"/>
     </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="locale"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
     <data type="anyURI"/>
   </define>
   <define name="DateType">
@@ -788,6 +941,7 @@
       <value>vote-started</value>
       <value>vote-ended</value>
       <value>announced</value>
+      <value>stable-until</value>
     </choice>
   </define>
   <define name="bdate">
@@ -833,6 +987,15 @@
           <data type="boolean"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="locale"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
       <text/>
     </element>
   </define>
@@ -851,16 +1014,45 @@
   </define>
   <define name="bplace">
     <element name="place">
-      <optional>
-        <attribute name="uri">
-          <data type="anyURI"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="region"/>
-      </optional>
+      <choice>
+        <text/>
+        <group>
+          <ref name="bibliocity"/>
+          <zeroOrMore>
+            <ref name="biblioregion"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="bibliocountry"/>
+          </zeroOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="bibliocity">
+    <element name="city">
       <text/>
     </element>
+  </define>
+  <define name="biblioregion">
+    <element name="region">
+      <ref name="RegionType"/>
+    </element>
+  </define>
+  <define name="bibliocountry">
+    <element name="country">
+      <ref name="RegionType"/>
+    </element>
+  </define>
+  <define name="RegionType">
+    <optional>
+      <attribute name="iso"/>
+    </optional>
+    <optional>
+      <attribute name="recommended">
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <text/>
   </define>
   <define name="bprice">
     <element name="price">
@@ -957,36 +1149,34 @@
           <ref name="SeriesType"/>
         </attribute>
       </optional>
-      <choice>
+      <optional>
         <ref name="formattedref"/>
-        <group>
-          <ref name="btitle"/>
-          <optional>
-            <ref name="bplace"/>
-          </optional>
-          <optional>
-            <ref name="seriesorganization"/>
-          </optional>
-          <optional>
-            <ref name="abbreviation"/>
-          </optional>
-          <optional>
-            <ref name="seriesfrom"/>
-          </optional>
-          <optional>
-            <ref name="seriesto"/>
-          </optional>
-          <optional>
-            <ref name="seriesnumber"/>
-          </optional>
-          <optional>
-            <ref name="seriespartnumber"/>
-          </optional>
-          <optional>
-            <ref name="seriesrun"/>
-          </optional>
-        </group>
-      </choice>
+      </optional>
+      <ref name="btitle"/>
+      <optional>
+        <ref name="bplace"/>
+      </optional>
+      <optional>
+        <ref name="seriesorganization"/>
+      </optional>
+      <optional>
+        <ref name="abbreviation"/>
+      </optional>
+      <optional>
+        <ref name="seriesfrom"/>
+      </optional>
+      <optional>
+        <ref name="seriesto"/>
+      </optional>
+      <optional>
+        <ref name="seriesnumber"/>
+      </optional>
+      <optional>
+        <ref name="seriespartnumber"/>
+      </optional>
+      <optional>
+        <ref name="seriesrun"/>
+      </optional>
     </element>
   </define>
   <define name="SeriesType">
@@ -1126,7 +1316,7 @@
       <value>commentaryOf</value>
       <value>hasCommentary</value>
       <value>related</value>
-      <value>complements</value>
+      <value>hasComplement</value>
       <value>complementOf</value>
       <value>obsoletes</value>
       <value>obsoletedBy</value>
@@ -1145,7 +1335,7 @@
         </element>
       </optional>
       <element name="bibitem">
-        <ref name="BibliographicItem"/>
+        <ref name="ReducedBibliographicItem"/>
       </element>
       <choice>
         <zeroOrMore>
@@ -1170,9 +1360,9 @@
       <optional>
         <ref name="revision-date"/>
       </optional>
-      <zeroOrMore>
+      <optional>
         <ref name="draft"/>
-      </zeroOrMore>
+      </optional>
     </element>
   </define>
   <define name="vedition">
