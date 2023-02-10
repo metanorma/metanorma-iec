@@ -18,12 +18,7 @@ module IsoDoc
         return unless @is_iev
 
         if @parse_settings.empty? || @parse_settings[:clauses]
-        terms_iev_names(docxml)
-        end
-        if @parse_settings.empty?
-        middle_section_asset_names(docxml)
-        termnote_anchor_names(docxml)
-        termexample_anchor_names(docxml)
+          terms_iev_names(docxml)
         end
       end
 

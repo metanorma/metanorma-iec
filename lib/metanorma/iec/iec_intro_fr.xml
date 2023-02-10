@@ -9,26 +9,26 @@
         for any other purpose without permission in writing from IEC.
       {% else %}
       <p id="boilerplate-year">
-    © {{ agency }} {{ docyear }}, Publié en Suisse
+    Copyright © {{ docyear }} {{ agency }}, Geneva, Switzerland
   </p>
 
   <p id="boilerplate-message">
-Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne
-peut être reproduite ni utilisée sous quelque forme que ce soit et par aucun procédé, électronique
-ou mécanique, y compris la photocopie, l’affichage sur l’internet ou sur un Intranet, sans
-autorisation écrite préalable. Les demandes d’autorisation peuvent être adressées à l’IEC à
-l’adresse ci-après ou au comité membre de l’IEC dans le pays du demandeur.
+Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne peut être reproduite
+ni utilisée sous quelque forme que ce soit et par aucun procédé, électronique ou mécanique, y compris la photocopie
+et les microfilms, sans l'accord écrit de l'IEC ou du Comité national de l'IEC du pays du demandeur. Si vous avez des
+questions sur le copyright de l'{{ agency }} ou si vous désirez obtenir des droits supplémentaires sur cette publication, utilisez
+les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pays de résidence.
   </p>
 
   <p id="boilerplate-name">IEC Central Office</p>
 
   <p id="boilerplate-address" align="left">
     3, rue de Varembé<br/>
-    CH-1211 Geneva 20, Switzerland<br/>
-    Tel.&#xa0;&#xa0;+ 41 22 919 02 11<br/>
-    Fax&#xa0;&#xa0;+ 41 22 919 03 00<br/>
-    info@iec.ch<br/>
-    www.iec.ch
+    CH-1211 Geneva 20<br/>
+    Switzerland<br/>
+    Tel.:&#xa0;+41 22 919 02 11<br/>
+    <link target="mailto:info@iec.ch">info@iec.ch</link><br/>
+    <link target="https://www.iec.ch">www.iec.ch</link>
   </p>
   {% endif %}
 </clause>

@@ -5,11 +5,11 @@ require_relative "../../relaton/render-iec/general"
 module IsoDoc
   module Iec
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
-      def i18n_init(lang, script, i18nyaml = nil)
+      def i18n_init(lang, script, locale, i18nyaml = nil)
         super
         @i18n_lg = {}
-        @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml || @i18nyaml)
-        @i18n_lg["fr"] = I18n.new("fr", "Latn", i18nyaml || @i18nyaml)
+        @i18n_lg["en"] = I18n.new("en", "Latn", i18nyaml: i18nyaml || @i18nyaml)
+        @i18n_lg["fr"] = I18n.new("fr", "Latn", i18nyaml: i18nyaml || @i18nyaml)
         @i18n_lg["default"] = @i18n
       end
 
@@ -18,6 +18,8 @@ module IsoDoc
                         "//definitions | //references | " \
                         "//preface/introduction[clause]"))
           .each do |f|
+          f.parent.name == "annex" &&
+            @xrefs.klass.single_term_clause?(f.parent) and next
           clause1(f)
         end
         docxml.xpath(ns("//terms")).each do |f|
@@ -38,18 +40,20 @@ module IsoDoc
           .call(elem)
       end
 
-      DICT_PATHS = { doctype_dict: "./ext/doctype", stage_dict: "./status/stage",
+      DICT_PATHS = { doctype_dict: "./ext/doctype",
                      substage_dict: "./status/substage",
                      function_dict: "./ext/function",
                      horizontal_dict: "./ext/horizontal" }.freeze
 
       def bibdata_i18n(bib)
-        fr = IsoDoc::Iec::I18n.new("fr", "Latn")
-        en = IsoDoc::Iec::I18n.new("en", "Latn")
-        [{ lang: "en", i18n: en }, { lang: "fr", i18n: fr }].each do |v|
+        [{ lang: "en", i18n: IsoDoc::Iec::I18n.new("en", "Latn") },
+         { lang: "fr", i18n: IsoDoc::Iec::I18n.new("fr", "Latn") }].each do |v|
           DICT_PATHS.each do |lbl, xpath|
             hash_translate(bib, v[:i18n].get[lbl.to_s], xpath, v[:lang])
           end
+          bibdata_i18n_stage(bib, bib.at(ns("./status/stage")),
+                             bib.at(ns("./ext/doctype")),
+                             lang: v[:lang], i18n: v[:i18n])
         end
       end
 
@@ -121,7 +125,7 @@ module IsoDoc
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
           m << { lang: lg, script: Metanorma::Utils.default_script(lg),
-                 designation: l10n_recursive(p.remove, lg).to_xml.strip }
+                 designation: to_xml(l10n_recursive(p.remove, lg)).strip }
         end
       end
 
@@ -180,7 +184,7 @@ module IsoDoc
         ref = node.at(ns("./xref | ./eref | ./termref"))
         label = @i18n.relatedterms[node["type"]].upcase
         node.replace(l10n("<p>#{label}: " \
-                          "#{p.children.to_xml} (#{ref.to_xml})</p>"))
+                          "#{to_xml(p.children)} (#{to_xml(ref)})</p>"))
         @i18n = @i18n_lg["default"]
       end
 
@@ -202,9 +206,9 @@ module IsoDoc
 
       def termsource1_iev(elem)
         while elem&.next_element&.name == "termsource"
-          elem << l10n("; #{elem.next_element.remove.children.to_xml}")
+          elem << "; #{to_xml(elem.next_element.remove.children)}"
         end
-        elem.children = l10n("#{@i18n.source}: #{elem.children.to_xml.strip}")
+        elem.children = l10n("#{@i18n.source}: #{to_xml(elem.children).strip}")
       end
 
       def termexample(docxml)

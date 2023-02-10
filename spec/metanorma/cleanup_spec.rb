@@ -52,13 +52,11 @@ RSpec.describe Metanorma::Iec do
           </owner>
         </copyright>
         <ext>
-          <doctype>article</doctype>
+          <doctype>standard</doctype>
         <editorialgroup>
-          <technical-committee/>
-          <subcommittee/>
-          <workgroup/>
+          <agency>IEC</agency>
         </editorialgroup>
-        <stagename>International standard</stagename>
+        <stagename>International Standard</stagename>
         <tc-sc-officers-note>
         <p id='_'>
           This FDIS is the result of the discussion between the IEC SC21A
@@ -153,7 +151,7 @@ RSpec.describe Metanorma::Iec do
              <foreword id="_" obligation="informative">
                <title>FOREWORD</title>
                <p id="_">
-               <eref type="inline" bibitemid="iso216" citeas="ISO 216"/>
+               <eref type="inline" bibitemid="iso216" citeas="ISO&#xa0;216"/>
              </p>
              </foreword></preface><sections>
              </sections><bibliography><references id="_" obligation="informative" normative="false">

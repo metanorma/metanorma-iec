@@ -8,11 +8,9 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
               <bibdata>
-              <title>
                   <title type="title-intro" language="en" format="text/plain">Cereals and pulses</title>
           <title type="title-main" language="en" format="text/plain">Specifications and test methods</title>
           <title type="title-part" language="en" format="text/plain">Rice</title>
-        </title>
         </bibdata>
           <preface><foreword>
           <note>
@@ -27,7 +25,7 @@ RSpec.describe IsoDoc do
       .convert("test", input, false)
     expect(File.exist?("test.html")).to be true
     html = File.read("test.html", encoding: "UTF-8")
-    expect(html).to match(%r{<title>Cereals and pulses&#xA0;&#x2014; Specifications and test methods&#xA0;&#x2014; Rice</title>})
+    expect(html).to include HTMLEntities.new.decode("<title>Cereals and pulses&#xA0;&#x2014; Specifications and test methods&#xA0;&#x2014; Rice</title>")
     expect(html).to match(%r{cdnjs\.cloudflare\.com/ajax/libs/mathjax/})
     expect(html).to match(/delimiters: \[\['\(#\(', '\)#\)'\]\]/)
   end
@@ -38,11 +36,9 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
               <bibdata>
-              <title>
                   <title type="title-intro" language="en" format="text/plain">Cereals and pulses</title>
           <title type="title-main" language="en" format="text/plain">Specifications and test methods</title>
           <title type="title-part" language="en" format="text/plain">Rice</title>
-        </title>
         </bibdata>
           <preface><foreword>
           <note>
@@ -57,7 +53,7 @@ RSpec.describe IsoDoc do
       .convert("test", input, false)
     expect(File.exist?("test.html")).to be true
     html = File.read("test.html", encoding: "UTF-8")
-    expect(html).to match(%r{<title>Cereals and pulses&#xA0;&#x2014; Specifications and test methods&#xA0;&#x2014; Rice</title>})
+    expect(html).to include HTMLEntities.new.decode("<title>Cereals and pulses&#xA0;&#x2014; Specifications and test methods&#xA0;&#x2014; Rice</title>")
     expect(html).to match(%r{cdnjs\.cloudflare\.com/ajax/libs/mathjax/})
     expect(html).to match(/delimiters: \[\['\(#\(', '\)#\)'\]\]/)
   end
@@ -293,8 +289,8 @@ RSpec.describe IsoDoc do
                 <a name='samplecode' id='samplecode'/>
                      <tbody>
                        <tr>
-                         <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;" class="TABLE-cell">
-             <p class="CODE-TableCell"><a name="B" id="B"></a>puts "Hello, world."</p>
+                         <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;" class="TABLE-cell">
+             <p class="CODE-TableCell" style="page-break-after:auto"><a name="B" id="B"></a>puts "Hello, world."</p>
              </td>
                        </tr>
                      </tbody>

@@ -64,7 +64,7 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -109,7 +109,7 @@ RSpec.describe IsoDoc do
                   </owner>
                 </copyright>
                 <ext>
-                  <doctype>article</doctype>
+                  <doctype>international-standard</doctype>
                   <editorialgroup>
                     <technical-committee/>
                     <subcommittee/>
@@ -170,8 +170,8 @@ RSpec.describe IsoDoc do
           <status>
             <stage language="">60</stage>
                   <stage language='fr'>Norme internationale</stage>
-                  <stage language='en'>International standard</stage>
-            <substage language="">60</substage>
+                  <stage language='en'>International Standard</stage>
+            <substage>60</substage>
           </status>
           <copyright>
             <from>2020</from>
@@ -183,8 +183,10 @@ RSpec.describe IsoDoc do
             </owner>
           </copyright>
           <ext>
-            <doctype language="">article</doctype>
-            <editorialgroup>
+            <doctype language=''>international-standard</doctype>
+            <doctype language='fr'>Norme internationale</doctype>
+            <doctype language='en'>International Standard</doctype>
+             <editorialgroup identifier='//'>
               <technical-committee/>
               <subcommittee/>
               <workgroup/>
@@ -204,6 +206,7 @@ RSpec.describe IsoDoc do
                 <em>TITLE</em>
               </formattedref>
               <docidentifier>B</docidentifier>
+              <biblio-tag>B, </biblio-tag>
             </bibitem>
           </references>
           <references id='_' obligation='informative' normative='false' displayorder="2">
@@ -215,6 +218,7 @@ RSpec.describe IsoDoc do
               </formattedref>
               <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
+              <biblio-tag>[1]<tab/>B, </biblio-tag>
             </bibitem>
           </references>
         </bibliography>
@@ -235,7 +239,7 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -445,7 +449,7 @@ RSpec.describe IsoDoc do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -509,7 +513,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -598,7 +602,7 @@ RSpec.describe IsoDoc do
             <doctype language=''>international-standard</doctype>
             <doctype language='fr'>Norme internationale</doctype>
             <doctype language='en'>International Standard</doctype>
-            <horizontal language=''>false</horizontal>
+            <horizontal>false</horizontal>
             <structuredidentifier>
               <project-number part='192'>IEC 60050</project-number>
             </structuredidentifier>
@@ -621,7 +625,7 @@ RSpec.describe IsoDoc do
                 <termnote id='_5f49cfad-e57e-5029-78cf-5b7e3e10a3b3'>
                   <name>Note 1 to entry</name>
                   <p id='_8c830e60-8f09-73a2-6393-2a27d9c5b1ce'>Dependability includes availability (<em>192-01-02</em>
-                     (<xref target='term-sub-item'>192-01-02</xref>),
+                     (<xref target='term-sub-item'><span class='citesec'>192-01-02</span></xref>),
                     <em>191-01-02</em>
                      [term defined in
                     <termref base='IEV' target='191-01-02'/>])</p>
@@ -639,7 +643,7 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -740,7 +744,7 @@ RSpec.describe IsoDoc do
                    CONTRAST: 
                    <strong>Fifth Designation</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <termexample id='_671a1994-4783-40d0-bc81-987d06ffb740'>
@@ -786,14 +790,14 @@ RSpec.describe IsoDoc do
                    CONTRASTEZ: 
                    <strong>Designation cinqui&#xE8;me</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <p>
                    VOIR: 
                    <strong>Designation sixi&#xE8;me</strong>
                     (
-                   <xref target='paddy1'>192-01-02</xref>
+                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                    )
                  </p>
                  <termexample id='_671a1994-4783-40d0-bc81-987d06ffb741'>
@@ -859,7 +863,7 @@ RSpec.describe IsoDoc do
                    <dd language='zh' script='Hans'>
                      <preferred>
                        <strong>&#x4EA7;&#x54C1;</strong>
-                       , &#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;&#x3e;
+                       &#xff0c; &#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;/&#x3e;
                      </preferred>
                    </dd>
                  </dl>
@@ -878,7 +882,7 @@ RSpec.describe IsoDoc do
          </sections>
        </iso-standard>
     PRESXML
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
