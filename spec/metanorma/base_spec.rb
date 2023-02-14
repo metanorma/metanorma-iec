@@ -578,6 +578,71 @@ RSpec.describe Metanorma::Iec do
       .to be_equivalent_to xmlpp(output)
   end
 
+  it "processes docidentifier override" do
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib:
+      :docidentifier: OVERRIDE
+      :docnumber: 1000
+      :docstage: A2CD
+      :doctype: technical-specification
+    INPUT
+    output = <<~OUTPUT
+          <bibdata type="standard">
+        <docidentifier type="ISO">IEC OVERRIDE</docidentifier>
+        <docnumber>1000</docnumber>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Electrotechnical Commission</name>
+            <abbreviation>IEC</abbreviation>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Electrotechnical Commission</name>
+            <abbreviation>IEC</abbreviation>
+          </organization>
+        </contributor>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage abbreviation="CD">30</stage>
+          <substage abbreviation="A22CD">99</substage>
+          <iteration>2</iteration>
+        </status>
+        <copyright>
+          <from>2023</from>
+          <owner>
+            <organization>
+              <name>International Electrotechnical Commission</name>
+              <abbreviation>IEC</abbreviation>
+            </organization>
+          </owner>
+        </copyright>
+        <ext>
+          <doctype>technical-specification</doctype>
+          <editorialgroup>
+            <agency>IEC</agency>
+          </editorialgroup>
+          <structuredidentifier>
+            <project-number>IEC 1000</project-number>
+          </structuredidentifier>
+          <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
+        </ext>
+      </bibdata>
+    OUTPUT
+    xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    xml = xml.at("//xmlns:bibdata")
+    expect(xmlpp(xml.to_xml))
+      .to be_equivalent_to xmlpp(output)
+  end
+
   it "processes boilerplate in English" do
     doc = strip_guid(Asciidoctor.convert(<<~"INPUT", *OPTIONS))
       = Document title

@@ -42,12 +42,14 @@ module Metanorma
       end
 
       def iso_id(node, xml)
-        return unless node.attr("docnumber")
+        return unless node.attr("docnumber") || node.attr("docidentifier")
 
-        part, subpart = node&.attr("partnumber")&.split(/-/)
-        dn = add_id_parts(node.attr("docnumber"), part, subpart)
-        dn = id_stage_prefix(dn, node)
-        dn = id_edition_suffix(dn, node)
+        unless dn = node.attr("docidentifier")
+          part, subpart = node&.attr("partnumber")&.split(/-/)
+          dn = add_id_parts(node.attr("docnumber"), part, subpart)
+          dn = id_stage_prefix(dn, node)
+          dn = id_edition_suffix(dn, node)
+        end
         xml.docidentifier dn, **attr_code(type: "ISO")
       end
 
