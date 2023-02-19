@@ -53,4 +53,25 @@ RSpec.describe Metanorma::Iec do
     INPUT
     expect(File.read("test.err")).to include "pizza is not a recognised document function"
   end
+
+  it "warns of explicit style set on ordered list" do
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+      [arabic]
+      . A
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Style override set for ordered list"
+
+    Asciidoctor.convert(<<~"INPUT", *OPTIONS)
+      #{VALIDATING_BLANK_HDR}
+
+      == Clause
+      . A
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Style override set for ordered list"
+  end
 end
