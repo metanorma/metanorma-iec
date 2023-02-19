@@ -134,7 +134,8 @@ module Metanorma
 
       def ol_attrs(node)
         attr_code(keep_attrs(node)
-                  .merge(id: ::Metanorma::Utils::anchor_or_uuid(node)))
+                  .merge(id: ::Metanorma::Utils::anchor_or_uuid(node),
+                         "explicit-type": olist_style(node.attributes[1])))
       end
 
       # TODO remove when I adopt pubid-iec
@@ -143,11 +144,11 @@ module Metanorma
         xmldoc.xpath("//bibdata/contributor[role/@type = 'publisher']" \
                      "/organization").each_with_object([]) do |x, prefix|
           x1 = x.at("abbreviation")&.text || x.at("name")&.text
-          #(x1 == "IEC" and prefix.unshift("IEC")) or prefix << x1
+          # (x1 == "IEC" and prefix.unshift("IEC")) or prefix << x1
           prefix << x1
         end
       end
-#
+
       def docidentifier_cleanup(xmldoc)
         prefix = get_id_prefix(xmldoc)
         id = xmldoc.at("//bibdata/docidentifier[@type = 'ISO']") or return
