@@ -1,5 +1,6 @@
 require_relative "init"
 require "isodoc"
+require_relative "../../relaton/render-iec/general"
 
 module IsoDoc
   module Iec
@@ -231,6 +232,11 @@ module IsoDoc
         lbl = @i18n.termnote.gsub(/%/, val)
         prefix_name(elem, "", lower2cap(lbl), "name")
         @i18n = @i18n_lg["default"]
+      end
+
+      def bibrenderer
+        ::Relaton::Render::Iec::General.new(language: @lang,
+                                            i18nhash: @i18n.get)
       end
 
       include Init
