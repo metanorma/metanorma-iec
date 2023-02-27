@@ -69,6 +69,20 @@ RSpec.describe Metanorma::Iec do
       </tc-sc-officers-note>
         </ext>
       </bibdata>
+               <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
                     <sections>
                <clause id="_" inline-header="false" obligation="normative">

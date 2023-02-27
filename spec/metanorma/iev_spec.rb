@@ -68,6 +68,20 @@ RSpec.describe Metanorma::Iec do
                          <stagename>International Standard</stagename>
                  </ext>
                </bibdata>
+                        <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
                #{@boilerplate}
                <sections> </sections>
                <bibliography>
@@ -154,6 +168,20 @@ RSpec.describe Metanorma::Iec do
             <stagename>International Standard</stagename>
           </ext>
         </bibdata>
+                 <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
                  #{@boilerplate}
                  <sections>
            <terms id="_" obligation="normative">
@@ -237,6 +265,20 @@ RSpec.describe Metanorma::Iec do
                <stagename>International Standard</stagename>
              </ext>
            </bibdata>
+                    <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
            #{@boilerplate}
            <preface>
              <introduction id='_' obligation='informative'>
