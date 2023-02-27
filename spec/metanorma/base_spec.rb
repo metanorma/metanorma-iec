@@ -186,6 +186,20 @@ RSpec.describe Metanorma::Iec do
             <interest-to-committees>TC 6121, SC 12</interest-to-committees>
           </ext>
         </bibdata>
+                 <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
         <boilerplate>
           <copyright-statement>
             <clause>
@@ -439,6 +453,20 @@ RSpec.describe Metanorma::Iec do
             <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
           </ext>
         </bibdata>
+                 <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
         <boilerplate>
           <copyright-statement>
             <clause>
@@ -739,6 +767,20 @@ RSpec.describe Metanorma::Iec do
           <stagename abbreviation="FDIS">Final Draft International Standard</stagename>
         </ext>
       </bibdata>
+               <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
          <boilerplate>
                  <copyright-statement>
                    <clause>
@@ -940,6 +982,20 @@ RSpec.describe Metanorma::Iec do
           <stagename>International Standard</stagename>
         </ext>
       </bibdata>
+               <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
       <sections/>
       </iec-standard>
@@ -1005,6 +1061,20 @@ RSpec.describe Metanorma::Iec do
           <stagename abbreviation="PRF">Proof of a new International Standard</stagename>
         </ext>
       </bibdata>
+               <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+         </metanorma-extension>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
       <sections/>
       </iec-standard>
