@@ -132,9 +132,9 @@ RSpec.describe Metanorma::Iec::Processor do
     FileUtils.rm_f "test.xml"
     FileUtils.rm_f "test.html"
     processor.output(inputxml, "test.xml", "test.html", :html)
-    expect(xmlpp(File.read("test.html", encoding: "utf-8")
+    expect(xmlpp(strip_guid(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
-      .gsub(%r{</main>.*}m, "</main>")))
+      .gsub(%r{</main>.*}m, "</main>"))))
       .to be_equivalent_to xmlpp(<<~"OUTPUT")
                   <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                      <br />
@@ -146,14 +146,14 @@ RSpec.describe Metanorma::Iec::Processor do
         </p>
         <p class="zzSTDTitle1">&#xA0;</p>
         <div id="">
-          <h1 class="ForewordTitle" id="toc0">AVANT-PROPOS</h1>
+          <h1 class="ForewordTitle" id="_">AVANT-PROPOS</h1>
           <div class="boilerplate_legal"></div>
         </div>
         <p class="zzSTDTitle1">
           <b>French</b>
         </p>
         <p class="zzSTDTitle1">&#xA0;</p>
-                    <div id="H"><h1 id="toc1">1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
+                    <div id="H"><h1 id="_">1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
               <h2 class="TermNum" id="J">1.1</h2>
                 <p class="Terms" style="text-align:left;">Term2</p>
               </div>
