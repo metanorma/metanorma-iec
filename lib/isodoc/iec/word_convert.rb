@@ -11,6 +11,19 @@ module IsoDoc
         @libdir = File.dirname(__FILE__)
       end
 
+      def convert(input_filename, file = nil, debug = false,
+                output_filename = nil)
+      file = File.read(input_filename, encoding: "utf-8") if file.nil?
+      @openmathdelim, @closemathdelim = extract_delims(file)
+      docxml, filename, dir = convert_init(file, input_filename, debug)
+      result = convert1(docxml, filename, dir)
+      return result if debug
+
+      output_filename ||= "#{filename}.#{@suffix}"
+      postprocess(result, output_filename, dir)
+      FileUtils.rm_rf dir
+    end
+
       def font_choice(options)
         if options[:script] == "Hans" then '"Source Han Sans",serif'
         else '"Arial",sans-serif'
