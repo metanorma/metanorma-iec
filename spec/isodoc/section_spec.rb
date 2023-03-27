@@ -441,24 +441,35 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-          <body lang='EN-US' link='blue' vlink='#954F72'>
-        <div class='WordSection1'>
-          <p>&#xa0;</p>
+      <body lang="EN-US" link="blue" vlink="#954F72">
+        <div class="WordSection2">
+          <p>
+            <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+          </p>
+          <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+          <p class="zzSTDTitle1">____________</p>
+          <p class="zzSTDTitle1"> </p>
+          <p class="zzSTDTitle1">
+            <b/>
+          </p>
+          <p class="zzSTDTitle1"> </p>
+          <div id="">
+            <h1 class="ForewordTitle">FOREWORD</h1>
+            <div class="boilerplate_legal"/>
+          </div>
+          <p> </p>
         </div>
         <p>
-          <br clear='all' class='section'/>
+          <br clear="all" class="section"/>
         </p>
-        <div class='WordSection2'>
-          <p>&#xa0;</p>
+        <div class="WordSection3">
+          <p class="zzSTDTitle1">
+            <b/>
+          </p>
+          <p class="zzSTDTitle1"> </p>
         </div>
-        <p>
-          <br clear='all' class='section'/>
-        </p>
-        <div class='WordSection3'>
-          <p class='zzSTDTitle'/>
-        </div>
-        <br clear='all' style='page-break-before:left;mso-break-type:section-break'/>
-        <div class='colophon'/>
+        <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
+        <div class="colophon"/>
       </body>
     OUTPUT
     expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", input, true)
