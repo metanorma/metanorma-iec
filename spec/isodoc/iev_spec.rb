@@ -339,7 +339,7 @@ RSpec.describe IsoDoc do
       <name>192-01-02</name>
       <preferred><strong>paddy</strong></preferred><admitted>paddy rice</admitted>
       <admitted>rough rice</admitted>
-      <deprecates>cargo rice</deprecates>
+      <deprecates>DEPRECATED: cargo rice</deprecates>
       <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">&#x3c;rice&#x3e; rice retaining its husk after threshing</p></definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
       <name>EXAMPLE</name>
@@ -736,7 +736,7 @@ RSpec.describe IsoDoc do
                  </preferred>
                  <admitted>paddy rice</admitted>
                  <admitted>rough rice</admitted>
-                 <deprecates>cargo rice</deprecates>
+                 <deprecates>DEPRECATED: cargo rice</deprecates>
                  <definition>
                    <p id='_eb29b35e-123e-4d1c-b50b-2714d41e747f'>set of interrelated items that collectively fulfil a requirement</p>
                  </definition>
