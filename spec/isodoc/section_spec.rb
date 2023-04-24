@@ -70,22 +70,22 @@ RSpec.describe IsoDoc do
 
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-      <preface>
-      <foreword obligation="informative" displayorder="1">
+      #{PREFACE}
+      <foreword obligation="informative" displayorder="8">
          <title>Foreword</title>
          <p id="A">This is a preamble</p>
        </foreword>
-        <introduction id="B" obligation="informative" displayorder="2"><title depth="1">Introduction</title><clause id="C" inline-header="false" obligation="informative">
+        <introduction id="B" obligation="informative" displayorder="9"><title depth="1">Introduction</title><clause id="C" inline-header="false" obligation="informative">
          <title depth="2">0.1<tab/>Introduction Subsection</title>
        </clause>
        <p>This is patent boilerplate</p>
        </introduction></preface><sections>
-       <clause id="D" obligation="normative" type="scope" displayorder="3">
+       <clause id="D" obligation="normative" type="scope" displayorder="10">
          <title depth="1">1<tab/>Scope</title>
          <p id="E">Text</p>
        </clause>
 
-       <clause id="H" obligation="normative" displayorder="5"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+       <clause id="H" obligation="normative" displayorder="12"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
          <title depth="2">3.1<tab/>Normal Terms</title>
          <term id="J"><name>3.1.1</name>
          <preferred>Term2</preferred>
@@ -98,20 +98,20 @@ RSpec.describe IsoDoc do
          </dl>
        </definitions>
        </clause>
-       <definitions id="L" displayorder="6"><title>4</title>
+       <definitions id="L" displayorder="13"><title>4</title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
          </dl>
        </definitions>
-       <clause id="M" inline-header="false" obligation="normative" displayorder="7"><title depth="1">5<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+       <clause id="M" inline-header="false" obligation="normative" displayorder="14"><title depth="1">5<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
          <title depth="2">5.1<tab/>Introduction</title>
        </clause>
        <clause id="O" inline-header="false" obligation="normative">
          <title depth="2">5.2<tab/>Clause 4.2</title>
        </clause></clause>
 
-       </sections><annex id="P" inline-header="false" obligation="normative" displayorder="8">
+       </sections><annex id="P" inline-header="false" obligation="normative" displayorder="15">
          <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
          <clause id="Q" inline-header="false" obligation="normative">
          <title depth="2">A.1<tab/>Annex A.1</title>
@@ -122,9 +122,9 @@ RSpec.describe IsoDoc do
               <appendix id="Q2" inline-header="false" obligation="normative">
          <title depth="2">Appendix 1<tab/>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="4">
+       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="11">
          <title depth="1">2<tab/>Normative References</title>
-       </references><clause id="S" obligation="informative" displayorder="9">
+       </references><clause id="S" obligation="informative" displayorder="16">
          <title depth="1">Bibliography</title>
          <references id="T" obligation="informative" normative="false">
          <title depth="2">Bibliography Subsection</title>
@@ -148,10 +148,13 @@ RSpec.describe IsoDoc do
              <br/>
              <div class="main-section">
                <br/>
+                     <div id="_" class="TOC">
+        <h1 class="IntroTitle">Contents</h1>
+      </div>
+      <br/>
                #{IEC_TITLE}
                   <div>
                     <h1 class="ForewordTitle">FOREWORD</h1>
-                    <div class="boilerplate_legal"/>
                     <p id="A">This is a preamble</p>
                   </div>
                   <br/>
@@ -225,10 +228,15 @@ RSpec.describe IsoDoc do
           <body lang="EN-US" link="blue" vlink="#954F72">
             <div class="WordSection2">
               <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+                  <div id="_" class="TOC">
+      <p class="zzContents">Contents</p>
+    </div>
+    <p>
+      <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+    </p>
               #{IEC_TITLE}
               <div>
                 <h1 class="ForewordTitle">FOREWORD</h1>
-                <div class="boilerplate_legal"/>
                 <p id="A">This is a preamble</p>
               </div>
               <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
@@ -305,8 +313,8 @@ RSpec.describe IsoDoc do
             <div class="colophon"/>
           </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
     expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
@@ -332,8 +340,9 @@ RSpec.describe IsoDoc do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
+      #{PREFACE}</preface>
         <sections>
-          <clause id='D' obligation='normative' displayorder="1">
+          <clause id='D' obligation='normative' displayorder="8">
             <title depth='1'>
               1
               <tab/>
@@ -353,8 +362,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
   end
 
   it "processes simple terms & definitions" do
@@ -371,11 +380,7 @@ RSpec.describe IsoDoc do
        </iso-standard>
     INPUT
     output = <<~OUTPUT
-          #{HTML_HDR}
-                      <div id="">
-         <h1 class="ForewordTitle">FOREWORD</h1>
-         <div class="boilerplate_legal"/>
-       </div>
+          #{HTML_HDR_BARE}
       #{IEC_TITLE1}
                      <div id="H"><h1>1&#160; Terms, Definitions, Symbols and Abbreviated Terms</h1>
              <p class="TermNum" id="J">1.1</p>
@@ -404,11 +409,7 @@ RSpec.describe IsoDoc do
             </iso-standard>
     INPUT
     output = <<~OUTPUT
-          #{HTML_HDR}
-          <div id="">
-        <h1 class="ForewordTitle">FOREWORD</h1>
-        <div class="boilerplate_legal"/>
-      </div>
+          #{HTML_HDR_BARE}
                      #{IEC_TITLE1}
                      <div id="M">
                        <h1>1&#160; Clause 4</h1>
@@ -443,20 +444,6 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
       <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <p>
-            <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-          </p>
-          <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-          <p class="zzSTDTitle1">____________</p>
-          <p class="zzSTDTitle1"> </p>
-          <p class="zzSTDTitle1">
-            <b/>
-          </p>
-          <p class="zzSTDTitle1"> </p>
-          <div id="">
-            <h1 class="ForewordTitle">FOREWORD</h1>
-            <div class="boilerplate_legal"/>
-          </div>
           <p> </p>
         </div>
         <p>
@@ -491,23 +478,20 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-               <body lang="EN-US" link="blue" vlink="#954F72">
-                 <div class="WordSection2">
-                    <p>
-        <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-      </p>
-      #{IEC_TITLE}
-      <div id="">
-        <h1 class="ForewordTitle">FOREWORD</h1>
-        <div class="boilerplate_legal"/>
-      </div>
-      <p>&#160;</p>
-                 </div>
-                 <p><br clear="all" class="section"/></p>
-                 <div class="WordSection3">
-                   #{IEC_TITLE1}
-                 </div>
-               </body>
+      <body lang="EN-US" link="blue" vlink="#954F72">
+           <div class="WordSection2">
+             <p> </p>
+           </div>
+           <p>
+             <br clear="all" class="section"/>
+           </p>
+           <div class="WordSection3">
+             <p class="zzSTDTitle1">
+               <b/>
+             </p>
+             <p class="zzSTDTitle1"> </p>
+           </div>
+         </body>
     OUTPUT
     expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true)
@@ -531,20 +515,73 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-          #{HTML_HDR}
-          <div id="">
-        <h1 class="ForewordTitle">FOREWORD</h1>
-        <div class="boilerplate_legal">
-             <p>Boilerplate</p>
-                      </div>
-      </div>
-                     #{IEC_TITLE1}
-                   </div>
-                 </body>
-             </html>
+        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <bibdata>
+            <ext>
+              <doctype>International Standard</doctype>
+            </ext>
+          </bibdata>
+          <boilerplate>
+            <legal-statement>
+              <p>Boilerplate</p>
+            </legal-statement>
+          </boilerplate>
+          #{PREFACE}    <foreword id="_" displayorder="8">
+        <clause type="boilerplate_legal">
+          <p>Boilerplate</p>
+        </clause>
+      </foreword>
+      </preface>
+          <sections/>
+        </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
-    .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
+
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+        <ext><doctype>International Standard</doctype></ext>
+      </bibdata>
+      <boilerplate>
+        <legal-statement>
+          <p>Boilerplate</p>
+        </legal-statement>
+      </boilerplate>
+      <preface><foreword><title>Foreword</title><p>A</p></foreword></preface>
+      <sections/>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+        <bibdata>
+          <ext>
+            <doctype>International Standard</doctype>
+          </ext>
+        </bibdata>
+        <boilerplate>
+          <legal-statement>
+            <p>Boilerplate</p>
+          </legal-statement>
+        </boilerplate>
+        #{PREFACE}#{'  '}
+                <foreword displayorder="8">
+          <title>Foreword</title>
+                <clause type="boilerplate_legal">
+        <p>Boilerplate</p>
+      </clause>
+          <p>A</p>
+        </foreword>
+        </preface>
+        <sections/>
+      </iso-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
   end
 
   it "does not add boilerplate to foreword in amendments" do
@@ -562,16 +599,65 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-          #{HTML_HDR}
-          <div id="">
-        <h1 class="ForewordTitle">FOREWORD</h1>
-      </div>
-                     #{IEC_TITLE1}
-                   </div>
-                 </body>
-             </html>
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+        <bibdata>
+          <ext>
+            <doctype>Amendment</doctype>
+          </ext>
+        </bibdata>
+        <boilerplate>
+          <legal-statement>
+            <p>Boilerplate</p>
+          </legal-statement>
+        </boilerplate>
+        #{PREFACE}
+        </preface>
+        <sections/>
+      </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", input, true))).to be_equivalent_to xmlpp(output)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
+
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+        <ext><doctype>Amendment</doctype></ext>
+      </bibdata>
+      <boilerplate>
+        <legal-statement>
+          <p>Boilerplate</p>
+        </legal-statement>
+      </boilerplate>
+      <preface><foreword><title>Foreword</title></foreword><p>A</p></preface>
+      <sections/>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <bibdata>
+            <ext>
+              <doctype>Amendment</doctype>
+            </ext>
+          </bibdata>
+          <boilerplate>
+            <legal-statement>
+              <p>Boilerplate</p>
+            </legal-statement>
+          </boilerplate>
+          #{PREFACE}
+          <foreword displayorder="8">
+        <title>Foreword</title>
+      </foreword>
+      <p displayorder="9">A</p>
+          </preface>
+          <sections/>
+        </iso-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)
+    .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
   end
 end

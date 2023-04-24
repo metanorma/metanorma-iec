@@ -15,10 +15,9 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      #{HTML_HDR}
+      #{HTML_HDR_BARE}
                  <div>
                    <h1 class="ForewordTitle">FOREWORD</h1>
-                   <div class="boilerplate_legal"/>
                    <p>
          <i>A</i> <b>B</b> <sup>C</sup> <sub>D</sub> <tt>E</tt>
          <s>F</s> <span style="font-variant:small-caps;">G</span> <br/> <hr/>
@@ -50,10 +49,9 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      #{HTML_HDR}
+      #{HTML_HDR_BARE}
                  <div>
                    <h1 class="ForewordTitle">FOREWORD</h1>
-                   <div class="boilerplate_legal"/>
                    <p>
          <a href="http://example.com">http://example.com</a>
          <a href="http://example.com">example</a>
@@ -83,10 +81,9 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      #{HTML_HDR}
+      #{HTML_HDR_BARE}
                  <div>
                    <h1 class="ForewordTitle">FOREWORD</h1>
-                   <div class="boilerplate_legal"/>
                    <p>
          <para><b role="strong">&lt;barry fred="http://example.com"&gt;example&lt;/barry&gt;</b></para>
          </p>
@@ -114,10 +111,9 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      #{HTML_HDR}
+      #{HTML_HDR_BARE}
                  <div>
                    <h1 class="ForewordTitle">FOREWORD</h1>
-                   <div class="boilerplate_legal"/>
                    <p>
          <span class="stem">(#(((A)#)))</span>
          (#((Hello))#)
@@ -169,7 +165,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="1">
+      <foreword displayorder="8">
         <p>
           <eref type='inline' bibitemid='IEV' citeas='IEV'>
             <locality type='clause'>

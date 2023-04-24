@@ -60,6 +60,9 @@ RSpec.describe Metanorma::Iec::Processor do
     </ext>
     </bibdata>
     <boilerplate>
+      <legal-statement>
+      <p>THIS IS A LEGAL STATEMENT</p>
+      </legal-statement>
       <copyright-statement>
         <clause>
           <title>DOCUMENT PROT&#201;G&#201; PAR COPYRIGHT</title>
@@ -106,7 +109,7 @@ RSpec.describe Metanorma::Iec::Processor do
   end
 
   it "registers output formats against metanorma" do
-    expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~OUTPUT
       [[:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:sts, "sts.xml"], [:xml, "xml"]]
     OUTPUT
   end
@@ -128,43 +131,52 @@ RSpec.describe Metanorma::Iec::Processor do
       .to be_equivalent_to xmlpp(output)
   end
 
-  it "generates HTML from IsoDoc XML" do
+  it "generates HTML from IsoDoc XML, with boilerplate moving to foreword" do
     FileUtils.rm_f "test.xml"
+    FileUtils.rm_f "test.presentation.xml"
     FileUtils.rm_f "test.html"
-    processor.output(inputxml, "test.xml", "test.html", :html)
+    processor.output(inputxml, "test.xml", "test.presentation.xml",
+                     :presentation)
+    processor.output(File.read("test.presentation.xml", encoding: "utf-8"),
+                     "test.presentation.xml", "test.html", :html)
     expect(xmlpp(strip_guid(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>"))))
-      .to be_equivalent_to xmlpp(<<~"OUTPUT")
-                  <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-                     <br />
-        <p class="zzSTDTitle1">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
-        <p class="zzSTDTitle1">____________</p>
-        <p class="zzSTDTitle1">&#xA0;</p>
-        <p class="zzSTDTitle1">
-          <b>French</b>
-        </p>
-        <p class="zzSTDTitle1">&#xA0;</p>
-        <div id="">
-          <h1 class="ForewordTitle" id="_">AVANT-PROPOS</h1>
-          <div class="boilerplate_legal"></div>
-        </div>
-        <p class="zzSTDTitle1">
-          <b>French</b>
-        </p>
-        <p class="zzSTDTitle1">&#xA0;</p>
-                    <div id="H"><h1 id="_">1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
-              <h2 class="TermNum" id="J">1.1</h2>
-                <p class="Terms" style="text-align:left;">Term2</p>
-              </div>
-                  </main>
+      .to be_equivalent_to xmlpp(<<~OUTPUT)
+            <main class="main-section">
+          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+          <br/>
+          <br/>
+          <p class="zzSTDTitle1">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
+          <p class="zzSTDTitle1">____________</p>
+          <p class="zzSTDTitle1"> </p>
+          <p class="zzSTDTitle1">
+            <b>FRENCH</b>
+          </p>
+          <p class="zzSTDTitle1"> </p>
+          <div id="_">
+            <h1 class="ForewordTitle" id="_">AVANT-PROPOS</h1>
+            <div class="boilerplate_legal">
+              <p>THIS IS A LEGAL STATEMENT</p>
+            </div>
+          </div>
+          <p class="zzSTDTitle1">
+            <b>French</b>
+          </p>
+          <p class="zzSTDTitle1"> </p>
+          <div id="H">
+            <h1 id="_">1  1  Terms, Definitions, Symbols and Abbreviated Terms</h1>
+            <h2 class="TermNum" id="J">1.11.1</h2>
+            <p class="Terms" style="text-align:left;">Term2</p>
+          </div>
+        </main>
       OUTPUT
   end
 
   it "generates STS from Metanorma XML" do
     FileUtils.rm_f "test.xml"
     FileUtils.rm_f "test.sts.xml"
-    File.open("test.xml", "w") { |f| f.write inputxml }
+    File.write("test.xml", inputxml)
     processor.output(inputxml, "test.xml", "test.sts.xml", :sts)
     expect(File.exist?("test.sts.xml")).to be true
   end

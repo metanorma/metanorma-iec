@@ -88,10 +88,9 @@ RSpec.describe IsoDoc::Iec do
           </iso-standard>
     INPUT
     html = <<~OUTPUT
-       #{HTML_HDR}
+       #{HTML_HDR_BARE}
             <div>
               <h1 class="ForewordTitle">FOREWORD</h1>
-              <div class="boilerplate_legal"/>
               <div id="samplecode" class="example">
                 <p><span class="example_label">EXAMPLE</span>&#160; Hello</p>
               </div>
@@ -104,13 +103,8 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
             <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <p>
-            <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-          </p>
-          #{IEC_TITLE}
           <div>
             <h1 class="ForewordTitle">FOREWORD</h1>
-            <div class="boilerplate_legal"/>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
             </div>
@@ -153,10 +147,9 @@ RSpec.describe IsoDoc::Iec do
           </iso-standard>
     INPUT
     html = <<~OUTPUT
-       #{HTML_HDR}
+       #{HTML_HDR_BARE}
             <div>
               <h1 class="ForewordTitle">FOREWORD</h1>
-              <div class="boilerplate_legal"/>
               <div id="samplecode" class="example">
                 <p><span class="example_label">EXAMPLE  1</span>&#160; Hello</p>
               </div>
@@ -173,13 +166,8 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
         <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <p>
-            <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-          </p>
-          #{IEC_TITLE}
           <div>
             <h1 class="ForewordTitle">FOREWORD</h1>
-            <div class="boilerplate_legal"/>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
             </div>
