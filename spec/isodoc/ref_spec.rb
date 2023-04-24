@@ -130,8 +130,9 @@ RSpec.describe IsoDoc::Iec do
               <bibdata>
               <language current="true">en</language>
               </bibdata>
-              <preface><foreword displayorder="1">
-            <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+              #{PREFACE}
+              <foreword displayorder="8">
+            <p id="_">
             <eref bibitemid="ISO712">[110]</eref>
             <eref bibitemid="ISBN">[1]</eref>
             <eref bibitemid="ISSN">[2]</eref>
@@ -142,7 +143,7 @@ RSpec.describe IsoDoc::Iec do
             <eref bibitemid="zip_ffs">[5]</eref>
             </p>
               </foreword></preface>
-              <bibliography><references id="_normative_references" obligation="informative" normative="true" displayorder="2"><title depth="1">1<tab/>Normative References</title>
+              <bibliography><references id="_" obligation="informative" normative="true" displayorder="9"><title depth="1">1<tab/>Normative References</title>
               <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
           <bibitem id="ISO712" type="standard">
             <formattedref><em><span class='stddocTitle'>Cereals and cereal products</span></em></formattedref>
@@ -170,7 +171,7 @@ RSpec.describe IsoDoc::Iec do
               <bibitem id="zip_ffs"><formattedref format="application/x-isodoc+xml">Title 5</formattedref><docidentifier type="metanorma">[5]</docidentifier>
               <biblio-tag>[5] </biblio-tag>
             </bibitem>
-          </references><references id="_bibliography" obligation="informative" normative="false" displayorder="3">
+          </references><references id="_" obligation="informative" normative="false" displayorder="10">
             <title depth="1">Bibliography</title>
           <bibitem id="ISBN" type="book">
             <formattedref><em>Chemicals for analytical laboratory use</em>. n.p.: n.d.</formattedref>
@@ -218,8 +219,7 @@ RSpec.describe IsoDoc::Iec do
       #{HTML_HDR}
             <div>
               <h1 class='ForewordTitle'>FOREWORD</h1>
-              <div class='boilerplate_legal'/>
-              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f'>
+              <p id='_'>
                 <a href='#ISO712'>[110]</a>
                 <a href='#ISBN'>[1]</a>
                 <a href='#ISSN'>[2]</a>
@@ -266,10 +266,10 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
-      .gsub(%r{reference="[^"]+"}m, 'reference="1"')))
+      .gsub(%r{reference="[^"]+"}m, 'reference="1"'))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml,

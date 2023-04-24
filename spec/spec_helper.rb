@@ -64,7 +64,7 @@ def presxml_options
   { semanticxmlinsert: "false" }
 end
 
-ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
+ASCIIDOC_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -74,7 +74,7 @@ ASCIIDOC_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-ISOBIB_BLANK_HDR = <<~"HDR".freeze
+ISOBIB_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -84,7 +84,7 @@ ISOBIB_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-FLUSH_CACHE_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+FLUSH_CACHE_ISOBIB_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -94,7 +94,7 @@ FLUSH_CACHE_ISOBIB_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+CACHED_ISOBIB_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -103,7 +103,7 @@ CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
+LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -113,7 +113,7 @@ LOCAL_CACHED_ISOBIB_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-VALIDATING_BLANK_HDR = <<~"HDR".freeze
+VALIDATING_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
@@ -122,7 +122,7 @@ VALIDATING_BLANK_HDR = <<~"HDR".freeze
 
 HDR
 
-TERMS_BOILERPLATE = <<~"BOILERPLATE".freeze
+TERMS_BOILERPLATE = <<~BOILERPLATE.freeze
          <p id="_">ISO and IEC maintain terminological databases for use in
          standardization at the following addresses:</p>
           <ul id="_">
@@ -215,6 +215,21 @@ def blank_hdr_gen
   HDR
 end
 
+PREFACE = <<~HDR.freeze
+    <preface>
+  <clause type="toc" id="_" displayorder="1">
+    <title depth="1">Contents</title>
+  </clause>
+  <pagebreak displayorder="2"/>
+  <p class="zzSTDTitle1" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+  <p class="zzSTDTitle1" displayorder="4">____________</p>
+  <p class="zzSTDTitle1" displayorder="5"> </p>
+  <p class="zzSTDTitle1" displayorder="6">
+    <strong/>
+  </p>
+  <p class="zzSTDTitle1" displayorder="7"> </p>
+HDR
+
 IEC_TITLE = <<~TITLE.freeze
   <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
               <p class="zzSTDTitle1">____________</p>
@@ -246,7 +261,26 @@ HTML_HDR = <<~HDR.freeze
       <br/>
       <div class="main-section">
        <br/>
+                    <div id="_" class="TOC">
+               <h1 class="IntroTitle">Contents</h1>
+             </div>
+             <br/>
        #{IEC_TITLE}
+HDR
+
+HTML_HDR_BARE = <<~HDR.freeze
+  <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
+    <head/>
+    <body lang="en">
+      <div class="title-section">
+        <p>&#160;</p>
+      </div>
+      <br/>
+      <div class="prefatory-section">
+        <p>&#160;</p>
+      </div>
+      <br/>
+      <div class="main-section">
 HDR
 
 WORD_HDR = <<~HDR.freeze
@@ -298,7 +332,7 @@ def stub_fetch_ref(**opts)
 end
 
 def mock_pdf
-  allow(::Mn2pdf).to receive(:convert) do |url, output, _c, _d|
+  allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
     FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
   end
 end

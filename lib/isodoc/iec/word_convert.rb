@@ -13,16 +13,16 @@ module IsoDoc
 
       def convert(input_filename, file = nil, debug = false,
                 output_filename = nil)
-      file = File.read(input_filename, encoding: "utf-8") if file.nil?
-      @openmathdelim, @closemathdelim = extract_delims(file)
-      docxml, filename, dir = convert_init(file, input_filename, debug)
-      result = convert1(docxml, filename, dir)
-      return result if debug
+        file = File.read(input_filename, encoding: "utf-8") if file.nil?
+        @openmathdelim, @closemathdelim = extract_delims(file)
+        docxml, filename, dir = convert_init(file, input_filename, debug)
+        result = convert1(docxml, filename, dir)
+        return result if debug
 
-      output_filename ||= "#{filename}.#{@suffix}"
-      postprocess(result, output_filename, dir)
-      FileUtils.rm_rf dir
-    end
+        output_filename ||= "#{filename}.#{@suffix}"
+        postprocess(result, output_filename, dir)
+        FileUtils.rm_rf dir
+      end
 
       def font_choice(options)
         if options[:script] == "Hans" then '"Source Han Sans",serif'
@@ -169,8 +169,8 @@ module IsoDoc
         docxml.xpath("//div[@class = 'boilerplate_legal']//li").each do |l|
           l.replace(l.children)
         end
-        b = docxml.at("div[@class = 'boilerplate_legal']")
-        b.replace(b.children)
+        b = docxml.at("//div[@class = 'boilerplate_legal']")
+        b and b.replace(b.children)
       end
 
       def authority_cleanup(docxml)
@@ -202,11 +202,15 @@ module IsoDoc
         { class: "TableTitle", style: "text-align:center;" }
       end
 
-      def para_class(_node)
-        classtype = nil
-        classtype = "MsoCommentText" if @in_comment
-        classtype = "Sourcecode" if @annotation
-        classtype
+      def para_class(node)
+        case node["class"]
+        when "zzSTDTitle1", "zzSTDTitle2" then node["class"]
+        else
+          classtype = nil
+          classtype = "MsoCommentText" if @in_comment
+          classtype = "Sourcecode" if @annotation
+          classtype
+        end
       end
 
       def annex_name(_annex, name, div)

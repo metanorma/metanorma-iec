@@ -36,13 +36,8 @@ RSpec.describe IsoDoc::Iec do
                </head>
                <body lang='EN-US' link='blue' vlink='#954F72'>
                  <div class='WordSection2'>
-                   <p>
-                     <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
-                   </p>
-                   #{IEC_TITLE}
                                 <div>
                <h1 class="ForewordTitle">FOREWORD</h1>
-               <div class="boilerplate_legal"/>
                <div id="_be9158af-7e93-4ee2-90c5-26d31c181934">
                  <div class="formula">
                    <p class="formula">
@@ -117,8 +112,8 @@ RSpec.describe IsoDoc::Iec do
     INPUT
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
-           <preface>
-             <foreword displayorder="1">
+           #{PREFACE}
+             <foreword displayorder="8">
                <p>
                  <xref target='N1'>Clause 1, Equation (1)</xref>
                  <xref target='N2'>1.1, Inequality (2)</xref>
@@ -126,7 +121,7 @@ RSpec.describe IsoDoc::Iec do
              </foreword>
            </preface>
            <sections>
-             <clause id='intro' displayorder="2">
+             <clause id='intro' displayorder="9">
                <title depth='1'>
                  1
                  <tab/>
@@ -152,10 +147,10 @@ RSpec.describe IsoDoc::Iec do
            </sections>
          </iso-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+      .gsub(%r{</body>.*}m, "</body>"))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -176,8 +171,8 @@ RSpec.describe IsoDoc::Iec do
     INPUT
     presxml = <<~INPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        <preface>
-          <foreword displayorder='1'>
+        #{PREFACE}
+          <foreword displayorder='8'>
             <ul>
               <li>A</li>
               <li>
@@ -190,8 +185,8 @@ RSpec.describe IsoDoc::Iec do
         </preface>
       </iso-standard>
     INPUT
-    expect(xmlpp(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)))
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
   end
 end

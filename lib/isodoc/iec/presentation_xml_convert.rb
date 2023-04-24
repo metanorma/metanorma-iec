@@ -28,9 +28,8 @@ module IsoDoc
       end
 
       def termclause1(elem)
-        return clause1(elem) unless @is_iev
-        return if @suppressheadingnumbers || elem["unnumbered"]
-
+        @is_iev or return clause1(elem)
+        @suppressheadingnumbers || elem["unnumbered"] and return
         lbl = @xrefs.anchor(elem["id"], :label, true) or return
         prefix_name(elem, " ", "#{lbl}#{clausedelim}", "title")
       end
@@ -88,8 +87,7 @@ module IsoDoc
       end
 
       def merge_fr_into_en_term(docxml)
-        return unless @is_iev
-
+        @is_iev or return
         docxml.xpath(ns("//term[@language = 'en'][@tag]")).each do |en|
           fr = docxml.at(ns("//term[@language = 'fr'][@tag = '#{en['tag']}']"))
           merge_fr_into_en_term1(en, fr) if fr
@@ -108,8 +106,7 @@ module IsoDoc
       end
 
       def otherlang_designations(docxml)
-        return unless @is_iev
-
+        @is_iev or return
         docxml.xpath(ns("//term")).each do |t|
           otherlang_designations1(t, t["language"]&.split(/,/) || %w(en fr))
         end
@@ -133,8 +130,7 @@ module IsoDoc
         script = Metanorma::Utils.default_script(lang)
         c = HTMLEntities.new
         xml.traverse do |x|
-          next unless x.text?
-
+          x.text? or next
           text = c.encode(c.decode(x.text), :hexadecimal)
           x.replace(cleanup_entities(l10n(text, lang, script), is_xml: false))
         end
@@ -155,8 +151,7 @@ module IsoDoc
         pr = merge_otherlang_designations(
           extract_otherlang_designations(term, lgs),
         )
-        return if pr.empty?
-
+        pr.empty? and return
         prefs = pr.map do |p|
           "<dt>#{p[:lang]}</dt>" \
             "<dd language='#{p[:lang]}' script='#{p[:script]}'>" \
@@ -237,6 +232,59 @@ module IsoDoc
       def bibrenderer
         ::Relaton::Render::Iec::General.new(language: @lang,
                                             i18nhash: @i18n.get)
+      end
+
+      def rearrange_clauses(docxml)
+        insert_foreword(docxml) # feeds preface_rearrange
+        super
+        insert_middle_title(docxml)
+      end
+
+      def insert_foreword(docxml)
+        @meta.get[:doctype] == "Amendment" and return
+        b = docxml.at(ns("//boilerplate/legal-statement")) or return
+        unless f = docxml.at(ns("//preface/foreword"))
+          ins = toc_title_insert_pt(docxml)
+          f = ins.before(<<~CLAUSE).previous_element
+            <foreword id='_#{UUIDTools::UUID.random_create}'> </foreword>
+          CLAUSE
+        end
+        f.children.empty? and f.children = " "
+        ins = f.at(ns("./title")) || f.children.first.before(" ").previous
+        ins.next =
+          "<clause type='boilerplate_legal'>#{to_xml(b.children)}</clause>"
+      end
+
+      def insert_middle_title(docxml)
+        ins = docxml.at(ns("//preface/clause[@type = 'toc']")) or return
+        title1, title2 = middle_title_parts(nil)
+        title2out = ""
+        title2 and title2out = <<~OUTPUT
+          <p class="zzSTDTitle1">&#xa0;</p>
+          <p class="zzSTDTitle2"><strong>#{title2}</strong></p>
+        OUTPUT
+        ins.next = <<~OUTPUT
+          <pagebreak/>
+          <p class="zzSTDTitle1">#{@i18n.get['IEC']}</p>
+          <p class="zzSTDTitle1">____________</p>
+          <p class="zzSTDTitle1">&#xa0;</p>
+          <p class="zzSTDTitle1"><strong>#{title1.upcase}</strong></p>#{title2out}
+          <p class="zzSTDTitle1">&#xa0;</p>
+        OUTPUT
+      end
+
+      def middle_title_parts(_out)
+        title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
+        @meta.get[:doctitleintro] and
+          title1 = "#{@meta.get[:doctitleintro]} \u2014 #{title1}"
+        title2 = nil
+        if @meta.get[:doctitlepart]
+          title1 += " \u2014"
+          title2 = @meta.get[:doctitlepart]&.sub(/\s+$/, "")
+          @meta.get[:doctitlepartlabel] and
+            title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
+        end
+        [title1, title2]
       end
 
       include Init

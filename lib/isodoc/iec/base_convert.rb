@@ -8,30 +8,11 @@ module IsoDoc
         # processed in foreword instead
       end
 
-      def foreword(isoxml, out)
-        f = isoxml.at(ns("//foreword"))
-        b = isoxml.at(ns("//boilerplate/legal-statement"))
-        page_break(out)
-        iec_orgname(out)
-        middle_title(isoxml, out)
-        foreword1(f, b, out)
-      end
-
-      def foreword1(sect, boilerplate, out)
+      def foreword(sect, out)
         out.div **attr_code(id: sect ? sect["id"] : "") do |s|
           s.h1(class: "ForewordTitle") { |h1| h1 << @i18n.foreword }
-          @meta.get[:doctype] == "Amendment" or
-            s.div **attr_code(class: "boilerplate_legal") do |s1|
-              boilerplate&.elements&.each { |e| parse(e, s1) }
-            end
           sect&.elements&.each { |e| parse(e, s) unless e.name == "title" }
         end
-      end
-
-      def iec_orgname(out)
-        out.p(class: "zzSTDTitle1") { |p| p << @i18n.get["IEC"] }
-        out.p(class: "zzSTDTitle1") { |p| p << "____________" }
-        out.p(class: "zzSTDTitle1") { |p| p << "&#xa0;" }
       end
 
       def middle_title(_isoxml, out)
@@ -93,6 +74,19 @@ module IsoDoc
 
       def set_termdomain(termdomain)
         return super unless @is_iev
+      end
+
+      def para_class(node)
+        case node["class"]
+        when "zzSTDTitle1", "zzSTDTitle2" then "zzSTDTitle1"
+        else super
+        end
+      end
+
+      def clause_attrs(node)
+        ret = super
+        node["type"] == "boilerplate_legal" and ret["class"] = "boilerplate_legal"
+        ret
       end
     end
   end
