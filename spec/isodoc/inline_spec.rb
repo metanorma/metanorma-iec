@@ -167,74 +167,19 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
       <foreword displayorder="8">
         <p>
-          <eref type='inline' bibitemid='IEV' citeas='IEV'>
-            <locality type='clause'>
-              <referenceFrom>1-2-3</referenceFrom>
-            </locality>
-            IEV, <span class='citesec'>1-2-3</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>ISO&#xa0;712</eref>
-          <eref type='inline' bibitemid='ISO712'>ISO&#xa0;712</eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='table'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            ISO&#xa0;712, <span class='citetbl'>Table 1</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='table'>
-              <referenceFrom>1</referenceFrom>
-              <referenceTo>1</referenceTo>
-            </locality>
-            ISO&#xa0;712, <span class='citetbl'>Table 1&#x2013;1</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='clause'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            <locality type='table'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            ISO&#xa0;712, <span class='citesec'>Clause 1</span>, <span class='citetbl'>Table 1</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='clause'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            <locality type='list'>
-              <referenceFrom>a</referenceFrom>
-            </locality>
-            ISO&#xa0;712, <span class='citesec'>Clause 1</span> a)
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='clause'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            ISO&#xa0;712, <span class='citesec'>Clause 1</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='clause'>
-              <referenceFrom>1.5</referenceFrom>
-            </locality>
-            ISO&#xa0;712, <span class='citesec'>1.5</span>
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='table'>
-              <referenceFrom>1</referenceFrom>
-            </locality>
-            A
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='whole'/>
-            ISO&#xa0;712, Whole of text
-          </eref>
-          <eref type='inline' bibitemid='ISO712'>
-            <locality type='locality:prelude'>
-              <referenceFrom>7</referenceFrom>
-            </locality>
-            ISO&#xa0;712, Prelude 7
-          </eref>
-          <eref type='inline' bibitemid='ISO712' citeas='ISO 712'>A</eref>
+           <eref type="inline" bibitemid="IEV" citeas="IEV"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, <span class="citesec">1-2-3</span></eref>
+           <xref type="inline" target="ISO712">ISO 712</xref>
+           <xref type="inline" target="ISO712">ISO 712</xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citetbl">Table 1</span></xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citetbl">Table 1–1</span></xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citesec">Clause 1</span>, <span class="citetbl">Table 1</span></xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citesec">Clause 1</span> a)</xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citesec">Clause 1</span></xref>
+           <xref type="inline" target="ISO712">ISO 712, <span class="citesec">1.5</span></xref>
+           <xref type="inline" target="ISO712">A</xref>
+           <xref type="inline" target="ISO712">ISO 712, Whole of text</xref>
+           <xref type="inline" target="ISO712">ISO 712, Prelude 7</xref>
+           <xref type="inline" target="ISO712">A</xref>
         </p>
       </foreword>
     OUTPUT
