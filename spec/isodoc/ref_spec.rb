@@ -133,14 +133,14 @@ RSpec.describe IsoDoc::Iec do
               #{PREFACE}
               <foreword displayorder="8">
             <p id="_">
-            <eref bibitemid="ISO712">[110]</eref>
-            <eref bibitemid="ISBN">[1]</eref>
-            <eref bibitemid="ISSN">[2]</eref>
-            <eref bibitemid="ISO16634">ISO 16634:--</eref>
-            <eref bibitemid="ref1">ICC&#xa0;167</eref>
-            <eref bibitemid="ref10">[4]</eref>
-            <eref bibitemid="ref12">Citn</eref>
-            <eref bibitemid="zip_ffs">[5]</eref>
+                    <xref target="ISO712">[110]</xref>
+        <xref target="ISBN">[1]</xref>
+        <xref target="ISSN">[2]</xref>
+        <xref target="ISO16634">ISO 16634:--</xref>
+        <xref target="ref1">ICC 167</xref>
+        <xref target="ref10">[4]</xref>
+        <xref target="ref12">Citn</xref>
+        <xref target="zip_ffs">[5]</xref>
             </p>
               </foreword></preface>
               <bibliography><references id="_" obligation="informative" normative="true" displayorder="9"><title depth="1">1<tab/>Normative References</title>
