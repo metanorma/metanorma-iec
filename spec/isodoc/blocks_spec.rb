@@ -161,7 +161,7 @@ RSpec.describe IsoDoc::Iec do
       <ul>
       <li>A</li>
       <li>
-      <ol>
+      <ol id="AA">
       <li>List</li>
       </ol>
       </li>
@@ -176,8 +176,8 @@ RSpec.describe IsoDoc::Iec do
             <ul>
               <li>A</li>
               <li>
-                <ol type='arabic'>
-                  <li>List</li>
+                <ol type='arabic' id="AA">
+                  <li id="_" label="1">List</li>
                 </ol>
               </li>
             </ul>
