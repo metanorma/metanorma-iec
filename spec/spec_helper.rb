@@ -189,7 +189,7 @@ BLANK_HDR = <<~"HDR".freeze
     <editorialgroup>
       <agency>IEC</agency>
     </editorialgroup>
-    <stagename>International Standard</stagename>
+    <stagename abbreviation="PPUB">International Standard published</stagename>
     </ext>
   </bibdata>
   <metanorma-extension>

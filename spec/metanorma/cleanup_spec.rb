@@ -56,7 +56,7 @@ RSpec.describe Metanorma::Iec do
         <editorialgroup>
           <agency>IEC</agency>
         </editorialgroup>
-        <stagename>International Standard</stagename>
+        <stagename abbreviation="PPUB">International Standard published</stagename>
         <tc-sc-officers-note>
         <p id='_'>
           This FDIS is the result of the discussion between the IEC SC21A

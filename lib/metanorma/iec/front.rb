@@ -1,3 +1,5 @@
+require "pubid-iec"
+
 module Metanorma
   module Iec
     class Converter < ISO::Converter
@@ -41,53 +43,182 @@ module Metanorma
         end
       end
 
-      def iso_id(node, xml)
-        return unless node.attr("docnumber") || node.attr("docidentifier")
+      def metadata_stage(id, xml)
+        xml.stagename metadata_stagename(id)&.strip,
+                      **attr_code(abbreviation: id.stage.abbr&.strip)
+      end
 
-        unless dn = node.attr("docidentifier")
-          part, subpart = node&.attr("partnumber")&.split(/-/)
-          dn = add_id_parts(node.attr("docnumber"), part, subpart)
-          dn = id_stage_prefix(dn, node)
-          dn = id_edition_suffix(dn, node)
+      def metadata_stagename(id)
+        if @amd
+          id.amendments&.first&.stage&.name ||
+            id.corrigendums&.first&.stage&.name
+        else
+          code = id.stage.config.stages["abbreviations"][id.stage.abbr]
+          id.stage.config.stages["codes_description"][code]
         end
-        xml.docidentifier dn, **attr_code(type: "ISO")
       end
 
-      def add_id_parts(docnum, part, subpart)
-        docnum += "-#{part}" if part
-        docnum += "-#{subpart}" if subpart
-        docnum
-      end
+      #       def iso_id(node, xml)
+      #         return unless node.attr("docnumber") || node.attr("docidentifier")
+      #
+      #         unless dn = node.attr("docidentifier")
+      #           part, subpart = node&.attr("partnumber")&.split(/-/)
+      #           dn = add_id_parts(node.attr("docnumber"), part, subpart)
+      #           dn = id_stage_prefix(dn, node)
+      #           dn = id_edition_suffix(dn, node)
+      #         end
+      #         xml.docidentifier dn, **attr_code(type: "ISO")
+      #       end
+      #
+      #       def add_id_parts(docnum, part, subpart)
+      #         docnum += "-#{part}" if part
+      #         docnum += "-#{subpart}" if subpart
+      #         docnum
+      #       end
+      #
+      #       def id_stage_prefix(docnum, node)
+      #         stage = get_stage(node)
+      #         typeabbr = get_typeabbr(node)&.upcase
+      #         if stage && (stage.to_i < 60)
+      #           docnum = unpub_stage_prefix(docnum, stage, typeabbr, node)
+      #         elsif typeabbr == "DIR " then docnum = "#{typeabbr}#{docnum}"
+      #         elsif typeabbr && !@amd then docnum = "/#{typeabbr}#{docnum}"
+      #         end
+      #         docnum
+      #       end
+      #
+      #       def unpub_stage_prefix(docnum, stage, typeabbr, node)
+      #         abbr = id_stage_abbr(stage, get_substage(node), node)
+      #         %w(40 50).include?(stage) && i = node.attr("iteration") and
+      #           itersuffix = ".#{i}"
+      #         return docnum if abbr.nil? || abbr.empty? # prefixes added in cleanup
+      #
+      #         typeabbr = "" if %w(DTS FDTS).include?(abbr.sub(/\s+$/, ""))
+      #         return "/#{abbr}#{typeabbr} #{docnum}#{itersuffix}" unless @amd
+      #
+      #         a = docnum.split(%r{/})
+      #         a[-1] = "#{abbr}#{a[-1]}#{itersuffix}"
+      #         a.join("/")
+      #       end
+      #
+      #       def id_edition_suffix(docnum, node)
+      #         ed = node.attr("edition") || 1
+      #         docnum += " ED #{ed}"
+      #         docnum
+      #       end
 
-      def id_stage_prefix(docnum, node)
-        stage = get_stage(node)
-        typeabbr = get_typeabbr(node)&.upcase
-        if stage && (stage.to_i < 60)
-          docnum = unpub_stage_prefix(docnum, stage, typeabbr, node)
-        elsif typeabbr == "DIR " then docnum = "#{typeabbr}#{docnum}"
-        elsif typeabbr && !@amd then docnum = "/#{typeabbr}#{docnum}"
+      def get_typeabbr(node, amd: false)
+        node.attr("amendment-number") and return :amd
+        node.attr("corrigendum-number") and return :cor
+        case doctype(node)
+        when "directive" then :dir
+        when "white-paper" then :wp
+        when "technology-report" then :tec
+        when "social-technology-trend-report" then :sttr
+        when "component-specification" then :cs
+        when "systems-reference-document" then :srd
+        when "operational-document" then :od
+        when "conformity-assessment" then :ca
+        when "test-report-form" then :trf
+        when "technical-report" then :tr
+        when "technical-specification" then :ts
+        when "publicly-available-specification" then :pas
+        when "guide" then :guide
+        else :is
         end
-        docnum
       end
 
-      def unpub_stage_prefix(docnum, stage, typeabbr, node)
-        abbr = id_stage_abbr(stage, get_substage(node), node)
-        %w(40 50).include?(stage) && i = node.attr("iteration") and
-          itersuffix = ".#{i}"
-        return docnum if abbr.nil? || abbr.empty? # prefixes added in cleanup
-
-        typeabbr = "" if %w(DTS FDTS).include?(abbr.sub(/\s+$/, ""))
-        return "/#{abbr}#{typeabbr} #{docnum}#{itersuffix}" unless @amd
-
-        a = docnum.split(%r{/})
-        a[-1] = "#{abbr}#{a[-1]}#{itersuffix}"
-        a.join("/")
+      def iso_id_params(node)
+        params = iso_id_params_core(node)
+        params2 = iso_id_params_add(node)
+        if node.attr("updates")
+          orig_id = Pubid::Iec::Identifier::Base.parse(node.attr("updates"))
+          orig_id.edition ||= 1
+        end
+        iso_id_params_resolve(params, params2, node, orig_id)
       end
 
-      def id_edition_suffix(docnum, node)
-        ed = node.attr("edition") || 1
-        docnum += " ED #{ed}"
-        docnum
+      def iso_id_params_core(node)
+        pub = (node.attr("publisher") || "IEC").split(/[;,]/)
+        ret = { number: node.attr("docnumber"),
+                part: node.attr("partnumber"),
+                language: node.attr("language") || "en",
+                type: get_typeabbr(node),
+                edition: node.attr("edition"),
+                publisher: pub[0],
+                unpublished: /^[0-5]/.match?(get_stage(node)),
+                copublisher: pub[1..-1] }.compact
+        ret[:copublisher].empty? and ret.delete(:copublisher)
+        ret
+      end
+
+      def iso_id_params_add(node)
+        stage = iso_id_stage(node)
+
+        ret = { number: node.attr("amendment-number") ||
+          node.attr("corrigendum-number"),
+                year: iso_id_year(node) }.compact
+        stage and ret[:stage] = stage
+        ret
+      end
+
+      def iso_id_params_resolve(params, params2, node, orig_id)
+        ret = super
+        params[:number].nil? && !@amd and ret[:number] = "0"
+        ret
+      end
+
+      def iso_id_out(xml, params, _with_prf)
+        params[:stage] == "60.60" and params.delete(:stage)
+        xml.docidentifier iso_id_default(params).to_s,
+                          **attr_code(type: "ISO")
+        xml.docidentifier iso_id_reference(params).to_s,
+                          **attr_code(type: "iso-reference")
+        xml.docidentifier iso_id_reference(params).urn, **attr_code(type: "URN")
+        return if @amd
+
+        xml.docidentifier iso_id_undated(params).to_s,
+                          **attr_code(type: "iso-undated")
+        xml.docidentifier iso_id_with_lang(params).to_s,
+                          **attr_code(type: "iso-with-lang")
+      rescue StandardError => e
+        clean_abort("Document identifier: #{e}", xml)
+      end
+
+      def iso_id_default(params)
+        params_nolang = params.dup.tap { |hs| hs.delete(:language) }
+        params1 = if params[:unpublished]
+                    params_nolang.dup.tap do |hs|
+                      hs.delete(:year)
+                    end
+                  else params_nolang
+                  end
+        params1.key?(:unpublished) and params1.delete(:unpublished)
+        Pubid::Iec::Identifier.create(**params1)
+      end
+
+      def iso_id_undated(params)
+        params_nolang = params.dup.tap { |hs| hs.delete(:language) }
+        params2 = params_nolang.dup.tap do |hs|
+          hs.delete(:year)
+          hs.delete(:unpublished)
+        end
+        Pubid::Iec::Identifier.create(**params2)
+      end
+
+      def iso_id_with_lang(params)
+        params1 = if params[:unpublished]
+                    params.dup.tap do |hs|
+                      hs.delete(:year)
+                    end
+                  else params end
+        params1.delete(:unpublished)
+        Pubid::Iec::Identifier.create(**params1)
+      end
+
+      def iso_id_reference(params)
+        params1 = params.dup.tap { |hs| hs.delete(:unpublished) }
+        Pubid::Iec::Identifier.create(**params1)
       end
 
       STAGE_CODES = {
