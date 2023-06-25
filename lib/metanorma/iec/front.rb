@@ -58,55 +58,6 @@ module Metanorma
         end
       end
 
-      #       def iso_id(node, xml)
-      #         return unless node.attr("docnumber") || node.attr("docidentifier")
-      #
-      #         unless dn = node.attr("docidentifier")
-      #           part, subpart = node&.attr("partnumber")&.split(/-/)
-      #           dn = add_id_parts(node.attr("docnumber"), part, subpart)
-      #           dn = id_stage_prefix(dn, node)
-      #           dn = id_edition_suffix(dn, node)
-      #         end
-      #         xml.docidentifier dn, **attr_code(type: "ISO")
-      #       end
-      #
-      #       def add_id_parts(docnum, part, subpart)
-      #         docnum += "-#{part}" if part
-      #         docnum += "-#{subpart}" if subpart
-      #         docnum
-      #       end
-      #
-      #       def id_stage_prefix(docnum, node)
-      #         stage = get_stage(node)
-      #         typeabbr = get_typeabbr(node)&.upcase
-      #         if stage && (stage.to_i < 60)
-      #           docnum = unpub_stage_prefix(docnum, stage, typeabbr, node)
-      #         elsif typeabbr == "DIR " then docnum = "#{typeabbr}#{docnum}"
-      #         elsif typeabbr && !@amd then docnum = "/#{typeabbr}#{docnum}"
-      #         end
-      #         docnum
-      #       end
-      #
-      #       def unpub_stage_prefix(docnum, stage, typeabbr, node)
-      #         abbr = id_stage_abbr(stage, get_substage(node), node)
-      #         %w(40 50).include?(stage) && i = node.attr("iteration") and
-      #           itersuffix = ".#{i}"
-      #         return docnum if abbr.nil? || abbr.empty? # prefixes added in cleanup
-      #
-      #         typeabbr = "" if %w(DTS FDTS).include?(abbr.sub(/\s+$/, ""))
-      #         return "/#{abbr}#{typeabbr} #{docnum}#{itersuffix}" unless @amd
-      #
-      #         a = docnum.split(%r{/})
-      #         a[-1] = "#{abbr}#{a[-1]}#{itersuffix}"
-      #         a.join("/")
-      #       end
-      #
-      #       def id_edition_suffix(docnum, node)
-      #         ed = node.attr("edition") || 1
-      #         docnum += " ED #{ed}"
-      #         docnum
-      #       end
-
       def get_typeabbr(node, amd: false)
         node.attr("amendment-number") and return :amd
         node.attr("corrigendum-number") and return :cor
@@ -142,7 +93,7 @@ module Metanorma
         pub = (node.attr("publisher") || "IEC").split(/[;,]/)
         ret = { number: node.attr("docnumber"),
                 part: node.attr("partnumber"),
-                language: node.attr("language") || "en",
+                language: node.attr("language")&.split(/,\s*/) || "en",
                 type: get_typeabbr(node),
                 edition: node.attr("edition"),
                 publisher: pub[0],
@@ -154,7 +105,7 @@ module Metanorma
 
       def iso_id_params_add(node)
         stage = iso_id_stage(node)
-
+        @id_revdate = node.attr("revdate")
         ret = { number: node.attr("amendment-number") ||
           node.attr("corrigendum-number"),
                 year: iso_id_year(node) }.compact
@@ -174,6 +125,10 @@ module Metanorma
                           **attr_code(type: "ISO")
         xml.docidentifier iso_id_reference(params).to_s,
                           **attr_code(type: "iso-reference")
+        @id_revdate and
+          xml.docidentifier iso_id_revdate(params.merge(year: @id_revdate))
+            .to_s(with_edition_month_date: true),
+                            **attr_code(type: "iso-revdate")
         xml.docidentifier iso_id_reference(params).urn, **attr_code(type: "URN")
         return if @amd
 
@@ -218,6 +173,15 @@ module Metanorma
 
       def iso_id_reference(params)
         params1 = params.dup.tap { |hs| hs.delete(:unpublished) }
+        Pubid::Iec::Identifier.create(**params1)
+      end
+
+      def iso_id_revdate(params)
+        params1 = params.dup.tap { |hs| hs.delete(:unpublished) }
+        m = params1[:year].match(/^(\d{4})(-\d{2})?(-\d{2})?/)
+        params1[:year] = m[1]
+        params1[:month] = m[2].sub(/^-/, "")
+        # skipping day for now
         Pubid::Iec::Identifier.create(**params1)
       end
 
