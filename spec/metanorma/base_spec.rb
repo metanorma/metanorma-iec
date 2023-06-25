@@ -116,7 +116,8 @@ RSpec.describe Metanorma::Iec do
           <title language='fr' format='text/plain' type='title-part'>Part du Titre</title>
                      <docidentifier type="ISO">IEC PNW 1000-1 ED2</docidentifier>
            <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:1000:-1:2023:stage-10.20:ed-2:en:en</docidentifier>
+                      <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:-1:2023:stage-10.20:ed-2:["en"]:["en"]</docidentifier>
            <docidentifier type="iso-undated">IEC PNW 1000-1 ED2</docidentifier>
            <docidentifier type="iso-with-lang">IEC PNW 1000-1 ED2(en)</docidentifier>
           <docnumber>1000</docnumber>
@@ -353,7 +354,7 @@ RSpec.describe Metanorma::Iec do
       :docnumber: 1000
       :partnumber: 1-1
       :tc-docnumber: 2000
-      :language: el
+      :language: el,sq
       :script: Grek
       :publisher: IEC;IETF;ISO
       :copyright-year: 2001
@@ -366,12 +367,12 @@ RSpec.describe Metanorma::Iec do
            <?xml version="1.0" encoding="UTF-8"?>
             <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
                      <bibdata type='standard'>
-           <docidentifier type="ISO">IEC/IETF/ISO TS ACDV 1000-1-1</docidentifier>
-           <docidentifier type="iso-reference">IEC/IETF/ISO TS ACDV 1000-1-1:2001(el)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000:-1-1:2001:stage-30.99:el:el</docidentifier>
+                                <docidentifier type="ISO">IEC/IETF/ISO TS ACDV 1000-1-1</docidentifier>
+           <docidentifier type="iso-reference">IEC/IETF/ISO TS ACDV 1000-1-1:2001(el-sq)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000:-1-1:2001:stage-30.99:["el", "sq"]:["el", "sq"]</docidentifier>
            <docidentifier type="iso-undated">IEC/IETF/ISO TS ACDV 1000-1-1</docidentifier>
-           <docidentifier type="iso-with-lang">IEC/IETF/ISO TS ACDV 1000-1-1(el)</docidentifier>
-          <docidentifier type='iso-tc'>2000</docidentifier>
+           <docidentifier type="iso-with-lang">IEC/IETF/ISO TS ACDV 1000-1-1(el-sq)</docidentifier>
+           <docidentifier type="iso-tc">2000</docidentifier>
           <docnumber>1000</docnumber>
           <contributor>
             <role type='author'/>
@@ -413,7 +414,7 @@ RSpec.describe Metanorma::Iec do
               <abbreviation>ISO</abbreviation>
             </organization>
           </contributor>
-          <language>el</language>
+          <language>el,sq</language>
           <script>Grek</script>
           <status>
             <stage abbreviation='CD'>30</stage>
