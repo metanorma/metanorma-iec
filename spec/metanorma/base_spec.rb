@@ -358,7 +358,7 @@ RSpec.describe Metanorma::Iec do
       :script: Grek
       :publisher: IEC;IETF;ISO
       :copyright-year: 2001
-      :docstage: A2CD
+      :docstage: ADTR
       :doctype: technical-specification
       :function: emc
       :horizontal: true
@@ -418,8 +418,7 @@ RSpec.describe Metanorma::Iec do
           <script>Grek</script>
           <status>
             <stage abbreviation='CD'>30</stage>
-            <substage abbreviation='A22CD'>99</substage>
-            <iteration>2</iteration>
+            <substage abbreviation="A2CD">99</substage>
           </status>
           <copyright>
             <from>2001</from>
@@ -670,7 +669,6 @@ RSpec.describe Metanorma::Iec do
           <structuredidentifier>
             <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename abbreviation="ACDV">CD approved for registration as DIS</stagename>
         </ext>
       </bibdata>
     OUTPUT
