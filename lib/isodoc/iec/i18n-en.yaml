@@ -6,6 +6,9 @@ formula: Equation
 inequality: Inequality
 section_iev: Section
 price-code: Price Code
+title: Title
+proposed_stability_date: PROPOSED STABILITY DATE
+tc_sc_note: Note from TC/SC officers
 term_def_boilerplate: |
       <p>ISO and IEC maintain terminological databases for use in
       standardization at the following addresses:</p>
