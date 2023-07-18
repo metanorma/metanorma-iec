@@ -3,6 +3,9 @@ foreword: 前言
 IEC: 国际电工委员会
 formula: 方程式
 inequality: 不等式
+title: 标题
+proposed_stability_date: 建议的稳定日期
+tc_sc_note: TC/SC 官员的说明
 term_def_boilerplate: |
       <p>ISO和IEC用于标准化的术语数据库地址如下：</p>
       <ul>
