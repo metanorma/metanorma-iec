@@ -6,6 +6,9 @@ inequality: Inégalité
 IEC: COMMISSION ELECTROTECHNIQUE INTERNATIONALE
 section_iev: Section
 price-code: Code prix
+title: Titre
+proposed_stability_date: DATE DE STABILITÉ PROPOSÉE
+tc_sc_note: Note des officiers TC/SC
 term_def_boilerplate: |
       <p>L'ISO et l'IEC tiennent à jour des bases de données terminologiques
       destinées à être utilisées en normalisation, consultables aux adresses
