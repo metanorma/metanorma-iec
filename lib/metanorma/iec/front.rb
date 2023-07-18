@@ -296,6 +296,10 @@ module Metanorma
           s.substage substage, **attr_code(abbreviation: subst)
           node.attr("iteration") && (s.iteration node.attr("iteration"))
         end
+         iso_id_default(iso_id_params(node))
+        rescue Pubid::Core::Errors::HarmonizedStageCodeInvalidError,
+           Pubid::Core::Errors::TypeStageParseError
+  report_illegal_stage(stage, substage)
       end
 
       def metadata_subdoctype(node, xml)
