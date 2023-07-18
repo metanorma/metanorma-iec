@@ -45,7 +45,7 @@ RSpec.describe IsoDoc::Iec do
                      <span class="stem">(#(r = 1 %)#)</span>
                    </p>
                  </div>
-                 <table class="dl">
+                 <table id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d" class="dl">
                    <tr>
                      <td valign="top" align="left">
                        <p align="left" style="margin-left:0pt;text-align:left;">
