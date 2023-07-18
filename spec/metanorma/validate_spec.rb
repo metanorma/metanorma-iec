@@ -99,4 +99,81 @@ RSpec.describe Metanorma::Iec do
       .to include "IEC Stage A2CD not recognised"
     expect(File.exist?("test.xml")).to be false
   end
+
+    it "Warns of illegal stage" do
+      Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: pizza
+      text
+    INPUT
+    expect(File.read("test.err")).to include "Illegal document stage: pizza.00"
+
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: 70
+      text
+    INPUT
+    expect(File.read("test.err")).to include "Illegal document stage: 70.00"
+
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: 60
+      text
+    INPUT
+    expect(File.read("test.err")).not_to include "Illegal document stage: 60.00"
+  end
+
+
+  it "Warns of illegal substage" do
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: 60
+      :docsubstage: pizza
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Illegal document stage: 60.pizza"
+
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: 60
+      :docsubstage: 54
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .to include "Illegal document stage: 60.54"
+
+    Asciidoctor.convert(<<~INPUT, *OPTIONS)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :no-isobib:
+      :status: 60
+      :docsubstage: 60
+      text
+    INPUT
+    expect(File.read("test.err"))
+      .not_to include "Illegal document stage: 60.60"
+  end
 end
