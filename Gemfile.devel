@@ -1,0 +1,5 @@
+gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "fix/harmonized-stage-validate"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
+
+
+
