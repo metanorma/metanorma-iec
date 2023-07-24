@@ -202,19 +202,7 @@ module IsoDoc
         { class: "TableTitle", style: "text-align:center;" }
       end
 
-      def para_class(node)
-        case node["class"]
-        when "zzSTDTitle1", "zzSTDTitle2" then node["class"]
-        else
-          classtype = nil
-          classtype = "MsoCommentText" if @in_comment
-          classtype = "Sourcecode" if @annotation
-          classtype
-        end
-      end
-
       def annex_name(_annex, name, div)
-        preceding_floating_titles(name, div)
         return if name.nil?
 
         div.h1 class: "Annex" do |t|
