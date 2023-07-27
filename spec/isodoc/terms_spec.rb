@@ -147,13 +147,13 @@ RSpec.describe IsoDoc do
     word = <<~OUTPUT
            <body lang="EN-US" link="blue" vlink="#954F72">
          <div class="WordSection2">
-           <p>
+           <p class="page-break">
              <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
            </p>
            <div id="_" class="TOC">
              <p class="zzContents">Contents</p>
            </div>
-           <p>
+           <p class="page-break">
              <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
            </p>
            <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
@@ -165,19 +165,15 @@ RSpec.describe IsoDoc do
            <p class="zzSTDTitle1"> </p>
            <p> </p>
          </div>
-         <p>
+         <p class="section-break">
            <br clear="all" class="section"/>
          </p>
          <div class="WordSection3">
-           <p class="zzSTDTitle1">
-             <b/>
-           </p>
-           <p class="zzSTDTitle1"> </p>
            <div id="_">
              <h1>1<span style="mso-tab-count:1">  </span>Terms and definitions</h1>
              <p class="TermNum" id="paddy1">1.1</p>
              <p class="Terms" style="text-align:left;">paddy</p>
-             <p id="_">&lt;rice&gt; rice retaining its husk after threshing</p>
+             <p class="Definition" id="_">&lt;rice&gt; rice retaining its husk after threshing</p>
              <div id="_" class="example">
                <p><span class="example_label">EXAMPLE 1</span><span style="mso-tab-count:1">  </span>Foreign seeds, husks, bran, sand, dust.</p>
                <ul>
@@ -201,7 +197,7 @@ RSpec.describe IsoDoc do
              <p class="AltTerms" style="text-align:left;">paddy rice</p>
              <p class="AltTerms" style="text-align:left;">rough rice</p>
              <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
-             <p id="_">rice retaining its husk after threshing</p>
+             <p class="Definition" id="_">rice retaining its husk after threshing</p>
              <div id="_" class="Note">
                <p class="Note">Note 1 to entry: The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
              </div>

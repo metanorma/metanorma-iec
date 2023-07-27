@@ -118,7 +118,8 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
-          <terms id="_terms_and_definitions" obligation="normative"><title>1<tab/>Terms and Definitions</title>
+          <terms id="_terms_and_definitions" obligation="normative" displayorder="1">
+      <title>1<tab/>Terms and Definitions</title>
       <term id="paddy1">
       <name>1.1</name>
       <preferred>paddy</preferred>
@@ -139,10 +140,10 @@ RSpec.describe IsoDoc do
       .sub(%r{<br.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
              <div class="WordSection3">
-      #{IEC_TITLE1.gsub(/&#160;/, '&#xA0;')}
+      #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                  <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and Definitions</h1>
          <p class="TermNum"><a name="paddy1" id="paddy1"></a>1.1</p><p class="Terms" style="text-align:left;">paddy</p>
-         <p class="MsoNormal"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
+         <p class="Definition"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
          <p class="MsoNormal">[SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
                </div>
     OUTPUT
@@ -154,7 +155,8 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
-          <terms id="_terms_and_definitions" obligation="normative"><title>1<tab/>Terms and Definitions</title>
+          <terms id="_terms_and_definitions" obligation="normative" displayorder="1">
+      <title>1<tab/>Terms and Definitions</title>
       <term id="paddy1">
       <name>1.1</name>
       <preferred>paddy</preferred>
@@ -217,7 +219,7 @@ RSpec.describe IsoDoc do
     FileUtils.rm_f "test.html"
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <annex id="P" inline-header="false" obligation="normative">
+          <annex id="P" inline-header="false" obligation="normative" displayorder="1">
           <example id="_63112cbc-cde0-435f-9553-e0b8c4f5851c">
         <p id="_158d4efa-b1c9-4aec-b325-756de8e4c968">'1M', '01M', and '0001M' all describe the calendar month January.</p>
       </example>
@@ -236,7 +238,7 @@ RSpec.describe IsoDoc do
       .sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <div class="WordSection3">
-      #{IEC_TITLE1.gsub(/&#160;/, '&#xA0;')}
+      #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                <p class="MsoNormal">
                  <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
                </p>
@@ -257,7 +259,7 @@ RSpec.describe IsoDoc do
     FileUtils.rm_f "test.html"
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-              <annex id="P" inline-header="false" obligation="normative">
+              <annex id="P" inline-header="false" obligation="normative" displayorder="1">
           <sourcecode lang="ruby" id="A">puts "Hello, world."</sourcecode>
           <table id="samplecode">
           <tbody>
@@ -278,7 +280,7 @@ RSpec.describe IsoDoc do
       .sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~"OUTPUT")
          <div class="WordSection3">
-      #{IEC_TITLE1.gsub(/&#160;/, '&#xA0;')}
+      #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                <p class="MsoNormal">
                  <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
                </p>

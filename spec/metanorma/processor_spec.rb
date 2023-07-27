@@ -153,7 +153,7 @@ RSpec.describe Metanorma::Iec::Processor do
           <p class="zzSTDTitle1">
             <b>FRENCH</b>
           </p>
-          <p class="zzSTDTitle1"> </p>
+          <p/>
           <div id="_">
             <h1 class="ForewordTitle" id="_">AVANT-PROPOS</h1>
             <div class="boilerplate_legal">
