@@ -1350,10 +1350,13 @@
 		<fo:block break-after="page"/>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'preface' or local-name() = 'sections']/iec:p[starts-with(@class, 'zzSTDTitle')]" priority="3">
+	<xsl:template match="*[local-name() = 'preface' or local-name() = 'sections']/iec:p[starts-with(@class, 'zzSTDTitle')]" priority="4">
 		<fo:block-container font-size="12pt" text-align="center">
 			<xsl:if test="following-sibling::*[1][not(self::iec:p[starts-with(@class, 'zzSTDTitle')])]">
 				<xsl:attribute name="margin-bottom">18pt</xsl:attribute>
+				<xsl:if test="ancestor::*[local-name() = 'sections']">
+					<xsl:attribute name="margin-bottom">30pt</xsl:attribute>
+				</xsl:if>
 			</xsl:if>
 			<fo:block>
 				<xsl:if test="iec:strong"> <!-- title -->
@@ -1362,6 +1365,10 @@
 				<xsl:apply-templates/>
 			</fo:block>
 		</fo:block-container>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'sections']/iec:p[@class = 'zzSTDTitle1']//text()" priority="4">
+		<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(.))"/>
 	</xsl:template>
 
 	<xsl:template name="insertPrefacepages">
@@ -1408,17 +1415,17 @@
 			<xsl:call-template name="insertHeaderFooter"/>
 			<fo:flow flow-name="xsl-region-body">
 
-				<fo:block-container font-size="12pt" text-align="center" margin-bottom="36pt">
-
-					<fo:block font-weight="bold" role="H1">
-
+				<!-- <fo:block-container font-size="12pt" text-align="center" margin-bottom="36pt">
+					
+					<fo:block font-weight="bold" role="H1">						
+					
 						<xsl:call-template name="printTitles">
 							<xsl:with-param name="lang" select="$lang"/>
 						</xsl:call-template>
-
-						<fo:block> </fo:block>
+						
+						<fo:block>&#xa0;</fo:block>
 					</fo:block>
-				</fo:block-container>
+				</fo:block-container> -->
 
 				<!-- Main sections -->
 				<fo:block>
@@ -6160,6 +6167,9 @@
 	<!-- ===================== -->
 	<!-- END Definition List -->
 	<!-- ===================== -->
+
+	<!-- default: ignore title in sections/p -->
+	<xsl:template match="*[local-name() = 'sections']/*[local-name() = 'p'][starts-with(@class, 'zzSTDTitle')]" priority="3"/>
 
 	<!-- ========================= -->
 	<!-- Rich text formatting -->
@@ -12011,7 +12021,7 @@
 	<xsl:template match="*[local-name() = 'span']" mode="update_xml_step1">
 		<xsl:apply-templates mode="update_xml_step1"/>
 	</xsl:template>
-	<xsl:template match="*[local-name() = 'sourcecode']//*[local-name() = 'span'][@class]" mode="update_xml_step1" priority="2">
+	<xsl:template match="*[local-name() = 'sections']/*[local-name() = 'p'][starts-with(@class, 'zzSTDTitle')]/*[local-name() = 'span'][@class] | *[local-name() = 'sourcecode']//*[local-name() = 'span'][@class]" mode="update_xml_step1" priority="2">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates mode="update_xml_step1"/>
