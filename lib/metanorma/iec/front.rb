@@ -58,6 +58,16 @@ module Metanorma
         end
       end
 
+      def iso_id(node, xml)
+        node.attr("docnumber") || node.attr("docidentifier") or return
+        unless dn = node.attr("docidentifier")
+          part, subpart = node&.attr("partnumber")&.split(/-/)
+          dn = add_id_parts(node.attr("docnumber"), part, subpart)
+          dn = id_stage_prefix(dn, node)
+          dn = id_edition_suffix(dn, node)
+        end
+      end
+
       def get_typeabbr(node, amd: false)
         node.attr("amendment-number") and return :amd
         node.attr("corrigendum-number") and return :cor
@@ -286,6 +296,7 @@ module Metanorma
         abbr
       end
 
+      # TODO: replace by ISO call
       def metadata_status(node, xml)
         stage = get_stage(node)
         substage = get_substage(node)
@@ -296,10 +307,10 @@ module Metanorma
           s.substage substage, **attr_code(abbreviation: subst)
           node.attr("iteration") && (s.iteration node.attr("iteration"))
         end
-         iso_id_default(iso_id_params(node))
+        iso_id_default(iso_id_params(node))
         rescue Pubid::Core::Errors::HarmonizedStageCodeInvalidError,
-           Pubid::Core::Errors::TypeStageParseError
-  report_illegal_stage(stage, substage)
+             Pubid::Core::Errors::TypeStageParseError
+        report_illegal_stage(stage, substage)
       end
 
       def metadata_subdoctype(node, xml)
