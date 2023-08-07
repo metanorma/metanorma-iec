@@ -105,7 +105,7 @@
         <p>More than 55 000 electrotechnical terminology entries in English and French extracted from the Terms and Definitions clause of IEC publications issued since 2002. Some entries have been collected from earlier publications of IEC TC 37, 77, 86 and CISPR.</p>
       </clause>
       <clause><title>IEC Customer Service Centre - <link target="https://webstore.iec.ch/csc">webstore.iec.ch/csc</link></title>
-        <p>If you wish to give us your feedback on this publication or need further assistance, please contact the Customer Service Centre: <link target="mailto://csc@iec.ch">csc@iec.ch</link>.</p>
+        <p>If you wish to give us your feedback on this publication or need further assistance, please contact the Customer Service Centre: <link target="mailto:csc@iec.ch">csc@iec.ch</link>.</p>
       </clause>
     </clause>
     {% endif %}
