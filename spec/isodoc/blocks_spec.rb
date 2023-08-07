@@ -4,7 +4,7 @@ RSpec.describe IsoDoc::Iec do
   it "processes formulae (Word)" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword>
+          <preface><foreword displayorder="1">
           <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true">
         <stem type="AsciiMath">r = 1 %</stem>
       <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d">
@@ -69,7 +69,7 @@ RSpec.describe IsoDoc::Iec do
              </div>
              <p> </p>
            </div>
-           <p>
+           <p class="section-break">
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
