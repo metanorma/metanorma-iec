@@ -79,7 +79,7 @@ RSpec.describe IsoDoc::Iec do
   it "processes examples" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword>
+          <preface><foreword displayorder="1">
           <example id="samplecode">
           <name>EXAMPLE</name>
         <p>Hello</p>
@@ -111,7 +111,7 @@ RSpec.describe IsoDoc::Iec do
           </div>
           <p>&#160;</p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear="all" class="section"/>
         </p>
         <div class="WordSection3">
@@ -134,7 +134,7 @@ RSpec.describe IsoDoc::Iec do
   it "processes sequences of examples" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword>
+          <preface><foreword displayorder="1">
           <example id="samplecode">
           <name>EXAMPLE 1</name>
         <p>Hello</p>
@@ -177,7 +177,7 @@ RSpec.describe IsoDoc::Iec do
           </div>
           <p>&#160;</p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear="all" class="section"/>
         </p>
         <div class="WordSection3">
