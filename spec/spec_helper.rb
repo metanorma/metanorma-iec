@@ -241,10 +241,6 @@ IEC_TITLE = <<~TITLE.freeze
 TITLE
 
 IEC_TITLE1 = <<~TITLE.freeze
-  <p class="zzSTDTitle1">
-    <b/>
-  </p>
-  <p class="zzSTDTitle1">&#160;</p>
 TITLE
 
 HTML_HDR = <<~HDR.freeze

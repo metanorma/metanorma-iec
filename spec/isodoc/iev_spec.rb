@@ -196,8 +196,7 @@ RSpec.describe IsoDoc do
           </ext>
         </bibdata>
         #{PREFACE}</preface>
-        <sections> </sections>
-        <bibliography>
+        <sections>
           <references obligation='informative' normative='true' id="X" displayorder="8">
           <title depth='1'>1<tab/>Normative References</title>
             <p id='_'>There are no normative references in this document.</p>
@@ -209,6 +208,8 @@ RSpec.describe IsoDoc do
               <biblio-tag>B, </biblio-tag>
             </bibitem>
           </references>
+          </sections>
+          <bibliography>
           <references id='_' obligation='informative' normative='false' displayorder="9">
             <title depth='1'>Bibliography</title>
             <p id='_'>There are no normative references in this document.</p>
@@ -517,10 +518,6 @@ RSpec.describe IsoDoc do
       .sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")
     expect(xmlpp(word)).to be_equivalent_to xmlpp(<<~OUTPUT)
       <div class='WordSection3'>
-           <p class='zzSTDTitle1'>
-             <b/>
-           </p>
-           <p class='zzSTDTitle1'>&#xA0;</p>
            <div>
              <a name='_' id='_'/>
              <h1 class='main'>
@@ -541,7 +538,7 @@ RSpec.describe IsoDoc do
                  192-01-01
                </p>
                <p class='Terms' style='text-align:left;'><b>paddy</b></p>
-               <p class='MsoNormal'>
+               <p class='Definition'>
                  <a name='_' id='_'/>
                  rice retaining its husk after threshing
                </p>
