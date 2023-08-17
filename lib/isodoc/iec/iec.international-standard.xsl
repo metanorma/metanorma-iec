@@ -5077,21 +5077,21 @@
 
 	<xsl:template match="*[local-name()='table']/*[local-name()='note' or local-name() = 'example']" priority="2">
 
-		<fo:block xsl:use-attribute-sets="table-note-style">
+				<fo:block xsl:use-attribute-sets="table-note-style">
 
-			<xsl:call-template name="refine_table-note-style"/>
+					<xsl:call-template name="refine_table-note-style"/>
 
-			<!-- Table's note/example name (NOTE, for example) -->
-			<fo:inline xsl:use-attribute-sets="table-note-name-style">
+					<!-- Table's note/example name (NOTE, for example) -->
+					<fo:inline xsl:use-attribute-sets="table-note-name-style">
 
-				<xsl:call-template name="refine_table-note-name-style"/>
+						<xsl:call-template name="refine_table-note-name-style"/>
 
-				<xsl:apply-templates select="*[local-name() = 'name']"/>
+						<xsl:apply-templates select="*[local-name() = 'name']"/>
 
-			</fo:inline>
+					</fo:inline>
 
-			<xsl:apply-templates select="node()[not(local-name() = 'name')]"/>
-		</fo:block>
+					<xsl:apply-templates select="node()[not(local-name() = 'name')]"/>
+				</fo:block>
 
 	</xsl:template> <!-- table/note -->
 
@@ -8326,25 +8326,45 @@
 							<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" xsl:use-attribute-sets="image-graphic-style">
 								<xsl:if test="not(@mimetype = 'image/svg+xml') and ../*[local-name() = 'name'] and not(ancestor::*[local-name() = 'table'])">
 
-									<xsl:variable name="img_src">
-										<xsl:choose>
-											<xsl:when test="not(starts-with(@src, 'data:'))"><xsl:value-of select="concat($basepath, @src)"/></xsl:when>
-											<xsl:otherwise><xsl:value-of select="@src"/></xsl:otherwise>
-										</xsl:choose>
-									</xsl:variable>
-
-									<xsl:variable name="image_width_effective">
-
-												<xsl:value-of select="$width_effective"/>
-
-									</xsl:variable>
-
-									<xsl:variable name="scale" select="java:org.metanorma.fop.Util.getImageScale($img_src, $image_width_effective, $height_effective)"/>
-									<xsl:if test="number($scale) &lt; 100">
-
-												<xsl:attribute name="content-width"><xsl:value-of select="$scale"/>%</xsl:attribute>
-
+									<xsl:if test="@width != '' and @width != 'auto'">
+										<xsl:attribute name="width">
+											<xsl:value-of select="@width"/>
+										</xsl:attribute>
 									</xsl:if>
+
+									<xsl:if test="@height != '' and @height != 'auto'">
+										<xsl:attribute name="height">
+											<xsl:value-of select="@height"/>
+										</xsl:attribute>
+									</xsl:if>
+
+									<xsl:choose>
+										<xsl:when test="@width != '' and @width != 'auto' and @height != '' and @height != 'auto'">
+											<xsl:attribute name="scaling">non-uniform</xsl:attribute>
+										</xsl:when>
+										<xsl:otherwise>
+
+											<xsl:variable name="img_src">
+												<xsl:choose>
+													<xsl:when test="not(starts-with(@src, 'data:'))"><xsl:value-of select="concat($basepath, @src)"/></xsl:when>
+													<xsl:otherwise><xsl:value-of select="@src"/></xsl:otherwise>
+												</xsl:choose>
+											</xsl:variable>
+
+											<xsl:variable name="image_width_effective">
+
+														<xsl:value-of select="$width_effective"/>
+
+											</xsl:variable>
+
+											<xsl:variable name="scale" select="java:org.metanorma.fop.Util.getImageScale($img_src, $image_width_effective, $height_effective)"/>
+											<xsl:if test="number($scale) &lt; 100">
+
+														<xsl:attribute name="content-width"><xsl:value-of select="$scale"/>%</xsl:attribute>
+
+											</xsl:if>
+										</xsl:otherwise>
+									</xsl:choose>
 
 								</xsl:if>
 

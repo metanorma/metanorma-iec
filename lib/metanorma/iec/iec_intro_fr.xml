@@ -108,7 +108,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
     <p>Plus de 55 000 entrées terminologiques électrotechniques, en anglais et en français, extraites des articles Termes et Définitions des publications IEC parues depuis 2002. Plus certaines entrées antérieures extraites des publications des CE 37, 77, 86 et CISPR de l'IEC.</p>
   </clause>
   <clause><title>Service Clients - <link target="https://webstore.iec.ch/csc">webstore.iec.ch/csc</link></title>
-    <p>Si vous désirez nous donner des commentaires sur cette publication ou si vous avez des questions contactez-nous: <link target="mailto://csc@iec.ch">csc@iec.ch</link>.</p>
+    <p>Si vous désirez nous donner des commentaires sur cette publication ou si vous avez des questions contactez-nous: <link target="mailto:csc@iec.ch">csc@iec.ch</link>.</p>
   </clause>
 </clause>
 {% endif %}

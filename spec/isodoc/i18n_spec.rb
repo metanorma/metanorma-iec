@@ -127,6 +127,9 @@ RSpec.describe IsoDoc do
        <clause id="O" inline-header="false" obligation="normative">
          <title depth="2">5.2<tab/>Clause 4.2</title>
        </clause></clause>
+       <references id="R" obligation="informative" normative="true" displayorder="11">
+         <title depth="1">2<tab/>Normative References</title>
+       </references>
        </sections><annex id="P" inline-header="false" obligation="normative" displayorder="15">
          <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
          <clause id="Q" inline-header="false" obligation="normative">
@@ -138,9 +141,8 @@ RSpec.describe IsoDoc do
        <appendix id="Q2" inline-header="false" obligation="normative">
          <title depth="2">Appendix 1<tab/>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="11">
-         <title depth="1">2<tab/>Normative References</title>
-       </references><clause id="S" obligation="informative" displayorder="16">
+       </annex><bibliography>
+       <clause id="S" obligation="informative" displayorder="16">
          <title depth="1">Bibliography</title>
          <references id="T" obligation="informative" normative="false">
          <title depth="2">Bibliography Subsection</title>
@@ -345,6 +347,9 @@ RSpec.describe IsoDoc do
        <clause id="O" inline-header="false" obligation="normative">
          <title depth="2">5.2<tab/>Clause 4.2</title>
        </clause></clause>
+       <references id="R" obligation="informative" normative="true" displayorder="11">
+         <title depth="1">2<tab/>Normative References</title>
+       </references
        </sections><annex id="P" inline-header="false" obligation="normative" displayorder="15">
          <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
          <clause id="Q" inline-header="false" obligation="normative">
@@ -356,9 +361,8 @@ RSpec.describe IsoDoc do
               <appendix id="Q2" inline-header="false" obligation="normative">
          <title depth="2">Appendix 1<tab/>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="11">
-         <title depth="1">2<tab/>Normative References</title>
-       </references><clause id="S" obligation="informative" displayorder="16">
+       </annex><bibliography>
+       <clause id="S" obligation="informative" displayorder="16">
          <title depth="1">Bibliography</title>
          <references id="T" obligation="informative" normative="false">
          <title depth="2">Bibliography Subsection</title>
@@ -497,6 +501,9 @@ RSpec.describe IsoDoc do
        <clause id="O" inline-header="false" obligation="normative">
          <title depth="2">5.2<tab/>Clause 4.2</title>
        </clause></clause>
+       <references id="R" obligation="informative" normative="true" displayorder="11">
+         <title depth="1">2<tab/>Normative References</title>
+       </references
        </sections><annex id="P" inline-header="false" obligation="normative" displayorder="15">
          <title><strong>Annexe A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
          <clause id="Q" inline-header="false" obligation="normative">
@@ -508,9 +515,8 @@ RSpec.describe IsoDoc do
               <appendix id="Q2" inline-header="false" obligation="normative">
          <title depth="2">Appendice 1<tab/>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="11">
-         <title depth="1">2<tab/>Normative References</title>
-       </references><clause id="S" obligation="informative" displayorder="16">
+       </annex><bibliography>
+       <clause id="S" obligation="informative" displayorder="16">
          <title depth="1">Bibliography</title>
          <references id="T" obligation="informative" normative="false">
          <title depth="2">Bibliography Subsection</title>

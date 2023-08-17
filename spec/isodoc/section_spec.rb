@@ -110,7 +110,9 @@ RSpec.describe IsoDoc do
        <clause id="O" inline-header="false" obligation="normative">
          <title depth="2">5.2<tab/>Clause 4.2</title>
        </clause></clause>
-
+        <references id="R" obligation="informative" normative="true" displayorder="11">
+         <title depth="1">2<tab/>Normative References</title>
+       </references>
        </sections><annex id="P" inline-header="false" obligation="normative" displayorder="15">
          <title><strong>Annex A</strong><br/>(normative)<br/><br/><strong>Annex</strong></title>
          <clause id="Q" inline-header="false" obligation="normative">
@@ -122,9 +124,8 @@ RSpec.describe IsoDoc do
               <appendix id="Q2" inline-header="false" obligation="normative">
          <title depth="2">Appendix 1<tab/>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="11">
-         <title depth="1">2<tab/>Normative References</title>
-       </references><clause id="S" obligation="informative" displayorder="16">
+       </annex><bibliography>
+       <clause id="S" obligation="informative" displayorder="16">
          <title depth="1">Bibliography</title>
          <references id="T" obligation="informative" normative="false">
          <title depth="2">Bibliography Subsection</title>
@@ -227,11 +228,11 @@ RSpec.describe IsoDoc do
     word = <<~OUTPUT
           <body lang="EN-US" link="blue" vlink="#954F72">
             <div class="WordSection2">
-              <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
                   <div id="_" class="TOC">
       <p class="zzContents">Contents</p>
     </div>
-    <p>
+    <p class="page-break">
       <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
     </p>
               #{IEC_TITLE}
@@ -239,7 +240,7 @@ RSpec.describe IsoDoc do
                 <h1 class="ForewordTitle">FOREWORD</h1>
                 <p id="A">This is a preamble</p>
               </div>
-              <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
               <div class="Section3" id="B">
                 <h1 class="IntroTitle">Introduction</h1>
                 <div id="C">
@@ -249,7 +250,7 @@ RSpec.describe IsoDoc do
               </div>
               <p>&#160;</p>
             </div>
-            <p><br clear="all" class="section"/></p>
+            <p class="section-break"><br clear="all" class="section"/></p>
             <div class="WordSection3">
             #{IEC_TITLE1}
               <div id="D">
@@ -288,7 +289,7 @@ RSpec.describe IsoDoc do
          <h2>5.2<span style="mso-tab-count:1">&#160; </span>Clause 4.2</h2>
        </div>
               </div>
-              <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
               <div id="P" class="Section3">
                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
                 <div id="Q">
@@ -301,7 +302,7 @@ RSpec.describe IsoDoc do
          <h2>Appendix 1<span style="mso-tab-count:1">&#160; </span>An Appendix</h2>
        </div>
               </div>
-              <p><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
               <div>
                 <h1 class="Section3">Bibliography</h1>
                 <div>
@@ -370,7 +371,8 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
               <iso-standard xmlns="http://riboseinc.com/isoxml">
       <sections>
-      <terms id="H" obligation="normative"><title>1<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
+      <terms id="H" obligation="normative" displayorder="1">
+        <title>1<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
         <term id="J">
         <name>1.1</name>
         <preferred>Term2</preferred>
@@ -398,8 +400,9 @@ RSpec.describe IsoDoc do
     input = <<~INPUT
             <iso-standard xmlns="http://riboseinc.com/isoxml">
             <sections>
-             <clause id="M" inline-header="false" obligation="normative"><title>1<tab/>Clause 4</title>
-      <clause id="N" inline-header="false" obligation="normative">
+             <clause id="M" inline-header="false" obligation="normative" displayorder="1">
+              <title>1<tab/>Clause 4</title>
+                <clause id="N" inline-header="false" obligation="normative">
                <title>1.1<tab/>Introduction</title>
              </clause>
              <clause id="O" inline-header="true" obligation="normative">
@@ -446,14 +449,10 @@ RSpec.describe IsoDoc do
         <div class="WordSection2">
           <p> </p>
         </div>
-        <p>
+        <p class="section-break">
           <br clear="all" class="section"/>
         </p>
         <div class="WordSection3">
-          <p class="zzSTDTitle1">
-            <b/>
-          </p>
-          <p class="zzSTDTitle1"> </p>
         </div>
         <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
         <div class="colophon"/>
@@ -482,14 +481,10 @@ RSpec.describe IsoDoc do
            <div class="WordSection2">
              <p> </p>
            </div>
-           <p>
+           <p class="section-break">
              <br clear="all" class="section"/>
            </p>
            <div class="WordSection3">
-             <p class="zzSTDTitle1">
-               <b/>
-             </p>
-             <p class="zzSTDTitle1"> </p>
            </div>
          </body>
     OUTPUT
@@ -511,7 +506,9 @@ RSpec.describe IsoDoc do
           <p>Boilerplate</p>
         </legal-statement>
       </boilerplate>
-      <sections/>
+      <sections>
+      <clause/>
+      </sections>
       </iso-standard>
     INPUT
     output = <<~OUTPUT
@@ -532,7 +529,9 @@ RSpec.describe IsoDoc do
         </clause>
       </foreword>
       </preface>
-          <sections/>
+          <sections>
+      <clause displayorder="9"/>
+      </sections>
         </iso-standard>
     OUTPUT
     expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
