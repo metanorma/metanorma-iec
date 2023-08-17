@@ -173,7 +173,7 @@ BLANK_HDR = <<~"HDR".freeze
     <script>Latn</script>
     <status>
       <stage abbreviation="PPUB">60</stage>
-      <substage abbreviation="PPUB">60</substage>
+      <substage>60</substage>
     </status>
     <copyright>
       <from>#{Time.new.year}</from>
@@ -189,7 +189,7 @@ BLANK_HDR = <<~"HDR".freeze
     <editorialgroup>
       <agency>IEC</agency>
     </editorialgroup>
-    <stagename abbreviation="PPUB">International Standard published</stagename>
+    <stagename abbreviation="PPUB IS">International Standard published</stagename>
     </ext>
   </bibdata>
   <metanorma-extension>

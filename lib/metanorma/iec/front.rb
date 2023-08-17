@@ -43,30 +43,34 @@ module Metanorma
         end
       end
 
-      def metadata_stage(id, xml)
-        xml.stagename metadata_stagename(id)&.strip,
-                      **attr_code(abbreviation: id.stage.abbr&.strip)
-      end
-
       def metadata_stagename(id)
         if @amd
           id.amendments&.first&.stage&.name ||
             id.corrigendums&.first&.stage&.name
         else
-          code = id.stage.config.stages["abbreviations"][id.stage.abbr]
-          id.stage.config.stages["codes_description"][code]
+          begin
+            id.typed_stage_name
+          rescue StandardError
+            # id.stage&.name
+            "International Standard published"
+          end
         end
       end
 
-      def iso_id(node, xml)
-        node.attr("docnumber") || node.attr("docidentifier") or return
-        unless dn = node.attr("docidentifier")
-          part, subpart = node&.attr("partnumber")&.split(/-/)
-          dn = add_id_parts(node.attr("docnumber"), part, subpart)
-          dn = id_stage_prefix(dn, node)
-          dn = id_edition_suffix(dn, node)
-        end
-      end
+      #       def metadata_stage(id, xml)
+      #         xml.stagename metadata_stagename(id)&.strip,
+      #                       **attr_code(abbreviation: id.stage.abbr&.strip)
+      #       end
+      #
+      #       def metadata_stagename(id)
+      #         if @amd
+      #           id.amendments&.first&.stage&.name ||
+      #             id.corrigendums&.first&.stage&.name
+      #         else
+      #           code = id.stage.config.stages["abbreviations"][id.stage.abbr]
+      #           id.stage.config.stages["codes_description"][code]
+      #         end
+      #       end
 
       def get_typeabbr(node, amd: false)
         node.attr("amendment-number") and return :amd
@@ -115,7 +119,7 @@ module Metanorma
 
       def iso_id_params_add(node)
         stage = iso_id_stage(node)
-        if stage == :"??"
+        if stage.nil?
           s = node.attr("status") || node.attr("docstage")
           @fatalerror << "IEC Stage #{s} not recognised"
           @log.add("Metadata", nil, "IEC Stage #{s} not recognised")
@@ -126,6 +130,15 @@ module Metanorma
           node.attr("corrigendum-number"),
                 year: iso_id_year(node) }.compact
         stage and ret[:stage] = stage
+        ret
+      end
+
+      def iso_id_stage(node)
+        ret = "#{get_stage(node)}.#{get_substage(node)}"
+        /[A-Z]/.match?(ret) and
+          ret = Pubid::Iec::Identifier.config
+            .stages["abbreviations"][get_stage(node)]
+        /^\d\d\.\d\d$/.match?(ret) or ret = "10.20" # ret = nil
         ret
       end
 
@@ -201,6 +214,7 @@ module Metanorma
         Pubid::Iec::Identifier.create(**params1)
       end
 
+=begin
       DOC_STAGE = {
         "00": "PWI",
         "10": "NWIP",
@@ -249,13 +263,15 @@ module Metanorma
         "95": "Withdrawal",
         "99": "Deleted",
       }.freeze
+=end
 
       def status_abbrev1(node)
-        id = iso_id_default({stage: "60.60"}.merge(iso_id_params(node)))
+        id = iso_id_default({ stage: "60.60" }.merge(iso_id_params(node)))
         id.stage or return ""
         id.stage.abbr
       end
 
+=begin
       def stage_abbr(stage, _substage, _doctype)
         return "PPUB" if stage == "60"
 
@@ -265,29 +281,25 @@ module Metanorma
       def stage_name(stage, _substage, _doctype, _iteration)
         STAGE_NAMES[stage.to_sym]
       end
+=end
 
       def get_stage(node)
         stage = node.attr("status") || node.attr("docstage") || "60"
         m = /([0-9])CD$/.match(stage) and node.set_attr("iteration", m[1])
-        /[A-Z]/.match?(stage) && Pubid::Iec::Identifier.has_stage?(stage) and
-          stage = Pubid::Iec::Identifier.parse_stage(stage)
-            .harmonized_code.stages.first.sub(/\.\d\d$/, "")
         stage
       end
 
       def get_substage(node)
         ret = node.attr("docsubstage") and return ret
-        st = node.attr("status") || node.attr("docstage")
-        (if get_stage(node) == "60"
-           "60"
-         elsif /[A-Z]/.match?(st) && Pubid::Iec::Identifier.has_stage?(st)
-           Pubid::Iec::Identifier.parse_stage(st)
-             .harmonized_code.stages.first.sub(/^\d\d\./, "")
-         else
-           "00"
-         end)
+        st = get_stage(node)
+        case st
+        when "60" then "60"
+        when "30", "40", "50" then "20"
+        else "00"
+        end
       end
 
+=begin
       def id_stage_abbr(stage, _substage, node)
         return "" if stage == "60"
 
@@ -295,8 +307,10 @@ module Metanorma
         abbr = node.attr("iteration") + abbr if node.attr("iteration")
         abbr
       end
+=end
 
       # TODO: replace by ISO call
+=begin
       def metadata_status(node, xml)
         stage = get_stage(node)
         substage = get_substage(node)
@@ -308,10 +322,11 @@ module Metanorma
           node.attr("iteration") && (s.iteration node.attr("iteration"))
         end
         iso_id_default(iso_id_params(node))
-        rescue Pubid::Core::Errors::HarmonizedStageCodeInvalidError,
+      rescue Pubid::Core::Errors::HarmonizedStageCodeInvalidError,
              Pubid::Core::Errors::TypeStageParseError
         report_illegal_stage(stage, substage)
       end
+=end
 
       def metadata_subdoctype(node, xml)
         super
