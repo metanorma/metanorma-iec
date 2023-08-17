@@ -144,8 +144,8 @@ def boilerplate(xmldoc)
   conv.init(Asciidoctor::Document.new([]))
   ret = Nokogiri::XML(
     conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
-    .gsub(/<p>/, "<p id='_'>")
-    .gsub(/<ol>/, "<ol id='_'>"),
+    .gsub("<p>", "<p id='_'>")
+    .gsub("<ol>", "<ol id='_'>"),
   )
   conv.smartquotes_cleanup(ret)
   HTMLEntities.new.decode(ret.to_xml)
@@ -169,6 +169,13 @@ BLANK_HDR = <<~"HDR".freeze
         <abbreviation>IEC</abbreviation>
       </organization>
     </contributor>
+                <contributor>
+              <role type="authorizer">Agency</role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+            </contributor>
     <language>en</language>
     <script>Latn</script>
     <status>
@@ -240,8 +247,7 @@ IEC_TITLE = <<~TITLE.freeze
               <p class="zzSTDTitle1">&#160;</p>
 TITLE
 
-IEC_TITLE1 = <<~TITLE.freeze
-TITLE
+IEC_TITLE1 = "".freeze
 
 HTML_HDR = <<~HDR.freeze
   <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
@@ -329,7 +335,7 @@ end
 
 def mock_pdf
   allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
-    FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
+    FileUtils.cp(url.gsub('"', ""), output.gsub('"', ""))
   end
 end
 
