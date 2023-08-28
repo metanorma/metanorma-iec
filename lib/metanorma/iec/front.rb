@@ -15,8 +15,7 @@ module Metanorma
           begin
             id.typed_stage_name
           rescue StandardError
-            # id.stage&.name
-            "International Standard published"
+            id.stage&.name
           end
         end
       end
