@@ -3,44 +3,8 @@ require "pubid-iec"
 module Metanorma
   module Iec
     class Converter < ISO::Converter
-      def metadata_author(node, xml)
-        publishers = node.attr("publisher") || "IEC"
-        csv_split(publishers)&.each do |p|
-          xml.contributor do |c|
-            c.role type: "author"
-            c.organization do |a|
-              organization(a, p, false, node, !node.attr("publisher"))
-            end
-          end
-        end
-      end
-
-      def metadata_publisher(node, xml)
-        publishers = node.attr("publisher") || "IEC"
-        csv_split(publishers)&.each do |p|
-          xml.contributor do |c|
-            c.role type: "publisher"
-            c.organization do |a|
-              organization(a, p, true, node, !node.attr("publisher"))
-            end
-          end
-        end
-      end
-
-      def metadata_copyright(node, xml)
-        publishers = node.attr("copyright-holder") || node.attr("publisher") ||
-          "IEC"
-        csv_split(publishers)&.each do |p|
-          xml.copyright do |c|
-            c.from (node.attr("copyright-year") || Date.today.year)
-            c.owner do |owner|
-              owner.organization do |o|
-                organization(o, p, true, node, !node.attr("copyright-holder") ||
-                             node.attr("publisher"))
-              end
-            end
-          end
-        end
+      def home_agency
+        "IEC"
       end
 
       def metadata_stagename(id)

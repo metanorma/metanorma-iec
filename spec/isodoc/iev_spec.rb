@@ -619,8 +619,7 @@ RSpec.describe IsoDoc do
                   <p id='_'>Dependability includes availability (<em>192-01-02</em>
                      (<xref target='term-sub-item'><span class='citesec'>192-01-02</span></xref>),
                     <em>191-01-02</em>
-                     [term defined in
-                    <termref base='IEV' target='191-01-02'/>])</p>
+                     (<termref base='IEV' target='191-01-02'/>))</p>
                 </termnote>
               </term>
               <term id='term-sub-item'>

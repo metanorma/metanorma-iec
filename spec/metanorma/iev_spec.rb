@@ -46,6 +46,13 @@ RSpec.describe Metanorma::Iec do
                      <abbreviation>IEC</abbreviation>
                    </organization>
                  </contributor>
+                             <contributor>
+              <role type="authorizer">Agency</role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+            </contributor>
                  <language>en</language>
                  <script>Latn</script>
                  <status>
@@ -151,6 +158,13 @@ RSpec.describe Metanorma::Iec do
               <abbreviation>IEC</abbreviation>
             </organization>
           </contributor>
+                      <contributor>
+              <role type="authorizer">Agency</role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+            </contributor>
           <language>en</language>
           <script>Latn</script>
           <status>
@@ -253,6 +267,13 @@ RSpec.describe Metanorma::Iec do
                  <abbreviation>IEC</abbreviation>
                </organization>
              </contributor>
+                         <contributor>
+              <role type="authorizer">Agency</role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+            </contributor>
              <language>en</language>
              <script>Latn</script>
              <status>
