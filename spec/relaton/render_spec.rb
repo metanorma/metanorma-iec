@@ -360,6 +360,7 @@ RSpec.describe Relaton::Render::Iso do
         <title>metanorma-standoc</title>
         <uri>https://github.com/metanorma/metanorma-standoc</uri>
         <date type="published"><on>2019-09-04</on></date>
+        <date type="accessed"><on>2023-09-06</on></date>
         <contributor>
           <role type="author"/>
           <organization>
@@ -376,7 +377,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Ribose Inc.</smallcap>. <em>metanorma-standoc</em>. Version 1.3.1. 2019. Available from: <span class='biburl'><link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link></span>.</formattedref>
+      <formattedref><smallcap>Ribose Inc.</smallcap>. <em>metanorma-standoc</em>. Version 1.3.1. 2019. Available from: <span class='biburl'><link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link></span>. [viewed: September 6, 2023].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -697,6 +698,7 @@ RSpec.describe Relaton::Render::Iso do
       <bibitem type="unpublished">
         <title>Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice</title>
         <uri>https://eprints.soton.ac.uk/338797/</uri>
+        <date type="published"><on>2020-06</on></date>
         <date type="accessed"><on>2020-06</on></date>
         <contributor>
           <role type="author"/>
