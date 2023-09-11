@@ -1,7 +1,7 @@
 require "asciidoctor"
 require "metanorma-iso"
 require "metanorma/iso/converter"
-require_relative "./front"
+require_relative "front"
 
 module Metanorma
   module Iec
@@ -29,13 +29,12 @@ module Metanorma
       end
 
       def doctype_validate(xmldoc)
-        doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
         %w(international-standard technical-specification technical-report
            publicly-available-specification international-workshop-agreement
-           guide interpretation-sheet).include? doctype or
+           guide interpretation-sheet).include? @doctype or
           @log.add("Document Attributes", nil,
-                   "#{doctype} is not a recognised document type")
-        if function = xmldoc&.at("//bibdata/ext/function")&.text
+                   "#{@doctype} is not a recognised document type")
+        if function = xmldoc.at("//bibdata/ext/function")&.text
           %w(emc quality-assurance safety environment).include? function or
             @log.add("Document Attributes", nil,
                      "#{function} is not a recognised document function")
