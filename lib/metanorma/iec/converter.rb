@@ -77,7 +77,9 @@ module Metanorma
         if node.nil?
           IsoDoc::Iec::PresentationXMLConvert.new({})
         else
-          IsoDoc::Iec::PresentationXMLConvert.new(doc_extract_attributes(node))
+          IsoDoc::Iec::PresentationXMLConvert
+            .new(doc_extract_attributes(node)
+            .merge(output_formats: ::Metanorma::Iec::Processor.new.output_formats))
         end
       end
 
