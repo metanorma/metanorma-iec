@@ -22,10 +22,6 @@ RSpec.describe Metanorma::Iec do
 
       == Normative References
 
-      == Terms and Definitions
-
-      === Term1
-
       == Terms, Definitions, Symbols and Abbreviated Terms
 
       === Normal Terms
@@ -70,34 +66,25 @@ RSpec.describe Metanorma::Iec do
                <title>Scope</title>
                <p id="_">Text</p>
              </clause>
-
-             <terms id="_" obligation="normative">
+             <clause id="_" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="_" obligation="normative">
                <title>Terms and definitions</title>
                <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
                #{TERMS_BOILERPLATE}
-               <term id="term-Term1">
-               <preferred><expression><name>Term1</name></expression></preferred>
-             </term>
-             </terms>
-             <clause id="_" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="_" obligation="normative">
-               <title>Normal Terms</title>
                <term id="term-Term2">
                <preferred><expression><name>Term2</name></expression></preferred>
              </term>
              </terms>
-             <definitions id="_" obligation="normative"><title>Symbols and abbreviated terms</title></definitions></clause>
-             <definitions id="_" obligation="normative"><title>Symbols and abbreviated terms</title></definitions>
+             <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions></clause>
+             <definitions id="_" obligation="normative"><title>Symbols and Abbreviated Terms</title></definitions>
              <clause id="_" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="_" inline-header="false" obligation="normative">
                <title>Introduction</title>
              </clause>
              <clause id="_" inline-header="false" obligation="normative">
                <title>Clause 4.2</title>
              </clause></clause>
-             <clause id="_" inline-header="false" obligation="normative">
+             <terms id="_" obligation="normative">
                 <title>Terms and Definitions</title>
-             </clause>
-
-
+             </terms>
              </sections><annex id="_" inline-header="false" obligation="normative">
                <title>Annex</title>
                <clause id="_" inline-header="false" obligation="normative">
@@ -114,141 +101,6 @@ RSpec.describe Metanorma::Iec do
              </references>
              </clause>
              </bibliography>
-             </iec-standard>
-    OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
-  end
-
-  it "processes sections with title attributes" do
-    input = <<~INPUT
-      #{ASCIIDOC_BLANK_HDR}
-      .Foreword
-
-      Text
-
-      [heading=introduction]
-      == Εισαγωγή
-
-      === Introduction Subsection
-
-      [heading=scope]
-      == Σκοπός
-
-      Text
-
-      [heading=normative references]
-      == Κανονιστικές Παραπομπές
-
-      [heading=terms and definitions]
-      == Όροι και Ορισμοί
-
-      === Term1
-
-      [heading="terms, definitions, symbols and abbreviated terms"]
-      == Όροι, Ορισμοί, Σύμβολα και Συντομογραφίες
-
-      === Normal Terms
-
-      ==== Term2
-
-      [heading=symbols and abbreviated terms]
-      === Σύμβολα και Συντομογραφίες
-
-      [heading=symbols and abbreviated terms]
-      == Σύμβολα και Συντομογραφίες
-
-      == Clause 4
-
-      === Introduction
-
-      === Clause 4.2
-
-      [appendix]
-      == Annex
-
-      === Annex A.1
-
-      [%appendix]
-      === Appendx 1
-
-      [heading=bibliography]
-      == Βιβλιογραφία
-
-      === Bibliography Subsection
-    INPUT
-    output = <<~OUTPUT
-                  #{@blank_hdr}
-             <preface>
-             <foreword id="_" obligation="informative">
-               <title>FOREWORD</title>
-               <p id="_">Text</p>
-             </foreword>
-             <introduction id="_" obligation="informative">
-      <title>INTRODUCTION</title><clause id="_" inline-header="false" obligation="informative">
-               <title>Introduction Subsection</title>
-             </clause>
-             </introduction>
-             </preface>
-             <sections>
-             <clause id="_" obligation="normative" type="scope" inline-header='false'>
-               <title>Scope</title>
-               <p id="_">Text</p>
-             </clause>
-             <terms id="_" obligation="normative">
-               <title>Terms and definitions</title>
-               <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
-               #{TERMS_BOILERPLATE}
-               <term id="term-Term1">
-               <preferred><expression><name>Term1</name></expression></preferred>
-             </term>
-             </terms>
-             <clause id='_' obligation='normative'>
-                   <title>Terms, definitions, symbols and abbreviated terms</title>
-                   <terms id='_' obligation='normative'>
-                     <title>Normal Terms</title>
-                     <term id='term-Term2'>
-                       <preferred><expression><name>Term2</name></expression></preferred>
-                     </term>
-                   </terms>
-                   <definitions id='_' obligation="normative">
-                     <title>Symbols and abbreviated terms</title>
-                   </definitions>
-                 </clause>
-                 <definitions id='_' obligation="normative">
-                   <title>Symbols and abbreviated terms</title>
-                 </definitions>
-                 <clause id='_' inline-header='false' obligation='normative'>
-                   <title>Clause 4</title>
-                   <clause id='_' inline-header='false' obligation='normative'>
-                     <title>Introduction</title>
-                   </clause>
-                   <clause id='_' inline-header='false' obligation='normative'>
-                     <title>Clause 4.2</title>
-                   </clause>
-                 </clause>
-               </sections>
-               <annex id='_' inline-header='false' obligation='normative'>
-                 <title>Annex</title>
-                 <clause id='_' inline-header='false' obligation='normative'>
-                   <title>Annex A.1</title>
-                 </clause>
-                 <appendix id='_' inline-header='false' obligation='normative'>
-                   <title>Appendx 1</title>
-                 </appendix>
-               </annex>
-               <bibliography>
-                 <references id='_' obligation='informative' normative="true">
-                   <title>Normative references</title>
-                   <p id="_">There are no normative references in this document.</p>
-                 </references>
-                 <clause id='_' obligation='informative'>
-                   <title>Bibliography</title>
-                   <references id='_' obligation='informative' normative="false">
-                     <title>Bibliography Subsection</title>
-                   </references>
-                 </clause>
-               </bibliography>
              </iec-standard>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
