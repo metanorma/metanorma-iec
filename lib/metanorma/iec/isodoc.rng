@@ -17,7 +17,7 @@
   these elements; we just want one namespace for any child grammars
   of this.
 -->
-<!-- VERSION v1.2.4 -->
+<!-- VERSION v1.2.7 -->
 <grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <include href="reqt.rng"/>
   <include href="basicdoc.rng">
@@ -485,6 +485,8 @@
           <choice>
             <text/>
             <ref name="callout"/>
+            <ref name="xref"/>
+            <ref name="eref"/>
           </choice>
         </oneOrMore>
         <zeroOrMore>
@@ -865,6 +867,7 @@
             <ref name="PureTextElement"/>
             <ref name="stem"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
             <ref name="eref"/>
             <ref name="erefstack"/>
             <ref name="xref"/>
@@ -880,6 +883,7 @@
             <ref name="PureTextElement"/>
             <ref name="stem"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
             <ref name="eref"/>
             <ref name="erefstack"/>
             <ref name="xref"/>
@@ -894,6 +898,7 @@
           <choice>
             <ref name="PureTextElement"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
             <ref name="eref"/>
             <ref name="erefstack"/>
             <ref name="xref"/>
@@ -908,6 +913,7 @@
           <choice>
             <ref name="PureTextElement"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
           </choice>
         </zeroOrMore>
       </element>
@@ -918,6 +924,7 @@
           <choice>
             <ref name="PureTextElement"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
           </choice>
         </zeroOrMore>
       </element>
@@ -928,6 +935,7 @@
           <choice>
             <ref name="PureTextElement"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
           </choice>
         </zeroOrMore>
       </element>
@@ -938,6 +946,7 @@
           <choice>
             <ref name="PureTextElement"/>
             <ref name="index"/>
+            <ref name="index-xref"/>
           </choice>
         </zeroOrMore>
       </element>
@@ -1004,6 +1013,14 @@
       </oneOrMore>
     </element>
   </define>
+  <define name="BasicBlock" combine="choice">
+    <ref name="columnbreak"/>
+  </define>
+  <define name="columnbreak">
+    <element name="columnbreak">
+      <empty/>
+    </element>
+  </define>
   <define name="MultilingualRenderingType">
     <choice>
       <value>common</value>
@@ -1037,6 +1054,17 @@
       <ref name="date_inline"/>
     </choice>
   </define>
+  <define name="PureTextElement" combine="choice">
+    <ref name="passthrough_inline"/>
+  </define>
+  <define name="passthrough_inline">
+    <element name="passthrough">
+      <optional>
+        <attribute name="formats"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
   <define name="add">
     <element name="add">
       <choice>
@@ -1047,6 +1075,8 @@
         <ref name="keyword"/>
         <ref name="xref"/>
         <ref name="hyperlink"/>
+        <ref name="index"/>
+        <ref name="index-xref"/>
       </choice>
     </element>
   </define>
@@ -1060,6 +1090,8 @@
         <ref name="keyword"/>
         <ref name="xref"/>
         <ref name="hyperlink"/>
+        <ref name="index"/>
+        <ref name="index-xref"/>
       </choice>
     </element>
   </define>
@@ -1070,6 +1102,9 @@
       </optional>
       <optional>
         <attribute name="style"/>
+      </optional>
+      <optional>
+        <attribute name="custom-charset"/>
       </optional>
       <oneOrMore>
         <ref name="TextElement"/>
@@ -1126,6 +1161,8 @@
             <choice>
               <ref name="PureTextElement"/>
               <ref name="stem"/>
+              <ref name="index"/>
+              <ref name="index-xref"/>
             </choice>
           </zeroOrMore>
         </element>
@@ -1136,6 +1173,8 @@
             <choice>
               <ref name="PureTextElement"/>
               <ref name="stem"/>
+              <ref name="index"/>
+              <ref name="index-xref"/>
             </choice>
           </zeroOrMore>
         </element>

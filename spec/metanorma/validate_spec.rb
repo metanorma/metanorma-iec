@@ -4,7 +4,7 @@ require "fileutils"
 RSpec.describe Metanorma::Iec do
   context "when xref_error.adoc compilation" do
     around do |example|
-      FileUtils.rm_f "spec/assets/xref_error.err"
+      FileUtils.rm_f "spec/assets/xref_error.err.html"
       example.run
       Dir["spec/assets/xref_error*"].each do |file|
         next if file.match?(/adoc$/)
@@ -16,15 +16,16 @@ RSpec.describe Metanorma::Iec do
     it "generates error file" do
       expect do
         mock_pdf
-        Metanorma::Compile.new.compile("spec/assets/xref_error.adoc",
-                                       type: "iec", no_install_fonts: true)
-      end.to(change { File.exist?("spec/assets/xref_error.err") }
+        Metanorma::Compile
+          .new
+          .compile("spec/assets/xref_error.adoc", type: "iec", no_install_fonts: true)
+      end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end
   end
 
   it "Warns of illegal doctype" do
-    FileUtils.rm_f "test.err"
+    FileUtils.rm_f "test.err.html"
     Asciidoctor.convert(<<~INPUT, backend: :iec, header_footer: true)
       = Document title
       Author
@@ -35,12 +36,11 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err"))
-      .to include "pizza is not a recognised document type"
+    expect(File.read("test.err.html")).to include "pizza is not a recognised document type"
   end
 
   it "Warns of illegal function" do
-    FileUtils.rm_f "test.err"
+    FileUtils.rm_f "test.err.html"
     Asciidoctor.convert(<<~INPUT, backend: :iec, header_footer: true)
       = Document title
       Author
@@ -51,8 +51,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err"))
-      .to include "pizza is not a recognised document function"
+    expect(File.read("test.err.html")).to include "pizza is not a recognised document function"
   end
 
   it "warns of explicit style set on ordered list" do
@@ -63,7 +62,7 @@ RSpec.describe Metanorma::Iec do
       [arabic]
       . A
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Style override set for ordered list"
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
@@ -72,7 +71,7 @@ RSpec.describe Metanorma::Iec do
       == Clause
       . A
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Style override set for ordered list"
   end
 
@@ -111,7 +110,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err")).to include "Illegal document stage: pizza.00"
+    expect(File.read("test.err.html")).to include "Illegal document stage: pizza.00"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
@@ -123,7 +122,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err")).to include "Illegal document stage: 70.00"
+    expect(File.read("test.err.html")).to include "Illegal document stage: 70.00"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
@@ -135,7 +134,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err")).not_to include "Illegal document stage: 60.00"
+    expect(File.read("test.err.html")).not_to include "Illegal document stage: 60.00"
   end
 
   it "Warns of illegal substage" do
@@ -150,7 +149,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Illegal document stage: 60.pizza"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -164,7 +163,7 @@ RSpec.describe Metanorma::Iec do
 
     text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .to include "Illegal document stage: 60.54"
 
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -178,7 +177,7 @@ RSpec.describe Metanorma::Iec do
 
     text
     INPUT
-    expect(File.read("test.err"))
+    expect(File.read("test.err.html"))
       .not_to include "Illegal document stage: 60.60"
   end
 end
