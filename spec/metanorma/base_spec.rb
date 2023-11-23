@@ -99,24 +99,18 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
                 <?xml version="1.0" encoding="UTF-8"?>
             <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
-                     <bibdata type='standard'>
-          <title language='en' format='text/plain' type='main'>
-            Introduction&#8201;&#8212;&#8201;Main
-            Title&#8201;&#8212;&#8201;Title&#8201;&#8212;&#8201;Title Part
-          </title>
-          <title language='en' format='text/plain' type='title-intro'>Introduction</title>
-          <title language='en' format='text/plain' type='title-main'>Main Title&#8201;&#8212;&#8201;Title</title>
-          <title language='en' format='text/plain' type='title-part'>Title Part</title>
-          <title language='fr' format='text/plain' type='main'>
-            Introduction Fran&#231;aise&#8201;&#8212;&#8201;Titre
-            Principal&#8201;&#8212;&#8201;Part du Titre
-          </title>
-          <title language='fr' format='text/plain' type='title-intro'>Introduction Fran&#231;aise</title>
-          <title language='fr' format='text/plain' type='title-main'>Titre Principal</title>
-          <title language='fr' format='text/plain' type='title-part'>Part du Titre</title>
-          <docidentifier type='ISO'>IEC/3NWIP 1000-1 ED 2</docidentifier>
-          <docnumber>1000</docnumber>
-                     <contributor>
+                     <bibdata type="standard">
+           <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
+           <title language="en" format="text/plain" type="title-intro">Introduction</title>
+           <title language="en" format="text/plain" type="title-main">Main Title — Title</title>
+           <title language="en" format="text/plain" type="title-part">Title Part</title>
+           <title language="fr" format="text/plain" type="main">Introduction Française — Titre Principal — Part du Titre</title>
+           <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
+           <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
+           <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
+           <docidentifier type="ISO">IEC/3NWIP 1000-1 ED 2</docidentifier>
+           <docnumber>1000</docnumber>
+           <contributor>
              <role type="author"/>
              <organization>
                <name>International Electrotechnical Commission</name>
@@ -132,6 +126,14 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
+             <role type="author">Technical committee</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>TC1</subdivision>
+               <identifier>A1 11</identifier>
+             </organization>
+           </contributor>
+           <contributor>
              <role type="author">Subcommittee</role>
              <organization>
                <name>International Electrotechnical Commission</name>
@@ -140,11 +142,27 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
+             <role type="author">Subcommittee</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>SC1</subdivision>
+               <identifier>B1 21</identifier>
+             </organization>
+           </contributor>
+           <contributor>
              <role type="author">Workgroup</role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>WG</subdivision>
                <identifier>C 3</identifier>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type="author">Workgroup</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>WG1</subdivision>
+               <identifier>C1 31</identifier>
              </organization>
            </contributor>
            <contributor>
@@ -163,11 +181,27 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
+             <role type="authorizer">Technical committee</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>TC1</subdivision>
+               <identifier>A1 11</identifier>
+             </organization>
+           </contributor>
+           <contributor>
              <role type="authorizer">Subcommittee</role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>SC</subdivision>
                <identifier>B 2</identifier>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type="authorizer">Subcommittee</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>SC1</subdivision>
+               <identifier>B1 21</identifier>
              </organization>
            </contributor>
            <contributor>
@@ -179,68 +213,76 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
+             <role type="authorizer">Workgroup</role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <subdivision>WG1</subdivision>
+               <identifier>C1 31</identifier>
+             </organization>
+           </contributor>
+           <contributor>
              <role type="authorizer">Agency</role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <abbreviation>IEC</abbreviation>
              </organization>
            </contributor>
-          <edition>2</edition>
-          <version>
-            <revision-date>2000-01-01</revision-date>
-            <draft>0.3.4</draft>
-          </version>
-          <language>en</language>
-          <script>Latn</script>
-          <status>
-            <stage abbreviation='NWIP'>10</stage>
-            <substage abbreviation='??'>20</substage>
-            <iteration>3</iteration>
-          </status>
-          <copyright>
-            <from>#{Date.today.year}</from>
-            <owner>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </owner>
-          </copyright>
-          <relation type='obsoletes'>
-            <bibitem>
-              <title>--</title>
-              <docidentifier>ABC</docidentifier>
-            </bibitem>
-          </relation>
-          <relation type='obsoletes'>
-            <bibitem>
-              <title>--</title>
-              <docidentifier>DEF</docidentifier>
-            </bibitem>
-          </relation>
-          <ext>
-            <doctype>standard</doctype>
-            <editorialgroup>
-              <agency>IEC</agency>
-              <technical-committee number='1' type='A'>TC</technical-committee>
-              <technical-committee number='11' type='A1'>TC1</technical-committee>
-              <subcommittee number='2' type='B'>SC</subcommittee>
-              <subcommittee number='21' type='B1'>SC1</subcommittee>
-              <workgroup number='3' type='C'>WG</workgroup>
-              <workgroup number='31' type='C1'>WG1</workgroup>
-              <secretariat>SECRETARIAT</secretariat>
-            </editorialgroup>
-            <structuredidentifier>
-              <project-number part='1'>IEC 1000</project-number>
-            </structuredidentifier>
-            <stagename abbreviation="NP">New Proposal International Standard</stagename>
-            <accessibility-color-inside>true</accessibility-color-inside>
-            <price-code>XC</price-code>
-            <cen-processing>true</cen-processing>
-            <secretary>Fred Nerk</secretary>
-            <interest-to-committees>TC 6121, SC 12</interest-to-committees>
-          </ext>
-        </bibdata>
+           <edition>2</edition>
+           <version>
+             <revision-date>2000-01-01</revision-date>
+             <draft>0.3.4</draft>
+           </version>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage abbreviation="NWIP">10</stage>
+             <substage abbreviation="??">20</substage>
+             <iteration>3</iteration>
+           </status>
+           <copyright>
+             <from>#{Date.today.year}</from>
+             <owner>
+               <organization>
+                 <name>International Electrotechnical Commission</name>
+                 <abbreviation>IEC</abbreviation>
+               </organization>
+             </owner>
+           </copyright>
+           <relation type="obsoletes">
+             <bibitem>
+               <title>--</title>
+               <docidentifier>ABC</docidentifier>
+             </bibitem>
+           </relation>
+           <relation type="obsoletes">
+             <bibitem>
+               <title>--</title>
+               <docidentifier>DEF</docidentifier>
+             </bibitem>
+           </relation>
+           <ext>
+             <doctype>standard</doctype>
+             <editorialgroup>
+               <agency>IEC</agency>
+               <technical-committee number="1" type="A">TC</technical-committee>
+               <technical-committee number="11" type="A1">TC1</technical-committee>
+               <subcommittee number="2" type="B">SC</subcommittee>
+               <subcommittee number="21" type="B1">SC1</subcommittee>
+               <workgroup number="3" type="C">WG</workgroup>
+               <workgroup number="31" type="C1">WG1</workgroup>
+               <secretariat>SECRETARIAT</secretariat>
+             </editorialgroup>
+             <structuredidentifier>
+               <project-number part="1">IEC 1000</project-number>
+             </structuredidentifier>
+             <stagename abbreviation="NP">New Proposal International Standard</stagename>
+             <accessibility-color-inside>true</accessibility-color-inside>
+             <price-code>XC</price-code>
+             <cen-processing>true</cen-processing>
+             <secretary>Fred Nerk</secretary>
+             <interest-to-committees>TC 6121, SC 12</interest-to-committees>
+           </ext>
+         </bibdata>
                  <metanorma-extension>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
@@ -566,7 +608,7 @@ RSpec.describe Metanorma::Iec do
           <iteration>2</iteration>
         </status>
         <copyright>
-          <from>2023</from>
+          <from>#{Date.today.year}</from>
           <owner>
             <organization>
               <name>International Electrotechnical Commission</name>
