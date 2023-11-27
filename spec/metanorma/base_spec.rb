@@ -118,7 +118,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Technical committee</role>
+             <role type="author">
+               <description>Technical committee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>TC</subdivision>
@@ -126,7 +128,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Technical committee</role>
+             <role type="author">
+               <description>Technical committee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>TC1</subdivision>
@@ -134,7 +138,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Subcommittee</role>
+             <role type="author">
+               <description>Subcommittee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>SC</subdivision>
@@ -142,7 +148,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Subcommittee</role>
+             <role type="author">
+               <description>Subcommittee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>SC1</subdivision>
@@ -150,7 +158,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Workgroup</role>
+             <role type="author">
+               <description>Workgroup</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>WG</subdivision>
@@ -158,11 +168,22 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="author">Workgroup</role>
+             <role type="author">
+               <description>Workgroup</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>WG1</subdivision>
                <identifier>C1 31</identifier>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type="authorizer">
+               <description>Agency</description>
+             </role>
+             <organization>
+               <name>International Electrotechnical Commission</name>
+               <abbreviation>IEC</abbreviation>
              </organization>
            </contributor>
            <contributor>
@@ -173,7 +194,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Technical committee</role>
+             <role type="authorizer">
+               <description>Technical committee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>TC</subdivision>
@@ -181,7 +204,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Technical committee</role>
+             <role type="authorizer">
+               <description>Technical committee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>TC1</subdivision>
@@ -189,7 +214,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Subcommittee</role>
+             <role type="authorizer">
+               <description>Subcommittee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>SC</subdivision>
@@ -197,7 +224,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Subcommittee</role>
+             <role type="authorizer">
+               <description>Subcommittee</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>SC1</subdivision>
@@ -205,7 +234,9 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Workgroup</role>
+             <role type="authorizer">
+               <description>Workgroup</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>WG</subdivision>
@@ -213,18 +244,13 @@ RSpec.describe Metanorma::Iec do
              </organization>
            </contributor>
            <contributor>
-             <role type="authorizer">Workgroup</role>
+             <role type="authorizer">
+               <description>Workgroup</description>
+             </role>
              <organization>
                <name>International Electrotechnical Commission</name>
                <subdivision>WG1</subdivision>
                <identifier>C1 31</identifier>
-             </organization>
-           </contributor>
-           <contributor>
-             <role type="authorizer">Agency</role>
-             <organization>
-               <name>International Electrotechnical Commission</name>
-               <abbreviation>IEC</abbreviation>
              </organization>
            </contributor>
            <edition>2</edition>
@@ -501,7 +527,7 @@ RSpec.describe Metanorma::Iec do
             </organization>
           </contributor>
                       <contributor>
-              <role type="authorizer">Agency</role>
+              <role type="authorizer"><description>Agency</description></role>
               <organization>
                 <name>International Electrotechnical Commission</name>
                 <abbreviation>IEC</abbreviation>
@@ -594,7 +620,7 @@ RSpec.describe Metanorma::Iec do
           </organization>
         </contributor>
                     <contributor>
-              <role type="authorizer">Agency</role>
+              <role type="authorizer"><description>Agency</description></role>
               <organization>
                 <name>International Electrotechnical Commission</name>
                 <abbreviation>IEC</abbreviation>
@@ -704,7 +730,7 @@ RSpec.describe Metanorma::Iec do
           </organization>
         </contributor>
                     <contributor>
-              <role type="authorizer">Agency</role>
+              <role type="authorizer"><description>Agency</description></role>
               <organization>
                 <name>International Electrotechnical Commission</name>
                 <abbreviation>IEC</abbreviation>
@@ -773,7 +799,7 @@ RSpec.describe Metanorma::Iec do
           </organization>
         </contributor>
                  <contributor>
-           <role type="authorizer">Agency</role>
+           <role type="authorizer"><description>Agency</description></role>
            <organization>
              <name>International Electrotechnical Commission</name>
              <abbreviation>IEC</abbreviation>
@@ -843,7 +869,7 @@ RSpec.describe Metanorma::Iec do
           </organization>
         </contributor>
                  <contributor>
-           <role type="authorizer">Agency</role>
+           <role type="authorizer"><description>Agency</description></role>
            <organization>
              <name>International Electrotechnical Commission</name>
              <abbreviation>IEC</abbreviation>
