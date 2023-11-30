@@ -1,2 +1,2 @@
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "fix/i18n-yaml-inheritance"
-gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "fix/i18n-yaml-inheritance"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
+gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "main"
