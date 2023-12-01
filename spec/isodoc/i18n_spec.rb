@@ -308,7 +308,7 @@ RSpec.describe IsoDoc do
       <bibdata>
       <language current="true">tlh</language>
       </bibdata>
-      #{PREFACE}
+      #{PREFACE.sub('>Contents<', '>Table of contents<')}
       <foreword obligation="informative" displayorder="8">
          <title>Foreword</title>
          <p id="A">This is a preamble</p>
@@ -527,7 +527,7 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     html = <<~OUTPUT
-      #{HTML_HDR.sub(/Contents/, "Sommaire").sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')
+      #{HTML_HDR.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')
       .gsub(/"en"/, '"fr"')}
                <div>
                  <h1 class="ForewordTitle">AVANT-PROPOS</h1>
