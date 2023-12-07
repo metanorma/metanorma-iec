@@ -162,20 +162,20 @@ BLANK_HDR = <<~"HDR".freeze
         <abbreviation>IEC</abbreviation>
       </organization>
     </contributor>
-    <contributor>
+                <contributor>
+              <role type="authorizer"><description>Agency</description></role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+            </contributor>
+               <contributor>
       <role type="publisher"/>
       <organization>
         <name>International Electrotechnical Commission</name>
         <abbreviation>IEC</abbreviation>
       </organization>
     </contributor>
-                <contributor>
-              <role type="authorizer">Agency</role>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </contributor>
     <language>en</language>
     <script>Latn</script>
     <status>
