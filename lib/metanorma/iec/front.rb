@@ -56,14 +56,8 @@ module Metanorma
         end
       end
 
-      def iso_id_params(node)
-        params = iso_id_params_core(node)
-        params2 = iso_id_params_add(node)
-        if node.attr("updates")
-          orig_id = Pubid::Iec::Identifier::Base.parse(node.attr("updates"))
-          orig_id.edition ||= 1
-        end
-        iso_id_params_resolve(params, params2, node, orig_id)
+      def base_pubid
+        Pubid::Iec::Identifier
       end
 
       def iso_id_params_core(node)
@@ -113,6 +107,10 @@ module Metanorma
 
       def iso_id_out(xml, params, _with_prf)
         params[:stage] == "60.60" and params.delete(:stage)
+        super
+      end
+
+def iso_id_out_common(xml, params, with_prf)
         xml.docidentifier iso_id_default(params).to_s,
                           **attr_code(type: "ISO")
         xml.docidentifier iso_id_reference(params).to_s,
@@ -122,50 +120,13 @@ module Metanorma
             .to_s(with_edition_month_date: true),
                             **attr_code(type: "iso-revdate")
         xml.docidentifier iso_id_reference(params).urn, **attr_code(type: "URN")
-        return if @amd
+end
 
+def iso_id_out_non_amd(xml, params, with_prf)
         xml.docidentifier iso_id_undated(params).to_s,
                           **attr_code(type: "iso-undated")
         xml.docidentifier iso_id_with_lang(params).to_s,
                           **attr_code(type: "iso-with-lang")
-      rescue StandardError => e
-        clean_abort("Document identifier: #{e}", xml)
-      end
-
-      def iso_id_default(params)
-        params_nolang = params.dup.tap { |hs| hs.delete(:language) }
-        params1 = if params[:unpublished]
-                    params_nolang.dup.tap do |hs|
-                      hs.delete(:year)
-                    end
-                  else params_nolang
-                  end
-        params1.key?(:unpublished) and params1.delete(:unpublished)
-        Pubid::Iec::Identifier.create(**params1)
-      end
-
-      def iso_id_undated(params)
-        params_nolang = params.dup.tap { |hs| hs.delete(:language) }
-        params2 = params_nolang.dup.tap do |hs|
-          hs.delete(:year)
-          hs.delete(:unpublished)
-        end
-        Pubid::Iec::Identifier.create(**params2)
-      end
-
-      def iso_id_with_lang(params)
-        params1 = if params[:unpublished]
-                    params.dup.tap do |hs|
-                      hs.delete(:year)
-                    end
-                  else params end
-        params1.delete(:unpublished)
-        Pubid::Iec::Identifier.create(**params1)
-      end
-
-      def iso_id_reference(params)
-        params1 = params.dup.tap { |hs| hs.delete(:unpublished) }
-        Pubid::Iec::Identifier.create(**params1)
       end
 
       def iso_id_revdate(params)
@@ -174,7 +135,7 @@ module Metanorma
         params1[:year] = m[1]
         params1[:month] = m[2].sub(/^-/, "")
         # skipping day for now
-        Pubid::Iec::Identifier.create(**params1)
+        pubid_select(params1).create(**params1)
       end
 
 =begin
