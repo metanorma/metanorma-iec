@@ -88,6 +88,10 @@ RSpec.describe Metanorma::Iec do
              <name>DOC TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
          </metanorma-extension>
                #{@boilerplate}
                <sections> </sections>
@@ -195,6 +199,10 @@ RSpec.describe Metanorma::Iec do
              <name>DOC TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
          </metanorma-extension>
                  #{@boilerplate}
                  <sections>
@@ -297,6 +305,10 @@ RSpec.describe Metanorma::Iec do
            </presentation-metadata>
            <presentation-metadata>
              <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>

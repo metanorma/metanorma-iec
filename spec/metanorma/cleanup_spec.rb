@@ -89,6 +89,10 @@ RSpec.describe Metanorma::Iec do
              <name>DOC TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
          </metanorma-extension>
       #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
                     <sections>
