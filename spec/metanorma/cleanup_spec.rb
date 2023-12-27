@@ -46,8 +46,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="PPUB">60</stage>
-          <substage abbreviation="PPUB">60</substage>
+          <stage>60</stage>
+          <substage>60</substage>
         </status>
         <copyright>
           <from>#{Time.new.year}</from>
@@ -63,7 +63,7 @@ RSpec.describe Metanorma::Iec do
         <editorialgroup>
           <agency>IEC</agency>
         </editorialgroup>
-        <stagename abbreviation="PPUB">International Standard published</stagename>
+        <stagename abbreviation="IS">International Standard</stagename>
         <tc-sc-officers-note>
         <p id='_'>
           This FDIS is the result of the discussion between the IEC SC21A

@@ -28,7 +28,7 @@ RSpec.describe Metanorma::Iec do
                <bibdata type='standard'>
                           <docidentifier type="ISO">IEC 60050:2023</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
                  <docnumber>60050</docnumber>
@@ -56,8 +56,8 @@ RSpec.describe Metanorma::Iec do
                  <language>en</language>
                  <script>Latn</script>
                  <status>
-                   <stage abbreviation="PPUB">60</stage>
-                   <substage abbreviation="PPUB">60</substage>
+                   <stage>60</stage>
+                   <substage>60</substage>
                  </status>
                  <copyright>
                    <from>#{Time.now.year}</from>
@@ -77,7 +77,7 @@ RSpec.describe Metanorma::Iec do
                    <structuredidentifier>
                      <project-number>60050</project-number>
                    </structuredidentifier>
-                  <stagename abbreviation="PPUB">International Standard published</stagename>
+                  <stagename abbreviation="IS">International Standard</stagename>
                  </ext>
                </bibdata>
                         <metanorma-extension>
@@ -144,7 +144,7 @@ RSpec.describe Metanorma::Iec do
         <bibdata type='standard'>
                   <docidentifier type="ISO">IEC 60050:2023</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
           <docnumber>60050</docnumber>
@@ -172,8 +172,8 @@ RSpec.describe Metanorma::Iec do
           <language>en</language>
           <script>Latn</script>
           <status>
-            <stage abbreviation="PPUB">60</stage>
-            <substage abbreviation="PPUB">60</substage>
+            <stage>60</stage>
+            <substage>60</substage>
           </status>
           <copyright>
             <from>#{Time.now.year}</from>
@@ -193,7 +193,7 @@ RSpec.describe Metanorma::Iec do
             <structuredidentifier>
               <project-number>60050</project-number>
             </structuredidentifier>
-            <stagename abbreviation="PPUB">International Standard published</stagename>
+            <stagename abbreviation="IS">International Standard</stagename>
           </ext>
         </bibdata>
                  <metanorma-extension>
@@ -257,7 +257,7 @@ RSpec.describe Metanorma::Iec do
            <bibdata type='standard'>
                       <docidentifier type="ISO">IEC 60050:2023</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
              <docnumber>60050</docnumber>
@@ -285,8 +285,8 @@ RSpec.describe Metanorma::Iec do
              <language>en</language>
              <script>Latn</script>
              <status>
-               <stage abbreviation='PPUB'>60</stage>
-               <substage abbreviation='PPUB'>60</substage>
+               <stage>60</stage>
+               <substage>60</substage>
              </status>
              <copyright>
                <from>#{Time.now.year}</from>
@@ -306,7 +306,7 @@ RSpec.describe Metanorma::Iec do
                <structuredidentifier>
                  <project-number>60050</project-number>
                </structuredidentifier>
-                <stagename abbreviation="PPUB">International Standard published</stagename>
+                <stagename abbreviation="IS">International Standard</stagename>
              </ext>
            </bibdata>
                     <metanorma-extension>

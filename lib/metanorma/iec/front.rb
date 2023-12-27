@@ -20,20 +20,15 @@ module Metanorma
         end
       end
 
-      #       def metadata_stage(id, xml)
-      #         xml.stagename metadata_stagename(id)&.strip,
-      #                       **attr_code(abbreviation: id.stage.abbr&.strip)
-      #       end
-      #
-      #       def metadata_stagename(id)
-      #         if @amd
-      #           id.amendments&.first&.stage&.name ||
-      #             id.corrigendums&.first&.stage&.name
-      #         else
-      #           code = id.stage.config.stages["abbreviations"][id.stage.abbr]
-      #           id.stage.config.stages["codes_description"][code]
-      #         end
-      #       end
+      def metadata_status(node, xml)
+        x = iso_id_default(iso_id_params(node)).stage
+        xml.status do |s|
+          s.stage x.harmonized_code.stage, **attr_code(abbreviation: x.abbr)
+          s.substage x.harmonized_code.substage
+        end
+      rescue *STAGE_ERROR
+        report_illegal_stage(get_stage(node), get_substage(node))
+      end
 
       def get_typeabbr(node, amd: false)
         node.attr("amendment-number") and return :amd
@@ -66,41 +61,18 @@ module Metanorma
                 part: node.attr("partnumber"),
                 language: node.attr("language")&.split(/,\s*/) || "en",
                 type: get_typeabbr(node),
-                edition: node.attr("edition"),
-                publisher: pub[0],
+                edition: node.attr("edition"), publisher: pub[0],
                 unpublished: /^[0-5]/.match?(get_stage(node)),
                 copublisher: pub[1..-1] }.compact
         ret[:copublisher].empty? and ret.delete(:copublisher)
         ret
       end
 
-      def iso_id_params_add(node)
-        stage = iso_id_stage(node)
-=begin
-        if stage.nil?
-          s = node.attr("status") || node.attr("docstage")
-          @fatalerror << "IEC Stage #{s} not recognised"
-          @log.add("Metadata", nil, "IEC Stage #{s} not recognised")
-          stage = nil
-        end
-=end
-        @id_revdate = node.attr("revdate")
-        ret = { number: node.attr("amendment-number") ||
-          node.attr("corrigendum-number"),
-                year: iso_id_year(node) }.compact
-        stage and ret[:stage] = stage
-        ret
-      end
-
       def iso_id_stage(node)
         ret = "#{get_stage(node)}.#{get_substage(node)}"
         if /[A-Z]/.match?(ret) # abbreviation
-          require "debug"; binding.b
-          #out = Pubid::Iec::Identifier.config
-            #.stages["abbreviations"][get_stage(node)] and
-        ret = get_stage(node)
+          ret = get_stage(node)
         end
-        #/^\d\d\.\d\d$/.match?(ret) or ret = ret = nil
         ret
       end
 
@@ -115,7 +87,7 @@ module Metanorma
         super
       end
 
-def iso_id_out_common(xml, params, with_prf)
+      def iso_id_out_common(xml, params, _with_prf)
         xml.docidentifier iso_id_default(params).to_s,
                           **attr_code(type: "ISO")
         xml.docidentifier iso_id_reference(params).to_s,
@@ -124,10 +96,11 @@ def iso_id_out_common(xml, params, with_prf)
           xml.docidentifier iso_id_revdate(params.merge(year: @id_revdate))
             .to_s(with_edition_month_date: true),
                             **attr_code(type: "iso-revdate")
-        xml.docidentifier iso_id_reference(params).urn, **attr_code(type: "URN")
-end
+        xml.docidentifier iso_id_reference(params).urn,
+                          **attr_code(type: "URN")
+      end
 
-def iso_id_out_non_amd(xml, params, with_prf)
+      def iso_id_out_non_amd(xml, params, _with_prf)
         xml.docidentifier iso_id_undated(params).to_s,
                           **attr_code(type: "iso-undated")
         xml.docidentifier iso_id_with_lang(params).to_s,
@@ -143,74 +116,11 @@ def iso_id_out_non_amd(xml, params, with_prf)
         pubid_select(params1).create(**params1)
       end
 
-=begin
-      DOC_STAGE = {
-        "00": "PWI",
-        "10": "NWIP",
-        "20": "WD",
-        "30": "CD",
-        "40": "CDV",
-        "50": "FDIS",
-        "60": "PPUB",
-        "90": "RR",
-        "92": "AMW",
-        "95": "WPUB",
-        "99": "DELPUB",
-      }.freeze
-
-      STAGE_ABBRS = {
-        "00" => { "00" => "PWI" },
-        "10" => { "00" => "PNW" },
-        "20" => { "00" => "ANW", "98" => "CAN", "99" => "ACD" },
-        "30" => { "00" => "CD", "20" => "CD", "92" => "BWG", "97" => "MERGED",
-                  "98" => "DREJ", "99" => "A2CD" },
-        "35" => { "00" => "CD", "20" => "CD", "91" => "CDM", "92" => "ACD",
-                  "99" => "ACDV" },
-        "40" => { "00" => "CCDV", "20" => "CCDV", "91" => "CDVM",
-                  "92" => "NCDV", "93" => "NADIS",
-                  "95" => "ADISSB", "99" => "ADIS" },
-        "50" => { "00" => "RFDIS", "20" => "CFDIS", "92" => "NFDIS",
-                  "95" => "APUBSB", "99" => "APUB" },
-        "60" => { "00" => "BPUB", "60" => "PPUB" },
-        "90" => { "00" => "RR", "92" => "RR" },
-        "92" => { "00" => "AMW", "20" => "AMW" },
-        "95" => { "00" => "WPUB", "99" => "WPUB" },
-        "99" => { "00" => "DELPUB", "60" => "DELPUB" },
-      }.freeze
-
-      STAGE_NAMES = {
-        "00": "Preliminary work item",
-        "10": "New work item proposal",
-        "20": "Working draft",
-        "30": "Committee draft",
-        "35": "Committee draft",
-        "40": "Committed draft for vote",
-        "50": "Final draft international standard",
-        "60": "International standard",
-        "90": "Review",
-        "92": "Review",
-        "95": "Withdrawal",
-        "99": "Deleted",
-      }.freeze
-=end
-
       def status_abbrev1(node)
         id = iso_id_default({ stage: "60.60" }.merge(iso_id_params(node)))
         id.stage or return ""
         id.stage.abbr
       end
-
-=begin
-      def stage_abbr(stage, _substage, _doctype)
-        return "PPUB" if stage == "60"
-
-        DOC_STAGE[stage.to_sym] || nil
-      end
-
-      def stage_name(stage, _substage, _doctype, _iteration)
-        STAGE_NAMES[stage.to_sym]
-      end
-=end
 
       def get_stage(node)
         stage = node.attr("status") || node.attr("docstage") || "60"
@@ -228,34 +138,24 @@ def iso_id_out_non_amd(xml, params, with_prf)
         end
       end
 
-=begin
-      def id_stage_abbr(stage, _substage, node)
-        return "" if stage == "60"
-
-        abbr = DOC_STAGE[stage.to_sym] || ""
-        abbr = node.attr("iteration") + abbr if node.attr("iteration")
-        abbr
-      end
-=end
-
-      # TODO: replace by ISO call
-=begin
-      def metadata_status(node, xml)
-        stage = get_stage(node)
-        substage = get_substage(node)
-        xml.status do |s|
-          s.stage stage,
-                  **attr_code(abbreviation: stage_abbr(stage, substage, nil))
-          subst = status_abbrev1(node)
-          s.substage substage, **attr_code(abbreviation: subst)
-          node.attr("iteration") && (s.iteration node.attr("iteration"))
+      def iso_id_params_add(node)
+        stage = iso_id_stage(node)
+        @id_revdate = node.attr("revdate")
+        ret = { number: node.attr("amendment-number") ||
+          node.attr("corrigendum-number"),
+                year: iso_id_year(node) }.compact
+        if stage && !cen?(node.attr("publisher"))
+          ret[:stage] = stage
         end
-        iso_id_default(iso_id_params(node))
-      rescue Pubid::Core::Errors::HarmonizedStageCodeInvalidError,
-             Pubid::Core::Errors::TypeStageParseError
-        report_illegal_stage(stage, substage)
+        ret
       end
-=end
+
+      def report_illegal_stage(stage, substage)
+        out = stage || ""
+        /[A-Z]/.match?(out) or out += ".#{substage}"
+        err = "Illegal document stage: #{out}"
+        @log.add("Document Attributes", nil, err)
+      end
 
       def metadata_subdoctype(node, xml)
         super
