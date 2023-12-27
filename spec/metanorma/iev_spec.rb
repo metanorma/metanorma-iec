@@ -83,7 +83,7 @@ RSpec.describe Metanorma::Iec do
                         <metanorma-extension>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
-             <value>3</value>
+             <value>2</value>
            </presentation-metadata>
            <presentation-metadata>
              <name>HTML TOC Heading Levels</name>
@@ -91,6 +91,10 @@ RSpec.describe Metanorma::Iec do
            </presentation-metadata>
            <presentation-metadata>
              <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>
@@ -195,7 +199,7 @@ RSpec.describe Metanorma::Iec do
                  <metanorma-extension>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
-             <value>3</value>
+             <value>2</value>
            </presentation-metadata>
            <presentation-metadata>
              <name>HTML TOC Heading Levels</name>
@@ -203,6 +207,10 @@ RSpec.describe Metanorma::Iec do
            </presentation-metadata>
            <presentation-metadata>
              <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>
@@ -304,7 +312,7 @@ RSpec.describe Metanorma::Iec do
                     <metanorma-extension>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
-             <value>3</value>
+             <value>2</value>
            </presentation-metadata>
            <presentation-metadata>
              <name>HTML TOC Heading Levels</name>
@@ -312,6 +320,10 @@ RSpec.describe Metanorma::Iec do
            </presentation-metadata>
            <presentation-metadata>
              <name>DOC TOC Heading Levels</name>
+             <value>3</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>
