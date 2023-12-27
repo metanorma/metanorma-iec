@@ -76,12 +76,14 @@ module Metanorma
 
       def iso_id_params_add(node)
         stage = iso_id_stage(node)
+=begin
         if stage.nil?
           s = node.attr("status") || node.attr("docstage")
           @fatalerror << "IEC Stage #{s} not recognised"
           @log.add("Metadata", nil, "IEC Stage #{s} not recognised")
           stage = nil
         end
+=end
         @id_revdate = node.attr("revdate")
         ret = { number: node.attr("amendment-number") ||
           node.attr("corrigendum-number"),
@@ -92,10 +94,13 @@ module Metanorma
 
       def iso_id_stage(node)
         ret = "#{get_stage(node)}.#{get_substage(node)}"
-        /[A-Z]/.match?(ret) and
-          ret = Pubid::Iec::Identifier.config
-            .stages["abbreviations"][get_stage(node)]
-        /^\d\d\.\d\d$/.match?(ret) or ret = "10.20" # ret = nil
+        if /[A-Z]/.match?(ret) # abbreviation
+          require "debug"; binding.b
+          #out = Pubid::Iec::Identifier.config
+            #.stages["abbreviations"][get_stage(node)] and
+        ret = get_stage(node)
+        end
+        #/^\d\d\.\d\d$/.match?(ret) or ret = ret = nil
         ret
       end
 

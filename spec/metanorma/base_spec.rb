@@ -706,7 +706,7 @@ RSpec.describe Metanorma::Iec do
     expect(doc).not_to include "including individual experts"
     expect(doc).to include "y compris ses experts particuliers"
   end
-=end
+
   it "defaults substage" do
     input = <<~INPUT
       = Document title

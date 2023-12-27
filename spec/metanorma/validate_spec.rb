@@ -99,7 +99,7 @@ RSpec.describe Metanorma::Iec do
     expect(File.exist?("test.xml")).to be false
   end
 
-    it "Warns of illegal stage" do
+  it "Warns of illegal stage" do
       Asciidoctor.convert(<<~INPUT, *OPTIONS)
       = Document title
       Author
