@@ -56,7 +56,7 @@ module Metanorma
       end
 
       def iso_id_params_core(node)
-        pub = (node.attr("publisher") || "IEC").split(/[;,]/)
+        pub = iso_id_pub(node)
         ret = { number: node.attr("docnumber"),
                 part: node.attr("partnumber"),
                 language: node.attr("language")&.split(/,\s*/) || "en",
