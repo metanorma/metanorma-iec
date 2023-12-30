@@ -773,7 +773,7 @@ RSpec.describe Metanorma::Iec do
           <structuredidentifier>
             <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename abbreviation="CDV IS">Committee draft for vote International Standard</stagename>
+          <stagename abbreviation="CDV IS">Committee Draft for Vote International Standard</stagename>
         </ext>
       </bibdata>
     OUTPUT
