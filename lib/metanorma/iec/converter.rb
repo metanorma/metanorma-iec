@@ -154,6 +154,10 @@ module Metanorma
         end
       end
 
+      def document_scheme(node)
+        node.attr("document-scheme")
+      end
+
       def docidentifier_cleanup(xmldoc)
         prefix = get_id_prefix(xmldoc)
         id = xmldoc.at("//bibdata/docidentifier[@type = 'ISO']") or return

@@ -15,7 +15,6 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
-      :copyright-year: 2023
 
       [bibliography]
       == Normative References
@@ -26,11 +25,11 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
              <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
                <bibdata type='standard'>
-                          <docidentifier type="ISO">IEC 60050:2023</docidentifier>
-           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+                          <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
-           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
                  <docnumber>60050</docnumber>
                  <contributor>
                    <role type='author'/>
@@ -133,7 +132,6 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
-      :copyright-year: 2023
 
       == Terms and definitions
       === General
@@ -142,11 +140,11 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
         <bibdata type='standard'>
-                  <docidentifier type="ISO">IEC 60050:2023</docidentifier>
-           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+                  <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
-           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
           <docnumber>60050</docnumber>
           <contributor>
             <role type='author'/>
@@ -245,7 +243,6 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
-      :copyright-year: 2023
 
       == Introduction
 
@@ -255,11 +252,11 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
            <bibdata type='standard'>
-                      <docidentifier type="ISO">IEC 60050:2023</docidentifier>
-           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+                      <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
-           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
              <docnumber>60050</docnumber>
              <contributor>
                <role type='author'/>

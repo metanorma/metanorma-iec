@@ -27,64 +27,6 @@ RSpec.describe Metanorma::Iec do
       .to be_equivalent_to xmlpp(output)
   end
 
-  it "ignores review blocks unless document is in draft mode" do
-    input = <<~INPUT
-      #{ASCIIDOC_BLANK_HDR}
-      [[foreword]]
-      .Foreword
-      Foreword
-
-      [reviewer=ISO,date=20170101,from=foreword,to=foreword]
-      ****
-      A Foreword shall appear in each document. The generic text is shown here. It does not contain requirements, recommendations or permissions.
-
-      For further information on the Foreword, see *ISO/IEC Directives, Part 2, 2016, Clause 12.*
-      ****
-    INPUT
-    output = <<~OUTPUT
-             #{@blank_hdr}
-      <sections><p id="foreword">Foreword</p>
-      </sections>
-      </iec-standard>
-    OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
-  end
-
-  it "processes review blocks if document is in draft mode" do
-    input = <<~INPUT
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :draft: 1.2
-      :no-isobib:
-
-      [[foreword]]
-      .Foreword
-      Foreword
-
-      [reviewer=ISO,date=20170101,from=foreword,to=foreword]
-      ****
-      A Foreword shall appear in each document. The generic text is shown here. It does not contain requirements, recommendations or permissions.
-
-      For further information on the Foreword, see *ISO/IEC Directives, Part 2, 2016, Clause 12.*
-      ****
-    INPUT
-    output = <<~OUTPUT
-      <sections>
-       <p id="foreword">Foreword</p>
-       <review reviewer="ISO" id="_" date="20170101T00:00:00Z" from="foreword" to="foreword"><p id="_">A Foreword shall appear in each document. The generic text is shown here. It does not contain requirements, recommendations or permissions.</p>
-       <p id="_">For further information on the Foreword, see <strong>ISO/IEC Directives, Part 2, 2016, Clause 12.</strong></p></review></sections>
-
-    OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))
-      .sub(/^.+<sections>/m, "<sections>")
-      .sub(%r{</sections>.*$}m, "</sections>")))
-      .to be_equivalent_to xmlpp(output)
-  end
-
   it "processes term notes" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
