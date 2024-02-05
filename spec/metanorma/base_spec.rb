@@ -108,7 +108,12 @@ RSpec.describe Metanorma::Iec do
            <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
            <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
            <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-           <docidentifier type="ISO">IEC/3NWIP 1000-1 ED 2</docidentifier>
+           <docidentifier type="ISO">IEC PNW 1000-1 ED2</docidentifier>
+          <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
+          <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
+          <docidentifier type="URN">urn:iec:std:iec:1000:-1:2023:stage-10.20:ed-2:en</docidentifier>
+          <docidentifier type="iso-undated">IEC PNW 1000-1 ED2</docidentifier>
+          <docidentifier type="iso-with-lang">IEC PNW 1000-1 ED2(en)</docidentifier>
            <docnumber>1000</docnumber>
            <contributor>
              <role type="author"/>
@@ -261,9 +266,8 @@ RSpec.describe Metanorma::Iec do
            <language>en</language>
            <script>Latn</script>
            <status>
-             <stage abbreviation="NWIP">10</stage>
-             <substage abbreviation="??">20</substage>
-             <iteration>3</iteration>
+             <stage abbreviation="PNW">10</stage>
+             <substage>20</substage>
            </status>
            <copyright>
              <from>#{Date.today.year}</from>
@@ -299,9 +303,9 @@ RSpec.describe Metanorma::Iec do
                <secretariat>SECRETARIAT</secretariat>
              </editorialgroup>
              <structuredidentifier>
-               <project-number part="1">IEC 1000</project-number>
+               <project-number part="1">1000</project-number>
              </structuredidentifier>
-             <stagename abbreviation="NP">New Proposal International Standard</stagename>
+             <stagename abbreviation="PNW IS">New work item proposal International Standard</stagename>
              <accessibility-color-inside>true</accessibility-color-inside>
              <price-code>XC</price-code>
              <cen-processing>true</cen-processing>
@@ -452,7 +456,7 @@ RSpec.describe Metanorma::Iec do
               <title>Attention IEC-CENELEC parallel voting</title>
               <p id='_'>
                 The attention of IEC National Committees, members of CENELEC, is drawn
-                to the fact that this (NWIP) is submitted for parallel voting.
+                to the fact that this (PNW) is submitted for parallel voting.
               </p>
               <p id='_'>The CENELEC members are invited to vote through the CENELEC voting system.</p>
             </clause>
@@ -476,19 +480,23 @@ RSpec.describe Metanorma::Iec do
       :docnumber: 1000
       :partnumber: 1-1
       :tc-docnumber: 2000
-      :language: el
+      :language: el,sq
       :script: Grek
       :publisher: IEC;IETF;ISO
       :copyright-year: 2001
-      :docstage: A2CD
+      :docstage: ADTS
       :doctype: technical-specification
       :function: emc
       :horizontal: true
     INPUT
     output = <<~OUTPUT
-                     <bibdata type='standard'>
-          <docidentifier type='ISO'>IEC/IETF/ISO/2CDTS 1000-1-1 ED 1</docidentifier>
-          <docidentifier type='iso-tc'>2000</docidentifier>
+      <bibdata type='standard'>
+                                <docidentifier type="ISO">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
+           <docidentifier type="iso-reference">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000:-1-1:2001:stage-40.99:el-sq</docidentifier>
+           <docidentifier type="iso-undated">IEC/IETF/ISO TS CDV 1000-1-1</docidentifier>
+           <docidentifier type="iso-with-lang">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
+           <docidentifier type="iso-tc">2000</docidentifier>
           <docnumber>1000</docnumber>
           <contributor>
             <role type='author'/>
@@ -537,12 +545,11 @@ RSpec.describe Metanorma::Iec do
                 <abbreviation>IEC</abbreviation>
               </organization>
             </contributor>
-          <language>el</language>
+          <language>el,sq</language>
           <script>Grek</script>
           <status>
-            <stage abbreviation='CD'>30</stage>
-            <substage abbreviation='A22CD'>99</substage>
-            <iteration>2</iteration>
+            <stage abbreviation='ADTS'>40</stage>
+            <substage>99</substage>
           </status>
           <copyright>
             <from>2001</from>
@@ -580,9 +587,9 @@ RSpec.describe Metanorma::Iec do
               <agency>ISO</agency>
             </editorialgroup>
             <structuredidentifier>
-              <project-number part='1' subpart='1'>IEC/IETF/ISO 1000</project-number>
+              <project-number part='1' subpart='1'>1000</project-number>
             </structuredidentifier>
-            <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
+            <stagename abbreviation="ADTS TS">Approved for DTS Technical Specification</stagename>
           </ext>
         </bibdata>
     OUTPUT
@@ -602,12 +609,12 @@ RSpec.describe Metanorma::Iec do
       :no-isobib:
       :docidentifier: OVERRIDE
       :docnumber: 1000
-      :docstage: A2CD
+      :docstage: PNW
       :doctype: technical-specification
     INPUT
     output = <<~OUTPUT
           <bibdata type="standard">
-        <docidentifier type="ISO">IEC OVERRIDE</docidentifier>
+        <docidentifier type="ISO">OVERRIDE</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -633,9 +640,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="CD">30</stage>
-          <substage abbreviation="A22CD">99</substage>
-          <iteration>2</iteration>
+          <stage abbreviation="PNW">10</stage>
+          <substage>20</substage>
         </status>
         <copyright>
           <from>#{Date.today.year}</from>
@@ -652,9 +658,9 @@ RSpec.describe Metanorma::Iec do
             <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
-            <project-number>IEC 1000</project-number>
+            <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename abbreviation="CD TS">Committee Draft Technical Specification</stagename>
+          <stagename abbreviation="PNW TS">New work item proposal Technical Specification</stagename>
         </ext>
       </bibdata>
     OUTPUT
@@ -713,11 +719,15 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 1000
-      :docstage: 50
+      :docstage: 40
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-        <docidentifier type="ISO">IEC/FDIS 1000 ED 1</docidentifier>
+           <docidentifier type="ISO">IEC CDV 1000</docidentifier>
+           <docidentifier type="iso-reference">IEC CDV 1000:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:2023:stage-40.20:en</docidentifier>
+           <docidentifier type="iso-undated">IEC CDV 1000</docidentifier>
+           <docidentifier type="iso-with-lang">IEC CDV 1000(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -743,8 +753,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="FDIS">50</stage>
-          <substage abbreviation="RFDIS">00</substage>
+          <stage abbreviation="CDV">40</stage>
+          <substage>20</substage>
         </status>
         <copyright>
           <from>#{Date.today.year}</from>
@@ -761,9 +771,9 @@ RSpec.describe Metanorma::Iec do
             <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
-            <project-number>IEC 1000</project-number>
+            <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename abbreviation="FDIS">Final Draft International Standard</stagename>
+          <stagename abbreviation="CDV IS">Committee Draft for Vote International Standard</stagename>
         </ext>
       </bibdata>
     OUTPUT
@@ -786,7 +796,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-        <docidentifier type="ISO">IEC 1000 ED 1</docidentifier>
+                 <docidentifier type="ISO">IEC 1000:2023</docidentifier>
+           <docidentifier type="iso-reference">IEC 1000:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:2023:en</docidentifier>
+           <docidentifier type="iso-undated">IEC 1000</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 1000:2023(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -812,8 +826,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="PPUB">60</stage>
-          <substage abbreviation="PPUB">60</substage>
+          <stage>60</stage>
+          <substage>60</substage>
         </status>
         <copyright>
           <from>#{Date.today.year}</from>
@@ -830,9 +844,9 @@ RSpec.describe Metanorma::Iec do
             <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
-            <project-number>IEC 1000</project-number>
+            <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename>International Standard</stagename>
+          <stagename abbreviation="IS">International Standard</stagename>
         </ext>
       </bibdata>
     OUTPUT
@@ -856,7 +870,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-        <docidentifier type="ISO">IEC 1000 ED 1</docidentifier>
+                 <docidentifier type="ISO">IEC 1000:2023</docidentifier>
+           <docidentifier type="iso-reference">IEC 1000:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:2023:stage-60.00:en</docidentifier>
+           <docidentifier type="iso-undated">IEC 1000</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 1000:2023(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -882,8 +900,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="PPUB">60</stage>
-          <substage abbreviation="BPUB">00</substage>
+          <stage>60</stage>
+          <substage>00</substage>
         </status>
         <copyright>
           <from>#{Date.today.year}</from>
@@ -900,9 +918,9 @@ RSpec.describe Metanorma::Iec do
             <agency>IEC</agency>
           </editorialgroup>
           <structuredidentifier>
-            <project-number>IEC 1000</project-number>
+            <project-number>1000</project-number>
           </structuredidentifier>
-          <stagename abbreviation="PRF">Proof of a new International Standard</stagename>
+          <stagename abbreviation="IS">International Standard</stagename>
         </ext>
       </bibdata>
     OUTPUT
