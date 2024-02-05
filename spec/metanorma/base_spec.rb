@@ -95,6 +95,7 @@ RSpec.describe Metanorma::Iec do
       :secretary: Fred Nerk
       :interest-to-committees: TC 6121, SC 12
       :obsoletes: ABC; DEF
+      :copyright-year: 2023
     INPUT
     output = <<~OUTPUT
                 <?xml version="1.0" encoding="UTF-8"?>
@@ -270,7 +271,7 @@ RSpec.describe Metanorma::Iec do
              <substage>20</substage>
            </status>
            <copyright>
-             <from>#{Date.today.year}</from>
+             <from>2023</from>
              <owner>
                <organization>
                  <name>International Electrotechnical Commission</name>
@@ -335,7 +336,7 @@ RSpec.describe Metanorma::Iec do
           <copyright-statement>
             <clause>
               <p id='_'>
-                <strong>Copyright &#169; #{Date.today.year} International Electrotechnical Commission, IEC.</strong>
+                <strong>Copyright &#169; 2023 International Electrotechnical Commission, IEC.</strong>
                  All rights reserved. It is permitted to download this electronic
                 file, to make a copy and to print out the content for the sole purpose
                 of preparing National Committee positions. You may not copy or
@@ -724,8 +725,8 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       <bibdata type="standard">
            <docidentifier type="ISO">IEC CDV 1000</docidentifier>
-           <docidentifier type="iso-reference">IEC CDV 1000:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:1000:2023:stage-40.20:en</docidentifier>
+           <docidentifier type="iso-reference">IEC CDV 1000:#{Date.today.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:stage-40.20:en</docidentifier>
            <docidentifier type="iso-undated">IEC CDV 1000</docidentifier>
            <docidentifier type="iso-with-lang">IEC CDV 1000(en)</docidentifier>
         <docnumber>1000</docnumber>
@@ -796,11 +797,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-                 <docidentifier type="ISO">IEC 1000:2023</docidentifier>
-           <docidentifier type="iso-reference">IEC 1000:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:1000:2023:en</docidentifier>
+                 <docidentifier type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
+           <docidentifier type="iso-reference">IEC 1000:#{Date.today.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 1000</docidentifier>
-           <docidentifier type="iso-with-lang">IEC 1000:2023(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 1000:#{Date.today.year}(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -870,11 +871,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-                 <docidentifier type="ISO">IEC 1000:2023</docidentifier>
-           <docidentifier type="iso-reference">IEC 1000:2023(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:1000:2023:stage-60.00:en</docidentifier>
+                 <docidentifier type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
+           <docidentifier type="iso-reference">IEC 1000:#{Date.today.year}(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:stage-60.00:en</docidentifier>
            <docidentifier type="iso-undated">IEC 1000</docidentifier>
-           <docidentifier type="iso-with-lang">IEC 1000:2023(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 1000:#{Date.today.year}(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
