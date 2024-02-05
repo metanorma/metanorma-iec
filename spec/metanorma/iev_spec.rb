@@ -15,6 +15,7 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
+      :copyright-year: 2023
 
       [bibliography]
       == Normative References
@@ -25,7 +26,11 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
              <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
                <bibdata type='standard'>
-                 <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
+                          <docidentifier type="ISO">IEC 60050:2023</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+           <docidentifier type="iso-undated">IEC 60050</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
                  <docnumber>60050</docnumber>
                  <contributor>
                    <role type='author'/>
@@ -51,8 +56,8 @@ RSpec.describe Metanorma::Iec do
                  <language>en</language>
                  <script>Latn</script>
                  <status>
-                   <stage abbreviation="PPUB">60</stage>
-                   <substage abbreviation="PPUB">60</substage>
+                   <stage>60</stage>
+                   <substage>60</substage>
                  </status>
                  <copyright>
                    <from>#{Time.now.year}</from>
@@ -70,9 +75,9 @@ RSpec.describe Metanorma::Iec do
                      <agency>IEC</agency>
                    </editorialgroup>
                    <structuredidentifier>
-                     <project-number>IEC 60050</project-number>
+                     <project-number>60050</project-number>
                    </structuredidentifier>
-                         <stagename>International Standard</stagename>
+                  <stagename abbreviation="IS">International Standard</stagename>
                  </ext>
                </bibdata>
                         <metanorma-extension>
@@ -128,6 +133,7 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
+      :copyright-year: 2023
 
       == Terms and definitions
       === General
@@ -136,7 +142,11 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
         <bibdata type='standard'>
-          <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
+                  <docidentifier type="ISO">IEC 60050:2023</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+           <docidentifier type="iso-undated">IEC 60050</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
           <docnumber>60050</docnumber>
           <contributor>
             <role type='author'/>
@@ -162,8 +172,8 @@ RSpec.describe Metanorma::Iec do
           <language>en</language>
           <script>Latn</script>
           <status>
-            <stage abbreviation="PPUB">60</stage>
-            <substage abbreviation="PPUB">60</substage>
+            <stage>60</stage>
+            <substage>60</substage>
           </status>
           <copyright>
             <from>#{Time.now.year}</from>
@@ -181,9 +191,9 @@ RSpec.describe Metanorma::Iec do
               <agency>IEC</agency>
             </editorialgroup>
             <structuredidentifier>
-              <project-number>IEC 60050</project-number>
+              <project-number>60050</project-number>
             </structuredidentifier>
-            <stagename>International Standard</stagename>
+            <stagename abbreviation="IS">International Standard</stagename>
           </ext>
         </bibdata>
                  <metanorma-extension>
@@ -235,6 +245,7 @@ RSpec.describe Metanorma::Iec do
       :novalid:
       :no-isobib:
       :docnumber: 60050
+      :copyright-year: 2023
 
       == Introduction
 
@@ -244,7 +255,11 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
            <bibdata type='standard'>
-             <docidentifier type='ISO'>IEC 60050 ED 1</docidentifier>
+                      <docidentifier type="ISO">IEC 60050:2023</docidentifier>
+           <docidentifier type="iso-reference">IEC 60050:2023(en)</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:2023:en</docidentifier>
+           <docidentifier type="iso-undated">IEC 60050</docidentifier>
+           <docidentifier type="iso-with-lang">IEC 60050:2023(en)</docidentifier>
              <docnumber>60050</docnumber>
              <contributor>
                <role type='author'/>
@@ -270,8 +285,8 @@ RSpec.describe Metanorma::Iec do
              <language>en</language>
              <script>Latn</script>
              <status>
-               <stage abbreviation='PPUB'>60</stage>
-               <substage abbreviation='PPUB'>60</substage>
+               <stage>60</stage>
+               <substage>60</substage>
              </status>
              <copyright>
                <from>#{Time.now.year}</from>
@@ -289,9 +304,9 @@ RSpec.describe Metanorma::Iec do
                  <agency>IEC</agency>
                </editorialgroup>
                <structuredidentifier>
-                 <project-number>IEC 60050</project-number>
+                 <project-number>60050</project-number>
                </structuredidentifier>
-               <stagename>International Standard</stagename>
+                <stagename abbreviation="IS">International Standard</stagename>
              </ext>
            </bibdata>
                     <metanorma-extension>

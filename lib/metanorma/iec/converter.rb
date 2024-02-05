@@ -28,6 +28,10 @@ module Metanorma
         File.join(@libdir, "iec_intro_#{lang}.xml")
       end
 
+      def id_prefix(_prefix, id)
+        id.text
+      end
+
       def doctype_validate(xmldoc)
         %w(international-standard technical-specification technical-report
            publicly-available-specification international-workshop-agreement
