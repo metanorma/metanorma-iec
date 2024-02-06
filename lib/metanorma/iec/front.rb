@@ -63,9 +63,9 @@ module Metanorma
                 type: get_typeabbr(node),
                 edition: node.attr("edition"), publisher: pub[0],
                 unpublished: /^[0-5]/.match?(get_stage(node)),
-                copublisher: pub[1..-1] }.compact
+                copublisher: pub[1..-1] }
         ret[:copublisher].empty? and ret.delete(:copublisher)
-        ret
+        compact_blank(ret)
       end
 
       def iso_id_stage(node)
@@ -143,11 +143,11 @@ module Metanorma
         @id_revdate = node.attr("revdate")
         ret = { number: node.attr("amendment-number") ||
           node.attr("corrigendum-number"),
-                year: iso_id_year(node) }.compact
+                year: iso_id_year(node) }
         if stage && !cen?(node.attr("publisher"))
           ret[:stage] = stage
         end
-        ret
+        compact_blank(ret)
       end
 
       def report_illegal_stage(stage, substage)
