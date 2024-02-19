@@ -84,10 +84,11 @@ module IsoDoc
           <p class="zzSTDTitle1">&#xa0;</p>
           <p class="zzSTDTitle2"><strong>#{title2}</strong></p>
         OUTPUT
+        title1 &&= Metanorma::Utils.case_transform_xml(title1, :upcase)
         ins.next = <<~OUTPUT
           <pagebreak/><p class="zzSTDTitle1">#{@i18n.get['IEC']}</p>
           <p class="zzSTDTitle1">____________</p><p class="zzSTDTitle1">&#xa0;</p>
-          <p class="zzSTDTitle1"><strong>#{title1&.upcase}</strong></p>#{title2out}
+          <p class="zzSTDTitle1"><strong>#{title1}</strong></p>#{title2out}
           <p class="zzSTDTitle1">&#xa0;</p>
         OUTPUT
       end
