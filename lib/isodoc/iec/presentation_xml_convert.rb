@@ -50,11 +50,6 @@ module IsoDoc
         end
       end
 
-      def bibrenderer
-        ::Relaton::Render::Iec::General.new(language: @lang,
-                                            i18nhash: @i18n.get)
-      end
-
       def rearrange_clauses(docxml)
         insert_foreword(docxml) # feeds preface_rearrange
         super

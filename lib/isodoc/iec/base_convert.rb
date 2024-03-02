@@ -60,6 +60,11 @@ module IsoDoc
         node["type"] == "boilerplate_legal" and ret["class"] = "boilerplate_legal"
         ret
       end
+
+      def bibrenderer
+        ::Relaton::Render::Iec::General.new(options.merge(language: @lang,
+                                            i18nhash: @i18n.get))
+      end
     end
   end
 end
