@@ -21,6 +21,11 @@ module IsoDoc
                                        i18nyaml: i18nyaml || @i18nyaml)
       end
 
+      def bibrenderer
+        ::Relaton::Render::Iec::General.new(options.merge(language: @lang,
+                                            i18nhash: @i18n.get))
+      end
+
       def convert1(docxml, filename, dir)
         id = docxml&.at(ns("//bibdata/docnumber"))&.text
         @is_iev = id == "60050"
