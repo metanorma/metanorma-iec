@@ -63,7 +63,8 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
@@ -205,6 +206,7 @@ RSpec.describe IsoDoc do
                 <em>TITLE</em>
               </formattedref>
               <docidentifier>B</docidentifier>
+              <docidentifier scope="biblio-tag">B</docidentifier>
               <biblio-tag>B, </biblio-tag>
             </bibitem>
           </references>
@@ -219,6 +221,7 @@ RSpec.describe IsoDoc do
               </formattedref>
               <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
               <docidentifier>B</docidentifier>
+              <docidentifier scope="biblio-tag">B</docidentifier>
               <biblio-tag>[1]<tab/>B, </biblio-tag>
             </bibitem>
           </references>
@@ -236,7 +239,8 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
@@ -443,7 +447,8 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
@@ -508,7 +513,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
@@ -634,7 +640,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
@@ -874,7 +881,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     PRESXML
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
