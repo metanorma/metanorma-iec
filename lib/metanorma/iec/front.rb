@@ -89,7 +89,7 @@ module Metanorma
 
       def iso_id_out_common(xml, params, _with_prf)
         xml.docidentifier iso_id_default(params).to_s,
-                          **attr_code(type: "ISO")
+                          **attr_code(type: "ISO", primary: "true")
         xml.docidentifier iso_id_reference(params).to_s,
                           **attr_code(type: "iso-reference")
         @id_revdate and
