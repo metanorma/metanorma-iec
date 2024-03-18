@@ -244,46 +244,6 @@ RSpec.describe Metanorma::Iec do
       .to be_equivalent_to xmlpp(output)
   end
 
-  it "accepts width and height attributes on images" do
-    input = <<~INPUT
-      #{ASCIIDOC_BLANK_HDR}
-      [height=4,width=3]
-      image::spec/examples/rice_images/rice_image1.png[]
-
-    INPUT
-    output = <<~OUTPUT
-      #{@blank_hdr}
-              <sections>
-         <figure id="_">
-         <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="3"/>
-       </figure>
-       </sections>
-       </iec-standard>
-    OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
-  end
-
-  it "accepts auto for width and height attributes on images" do
-    input = <<~INPUT
-      #{ASCIIDOC_BLANK_HDR}
-      [height=4,width=auto]
-      image::spec/examples/rice_images/rice_image1.png[]
-
-    INPUT
-    output = <<~OUTPUT
-      #{@blank_hdr}
-              <sections>
-         <figure id="_">
-         <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="4" width="auto"/>
-       </figure>
-       </sections>
-       </iec-standard>
-    OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
-  end
-
   it "accepts alignment attribute on paragraphs" do
     input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}

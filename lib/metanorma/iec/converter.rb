@@ -88,10 +88,10 @@ module Metanorma
       end
 
       def term_defs_boilerplate(div, source, term, preface, isodoc)
-        return super unless @is_iev
+        super unless @is_iev
       end
 
-      def sections_names_cleanup(xml)
+      def sections_names_pref_cleanup(xml)
         super
         @is_iev and replace_title(xml, "//introduction",
                                   @i18n&.introduction_iev)
