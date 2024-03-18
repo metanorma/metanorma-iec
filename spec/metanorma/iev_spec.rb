@@ -25,7 +25,7 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
              <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
                <bibdata type='standard'>
-                          <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+                          <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
@@ -140,7 +140,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
         <bibdata type='standard'>
-                  <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+                  <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
@@ -252,7 +252,7 @@ RSpec.describe Metanorma::Iec do
       <?xml version='1.0' encoding='UTF-8'?>
       <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
            <bibdata type='standard'>
-                      <docidentifier type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
+                      <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
