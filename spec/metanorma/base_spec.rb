@@ -109,7 +109,7 @@ RSpec.describe Metanorma::Iec do
            <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
            <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
            <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-           <docidentifier type="ISO">IEC PNW 1000-1 ED2</docidentifier>
+           <docidentifier primary="true" type="ISO">IEC PNW 1000-1 ED2</docidentifier>
           <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
           <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
           <docidentifier type="URN">urn:iec:std:iec:1000:-1:2023:stage-10.20:ed-2:en</docidentifier>
@@ -492,7 +492,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
-                                <docidentifier type="ISO">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
+                                <docidentifier type="ISO" primary="true">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
            <docidentifier type="iso-reference">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000:-1-1:2001:stage-40.99:el-sq</docidentifier>
            <docidentifier type="iso-undated">IEC/IETF/ISO TS CDV 1000-1-1</docidentifier>
@@ -615,7 +615,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
           <bibdata type="standard">
-        <docidentifier type="ISO">OVERRIDE</docidentifier>
+        <docidentifier primary="true" type="ISO">OVERRIDE</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -724,7 +724,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-           <docidentifier type="ISO">IEC CDV 1000</docidentifier>
+           <docidentifier primary="true" type="ISO">IEC CDV 1000</docidentifier>
            <docidentifier type="iso-reference">IEC CDV 1000:#{Date.today.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:stage-40.20:en</docidentifier>
            <docidentifier type="iso-undated">IEC CDV 1000</docidentifier>
@@ -797,7 +797,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-                 <docidentifier type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
+                 <docidentifier primary="true" type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 1000:#{Date.today.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:en</docidentifier>
            <docidentifier type="iso-undated">IEC 1000</docidentifier>
@@ -871,7 +871,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-                 <docidentifier type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
+                 <docidentifier primary="true" type="ISO">IEC 1000:#{Date.today.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 1000:#{Date.today.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:stage-60.00:en</docidentifier>
            <docidentifier type="iso-undated">IEC 1000</docidentifier>
