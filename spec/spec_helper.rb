@@ -134,6 +134,7 @@ TERMS_BOILERPLATE = <<~BOILERPLATE.freeze
   </ul>
 BOILERPLATE
 
+=begin
 def boilerplate(xmldoc)
   file = File.read(
     File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "iec",
@@ -149,6 +150,28 @@ def boilerplate(xmldoc)
   )
   conv.smartquotes_cleanup(ret)
   HTMLEntities.new.decode(ret.to_xml)
+end
+=end
+
+def boilerplate_read(file, xmldoc)
+  conv = Metanorma::ISO::Converter.new(:iso, {})
+  conv.init(Asciidoctor::Document.new([]))
+  x = conv.boilerplate_isodoc(xmldoc).populate_template(file, nil)
+  ret = conv.boilerplate_file_restructure(x)
+  ret.to_xml(encoding: "UTF-8", indent: 2,
+             save_with: Nokogiri::XML::Node::SaveOptions::AS_XML)
+    .gsub(/<(\/)?sections>/, "<\\1boilerplate>")
+    .gsub(/ id="_[^"]+"/, " id='_'")
+end
+
+def boilerplate(xmldoc, lang: "en")
+  file = File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "iec",
+                   "boilerplate-#{lang}.adoc")
+  ret = Nokogiri::XML(boilerplate_read(
+                        File.read(file, encoding: "utf-8"), xmldoc))
+  ret.xpath("//passthrough").each(&:remove)
+  strip_guid(ret.root.to_xml(encoding: "UTF-8", indent: 2,
+                             save_with: Nokogiri::XML::Node::SaveOptions::AS_XML))
 end
 
 BLANK_HDR = <<~"HDR".freeze

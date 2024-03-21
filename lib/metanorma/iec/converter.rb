@@ -25,7 +25,7 @@ module Metanorma
                else
                  "en"
                end
-        File.join(@libdir, "iec_intro_#{lang}.xml")
+        File.join(@libdir, "boilerplate-#{lang}.adoc")
       end
 
       def id_prefix(_prefix, id)
