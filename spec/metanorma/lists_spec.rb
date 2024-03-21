@@ -1,9 +1,9 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::Iec do
-   before(:all) do
-  @blank_hdr = blank_hdr_gen
-end
+  before(:all) do
+    @blank_hdr = blank_hdr_gen
+  end
 
   it "processes simple lists" do
     output = Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
@@ -21,46 +21,46 @@ end
 
     INPUT
     expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-            #{@blank_hdr}
-       <sections>
-         <ul id="_">
-         <li>
-           <p id="_">List 1</p>
-         </li>
-         <li>
-           <p id="_">List 2</p>
-         </li>
-         <li>
-           <p id="_">List 3</p>
-           <ol id="_">
-         <li>
-           <p id="_">List A</p>
-         </li>
-         <li>
-           <p id="_">List B</p>
-         </li>
-         <li>
-           <p id="_">List C</p>
-           <dl id="_">
-         <dt>List D</dt>
-         <dd>
-           <p id="_">List E</p>
-         </dd>
-         <dt>List F</dt>
-         <dd>
-           <p id="_">List G</p>
-         </dd>
-       </dl>
-         </li>
-       </ol>
-         </li>
-       </ul>
-       </sections>
-       </iec-standard>
+      #{@blank_hdr}
+      <sections>
+        <ul id="_">
+        <li>
+          <p id="_">List 1</p>
+        </li>
+        <li>
+          <p id="_">List 2</p>
+        </li>
+        <li>
+          <p id="_">List 3</p>
+          <ol id="_">
+        <li>
+          <p id="_">List A</p>
+        </li>
+        <li>
+          <p id="_">List B</p>
+        </li>
+        <li>
+          <p id="_">List C</p>
+          <dl id="_">
+        <dt>List D</dt>
+        <dd>
+          <p id="_">List E</p>
+        </dd>
+        <dt>List F</dt>
+        <dd>
+          <p id="_">List G</p>
+        </dd>
+      </dl>
+        </li>
+      </ol>
+        </li>
+      </ul>
+      </sections>
+      </iec-standard>
     OUTPUT
   end
 
-    it "processes complex lists" do
+  it "processes complex lists" do
     output = Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)
       #{ASCIIDOC_BLANK_HDR}
       [[id]]
@@ -103,7 +103,7 @@ end
 
     INPUT
     expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-            #{@blank_hdr}
+      #{@blank_hdr}
        <sections><ul id="id">
          <li>
            <p id="_">First</p>
@@ -165,30 +165,33 @@ end
          </li>
        </ol></sections>
        </iec-standard>
-       OUTPUT
-    end
+    OUTPUT
+  end
 
-    it "anchors lists and list items" do
-     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iec, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+  it "anchors lists and list items" do
+    input = <<~INPUT
       #{ASCIIDOC_BLANK_HDR}
       [[id1]]
       * [[id2]] List item
       * Hello [[id3]] List item
 
-     INPUT
-             #{@blank_hdr}
-             <sections>
-              <ul id="id1">
-         <li id="id2">
-           <p id="_">List item</p>
-         </li>
-         <li>
-           <p id="_">Hello <bookmark id="id3"/> List item</p>
-         </li>
-       </ul>
-       </sections>
-       </iec-standard>
-     OUTPUT
-    end
-
+    INPUT
+    output = <<~OUTPUT
+            #{@blank_hdr}
+            <sections>
+             <ul id="id1">
+        <li id="id2">
+          <p id="_">List item</p>
+        </li>
+        <li>
+          <p id="_">Hello <bookmark id="id3"/> List item</p>
+        </li>
+      </ul>
+      </sections>
+      </iec-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor
+      .convert(input, backend: :iec, header_footer: true))))
+      .to be_equivalent_to xmlpp(output)
+  end
 end
