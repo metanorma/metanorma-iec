@@ -98,12 +98,12 @@ module Metanorma
                                   @i18n&.introduction_iev)
       end
 
-      # preserve ol/@style within boilerplate, not elsewhere in doc
+      # preserve ol/@type within boilerplate, not elsewhere in doc
       def ol_cleanup(doc)
         if doc.at("//metanorma-extension/semantic-metadata/" \
                "headless[text() = 'true']")
           doc.xpath("//ol[@explicit-type]").each do |x|
-            x["style"] = x["explicit-type"]
+            x["type"] = x["explicit-type"]
             x.delete("explicit-type")
           end
         end
