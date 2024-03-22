@@ -344,7 +344,7 @@ RSpec.describe Metanorma::Iec do
            </copyright-statement>
            <legal-statement>
              <clause id="_" inline-header="false" obligation="normative">
-             <ol id="_" style="arabic">
+             <ol id="_" type="arabic">
                  <li>
                    <p id="_">The International Electrotechnical Commission (IEC) is a worldwide organization for standardization comprising all national electrotechnical committees (IEC National Committees). The object of IEC is to promote international co-operation on all questions concerning standardization in the electrical and electronic fields. To this end and in addition to other activities, IEC publishes International Standards, Technical Specifications, Technical Reports, Publicly Available Specifications (PAS) and Guides (hereafter referred to as “IEC Publication(s)”). Their preparation is entrusted to technical committees; any IEC National Committee interested in the subject dealt with may participate in this preparatory work. International, governmental and non-governmental organizations liaising with the IEC also participate in this preparation. IEC collaborates closely with the International Organization for Standardization (ISO) in accordance with conditions determined by agreement between the two organizations.</p>
                  </li>
