@@ -107,7 +107,8 @@ module Metanorma
             x.delete("explicit-type")
           end
         end
-        super
+        ::Metanorma::Standoc::Converter.instance_method(:ol_cleanup).bind(self)
+          .call(doc)
       end
 
       def note(note)
