@@ -25,7 +25,7 @@ module Metanorma
                else
                  "en"
                end
-        File.join(@libdir, "iec_intro_#{lang}.xml")
+        File.join(@libdir, "boilerplate-#{lang}.adoc")
       end
 
       def id_prefix(_prefix, id)
@@ -83,7 +83,8 @@ module Metanorma
         else
           IsoDoc::Iec::PresentationXMLConvert
             .new(doc_extract_attributes(node)
-            .merge(output_formats: ::Metanorma::Iec::Processor.new.output_formats))
+            .merge(output_formats: ::Metanorma::Iec::Processor
+            .new.output_formats))
         end
       end
 
@@ -95,6 +96,19 @@ module Metanorma
         super
         @is_iev and replace_title(xml, "//introduction",
                                   @i18n&.introduction_iev)
+      end
+
+      # preserve ol/@type within boilerplate, not elsewhere in doc
+      def ol_cleanup(doc)
+        if doc.at("//metanorma-extension/semantic-metadata/" \
+               "headless[text() = 'true']")
+          doc.xpath("//ol[@explicit-type]").each do |x|
+            x["type"] = x["explicit-type"]
+            x.delete("explicit-type")
+          end
+        end
+        ::Metanorma::Standoc::Converter.instance_method(:ol_cleanup).bind(self)
+          .call(doc)
       end
 
       def note(note)
@@ -135,12 +149,6 @@ module Metanorma
                    "#{@i18n.section_iev} #{m[1]}-#{num} &#x2013; " \
                    "#{t.children.to_xml}</variant-title>"
         end
-      end
-
-      def ol_attrs(node)
-        attr_code(keep_attrs(node)
-                  .merge(id: ::Metanorma::Utils::anchor_or_uuid(node),
-                         "explicit-type": olist_style(node.attributes[1])))
       end
 
       # TODO remove when I adopt pubid-iec

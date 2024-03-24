@@ -332,139 +332,69 @@ RSpec.describe Metanorma::Iec do
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>
-        <boilerplate>
-          <copyright-statement>
-            <clause>
-              <p id='_'>
-                <strong>Copyright &#169; 2023 International Electrotechnical Commission, IEC.</strong>
-                 All rights reserved. It is permitted to download this electronic
-                file, to make a copy and to print out the content for the sole purpose
-                of preparing National Committee positions. You may not copy or
-                &#8220;mirror&#8221; the file or printed version of the document, or
-                any part of it, for any other purpose without permission in writing
-                from IEC.
-              </p>
-            </clause>
-          </copyright-statement>
-          <legal-statement>
-            <clause>
-              <ol id='_'>
-                <li>
-                  <p id='_'>
-                    The International Electrotechnical Commission (IEC) is a worldwide
-                    organization for standardization comprising all national
-                    electrotechnical committees (IEC National Committees). The object
-                    of IEC is to promote international co-operation on all questions
-                    concerning standardization in the electrical and electronic
-                    fields. To this end and in addition to other activities, IEC
-                    publishes International Standards, Technical Specifications,
-                    Technical Reports, Publicly Available Specifications (PAS) and
-                    Guides (hereafter referred to as &#8220;IEC
-                    Publication(s)&#8221;). Their preparation is entrusted to
-                    technical committees; any IEC National Committee interested in the
-                    subject dealt with may participate in this preparatory work.
-                    International, governmental and non-governmental organizations
-                    liaising with the IEC also participate in this preparation. IEC
-                    collaborates closely with the International Organization for
-                    Standardization (ISO) in accordance with conditions determined by
-                    agreement between the two organizations.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    The formal decisions or agreements of IEC on technical matters
-                    express, as nearly as possible, an international consensus of
-                    opinion on the relevant subjects since each technical committee
-                    has representation from all interested IEC National Committees.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    IEC Publications have the form of recommendations for
-                    international use and are accepted by IEC National Committees in
-                    that sense. While all reasonable efforts are made to ensure that
-                    the technical content of IEC Publications is accurate, IEC cannot
-                    be held responsible for the way in which they are used or for any
-                    misinterpretation by any end user.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    In order to promote international uniformity, IEC National
-                    Committees undertake to apply IEC Publications transparently to
-                    the maximum extent possible in their national and regional
-                    publications. Any divergence between any IEC Publication and the
-                    corresponding national or regional publication shall be clearly
-                    indicated in the latter.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    IEC itself does not provide any attestation of conformity.
-                    Independent certification bodies provide conformity assessment
-                    services and, in some areas, access to IEC marks of conformity.
-                    IEC is not responsible for any services carried out by independent
-                    certification bodies.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>All users should ensure that they have the latest edition of this publication.</p>
-                </li>
-                <li>
-                  <p id='_'>
-                    No liability shall attach to IEC or its directors, employees,
-                    servants or agents including individual experts and members of its
-                    technical committees and IEC National Committees for any personal
-                    injury, property damage or other damage of any nature whatsoever,
-                    whether direct or indirect, or for costs (including legal fees)
-                    and expenses arising out of the publication, use of, or reliance
-                    upon, this IEC Publication or any other IEC Publications.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    Attention is drawn to the Normative references cited in this
-                    publication. Use of the referenced publications is indispensable
-                    for the correct application of this publication.
-                  </p>
-                </li>
-                <li>
-                  <p id='_'>
-                    Attention is drawn to the possibility that some of the elements of
-                    this IEC Publication may be the subject of patent rights. IEC
-                    shall not be held responsible for identifying any or all such
-                    patent rights.
-                  </p>
-                </li>
-              </ol>
-            </clause>
-          </legal-statement>
-          <license-statement>
-            <clause>
-              <p id='_'>
-                This document is still under study and subject to change. It should
-                not be used for reference purposes. until published as such.
-              </p>
-              <p id='_'>
-                Recipients of this document are invited to submit, with their
-                comments, notification of any relevant patent rights of which they are
-                aware and to provide supporting documentation.
-              </p>
-            </clause>
-          </license-statement>
-          <feedback-statement>
-            <clause id='boilerplate-cenelec-attention'>
-              <title>Attention IEC-CENELEC parallel voting</title>
-              <p id='_'>
-                The attention of IEC National Committees, members of CENELEC, is drawn
-                to the fact that this (PNW) is submitted for parallel voting.
-              </p>
-              <p id='_'>The CENELEC members are invited to vote through the CENELEC voting system.</p>
-            </clause>
-          </feedback-statement>
-        </boilerplate>
-        <sections> </sections>
-      </iec-standard>
+                  <boilerplate>
+           <copyright-statement>
+             <clause id="_" inline-header="false" obligation="normative">
+               <p id="_"><strong>Copyright © 2023 International Electrotechnical Commission, IEC.</strong>
+       All rights reserved. It is permitted to download this electronic file, to make a copy and to
+       print out the content for the sole purpose of preparing National Committee positions. You
+       may not copy or “mirror” the file or printed version of the document, or any part of it,
+       for any other purpose without permission in writing from IEC.</p>
+             </clause>
+           </copyright-statement>
+           <legal-statement>
+             <clause id="_" inline-header="false" obligation="normative">
+             <ol id="_" type="arabic">
+                 <li>
+                   <p id="_">The International Electrotechnical Commission (IEC) is a worldwide organization for standardization comprising all national electrotechnical committees (IEC National Committees). The object of IEC is to promote international co-operation on all questions concerning standardization in the electrical and electronic fields. To this end and in addition to other activities, IEC publishes International Standards, Technical Specifications, Technical Reports, Publicly Available Specifications (PAS) and Guides (hereafter referred to as “IEC Publication(s)”). Their preparation is entrusted to technical committees; any IEC National Committee interested in the subject dealt with may participate in this preparatory work. International, governmental and non-governmental organizations liaising with the IEC also participate in this preparation. IEC collaborates closely with the International Organization for Standardization (ISO) in accordance with conditions determined by agreement between the two organizations.</p>
+                 </li>
+                 <li>
+                   <p id="_">The formal decisions or agreements of IEC on technical matters express, as nearly as possible, an international consensus of opinion on the relevant subjects since each technical committee has representation from all interested IEC National Committees.</p>
+                 </li>
+                 <li>
+                   <p id="_">IEC Publications have the form of recommendations for international use and are accepted by IEC National Committees in that sense. While all reasonable efforts are made to ensure that the technical content of IEC Publications is accurate, IEC cannot be held responsible for the way in which they are used or for any misinterpretation by any end user.</p>
+                 </li>
+                 <li>
+                   <p id="_">In order to promote international uniformity, IEC National Committees undertake to apply IEC Publications transparently to the maximum extent possible in their national and regional publications. Any divergence between any IEC Publication and the corresponding national or regional publication shall be clearly indicated in the latter.</p>
+                 </li>
+                 <li>
+                   <p id="_">IEC itself does not provide any attestation of conformity. Independent certification bodies provide conformity assessment services and, in some areas, access to IEC marks of conformity. IEC is not responsible for any services carried out by independent certification bodies.</p>
+                 </li>
+                 <li>
+                   <p id="_">All users should ensure that they have the latest edition of this publication.</p>
+                 </li>
+                 <li>
+                   <p id="_">No liability shall attach to IEC or its directors, employees, servants or agents including individual experts and members of its technical committees and IEC National Committees for any personal injury, property damage or other damage of any nature whatsoever, whether direct or indirect, or for costs (including legal fees) and expenses arising out of the publication, use of, or reliance upon, this IEC Publication or any other IEC Publications.</p>
+                 </li>
+                 <li>
+                   <p id="_">Attention is drawn to the Normative references cited in this publication. Use of the referenced publications is indispensable for the correct application of this publication.</p>
+                 </li>
+                 <li>
+                   <p id="_">Attention is drawn to the possibility that some of the elements of this IEC Publication may be the subject of patent rights. IEC shall not be held responsible for identifying any or all such patent rights.</p>
+                 </li>
+               </ol>
+             </clause>
+           </legal-statement>
+           <license-statement>
+             <clause id="_" inline-header="false" obligation="normative">
+               <p id="_">This document is still under study and subject to change. It should not be used for reference purposes.
+       until published as such.</p>
+               <p id="_">Recipients of this document are invited to submit, with their comments, notification of any relevant
+       patent rights of which they are aware and to provide supporting documentation.</p>
+             </clause>
+           </license-statement>
+           <feedback-statement>
+             <clause id="boilerplate-cenelec-attention" inline-header="false" obligation="normative">
+               <title>Attention IEC-CENELEC parallel voting</title>
+               <p id="_">The attention of IEC National Committees, members of CENELEC, is drawn to the fact that this</p>
+               <p id="_">(PNW)
+       is submitted for parallel voting.</p>
+               <p id="_">The CENELEC members are invited to vote through the CENELEC voting system.</p>
+             </clause>
+           </feedback-statement>
+         </boilerplate>
+         <sections/>
+       </iec-standard>
     OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to xmlpp(output)
