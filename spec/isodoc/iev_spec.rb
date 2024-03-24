@@ -334,7 +334,7 @@ RSpec.describe IsoDoc do
         </ul>
       </termexample>
       <termsource status="modified">SOURCE:
-        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2013;
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2014;
           The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</termsource>
       </term>
       <term id="paddy">
@@ -401,7 +401,7 @@ RSpec.describe IsoDoc do
                   </ul>
                 </div>
                 <p>
-                  SOURCE: ISO 7301:2011, 3.1, modified &#8211; The term "cargo rice" is shown as deprecated, and
+                  SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and
                   Note 1 to entry is not included here
                 </p>
                 <p class='TermNum' id='paddy'>192-01-02</p>
@@ -503,7 +503,7 @@ RSpec.describe IsoDoc do
                 <termsource status='modified'>SOURCE:
                   <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'>
                       <referenceFrom>3.1</referenceFrom>
-                    </locality>ISO 7301:2011, 3.1</origin>, modified &#x2013;
+                    </locality>ISO 7301:2011, 3.1</origin>, modified &#x2014;
                       The term "cargo rice" is shown as deprecated, and Note 1 to
                       entry is not included here
                 </termsource>
@@ -549,7 +549,7 @@ RSpec.describe IsoDoc do
                  rice retaining its husk after threshing
                </p>
                <p class='MsoNormal'>
-                 SOURCE: ISO 7301:2011, 3.1, modified &#x2013; The term "cargo rice" is shown as deprecated, and
+                 SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and
                  Note 1 to entry is not included here
                </p>
              </div>
@@ -740,7 +740,7 @@ RSpec.describe IsoDoc do
                   <p id='_'>set of interrelated items that collectively fulfil a requirement</p>
                 </definition>
                 <p>
-                  CONTRAST:#{' '}
+                  CONTRAST:
                   <strong>Fifth Designation</strong>
                    (
                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
@@ -765,14 +765,14 @@ RSpec.describe IsoDoc do
                   </p>
                 </termnote>
                 <termsource status='modified'>
-                  SOURCE:#{' '}
+                  SOURCE:
                   <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                     <locality type='clause'>
                       <referenceFrom>3.1</referenceFrom>
                     </locality>
                     ISO 7301:2011, 3.1
                   </origin>
-                  , modified &#x2013; modified by extension to suit the dependability
+                  , modified &#x2014; modified by extension to suit the dependability
                   context
                 </termsource>
                 <preferred>
@@ -786,14 +786,14 @@ RSpec.describe IsoDoc do
                   </p>
                 </definition>
                 <p>
-                  CONTRASTEZ:#{' '}
+                  CONTRASTEZ:
                   <strong>Designation cinqui&#xE8;me</strong>
                    (
                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
                   )
                 </p>
                 <p>
-                  VOIR:#{' '}
+                  VOIR:
                   <strong>Designation sixi&#xE8;me</strong>
                    (
                   <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
@@ -822,14 +822,14 @@ RSpec.describe IsoDoc do
                   </p>
                 </termnote>
                 <termsource status='modified'>
-                  SOURCE:#{' '}
+                  SOURCE:
                   <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
                     <locality type='clause'>
                       <referenceFrom>3.1</referenceFrom>
                     </locality>
                     ISO 7301:2011, 3.1
                   </origin>
-                  , modifi&#xE9; &#x2013; modifi&#xE9; pour adapter au contexte de la
+                  , modifi&#xE9; &#x2014; modifi&#xE9; pour adapter au contexte de la
                   s&#xFB;ret&#xE9; de fonctionnement
                 </termsource>
                 <dl type='other-lang'>
