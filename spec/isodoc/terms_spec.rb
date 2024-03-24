@@ -78,7 +78,7 @@ RSpec.describe IsoDoc do
       </termexample>
 
       <termsource status="modified">[SOURCE:
-        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2013; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
       </termsource></term>
 
       <term id="paddy">
@@ -126,7 +126,7 @@ RSpec.describe IsoDoc do
          </div>
 
          <p>[SOURCE:
-           ISO 7301:2011, 3.1, modified &#8211; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
+           ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
          </p><p class="TermNum" id="paddy">1.2</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
          <p class="AltTerms" style="text-align:left;">rough rice</p>
          <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
@@ -145,7 +145,7 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     word = <<~OUTPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
+      <body lang="EN-US" link="blue" vlink="#954F72">
          <div class="WordSection2">
            <p class="page-break">
              <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
@@ -190,7 +190,7 @@ RSpec.describe IsoDoc do
                </ul>
              </div>
              <p>[SOURCE:
-         ISO 7301:2011, 3.1, modified – The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
+         ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
        </p>
              <p class="TermNum" id="paddy">1.2</p>
              <p class="Terms" style="text-align:left;">paddy</p>
@@ -222,7 +222,8 @@ RSpec.describe IsoDoc do
          <div class="colophon"/>
        </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
