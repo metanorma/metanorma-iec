@@ -2123,17 +2123,30 @@
 	<xsl:param name="add_math_as_text">true</xsl:param> <!-- add math in text behind svg formula, to copy-paste formula from PDF as text -->
 
 	<xsl:param name="table_if">false</xsl:param> <!-- generate extended table in IF for autolayout-algorithm -->
-	<xsl:param name="table_widths"/> <!-- path to xml with table's widths, generated on 1st pass, based on FOP Intermediate Format -->
+	<xsl:param name="table_widths"/> <!-- (debug: path to) xml with table's widths, generated on 1st pass, based on FOP Intermediate Format -->
 	<!-- Example: <tables>
-			<table id="table_if_tab-symdu" page-width="75"> - table id prefixed by 'table_if_' to simple search in IF 
-				<tbody>
-					<tr>
-						<td id="tab-symdu_1_1">
-							<p_len>6</p_len>
-							<p_len>100</p_len>  for 2nd paragraph
-							<word_len>6</word_len>
-							<word_len>20</word_len>
-						...
+		<table page-width="509103" id="table1" width_max="223561" width_min="223560">
+			<column width_max="39354" width_min="39354"/>
+			<column width_max="75394" width_min="75394"/>
+			<column width_max="108813" width_min="108813"/>
+			<tbody>
+				<tr>
+					<td width_max="39354" width_min="39354">
+						<p_len>39354</p_len>
+						<word_len>39354</word_len>
+					</td>
+					
+		OLD:
+			<tables>
+					<table id="table_if_tab-symdu" page-width="75"> - table id prefixed by 'table_if_' to simple search in IF 
+						<tbody>
+							<tr>
+								<td id="tab-symdu_1_1">
+									<p_len>6</p_len>
+									<p_len>100</p_len>  for 2nd paragraph
+									<word_len>6</word_len>
+									<word_len>20</word_len>
+								...
 	-->
 
 	<!-- for command line debug: <xsl:variable name="table_widths_from_if" select="document($table_widths)"/> -->
@@ -2359,6 +2372,9 @@
 	<xsl:variable name="hair_space"> </xsl:variable>
 	<xsl:variable name="en_dash">–</xsl:variable>
 	<xsl:variable name="em_dash">—</xsl:variable>
+	<xsl:variable name="cr">&#13;</xsl:variable>
+	<xsl:variable name="lf">
+</xsl:variable>
 
 	<xsl:template name="getTitle">
 		<xsl:param name="name"/>
@@ -4084,6 +4100,20 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<xsl:param name="table_only_with_id"/><!-- Example: table1, for table auto-layout algorithm -->
+
+	<xsl:template match="*[local-name()='table']" priority="2">
+		<xsl:choose>
+			<xsl:when test="$table_only_with_id != '' and @id = $table_only_with_id">
+				<xsl:call-template name="table"/>
+			</xsl:when>
+			<xsl:when test="$table_only_with_id != ''"><fo:block/><!-- to prevent empty fo:block-container --></xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="table"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
 	<xsl:template match="*[local-name()='table']" name="table">
 
 		<xsl:variable name="table-preamble">
@@ -4093,9 +4123,11 @@
 		<xsl:variable name="table">
 
 			<xsl:variable name="simple-table">
-				<xsl:call-template name="getSimpleTable">
-					<xsl:with-param name="id" select="@id"/>
-				</xsl:call-template>
+				<xsl:if test="$isGenerateTableIF = 'true' and $isApplyAutolayoutAlgorithm = 'true'">
+					<xsl:call-template name="getSimpleTable">
+						<xsl:with-param name="id" select="@id"/>
+					</xsl:call-template>
+				</xsl:if>
 			</xsl:variable>
 			<!-- <xsl:variable name="simple-table" select="xalan:nodeset($simple-table_)"/> -->
 
@@ -4191,9 +4223,9 @@
 						</xsl:attribute>
 					</xsl:for-each>
 
-					<xsl:variable name="isNoteOrFnExist" select="./*[local-name()='note'] or ./*[local-name()='example'] or .//*[local-name()='fn'][local-name(..) != 'name'] or ./*[local-name()='source']"/>
+					<xsl:variable name="isNoteOrFnExist" select="./*[local-name()='note'][not(@type = 'units')] or ./*[local-name()='example'] or .//*[local-name()='fn'][local-name(..) != 'name'] or ./*[local-name()='source']"/>
 					<xsl:if test="$isNoteOrFnExist = 'true'">
-						<xsl:attribute name="border-bottom">0pt solid black</xsl:attribute> <!-- set 0pt border, because there is a separete table below for footer  -->
+						<xsl:attribute name="border-bottom">0pt solid black</xsl:attribute><!-- set 0pt border, because there is a separete table below for footer -->
 					</xsl:if>
 
 					<xsl:choose>
@@ -4361,8 +4393,27 @@
 
 					</fo:block>
 
+					<!-- <xsl:if test="$namespace = 'bsi' or $namespace = 'iec' or $namespace = 'iso'"> -->
+					<xsl:if test="$continued = 'true'">
+						<fo:block text-align="right">
+							<xsl:apply-templates select="../*[local-name() = 'note'][@type = 'units']/node()"/>
+						</fo:block>
+					</xsl:if>
+					<!-- </xsl:if> -->
+
 		</xsl:if>
 	</xsl:template> <!-- table/name -->
+
+	<!-- workaround solution for https://github.com/metanorma/metanorma-iso/issues/1151#issuecomment-2033087938 -->
+	<xsl:template match="*[local-name()='table']/*[local-name() = 'note'][@type = 'units']/*[local-name() = 'p']/text()" priority="4">
+		<xsl:choose>
+			<xsl:when test="preceding-sibling::*[local-name() = 'br']">
+				<!-- remove CR or LF at start -->
+				<xsl:value-of select="java:replaceAll(java:java.lang.String.new(.),'^(&#13;&#10;|&#13;|&#10;)', '')"/>
+			</xsl:when>
+			<xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 
 	<!-- SOURCE: ... -->
 	<xsl:template match="*[local-name()='table']/*[local-name() = 'source']" priority="2">
@@ -4783,7 +4834,7 @@
 		<xsl:param name="colwidths"/>
 		<xsl:param name="colgroup"/>
 
-		<xsl:variable name="isNoteOrFnExist" select="../*[local-name()='note'] or ../*[local-name()='example'] or ../*[local-name()='dl'] or ..//*[local-name()='fn'][local-name(..) != 'name'] or ../*[local-name()='source'] or ../*[local-name()='p']"/>
+		<xsl:variable name="isNoteOrFnExist" select="../*[local-name()='note'][not(@type = 'units')] or ../*[local-name()='example'] or ../*[local-name()='dl'] or ..//*[local-name()='fn'][local-name(..) != 'name'] or ../*[local-name()='source'] or ../*[local-name()='p']"/>
 
 		<xsl:variable name="isNoteOrFnExistShowAfterTable">
 
@@ -4849,7 +4900,7 @@
 
 								<!-- fn will be processed inside 'note' processing -->
 
-									<xsl:if test="../*[local-name()='note']">
+									<xsl:if test="../*[local-name()='note'][not(@type = 'units')]">
 										<fo:block margin-bottom="6pt" role="SKIP"> </fo:block>
 									</xsl:if>
 
@@ -4859,7 +4910,7 @@
 
 										<xsl:apply-templates select="../*[local-name()='p']"/>
 										<xsl:apply-templates select="../*[local-name()='dl']"/>
-										<xsl:apply-templates select="../*[local-name()='note']"/>
+										<xsl:apply-templates select="../*[local-name()='note'][not(@type = 'units')]"/>
 										<xsl:apply-templates select="../*[local-name()='example']"/>
 										<xsl:apply-templates select="../*[local-name()='source']"/>
 
@@ -4870,7 +4921,7 @@
 
 								<!-- horizontal row separator -->
 								<xsl:if test="normalize-space($isDisplayRowSeparator) = 'true'">
-									<xsl:if test="(../*[local-name()='note'] or ../*[local-name()='example']) and normalize-space($table_fn_block) != ''">
+									<xsl:if test="(../*[local-name()='note'][not(@type = 'units')] or ../*[local-name()='example']) and normalize-space($table_fn_block) != ''">
 										<fo:block-container border-top="0.5pt solid black" padding-left="1mm" padding-right="1mm">
 
 											<xsl:call-template name="setBordersTableArray"/>
@@ -5579,7 +5630,20 @@
 	<!-- Definition List -->
 	<!-- ===================== -->
 
-	<xsl:template match="*[local-name()='dl']">
+	<!-- for table auto-layout algorithm -->
+	<xsl:template match="*[local-name()='dl']" priority="2">
+		<xsl:choose>
+			<xsl:when test="$table_only_with_id != '' and @id = $table_only_with_id">
+				<xsl:call-template name="dl"/>
+			</xsl:when>
+			<xsl:when test="$table_only_with_id != ''"><fo:block/><!-- to prevent empty fo:block-container --></xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="dl"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="*[local-name()='dl']" name="dl">
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
 		<!-- <dl><xsl:copy-of select="."/></dl> -->
@@ -7593,7 +7657,13 @@
 							<xsl:value-of select="$language_current_2"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="//*[local-name()='bibdata']//*[local-name()='language']"/>
+							<xsl:variable name="language_current_3" select="normalize-space(//*[local-name()='bibdata']//*[local-name()='language'])"/>
+							<xsl:choose>
+								<xsl:when test="$language_current_3 != ''">
+									<xsl:value-of select="$language_current_3"/>
+								</xsl:when>
+								<xsl:otherwise>en</xsl:otherwise>
+							</xsl:choose>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:otherwise>
@@ -8498,7 +8568,7 @@
 						</xsl:when>
 						<xsl:otherwise>
 							<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" xsl:use-attribute-sets="image-graphic-style">
-								<xsl:if test="not(@mimetype = 'image/svg+xml') and ../*[local-name() = 'name'] and not(ancestor::*[local-name() = 'table'])">
+								<xsl:if test="not(@mimetype = 'image/svg+xml') and (../*[local-name() = 'name'] or parent::*[local-name() = 'figure'][@unnumbered = 'true']) and not(ancestor::*[local-name() = 'table'])">
 
 									<xsl:if test="@width != '' and @width != 'auto' and @width != 'text-width' and @width != 'full-page-width' and @width != 'narrow'">
 										<xsl:attribute name="width">
@@ -13544,7 +13614,5 @@
 			</fo:block>
 		</xsl:if>
 	</xsl:template>
-
-	<!-- update -->
 
 </xsl:stylesheet>
