@@ -116,13 +116,17 @@ RSpec.describe IsoDoc do
          <p class="TermNum" id="paddy1">1.1</p><p class="Terms" style="text-align:left;">paddy</p>
 
          <p id="_">&lt;rice&gt; rice retaining its husk after threshing</p>
-         <div id="_" class="example"><p><span class="example_label">EXAMPLE 1</span>&#160; Foreign seeds, husks, bran, sand, dust.</p><ul>
+         <div id="_" class="example"><p><span class="example_label">EXAMPLE 1</span>&#160; Foreign seeds, husks, bran, sand, dust.</p>
+         <div class="ul_wrap">
+          <ul>
            <li>A</li>
-           </ul></div>
+           </ul></div></div>
          <div id="_" class="example"><p><span class="example_label">EXAMPLE 2</span>&#160; </p>
+         <div class="ul_wrap">
            <ul>
            <li>A</li>
            </ul>
+         </div>
          </div>
 
          <p>[SOURCE:
@@ -132,12 +136,18 @@ RSpec.describe IsoDoc do
          <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
          <p id="_">rice retaining its husk after threshing</p>
          <div id="_" class="example"><p><span class="example_label">EXAMPLE</span>&#160; </p>
+         <div class="ul_wrap">
            <ul>
            <li>A</li>
            </ul>
          </div>
+         </div>
          <div id="_" class="Note"><p>Note 1 to entry: The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></div>
-         <div id='_' class="Note"><p>Note 2 to entry: <ul><li>A</li></ul><p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p></div>
+         <div id='_' class="Note"><p>Note 2 to entry: 
+         <div class="ul_wrap">
+          <ul><li>A</li></ul>
+          </div>
+            <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p></div>
          <p>[SOURCE: ISO 7301:2011, 3.1]</p></div>
              </div>
            </body>
@@ -176,18 +186,22 @@ RSpec.describe IsoDoc do
              <p class="Definition" id="_">&lt;rice&gt; rice retaining its husk after threshing</p>
              <div id="_" class="example">
                <p><span class="example_label">EXAMPLE 1</span><span style="mso-tab-count:1">  </span>Foreign seeds, husks, bran, sand, dust.</p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+             </div>
              </div>
              <div id="_" class="example">
                <p>
                  <span class="example_label">EXAMPLE 2</span>
                  <span style="mso-tab-count:1">  </span>
                </p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+             </div>
              </div>
              <p>[SOURCE:
          ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
@@ -202,16 +216,22 @@ RSpec.describe IsoDoc do
                <p class="Note">Note 1 to entry: The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
              </div>
              <div id="_" class="Note">
-               <p class="Note">Note 2 to entry: <ul><li>A</li></ul><p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p>
+               <p class="Note">Note 2 to entry: 
+               <div class="ul_wrap">
+              <ul><li>A</li></ul>
+              </div>
+              <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p></p>
              </div>
              <div id="_" class="example">
                <p>
                  <span class="example_label">EXAMPLE</span>
                  <span style="mso-tab-count:1">  </span>
                </p>
+               <div class="ul_wrap">
                <ul>
                  <li>A</li>
                </ul>
+             </div>
              </div>
              <p>[SOURCE:
          ISO 7301:2011, 3.1]

@@ -387,17 +387,21 @@ RSpec.describe IsoDoc do
                     <span class='example_label'>EXAMPLE 1</span>
                     &#160; Foreign seeds, husks, bran, sand, dust.
                   </p>
+                  <div class="ul_wrap">
                   <ul>
                     <li>A</li>
                   </ul>
+                </div>
                 </div>
                 <div id='_' class='example'>
                   <p>
                     <span class='example_label'>EXAMPLE 2</span>
                     &#160;
                   </p>
+                  <div class="ul_wrap">
                   <ul>
                     <li>A</li>
+                  </ul>
                   </ul>
                 </div>
                 <p>
@@ -417,9 +421,11 @@ RSpec.describe IsoDoc do
                     <span class='example_label'>EXAMPLE</span>
                     &#160;
                   </p>
+                  <div class="ul_wrap">
                   <ul>
                     <li>A</li>
                   </ul>
+                </div>
                 </div>
                 <div id='_' class='Note'>
                   <p>
@@ -431,9 +437,11 @@ RSpec.describe IsoDoc do
                 <div id='_' class='Note'>
                   <p>
                     Note 2 to entry:
+                    <div class="ul_wrap">
                     <ul>
                       <li>A</li>
                     </ul>
+                    </div>
                     <p id='_'>
                       The starch of waxy rice consists almost entirely of amylopectin.
                       The kernels have a tendency to stick together after cooking.

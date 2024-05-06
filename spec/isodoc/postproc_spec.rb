@@ -209,9 +209,9 @@ RSpec.describe IsoDoc do
              htmlstylesheet: "spec/assets/html.css" })
       .convert("test", input, false)
     expect(File.exist?("test.html")).to be true
-    html = File.read("test.html", encoding: "UTF-8")
-    expect(html).to match(%r{<h2 class="TermNum" id="paddy1">1\.1</h2>})
-    expect(html).to match(%r{<h2 class="TermNum" id="paddy">1\.2</h2>})
+    html = strip_guid(File.read("test.html", encoding: "UTF-8"))
+    expect(html).to match(%r{<h2 class="TermNum" id="_"><a class="anchor" href="#paddy1"></a><a class="header" href="#paddy1">1\.1</a>})
+    expect(html).to match(%r{<h2 class="TermNum" id="_"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1\.2</a>})
   end
 
   it "inserts default paragraph between two tables for Word" do

@@ -181,16 +181,20 @@ RSpec.describe IsoDoc do
          <p class="Terms" style="text-align:left;">Term2</p>
 
        </div><div id="K"><h2>3.2</h2>
+       <div class="figdl">
          <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
+         </div>
        </div></div>
             <div id="L" class="Symbols">
               <h1>4</h1>
+              <div class="figdl">
               <dl>
                 <dt>
                   <p>Symbol</p>
                 </dt>
                 <dd>Definition</dd>
               </dl>
+            </div>
             </div>
             <div id="M">
               <h1>5&#160; Clause 4</h1>
@@ -556,16 +560,20 @@ RSpec.describe IsoDoc do
             <p class="Terms" style="text-align:left;">Term2</p>
 
           </div><div id="K"><h2>3.2</h2>
+          <div class="figdl">
             <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
+            </div>
           </div></div>
                <div id="L" class="Symbols">
                  <h1>4</h1>
+                <div class="figdl">
                  <dl>
                    <dt>
                      <p>Symbol</p>
                    </dt>
                    <dd>Definition</dd>
                  </dl>
+               </div>
                </div>
                <div id="M">
                  <h1>5&#160; Clause 4</h1>
