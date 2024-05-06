@@ -180,16 +180,20 @@ RSpec.describe IsoDoc do
              <p class="TermNum" id="J">3.1.1</p>
              <p class="Terms" style="text-align:left;">Term2</p>
            </div><div id="K"><h2>3.2</h2>
+           <div class="figdl">
              <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
+             </div>
            </div></div>
                   <div id="L" class="Symbols">
                     <h1>4</h1>
+                    <div class="figdl">
                     <dl>
                       <dt>
                         <p>Symbol</p>
                       </dt>
                       <dd>Definition</dd>
                     </dl>
+                    </div>
                   </div>
                   <div id="M">
                     <h1>5&#160; Clause 4</h1>
@@ -226,93 +230,93 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     word = <<~OUTPUT
-          <body lang="EN-US" link="blue" vlink="#954F72">
-            <div class="WordSection2">
-              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-                  <div id="_" class="TOC">
-      <p class="zzContents">Contents</p>
-    </div>
-    <p class="page-break">
-      <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-    </p>
-              #{IEC_TITLE}
-              <div>
-                <h1 class="ForewordTitle">FOREWORD</h1>
-                <p id="A">This is a preamble</p>
-              </div>
-              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-              <div class="Section3" id="B">
-                <h1 class="IntroTitle">Introduction</h1>
-                <div id="C">
-         <h2>0.1<span style="mso-tab-count:1">&#160; </span>Introduction Subsection</h2>
-       </div>
-                <p>This is patent boilerplate</p>
-              </div>
-              <p>&#160;</p>
-            </div>
-            <p class="section-break"><br clear="all" class="section"/></p>
-            <div class="WordSection3">
-            #{IEC_TITLE1}
-              <div id="D">
-                <h1>1<span style="mso-tab-count:1">&#160; </span>Scope</h1>
-                <p id="E">Text</p>
-              </div>
-              <div>
-                <h1>2<span style="mso-tab-count:1">&#160; </span>Normative References</h1>
-              </div>
-              <div id="H"><h1>3<span style="mso-tab-count:1">&#160; </span>Terms, definitions, symbols and abbreviated terms</h1>
-      <div id="I">
-         <h2>3.1<span style="mso-tab-count:1">&#160; </span>Normal Terms</h2>
-         <p class="TermNum" id="J">3.1.1</p>
-         <p class="Terms" style="text-align:left;">Term2</p>
-
-       </div><div id="K"><h2>3.2</h2>
-         <table class="dl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;">Symbol</p></td><td valign="top">Definition</td></tr></table>
-       </div></div>
-              <div id="L" class="Symbols">
-                <h1>4</h1>
-                <table class="dl">
-                  <tr>
-                    <td valign="top" align="left">
-                      <p align="left" style="margin-left:0pt;text-align:left;">Symbol</p>
-                    </td>
-                    <td valign="top">Definition</td>
-                  </tr>
-                </table>
-              </div>
-              <div id="M">
-                <h1>5<span style="mso-tab-count:1">&#160; </span>Clause 4</h1>
-                <div id="N">
-         <h2>5.1<span style="mso-tab-count:1">&#160; </span>Introduction</h2>
-       </div>
-                <div id="O">
-         <h2>5.2<span style="mso-tab-count:1">&#160; </span>Clause 4.2</h2>
-       </div>
-              </div>
-              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-              <div id="P" class="Section3">
-                <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
-                <div id="Q">
-         <h2>A.1<span style="mso-tab-count:1">&#160; </span>Annex A.1</h2>
-         <div id="Q1">
-         <h3>A.1.1<span style="mso-tab-count:1">&#160; </span>Annex A.1a</h3>
-         </div>
-       </div>
-                <div id="Q2">
-         <h2>Appendix 1<span style="mso-tab-count:1">&#160; </span>An Appendix</h2>
-       </div>
-              </div>
-              <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-              <div>
-                <h1 class="Section3">Bibliography</h1>
+            <body lang="EN-US" link="blue" vlink="#954F72">
+              <div class="WordSection2">
+                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+                    <div id="_" class="TOC">
+        <p class="zzContents">Contents</p>
+      </div>
+      <p class="page-break">
+        <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+      </p>
+                #{IEC_TITLE}
                 <div>
-                  <h2 class="Section3">Bibliography Subsection</h2>
+                  <h1 class="ForewordTitle">FOREWORD</h1>
+                  <p id="A">This is a preamble</p>
+                </div>
+                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+                <div class="Section3" id="B">
+                  <h1 class="IntroTitle">Introduction</h1>
+                  <div id="C">
+           <h2>0.1<span style="mso-tab-count:1">&#160; </span>Introduction Subsection</h2>
+         </div>
+                  <p>This is patent boilerplate</p>
+                </div>
+                <p>&#160;</p>
+              </div>
+              <p class="section-break"><br clear="all" class="section"/></p>
+              <div class="WordSection3">
+              #{IEC_TITLE1}
+                <div id="D">
+                  <h1>1<span style="mso-tab-count:1">&#160; </span>Scope</h1>
+                  <p id="E">Text</p>
+                </div>
+                <div>
+                  <h1>2<span style="mso-tab-count:1">&#160; </span>Normative References</h1>
+                </div>
+                <div id="H"><h1>3<span style="mso-tab-count:1">&#160; </span>Terms, definitions, symbols and abbreviated terms</h1>
+        <div id="I">
+           <h2>3.1<span style="mso-tab-count:1">&#160; </span>Normal Terms</h2>
+           <p class="TermNum" id="J">3.1.1</p>
+           <p class="Terms" style="text-align:left;">Term2</p>
+
+         </div><div id="K"><h2>3.2</h2>
+           <table class="dl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;">Symbol</p></td><td valign="top">Definition</td></tr></table>
+         </div></div>
+                <div id="L" class="Symbols">
+                  <h1>4</h1>
+                  <table class="dl">
+                    <tr>
+                      <td valign="top" align="left">
+                        <p align="left" style="margin-left:0pt;text-align:left;">Symbol</p>
+                      </td>
+                      <td valign="top">Definition</td>
+                    </tr>
+                  </table>
+                </div>
+                <div id="M">
+                  <h1>5<span style="mso-tab-count:1">&#160; </span>Clause 4</h1>
+                  <div id="N">
+           <h2>5.1<span style="mso-tab-count:1">&#160; </span>Introduction</h2>
+         </div>
+                  <div id="O">
+           <h2>5.2<span style="mso-tab-count:1">&#160; </span>Clause 4.2</h2>
+         </div>
+                </div>
+                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+                <div id="P" class="Section3">
+                  <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
+                  <div id="Q">
+           <h2>A.1<span style="mso-tab-count:1">&#160; </span>Annex A.1</h2>
+           <div id="Q1">
+           <h3>A.1.1<span style="mso-tab-count:1">&#160; </span>Annex A.1a</h3>
+           </div>
+         </div>
+                  <div id="Q2">
+           <h2>Appendix 1<span style="mso-tab-count:1">&#160; </span>An Appendix</h2>
+         </div>
+                </div>
+                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
+                <div>
+                  <h1 class="Section3">Bibliography</h1>
+                  <div>
+                    <h2 class="Section3">Bibliography Subsection</h2>
+                  </div>
                 </div>
               </div>
-            </div>
-            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-            <div class="colophon"/>
-          </body>
+              <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
+              <div class="colophon"/>
+            </body>
     OUTPUT
     expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
@@ -398,34 +402,34 @@ RSpec.describe IsoDoc do
 
   it "processes inline section headers" do
     input = <<~INPUT
-            <iso-standard xmlns="http://riboseinc.com/isoxml">
-            <sections>
-             <clause id="M" inline-header="false" obligation="normative" displayorder="1">
-              <title>1<tab/>Clause 4</title>
-                <clause id="N" inline-header="false" obligation="normative">
-               <title>1.1<tab/>Introduction</title>
-             </clause>
-             <clause id="O" inline-header="true" obligation="normative">
-               <title>1.2<tab/>Clause 4.2</title>
-             </clause></clause>
-             </sections>
-            </iso-standard>
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <sections>
+       <clause id="M" inline-header="false" obligation="normative" displayorder="1">
+        <title>1<tab/>Clause 4</title>
+          <clause id="N" inline-header="false" obligation="normative">
+         <title>1.1<tab/>Introduction</title>
+       </clause>
+       <clause id="O" inline-header="true" obligation="normative">
+         <title>1.2<tab/>Clause 4.2</title>
+       </clause></clause>
+       </sections>
+      </iso-standard>
     INPUT
     output = <<~OUTPUT
-          #{HTML_HDR_BARE}
-                     #{IEC_TITLE1}
-                     <div id="M">
-                       <h1>1&#160; Clause 4</h1>
-                       <div id="N">
-                <h2>1.1&#160; Introduction</h2>
-              </div>
-                       <div id="O">
-                <span class="zzMoveToFollowing"><b>1.2&#160; Clause 4.2&#160; </b></span>
-              </div>
-                     </div>
-                   </div>
-                 </body>
-             </html>
+      #{HTML_HDR_BARE}
+                 #{IEC_TITLE1}
+                 <div id="M">
+                   <h1>1&#160; Clause 4</h1>
+                   <div id="N">
+            <h2>1.1&#160; Introduction</h2>
+          </div>
+                   <div id="O">
+            <span class="zzMoveToFollowing inline-header"><b>1.2&#160; Clause 4.2&#160; </b></span>
+          </div>
+                 </div>
+               </div>
+             </body>
+         </html>
     OUTPUT
     expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
       .to be_equivalent_to xmlpp(output)

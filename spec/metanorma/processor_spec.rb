@@ -155,7 +155,7 @@ RSpec.describe Metanorma::Iec::Processor do
           </p>
           <p class="zzSTDTitle1"> </p>
           <div id="_">
-            <h1 class="ForewordTitle" id="_">AVANT-PROPOS</h1>
+            <h1 class="ForewordTitle" id="_"><a class="anchor" href="#_"/><a class="header" href="#_">AVANT-PROPOS</a></h1>
             <div class="boilerplate_legal">
               <p>THIS IS A LEGAL STATEMENT</p>
             </div>
@@ -165,8 +165,10 @@ RSpec.describe Metanorma::Iec::Processor do
           </p>
           <p class="zzSTDTitle1"> </p>
           <div id="H">
-            <h1 id="_">1  1  Terms, Definitions, Symbols and Abbreviated Terms</h1>
-            <h2 class="TermNum" id="J">1.11.1</h2>
+            <h1 id="_"><a class="anchor" href="#H"/><a class="header" href="#H">1  1  Terms, Definitions, Symbols and Abbreviated Terms</a></h1>
+            <div id="J">
+            <h2 class="TermNum" id="_"><a class="anchor" href="#J"/><a class="header" href="#J">1.11.1</a></h2>
+            </div>
             <p class="Terms" style="text-align:left;">Term2</p>
           </div>
         </main>
