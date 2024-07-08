@@ -66,7 +66,8 @@ RSpec.describe Metanorma::Iec do
                <title>Scope</title>
                <p id="_">Text</p>
              </clause>
-             <clause id="_" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="_" obligation="normative">
+             <clause id="_" obligation="normative" type="terms"
+              ><title>Terms, definitions, symbols and abbreviated terms</title><terms id="_" obligation="normative">
                <title>Terms and definitions</title>
                <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
                #{TERMS_BOILERPLATE}
