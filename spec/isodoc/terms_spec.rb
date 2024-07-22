@@ -242,17 +242,17 @@ RSpec.describe IsoDoc do
          <div class="colophon"/>
        </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml, true)))
-      .to be_equivalent_to xmlpp(html)
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", presxml, true)
       .sub(%r{^.*<body}m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(word)
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 end

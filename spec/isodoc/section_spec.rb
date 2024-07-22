@@ -318,14 +318,14 @@ RSpec.describe IsoDoc do
               <div class="colophon"/>
             </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", presxml, true))).to be_equivalent_to xmlpp(html)
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", presxml, true))).to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", presxml, true)
       .sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(word)
+      .to be_equivalent_to Xml::C14n.format(word)
   end
 
   it "processes subclauses with and without titles" do
@@ -367,8 +367,8 @@ RSpec.describe IsoDoc do
         </sections>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true)))).to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes simple terms & definitions" do
@@ -396,8 +396,8 @@ RSpec.describe IsoDoc do
                  </body>
              </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes inline section headers" do
@@ -431,8 +431,8 @@ RSpec.describe IsoDoc do
              </body>
          </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "adds colophon to published standard (Word)" do
@@ -462,9 +462,9 @@ RSpec.describe IsoDoc do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({}).convert("test", input, true)
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({}).convert("test", input, true)
       .sub(/^.*<body /m, "<body ").sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "does not add colophon to draft standard (Word)" do
@@ -492,11 +492,11 @@ RSpec.describe IsoDoc do
            </div>
          </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true)
       .sub(/^.*<body /m, "<body ")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "adds boilerplate to foreword" do
@@ -538,10 +538,10 @@ RSpec.describe IsoDoc do
       </sections>
         </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
     .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
 
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -581,10 +581,10 @@ RSpec.describe IsoDoc do
         <sections/>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
     .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "does not add boilerplate to foreword in amendments" do
@@ -618,10 +618,10 @@ RSpec.describe IsoDoc do
         <sections/>
       </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
     .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
 
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
@@ -658,9 +658,9 @@ RSpec.describe IsoDoc do
           <sections/>
         </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
     .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

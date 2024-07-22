@@ -29,9 +29,9 @@ RSpec.describe IsoDoc do
              </body>
          </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes links" do
@@ -64,9 +64,9 @@ RSpec.describe IsoDoc do
              </body>
          </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes unrecognised markup" do
@@ -93,9 +93,9 @@ RSpec.describe IsoDoc do
              </body>
          </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "overrides AsciiMath delimiters" do
@@ -124,9 +124,9 @@ RSpec.describe IsoDoc do
              </body>
          </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes eref content" do
@@ -183,13 +183,13 @@ RSpec.describe IsoDoc do
         </p>
       </foreword>
     OUTPUT
-    expect(xmlpp(
+    expect(Xml::C14n.format(
              Nokogiri::XML(
                IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
                .convert("test", input, true),
              )
                .at("//xmlns:foreword").to_xml,
            ))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

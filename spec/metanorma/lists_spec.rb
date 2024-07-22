@@ -20,7 +20,7 @@ RSpec.describe Metanorma::Iec do
       List F:: List G
 
     INPUT
-    expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(Xml::C14n.format(strip_guid(output))).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
       #{@blank_hdr}
       <sections>
         <ul id="_">
@@ -102,7 +102,7 @@ RSpec.describe Metanorma::Iec do
       Note 3.
 
     INPUT
-    expect(xmlpp(strip_guid(output))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(Xml::C14n.format(strip_guid(output))).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
       #{@blank_hdr}
        <sections><ul id="id">
          <li>
@@ -190,8 +190,8 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, backend: :iec, header_footer: true))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end
