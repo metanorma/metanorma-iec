@@ -19,8 +19,8 @@ RSpec.describe Metanorma::Iec do
       <sections/>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "converts a blank document" do
@@ -39,8 +39,8 @@ RSpec.describe Metanorma::Iec do
       <sections/>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
     expect(File.exist?("test.pdf")).to be true
     expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
@@ -396,8 +396,8 @@ RSpec.describe Metanorma::Iec do
          <sections/>
        </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes complex metadata" do
@@ -526,8 +526,8 @@ RSpec.describe Metanorma::Iec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(strip_guid(xml.to_xml)))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(xml.to_xml)))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes docidentifier override" do
@@ -597,8 +597,8 @@ RSpec.describe Metanorma::Iec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(xml.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(xml.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes boilerplate in English" do
@@ -710,8 +710,8 @@ RSpec.describe Metanorma::Iec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(xml.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(xml.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "defaults substage for stage 60" do
@@ -783,8 +783,8 @@ RSpec.describe Metanorma::Iec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(xml.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(xml.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "populates metadata for PRF" do
@@ -857,8 +857,8 @@ RSpec.describe Metanorma::Iec do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(xml.to_xml))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(xml.to_xml))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "reads scripts into blank HTML document" do

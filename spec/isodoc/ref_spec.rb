@@ -276,13 +276,13 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
       .gsub(%r{reference="[^"]+"}m, 'reference="1"'))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", presxml,
-               true))).to be_equivalent_to xmlpp(html)
+               true))).to be_equivalent_to Xml::C14n.format(html)
   end
 end

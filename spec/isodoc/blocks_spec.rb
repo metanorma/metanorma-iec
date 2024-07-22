@@ -80,9 +80,9 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "cross-references formulae" do
@@ -147,11 +147,11 @@ RSpec.describe IsoDoc::Iec do
            </sections>
          </iso-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "does not ignore intervening ul in numbering ol" do
@@ -185,8 +185,8 @@ RSpec.describe IsoDoc::Iec do
         </preface>
       </iso-standard>
     INPUT
-    expect(xmlpp(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to xmlpp(presxml)
+      .to be_equivalent_to Xml::C14n.format(presxml)
   end
 end

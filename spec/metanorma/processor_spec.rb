@@ -127,8 +127,8 @@ RSpec.describe Metanorma::Iec::Processor do
       <sections/>
       </iec-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(processor.input_to_isodoc(input, nil))))
-      .to be_equivalent_to xmlpp(output)
+    expect(Xml::C14n.format(strip_guid(processor.input_to_isodoc(input, nil))))
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "generates HTML from IsoDoc XML, with boilerplate moving to foreword" do
@@ -139,10 +139,10 @@ RSpec.describe Metanorma::Iec::Processor do
                      :presentation)
     processor.output(File.read("test.presentation.xml", encoding: "utf-8"),
                      "test.presentation.xml", "test.html", :html)
-    expect(xmlpp(strip_guid(File.read("test.html", encoding: "utf-8")
+    expect(Xml::C14n.format(strip_guid(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>"))))
-      .to be_equivalent_to xmlpp(<<~OUTPUT)
+      .to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
             <main class="main-section">
           <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
           <br/>

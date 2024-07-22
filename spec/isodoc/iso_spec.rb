@@ -121,14 +121,14 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(html)
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true)
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 
   it "processes sequences of examples" do
@@ -187,13 +187,13 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to xmlpp(html)
-    expect(xmlpp(IsoDoc::Iec::WordConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(html)
+    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true)
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to xmlpp(doc)
+      .to be_equivalent_to Xml::C14n.format(doc)
   end
 end
