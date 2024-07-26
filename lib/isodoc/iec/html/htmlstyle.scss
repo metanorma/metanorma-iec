@@ -157,6 +157,7 @@ h2 p, .h2 p {
 }
 
 
+/* Annulled: https://github.com/metanorma/metanorma-iec/issues/197
   ul > li {
     list-style: none;
   }
@@ -168,6 +169,7 @@ ul > li > p:first-child::before {
   margin-left: -1.5em;
   margin-right: 0.5em;
 }
+*/
 
   li p {
       /* display: inline-block; */

@@ -69,8 +69,7 @@ module IsoDoc
           .each_with_object([]) do |d, m|
           lg = d["language"]
           d.delete("language")
-          next if lgs.include?(lg)
-
+          lgs.include?(lg) and next
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
           m << { lang: lg, script: Metanorma::Utils.default_script(lg),
@@ -125,7 +124,7 @@ module IsoDoc
       end
 
       def related1(node)
-        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        lg = node.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
         p = node.at(ns("./preferred"))
         ref = node.at(ns("./xref | ./eref | ./termref"))
@@ -179,6 +178,12 @@ module IsoDoc
         lbl = @i18n.termnote.gsub("%", val)
         prefix_name(elem, "", lower2cap(lbl), "name")
         @i18n = @i18n_lg["default"]
+      end
+
+      def multidef(elem)
+        super
+        d = elem.at(ns("./definition/ol"))
+        d["type"] = "arabic"
       end
     end
   end
