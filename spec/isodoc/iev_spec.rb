@@ -552,10 +552,12 @@ RSpec.describe IsoDoc do
                  192-01-01
                </p>
                <p class='Terms' style='text-align:left;'><b>paddy</b></p>
-               <p class='Definition'>
+               <div class="termdefinition">
+               <p class='MsoNormal'>
                  <a name='_' id='_'/>
                  rice retaining its husk after threshing
                </p>
+               </div>
                <p class='MsoNormal'>
                  SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and
                  Note 1 to entry is not included here

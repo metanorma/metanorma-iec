@@ -77,11 +77,8 @@ module IsoDoc
 
       def word_toc_preface(level)
         <<~TOC.freeze
-          <span lang="EN-GB"><span
-            style='mso-element:field-begin'></span><span
-            style='mso-spacerun:yes'>&#xA0;</span>TOC
-            \\o "1-#{level}" \\h \\z \\u <span
-            style='mso-element:field-separator'></span></span>
+          <span lang="EN-GB"><span style='mso-element:field-begin'></span><span style='mso-spacerun:yes'>&#xA0;</span>TOC
+            \\o "1-#{level}" \\h \\z \\u <span style='mso-element:field-separator'></span></span>
         TOC
       end
 
@@ -91,6 +88,7 @@ module IsoDoc
       end
 
       def word_cleanup(docxml)
+        word_ol_arabic_convert(docxml)
         word_foreword_cleanup(docxml)
         word_table_cleanup(docxml)
         super
@@ -134,9 +132,8 @@ module IsoDoc
             td.children.each { |c| c.parent = p }
             p.parent = td
           end
-          docxml.xpath("//#{tdh}[@class = '#{style}']//p").each do |p|
-            p["class"] ||= style
-          end
+          docxml.xpath("//#{tdh}[@class = '#{style}']//p")
+            .each { |p| p["class"] ||= style }
         end
       end
 
@@ -146,31 +143,46 @@ module IsoDoc
       end
 
       def non_annex_h1(docxml)
-        docxml.xpath("//h1[not(@class)]").each do |h1|
-          h1["class"] = "main"
-        end
+        docxml.xpath("//h1[not(@class)]").each { |h1| h1["class"] = "main" }
         docxml.xpath("//h1[@class = 'Section3']").each do |h1|
           h1["class"] = "main"
+        end
+      end
+
+      def definition_parse(node, out)
+        out.div class: "termdefinition" do |d|
+          # @definition = true # no distinct definition style at the moment
+          node.children.each { |n| parse(n, d) }
+          # @definition = false
         end
       end
 
       # Incredibly, the numbered boilerplate list in IEC is NOT A LIST,
       # and it violates numbering conventions for ordered lists
       # (arabic not alpha)
-      BOILERPLATE_PARAS = "//div[@class = 'boilerplate_legal']//li/p".freeze
+      OL_ARABIC_PARAS = "//div[@class = 'boilerplate_legal'] | " \
+                        "//div[@class = 'termdefinition']".freeze
+
+      def word_ol_arabic_convert(docxml)
+        docxml.xpath(OL_ARABIC_PARAS).each do |d|
+          (d.xpath(".//ol/li") - d.xpath(".//ol//ol/li"))
+            .each_with_index do |l, i|
+            l.elements.first.children.first.add_previous_sibling(
+              %{#{i + 1})<span style="mso-tab-count:1">&#xA0; </span>},
+            )
+            l.replace(l.children)
+          end
+          (d.xpath(".//ol") - d.xpath(".//ol//ol"))
+            .each { |o| o.replace(o.children) }
+        end
+      end
 
       def word_foreword_cleanup(docxml)
-        docxml.xpath(BOILERPLATE_PARAS).each_with_index do |l, i|
-          l["class"] = "FOREWORD"
-          l.children.first.add_previous_sibling(
-            %{#{i + 1})<span style="mso-tab-count:1">&#xA0; </span>},
-          )
-        end
-        docxml.xpath("//div[@class = 'boilerplate_legal']//li").each do |l|
-          l.replace(l.children)
+        docxml.xpath("//div[@class = 'boilerplate_legal']//p").each do |l|
+          l["class"] ||= "FOREWORD"
         end
         b = docxml.at("//div[@class = 'boilerplate_legal']")
-        b and b.replace(b.children)
+        b&.replace(b.children)
       end
 
       def authority_cleanup(docxml)
@@ -203,8 +215,7 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
-        return if name.nil?
-
+        name.nil? and return
         div.h1 class: "Annex" do |t|
           name.children.each { |c2| parse(c2, t) }
           clause_parse_subtitle(name, t)
@@ -216,7 +227,7 @@ module IsoDoc
           div.p **attr_code(class: "formula") do |_p|
             insert_tab(div, 1)
             parse(node.at(ns("./stem")), div)
-            if lbl = node&.at(ns("./name"))&.text
+            if lbl = node.at(ns("./name"))&.text
               insert_tab(div, 1)
               div << "(#{lbl})"
             end

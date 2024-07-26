@@ -138,15 +138,18 @@ RSpec.describe IsoDoc do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br.*$}m, "")
-    expect(Xml::C14n.format(word)).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
-             <div class="WordSection3">
-      #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
-                 <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and Definitions</h1>
-         <p class="TermNum"><a name="paddy1" id="paddy1"></a>1.1</p><p class="Terms" style="text-align:left;">paddy</p>
-         <p class="Definition"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
-         <p class="MsoNormal">[SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
-               </div>
-    OUTPUT
+    expect(Xml::C14n.format(word))
+      .to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
+        <div class="WordSection3">
+        #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
+                   <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and Definitions</h1>
+           <p class="TermNum"><a name="paddy1" id="paddy1"></a>1.1</p><p class="Terms" style="text-align:left;">paddy</p>
+           <div class="termdefinition">
+           <p class="MsoNormal"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
+           </div>
+           <p class="MsoNormal">[SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
+                 </div>
+      OUTPUT
   end
 
   it "processes IsoXML terms for HTML" do
