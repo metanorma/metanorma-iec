@@ -117,7 +117,7 @@ module Metanorma
             xml.tc_sc_officers_note do |c|
               wrap_in_para(note, c)
             end
-          end.join("")
+          end
         else
           super
         end
