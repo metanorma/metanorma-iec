@@ -617,8 +617,8 @@ RSpec.describe Metanorma::Iec do
       :publisher: IEC,IETF,ISO
       :copyright-year: 2001
     INPUT
-    expect(doc).to include "including individual experts"
-    expect(doc).not_to include "y compris ses experts particuliers"
+    expect(doc).to include("including individual experts")
+    expect(doc).not_to include("y compris ses experts particuliers")
   end
 
   it "processes boilerplate in French" do
@@ -637,8 +637,8 @@ RSpec.describe Metanorma::Iec do
       :publisher: IEC,IETF,ISO
       :copyright-year: 2001
     INPUT
-    expect(doc).not_to include "including individual experts"
-    expect(doc).to include "y compris ses experts particuliers"
+    expect(doc).not_to include("including individual experts")
+    expect(doc).to include("y compris ses experts particuliers")
   end
 
   it "defaults substage" do

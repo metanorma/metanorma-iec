@@ -36,7 +36,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err.html")).to include "pizza is not a recognised document type"
+    expect(File.read("test.err.html")).to include("pizza is not a recognised document type")
   end
 
   it "Warns of illegal function" do
@@ -51,7 +51,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err.html")).to include "pizza is not a recognised document function"
+    expect(File.read("test.err.html")).to include("pizza is not a recognised document function")
   end
 
   it "warns of explicit style set on ordered list" do
@@ -63,7 +63,7 @@ RSpec.describe Metanorma::Iec do
       . A
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Style override set for ordered list"
+      .to include("Style override set for ordered list")
 
     Asciidoctor.convert(<<~"INPUT", *OPTIONS)
       #{VALIDATING_BLANK_HDR}
@@ -72,7 +72,7 @@ RSpec.describe Metanorma::Iec do
       . A
     INPUT
     expect(File.read("test.err.html"))
-      .not_to include "Style override set for ordered list"
+      .not_to include("Style override set for ordered list")
   end
 
   it "aborts if stage not recognised" do
@@ -93,7 +93,7 @@ RSpec.describe Metanorma::Iec do
     rescue Error
     end
     expect(File.read("test.err.html"))
-      .to include "Illegal document stage: A2CD"
+      .to include("Illegal document stage: A2CD")
     expect(File.exist?("test.xml")).to be false
   end
 
@@ -109,7 +109,7 @@ RSpec.describe Metanorma::Iec do
 
       text
     INPUT
-    expect(File.read("test.err.html")).to include "Illegal document stage: pizza.00"
+    expect(File.read("test.err.html")).to include("Illegal document stage: pizza.00")
 
     FileUtils.rm_f "test.err.html"
     begin
@@ -125,7 +125,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     rescue Error
     end
-    expect(File.read("test.err.html")).to include "Illegal document stage: 70.00"
+    expect(File.read("test.err.html")).to include("Illegal document stage: 70.00")
 
     FileUtils.rm_f "test.err.html"
     begin
@@ -141,7 +141,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     rescue Error
     end
-    expect(File.read("test.err.html")).not_to include "Illegal document stage: 60.00"
+    expect(File.read("test.err.html")).not_to include("Illegal document stage: 60.00")
   end
 
   it "Warns of stage illegal for current type" do
@@ -160,7 +160,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     rescue Error
     end
-    expect(File.read("test.err.html")).to include "Illegal document stage: ADTR"
+    expect(File.read("test.err.html")).to include("Illegal document stage: ADTR")
   end
 
   it "Warns of illegal substage" do
@@ -177,7 +177,7 @@ RSpec.describe Metanorma::Iec do
       text
     INPUT
     expect(File.read("test.err.html"))
-      .to include "Illegal document stage: 60.pizza"
+      .to include("Illegal document stage: 60.pizza")
 
     FileUtils.rm_f "test.err.html"
     begin
@@ -199,7 +199,7 @@ RSpec.describe Metanorma::Iec do
     end
     expect(File.exist?("test.xml")).to be false
     expect(File.read("test.err.html"))
-      .to include "Illegal document stage: 60.54"
+      .to include("Illegal document stage: 60.54")
 
     FileUtils.rm_f "test.err.html"
     Asciidoctor.convert(<<~INPUT, *OPTIONS)
@@ -214,6 +214,6 @@ RSpec.describe Metanorma::Iec do
       text
     INPUT
     expect(File.read("test.err.html"))
-      .not_to include "Illegal document stage: 60.60"
+      .not_to include("Illegal document stage: 60.60")
   end
 end
