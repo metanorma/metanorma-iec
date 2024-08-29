@@ -10,15 +10,12 @@ title: Title
 proposed_stability_date: PROPOSED STABILITY DATE
 tc_sc_note: Note from TC/SC officers
 term_def_boilerplate: |
-      <p>ISO and IEC maintain terminological databases for use in
-      standardization at the following addresses:</p>
+      <p>ISO and IEC maintain terminological databases for use in standardization at the following addresses:</p>
 
       <ul>
-      <li> <p>IEC Electropedia: available at
-      <link target="http://www.electropedia.org"/>
+      <li> <p>IEC Electropedia: available at <link target="http://www.electropedia.org"/>
       </p> </li>
-      <li> <p>ISO Online browsing platform: available at
-        <link target="http://www.iso.org/obp"/></p> </li>
+      <li> <p>ISO Online browsing platform: available at <link target="http://www.iso.org/obp"/></p> </li>
       </ul>
 doctype_dict:
   international-standard: International Standard
