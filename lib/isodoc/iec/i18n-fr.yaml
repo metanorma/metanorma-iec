@@ -14,11 +14,9 @@ term_def_boilerplate: |
       destinées à être utilisées en normalisation, consultables aux adresses
       suivantes:</p>
       <ul>
-      <li> <p>IEC Electropedia: disponible à l'adresse
-        <link target="http://www.electropedia.org"/>
+      <li> <p>IEC Electropedia: disponible à l'adresse <link target="http://www.electropedia.org"/>
       </p> </li>
-      <li> <p>ISO Online browsing platform: disponible à l'adresse
-        <link target="http://www.iso.org/obp"/></p> </li>
+      <li> <p>ISO Online browsing platform: disponible à l'adresse <link target="http://www.iso.org/obp"/></p> </li>
       </ul>
 doctype_dict:
   international-standard: Norme internationale
