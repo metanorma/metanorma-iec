@@ -92,6 +92,11 @@ module Metanorma
         super unless @is_iev
       end
 
+      def terms_terms_cleanup(xmldoc)
+        @is_iev and return
+        super
+      end
+
       def sections_names_pref_cleanup(xml)
         super
         @is_iev and replace_title(xml, "//introduction",
