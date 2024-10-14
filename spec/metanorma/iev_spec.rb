@@ -69,6 +69,7 @@ RSpec.describe Metanorma::Iec do
                  </copyright>
                  <ext>
                    <doctype>standard</doctype>
+                   <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
                    <editorialgroup>
                      <agency>IEC</agency>
@@ -184,6 +185,7 @@ RSpec.describe Metanorma::Iec do
           </copyright>
           <ext>
             <doctype>standard</doctype>
+            <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
             <editorialgroup>
               <agency>IEC</agency>
@@ -296,6 +298,7 @@ RSpec.describe Metanorma::Iec do
              </copyright>
              <ext>
                <doctype>standard</doctype>
+               <flavor>iec</flavor>
                         <subdoctype>vocabulary</subdoctype>
                <editorialgroup>
                  <agency>IEC</agency>

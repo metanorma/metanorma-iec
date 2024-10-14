@@ -178,6 +178,7 @@ BLANK_HDR = <<~"HDR".freeze
     </copyright>
     <ext>
       <doctype>standard</doctype>
+      <flavor>iec</flavor>
     <editorialgroup>
       <agency>IEC</agency>
     </editorialgroup>

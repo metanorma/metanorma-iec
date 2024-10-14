@@ -60,6 +60,7 @@ RSpec.describe Metanorma::Iec do
         </copyright>
         <ext>
           <doctype>standard</doctype>
+          <flavor>iec</flavor>
         <editorialgroup>
           <agency>IEC</agency>
         </editorialgroup>
