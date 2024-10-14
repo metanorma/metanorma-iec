@@ -2,7 +2,7 @@ require "pubid-iec"
 
 module Metanorma
   module Iec
-    class Converter < ISO::Converter
+    class Converter < Iso::Converter
       def default_publisher
         "IEC"
       end
