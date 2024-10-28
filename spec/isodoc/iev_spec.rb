@@ -869,8 +869,8 @@ RSpec.describe IsoDoc do
                   <dt>zh</dt>
                   <dd language='zh' script='Hans'>
                     <preferred>
-                      <strong>&#x4EA7;&#x54C1;</strong>
-                      &#xff0c; &#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;/&#x3e;
+                      <strong>&#x4EA7;&#x54C1;</strong>,
+                      &#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;/&#x3e;
                     </preferred>
                   </dd>
                 </dl>
