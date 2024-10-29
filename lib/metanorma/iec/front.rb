@@ -166,7 +166,6 @@ module Metanorma
         super
         a = node.attr("accessibility-color-inside") and
           xml.accessibility_color_inside a
-        a = node.attr("price-code") and xml.price_code a
         a = node.attr("cen-processing") and xml.cen_processing a
         a = node.attr("secretary") and xml.secretary a
         a = node.attr("interest-to-committees") and xml.interest_to_committees a
