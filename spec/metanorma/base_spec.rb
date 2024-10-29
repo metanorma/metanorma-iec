@@ -356,8 +356,8 @@ RSpec.describe Metanorma::Iec do
                    <project-number part="1">1000</project-number>
                 </structuredidentifier>
                 <stagename abbreviation="PNW IS">New work item proposal International Standard</stagename>
-                <accessibility-color-inside>true</accessibility-color-inside>
                 <price-code>XC</price-code>
+                <accessibility-color-inside>true</accessibility-color-inside>
                 <cen-processing>true</cen-processing>
                 <secretary>Fred Nerk</secretary>
                 <interest-to-committees>TC 6121, SC 12</interest-to-committees>
