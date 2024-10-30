@@ -20,7 +20,7 @@ RSpec.describe IsoDoc::Iec do
         <p id="_511aaa98-4116-42af-8e5b-c87cdf5bfdc8">[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.</p>
       </note>
           </formula>
-          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181935"><name>1</name>
+          <formula id="_be9158af-7e93-4ee2-90c5-26d31c181935"><name>(1)</name>
         <stem type="AsciiMath">r = 1 %</stem>
         </formula>
           </foreword></preface>
@@ -128,7 +128,7 @@ RSpec.describe IsoDoc::Iec do
                  First
                </title>
                <formula id='N1'>
-                 <name>1</name>
+                 <name>(1)</name>
                  <stem type='AsciiMath'>r = 1 %</stem>
                </formula>
                <clause id='xyz'>
@@ -138,7 +138,7 @@ RSpec.describe IsoDoc::Iec do
                    Preparatory
                  </title>
                  <formula id='N2' inequality='true'>
-                   <name>2</name>
+                   <name>(2)</name>
                    <stem type='AsciiMath'>r = 1 %</stem>
                  </formula>
                  <xref target='N2'>Inequality (2)</xref>
