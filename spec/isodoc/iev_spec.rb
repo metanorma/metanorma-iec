@@ -342,7 +342,8 @@ RSpec.describe IsoDoc do
       <preferred><strong>paddy</strong></preferred><admitted>paddy rice</admitted>
       <admitted>rough rice</admitted>
       <deprecates>DEPRECATED: cargo rice</deprecates>
-      <definition><p id="_">&#x3c;rice&#x3e; rice retaining its husk after threshing</p></definition>
+      <domain hidden="true">rice</domain>
+      <definition><p id="_">rice retaining its husk after threshing</p></definition>
       <termexample id="_">
       <name>EXAMPLE</name>
         <ul>
@@ -415,7 +416,7 @@ RSpec.describe IsoDoc do
                 <p class='AltTerms' style='text-align:left;'>paddy rice</p>
                 <p class='AltTerms' style='text-align:left;'>rough rice</p>
                 <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
-                <p id='_'>&lt;rice&gt; rice retaining its husk after threshing</p>
+                <p id='_'>rice retaining its husk after threshing</p>
                 <div id='_' class='example'>
                   <p>
                     <span class='example_label'>EXAMPLE</span>

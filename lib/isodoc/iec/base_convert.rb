@@ -44,10 +44,6 @@ module IsoDoc
         end
       end
 
-      def set_termdomain(termdomain)
-        return super unless @is_iev
-      end
-
       def para_class(node)
         case node["class"]
         when "zzSTDTitle1", "zzSTDTitle2" then "zzSTDTitle1"
