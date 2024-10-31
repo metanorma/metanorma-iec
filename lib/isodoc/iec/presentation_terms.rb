@@ -38,6 +38,14 @@ module IsoDoc
         merge_fr_into_en_term(docxml)
       end
 
+      def termdomain(elem)
+        if @is_iev
+          d = elem.at(ns("./domain")) or return
+          d["hidden"] = true
+        else super
+        end
+      end
+
       def merge_fr_into_en_term(docxml)
         @is_iev or return
         docxml.xpath(ns("//term[@language = 'en'][@tag]")).each do |en|
@@ -119,7 +127,7 @@ module IsoDoc
 
       def move_related(term)
         defn = term.at(ns("./definition")) or return
-        term.xpath(ns("./related")).reverse.each do |r|
+        term.xpath(ns("./related")).reverse_each do |r|
           defn.next = r.remove
         end
       end
