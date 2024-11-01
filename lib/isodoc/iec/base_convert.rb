@@ -8,10 +8,11 @@ module IsoDoc
         # processed in foreword instead
       end
 
-      def foreword(sect, out)
-        out.div **attr_code(id: sect ? sect["id"] : "") do |s|
-          s.h1(class: "ForewordTitle") { |h1| h1 << @i18n.foreword }
-          sect&.elements&.each { |e| parse(e, s) unless e.name == "title" }
+      def foreword(clause, out)
+        out.div **attr_code(id: clause["id"]) do |s|
+          clause_name(nil, clause.at(ns("./title")), s,
+                      { class: "ForewordTitle" })
+          clause.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
 

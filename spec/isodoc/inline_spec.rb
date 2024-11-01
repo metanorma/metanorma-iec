@@ -4,7 +4,7 @@ RSpec.describe IsoDoc do
   it "processes inline formatting" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <preface><foreword displayorder="1">
+      <preface><foreword displayorder="1"><title>FOREWORD</title>
       <p>
       <em>A</em> <strong>B</strong> <sup>C</sup> <sub>D</sub> <tt>E</tt>
       <strike>F</strike> <smallcap>G</smallcap> <br/> <hr/>
@@ -37,7 +37,7 @@ RSpec.describe IsoDoc do
   it "processes links" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <preface><foreword displayorder="1">
+      <preface><foreword displayorder="1"><title>FOREWORD</title>
       <p>
       <link target="http://example.com"/>
       <link target="http://example.com">example</link>
@@ -72,7 +72,7 @@ RSpec.describe IsoDoc do
   it "processes unrecognised markup" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <preface><foreword displayorder="1">
+      <preface><foreword displayorder="1"><title>FOREWORD</title>
       <p>
       <barry fred="http://example.com">example</barry>
       </p>
@@ -101,7 +101,7 @@ RSpec.describe IsoDoc do
   it "overrides AsciiMath delimiters" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <preface><foreword displayorder="1">
+      <preface><foreword displayorder="1"><title>FOREWORD</title>
       <p>
       <stem type="AsciiMath">A</stem>
       (#((Hello))#)
@@ -165,7 +165,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="8">
+      <foreword displayorder="8"><title>FOREWORD</title>
         <p>
            <eref type="inline" bibitemid="IEV" citeas="IEV"><locality type="clause"><referenceFrom>1-2-3</referenceFrom></locality>IEV, <span class="citesec">1-2-3</span></eref>
            <xref type="inline" target="ISO712">ISO 712</xref>

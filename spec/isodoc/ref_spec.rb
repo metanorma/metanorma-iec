@@ -131,7 +131,7 @@ RSpec.describe IsoDoc::Iec do
               <language current="true">en</language>
               </bibdata>
               #{PREFACE}
-              <foreword displayorder="8">
+              <foreword displayorder="8"><title>FOREWORD</title>
             <p id="_">
                     <xref target="ISO712">[110]</xref>
         <xref target="ISBN">[1]</xref>
@@ -276,7 +276,8 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
       .gsub(%r{reference="[^"]+"}m, 'reference="1"'))))

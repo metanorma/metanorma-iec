@@ -46,7 +46,7 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
              #{HTML_HDR}
             <div>
-              <h1 class='ForewordTitle'>FOREWORD</h1>
+              <h1 class='ForewordTitle'>Foreword</h1>
               <p id='A'>This is a preamble</p>
             </div>
             <br/>
