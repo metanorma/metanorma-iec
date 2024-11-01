@@ -15,7 +15,6 @@ RSpec.describe IsoDoc do
       </bibdata>
       <preface>
       <foreword obligation="informative">
-         <title>Foreword</title>
          <p id="A">This is a preamble</p>
        </foreword>
         <introduction id="B" obligation="informative"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -90,7 +89,7 @@ RSpec.describe IsoDoc do
       </bibdata>
       #{PREFACE}
       <foreword obligation="informative" displayorder="8">
-         <title>Foreword</title>
+         <title>FOREWORD</title>
          <p id="A">This is a preamble</p>
        </foreword>
         <introduction id="B" obligation="informative" displayorder="9"><title depth="1">Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -108,14 +107,24 @@ RSpec.describe IsoDoc do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="K"><title>3.2</title>
+       <definitions id="K">
+            <title depth="2">
+               3.2
+               <tab/>
+               Symbols
+            </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
          </dl>
        </definitions>
        </clause>
-       <definitions id="L" displayorder="13"><title>4</title>
+       <definitions id="L" displayorder="13">
+         <title depth="1">
+            4
+            <tab/>
+            Symbols
+         </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
@@ -180,13 +189,22 @@ RSpec.describe IsoDoc do
          <p class="TermNum" id="J">3.1.1</p>
          <p class="Terms" style="text-align:left;">Term2</p>
 
-       </div><div id="K"><h2>3.2</h2>
+       </div><div id="K">
+               <h2>
+         3.2
+          
+         Symbols
+      </h2>
        <div class="figdl">
          <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
          </div>
        </div></div>
             <div id="L" class="Symbols">
-              <h1>4</h1>
+            <h1>
+      4
+       
+      Symbols
+   </h1>
               <div class="figdl">
               <dl>
                 <dt>
@@ -246,7 +264,6 @@ RSpec.describe IsoDoc do
       </bibdata>
       <preface>
       <foreword obligation="informative">
-         <title>Foreword</title>
          <p id="A">This is a preamble</p>
        </foreword>
         <introduction id="B" obligation="informative"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -332,14 +349,24 @@ RSpec.describe IsoDoc do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="K"><title>3.2</title>
+       <definitions id="K">
+            <title depth="2">
+               3.2
+               <tab/>
+               Symbols
+            </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
          </dl>
        </definitions>
        </clause>
-       <definitions id="L" displayorder="13"><title>4</title>
+       <definitions id="L" displayorder="13">
+         <title depth="1">
+            4
+            <tab/>
+            Symbols
+         </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
@@ -375,7 +402,8 @@ RSpec.describe IsoDoc do
        </bibliography>
        </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -394,7 +422,6 @@ RSpec.describe IsoDoc do
       </bibdata>
       <preface>
       <foreword obligation="informative">
-         <title>Foreword</title>
          <p id="A">This is a preamble</p>
        </foreword>
         <introduction id="B" obligation="informative"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -468,7 +495,7 @@ RSpec.describe IsoDoc do
       </bibdata>
       #{PREFACE.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')}
       <foreword obligation="informative" displayorder="8">
-         <title>Foreword</title>
+         <title>AVANT-PROPOS</title>
          <p id="A">This is a preamble</p>
        </foreword>
         <introduction id="B" obligation="informative" displayorder="9"><title depth="1">Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -486,14 +513,24 @@ RSpec.describe IsoDoc do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="K"><title>3.2</title>
+       <definitions id="K">
+            <title depth="2">
+               3.2
+               <tab/>
+               Symboles
+            </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
          </dl>
        </definitions>
        </clause>
-       <definitions id="L" displayorder="13"><title>4</title>
+       <definitions id="L" displayorder="13">
+         <title depth="1">
+            4
+            <tab/>
+            Symboles
+         </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
@@ -559,13 +596,22 @@ RSpec.describe IsoDoc do
             <p class="TermNum" id="J">3.1.1</p>
             <p class="Terms" style="text-align:left;">Term2</p>
 
-          </div><div id="K"><h2>3.2</h2>
+          </div><div id="K">
+               <h2>
+        3.2
+         
+        Symboles
+     </h2>
           <div class="figdl">
             <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
             </div>
           </div></div>
                <div id="L" class="Symbols">
-                 <h1>4</h1>
+            <h1>
+      4
+       
+      Symboles
+   </h1>
                 <div class="figdl">
                  <dl>
                    <dt>
