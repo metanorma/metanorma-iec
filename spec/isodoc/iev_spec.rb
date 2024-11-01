@@ -351,11 +351,11 @@ RSpec.describe IsoDoc do
         </ul>
       </termexample>
       <termnote id="_">
-      <name>Note 1 to entry</name>
+      <name>Note 1 to entry:</name>
         <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
       </termnote>
       <termnote id="_">
-      <name>Note 2 to entry</name>
+      <name>Note 2 to entry:</name>
       <ul><li>A</li></ul>
         <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
       </termnote>
@@ -630,7 +630,7 @@ RSpec.describe IsoDoc do
             </verbaldefinition>
           </definition>
                 <termnote id='_'>
-                  <name>Note 1 to entry</name>
+                  <name>Note 1 to entry:</name>
                   <p id='_'>Dependability includes availability (<em>192-01-02</em>
                      (<xref target='term-sub-item'><span class='citesec'>192-01-02</span></xref>),
                     <em>191-01-02</em>
@@ -763,11 +763,11 @@ RSpec.describe IsoDoc do
                   </p>
                 </termexample>
                 <termnote id='_'>
-                  <name>Note 1 to entry</name>
+                  <name>Note 1 to entry:</name>
                   <p id='_'>A system is considered to have a defined real or abstract boundary.</p>
                 </termnote>
                 <termnote id='_'>
-                  <name>Note 2 to entry</name>
+                  <name>Note 2 to entry:</name>
                   <p id='_'>
                     External resources (from outside the system boundary) may be
                     required for the system to operate.
@@ -816,14 +816,14 @@ RSpec.describe IsoDoc do
                   </p>
                 </termexample>
                 <termnote id='_'>
-                  <name>Note 1 &#xE0; l&#x2019;article</name>
+                  <name>Note 1 &#xE0; l&#x2019;article :</name>
                   <p id='_'>
                     Un syst&#xE8;me est consid&#xE9;r&#xE9; comme ayant une
                     fronti&#xE8;re d&#xE9;finie, r&#xE9;elle ou abstraite.
                   </p>
                 </termnote>
                 <termnote id='_'>
-                  <name>Note 2 &#xE0; l&#x2019;article</name>
+                  <name>Note 2 &#xE0; l&#x2019;article :</name>
                   <p id='_'>
                     Des ressources externes (provenant d&#x2019;au-del&#xE0; de la
                     fronti&#xE8;re) peuvent &#xEA;tre n&#xE9;cessaires au
