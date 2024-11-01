@@ -133,7 +133,7 @@ module IsoDoc
       end
 
       def related1(node)
-        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        lg = node.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
         p = node.at(ns("./preferred"))
         ref = node.at(ns("./xref | ./eref | ./termref"))
@@ -179,14 +179,15 @@ module IsoDoc
         @i18n = @i18n_lg["default"]
       end
 
-      def termnote1(elem)
+      def termnote_label(elem)
         lg = elem&.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
 
         val = @xrefs.anchor(elem["id"], :value) || "???"
         lbl = @i18n.termnote.gsub("%", val)
-        prefix_name(elem, "", lower2cap(lbl), "name")
+        ret = @i18n.l10n "#{lbl}#{termnote_delim(elem)}"
         @i18n = @i18n_lg["default"]
+        ret
       end
     end
   end
