@@ -10,7 +10,7 @@ module IsoDoc
       end
 
       def introduction_names(clause)
-        return super unless @is_iev
+        super unless @is_iev
       end
 
       def initial_anchor_names(docxml)
