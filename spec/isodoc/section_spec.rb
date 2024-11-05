@@ -91,14 +91,22 @@ RSpec.describe IsoDoc do
          <preferred>Term2</preferred>
        </term>
        </terms>
-       <definitions id="K"><title>3.2</title>
+       <definitions id="K"><title depth="2">
+              3.2
+              <tab/>
+              Symbols
+           </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
          </dl>
        </definitions>
        </clause>
-       <definitions id="L" displayorder="13"><title>4</title>
+       <definitions id="L" displayorder="13"><title depth="1">
+            4
+            <tab/>
+            Symbols
+         </title>
          <dl>
          <dt>Symbol</dt>
          <dd>Definition</dd>
@@ -155,7 +163,7 @@ RSpec.describe IsoDoc do
       <br/>
                #{IEC_TITLE}
                   <div>
-                    <h1 class="ForewordTitle">FOREWORD</h1>
+                    <h1 class="ForewordTitle">Foreword</h1>
                     <p id="A">This is a preamble</p>
                   </div>
                   <br/>
@@ -179,13 +187,22 @@ RSpec.describe IsoDoc do
              <h2>3.1&#160; Normal Terms</h2>
              <p class="TermNum" id="J">3.1.1</p>
              <p class="Terms" style="text-align:left;">Term2</p>
-           </div><div id="K"><h2>3.2</h2>
+           </div><div id="K">
+               <h2>
+        3.2
+         
+        Symbols
+     </h2>
            <div class="figdl">
              <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
              </div>
            </div></div>
                   <div id="L" class="Symbols">
-                    <h1>4</h1>
+                    <h1>
+      4
+       
+      Symbols
+   </h1>
                     <div class="figdl">
                     <dl>
                       <dt>
@@ -241,7 +258,7 @@ RSpec.describe IsoDoc do
       </p>
                 #{IEC_TITLE}
                 <div>
-                  <h1 class="ForewordTitle">FOREWORD</h1>
+                  <h1 class="ForewordTitle">Foreword</h1>
                   <p id="A">This is a preamble</p>
                 </div>
                 <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
@@ -270,11 +287,20 @@ RSpec.describe IsoDoc do
            <p class="TermNum" id="J">3.1.1</p>
            <p class="Terms" style="text-align:left;">Term2</p>
 
-         </div><div id="K"><h2>3.2</h2>
+         </div><div id="K">
+                    <h2>
+              3.2
+              <span style="mso-tab-count:1">  </span>
+              Symbols
+           </h2>
            <table class="dl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;">Symbol</p></td><td valign="top">Definition</td></tr></table>
          </div></div>
                 <div id="L" class="Symbols">
-                  <h1>4</h1>
+         <h1>
+            4
+            <span style="mso-tab-count:1">  </span>
+            Symbols
+         </h1>
                   <table class="dl">
                     <tr>
                       <td valign="top" align="left">
@@ -527,7 +553,7 @@ RSpec.describe IsoDoc do
               <p>Boilerplate</p>
             </legal-statement>
           </boilerplate>
-          #{PREFACE}    <foreword id="_" displayorder="8">
+          #{PREFACE}    <foreword id="_" displayorder="8"><title>FOREWORD</title>
         <clause type="boilerplate_legal">
           <p>Boilerplate</p>
         </clause>
@@ -569,7 +595,7 @@ RSpec.describe IsoDoc do
             <p>Boilerplate</p>
           </legal-statement>
         </boilerplate>
-        #{PREFACE}#{'  '}
+        #{PREFACE}
                 <foreword displayorder="8">
           <title>Foreword</title>
                 <clause type="boilerplate_legal">

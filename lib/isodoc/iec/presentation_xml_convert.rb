@@ -118,7 +118,7 @@ module IsoDoc
           <p class='zzSTDTitle2'><strong>#{title2}</strong><p>
         TITLE
         ret += "<p class='zzSTDTitle1'>&#xa0;</p>"
-        s.children.first.previous = ret
+        s.add_first_child ret
       end
 
       include Init
