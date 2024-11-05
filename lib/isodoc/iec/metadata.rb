@@ -20,25 +20,25 @@ module IsoDoc
         set(:revdate, revdate&.text)
       end
 
-      def doctype(isoxml, _out)
+      def doctype(xml, _out)
         super
-        b = isoxml&.at(ns("//bibdata/ext/doctype#{NOLANG}"))&.text
-        b1 = isoxml&.at(ns("//bibdata/ext/doctype[@language = 'en']"))&.text || b
+        b = xml.at(ns("//bibdata/ext/doctype#{NOLANG}"))&.text
+        b1 = xml.at(ns("//bibdata/ext/doctype[@language = 'en']"))&.text || b
         b1 and set(:doctype_en, status_print(b1))
-        b1 = isoxml&.at(ns("//bibdata/ext/doctype[@language = 'fr']"))&.text || b
+        b1 = xml.at(ns("//bibdata/ext/doctype[@language = 'fr']"))&.text || b
         b1 and set(:doctype_fr, status_print(b1))
-        docfunction(isoxml)
-        dochorizontal(isoxml)
+        docfunction(xml)
+        dochorizontal(xml)
       end
 
-      def docfunction(isoxml)
-        b = isoxml&.at(ns("//bibdata/ext/function#{NOLANG}"))&.text || return
+      def docfunction(xml)
+        b = xml.at(ns("//bibdata/ext/function#{NOLANG}"))&.text || return
         b and set(:function, status_print(b))
-        b1 = isoxml&.at(ns("//bibdata/ext/function#{currlang}"))&.text || b
+        b1 = xml.at(ns("//bibdata/ext/function#{currlang}"))&.text || b
         b1 and set(:function_display, status_print(b1))
-        b1 = isoxml&.at(ns("//bibdata/ext/function[@language = 'en']"))&.text || b
+        b1 = xml.at(ns("//bibdata/ext/function[@language = 'en']"))&.text || b
         b1 and set(:function_en, status_print(b1))
-        b1 = isoxml&.at(ns("//bibdata/ext/function[@language = 'fr']"))&.text || b
+        b1 = xml.at(ns("//bibdata/ext/function[@language = 'fr']"))&.text || b
         b1 and set(:function_fr, status_print(b1))
       end
 
@@ -54,7 +54,7 @@ module IsoDoc
       end
 
       def unpublished(status)
-        status.to_i > 0 && status.to_i < 60
+        status.to_i.positive? && status.to_i < 60
       end
     end
   end

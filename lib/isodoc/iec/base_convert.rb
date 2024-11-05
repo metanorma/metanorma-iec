@@ -17,20 +17,18 @@ module IsoDoc
       end
 
       def bibliography(node, out)
-        return super unless @is_iev
+        @is_iev or return super
       end
 
       def biblio_list(elem, div, biblio)
-        return super unless @is_iev
-
+        @is_iev or return super
         elem.children.each do |b|
           parse(b, div) unless %w(title bibitem).include? b.name
         end
       end
 
       def terms_parse(node, out)
-        return super unless @is_iev
-
+        @is_iev or return super
         page_break(out)
         out.div **attr_code(id: node["id"]) do |div|
           depth = clause_title_depth(node, nil)
