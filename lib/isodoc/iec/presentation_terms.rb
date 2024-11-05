@@ -38,6 +38,14 @@ module IsoDoc
         merge_fr_into_en_term(docxml)
       end
 
+      def termdomain(elem)
+        if @is_iev
+          d = elem.at(ns("./domain")) or return
+          d["hidden"] = true
+        else super
+        end
+      end
+
       def merge_fr_into_en_term(docxml)
         @is_iev or return
         docxml.xpath(ns("//term[@language = 'en'][@tag]")).each do |en|
@@ -119,13 +127,13 @@ module IsoDoc
 
       def move_related(term)
         defn = term.at(ns("./definition")) or return
-        term.xpath(ns("./related")).reverse.each do |r|
+        term.xpath(ns("./related")).reverse_each do |r|
           defn.next = r.remove
         end
       end
 
       def related1(node)
-        lg = node&.at("./ancestor::xmlns:term/@language")&.text
+        lg = node.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
         p = node.at(ns("./preferred"))
         ref = node.at(ns("./xref | ./eref | ./termref"))
@@ -171,14 +179,15 @@ module IsoDoc
         @i18n = @i18n_lg["default"]
       end
 
-      def termnote1(elem)
+      def termnote_label(elem)
         lg = elem&.at("./ancestor::xmlns:term/@language")&.text
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
 
         val = @xrefs.anchor(elem["id"], :value) || "???"
         lbl = @i18n.termnote.gsub("%", val)
-        prefix_name(elem, "", lower2cap(lbl), "name")
+        ret = @i18n.l10n "#{lbl}#{termnote_delim(elem)}"
         @i18n = @i18n_lg["default"]
+        ret
       end
     end
   end
