@@ -81,7 +81,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
       </bibdata>
       </iso-standard>
     INPUT
-    output = <<~OUTPUT
+    output = 
       {:accesseddate=>"2012",
       :activateddate=>"2013",
       :agency=>"ISO",
@@ -132,9 +132,8 @@ RSpec.describe IsoDoc::Iec::Metadata do
       :tc_docnumber=>["17301"],
       :unpublished=>true,
       :wg=>"WG 3"}
-    OUTPUT
-    expect(metadata(c.info(Nokogiri::XML(input), nil))
-      .to_s.gsub(/, :/, ",\n:")).to be_equivalent_to output
+    expect(metadata(c.info(Nokogiri::XML(input), nil)))
+      .to be_equivalent_to output
   end
 
   it "processes IsoXML metadata" do
@@ -209,7 +208,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
       </bibdata>
       </iso-standard>
     INPUT
-    output = <<~OUTPUT
+    output = 
       {:agency=>"ISO/IEC",
       :docnumber=>"ISO/IEC/CD 17301-1-3",
       :docsubtitle=>"C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie&#xa0;1&#x2013;3: Riz",
@@ -243,8 +242,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
       :tc_docnumber=>["17301"],
       :unpublished=>true,
       :wg=>"GHI 3"}
-    OUTPUT
-    expect(metadata(c.info(Nokogiri::XML(input), nil))
-      .to_s.gsub(/, :/, ",\n:")).to be_equivalent_to output
+    expect(metadata(c.info(Nokogiri::XML(input), nil)))
+      .to be_equivalent_to output
   end
 end

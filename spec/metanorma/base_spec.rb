@@ -130,10 +130,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>TC</name>
                          <identifier>A 1</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -144,10 +142,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>TC1</name>
                          <identifier>A1 11</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -158,10 +154,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>SC</name>
                          <identifier>B 2</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -172,10 +166,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>SC1</name>
                          <identifier>B1 21</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -186,10 +178,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>WG</name>
                          <identifier>C 3</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -200,10 +190,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>WG1</name>
                          <identifier>C1 31</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -230,10 +218,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>TC</name>
                          <identifier>A 1</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -244,10 +230,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>TC1</name>
                          <identifier>A1 11</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -258,10 +242,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>SC</name>
                          <identifier>B 2</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -272,10 +254,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>SC1</name>
                          <identifier>B1 21</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -286,10 +266,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>WG</name>
                          <identifier>C 3</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
@@ -300,10 +278,8 @@ RSpec.describe Metanorma::Iec do
                 <organization>
                    <name>International Electrotechnical Commission</name>
                    <subdivision>
-                      <organization>
                          <name>WG1</name>
                          <identifier>C1 31</identifier>
-                      </organization>
                    </subdivision>
                 </organization>
              </contributor>
