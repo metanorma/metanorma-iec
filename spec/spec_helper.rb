@@ -33,7 +33,9 @@ end
 
 def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
+    .gsub(%r{ source="_[^"]+"}, ' source="_"')
     .gsub(%r{ target="_[^"]+"}, ' target="_"')
+    .gsub(%r{ name="_[^"]+"}, ' name="_"')
     .gsub(%r( href="#_?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12,13}"), ' href="#_"')
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
     .gsub(%r{ schema-version="[^"]+"}, "")
@@ -215,7 +217,7 @@ end
 PREFACE = <<~HDR.freeze
     <preface>
   <clause type="toc" id="_" displayorder="1">
-    <title depth="1">Contents</title>
+    <fmt-title depth="1">Contents</fmt-title>
   </clause>
   <pagebreak displayorder="2"/>
   <p class="zzSTDTitle1" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>

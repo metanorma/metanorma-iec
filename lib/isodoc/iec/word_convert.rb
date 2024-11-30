@@ -203,8 +203,7 @@ module IsoDoc
       end
 
       def annex_name(_annex, name, div)
-        return if name.nil?
-
+        name.nil? and return
         div.h1 class: "Annex" do |t|
           name.children.each { |c2| parse(c2, t) }
           clause_parse_subtitle(name, t)
@@ -216,7 +215,7 @@ module IsoDoc
           div.p **attr_code(class: "formula") do |_p|
             insert_tab(div, 1)
             parse(node.at(ns("./stem")), div)
-            if lbl = node&.at(ns("./name"))&.text
+            if lbl = node&.at(ns("./fmt-name"))&.text
               insert_tab(div, 1)
               div << lbl
             end
