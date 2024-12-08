@@ -3,9 +3,13 @@ module IsoDoc
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
       def termclause1(elem)
         @is_iev or return clause1(elem)
-        @suppressheadingnumbers || elem["unnumbered"] and return
-        lbl = @xrefs.anchor(elem["id"], :label, true) or return
-        prefix_name(elem, " ", "#{lbl}#{clausedelim}", "title")
+        @suppressheadingnumbers || elem["unnumbered"] or
+        lbl = @xrefs.anchor(elem["id"], :label, true)
+        if lbl
+        prefix_name(elem, { caption: " " }, "#{lbl}#{clausedelim}", "title")
+        else
+        prefix_name(elem, {}, nil, "title")
+        end
       end
 
       def concept(docxml)
@@ -15,9 +19,9 @@ module IsoDoc
 
       def concept_iev(docxml)
         labels = @xrefs.get_anchors.each_with_object({}) do |(k, v), m|
-          m[v[:label]] = k
+          v[:label] and m[v[:label].gsub(%r{</?[^>]+>}, "")] = k
         end
-        docpart = docxml&.at(ns("//bibdata/ext/structuredidentifier/" \
+        docpart = docxml.at(ns("//bibdata/ext/structuredidentifier/" \
                                 "project-number/@part"))&.text or return
         docxml.xpath(ns("//termref[@base = 'IEV']")).each do |t|
           concept_iev1(t, docpart, labels)
@@ -51,10 +55,12 @@ module IsoDoc
         docxml.xpath(ns("//term[@language = 'en'][@tag]")).each do |en|
           fr = docxml.at(ns("//term[@language = 'fr'][@tag = '#{en['tag']}']"))
           merge_fr_into_en_term1(en, fr) if fr
+          en.xpath(ns("./fmt-name | ./fmt-xref-label")).each(&:remove)
+          term1(en)
         end
         @xrefs.parse_inclusions(clauses: true).parse docxml
-        docxml.xpath(ns("//term/name")).each(&:remove)
-        term(docxml)
+        #docxml.xpath(ns("//term/fmt-name | //term/fmt-xref")).each(&:remove)
+        #term(docxml)
       end
 
       def merge_fr_into_en_term1(en_term, fr_term)
@@ -77,8 +83,7 @@ module IsoDoc
           .each_with_object([]) do |d, m|
           lg = d["language"]
           d.delete("language")
-          next if lgs.include?(lg)
-
+          lgs.include?(lg) and next
           p = d.parent
           designation_annotate(p, d.at(ns("./name")))
           m << { lang: lg, script: Metanorma::Utils.default_script(lg),
@@ -174,6 +179,7 @@ module IsoDoc
 
       def termexample1(elem)
         lg = elem&.at("./ancestor::xmlns:term/@language")&.text
+        #require "debug"; binding.b
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
         example1(elem)
         @i18n = @i18n_lg["default"]
@@ -185,9 +191,14 @@ module IsoDoc
 
         val = @xrefs.anchor(elem["id"], :value) || "???"
         lbl = @i18n.termnote.gsub("%", val)
-        ret = @i18n.l10n "#{lbl}#{termnote_delim(elem)}"
+        ret = @i18n.l10n lbl
         @i18n = @i18n_lg["default"]
         ret
+      end
+
+      def term1(elem)
+        #require 'debug'; binding.b
+        super
       end
     end
   end

@@ -28,19 +28,28 @@ RSpec.describe IsoDoc do
           <docnumber>60050</docnumber>
         </bibdata>
         #{PREFACE}
-          <foreword obligation='informative' displayorder="8">
-            <title>Foreword</title>
-            <p id='A'>This is a preamble</p>
-          </foreword>
-          <introduction id='B' obligation='informative' displayorder="9">
-            <title depth='1'>Introduction</title>
-            <clause id='C' inline-header='false' obligation='informative'>
-              <title depth='2'>Introduction Subsection</title>
-            </clause>
-          </introduction>
-        </preface>
-        <sections/>
-      </iso-standard>
+             <foreword obligation="informative" displayorder="8">
+                <title id="_">Foreword</title>
+                <fmt-title depth="1">
+                   <semx element="title" source="_">Foreword</semx>
+                </fmt-title>
+                <p id="A">This is a preamble</p>
+             </foreword>
+             <introduction id="B" obligation="informative" displayorder="9">
+                <title id="_">Introduction</title>
+                <fmt-title depth="1">
+                   <semx element="title" source="_">Introduction</semx>
+                </fmt-title>
+                <clause id="C" inline-header="false" obligation="informative">
+                   <title id="_">Introduction Subsection</title>
+                   <fmt-title depth="2">
+                      <semx element="title" source="_">Introduction Subsection</semx>
+                   </fmt-title>
+                </clause>
+             </introduction>
+          </preface>
+          <sections/>
+       </iso-standard>
     OUTPUT
 
     html = <<~OUTPUT
@@ -63,13 +72,13 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
-      .new(presxml_options)
+    pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", presxml, true)))
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", pres_output, true))))
       .to be_equivalent_to Xml::C14n.format(html)
   end
 
@@ -132,7 +141,7 @@ RSpec.describe IsoDoc do
                     <docidentifier>B</docidentifier>
                   </bibitem>
                 </references>
-                <references id='_' obligation='informative' normative="false">
+                <references id='Y' obligation='informative' normative="false">
                   <title>Bibliography</title>
                   <p id='_'>There are no normative references in this document.</p>
                   <bibitem id='A'>
@@ -197,36 +206,56 @@ RSpec.describe IsoDoc do
           </ext>
         </bibdata>
         #{PREFACE}</preface>
-        <sections>
-          <references obligation='informative' normative='true' id="X" displayorder="8">
-          <title depth='1'>1<tab/>Normative References</title>
-            <p id='_'>There are no normative references in this document.</p>
-            <bibitem id='A'>
-              <formattedref format='application/x-isodoc+xml'>
-                <em>TITLE</em>
-              </formattedref>
-              <docidentifier>B</docidentifier>
-              <docidentifier scope="biblio-tag">B</docidentifier>
-              <biblio-tag>B, </biblio-tag>
-            </bibitem>
-          </references>
+                 <sections>
+             <references obligation="informative" normative="true" id="X" displayorder="8">
+                <title id="_">Normative References</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="X">1</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Normative References</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="X">1</semx>
+                </fmt-xref-label>
+                <p id="_">There are no normative references in this document.</p>
+                <bibitem id="A">
+                   <formattedref format="application/x-isodoc+xml">
+                      <em>TITLE</em>
+                   </formattedref>
+                   <docidentifier>B</docidentifier>
+                   <docidentifier scope="biblio-tag">B</docidentifier>
+                   <biblio-tag>B, </biblio-tag>
+                </bibitem>
+             </references>
           </sections>
           <bibliography>
-          <references id='_' obligation='informative' normative='false' displayorder="9">
-            <title depth='1'>Bibliography</title>
-            <p id='_'>There are no normative references in this document.</p>
-            <bibitem id='A'>
-              <formattedref format='application/x-isodoc+xml'>
-                <em>TITLE</em>
-              </formattedref>
-              <docidentifier type='metanorma-ordinal'>[1]</docidentifier>
-              <docidentifier>B</docidentifier>
-              <docidentifier scope="biblio-tag">B</docidentifier>
-              <biblio-tag>[1]<tab/>B, </biblio-tag>
-            </bibitem>
-          </references>
-        </bibliography>
-      </iec-standard>
+             <references id="Y" obligation="informative" normative="false" displayorder="9">
+                <title id="_">Bibliography</title>
+                <fmt-title depth="1">
+                   <semx element="title" source="_">Bibliography</semx>
+                </fmt-title>
+                <p id="_">There are no normative references in this document.</p>
+                <bibitem id="A">
+                   <formattedref format="application/x-isodoc+xml">
+                      <em>TITLE</em>
+                   </formattedref>
+                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
+                   <docidentifier>B</docidentifier>
+                   <docidentifier scope="biblio-tag">B</docidentifier>
+                   <biblio-tag>
+                      [1]
+                      <tab/>
+                      B,
+                   </biblio-tag>
+                </bibitem>
+             </references>
+          </bibliography>
+       </iec-standard>
     OUTPUT
     html = <<~OUTPUT
        #{HTML_HDR}
@@ -239,13 +268,13 @@ RSpec.describe IsoDoc do
         </body>
       </html>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
-      .new(presxml_options)
+    pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", presxml, true)))
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", pres_output, true))))
       .to be_equivalent_to Xml::C14n.format(html)
   end
 
@@ -313,156 +342,312 @@ RSpec.describe IsoDoc do
                  <docnumber>60050</docnumber>
           </bibdata>
           #{PREFACE}</preface>
-          <sections>
-          <clause id="_" obligation="normative" displayorder="8"><title depth="1">1<tab/>Terms and definitions</title>
-          <terms id="_" obligation="normative"><title>192-01 General</title>
-      <term id="paddy1">
-      <name>192-01-01</name>
-      <preferred><strong>paddy</strong></preferred>
-      <definition><p id="_">rice retaining its husk after threshing</p></definition>
-      <termexample id="_">
-      <name>EXAMPLE 1</name>
-        <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
-        <ul>
-        <li>A</li>
-        </ul>
-      </termexample>
-      <termexample id="_">
-      <name>EXAMPLE 2</name>
-        <ul>
-        <li>A</li>
-        </ul>
-      </termexample>
-      <termsource status="modified">SOURCE:
-        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2014;
-          The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</termsource>
-      </term>
-      <term id="paddy">
-      <name>192-01-02</name>
-      <preferred><strong>paddy</strong></preferred><admitted>paddy rice</admitted>
-      <admitted>rough rice</admitted>
-      <deprecates>DEPRECATED: cargo rice</deprecates>
-      <domain hidden="true">rice</domain>
-      <definition><p id="_">rice retaining its husk after threshing</p></definition>
-      <termexample id="_">
-      <name>EXAMPLE</name>
-        <ul>
-        <li>A</li>
-        </ul>
-      </termexample>
-      <termnote id="_">
-      <name>Note 1 to entry:</name>
-        <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-      </termnote>
-      <termnote id="_">
-      <name>Note 2 to entry:</name>
-      <ul><li>A</li></ul>
-        <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
-      </termnote>
-      <termsource status="identical">SOURCE:
-        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>
-      </termsource></term>
-      </terms>
-      </clause>
-      </sections>
-      </iso-standard>
+         <sections>
+             <clause id="_" obligation="normative" displayorder="8">
+                <title id="_">Terms and definitions</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="_">1</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Terms and definitions</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="_">1</semx>
+                </fmt-xref-label>
+                <terms id="_" obligation="normative">
+                   <title id="_">General</title>
+                   <fmt-title>
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="_">192-01</semx>
+                      </span>
+                      <span class="fmt-caption-delim"> </span>
+                      <semx element="title" source="_">General</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Section</span>
+                      <semx element="autonum" source="_">192-01</semx>
+                   </fmt-xref-label>
+                   <term id="paddy1">
+                      <fmt-name>
+                         <span class="fmt-caption-label">
+                            <semx element="autonum" source="_">192-01</semx>
+                            <span class="fmt-autonum-delim">-</span>
+                            <semx element="autonum" source="paddy1">01</semx>
+                         </span>
+                      </fmt-name>
+                      <fmt-xref-label>
+                         <semx element="autonum" source="_">192-01</semx>
+                         <span class="fmt-autonum-delim">-</span>
+                         <semx element="autonum" source="paddy1">01</semx>
+                      </fmt-xref-label>
+                      <preferred>
+                         <strong>paddy</strong>
+                      </preferred>
+                      <definition>
+                         <p id="_">rice retaining its husk after threshing</p>
+                      </definition>
+                      <termexample id="_" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">EXAMPLE</span>
+                               <semx element="autonum" source="_">1</semx>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Example</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="paddy1">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy1">01</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Example</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                      </termexample>
+                      <termexample id="_" autonum="2">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">EXAMPLE</span>
+                               <semx element="autonum" source="_">2</semx>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Example</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="paddy1">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy1">01</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Example</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                      </termexample>
+                      <termsource status="modified">
+                         SOURCE:
+                         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <locality type="clause">
+                               <referenceFrom>3.1</referenceFrom>
+                            </locality>
+                            ISO 7301:2011, 3.1
+                         </origin>
+                         , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                      </termsource>
+                   </term>
+                   <term id="paddy">
+                      <fmt-name>
+                         <span class="fmt-caption-label">
+                            <semx element="autonum" source="_">192-01</semx>
+                            <span class="fmt-autonum-delim">-</span>
+                            <semx element="autonum" source="paddy">02</semx>
+                         </span>
+                      </fmt-name>
+                      <fmt-xref-label>
+                         <semx element="autonum" source="_">192-01</semx>
+                         <span class="fmt-autonum-delim">-</span>
+                         <semx element="autonum" source="paddy">02</semx>
+                      </fmt-xref-label>
+                      <preferred>
+                         <strong>paddy</strong>
+                      </preferred>
+                      <admitted>paddy rice</admitted>
+                      <admitted>rough rice</admitted>
+                      <deprecates>DEPRECATED: cargo rice</deprecates>
+                      <domain hidden="true">rice</domain>
+                      <definition>
+                         <p id="_">rice retaining its husk after threshing</p>
+                      </definition>
+                      <termexample id="_" autonum="">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">EXAMPLE</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="paddy">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                      </termexample>
+                      <termnote id="_" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 1 to entry</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="paddy">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                      </termnote>
+                      <termnote id="_" autonum="2">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 2 to entry</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="paddy">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <ul>
+                            <li>A</li>
+                         </ul>
+                         <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                      </termnote>
+                      <termsource status="identical">
+                         SOURCE:
+                         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <locality type="clause">
+                               <referenceFrom>3.1</referenceFrom>
+                            </locality>
+                            ISO 7301:2011, 3.1
+                         </origin>
+                      </termsource>
+                   </term>
+                </terms>
+             </clause>
+          </sections>
+       </iso-standard>
     INPUT
 
     html = <<~OUTPUT
       #{HTML_HDR}
                  #{IEC_TITLE1}
                               <div id='_'>
-              <h1>1&#160; Terms and definitions</h1>
-              <br/>
-              <div id='_'>
-                <h2 class='zzSTDTitle2'>
-                  <b>192-01 General</b>
-                </h2>
-                <p class='TermNum' id='paddy1'>192-01-01</p>
-                <p class='Terms' style='text-align:left;'>
-                  <b>paddy</b>
-                </p>
-                <p id='_'>rice retaining its husk after threshing</p>
-                <div id='_' class='example'>
-                  <p>
-                    <span class='example_label'>EXAMPLE 1</span>
-                    &#160; Foreign seeds, husks, bran, sand, dust.
-                  </p>
-                  <div class="ul_wrap">
-                  <ul>
-                    <li>A</li>
-                  </ul>
+                                                 <h1>1  Terms and definitions</h1>
+                   <br/>
+                   <div id="_">
+                      <h2 class="zzSTDTitle2">
+                         <b>192-01 General</b>
+                      </h2>
+                      <p class="TermNum" id="paddy1">192-01-01</p>
+                      <p class="Terms" style="text-align:left;">
+                         <b>paddy</b>
+                      </p>
+                      <p id="_">rice retaining its husk after threshing</p>
+                      <div id="_" class="example">
+                         <p>
+                            <span class="example_label">EXAMPLE 1</span>
+                              Foreign seeds, husks, bran, sand, dust.
+                         </p>
+                         <div class="ul_wrap">
+                            <ul>
+                               <li>A</li>
+                            </ul>
+                         </div>
+                      </div>
+                      <div id="_" class="example">
+                         <p>
+                            <span class="example_label">EXAMPLE 2</span>
+                             
+                         </p>
+                         <div class="ul_wrap">
+                            <ul>
+                               <li>A</li>
+                            </ul>
+                         </div>
+                      </div>
+                      <p>SOURCE: ISO 7301:2011, 3.1, modified
+            —
+           The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+                      <p class="TermNum" id="paddy">192-01-02</p>
+                      <p class="Terms" style="text-align:left;">
+                         <b>paddy</b>
+                      </p>
+                      <p class="AltTerms" style="text-align:left;">paddy rice</p>
+                      <p class="AltTerms" style="text-align:left;">rough rice</p>
+                      <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                      <p id="_">rice retaining its husk after threshing</p>
+                      <div id="_" class="example">
+                         <p>
+                            <span class="example_label">EXAMPLE</span>
+                             
+                         </p>
+                         <div class="ul_wrap">
+                            <ul>
+                               <li>A</li>
+                            </ul>
+                         </div>
+                      </div>
+                      <div id="_" class="Note">
+                         <p>
+                            <span class="termnote_label">Note 1 to entry: </span>
+                            The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.
+                         </p>
+                      </div>
+                      <div id="_" class="Note">
+                         <p>
+                            <span class="termnote_label">Note 2 to entry: </span>
+                         </p>
+                         <div class="ul_wrap">
+                            <ul>
+                               <li>A</li>
+                            </ul>
+                         </div>
+                         <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+                      </div>
+                      <p>SOURCE: ISO 7301:2011, 3.1</p>
+                   </div>
                 </div>
-                </div>
-                <div id='_' class='example'>
-                  <p>
-                    <span class='example_label'>EXAMPLE 2</span>
-                    &#160;
-                  </p>
-                  <div class="ul_wrap">
-                  <ul>
-                    <li>A</li>
-                  </ul>
-                  </ul>
-                </div>
-                <p>
-                  SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and
-                  Note 1 to entry is not included here
-                </p>
-                <p class='TermNum' id='paddy'>192-01-02</p>
-                <p class='Terms' style='text-align:left;'>
-                  <b>paddy</b>
-                </p>
-                <p class='AltTerms' style='text-align:left;'>paddy rice</p>
-                <p class='AltTerms' style='text-align:left;'>rough rice</p>
-                <p class='DeprecatedTerms' style='text-align:left;'>DEPRECATED: cargo rice</p>
-                <p id='_'>rice retaining its husk after threshing</p>
-                <div id='_' class='example'>
-                  <p>
-                    <span class='example_label'>EXAMPLE</span>
-                    &#160;
-                  </p>
-                  <div class="ul_wrap">
-                  <ul>
-                    <li>A</li>
-                  </ul>
-                </div>
-                </div>
-                <div id='_' class='Note'>
-                  <p>
-                    Note 1 to entry: The starch of waxy rice consists almost entirely
-                    of amylopectin. The kernels have a tendency to stick together
-                    after cooking.
-                  </p>
-                </div>
-                <div id='_' class='Note'>
-                  <p>
-                    Note 2 to entry:
-                    <div class="ul_wrap">
-                    <ul>
-                      <li>A</li>
-                    </ul>
-                    </div>
-                    <p id='_'>
-                      The starch of waxy rice consists almost entirely of amylopectin.
-                      The kernels have a tendency to stick together after cooking.
-                    </p>
-                  </p>
-                </div>
-                <p>SOURCE: ISO 7301:2011, 3.1 </p>
-              </div>
-            </div>
-          </div>
-        </body>
-      </html>
+             </div>
+          </body>
+       </html>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
-      .new(presxml_options)
+    pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", presxml, true)))
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", pres_output, true))))
       .to be_equivalent_to Xml::C14n.format(html)
   end
 
@@ -498,40 +683,81 @@ RSpec.describe IsoDoc do
           <docnumber>60050</docnumber>
         </bibdata>
         #{PREFACE}</preface>
-        <sections>
-          <clause id='_' obligation='normative' displayorder="8">
-            <title depth='1'>1<tab/>Terms and definitions</title>
-            <terms id='_' obligation='normative'>
-              <title>192-01 General</title>
-              <term id='paddy1'>
-                <name>192-01-01</name>
-                <preferred><strong>paddy</strong></preferred>
-                <definition>
-                  <p id='_'>rice retaining its husk after threshing</p>
-                </definition>
-                <termsource status='modified'>SOURCE:
-                  <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'><locality type='clause'>
-                      <referenceFrom>3.1</referenceFrom>
-                    </locality>ISO 7301:2011, 3.1</origin>, modified &#x2014;
-                      The term "cargo rice" is shown as deprecated, and Note 1 to
-                      entry is not included here
-                </termsource>
-              </term>
-            </terms>
-          </clause>
-        </sections>
-      </iso-standard>
+          <sections>
+              <clause id="_" obligation="normative" displayorder="8">
+                 <title id="_">Terms and definitions</title>
+                 <fmt-title depth="1">
+                    <span class="fmt-caption-label">
+                       <semx element="autonum" source="_">1</semx>
+                    </span>
+                    <span class="fmt-caption-delim">
+                       <tab/>
+                    </span>
+                    <semx element="title" source="_">Terms and definitions</semx>
+                 </fmt-title>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Clause</span>
+                    <semx element="autonum" source="_">1</semx>
+                 </fmt-xref-label>
+                 <terms id="_" obligation="normative">
+                    <title id="_">General</title>
+                    <fmt-title>
+                       <span class="fmt-caption-label">
+                          <semx element="autonum" source="_">192-01</semx>
+                       </span>
+                       <span class="fmt-caption-delim"> </span>
+                       <semx element="title" source="_">General</semx>
+                    </fmt-title>
+                    <fmt-xref-label>
+                       <span class="fmt-element-name">Section</span>
+                       <semx element="autonum" source="_">192-01</semx>
+                    </fmt-xref-label>
+                    <term id="paddy1">
+                       <fmt-name>
+                          <span class="fmt-caption-label">
+                             <semx element="autonum" source="_">192-01</semx>
+                             <span class="fmt-autonum-delim">-</span>
+                             <semx element="autonum" source="paddy1">01</semx>
+                          </span>
+                       </fmt-name>
+                       <fmt-xref-label>
+                          <semx element="autonum" source="_">192-01</semx>
+                          <span class="fmt-autonum-delim">-</span>
+                          <semx element="autonum" source="paddy1">01</semx>
+                       </fmt-xref-label>
+                       <preferred>
+                          <strong>paddy</strong>
+                       </preferred>
+                       <definition>
+                          <p id="_">rice retaining its husk after threshing</p>
+                       </definition>
+                       <termsource status="modified">
+                          SOURCE:
+                          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                             <locality type="clause">
+                                <referenceFrom>3.1</referenceFrom>
+                             </locality>
+                             ISO 7301:2011, 3.1
+                          </origin>
+                          , modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here
+                       </termsource>
+                    </term>
+                 </terms>
+              </clause>
+           </sections>
+        </iso-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
-      .new(presxml_options)
+    pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    IsoDoc::Iec::WordConvert.new({}).convert("test", presxml, false)
+    IsoDoc::Iec::WordConvert.new({}).convert("test", pres_output, false)
     word = File.read("test.doc")
       .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br clear="all" style="page-break-before:left;mso-break-type:section-break"/>.*$}m, "")
-    expect(Xml::C14n.format(word)).to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
+    expect(Xml::C14n.format(strip_guid(word)))
+      .to be_equivalent_to Xml::C14n.format(<<~OUTPUT)
       <div class='WordSection3'>
            <div>
              <a name='_' id='_'/>
@@ -616,38 +842,119 @@ RSpec.describe IsoDoc do
           </ext>
         </bibdata>
         #{PREFACE}</preface>
-        <sections>
-          <clause id='_' obligation='normative' displayorder='8'>
-            <title depth='1'>1<tab/>Terms and definitions</title>
-            <terms id='_' obligation='normative'>
-              <title>192-01 General</title>
-              <term id='term-durability'>
-                <name>192-01-01</name>
-                <preferred><strong>durability</strong>, &#x3c;of an item&#x3e;</preferred>
-                <definition>
-            <verbaldefinition>
-              <p id='_'>rice retaining its husk after threshing</p>
-            </verbaldefinition>
-          </definition>
-                <termnote id='_'>
-                  <name>Note 1 to entry:</name>
-                  <p id='_'>Dependability includes availability (<em>192-01-02</em>
-                     (<xref target='term-sub-item'><span class='citesec'>192-01-02</span></xref>),
-                    <em>191-01-02</em>
-                     (<termref base='IEV' target='191-01-02'/>))</p>
-                </termnote>
-              </term>
-              <term id='term-sub-item'>
-                <name>192-01-02</name>
-                <preferred><strong>sub item</strong></preferred>
-                <definition>
-                  <p id='_'>part of the subject being considered</p>
-                </definition>
-              </term>
-            </terms>
-          </clause>
-        </sections>
-      </iso-standard>
+                   <sections>
+              <clause id="_" obligation="normative" displayorder="8">
+                 <title id="_">Terms and definitions</title>
+                 <fmt-title depth="1">
+                    <span class="fmt-caption-label">
+                       <semx element="autonum" source="_">1</semx>
+                    </span>
+                    <span class="fmt-caption-delim">
+                       <tab/>
+                    </span>
+                    <semx element="title" source="_">Terms and definitions</semx>
+                 </fmt-title>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Clause</span>
+                    <semx element="autonum" source="_">1</semx>
+                 </fmt-xref-label>
+                 <terms id="_" obligation="normative">
+                    <title id="_">General</title>
+                    <fmt-title>
+                       <span class="fmt-caption-label">
+                          <semx element="autonum" source="_">192-01</semx>
+                       </span>
+                       <span class="fmt-caption-delim"> </span>
+                       <semx element="title" source="_">General</semx>
+                    </fmt-title>
+                    <fmt-xref-label>
+                       <span class="fmt-element-name">Section</span>
+                       <semx element="autonum" source="_">192-01</semx>
+                    </fmt-xref-label>
+                    <term id="term-durability">
+                       <fmt-name>
+                          <span class="fmt-caption-label">
+                             <semx element="autonum" source="_">192-01</semx>
+                             <span class="fmt-autonum-delim">-</span>
+                             <semx element="autonum" source="term-durability">01</semx>
+                          </span>
+                       </fmt-name>
+                       <fmt-xref-label>
+                          <semx element="autonum" source="_">192-01</semx>
+                          <span class="fmt-autonum-delim">-</span>
+                          <semx element="autonum" source="term-durability">01</semx>
+                       </fmt-xref-label>
+                       <preferred>
+                          <strong>durability</strong>
+                          , &lt;of an item&gt;
+                       </preferred>
+                       <definition>
+                          <verbaldefinition>
+                             <p id="_">rice retaining its husk after threshing</p>
+                          </verbaldefinition>
+                       </definition>
+                       <termnote id="_" autonum="1">
+                          <fmt-name>
+                             <span class="fmt-caption-label">Note 1 to entry</span>
+                             <span class="fmt-label-delim">: </span>
+                          </fmt-name>
+                          <fmt-xref-label>
+                             <span class="fmt-element-name">Note</span>
+                             <semx element="autonum" source="_">1</semx>
+                          </fmt-xref-label>
+                          <fmt-xref-label container="term-durability">
+                             <span class="fmt-xref-container">
+                                <semx element="autonum" source="_">192-01</semx>
+                                <span class="fmt-autonum-delim">-</span>
+                                <semx element="autonum" source="term-durability">01</semx>
+                             </span>
+                             <span class="fmt-comma">,</span>
+                             <span class="fmt-element-name">Note</span>
+                             <semx element="autonum" source="_">1</semx>
+                          </fmt-xref-label>
+                          <p id="_">
+                             Dependability includes availability (
+                             <em>192-01-02</em>
+                     (
+                                     <xref target="term-sub-item">
+                        <span class="citesec">
+                           <semx element="autonum" source="_">192-01</semx>
+                           <span class="fmt-autonum-delim">-</span>
+                           <semx element="autonum" source="term-sub-item">02</semx>
+                        </span>
+                     </xref>
+                  ),
+                            <em>191-01-02</em>
+                             (
+                             <termref base="IEV" target="191-01-02"/>
+                             ))
+                          </p>
+                       </termnote>
+                    </term>
+                    <term id="term-sub-item">
+                       <fmt-name>
+                          <span class="fmt-caption-label">
+                             <semx element="autonum" source="_">192-01</semx>
+                             <span class="fmt-autonum-delim">-</span>
+                             <semx element="autonum" source="term-sub-item">02</semx>
+                          </span>
+                       </fmt-name>
+                       <fmt-xref-label>
+                          <semx element="autonum" source="_">192-01</semx>
+                          <span class="fmt-autonum-delim">-</span>
+                          <semx element="autonum" source="term-sub-item">02</semx>
+                       </fmt-xref-label>
+                       <preferred>
+                          <strong>sub item</strong>
+                       </preferred>
+                       <definition>
+                          <p id="_">part of the subject being considered</p>
+                       </definition>
+                    </term>
+                 </terms>
+              </clause>
+           </sections>
+        </iso-standard>
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
@@ -727,168 +1034,306 @@ RSpec.describe IsoDoc do
           <docnumber>60050</docnumber>
         </bibdata>
         #{PREFACE}</preface>
-        <sections>
-          <clause id='_' obligation='normative' displayorder='8'>
-            <title depth='1'>
-              1
-              <tab/>
-              Terms and definitions
-            </title>
-            <terms id='_' obligation='normative'>
-              <title>192-01 General</title>
-              <term id='item' language='en,fr'>
-                <name>192-01-01</name>
-                <preferred>
-                  <strong>system</strong>
-                  , &#x3c;in dependability&#x3e;
-                </preferred>
-                <admitted>paddy rice</admitted>
-                <admitted>rough rice</admitted>
-                <deprecates>DEPRECATED: cargo rice</deprecates>
-                <definition>
-                  <p id='_'>set of interrelated items that collectively fulfil a requirement</p>
-                </definition>
-                <p>
-                  CONTRAST:
-                  <strong>Fifth Designation</strong>
-                   (
-                  <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
-                  )
-                </p>
-                <termexample id='_'>
-                  <name>EXAMPLE</name>
-                  <p id='_'>
-                    External resources (from outside the system boundary) may be
-                    required for the system to operate.
-                  </p>
-                </termexample>
-                <termnote id='_'>
-                  <name>Note 1 to entry:</name>
-                  <p id='_'>A system is considered to have a defined real or abstract boundary.</p>
-                </termnote>
-                <termnote id='_'>
-                  <name>Note 2 to entry:</name>
-                  <p id='_'>
-                    External resources (from outside the system boundary) may be
-                    required for the system to operate.
-                  </p>
-                </termnote>
-                <termsource status='modified'>
-                  SOURCE:
-                  <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
-                    <locality type='clause'>
-                      <referenceFrom>3.1</referenceFrom>
-                    </locality>
-                    ISO 7301:2011, 3.1
-                  </origin>
-                  , modified &#x2014; modified by extension to suit the dependability
-                  context
-                </termsource>
-                <preferred>
-                  <strong>entit&#xE9;</strong>
-                  , &#x3c;en s&#xFB;ret&#xE9; de fonctionnement&#x3e;, m
-                </preferred>
-                <definition>
-                  <p id='_'>
-                    ensemble d&#x2019;entit&#xE9;s reli&#xE9;es entre elles qui
-                    satisfont collectivement &#xE0; une exigence
-                  </p>
-                </definition>
-                <p>
-                  CONTRASTEZ:
-                  <strong>Designation cinqui&#xE8;me</strong>
-                   (
-                  <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
-                  )
-                </p>
-                <p>
-                  VOIR:
-                  <strong>Designation sixi&#xE8;me</strong>
-                   (
-                  <xref target='paddy1'><span class='citesec'>192-01-02</span></xref>
-                  )
-                </p>
-                <termexample id='_'>
-                  <name>EXEMPLE</name>
-                  <p id='_'>
-                    External resources (from outside the system boundary) may be
-                    required for the system to operate.
-                  </p>
-                </termexample>
-                <termnote id='_'>
-                  <name>Note 1 &#xE0; l&#x2019;article :</name>
-                  <p id='_'>
-                    Un syst&#xE8;me est consid&#xE9;r&#xE9; comme ayant une
-                    fronti&#xE8;re d&#xE9;finie, r&#xE9;elle ou abstraite.
-                  </p>
-                </termnote>
-                <termnote id='_'>
-                  <name>Note 2 &#xE0; l&#x2019;article :</name>
-                  <p id='_'>
-                    Des ressources externes (provenant d&#x2019;au-del&#xE0; de la
-                    fronti&#xE8;re) peuvent &#xEA;tre n&#xE9;cessaires au
-                    fonctionnement du syst&#xE8;me.
-                  </p>
-                </termnote>
-                <termsource status='modified'>
-                  SOURCE:
-                  <origin bibitemid='ISO7301' type='inline' citeas='ISO 7301:2011'>
-                    <locality type='clause'>
-                      <referenceFrom>3.1</referenceFrom>
-                    </locality>
-                    ISO 7301:2011, 3.1
-                  </origin>
-                  , modifi&#xE9; &#x2014; modifi&#xE9; pour adapter au contexte de la
-                  s&#xFB;ret&#xE9; de fonctionnement
-                </termsource>
-                <dl type='other-lang'>
-                  <dt>ar</dt>
-                  <dd language='ar' script='Arab'>
-                    <preferred>
-                      <strong>&#x61C;&#x646;&#x638;&#x627;&#x645;&#x60C;&#x61C;</strong>
-                      &#x61C;, &#x3c;&#x641;&#x64A;
-                      &#x627;&#x644;&#x627;&#x639;&#x62A;&#x645;&#x627;&#x62F;&#x6CC;&#x629;&#x3e;&#x61C;
-                    </preferred>
-                  </dd>
-                  <dt>de</dt>
-                  <dd language='de' script='Latn'>
-                    <preferred>
-                      <strong>Betrachtungseinheit</strong>
-                      , f
-                    </preferred>
-                    <preferred>
-                      <strong>Einheit</strong>
-                      , f
-                    </preferred>
-                  </dd>
-                  <dt>ja</dt>
-                  <dd language='ja' script='Jpan'>
-                    <preferred>
-                      <strong>&#x30A2;&#x30A4;&#x30C6;&#x30E0;</strong>
-                    </preferred>
-                  </dd>
-                  <dt>zh</dt>
-                  <dd language='zh' script='Hans'>
-                    <preferred>
-                      <strong>&#x4EA7;&#x54C1;</strong>,
-                      &#x3c;&#x5728;&#x53EF;&#x9760;&#x6027;&#x65B9;&#x9762;/&#x3e;
-                    </preferred>
-                  </dd>
-                </dl>
-              </term>
-              <term id='paddy1'>
-                <name>192-01-02</name>
-                <preferred>
-                  <strong>paddy</strong>
-                </preferred>
-                <definition>
-                  <p id='_'>rice retaining its husk after threshing</p>
-                </definition>
-              </term>
-            </terms>
-          </clause>
-        </sections>
-      </iso-standard>
+          <sections>
+             <clause id="_" obligation="normative" displayorder="8">
+                <title id="_">Terms and definitions</title>
+                <fmt-title depth="1">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="_">1</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Terms and definitions</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
+                   <semx element="autonum" source="_">1</semx>
+                </fmt-xref-label>
+                <terms id="_" obligation="normative">
+                   <title id="_">General</title>
+                   <fmt-title>
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="_">192-01</semx>
+                      </span>
+                      <span class="fmt-caption-delim"> </span>
+                      <semx element="title" source="_">General</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
+                      <span class="fmt-element-name">Section</span>
+                      <semx element="autonum" source="_">192-01</semx>
+                   </fmt-xref-label>
+                   <term id="item" language="en,fr">
+                      <fmt-name>
+                         <span class="fmt-caption-label">
+                            <semx element="autonum" source="_">192-01</semx>
+                            <span class="fmt-autonum-delim">-</span>
+                            <semx element="autonum" source="item">01</semx>
+                         </span>
+                      </fmt-name>
+                      <fmt-xref-label>
+                         <semx element="autonum" source="_">192-01</semx>
+                         <span class="fmt-autonum-delim">-</span>
+                         <semx element="autonum" source="item">01</semx>
+                      </fmt-xref-label>
+                      <preferred>
+                         <strong>system</strong>
+                         , &lt;in dependability&gt;
+                      </preferred>
+                      <admitted>paddy rice</admitted>
+                      <admitted>rough rice</admitted>
+                      <deprecates>DEPRECATED: cargo rice</deprecates>
+                      <definition>
+                         <p id="_">set of interrelated items that collectively fulfil a requirement</p>
+                      </definition>
+                      <p>
+                         CONTRAST:
+                         <strong>Fifth Designation</strong>
+                         (
+                         <xref target="paddy1">
+                            <span class="citesec">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy1">02</semx>
+                            </span>
+                         </xref>
+                         )
+                      </p>
+                      <termexample id="_" autonum="">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">EXAMPLE</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item">01</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <p id="_">External resources (from outside the system boundary) may be required for the system to operate.</p>
+                      </termexample>
+                      <termnote id="_" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 1 to entry</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item">01</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <p id="_">A system is considered to have a defined real or abstract boundary.</p>
+                      </termnote>
+                      <termnote id="_" autonum="2">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 2 to entry</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item">01</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <p id="_">External resources (from outside the system boundary) may be required for the system to operate.</p>
+                      </termnote>
+                      <termsource status="modified">
+                         SOURCE:
+                         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <locality type="clause">
+                               <referenceFrom>3.1</referenceFrom>
+                            </locality>
+                            ISO 7301:2011, 3.1
+                         </origin>
+                         , modified — modified by extension to suit the dependability context
+                      </termsource>
+                      <preferred>
+                         <strong>entité</strong>
+                         , &lt;en sûreté de fonctionnement&gt;, m
+                      </preferred>
+                      <definition>
+                         <p id="_">ensemble d’entités reliées entre elles qui satisfont collectivement à une exigence</p>
+                      </definition>
+                      <p>
+                         CONTRASTEZ:
+                         <strong>Designation cinquième</strong>
+                         (
+                         <xref target="paddy1">
+                            <span class="citesec">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy1">02</semx>
+                            </span>
+                         </xref>
+                         )
+                      </p>
+                      <p>
+                         VOIR:
+                         <strong>Designation sixième</strong>
+                         (
+                         <xref target="paddy1">
+                            <span class="citesec">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="paddy1">02</semx>
+                            </span>
+                         </xref>
+                         )
+                      </p>
+                      <termexample id="_" autonum="">
+                         <fmt-name>
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">EXEMPLE</span>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item-fr">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item-fr">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Example</span>
+                         </fmt-xref-label>
+                         <p id="_">External resources (from outside the system boundary) may be required for the system to operate.</p>
+                      </termexample>
+                      <termnote id="_" autonum="1">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 1 à l’article</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item-fr">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item-fr">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">1</semx>
+                         </fmt-xref-label>
+                         <p id="_">Un système est considéré comme ayant une frontière définie, réelle ou abstraite.</p>
+                      </termnote>
+                      <termnote id="_" autonum="2">
+                         <fmt-name>
+                            <span class="fmt-caption-label">Note 2 à l’article</span>
+                            <span class="fmt-label-delim">: </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="item-fr">
+                            <span class="fmt-xref-container">
+                               <semx element="autonum" source="_">192-01</semx>
+                               <span class="fmt-autonum-delim">-</span>
+                               <semx element="autonum" source="item-fr">02</semx>
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="_">2</semx>
+                         </fmt-xref-label>
+                         <p id="_">Des ressources externes (provenant d’au-delà de la frontière) peuvent être nécessaires au fonctionnement du système.</p>
+                      </termnote>
+                      <termsource status="modified">
+                         SOURCE:
+                         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <locality type="clause">
+                               <referenceFrom>3.1</referenceFrom>
+                            </locality>
+                            ISO 7301:2011, 3.1
+                         </origin>
+                         , modifié — modifié pour adapter au contexte de la sûreté de fonctionnement
+                      </termsource>
+                      <dl type="other-lang">
+                         <dt>ar</dt>
+                         <dd language="ar" script="Arab">
+                            <preferred>
+                               <strong>؜نظام،؜</strong>
+                               ؜, &lt;في الاعتمادیة&gt;؜
+                            </preferred>
+                         </dd>
+                         <dt>de</dt>
+                         <dd language="de" script="Latn">
+                            <preferred>
+                               <strong>Betrachtungseinheit</strong>
+                               , f
+                            </preferred>
+                            <preferred>
+                               <strong>Einheit</strong>
+                               , f
+                            </preferred>
+                         </dd>
+                         <dt>ja</dt>
+                         <dd language="ja" script="Jpan">
+                            <preferred>
+                               <strong>アイテム</strong>
+                            </preferred>
+                         </dd>
+                         <dt>zh</dt>
+                         <dd language="zh" script="Hans">
+                            <preferred>
+                               <strong>产品</strong>
+                               , &lt;在可靠性方面/&gt;
+                            </preferred>
+                         </dd>
+                      </dl>
+                   </term>
+                   <term id="paddy1">
+                      <fmt-name>
+                         <span class="fmt-caption-label">
+                            <semx element="autonum" source="_">192-01</semx>
+                            <span class="fmt-autonum-delim">-</span>
+                            <semx element="autonum" source="paddy1">03</semx>
+                         </span>
+                      </fmt-name>
+                      <fmt-xref-label>
+                         <semx element="autonum" source="_">192-01</semx>
+                         <span class="fmt-autonum-delim">-</span>
+                         <semx element="autonum" source="paddy1">03</semx>
+                      </fmt-xref-label>
+                      <preferred>
+                         <strong>paddy</strong>
+                      </preferred>
+                      <definition>
+                         <p id="_">rice retaining its husk after threshing</p>
+                      </definition>
+                   </term>
+                </terms>
+             </clause>
+          </sections>
+       </iso-standard>
     PRESXML
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)

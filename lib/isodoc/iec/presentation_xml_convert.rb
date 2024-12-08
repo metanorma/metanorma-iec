@@ -15,17 +15,15 @@ module IsoDoc
       end
 
       def clause(docxml)
-        docxml.xpath(ns("//clause[not(ancestor::annex)] | " \
-                        "//definitions | //references | " \
-                        "//preface/introduction[clause]"))
+        docxml.xpath(ns("//clause | //definitions | //references | //appendix | " \
+                        "//introduction | //foreword | //preface/abstract | " \
+                      "//acknowledgements | //colophon | //indexsect "))
           .each do |f|
           f.parent.name == "annex" &&
             @xrefs.klass.single_term_clause?(f.parent) and next
           clause1(f)
         end
-        docxml.xpath(ns("//terms")).each do |f|
-          termclause1(f)
-        end
+        docxml.xpath(ns("//terms")).each { |f| termclause1(f) }
       end
 
       def clause1(elem)
@@ -65,10 +63,15 @@ module IsoDoc
             <foreword id='_#{UUIDTools::UUID.random_create}'> </foreword>
           CLAUSE
         end
-        f.children.empty? and f.children = " "
-        ins = f.at(ns("./title")) || f.children.first.before(" ").previous
-        ins.next =
-          "<clause type='boilerplate_legal'>#{to_xml(b.children)}</clause>"
+        insert_foreword_boilerplate(f, b)
+      end
+
+      def insert_foreword_boilerplate(elem, boilerplate)
+        elem.children.empty? and elem.children = " "
+        ins = elem.at(ns("./title")) || elem.children.first.before(" ").previous
+        ins.next = <<~CLAUSE
+          <clause type='boilerplate_legal'>#{to_xml(boilerplate.children)}</clause>
+          CLAUSE
       end
 
       def insert_middle_title(docxml)

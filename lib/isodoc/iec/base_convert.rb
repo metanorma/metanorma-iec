@@ -10,9 +10,9 @@ module IsoDoc
 
       def foreword(clause, out)
         out.div **attr_code(id: clause["id"]) do |s|
-          clause_name(nil, clause.at(ns("./title")), s,
+          clause_name(nil, clause.at(ns("./fmt-title")), s,
                       { class: "ForewordTitle" })
-          clause.elements.each { |e| parse(e, s) unless e.name == "title" }
+          clause.elements.each { |e| parse(e, s) unless e.name == "fmt-title" }
         end
       end
 
@@ -23,7 +23,7 @@ module IsoDoc
       def biblio_list(elem, div, biblio)
         @is_iev or return super
         elem.children.each do |b|
-          parse(b, div) unless %w(title bibitem).include? b.name
+          parse(b, div) unless %w(fmt-title bibitem).include? b.name
         end
       end
 
@@ -34,10 +34,10 @@ module IsoDoc
           depth = clause_title_depth(node, nil)
           out.send "h#{depth}", class: "zzSTDTitle2" do |p|
             p.b do |b|
-              node&.at(ns("./title"))&.children&.each { |c2| parse(c2, b) }
+              node&.at(ns("./fmt-title"))&.children&.each { |c2| parse(c2, b) }
             end
           end
-          node.children.reject { |c1| c1.name == "title" }.each do |c1|
+          node.children.reject { |c1| c1.name == "fmt-title" }.each do |c1|
             parse(c1, div)
           end
         end
