@@ -131,20 +131,20 @@ RSpec.describe IsoDoc::Iec do
               <language current="true">en</language>
               </bibdata>
               #{PREFACE}
-             <foreword displayorder="8">
+            <foreword displayorder="8">
                 <title id="_">FOREWORD</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">FOREWORD</semx>
                 </fmt-title>
                 <p id="_">
-                   <xref target="ISO712">[110]</xref>
-                   <xref target="ISBN">[1]</xref>
-                   <xref target="ISSN">[2]</xref>
+                   <xref target="ISO712">ISO 712</xref>
+                   <xref target="ISBN">[3]</xref>
+                   <xref target="ISSN">[4]</xref>
                    <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
                    <xref target="ref1">ICC 167</xref>
-                   <xref target="ref10">[4]</xref>
+                   <xref target="ref10">[6]</xref>
                    <xref target="ref12">Citn</xref>
-                   <xref target="zip_ffs">[5]</xref>
+                   <xref target="zip_ffs">[2]</xref>
                 </p>
              </foreword>
           </preface>
@@ -171,10 +171,10 @@ RSpec.describe IsoDoc::Iec do
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </em>
                    </formattedref>
+                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
                    <docidentifier type="ISO">ISO 712</docidentifier>
-                   <docidentifier type="metanorma">[110]</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 712</docidentifier>
-                   <biblio-tag>[110], ISO 712, </biblio-tag>
+                   <biblio-tag>[1], ISO 712, </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO16634" type="standard">
                    <formattedref>
@@ -230,8 +230,8 @@ RSpec.describe IsoDoc::Iec do
                 </note>
                 <bibitem id="zip_ffs">
                    <formattedref format="application/x-isodoc+xml">Title 5</formattedref>
-                   <docidentifier type="metanorma">[5]</docidentifier>
-                   <biblio-tag>[5] </biblio-tag>
+                   <docidentifier type="metanorma-ordinal">[2]</docidentifier>
+                   <biblio-tag>[2] </biblio-tag>
                 </bibitem>
              </references>
           </sections>
@@ -246,10 +246,10 @@ RSpec.describe IsoDoc::Iec do
                       <em>Chemicals for analytical laboratory use</em>
                       . n.p.: n.d.
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[3]</docidentifier>
                    <docidentifier type="ISBN">ISBN</docidentifier>
                    <biblio-tag>
-                      [1]
+                      [3]
                       <tab/>
                    </biblio-tag>
                 </bibitem>
@@ -258,10 +258,10 @@ RSpec.describe IsoDoc::Iec do
                       <em>Instruments for analytical laboratory use</em>
                       . n.d.
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[2]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[4]</docidentifier>
                    <docidentifier type="ISSN">ISSN</docidentifier>
                    <biblio-tag>
-                      [2]
+                      [4]
                       <tab/>
                    </biblio-tag>
                 </bibitem>
@@ -294,11 +294,11 @@ RSpec.describe IsoDoc::Iec do
                       </em>
                       .
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[3]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[5]</docidentifier>
                    <docidentifier type="ISO">ISO 3696</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 3696</docidentifier>
                    <biblio-tag>
-                      [3]
+                      [5]
                       <tab/>
                       ISO 3696,
                    </biblio-tag>
@@ -312,9 +312,9 @@ RSpec.describe IsoDoc::Iec do
                       <link target="http://www.icc.or.at"/>
                       )
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[4]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[6]</docidentifier>
                    <biblio-tag>
-                      [4]
+                      [6]
                       <tab/>
                    </biblio-tag>
                 </bibitem>
@@ -325,11 +325,11 @@ RSpec.describe IsoDoc::Iec do
                       </em>
                       .
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[5]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[7]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 10</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
                    <biblio-tag>
-                      [5]
+                      [7]
                       <tab/>
                       IETF RFC 10,
                    </biblio-tag>
@@ -356,25 +356,25 @@ RSpec.describe IsoDoc::Iec do
 
     html = <<~OUTPUT
       #{HTML_HDR}
-            <div>
-              <h1 class='ForewordTitle'>FOREWORD</h1>
-              <p id='_'>
-                <a href='#ISO712'>[110]</a>
-                <a href='#ISBN'>[1]</a>
-                <a href='#ISSN'>[2]</a>
-                <a href="#ISO16634">ISO 16634:-- (all parts)</a>
-                <a href='#ref1'>ICC&#xa0;167</a>
-                <a href='#ref10'>[4]</a>
-                <a href='#ref12'>Citn</a>
-                <a href='#zip_ffs'>[5]</a>
-              </p>
-            </div>
+                <div>
+                   <h1 class="ForewordTitle">FOREWORD</h1>
+                   <p id="_">
+                      <a href="#ISO712">ISO 712</a>
+                      <a href="#ISBN">[3]</a>
+                      <a href="#ISSN">[4]</a>
+                      <a href="#ISO16634">ISO 16634:-- (all parts)</a>
+                      <a href="#ref1">ICC 167</a>
+                      <a href="#ref10">[6]</a>
+                      <a href="#ref12">Citn</a>
+                      <a href="#zip_ffs">[2]</a>
+                   </p>
+                </div>
             #{IEC_TITLE1}
                 <div>
                    <h1>1  Normative References</h1>
                    <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
                    <p id="ISO712" class="NormRef">
-                      [110], ISO 712,
+                      [1], ISO 712,
                       <i>
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </i>
@@ -411,18 +411,18 @@ RSpec.describe IsoDoc::Iec do
                          This is an annotation of ISO 20483:2013-2014
                       </p>
                    </div>
-                   <p id="zip_ffs" class="NormRef">[5] Title 5</p>
+                   <p id="zip_ffs" class="NormRef">[2] Title 5</p>
                 </div>
                 <br/>
                 <div>
                    <h1 class="Section3">Bibliography</h1>
                    <p id="ISBN" class="Biblio">
-                      [1] 
+                      [3] 
                       <i>Chemicals for analytical laboratory use</i>
                       . n.p.: n.d.
                    </p>
                    <p id="ISSN" class="Biblio">
-                      [2] 
+                      [4] 
                       <i>Instruments for analytical laboratory use</i>
                       . n.d.
                    </p>
@@ -439,14 +439,14 @@ RSpec.describe IsoDoc::Iec do
                       </p>
                    </div>
                    <p id="ISO3696" class="Biblio">
-                      [3]  ISO 3696,
+                      [5]  ISO 3696,
                       <i>
                          <span class="stddocTitle">Water for analytical laboratory use</span>
                       </i>
                       .
                    </p>
                    <p id="ref10" class="Biblio">
-                      [4] 
+                      [6] 
                       <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
                       .
                       <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i>
@@ -455,7 +455,7 @@ RSpec.describe IsoDoc::Iec do
                       )
                    </p>
                    <p id="ref11" class="Biblio">
-                      [5]  IETF RFC 10,
+                      [7]  IETF RFC 10,
                       <i>
                          <span class="stddocTitle">Internet Calendaring and Scheduling Core Object Specification (iCalendar)</span>
                       </i>
