@@ -30,7 +30,7 @@ RSpec.describe IsoDoc do
        <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
          <title>Normal Terms</title>
          <term id="J">
-         <preferred>Term2</preferred>
+         <preferred><expression><name>Term2</name></expression></preferred>
        </term>
        </terms>
        <definitions id="K">
@@ -190,7 +190,16 @@ RSpec.describe IsoDoc do
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="J">1</semx>
                       </fmt-xref-label>
-                      <preferred>Term2</preferred>
+               <preferred id="_">
+                  <expression>
+                     <name>Term2</name>
+                  </expression>
+               </preferred>
+               <fmt-preferred>
+                  <p>
+                     <semx element="preferred" source="_"><strong>Term2</strong></semx>
+                  </p>
+               </fmt-preferred>
                    </term>
                 </terms>
                 <definitions id="K">
@@ -447,7 +456,7 @@ RSpec.describe IsoDoc do
                    <div id="I">
                       <h2>3.1  Normal Terms</h2>
                       <p class="TermNum" id="J">3.1.1</p>
-                      <p class="Terms" style="text-align:left;">Term2</p>
+                      <p class="Terms" style="text-align:left;"><b>Term2</b></p>
                    </div>
                    <div id="K">
                       <h2>3.2  Symbols</h2>
@@ -687,7 +696,7 @@ RSpec.describe IsoDoc do
        <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
          <title>Normal Terms</title>
          <term id="J">
-         <preferred>Term2</preferred>
+         <preferred><expression><name>Term2</name></expression></preferred>
        </term>
        </terms>
        <definitions id="K">
@@ -846,7 +855,16 @@ RSpec.describe IsoDoc do
                          <span class="fmt-autonum-delim">.</span>
                          <semx element="autonum" source="J">1</semx>
                       </fmt-xref-label>
-                      <preferred>Term2</preferred>
+               <preferred id="_">
+                  <expression>
+                     <name>Term2</name>
+                  </expression>
+               </preferred>
+               <fmt-preferred>
+                  <p>
+                     <semx element="preferred" source="_"><strong>Term2</strong></semx>
+                  </p>
+               </fmt-preferred>
                    </term>
                 </terms>
                 <definitions id="K">
@@ -1104,7 +1122,7 @@ RSpec.describe IsoDoc do
                    <div id="I">
                       <h2>3.1  Normal Terms</h2>
                       <p class="TermNum" id="J">3.1.1</p>
-                      <p class="Terms" style="text-align:left;">Term2</p>
+                      <p class="Terms" style="text-align:left;"><b>Term2</b></p>
                    </div>
                    <div id="K">
                       <h2>3.2  Symboles</h2>

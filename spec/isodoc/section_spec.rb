@@ -22,7 +22,7 @@ RSpec.describe IsoDoc do
        <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
          <title>Normal Terms</title>
          <term id="J">
-         <preferred>Term2</preferred>
+         <preferred><expression><name>Term2</name></expression></preferred>
        </term>
        </terms>
        <definitions id="K">
@@ -173,7 +173,16 @@ RSpec.describe IsoDoc do
                           <span class="fmt-autonum-delim">.</span>
                           <semx element="autonum" source="J">1</semx>
                        </fmt-xref-label>
-                       <preferred>Term2</preferred>
+                    <preferred id="_">
+                  <expression>
+                     <name>Term2</name>
+                  </expression>
+               </preferred>
+               <fmt-preferred>
+                  <p>
+                     <semx element="preferred" source="_"><strong>Term2</strong></semx>
+                  </p>
+               </fmt-preferred>
                     </term>
                  </terms>
                  <definitions id="K">
@@ -446,7 +455,7 @@ RSpec.describe IsoDoc do
           <div id="I">
              <h2>3.1&#160; Normal Terms</h2>
              <p class="TermNum" id="J">3.1.1</p>
-             <p class="Terms" style="text-align:left;">Term2</p>
+             <p class="Terms" style="text-align:left;"><b>Term2</b></p>
            </div>
                     <div id="K">
                        <h2>3.2  Symbols</h2>
@@ -551,7 +560,7 @@ RSpec.describe IsoDoc do
         <div id="I">
            <h2>3.1<span style="mso-tab-count:1">&#160; </span>Normal Terms</h2>
            <p class="TermNum" id="J">3.1.1</p>
-           <p class="Terms" style="text-align:left;">Term2</p>
+           <p class="Terms" style="text-align:left;"><b>Term2</b></p>
 
          </div><div id="K">
                     <h2>
@@ -698,35 +707,6 @@ RSpec.describe IsoDoc do
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)))).to be_equivalent_to Xml::C14n.format(output)
-  end
-
-  it "processes simple terms & definitions" do
-    input = <<~INPUT
-              <iso-standard xmlns="http://riboseinc.com/isoxml">
-      <sections>
-      <terms id="H" obligation="normative" displayorder="1">
-        <fmt-title>1<tab/>Terms, Definitions, Symbols and Abbreviated Terms</fmt-title>
-        <term id="J">
-        <fmt-name>1.1</fmt-name>
-        <preferred>Term2</preferred>
-      </term>
-       </terms>
-       </sections>
-       </iso-standard>
-    INPUT
-    output = <<~OUTPUT
-          #{HTML_HDR_BARE}
-      #{IEC_TITLE1}
-                     <div id="H"><h1>1&#160; Terms, Definitions, Symbols and Abbreviated Terms</h1>
-             <p class="TermNum" id="J">1.1</p>
-               <p class="Terms" style="text-align:left;">Term2</p>
-             </div>
-                   </div>
-                 </body>
-             </html>
-    OUTPUT
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({}).convert("test", input, true)))
-      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes inline section headers" do

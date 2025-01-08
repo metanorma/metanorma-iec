@@ -32,10 +32,13 @@ module IsoDoc
               #xref: l10n("#{@labels['section_iev']} #{num}"),
               xref: labelled_autonum(@labels['section_iev'], num),
               level: 2, type: "clause", elem: @labels["section_iev"] }
-          t.xpath(ns("./term")).each_with_index do |c, j|
+          j = 0
+          t.xpath(ns("./term")).each do |c|
+            c["unnumbered"] == "true" and next
             num2 = semx(c, "%02d" % [j + 1])
             #section_names1(c, "#{num}#{delim_wrap("-")}#{num2}", 3)
             section_names1(c, num, num2, 3)
+            j += 1
           end
         end
       end

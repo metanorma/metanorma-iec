@@ -97,7 +97,7 @@ RSpec.describe Metanorma::Iec::Processor do
             <terms id="H" obligation="normative"><title>1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</title>
               <term id="J">
                 <name>1.1</name>
-                <preferred>Term2</preferred>
+                <preferred><expression><name>Term2</name></expression></preferred>
               </term>
             </terms>
           </sections>
