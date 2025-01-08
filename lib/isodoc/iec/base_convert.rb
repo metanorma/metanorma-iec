@@ -43,6 +43,11 @@ module IsoDoc
         end
       end
 
+      def termdef_parse(node, out)
+        node.at(ns("./fmt-preferred")) or return
+        super
+      end
+
       def para_class(node)
         case node["class"]
         when "zzSTDTitle1", "zzSTDTitle2" then "zzSTDTitle1"
