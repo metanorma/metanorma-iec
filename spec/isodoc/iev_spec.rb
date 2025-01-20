@@ -1318,11 +1318,9 @@ RSpec.describe IsoDoc do
                          <semx element="related" source="_">
                             <p>
                                CONTRAST:
-                               <fmt-preferred>
                                   <semx element="preferred" source="_">
                                      <strong>Fifth Designation</strong>
                                   </semx>
-                               </fmt-preferred>
                                (
                                <xref target="paddy1">
                                   <span class="citesec">
@@ -1470,11 +1468,9 @@ RSpec.describe IsoDoc do
                             <semx element="related" source="_">
                                <p>
                                   CONTRASTEZ:
-                                  <fmt-preferred>
                                      <semx element="preferred" source="_">
                                         <strong>Designation cinquième</strong>
                                      </semx>
-                                  </fmt-preferred>
                                   (
                                   <xref target="paddy1">
                                      <span class="citesec">
@@ -1489,11 +1485,9 @@ RSpec.describe IsoDoc do
                             <semx element="related" source="_">
                                <p>
                                   VOIR:
-                                  <fmt-preferred>
                                      <semx element="preferred" source="_">
                                         <strong>Designation sixième</strong>
                                      </semx>
-                                  </fmt-preferred>
                                   (
                                   <xref target="paddy1">
                                      <span class="citesec">
