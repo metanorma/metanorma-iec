@@ -159,9 +159,9 @@ RSpec.describe IsoDoc do
       <fmt-title>1<tab/>Terms and Definitions</fmt-title>
       <term id="paddy1">
       <fmt-name>1.1</fmt-name>
-      <preferred>paddy</preferred>
+      <fmt-preferred>paddy</fmt-preferred>
       <domain>rice</domain>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
         <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
         <ul>
@@ -173,18 +173,18 @@ RSpec.describe IsoDoc do
         <li>A</li>
         </ul>
       </termexample>
-      <termsource status="modified">
+      <fmt-termsource status="modified">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
           <modification>
           <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
         </modification>
-      </termsource></term>
+      </fmt-termsource></term>
       <term id="paddy">
       <fmt-name>1.2</fmt-name>
-      <preferred>paddy</preferred><admitted>paddy rice</admitted>
-      <admitted>rough rice</admitted>
-      <deprecates>cargo rice</deprecates>
-      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <fmt-preferred>paddy</fmt-preferred><fmt-admitted>paddy rice</fmt-admitted>
+      <fmt-admitted>rough rice</fmt-admitted>
+      <fmt-deprecates>cargo rice</fmt-deprecates>
+      <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
         <ul>
         <li>A</li>
@@ -197,9 +197,9 @@ RSpec.describe IsoDoc do
       <ul><li>A</li></ul>
         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
       </termnote>
-      <termsource status="identical">
+      <fmt-termsource status="identical">
         <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
-      </termsource></term>
+      </fmt-termsource></term>
       </terms>
       </sections>
       </iso-standard>

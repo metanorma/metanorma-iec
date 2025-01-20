@@ -169,7 +169,7 @@ RSpec.describe Metanorma::Iec::Processor do
             <div id="J">
             <h2 class="TermNum" id="_"><a class="anchor" href="#J"/><a class="header" href="#J">1.11.1</a></h2>
             </div>
-            <p class="Terms" style="text-align:left;">Term2</p>
+            <p class="Terms" style="text-align:left;"><b>Term2</b></p>
           </div>
         </main>
       OUTPUT
