@@ -3,7 +3,7 @@ require "fileutils"
 
 RSpec.describe Metanorma::Iec do
   before(:all) do
-    @boilerplate = boilerplate(Nokogiri::XML("#{BLANK_HDR}</iec-standard>"))
+    @boilerplate = boilerplate(Nokogiri::XML("#{BLANK_HDR}</metanorma>"))
   end
 
   it "generates reference boilerplate for IEV" do
@@ -23,7 +23,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <?xml version='1.0' encoding='UTF-8'?>
-             <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
+             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
                <bibdata type='standard'>
                           <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
@@ -118,7 +118,7 @@ RSpec.describe Metanorma::Iec do
                    </bibitem>
                  </references>
                </bibliography>
-             </iec-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -139,7 +139,7 @@ RSpec.describe Metanorma::Iec do
       ==== Term 1
     INPUT
     output = <<~OUTPUT
-      <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
         <bibdata type='standard'>
                   <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
@@ -230,7 +230,7 @@ RSpec.describe Metanorma::Iec do
              </terms>
            </terms>
          </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -252,7 +252,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <?xml version='1.0' encoding='UTF-8'?>
-      <iec-standard xmlns='https://www.metanorma.org/ns/iec' type="semantic" version="#{Metanorma::Iec::VERSION}">
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
            <bibdata type='standard'>
                       <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
@@ -335,7 +335,7 @@ RSpec.describe Metanorma::Iec do
                </introduction>
              </preface>
              <sections> </sections>
-           </iec-standard>
+           </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

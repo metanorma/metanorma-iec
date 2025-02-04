@@ -17,7 +17,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
           #{@blank_hdr}
       <sections/>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -37,7 +37,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
           #{@blank_hdr}
       <sections/>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -99,7 +99,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
                 <?xml version="1.0" encoding="UTF-8"?>
-            <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
+            <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}">
                       <bibdata type="standard">
              <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
              <title language="en" format="text/plain" type="title-intro">Introduction</title>
@@ -415,7 +415,7 @@ RSpec.describe Metanorma::Iec do
              </feedback-statement>
           </boilerplate>
           <sections> </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

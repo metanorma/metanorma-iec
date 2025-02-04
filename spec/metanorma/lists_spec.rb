@@ -56,7 +56,7 @@ RSpec.describe Metanorma::Iec do
         </li>
       </ul>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
   end
 
@@ -164,7 +164,7 @@ RSpec.describe Metanorma::Iec do
        </ol>
          </li>
        </ol></sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
   end
 
@@ -188,7 +188,7 @@ RSpec.describe Metanorma::Iec do
         </li>
       </ul>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, backend: :iec, header_footer: true))))

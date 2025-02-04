@@ -21,7 +21,7 @@ RSpec.describe Metanorma::Iec do
       line break</p>
       <hr/>
       <pagebreak/></sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -41,7 +41,7 @@ RSpec.describe Metanorma::Iec do
       <link target="http://example.com"/>
       <link target="http://example.com">Link</link></p>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -57,7 +57,7 @@ RSpec.describe Metanorma::Iec do
       <sections>
         <p id="_">Text <bookmark id="bookmark"/> Text</p>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -85,7 +85,7 @@ RSpec.describe Metanorma::Iec do
       Footnoted Reference with Text to <xref target="reference">text</xref></p>
       </clause>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -119,7 +119,7 @@ RSpec.describe Metanorma::Iec do
       </bibitem>
       </references>
       </bibliography>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -137,7 +137,7 @@ RSpec.describe Metanorma::Iec do
         <p id="_">Footnote text</p>
       </fn></p>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

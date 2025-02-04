@@ -141,7 +141,7 @@ end
 
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
-  <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
+  <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}">
   <bibdata type="standard">
     <contributor>
       <role type="author"/>
@@ -211,7 +211,7 @@ HDR
 def blank_hdr_gen
   <<~"HDR"
     #{BLANK_HDR}
-    #{boilerplate(Nokogiri::XML("#{BLANK_HDR}</iec-standard>"))}
+    #{boilerplate(Nokogiri::XML("#{BLANK_HDR}</metanorma>"))}
   HDR
 end
 

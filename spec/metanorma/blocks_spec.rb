@@ -21,7 +21,7 @@ RSpec.describe Metanorma::Iec do
       <sections><p id="_">x</p>
       <p id="_">y</p>
       <p id="_">z</p></sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -51,7 +51,7 @@ RSpec.describe Metanorma::Iec do
       </term>
       </terms>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -69,7 +69,7 @@ RSpec.describe Metanorma::Iec do
         <p id="_">This is a note</p>
       </note>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -89,7 +89,7 @@ RSpec.describe Metanorma::Iec do
         <pre id="_">LITERAL</pre>
       </figure>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -107,7 +107,7 @@ RSpec.describe Metanorma::Iec do
          <p id="_">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
        </admonition>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -142,7 +142,7 @@ RSpec.describe Metanorma::Iec do
          </li>
        </ol></admonition>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -173,7 +173,7 @@ RSpec.describe Metanorma::Iec do
        </term>
        </terms>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -195,7 +195,7 @@ RSpec.describe Metanorma::Iec do
          <example id="_"><p id="_">This is an example</p>
        <p id="_">Amen</p></example>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -217,7 +217,7 @@ RSpec.describe Metanorma::Iec do
        <clause id="_" inline-header="false" obligation="normative">
          <title>Section 1</title>
        </clause></sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -238,7 +238,7 @@ RSpec.describe Metanorma::Iec do
                   <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
        </figure>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -255,7 +255,7 @@ RSpec.describe Metanorma::Iec do
       <sections>
          <p align="right" id="_">This para is right-aligned.</p>
        </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -278,7 +278,7 @@ RSpec.describe Metanorma::Iec do
          <p id="_">Block quotation</p>
        </quote>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -303,7 +303,7 @@ RSpec.describe Metanorma::Iec do
          puts x
        end</sourcecode>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -333,7 +333,7 @@ RSpec.describe Metanorma::Iec do
          <p id="_">This is another callout</p>
        </annotation></sourcecode>
        </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
