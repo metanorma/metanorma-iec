@@ -1,0 +1,2 @@
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "fix/single-root-tag"
+gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "fix/single-root-tag"

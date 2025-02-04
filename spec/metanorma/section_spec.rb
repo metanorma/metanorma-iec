@@ -102,7 +102,7 @@ RSpec.describe Metanorma::Iec do
              </references>
              </clause>
              </bibliography>
-             </iec-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -136,7 +136,7 @@ RSpec.describe Metanorma::Iec do
       </sections><annex id="_" inline-header="false" obligation="informative">
         <title>Annex</title>
       </annex>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -170,7 +170,7 @@ RSpec.describe Metanorma::Iec do
         <title>Clause Aa</title>
       </clause>
       </annex>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -193,7 +193,7 @@ RSpec.describe Metanorma::Iec do
       </clause>
       </clause>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

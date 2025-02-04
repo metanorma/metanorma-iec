@@ -8,7 +8,7 @@ RSpec.describe Metanorma::Iec::Processor do
   processor = registry.find_processor(:iec)
 
   inputxml = <<~INPUT
-    <iec-standard xmlns="http://riboseinc.com/isoxml">
+    <metanorma xmlns="https://www.metanorma.org/ns/standoc">
     <bibdata type="standard">
     <title language="en" format="text/plain" type="main">English</title>
     <title language="en" format="text/plain" type="title-main">English</title>
@@ -101,7 +101,7 @@ RSpec.describe Metanorma::Iec::Processor do
               </term>
             </terms>
           </sections>
-        </iec-standard>
+        </metanorma>
   INPUT
 
   it "registers against metanorma" do
@@ -125,7 +125,7 @@ RSpec.describe Metanorma::Iec::Processor do
     output = <<~OUTPUT
           #{blank_hdr_gen}
       <sections/>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(processor.input_to_isodoc(input, nil))))
       .to be_equivalent_to Xml::C14n.format(output)
