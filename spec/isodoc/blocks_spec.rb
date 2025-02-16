@@ -6,10 +6,10 @@ RSpec.describe IsoDoc::Iec do
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface><foreword displayorder="1"><fmt-title>FOREWORD</fmt-title>
           <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934" unnumbered="true">
-        <stem type="AsciiMath">r = 1 %</stem>
+        <fmt-stem type="AsciiMath">r = 1 %</fmt-stem>
       <dl id="_e4fe94fe-1cde-49d9-b1ad-743293b7e21d">
         <dt>
-          <stem type="AsciiMath">r</stem>
+          <fmt-stem type="AsciiMath">r</fmt-stem>
         </dt>
         <dd>
           <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
@@ -21,7 +21,7 @@ RSpec.describe IsoDoc::Iec do
       </note>
           </formula>
           <formula id="_be9158af-7e93-4ee2-90c5-26d31c181935"><fmt-name>(1)</fmt-name>
-        <stem type="AsciiMath">r = 1 %</stem>
+        <fmt-stem type="AsciiMath">r = 1 %</fmt-stem>
         </formula>
           </foreword></preface>
           </iso-standard>
@@ -36,7 +36,7 @@ RSpec.describe IsoDoc::Iec do
                </head>
                 <body lang="EN-US" link="blue" vlink="#954F72">
                             <div class="WordSection2">
-                <div>
+                <div id="_">
                    <h1 class="ForewordTitle">FOREWORD</h1>
                    <div id="_">
                       <div class="formula">
@@ -122,35 +122,41 @@ RSpec.describe IsoDoc::Iec do
     output = <<~OUTPUT
       <iso-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
            #{PREFACE}
-            <foreword displayorder="8">
+             <foreword id="_" displayorder="8">
                 <title id="_">FOREWORD</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">FOREWORD</semx>
                 </fmt-title>
                 <p>
-                   <xref target="N1">
-                      <span class="fmt-xref-container">
-                         <span class="fmt-element-name">Clause</span>
-                         <semx element="autonum" source="intro">1</semx>
-                      </span>
-                      <span class="fmt-comma">,</span>
-                      <span class="fmt-element-name">Equation</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="N1">1</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </xref>
-                   <xref target="N2">
-                      <span class="fmt-xref-container">
-                         <semx element="autonum" source="intro">1</semx>
-                         <span class="fmt-autonum-delim">.</span>
-                         <semx element="autonum" source="xyz">1</semx>
-                      </span>
-                      <span class="fmt-comma">,</span>
-                      <span class="fmt-element-name">Inequality</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="N2">2</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </xref>
+                   <xref target="N1" id="_"/>
+                   <semx element="xref" source="_">
+                      <fmt-xref target="N1">
+                         <span class="fmt-xref-container">
+                            <span class="fmt-element-name">Clause</span>
+                            <semx element="autonum" source="intro">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Equation</span>
+                         <span class="fmt-autonum-delim">(</span>
+                         <semx element="autonum" source="N1">1</semx>
+                         <span class="fmt-autonum-delim">)</span>
+                      </fmt-xref>
+                   </semx>
+                   <xref target="N2" id="_"/>
+                   <semx element="xref" source="_">
+                      <fmt-xref target="N2">
+                         <span class="fmt-xref-container">
+                            <semx element="autonum" source="intro">1</semx>
+                            <span class="fmt-autonum-delim">.</span>
+                            <semx element="autonum" source="xyz">1</semx>
+                         </span>
+                         <span class="fmt-comma">,</span>
+                         <span class="fmt-element-name">Inequality</span>
+                         <span class="fmt-autonum-delim">(</span>
+                         <semx element="autonum" source="N2">2</semx>
+                         <span class="fmt-autonum-delim">)</span>
+                      </fmt-xref>
+                   </semx>
                 </p>
              </foreword>
           </preface>
@@ -195,7 +201,10 @@ RSpec.describe IsoDoc::Iec do
                       <semx element="autonum" source="N1">1</semx>
                       <span class="fmt-autonum-delim">)</span>
                    </fmt-xref-label>
-                   <stem type="AsciiMath">r = 1 %</stem>
+                   <stem type="AsciiMath" id="_">r = 1 %</stem>
+                   <fmt-stem type="AsciiMath">
+                      <semx element="stem" source="_">r = 1 %</semx>
+                   </fmt-stem>
                 </formula>
                 <clause id="xyz">
                    <title id="_">Preparatory</title>
@@ -241,14 +250,20 @@ RSpec.describe IsoDoc::Iec do
                          <semx element="autonum" source="N2">2</semx>
                          <span class="fmt-autonum-delim">)</span>
                       </fmt-xref-label>
-                      <stem type="AsciiMath">r = 1 %</stem>
+                      <stem type="AsciiMath" id="_">r = 1 %</stem>
+                      <fmt-stem type="AsciiMath">
+                         <semx element="stem" source="_">r = 1 %</semx>
+                      </fmt-stem>
                    </formula>
-                   <xref target="N2">
-                      <span class="fmt-element-name">Inequality</span>
-                      <span class="fmt-autonum-delim">(</span>
-                      <semx element="autonum" source="N2">2</semx>
-                      <span class="fmt-autonum-delim">)</span>
-                   </xref>
+                   <xref target="N2" id="_"/>
+                   <semx element="xref" source="_">
+                      <fmt-xref target="N2">
+                         <span class="fmt-element-name">Inequality</span>
+                         <span class="fmt-autonum-delim">(</span>
+                         <semx element="autonum" source="N2">2</semx>
+                         <span class="fmt-autonum-delim">)</span>
+                      </fmt-xref>
+                   </semx>
                 </clause>
              </clause>
           </sections>
@@ -279,7 +294,7 @@ RSpec.describe IsoDoc::Iec do
     presxml = <<~INPUT
           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
         #{PREFACE}
-             <foreword displayorder="8">
+             <foreword displayorder="8" id="_">
                 <title id="_">FOREWORD</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">FOREWORD</semx>

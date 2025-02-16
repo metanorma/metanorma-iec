@@ -8,7 +8,7 @@ RSpec.describe Metanorma::Iec::Processor do
   processor = registry.find_processor(:iec)
 
   inputxml = <<~INPUT
-    <metanorma xmlns="https://www.metanorma.org/ns/standoc">
+    <metanorma xmlns="https://www.metanorma.org/ns/standoc"  flavor="iec">
     <bibdata type="standard">
     <title language="en" format="text/plain" type="main">English</title>
     <title language="en" format="text/plain" type="title-main">English</title>
@@ -94,10 +94,11 @@ RSpec.describe Metanorma::Iec::Processor do
 
     </boilerplate>
           <sections>
-            <terms id="H" obligation="normative"><title>1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</title>
+            <terms id="H" obligation="normative" displayorder="1">
+              <fmt-title>1&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</fmt-title>
               <term id="J">
-                <name>1.1</name>
-                <preferred><expression><name>Term2</name></expression></preferred>
+                <fmt-name>1.1</fmt-name>
+                <fmt-preferred><p>Term2</p></fmt-preferred>
               </term>
             </terms>
           </sections>
@@ -147,16 +148,16 @@ RSpec.describe Metanorma::Iec::Processor do
           <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
           <br/>
           <br/>
-          <p class="zzSTDTitle1">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
-          <p class="zzSTDTitle1">____________</p>
-          <p class="zzSTDTitle1"> </p>
-          <p class="zzSTDTitle1">
+          <p class="zzSTDTitle1" id="_">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
+          <p class="zzSTDTitle1" id="_">____________</p>
+          <p class="zzSTDTitle1" id="_"> </p>
+          <p class="zzSTDTitle1" id="_">
             <b>FRENCH</b>
           </p>
-          <p class="zzSTDTitle1"> </p>
+          <p class="zzSTDTitle1" id="_"> </p>
           <div id="_">
             <h1 class="ForewordTitle" id="_"><a class="anchor" href="#_"/><a class="header" href="#_">AVANT-PROPOS</a></h1>
-            <div class="boilerplate_legal">
+            <div class="boilerplate_legal" id="_">
               <p>THIS IS A LEGAL STATEMENT</p>
             </div>
           </div>
