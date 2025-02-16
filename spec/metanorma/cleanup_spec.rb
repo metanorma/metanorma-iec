@@ -20,7 +20,7 @@ RSpec.describe Metanorma::Iec do
       ====
     INPUT
     output = <<~OUTPUT
-          <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
+          <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
       <bibdata type="standard">
         <contributor>
           <role type="author"/>
@@ -95,13 +95,13 @@ RSpec.describe Metanorma::Iec do
              <value>3</value>
            </presentation-metadata>
          </metanorma-extension>
-      #{boilerplate(Nokogiri::XML(BLANK_HDR + '</iec-standard>'))}
+      #{boilerplate(Nokogiri::XML(BLANK_HDR + '</metanorma>'))}
                     <sections>
                <clause id="_" inline-header="false" obligation="normative">
 
              </clause>
              </sections>
-             </iec-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -119,7 +119,7 @@ RSpec.describe Metanorma::Iec do
 
       </clause>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -156,7 +156,7 @@ RSpec.describe Metanorma::Iec do
                <definition><verbal-definition><p id="_">This paragraph is extraneous</p></verbal-definition></definition>
              </term></terms>
              </sections>
-             </iec-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -195,7 +195,7 @@ RSpec.describe Metanorma::Iec do
         </contributor>
       </bibitem>
       </references></bibliography>
-             </iec-standard>
+             </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -230,7 +230,7 @@ RSpec.describe Metanorma::Iec do
        </bibitem>
       </references>
       </bibliography>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -246,7 +246,7 @@ RSpec.describe Metanorma::Iec do
       <sections>
         <p id="_">Paragraph</p>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -269,7 +269,7 @@ RSpec.describe Metanorma::Iec do
       </note>
       </example>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -296,7 +296,7 @@ RSpec.describe Metanorma::Iec do
 
       </sections>
 
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -324,7 +324,7 @@ RSpec.describe Metanorma::Iec do
         <title>Clause</title>
         <p id="_">Text</p>
       </annex>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -390,7 +390,7 @@ RSpec.describe Metanorma::Iec do
       </clause>
       </clause>
       </sections>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)

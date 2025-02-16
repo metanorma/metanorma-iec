@@ -17,7 +17,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
           #{@blank_hdr}
       <sections/>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -37,7 +37,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
           #{@blank_hdr}
       <sections/>
-      </iec-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -99,7 +99,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
                 <?xml version="1.0" encoding="UTF-8"?>
-            <iec-standard xmlns="https://www.metanorma.org/ns/iec" type="semantic" version="#{Metanorma::Iec::VERSION}">
+            <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
                       <bibdata type="standard">
              <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
              <title language="en" format="text/plain" type="title-intro">Introduction</title>
@@ -109,12 +109,12 @@ RSpec.describe Metanorma::Iec do
              <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
              <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
              <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
-             <docidentifier type="ISO" primary="true">IEC PNW 1000-1 ED2</docidentifier>
+             <docidentifier type="ISO" primary="true">IEC PNW 1000-1:2023 ED2</docidentifier>
              <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
              <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
              <docidentifier type="URN">urn:iec:std:iec:1000:-1:2023:stage-10.20:ed-2:en</docidentifier>
              <docidentifier type="iso-undated">IEC PNW 1000-1 ED2</docidentifier>
-             <docidentifier type="iso-with-lang">IEC PNW 1000-1 ED2(en)</docidentifier>
+             <docidentifier type="iso-with-lang">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
              <docnumber>1000</docnumber>
              <contributor>
                 <role type="author"/>
@@ -415,7 +415,7 @@ RSpec.describe Metanorma::Iec do
              </feedback-statement>
           </boilerplate>
           <sections> </sections>
-       </iec-standard>
+       </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to Xml::C14n.format(output)
@@ -677,11 +677,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type="standard">
-           <docidentifier primary="true" type="ISO">IEC CDV 1000</docidentifier>
+           <docidentifier primary="true" type="ISO">IEC CDV 1000:#{Date.today.year}</docidentifier>
            <docidentifier type="iso-reference">IEC CDV 1000:#{Date.today.year}(en)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec:1000:#{Date.today.year}:stage-40.20:en</docidentifier>
            <docidentifier type="iso-undated">IEC CDV 1000</docidentifier>
-           <docidentifier type="iso-with-lang">IEC CDV 1000(en)</docidentifier>
+           <docidentifier type="iso-with-lang">IEC CDV 1000:#{Date.today.year}(en)</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>

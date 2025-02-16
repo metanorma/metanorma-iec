@@ -75,19 +75,13 @@
         </choice>
       </element>
     </define>
-    <define name="OrganizationType" combine="interleave">
-      <optional>
-        <ref name="technical-committee"/>
-      </optional>
-      <optional>
-        <ref name="subcommittee"/>
-      </optional>
-      <optional>
-        <ref name="workgroup"/>
-      </optional>
-      <optional>
-        <ref name="secretariat"/>
-      </optional>
+    <define name="organization">
+      <element name="organization">
+        <choice>
+          <ref name="OrganizationType"/>
+          <ref name="IsoOrganizationType"/>
+        </choice>
+      </element>
     </define>
     <define name="DocumentType">
       <choice>
@@ -264,5 +258,19 @@
         <ref name="BasicBlock"/>
       </zeroOrMore>
     </element>
+  </define>
+  <define name="IsoOrganizationType">
+    <optional>
+      <ref name="technical-committee"/>
+    </optional>
+    <optional>
+      <ref name="subcommittee"/>
+    </optional>
+    <optional>
+      <ref name="workgroup"/>
+    </optional>
+    <optional>
+      <ref name="secretariat"/>
+    </optional>
   </define>
 </grammar>
