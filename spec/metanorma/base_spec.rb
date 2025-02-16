@@ -99,7 +99,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
                 <?xml version="1.0" encoding="UTF-8"?>
-            <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}">
+            <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
                       <bibdata type="standard">
              <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
              <title language="en" format="text/plain" type="title-intro">Introduction</title>
