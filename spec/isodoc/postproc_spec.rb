@@ -125,7 +125,7 @@ RSpec.describe IsoDoc do
       <fmt-preferred><p>paddy</p></fmt-preferred>
       <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <fmt-termsource status="modified">[SOURCE:
-        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</origin>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
+        <fmt-origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</fmt-origin>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
       </fmt-termsource></term>
       </terms>
       </sections>

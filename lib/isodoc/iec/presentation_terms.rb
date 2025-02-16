@@ -13,8 +13,8 @@ module IsoDoc
       end
 
       def concept(docxml)
-        @is_iev and concept_iev(docxml)
         super
+        @is_iev and concept_iev(docxml)
       end
 
       def concept_iev(docxml)
@@ -23,7 +23,7 @@ module IsoDoc
         end
         docpart = docxml.at(ns("//bibdata/ext/structuredidentifier/" \
                                 "project-number/@part"))&.text or return
-        docxml.xpath(ns("//termref[@base = 'IEV']")).each do |t|
+        docxml.xpath(ns("//fmt-concept//termref[@base = 'IEV']")).each do |t|
           concept_iev1(t, docpart, labels)
         end
       end
@@ -31,9 +31,10 @@ module IsoDoc
       def concept_iev1(termref, docpart, labels)
         /^#{docpart}-/.match?(termref["target"]) or return
         newtarget = labels[termref["target"]] or return
-        termref.name = "xref"
+        termref.name = "fmt-xref"
         termref.delete("base")
         termref["target"] = newtarget
+        xref1(termref)
       end
 
       def terms(docxml)
@@ -69,7 +70,9 @@ module IsoDoc
         dup = semx_fmt_dup(fr_term)
         dup.xpath(ns("./fmt-name | ./fmt-xref-label")).each(&:remove)
         en_term << dup
-        fr_term.xpath(ns(".//fmt-name | .//fmt-xref-label | .//fmt-preferred | .//fmt-admitted | .//fmt-deprecates | .//fmt-definition | .//fmt-related | .//fmt-termsource")).each(&:remove)
+        fr_term.xpath(ns(".//fmt-name | .//fmt-xref-label | " \
+          ".//fmt-preferred | .//fmt-admitted | .//fmt-deprecates | " \
+          ".//fmt-definition | .//fmt-related | .//fmt-termsource")).each(&:remove)
         fr_term["unnumbered"] = "true"
         en_term << dl if dl
         en_term["language"] = "en,fr"

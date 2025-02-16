@@ -103,7 +103,7 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
             <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <div>
+          <div id="_">
             <h1 class="ForewordTitle">FOREWORD</h1>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
@@ -124,8 +124,8 @@ RSpec.describe IsoDoc::Iec do
     expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
       .to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
-      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::WordConvert.new({})
+      .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
       .to be_equivalent_to Xml::C14n.format(doc)
@@ -166,7 +166,7 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
         <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <div>
+          <div id="_">
             <h1 class="ForewordTitle">FOREWORD</h1>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
@@ -190,8 +190,8 @@ RSpec.describe IsoDoc::Iec do
     expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
       .to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(IsoDoc::Iec::WordConvert.new({})
-      .convert("test", input, true)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::WordConvert.new({})
+      .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
       .to be_equivalent_to Xml::C14n.format(doc)
