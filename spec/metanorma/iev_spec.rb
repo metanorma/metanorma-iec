@@ -23,7 +23,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <?xml version='1.0' encoding='UTF-8'?>
-             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
+             <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
                <bibdata type='standard'>
                           <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
@@ -139,7 +139,7 @@ RSpec.describe Metanorma::Iec do
       ==== Term 1
     INPUT
     output = <<~OUTPUT
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
         <bibdata type='standard'>
                   <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
@@ -252,7 +252,7 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <?xml version='1.0' encoding='UTF-8'?>
-      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}">
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
            <bibdata type='standard'>
                       <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>

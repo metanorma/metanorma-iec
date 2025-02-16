@@ -20,7 +20,7 @@ RSpec.describe Metanorma::Iec do
       ====
     INPUT
     output = <<~OUTPUT
-          <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}">
+          <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
       <bibdata type="standard">
         <contributor>
           <role type="author"/>
