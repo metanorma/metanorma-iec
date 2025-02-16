@@ -71,7 +71,7 @@ RSpec.describe IsoDoc do
     presxml = <<~OUTPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
       #{PREFACE}
-              <foreword obligation="informative" displayorder="8">
+              <foreword obligation="informative" displayorder="8" id="_">
                  <title id="_">Foreword</title>
                  <fmt-title depth="1">
                     <semx element="title" source="_">Foreword</semx>
@@ -431,7 +431,7 @@ RSpec.describe IsoDoc do
       </div>
       <br/>
                #{IEC_TITLE}
-                  <div>
+                  <div id="_">
                     <h1 class="ForewordTitle">Foreword</h1>
                     <p id="A">This is a preamble</p>
                   </div>
@@ -532,7 +532,7 @@ RSpec.describe IsoDoc do
         <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
       </p>
                 #{IEC_TITLE}
-                <div>
+                <div id="_">
                   <h1 class="ForewordTitle">Foreword</h1>
                   <p id="A">This is a preamble</p>
                 </div>
@@ -836,19 +836,30 @@ RSpec.describe IsoDoc do
               <p>Boilerplate</p>
             </legal-statement>
           </boilerplate>
-          #{PREFACE}    <foreword id="_" displayorder="8">
-                   <title id="_">FOREWORD</title>
-         <fmt-title depth="1">
-            <semx element="title" source="_">FOREWORD</semx>
-         </fmt-title>
-        <clause type="boilerplate_legal">
-          <p>Boilerplate</p>
-        </clause>
-      </foreword>
-      </preface>
-          <sections>
-      <clause displayorder="9"/>
-      </sections>
+          #{PREFACE}
+              <foreword id="_" displayorder="8">
+                 <title id="_">FOREWORD</title>
+                 <fmt-title depth="1">
+                    <semx element="title" source="_">FOREWORD</semx>
+                 </fmt-title>
+                 <clause type="boilerplate_legal" id="_">
+                    <p>Boilerplate</p>
+                 </clause>
+              </foreword>
+           </preface>
+           <sections>
+              <clause id="_" displayorder="9">
+                 <fmt-title depth="1">
+                    <span class="fmt-caption-label">
+                       <semx element="autonum" source="_">1</semx>
+                    </span>
+                 </fmt-title>
+                 <fmt-xref-label>
+                    <span class="fmt-element-name">Clause</span>
+                    <semx element="autonum" source="_">1</semx>
+                 </fmt-xref-label>
+              </clause>
+           </sections>
         </iso-standard>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
@@ -883,12 +894,12 @@ RSpec.describe IsoDoc do
           </legal-statement>
         </boilerplate>
         #{PREFACE}
-                <foreword displayorder="8">
+                <foreword displayorder="8" id="_">
                          <title id="_">Foreword</title>
          <fmt-title depth="1">
             <semx element="title" source="_">Foreword</semx>
          </fmt-title>
-                <clause type="boilerplate_legal">
+                <clause type="boilerplate_legal" id="_">
         <p>Boilerplate</p>
       </clause>
           <p>A</p>
@@ -966,13 +977,13 @@ RSpec.describe IsoDoc do
             </legal-statement>
           </boilerplate>
           #{PREFACE}
-          <foreword displayorder="8">
+          <foreword displayorder="8" id="_">
          <title id="_">Foreword</title>
          <fmt-title depth="1">
             <semx element="title" source="_">Foreword</semx>
          </fmt-title>
       </foreword>
-      <p displayorder="9">A</p>
+      <p displayorder="9" id="_">A</p>
           </preface>
           <sections/>
         </iso-standard>

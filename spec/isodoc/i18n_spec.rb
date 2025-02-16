@@ -88,7 +88,7 @@ RSpec.describe IsoDoc do
       </ext>
       </bibdata>
       #{PREFACE}
-             <foreword obligation="informative" displayorder="8">
+             <foreword obligation="informative" displayorder="8" id="_">
                 <title id="_">FOREWORD</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">FOREWORD</semx>
@@ -431,7 +431,7 @@ RSpec.describe IsoDoc do
 
     html = <<~OUTPUT
        #{HTML_HDR}
-            <div>
+            <div id="_">
               <h1 class="ForewordTitle">FOREWORD</h1>
               <p id="A">This is a preamble</p>
             </div>
@@ -753,7 +753,7 @@ RSpec.describe IsoDoc do
       </ext>
       </bibdata>
       #{PREFACE.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')}
-            <foreword obligation="informative" displayorder="8">
+            <foreword obligation="informative" displayorder="8" id="_">
                 <title id="_">AVANT-PROPOS</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">AVANT-PROPOS</semx>
@@ -1097,7 +1097,7 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
       #{HTML_HDR.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')
       .gsub(/"en"/, '"fr"')}
-               <div>
+               <div id="_">
                  <h1 class="ForewordTitle">AVANT-PROPOS</h1>
                  <p id="A">This is a preamble</p>
                </div>
