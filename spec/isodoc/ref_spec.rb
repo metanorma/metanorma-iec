@@ -131,7 +131,7 @@ RSpec.describe IsoDoc::Iec do
               <language current="true">en</language>
               </bibdata>
               #{PREFACE}
-            <foreword id="_" displayorder="8">
+             <foreword id="_" displayorder="8">
                 <title id="_">FOREWORD</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">FOREWORD</semx>
@@ -195,9 +195,17 @@ RSpec.describe IsoDoc::Iec do
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </em>
                    </formattedref>
+                   <title format="text/plain">Cereals or cereal products</title>
+                   <title type="main" format="text/plain">Cereals and cereal products</title>
                    <docidentifier type="metanorma-ordinal">[1]</docidentifier>
                    <docidentifier type="ISO">ISO 712</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 712</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                      </organization>
+                   </contributor>
                    <biblio-tag>[1], ISO 712, </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO16634" type="standard">
@@ -207,13 +215,33 @@ RSpec.describe IsoDoc::Iec do
                       </em>
                       .
                    </formattedref>
+                   <title language="x" format="text/plain">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
+                   <title language="en" format="text/plain">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
                    <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
+                   <date type="published">
+                      <on>--</on>
+                   </date>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <abbreviation>ISO</abbreviation>
+                      </organization>
+                   </contributor>
                    <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+                   <extent type="part">
+                      <referenceFrom>all</referenceFrom>
+                   </extent>
                    <biblio-tag>
                       ISO 16634:-- (all parts)
-                      <fn reference="1">
+                      <fn reference="1" original-reference="1" id="_" target="_">
                          <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
+                         <fmt-fn-label>
+                            <sup>
+                               <semx element="autonum" source="_">1</semx>
+                               <span class="fmt-label-delim">)</span>
+                            </sup>
+                         </fmt-fn-label>
                       </fn>
                       ,
                    </biblio-tag>
@@ -224,8 +252,19 @@ RSpec.describe IsoDoc::Iec do
                          <span class="stddocTitle">Cereals and pulses</span>
                       </em>
                    </formattedref>
+                   <title format="text/plain">Cereals and pulses</title>
                    <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 20483:2013-2014</docidentifier>
+                   <date type="published">
+                      <from>2013</from>
+                      <to>2014</to>
+                   </date>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <name>International Organization for Standardization</name>
+                      </organization>
+                   </contributor>
                    <biblio-tag>ISO 20483:2013-2014, </biblio-tag>
                 </bibitem>
                 <bibitem id="ref1">
@@ -273,8 +312,15 @@ RSpec.describe IsoDoc::Iec do
                       <em>Chemicals for analytical laboratory use</em>
                       . n.p.: n.d.
                    </formattedref>
+                   <title format="text/plain">Chemicals for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[3]</docidentifier>
                    <docidentifier type="ISBN">ISBN</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <abbreviation>ISBN</abbreviation>
+                      </organization>
+                   </contributor>
                    <biblio-tag>
                       [3]
                       <tab/>
@@ -285,8 +331,15 @@ RSpec.describe IsoDoc::Iec do
                       <em>Instruments for analytical laboratory use</em>
                       . n.d.
                    </formattedref>
+                   <title format="text/plain">Instruments for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[4]</docidentifier>
                    <docidentifier type="ISSN">ISSN</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <abbreviation>ISSN</abbreviation>
+                      </organization>
+                   </contributor>
                    <biblio-tag>
                       [4]
                       <tab/>
@@ -321,9 +374,16 @@ RSpec.describe IsoDoc::Iec do
                       </em>
                       .
                    </formattedref>
+                   <title format="text/plain">Water for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[5]</docidentifier>
                    <docidentifier type="ISO">ISO 3696</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 3696</docidentifier>
+                   <contributor>
+                      <role type="publisher"/>
+                      <organization>
+                         <abbreviation>ISO</abbreviation>
+                      </organization>
+                   </contributor>
                    <biblio-tag>
                       [5]
                       <tab/>
@@ -355,6 +415,7 @@ RSpec.describe IsoDoc::Iec do
                       </em>
                       .
                    </formattedref>
+                   <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
                    <docidentifier type="metanorma-ordinal">[7]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 10</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
@@ -381,6 +442,23 @@ RSpec.describe IsoDoc::Iec do
                 </bibitem>
              </references>
           </bibliography>
+          <fmt-footnote-container>
+             <fmt-fn-body id="_" target="_" reference="1">
+                <semx element="fn" source="_">
+                   <p>
+                      <fmt-fn-label>
+                         <sup>
+                            <semx element="autonum" source="_">1</semx>
+                         </sup>
+                         <span class="fmt-caption-delim">
+                            <tab/>
+                         </span>
+                      </fmt-fn-label>
+                      Under preparation. (Stage at the time of publication ISO/DIS 16634)
+                   </p>
+                </semx>
+             </fmt-fn-body>
+          </fmt-footnote-container>
        </iso-standard>
     OUTPUT
 
@@ -412,7 +490,7 @@ RSpec.describe IsoDoc::Iec do
                    <p id="ISO16634" class="NormRef">
                       ISO 16634:-- (all parts)
                       <a class="FootnoteRef" href="#fn:1">
-                         <sup>1</sup>
+                         <sup>1)</sup>
                       </a>
                       ,
                       <i>
