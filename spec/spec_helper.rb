@@ -33,11 +33,12 @@ end
 
 def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
+    .gsub(%r{ id="(fn:|ftn)_[^"]+"}, ' id="_"')
     .gsub(%r{ original-id="_[^"]+"}, ' original-id="_"')
     .gsub(%r{ source="_[^"]+"}, ' source="_"')
     .gsub(%r{ target="_[^"]+"}, ' target="_"')
     .gsub(%r{ name="_[^"]+"}, ' name="_"')
-    .gsub(%r( href="#_?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12,13}"), ' href="#_"')
+    .gsub(%r( href="#(fn:|ftn)?_?[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12,13}"), ' href="#_"')
     .gsub(%r{<fetched>[^<]+</fetched>}, "<fetched/>")
     .gsub(%r{ schema-version="[^"]+"}, "")
 end
