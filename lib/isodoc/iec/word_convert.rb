@@ -104,9 +104,8 @@ module IsoDoc
       end
 
       def tr_parse(node, out, ord, totalrows, header)
-        c = node.parent.parent["class"]
-        bordered = %w(modspec).include?(c) || !c
-        out.tr do |r|
+        bordered = table_bordered?(node)
+        out.tr **attr_code(style: node["style"]) do |r|
           node.elements.each do |td|
             attrs = make_tr_attr(td, ord, totalrows - 1, header, bordered)
             attrs[:class] = "TABLE-col-heading" if header
