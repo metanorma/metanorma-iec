@@ -489,7 +489,7 @@ RSpec.describe IsoDoc::Iec do
                    </p>
                    <p id="ISO16634" class="NormRef">
                       ISO 16634:-- (all parts)
-                      <a class="FootnoteRef" href="#fn:1">
+                      <a class="FootnoteRef" href="#_">
                          <sup>1)</sup>
                       </a>
                       ,
@@ -575,7 +575,7 @@ RSpec.describe IsoDoc::Iec do
                       .
                    </p>
                 </div>
-                <aside id="fn:1" class="footnote">
+                <aside id="_" class="footnote">
                    <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
                 </aside>
              </div>
