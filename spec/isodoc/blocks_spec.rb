@@ -292,24 +292,239 @@ RSpec.describe IsoDoc::Iec do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
-        #{PREFACE}
-             <foreword displayorder="8" id="_">
-                <title id="_">FOREWORD</title>
-                <fmt-title depth="1">
-                   <semx element="title" source="_">FOREWORD</semx>
-                </fmt-title>
-                <ul>
-                   <li>A</li>
-                   <li>
-                      <ol id="AA" type="arabic">
-                         <li id="_" label="1">List</li>
-                      </ol>
-                   </li>
-                </ul>
-             </foreword>
-          </preface>
-       </iso-standard>
+        <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+      #{PREFACE}
+            <foreword id="_" displayorder="8">
+               <title id="_">FOREWORD</title>
+               <fmt-title depth="1">
+                  <semx element="title" source="_">FOREWORD</semx>
+               </fmt-title>
+               <ul>
+                  <li>
+                     <fmt-name>
+                        <semx element="autonum" source="">•</semx>
+                     </fmt-name>
+                     A
+                  </li>
+                  <li>
+                     <fmt-name>
+                        <semx element="autonum" source="">•</semx>
+                     </fmt-name>
+                     <ol id="AA" type="arabic">
+                        <li id="_">
+                           <fmt-name>
+                              <semx element="autonum" source="_">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           List
+                        </li>
+                     </ol>
+                  </li>
+               </ul>
+            </foreword>
+         </preface>
+      </iso-standard>
+    INPUT
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+  end
+
+  it "processes unordered lists" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <preface>
+          <foreword displayorder="2" id="fwd"><fmt-title>Foreword</fmt-title>
+          <ul id="_61961034-0fb1-436b-b281-828857a59ddb"  keep-with-next="true" keep-lines-together="true">
+          <name>Caption</name>
+        <li>
+          <p id="_cb370dd3-8463-4ec7-aa1a-96f644e2e9a2">Level 1</p>
+        </li>
+        <li>
+          <p id="_60eb765c-1f6c-418a-8016-29efa06bf4f9">deletion of 4.3.</p>
+          <ul id="_61961034-0fb1-436b-b281-828857a59ddc"  keep-with-next="true" keep-lines-together="true">
+          <li>
+          <p id="_cb370dd3-8463-4ec7-aa1a-96f644e2e9a3">Level 2</p>
+          <ul id="_61961034-0fb1-436b-b281-828857a59ddc"  keep-with-next="true" keep-lines-together="true">
+          <li>
+          <p id="_cb370dd3-8463-4ec7-aa1a-96f644e2e9a3">Level 3</p>
+          <ul id="_61961034-0fb1-436b-b281-828857a59ddc"  keep-with-next="true" keep-lines-together="true">
+          <li>
+          <p id="_cb370dd3-8463-4ec7-aa1a-96f644e2e9a3">Level 4</p>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+          </ul>
+        </li>
+      </ul>
+      </foreword></preface>
+      </iso-standard>
+    INPUT
+    presxml = <<~INPUT
+           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+      #{PREFACE}
+            <foreword displayorder="8" id="fwd">
+               <title id="_">FOREWORD</title>
+               <fmt-title depth="1">Foreword</fmt-title>
+               <ul id="_" keep-with-next="true" keep-lines-together="true">
+                  <name id="_">Caption</name>
+                  <fmt-name>
+                     <semx element="name" source="_">Caption</semx>
+                  </fmt-name>
+                  <li>
+                     <fmt-name>
+                        <semx element="autonum" source="">•</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li>
+                     <fmt-name>
+                        <semx element="autonum" source="">•</semx>
+                     </fmt-name>
+                     <p id="_">deletion of 4.3.</p>
+                     <ul id="_" keep-with-next="true" keep-lines-together="true">
+                        <li>
+                           <fmt-name>
+                              <semx element="autonum" source="">—</semx>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ul id="_" keep-with-next="true" keep-lines-together="true">
+                              <li>
+                                 <fmt-name>
+                                    <semx element="autonum" source="">o</semx>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ul id="_" keep-with-next="true" keep-lines-together="true">
+                                    <li>
+                                       <fmt-name>
+                                          <semx element="autonum" source="">•</semx>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </foreword>
+         </preface>
+      </iso-standard>
+    INPUT
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true))))
+      .to be_equivalent_to Xml::C14n.format(presxml)
+  end
+
+  it "processes ordered lists" do
+    input = <<~INPUT
+          <iso-standard xmlns="http://riboseinc.com/isoxml">
+          <preface>
+          <foreword id="_" displayorder="2">
+          <ol id="_ae34a226-aab4-496d-987b-1aa7b6314026" type="alphabet"  keep-with-next="true" keep-lines-together="true">
+          <name>Caption</name>
+        <li>
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+          </ol>
+        <ol id="A">
+        <li>
+          <p id="_0091a277-fb0e-424a-aea8-f0001303fe78">Level 1</p>
+          </li>
+        <li>
+          <p id="_8a7b6299-db05-4ff8-9de7-ff019b9017b2">Level 1</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 2</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 3</p>
+        <ol>
+        <li>
+          <p id="_ea248b7f-839f-460f-a173-a58a830b2abe">Level 4</p>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+        </ol>
+        </li>
+      </ol>
+      </foreword></preface>
+      </iso-standard>
+    INPUT
+    presxml = <<~INPUT
+           <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
+      #{PREFACE}
+            <foreword id="_" displayorder="8">
+               <title id="_">FOREWORD</title>
+               <fmt-title depth="1">
+                  <semx element="title" source="_">FOREWORD</semx>
+               </fmt-title>
+               <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true" autonum="1">
+                  <name id="_">Caption</name>
+                  <fmt-name>
+                     <semx element="name" source="_">Caption</semx>
+                  </fmt-name>
+                  <li id="_">
+                     <fmt-name>
+                        <semx element="autonum" source="_">a</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+               </ol>
+               <ol id="A" type="alphabet">
+                  <li id="_">
+                     <fmt-name>
+                        <semx element="autonum" source="_">a</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="_">
+                     <fmt-name>
+                        <semx element="autonum" source="_">b</semx>
+                        <span class="fmt-label-delim">)</span>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                     <ol type="arabic">
+                        <li id="_">
+                           <fmt-name>
+                              <semx element="autonum" source="_">1</semx>
+                              <span class="fmt-label-delim">)</span>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ol type="roman">
+                              <li id="_">
+                                 <fmt-name>
+                                    <semx element="autonum" source="_">i</semx>
+                                    <span class="fmt-label-delim">)</span>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ol type="alphabet_upper">
+                                    <li id="_">
+                                       <fmt-name>
+                                          <semx element="autonum" source="_">A</semx>
+                                          <span class="fmt-label-delim">.</span>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ol>
+                              </li>
+                           </ol>
+                        </li>
+                     </ol>
+                  </li>
+               </ol>
+            </foreword>
+         </preface>
+      </iso-standard>
     INPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true))))
