@@ -71,7 +71,7 @@ module IsoDoc
         ins = elem.at(ns("./title")) || elem.children.first.before(" ").previous
         ins.next = <<~CLAUSE
           <clause type='boilerplate_legal'>#{to_xml(boilerplate.children)}</clause>
-          CLAUSE
+        CLAUSE
       end
 
       def insert_middle_title(docxml)
@@ -122,6 +122,10 @@ module IsoDoc
         TITLE
         ret += "<p class='zzSTDTitle1'>&#xa0;</p>"
         s.add_first_child ret
+      end
+
+      def ul_label_list(_elem)
+        %w(&#x2022; &#x2014; &#x6f;)
       end
 
       include Init
