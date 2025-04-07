@@ -45,10 +45,8 @@ module Metanorma
         end
       end
 
-      def validate(doc)
-        content_validate(doc)
-        schema_validate(formattedstr_strip(doc.dup),
-                        File.join(File.dirname(__FILE__), "iec.rng"))
+      def schema_file
+        "iec.rng"
       end
 
       def html_converter(node)
@@ -157,7 +155,6 @@ module Metanorma
       end
 
       # TODO remove when I adopt pubid-iec
-      #
       def get_id_prefix(xmldoc)
         xmldoc.xpath("//bibdata/contributor[role/@type = 'publisher']" \
                      "/organization").each_with_object([]) do |x, prefix|
