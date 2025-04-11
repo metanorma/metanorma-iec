@@ -164,6 +164,7 @@ module Metanorma
 
       def metadata_ext(node, xml)
         super
+        a = node.attr("function") and xml.function a
         a = node.attr("accessibility-color-inside") and
           xml.accessibility_color_inside a
         a = node.attr("cen-processing") and xml.cen_processing a
