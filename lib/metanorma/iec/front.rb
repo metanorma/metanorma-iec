@@ -157,11 +157,6 @@ module Metanorma
         @log.add("Document Attributes", nil, err)
       end
 
-      def metadata_subdoctype(node, xml)
-        super
-        a = node.attr("function") and xml.function a
-      end
-
       def metadata_ext(node, xml)
         super
         a = node.attr("function") and xml.function a
