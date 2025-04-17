@@ -15,14 +15,7 @@ module IsoDoc
       end
 
       def clause(docxml)
-        docxml.xpath(ns("//clause | //definitions | //references | //appendix | " \
-                        "//introduction | //foreword | //preface/abstract | " \
-                      "//acknowledgements | //colophon | //indexsect "))
-          .each do |f|
-          f.parent.name == "annex" &&
-            @xrefs.klass.single_term_clause?(f.parent) and next
-          clause1(f)
-        end
+        super
         docxml.xpath(ns("//terms")).each { |f| termclause1(f) }
       end
 
