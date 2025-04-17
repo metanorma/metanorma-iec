@@ -14,14 +14,18 @@ module IsoDoc
         @i18n_lg["default"] = @i18n
       end
 
-      def clause(docxml)
+      # KILL 
+      def clausex(docxml)
         super
         docxml.xpath(ns("//terms")).each { |f| termclause1(f) }
       end
 
       def clause1(elem)
+        if elem.name == "terms" && @is_iev then iev_termclause1(elem)
+        else
         IsoDoc::PresentationXMLConvert.instance_method(:clause1).bind(self)
           .call(elem)
+        end
       end
 
       DICT_PATHS = { doctype_dict: "./ext/doctype",
