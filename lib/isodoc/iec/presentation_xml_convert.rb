@@ -14,21 +14,18 @@ module IsoDoc
         @i18n_lg["default"] = @i18n
       end
 
-      def clause(docxml)
-        docxml.xpath(ns("//clause | //definitions | //references | //appendix | " \
-                        "//introduction | //foreword | //preface/abstract | " \
-                      "//acknowledgements | //colophon | //indexsect "))
-          .each do |f|
-          f.parent.name == "annex" &&
-            @xrefs.klass.single_term_clause?(f.parent) and next
-          clause1(f)
-        end
+      # KILL 
+      def clausex(docxml)
+        super
         docxml.xpath(ns("//terms")).each { |f| termclause1(f) }
       end
 
       def clause1(elem)
+        if elem.name == "terms" && @is_iev then iev_termclause1(elem)
+        else
         IsoDoc::PresentationXMLConvert.instance_method(:clause1).bind(self)
           .call(elem)
+        end
       end
 
       DICT_PATHS = { doctype_dict: "./ext/doctype",

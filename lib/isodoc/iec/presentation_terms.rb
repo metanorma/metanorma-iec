@@ -1,8 +1,7 @@
 module IsoDoc
   module Iec
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
-      def termclause1(elem)
-        @is_iev or return clause1(elem)
+      def iev_termclause1(elem)
         @suppressheadingnumbers || elem["unnumbered"] or
           lbl = @xrefs.anchor(elem["id"], :label, true)
         if lbl
