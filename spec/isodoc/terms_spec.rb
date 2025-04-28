@@ -181,7 +181,7 @@ RSpec.describe IsoDoc do
                          </locality>
                          ISO 7301:2011, 3.1
                       </origin>
-                      <modification>
+                      <modification id="_">
                          <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                       </modification>
                    </termsource>
