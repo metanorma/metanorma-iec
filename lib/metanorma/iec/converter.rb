@@ -6,9 +6,6 @@ require_relative "front"
 module Metanorma
   module Iec
     class Converter < Iso::Converter
-      XML_ROOT_TAG = "iec-standard".freeze
-      XML_NAMESPACE = "https://www.metanorma.org/ns/iec".freeze
-
       register_for "iec"
 
       def init(node)
