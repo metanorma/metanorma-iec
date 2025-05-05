@@ -104,14 +104,14 @@ RSpec.describe Metanorma::Iec do
     INPUT
     expect(Xml::C14n.format(strip_guid(output))).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
       #{@blank_hdr}
-       <sections><ul id="id">
+       <sections><ul id="_" anchor="id">
          <li>
            <p id="_">First</p>
          </li>
          <li><p id="_">Second</p><p id="_">entry1</p>
        <p id="_">entry2</p></li>
        </ul>
-       <ol id="id1">
+       <ol id="_" anchor="id1">
          <li>
            <p id="_">First</p>
          </li>
@@ -179,12 +179,12 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
             #{@blank_hdr}
             <sections>
-             <ul id="id1">
-        <li id="id2">
+             <ul id="_" anchor="id1">
+        <li id="_" anchor="id2">
           <p id="_">List item</p>
         </li>
         <li>
-          <p id="_">Hello <bookmark id="id3"/> List item</p>
+          <p id="_">Hello <bookmark id="_" anchor="id3"/> List item</p>
         </li>
       </ul>
       </sections>
