@@ -177,7 +177,7 @@ RSpec.describe Metanorma::Iec do
              <foreword id="_" obligation="informative">
                <title>FOREWORD</title>
                <p id="_">
-               <eref type="inline" bibitemid="_" citeas="ISO&#xa0;216"/>
+               <eref type="inline" bibitemid="iso216" citeas="ISO&#xa0;216"/>
              </p>
              </foreword></preface><sections>
              </sections><bibliography><references id="_" anchor="_clause" obligation="informative" normative="false">
