@@ -101,7 +101,7 @@ RSpec.describe Metanorma::Iec do
                #{@boilerplate}
                <sections> </sections>
                <bibliography>
-                 <references id='_' anchor="_normative_references" obligation='informative' normative="true">
+                 <references id='_' obligation='informative' normative="true">
                    <title>Normative references</title>
                    <p id='_'>
                     The following documents are referred to in the text in such a way that
@@ -216,9 +216,9 @@ RSpec.describe Metanorma::Iec do
          </metanorma-extension>
                  #{@boilerplate}
                  <sections>
-           <terms id="_" anchor="_terms_and_definitions" obligation="normative">
+           <terms id="_" obligation="normative">
              <title>Terms and definitions</title>
-             <terms id="_" anchor="_general" obligation="normative">
+             <terms id="_" obligation="normative">
                <title>General</title>
                <term id="_" anchor="term-Term-1">
                  <preferred>
@@ -329,7 +329,7 @@ RSpec.describe Metanorma::Iec do
          </metanorma-extension>
            #{@boilerplate}
            <preface>
-             <introduction id='_' anchor="_introduction" obligation='informative'>
+             <introduction id='_' obligation='informative'>
                <title>INTRODUCTION<br/>Principles and rules followed</title>
                  <p id='_'>Text</p>
                </introduction>

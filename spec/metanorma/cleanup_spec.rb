@@ -141,7 +141,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
              #{@blank_hdr}
                     <sections>
-               <terms id="_" anchor="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
+               <terms id="_" obligation="normative"><title>Terms and definitions</title>
                <p id="_">For the purposes of this document,
              the following terms and definitions apply.</p>
               #{TERMS_BOILERPLATE}
@@ -180,7 +180,7 @@ RSpec.describe Metanorma::Iec do
                <eref type="inline" bibitemid="iso216" citeas="ISO&#xa0;216"/>
              </p>
              </foreword></preface><sections>
-             </sections><bibliography><references id="_" anchor="_clause" obligation="informative" normative="false">
+             </sections><bibliography><references id="_" obligation="informative" normative="false">
         <title>Bibliography</title>
         <bibitem id="_" anchor="iso216" type="standard">
         <title format="text/plain">Reference</title>
@@ -214,7 +214,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
       <sections></sections>
-      <bibliography><references id="_" anchor="_normative_references" obligation="informative" normative="true">
+      <bibliography><references id="_" obligation="informative" normative="true">
       <title>Normative references</title>
       <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
              <bibitem id="_" anchor="iso216" type="standard">
@@ -317,11 +317,11 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       #{@blank_hdr}
-      <sections><clause id="_" anchor="_clause" inline-header="false" obligation="normative">
+      <sections><clause id="_" inline-header="false" obligation="normative">
         <title>Clause</title>
         <p id="_">Text</p>
       </clause>
-      </sections><annex id="_" anchor="_clause_2" inline-header="false" obligation="normative">
+      </sections><annex id="_" inline-header="false" obligation="normative">
         <title>Clause</title>
         <p id="_">Text</p>
       </annex>
@@ -363,30 +363,30 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
           #{@blank_hdr}
             <sections>
-             <clause id="_" anchor="_clause1" inline-header="false" obligation="normative">
+             <clause id="_" inline-header="false" obligation="normative">
                 <title>Clause1</title>
-                <clause id="_" anchor="_clause2" inline-header="false" obligation="normative">
+                <clause id="_" inline-header="false" obligation="normative">
                    <title>Clause2</title>
-                   <clause id="_" anchor="_clause3" inline-header="false" obligation="normative">
+                   <clause id="_" inline-header="false" obligation="normative">
                       <title>Clause3</title>
-                      <clause id="_" anchor="_clause4" inline-header="false" obligation="normative">
+                      <clause id="_" inline-header="false" obligation="normative">
                          <title>Clause4</title>
-                         <clause id="_" anchor="_clause_5" inline-header="false" obligation="normative">
+                         <clause id="_" inline-header="false" obligation="normative">
                             <title>Clause 5</title>
-                            <clause id="_" anchor="_clause_6" inline-header="false" obligation="normative">
+                            <clause id="_" inline-header="false" obligation="normative">
                                <title>Clause 6</title>
-                               <clause id="_" anchor="_clause_7a" inline-header="false" obligation="normative">
+                               <clause id="_" inline-header="false" obligation="normative">
                                   <title>Clause 7A</title>
                                </clause>
-                               <clause id="_" anchor="_clause_7b" inline-header="false" obligation="normative">
+                               <clause id="_" inline-header="false" obligation="normative">
                                   <title>Clause 7B</title>
                                </clause>
                             </clause>
-                            <clause id="_" anchor="_clause_6b" inline-header="false" obligation="normative">
+                            <clause id="_" inline-header="false" obligation="normative">
                                <title>Clause 6B</title>
                             </clause>
                          </clause>
-                         <clause id="_" anchor="_clause_5b" inline-header="false" obligation="normative">
+                         <clause id="_" inline-header="false" obligation="normative">
                             <title>Clause 5B</title>
                          </clause>
                       </clause>
