@@ -39,7 +39,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
              #{@blank_hdr}
       <sections>
-        <terms id="_" anchor="_terms_and_definitions" obligation="normative">
+        <terms id="_" obligation="normative">
         <title>Terms and definitions</title>
         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
@@ -161,7 +161,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
               <sections>
-         <terms id="_" anchor="_terms_and_definitions" obligation="normative">
+         <terms id="_" obligation="normative">
          <title>Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
@@ -214,7 +214,7 @@ RSpec.describe Metanorma::Iec do
          <title>FOREWORD</title>
          <p id="_">This is a preamble</p>
        </foreword></preface><sections>
-       <clause id="_" anchor="_section_1" inline-header="false" obligation="normative">
+       <clause id="_" inline-header="false" obligation="normative">
          <title>Section 1</title>
        </clause></sections>
        </metanorma>
