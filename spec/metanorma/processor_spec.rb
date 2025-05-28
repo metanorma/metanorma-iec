@@ -148,13 +148,13 @@ RSpec.describe Metanorma::Iec::Processor do
           <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
           <br/>
           <br/>
-          <p class="zzSTDTitle1" id="_">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
-          <p class="zzSTDTitle1" id="_">____________</p>
-          <p class="zzSTDTitle1" id="_"> </p>
-          <p class="zzSTDTitle1" id="_">
+          <p class="zzSTDTitle1">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
+          <p class="zzSTDTitle1">____________</p>
+          <p class="zzSTDTitle1"> </p>
+          <p class="zzSTDTitle1">
              <b>FRENCH</b>
           </p>
-          <p class="zzSTDTitle1" id="_"> </p>
+          <p class="zzSTDTitle1"> </p>
           <div id="_">
              <h1 class="ForewordTitle" id="_">
                 <a class="anchor" href="#_"/>

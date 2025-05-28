@@ -119,11 +119,11 @@ RSpec.describe IsoDoc do
               <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative" displayorder="1">
-      <fmt-title>1<tab/>Terms and Definitions</fmt-title>
+      <fmt-title id="_">1<tab/>Terms and Definitions</fmt-title>
       <term id="paddy1">
-      <fmt-name>1.1</fmt-name>
+      <fmt-name id="_">1.1</fmt-name>
       <fmt-preferred><p>paddy</p></fmt-preferred>
-      <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
+      <fmt-definition id="_"><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <fmt-termsource status="modified">[SOURCE:
         <fmt-origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301:2011, 3.1</fmt-origin>, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
       </fmt-termsource></term>
@@ -156,12 +156,12 @@ RSpec.describe IsoDoc do
           <iso-standard xmlns="http://riboseinc.com/isoxml">
           <sections>
           <terms id="_terms_and_definitions" obligation="normative" displayorder="1">
-      <fmt-title>1<tab/>Terms and Definitions</fmt-title>
+      <fmt-title id="_">1<tab/>Terms and Definitions</fmt-title>
       <term id="paddy1">
-      <fmt-name>1.1</fmt-name>
+      <fmt-name id="_">1.1</fmt-name>
       <fmt-preferred>paddy</fmt-preferred>
       <domain>rice</domain>
-      <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
+      <fmt-definition id="_"><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f892">
         <p id="_65c9a509-9a89-4b54-a890-274126aeb55c">Foreign seeds, husks, bran, sand, dust.</p>
         <ul>
@@ -180,11 +180,11 @@ RSpec.describe IsoDoc do
         </modification>
       </fmt-termsource></term>
       <term id="paddy">
-      <fmt-name>1.2</fmt-name>
+      <fmt-name id="_">1.2</fmt-name>
       <fmt-preferred>paddy</fmt-preferred><fmt-admitted>paddy rice</fmt-admitted>
       <fmt-admitted>rough rice</fmt-admitted>
       <fmt-deprecates>cargo rice</fmt-deprecates>
-      <fmt-definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
+      <fmt-definition id="_"><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></fmt-definition>
       <termexample id="_bd57bbf1-f948-4bae-b0ce-73c00431f893">
         <ul>
         <li>A</li>

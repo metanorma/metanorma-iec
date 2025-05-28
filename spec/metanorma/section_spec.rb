@@ -56,25 +56,25 @@ RSpec.describe Metanorma::Iec do
                   #{@blank_hdr}
             <preface>
               <foreword id="_" obligation="informative">
-                 <title>FOREWORD</title>
+                 <title id="_">FOREWORD</title>
                  <p id="_">Text</p>
               </foreword>
               <introduction id="_" obligation="informative">
-                 <title>INTRODUCTION</title>
+                 <title id="_">INTRODUCTION</title>
                  <clause id="_" inline-header="false" obligation="informative">
-                    <title>Introduction Subsection</title>
+                    <title id="_">Introduction Subsection</title>
                  </clause>
               </introduction>
            </preface>
            <sections>
               <clause id="_" type="scope" inline-header="false" obligation="normative">
-                 <title>Scope</title>
+                 <title id="_">Scope</title>
                  <p id="_">Text</p>
               </clause>
               <clause id="_" obligation="normative" type="terms">
-                 <title>Terms, definitions, symbols and abbreviated terms</title>
+                 <title id="_">Terms, definitions, symbols and abbreviated terms</title>
                  <terms id="_" obligation="normative">
-                    <title>Terms and definitions</title>
+                    <title id="_">Terms and definitions</title>
                     <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
                #{TERMS_BOILERPLATE}
                <term id="_" anchor="term-Term2">
@@ -82,43 +82,43 @@ RSpec.describe Metanorma::Iec do
              </term>
              </terms>
                  <definitions id="_" obligation="normative">
-                    <title>Symbols and Abbreviated Terms</title>
+                    <title id="_">Symbols and Abbreviated Terms</title>
                  </definitions>
               </clause>
               <definitions id="_" obligation="normative">
-                 <title>Symbols and Abbreviated Terms</title>
+                 <title id="_">Symbols and Abbreviated Terms</title>
               </definitions>
               <clause id="_" inline-header="false" obligation="normative">
-                 <title>Clause 4</title>
+                 <title id="_">Clause 4</title>
                  <clause id="_" inline-header="false" obligation="normative">
-                    <title>Introduction</title>
+                    <title id="_">Introduction</title>
                  </clause>
                  <clause id="_" inline-header="false" obligation="normative">
-                    <title>Clause 4.2</title>
+                    <title id="_">Clause 4.2</title>
                  </clause>
               </clause>
               <terms id="_" obligation="normative">
-                 <title>Terms and Definitions</title>
+                 <title id="_">Terms and Definitions</title>
               </terms>
            </sections>
            <annex id="_" inline-header="false" obligation="normative">
-              <title>Annex</title>
+              <title id="_">Annex</title>
               <clause id="_" inline-header="false" obligation="normative">
-                 <title>Annex A.1</title>
+                 <title id="_">Annex A.1</title>
               </clause>
               <appendix id="_" inline-header="false" obligation="normative">
-                 <title>Appendix 1</title>
+                 <title id="_">Appendix 1</title>
               </appendix>
            </annex>
            <bibliography>
               <references id="_" normative="true" obligation="informative">
-                 <title>Normative references</title>
+                 <title id="_">Normative references</title>
                  <p id="_">There are no normative references in this document.</p>
               </references>
               <clause id="_" obligation="informative">
-                 <title>Bibliography</title>
+                 <title id="_">Bibliography</title>
                  <references id="_" normative="false" obligation="informative">
-                    <title>Bibliography Subsection</title>
+                    <title id="_">Bibliography Subsection</title>
                  </references>
               </clause>
            </bibliography>
@@ -145,17 +145,17 @@ RSpec.describe Metanorma::Iec do
             #{@blank_hdr}
            <sections>
               <clause id="_" inline-header="false" obligation="informative">
-                 <title>Clause 1</title>
+                 <title id="_">Clause 1</title>
                  <clause id="_" inline-header="false" obligation="informative">
-                    <title>Clause 1a</title>
+                    <title id="_">Clause 1a</title>
                  </clause>
               </clause>
               <clause id="_" inline-header="false" obligation="normative">
-                 <title>Clause 2</title>
+                 <title id="_">Clause 2</title>
               </clause>
            </sections>
            <annex id="_" inline-header="false" obligation="informative">
-              <title>Annex</title>
+              <title id="_">Annex</title>
            </annex>
         </metanorma>
     OUTPUT
@@ -180,15 +180,15 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
             #{@blank_hdr}
       <sections><clause id="_" inline-header="false" obligation="normative">
-        <title>Clause 1</title>
+        <title id="_">Clause 1</title>
         <clause id="_" inline-header="true" obligation="normative">
-        <title>Clause 1a</title>
+        <title id="_">Clause 1a</title>
       </clause>
       </clause>
       </sections><annex id="_" inline-header="false" obligation="normative">
-        <title>Annex A</title>
+        <title id="_">Annex A</title>
         <clause id="_" inline-header="true" obligation="normative">
-        <title>Clause Aa</title>
+        <title id="_">Clause Aa</title>
       </clause>
       </annex>
       </metanorma>
@@ -209,7 +209,7 @@ RSpec.describe Metanorma::Iec do
             #{@blank_hdr}
       <sections>
         <clause id="_" inline-header="false" obligation="normative">
-        <title>Clause 1</title>
+        <title id="_">Clause 1</title>
         <clause id="_" inline-header="false" obligation="normative">
       </clause>
       </clause>
