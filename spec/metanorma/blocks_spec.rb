@@ -44,7 +44,7 @@ RSpec.describe Metanorma::Iec do
         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
         <term id="_" anchor="term-Term1">
-        <preferred><expression><name id="_">Term1</name></expression></preferred>
+        <preferred><expression><name>Term1</name></expression></preferred>
         <termnote id="_">
         <p id="_">This is a note</p>
       </termnote>
