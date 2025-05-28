@@ -43,11 +43,11 @@ RSpec.describe Metanorma::Iec do
           <p id="_">List C</p>
           <dl id="_">
         <dt>List D</dt>
-        <dd>
+        <dd id="_">
           <p id="_">List E</p>
         </dd>
         <dt>List F</dt>
-        <dd>
+        <dd id="_">
           <p id="_">List G</p>
         </dd>
       </dl>
@@ -155,7 +155,7 @@ RSpec.describe Metanorma::Iec do
          <dt>Notes1</dt>
          <dd/>
          <dt>Notes</dt>
-         <dd><p id="_">Note 1.</p><p id="_">Note 2.</p>
+         <dd id="_"><p id="_">Note 1.</p><p id="_">Note 2.</p>
        <p id="_">Note 3.</p></dd>
        </dl>
          </li>

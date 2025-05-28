@@ -219,28 +219,28 @@ def blank_hdr_gen
 end
 
 PREFACE = <<~HDR.freeze
-    <preface>
-  <clause type="toc" id="_" displayorder="1">
-    <fmt-title depth="1">Contents</fmt-title>
-  </clause>
-  <pagebreak id="_" displayorder="2"/>
-  <p class="zzSTDTitle1" id="_" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-  <p class="zzSTDTitle1" id="_" displayorder="4">____________</p>
-  <p class="zzSTDTitle1" id="_" displayorder="5"> </p>
-  <p class="zzSTDTitle1" id="_" displayorder="6">
-    <strong/>
-  </p>
-  <p class="zzSTDTitle1" id="_" displayorder="7"> </p>
+           <preface>
+              <clause type="toc" id="_" displayorder="1">
+                 <fmt-title depth="1" id="_">Contents</fmt-title>
+              </clause>
+              <pagebreak displayorder="2"/>
+              <p class="zzSTDTitle1" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+              <p class="zzSTDTitle1" displayorder="4">____________</p>
+              <p class="zzSTDTitle1" displayorder="5"> </p>
+              <p class="zzSTDTitle1" displayorder="6">
+                 <strong/>
+              </p>
+              <p class="zzSTDTitle1" displayorder="7"> </p>
 HDR
 
 IEC_TITLE = <<~TITLE.freeze
-  <p class="zzSTDTitle1" id="_">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-              <p class="zzSTDTitle1" id="_">____________</p>
-              <p class="zzSTDTitle1" id="_">&#160;</p>
-              <p class="zzSTDTitle1" id="_">
+  <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+              <p class="zzSTDTitle1">____________</p>
+              <p class="zzSTDTitle1">&#160;</p>
+              <p class="zzSTDTitle1">
                 <b/>
               </p>
-              <p class="zzSTDTitle1" id="_">&#160;</p>
+              <p class="zzSTDTitle1">&#160;</p>
 TITLE
 
 IEC_TITLE1 = "".freeze
