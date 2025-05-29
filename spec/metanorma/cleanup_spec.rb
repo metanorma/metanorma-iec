@@ -141,7 +141,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
              #{@blank_hdr}
                     <sections>
-               <terms id="_" obligation="normative"><title>Terms and definitions</title>
+               <terms id="_" obligation="normative"><title id="_">Terms and definitions</title>
                <p id="_">For the purposes of this document,
              the following terms and definitions apply.</p>
               #{TERMS_BOILERPLATE}
@@ -153,7 +153,7 @@ RSpec.describe Metanorma::Iec do
       </ul>
              <term id="_" anchor="term-Time">
              <preferred><expression><name>Time</name></expression></preferred>
-               <definition><verbal-definition><p id="_">This paragraph is extraneous</p></verbal-definition></definition>
+               <definition id="_"><verbal-definition id="_"><p id="_">This paragraph is extraneous</p></verbal-definition></definition>
              </term></terms>
              </sections>
              </metanorma>
@@ -175,13 +175,13 @@ RSpec.describe Metanorma::Iec do
              #{@blank_hdr}
              <preface>
              <foreword id="_" obligation="informative">
-               <title>FOREWORD</title>
+               <title id="_">FOREWORD</title>
                <p id="_">
                <eref type="inline" bibitemid="iso216" citeas="ISO&#xa0;216"/>
              </p>
              </foreword></preface><sections>
              </sections><bibliography><references id="_" obligation="informative" normative="false">
-        <title>Bibliography</title>
+        <title id="_">Bibliography</title>
         <bibitem id="_" anchor="iso216" type="standard">
         <title format="text/plain">Reference</title>
         <docidentifier>ISO 216</docidentifier>
@@ -215,7 +215,7 @@ RSpec.describe Metanorma::Iec do
       #{@blank_hdr}
       <sections></sections>
       <bibliography><references id="_" obligation="informative" normative="true">
-      <title>Normative references</title>
+      <title id="_">Normative references</title>
       <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
              <bibitem id="_" anchor="iso216" type="standard">
          <title format="text/plain">Reference</title>
@@ -289,9 +289,9 @@ RSpec.describe Metanorma::Iec do
       #{@blank_hdr}
       <sections><figure id="_">
         <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
-      <fn reference="a">
+      <fn id="_" reference="a">
         <p id="_">This is a footnote to a figure</p>
-      </fn><fn reference="b">
+      </fn><fn id="_" reference="b">
         <p id="_">This is another footnote to a figure</p>
       </fn></figure>
 
@@ -318,11 +318,11 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
       <sections><clause id="_" inline-header="false" obligation="normative">
-        <title>Clause</title>
+        <title id="_">Clause</title>
         <p id="_">Text</p>
       </clause>
       </sections><annex id="_" inline-header="false" obligation="normative">
-        <title>Clause</title>
+        <title id="_">Clause</title>
         <p id="_">Text</p>
       </annex>
       </metanorma>
@@ -364,30 +364,30 @@ RSpec.describe Metanorma::Iec do
           #{@blank_hdr}
             <sections>
              <clause id="_" inline-header="false" obligation="normative">
-                <title>Clause1</title>
+                <title id="_">Clause1</title>
                 <clause id="_" inline-header="false" obligation="normative">
-                   <title>Clause2</title>
+                   <title id="_">Clause2</title>
                    <clause id="_" inline-header="false" obligation="normative">
-                      <title>Clause3</title>
+                      <title id="_">Clause3</title>
                       <clause id="_" inline-header="false" obligation="normative">
-                         <title>Clause4</title>
+                         <title id="_">Clause4</title>
                          <clause id="_" inline-header="false" obligation="normative">
-                            <title>Clause 5</title>
+                            <title id="_">Clause 5</title>
                             <clause id="_" inline-header="false" obligation="normative">
-                               <title>Clause 6</title>
+                               <title id="_">Clause 6</title>
                                <clause id="_" inline-header="false" obligation="normative">
-                                  <title>Clause 7A</title>
+                                  <title id="_">Clause 7A</title>
                                </clause>
                                <clause id="_" inline-header="false" obligation="normative">
-                                  <title>Clause 7B</title>
+                                  <title id="_">Clause 7B</title>
                                </clause>
                             </clause>
                             <clause id="_" inline-header="false" obligation="normative">
-                               <title>Clause 6B</title>
+                               <title id="_">Clause 6B</title>
                             </clause>
                          </clause>
                          <clause id="_" inline-header="false" obligation="normative">
-                            <title>Clause 5B</title>
+                            <title id="_">Clause 5B</title>
                          </clause>
                       </clause>
                    </clause>

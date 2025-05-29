@@ -407,7 +407,7 @@ RSpec.describe Metanorma::Iec do
              </license-statement>
              <feedback-statement>
                 <clause id="_" anchor="boilerplate-cenelec-attention" inline-header="false" obligation="normative">
-                   <title>Attention IEC-CENELEC parallel voting</title>
+                   <title id="_">Attention IEC-CENELEC parallel voting</title>
                    <p id="_">The attention of IEC National Committees, members of CENELEC, is drawn to the fact that this</p>
                    <p id="_">(PNW) is submitted for parallel voting.</p>
                    <p id="_">The CENELEC members are invited to vote through the CENELEC voting system.</p>

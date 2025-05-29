@@ -14,12 +14,6 @@ module IsoDoc
         @i18n_lg["default"] = @i18n
       end
 
-      # KILL 
-      def clausex(docxml)
-        super
-        docxml.xpath(ns("//terms")).each { |f| termclause1(f) }
-      end
-
       def clause1(elem)
         if elem.name == "terms" && @is_iev then iev_termclause1(elem)
         else
@@ -57,7 +51,7 @@ module IsoDoc
         unless f = docxml.at(ns("//preface/foreword"))
           ins = toc_title_insert_pt(docxml)
           f = ins.before(<<~CLAUSE).previous_element
-            <foreword id='_#{UUIDTools::UUID.random_create}'> </foreword>
+            <foreword #{add_id_text}> </foreword>
           CLAUSE
         end
         insert_foreword_boilerplate(f, b)
@@ -67,7 +61,7 @@ module IsoDoc
         elem.children.empty? and elem.children = " "
         ins = elem.at(ns("./title")) || elem.children.first.before(" ").previous
         ins.next = <<~CLAUSE
-          <clause type='boilerplate_legal'>#{to_xml(boilerplate.children)}</clause>
+          <clause type='boilerplate_legal' #{add_id_text}>#{to_xml(boilerplate.children)}</clause>
         CLAUSE
       end
 
