@@ -40,7 +40,7 @@ RSpec.describe Metanorma::Iec do
              #{@blank_hdr}
       <sections>
         <terms id="_" obligation="normative">
-        <title>Terms and definitions</title>
+        <title id="_">Terms and definitions</title>
         <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
         #{TERMS_BOILERPLATE}
         <term id="_" anchor="term-Term1">
@@ -129,7 +129,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
       <sections>
-         <admonition id="_" type="safety precautions"><name>Safety Precautions</name><p id="_">While werewolves are hardy community members, keep in mind the following dietary concerns:</p>
+         <admonition id="_" type="safety precautions"><name id="_">Safety Precautions</name><p id="_">While werewolves are hardy community members, keep in mind the following dietary concerns:</p>
        <ol id="_">
          <li>
            <p id="_">They are allergic to cinnamon.</p>
@@ -162,7 +162,7 @@ RSpec.describe Metanorma::Iec do
       #{@blank_hdr}
               <sections>
          <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
+         <title id="_">Terms and definitions</title>
          <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
          #{TERMS_BOILERPLATE}
          <term id="_" anchor="term-Term1">
@@ -211,11 +211,11 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
              <preface><foreword id="_" obligation="informative">
-         <title>FOREWORD</title>
+         <title id="_">FOREWORD</title>
          <p id="_">This is a preamble</p>
        </foreword></preface><sections>
        <clause id="_" inline-header="false" obligation="normative">
-         <title>Section 1</title>
+         <title id="_">Section 1</title>
        </clause></sections>
        </metanorma>
     OUTPUT
@@ -234,7 +234,7 @@ RSpec.describe Metanorma::Iec do
       #{@blank_hdr}
               <sections>
          <figure id="_">
-         <name>Split-it-right sample divider</name>
+         <name id="_">Split-it-right sample divider</name>
                   <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
        </figure>
        </sections>

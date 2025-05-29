@@ -117,19 +117,19 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
-             <pagebreak id="_" displayorder="2"/>
-             <p class="zzSTDTitle1" id="_" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-             <p class="zzSTDTitle1" id="_" displayorder="4">____________</p>
-             <p class="zzSTDTitle1" id="_" displayorder="5"> </p>
-             <p class="zzSTDTitle1" id="_" displayorder="6">
+             <pagebreak displayorder="2"/>
+             <p class="zzSTDTitle1" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+             <p class="zzSTDTitle1" displayorder="4">____________</p>
+             <p class="zzSTDTitle1" displayorder="5"> </p>
+             <p class="zzSTDTitle1" displayorder="6">
                 <strong/>
              </p>
-             <p class="zzSTDTitle1" id="_" displayorder="7"> </p>
+             <p class="zzSTDTitle1" displayorder="7"> </p>
              <foreword id="fwd" displayorder="8">
                 <title id="_">FOREWORD</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">FOREWORD</semx>
                 </fmt-title>
                 <table id="tableD-1" alt="tool tip" summary="long desc" width="70%" keep-with-next="true" keep-lines-together="true" autonum="1">
@@ -149,7 +149,7 @@ RSpec.describe IsoDoc do
                          </fmt-fn-label>
                       </fn>
                    </name>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">Table</span>
                          <semx element="autonum" source="tableD-1">1</semx>
@@ -263,7 +263,7 @@ RSpec.describe IsoDoc do
                    </tfoot>
                    <dl key="true">
                       <name id="_">Key</name>
-                      <fmt-name>
+                      <fmt-name id="_">
                          <semx element="name" source="_">Key</semx>
                       </fmt-name>
                       <dt>Drago</dt>
@@ -278,7 +278,7 @@ RSpec.describe IsoDoc do
                          </localityStack>
                       </origin>
                       <modification id="_">
-                         <p original-id="_">with adjustments</p>
+                         <p id="_">with adjustments</p>
                       </modification>
                    </source>
                    <fmt-source>
@@ -322,7 +322,7 @@ RSpec.describe IsoDoc do
                       </origin>
                    </source>
                    <note>
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">NOTE</span>
                          </span>
@@ -364,7 +364,7 @@ RSpec.describe IsoDoc do
           <sections>
              <references id="_" obligation="informative" normative="true" displayorder="9">
                 <title id="_">Normative References</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -398,7 +398,7 @@ RSpec.describe IsoDoc do
              </references>
           </sections>
           <annex id="Annex1" autonum="A" displayorder="10">
-             <fmt-title>
+             <fmt-title id="_">
                 <strong>
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">Annex</span>
@@ -413,7 +413,7 @@ RSpec.describe IsoDoc do
                 <semx element="autonum" source="Annex1">A</semx>
              </fmt-xref-label>
              <table id="AnnexTable" autonum="A.1">
-                <fmt-name>
+                <fmt-name id="_">
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">Table</span>
                       <semx element="autonum" source="Annex1">A</semx>
@@ -434,7 +434,7 @@ RSpec.describe IsoDoc do
                 </tbody>
              </table>
              <table>
-                <fmt-name>
+                <fmt-name id="_">
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">Table</span>
                    </span>
@@ -644,13 +644,13 @@ RSpec.describe IsoDoc do
         <p class="page-break">
            <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
         </p>
-                <p class="zzSTDTitle1" id="_">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
-                <p class="zzSTDTitle1" id="_">____________</p>
-                <p class="zzSTDTitle1" id="_"> </p>
-                <p class="zzSTDTitle1" id="_">
+                <p class="zzSTDTitle1">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
+                <p class="zzSTDTitle1">____________</p>
+                <p class="zzSTDTitle1"> </p>
+                <p class="zzSTDTitle1">
                    <b/>
                 </p>
-                <p class="zzSTDTitle1" id="_"> </p>
+                <p class="zzSTDTitle1"> </p>
                 <div id="fwd">
                    <h1 class="ForewordTitle">FOREWORD</h1>
                    <p class="TableTitle" style="text-align:center;">

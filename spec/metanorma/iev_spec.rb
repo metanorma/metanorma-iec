@@ -102,7 +102,7 @@ RSpec.describe Metanorma::Iec do
                <sections> </sections>
                <bibliography>
                  <references id='_' obligation='informative' normative="true">
-                   <title>Normative references</title>
+                   <title id="_">Normative references</title>
                    <p id='_'>
                     The following documents are referred to in the text in such a way that
                     some or all of their content constitutes requirements of this document.
@@ -217,9 +217,9 @@ RSpec.describe Metanorma::Iec do
                  #{@boilerplate}
                  <sections>
            <terms id="_" obligation="normative">
-             <title>Terms and definitions</title>
+             <title id="_">Terms and definitions</title>
              <terms id="_" obligation="normative">
-               <title>General</title>
+               <title id="_">General</title>
                <term id="_" anchor="term-Term-1">
                  <preferred>
                    <expression>
@@ -330,7 +330,7 @@ RSpec.describe Metanorma::Iec do
            #{@boilerplate}
            <preface>
              <introduction id='_' obligation='informative'>
-               <title>INTRODUCTION<br/>Principles and rules followed</title>
+               <title id="_">INTRODUCTION<br/>Principles and rules followed</title>
                  <p id='_'>Text</p>
                </introduction>
              </preface>

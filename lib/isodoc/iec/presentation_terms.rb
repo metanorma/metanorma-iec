@@ -136,11 +136,12 @@ module IsoDoc
         )
         pr.empty? and return
         prefs = pr.map do |p|
-          "<dt>#{p[:lang]}</dt>" \
-            "<dd language='#{p[:lang]}' script='#{p[:script]}'>" \
-            "#{cleanup_entities(p[:designation])}</dd>"
+          <<~XML
+            <dt>#{p[:lang]}</dt>
+            <dd #{add_id_text} language='#{p[:lang]}' script='#{p[:script]}'>#{cleanup_entities(p[:designation])}</dd>
+          XML
         end
-        term << "<dl type='other-lang'>#{prefs.join}</dl>"
+        term << "<dl #{add_id_text} type='other-lang'>#{prefs.join}</dl>"
       end
 
       def remove_otherlang_designations1(term, lgs)

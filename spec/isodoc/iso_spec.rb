@@ -79,9 +79,9 @@ RSpec.describe IsoDoc::Iec do
   it "processes examples" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword displayorder="1"><fmt-title>FOREWORD</fmt-title>
+          <preface><foreword displayorder="1"><fmt-title id="_">FOREWORD</fmt-title>
           <example id="samplecode">
-          <fmt-name>EXAMPLE</fmt-name>
+          <fmt-name id="_">EXAMPLE</fmt-name>
         <p>Hello</p>
       </example>
           </foreword></preface>
@@ -103,7 +103,7 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
             <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <div id="_">
+          <div>
             <h1 class="ForewordTitle">FOREWORD</h1>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
@@ -134,13 +134,13 @@ RSpec.describe IsoDoc::Iec do
   it "processes sequences of examples" do
     input = <<~INPUT
           <iso-standard xmlns="http://riboseinc.com/isoxml">
-          <preface><foreword displayorder="1"><fmt-title>FOREWORD</fmt-title>
+          <preface><foreword displayorder="1"><fmt-title id="_">FOREWORD</fmt-title>
           <example id="samplecode">
-          <fmt-name>EXAMPLE 1</fmt-name>
+          <fmt-name id="_">EXAMPLE 1</fmt-name>
         <p>Hello</p>
       </example>
           <example id="samplecode2">
-          <fmt-name>EXAMPLE 2</fmt-name>
+          <fmt-name id="_">EXAMPLE 2</fmt-name>
         <p>Hello</p>
       </example>
           </foreword></preface>
@@ -166,7 +166,7 @@ RSpec.describe IsoDoc::Iec do
     doc = <<~OUTPUT
         <body lang="EN-US" link="blue" vlink="#954F72">
         <div class="WordSection2">
-          <div id="_">
+          <div>
             <h1 class="ForewordTitle">FOREWORD</h1>
             <div id="samplecode" class="example">
               <p><span class="example_label">EXAMPLE  1</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
