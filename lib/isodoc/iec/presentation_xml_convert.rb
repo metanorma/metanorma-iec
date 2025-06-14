@@ -17,21 +17,23 @@ module IsoDoc
       def clause1(elem)
         if elem.name == "terms" && @is_iev then iev_termclause1(elem)
         else
-        IsoDoc::PresentationXMLConvert.instance_method(:clause1).bind(self)
-          .call(elem)
+          IsoDoc::PresentationXMLConvert.instance_method(:clause1).bind(self)
+            .call(elem)
         end
       end
 
-      DICT_PATHS = { doctype_dict: "./ext/doctype",
-                     substage_dict: "./status/substage",
-                     function_dict: "./ext/function",
-                     horizontal_dict: "./ext/horizontal" }.freeze
+      DICT_PATHS = { doctype_dict: ["./ext/doctype",
+                                    "//presentation-metadata/doctype-alias"],
+                     substage_dict: ["./status/substage", nil],
+                     function_dict: ["./ext/function", nil],
+                     horizontal_dict: ["./ext/horizontal", nil] }.freeze
 
       def bibdata_i18n(bib)
         [{ lang: "en", i18n: IsoDoc::Iec::I18n.new("en", "Latn") },
          { lang: "fr", i18n: IsoDoc::Iec::I18n.new("fr", "Latn") }].each do |v|
           DICT_PATHS.each do |lbl, xpath|
-            hash_translate(bib, v[:i18n].get[lbl.to_s], xpath, v[:lang])
+            hash_translate(bib, v[:i18n].get[lbl.to_s], xpath[0], xpath[1],
+                           v[:lang])
           end
           bibdata_i18n_stage(bib, bib.at(ns("./status/stage")),
                              bib.at(ns("./ext/doctype")),
