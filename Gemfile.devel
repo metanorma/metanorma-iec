@@ -1,4 +1,4 @@
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "features/presentation-metadata-doctype-alias"
-gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "features/presentation-metadata-doctype-alias"
-gem "metanorma-taste", git: "https://github.com/metanorma/metanorma-taste", branch: "rt-update-doctype-customization"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
+gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "main"
+gem "metanorma-taste", git: "https://github.com/metanorma/metanorma-taste", branch: "main"
 gem "relaton-render", git: "https://github.com/relaton/relaton-render", branch: "main"
