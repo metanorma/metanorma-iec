@@ -288,7 +288,7 @@ RSpec.describe Metanorma::Iec do
     output = <<~OUTPUT
       #{@blank_hdr}
       <sections><figure id="_">
-        <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
+        <image id="_" src="spec/examples/rice_images/rice_image1.png" mimetype="image/png" height="auto" width="auto" filename="spec/examples/rice_images/rice_image1.png"/>
       <fn id="_" reference="a">
         <p id="_">This is a footnote to a figure</p>
       </fn><fn id="_" reference="b">

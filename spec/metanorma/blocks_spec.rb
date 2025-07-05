@@ -235,7 +235,7 @@ RSpec.describe Metanorma::Iec do
               <sections>
          <figure id="_">
          <name id="_">Split-it-right sample divider</name>
-                  <image src="spec/examples/rice_images/rice_image1.png" id="_" mimetype="image/png" height="auto" width="auto"/>
+         <image id="_" src="spec/examples/rice_images/rice_image1.png" mimetype="image/png" height="auto" width="auto" filename="spec/examples/rice_images/rice_image1.png"/>
        </figure>
        </sections>
        </metanorma>
