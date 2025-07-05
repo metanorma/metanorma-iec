@@ -677,7 +677,7 @@ RSpec.describe IsoDoc do
                                <td colspan="4" align="center" style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext 1.0pt;page-break-after:avoid;" class="TABLE-col-heading">Rice sample</td>
                             </tr>
                             <tr>
-                               <td valign="top" align="left" style="background-color: green;;border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;" class="TABLE-col-heading">Arborio</td>
+                            <td valign="top" align="left" style="background-color: green;;page-break-after:avoid;" class="TABLE-col-heading">Arborio</td>
                                <td valign="middle" align="center" style="border-top:none;mso-border-top-alt:none;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:avoid;" class="TABLE-col-heading">
                                   Drago
                                   <a href="#tableD-1a" class="TableFootnoteRef">a</a>
