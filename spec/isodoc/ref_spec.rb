@@ -589,12 +589,12 @@ RSpec.describe IsoDoc::Iec do
     pres_output = IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
       .gsub(%r{reference="[^"]+"}m, 'reference="1"'))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", pres_output.gsub(%r{reference="[^"]+"}m, 'reference="1"'),
-               true)))).to be_equivalent_to Xml::C14n.format(html)
+               true)))).to be_equivalent_to Canon.format_xml(html)
   end
 end

@@ -121,14 +121,14 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Canon.format_xml(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::WordConvert.new({})
+      .to be_equivalent_to Canon.format_xml(html)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to Xml::C14n.format(doc)
+      .to be_equivalent_to Canon.format_xml(doc)
   end
 
   it "processes sequences of examples" do
@@ -187,13 +187,13 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(Xml::C14n.format(IsoDoc::Iec::HtmlConvert.new({})
+    expect(Canon.format_xml(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", input, true)))
-      .to be_equivalent_to Xml::C14n.format(html)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::WordConvert.new({})
+      .to be_equivalent_to Canon.format_xml(html)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
       .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to Xml::C14n.format(doc)
+      .to be_equivalent_to Canon.format_xml(doc)
   end
 end

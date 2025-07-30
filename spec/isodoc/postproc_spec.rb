@@ -138,7 +138,7 @@ RSpec.describe IsoDoc do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br.*$}m, "")
-    expect(Xml::C14n.format(word)).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
+    expect(Canon.format_xml(word)).to be_equivalent_to Canon.format_xml(<<~"OUTPUT")
              <div class="WordSection3">
       #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                  <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and Definitions</h1>
@@ -236,7 +236,7 @@ RSpec.describe IsoDoc do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
-    expect(Xml::C14n.format(word)).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
+    expect(Canon.format_xml(word)).to be_equivalent_to Canon.format_xml(<<~"OUTPUT")
            <div class="WordSection3">
       #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                <p class="MsoNormal">
@@ -278,7 +278,7 @@ RSpec.describe IsoDoc do
     word = File.read("test.doc", encoding: "UTF-8")
       .sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">')
       .sub(%r{<br[^>]*>\s*<div class="colophon">.*$}m, "")
-    expect(Xml::C14n.format(word)).to be_equivalent_to Xml::C14n.format(<<~"OUTPUT")
+    expect(Canon.format_xml(word)).to be_equivalent_to Canon.format_xml(<<~"OUTPUT")
          <div class="WordSection3">
       #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                <p class="MsoNormal">
