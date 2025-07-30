@@ -36,6 +36,50 @@ RSpec.describe IsoDoc::Iec::Metadata do
             <abbreviation>ISO</abbreviation>
           </organization>
         </contributor>
+                     <contributor>
+                <role type="author">
+                   <description>Technical committee</description>
+                </role>
+                <organization>
+                   <name>International Organization for Standardization</name>
+                   <subdivision type="Technical committee">
+                      <name>TC</name>
+                      <subdivision type="Subcommittee">
+                         <name>SC</name>
+                         <subdivision type="Workgroup">
+                            <name>WG</name>
+                            <identifier>C 3</identifier>
+                         </subdivision>
+                         <identifier>B 2</identifier>
+                      </subdivision>
+                      <identifier>A 1</identifier>
+                      <identifier type="full">ISO A 1/B 2/C 3</identifier>
+                   </subdivision>
+                   <abbreviation>ISO</abbreviation>
+                </organization>
+             </contributor>
+             <contributor>
+                <role type="author">
+                   <description>Technical committee</description>
+                </role>
+                <organization>
+                   <name>International Electrotechnical Commission</name>
+                   <subdivision type="Technical committee">
+                      <name>TC1</name>
+                      <subdivision type="Subcommittee">
+                         <name>SC1</name>
+                         <subdivision type="Workgroup">
+                            <name>WG1</name>
+                            <identifier>C1 31</identifier>
+                         </subdivision>
+                         <identifier>B1 21</identifier>
+                      </subdivision>
+                      <identifier>A1 11</identifier>
+                      <identifier type="full">A1 11/B1 21/C1 31</identifier>
+                   </subdivision>
+                   <abbreviation>IEC</abbreviation>
+                </organization>
+             </contributor>
         <contributor>
           <role type="publisher"/>
           <organization>
@@ -106,7 +150,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
         draft: "0.4",
         draftinfo: " (draft 0.4, 2016-05-01)",
         edition: "2",
-        editorialgroup: "TC 34/SC 4/WG 3",
+        editorialgroup: "ISO A 1/B 2/C 3 and A1 11/B1 21/C1 31",
         function: "Emc",
         function_display: "Basic EMC Publication",
         function_en: "Basic EMC Publication",
