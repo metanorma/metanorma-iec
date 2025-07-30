@@ -120,8 +120,8 @@ RSpec.describe Metanorma::Iec do
                </bibliography>
              </metanorma>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output)
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "generates terms boilerplate for IEV" do
@@ -232,8 +232,8 @@ RSpec.describe Metanorma::Iec do
          </sections>
        </metanorma>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output)
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "uses IEV introduction title" do
@@ -337,7 +337,7 @@ RSpec.describe Metanorma::Iec do
              <sections> </sections>
            </metanorma>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output)
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end

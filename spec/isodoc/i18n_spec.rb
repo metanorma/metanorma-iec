@@ -523,12 +523,12 @@ RSpec.describe IsoDoc do
     OUTPUT
     pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", pres_output, true))))
-      .to be_equivalent_to Xml::C14n.format(html)
+      .to be_equivalent_to Canon.format_xml(html)
   end
 
   it "defaults to English" do
@@ -661,11 +661,11 @@ RSpec.describe IsoDoc do
           </appendix>
        </annex>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(IsoDoc::Iec::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:annex").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes French" do
@@ -1191,11 +1191,11 @@ RSpec.describe IsoDoc do
     OUTPUT
     pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", pres_output, true))))
-      .to be_equivalent_to Xml::C14n.format(html)
+      .to be_equivalent_to Canon.format_xml(html)
   end
 end
