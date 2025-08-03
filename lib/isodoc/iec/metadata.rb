@@ -7,11 +7,10 @@ module IsoDoc
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//bibdata/status/stage"))
         substage = isoxml.at(ns("//bibdata/status/substage"))
-        set(:unpublished, false)
+        published_default(isoxml)
         if docstatus
           set(:stage, docstatus.text)
           set(:stage_int, docstatus.text.to_i)
-          set(:unpublished, unpublished(docstatus.text))
           set(:statusabbr, substage["abbreviation"])
           unpublished(docstatus.text) and
             set(:stageabbr, docstatus["abbreviation"])
