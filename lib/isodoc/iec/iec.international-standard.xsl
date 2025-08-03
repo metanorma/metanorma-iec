@@ -1463,11 +1463,9 @@
 				<xsl:if test="position() = 1 and $isIEV = 'true'">
 					<xsl:attribute name="initial-page-number">1</xsl:attribute>
 				</xsl:if>
-				<fo:static-content flow-name="xsl-footnote-separator">
-					<fo:block>
-						<fo:leader leader-pattern="rule" leader-length="30%"/>
-					</fo:block>
-				</fo:static-content>
+
+				<xsl:call-template name="insertFootnoteSeparatorCommon"/>
+
 				<xsl:call-template name="insertHeaderFooter"/>
 				<fo:flow flow-name="xsl-region-body">
 
@@ -11830,7 +11828,7 @@
 
 	<xsl:template name="insertFootnoteSeparatorCommon">
 		<xsl:param name="leader_length">30%</xsl:param>
-		<fo:static-content flow-name="xsl-footnote-separator">
+		<fo:static-content flow-name="xsl-footnote-separator" role="artifact">
 			<fo:block>
 				<fo:leader leader-pattern="rule" leader-length="{$leader_length}"/>
 			</fo:block>
