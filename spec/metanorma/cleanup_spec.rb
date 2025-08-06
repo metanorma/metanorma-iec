@@ -78,6 +78,9 @@ RSpec.describe Metanorma::Iec do
         </ext>
       </bibdata>
                <metanorma-extension>
+      <semantic-metadata>
+         <stage-published>true</stage-published>
+      </semantic-metadata>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
              <value>2</value>
