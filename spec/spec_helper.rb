@@ -193,7 +193,7 @@ BLANK_HDR = <<~"HDR".freeze
   </bibdata>
   <metanorma-extension>
         <semantic-metadata>
-         <stage-published>true</stage-published>
+         <stage-published>false</stage-published>
       </semantic-metadata>
             <presentation-metadata>
               <name>TOC Heading Levels</name>
