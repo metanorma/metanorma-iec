@@ -7,13 +7,12 @@ module IsoDoc
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//bibdata/status/stage"))
         substage = isoxml.at(ns("//bibdata/status/substage"))
-        published_default(isoxml)
+        published = published_default(isoxml)
         if docstatus
           set(:stage, docstatus.text)
           set(:stage_int, docstatus.text.to_i)
           set(:statusabbr, substage["abbreviation"])
-          unpublished(docstatus.text) and
-            set(:stageabbr, docstatus["abbreviation"])
+          !published and set(:stageabbr, docstatus["abbreviation"])
         end
         revdate = isoxml.at(ns("//bibdata/version/revision-date"))
         set(:revdate, revdate&.text)
@@ -50,10 +49,6 @@ module IsoDoc
         b1 and set(:horizontal_en, status_print(b1))
         b1 = isoxml&.at(ns("//bibdata/ext/horizontal[@language = 'fr']"))&.text
         b1 and set(:horizontal_fr, status_print(b1))
-      end
-
-      def unpublished(status)
-        status.to_i.positive? && status.to_i < 60
       end
     end
   end
