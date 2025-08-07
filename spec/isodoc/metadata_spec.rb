@@ -139,6 +139,11 @@ RSpec.describe IsoDoc::Iec::Metadata do
         </structuredidentifier>
         </ext>
       </bibdata>
+      <metanorma-extension>
+      <semantic-metadata>
+      <stage-published>false</stage-published>
+      </semantic-metadata>
+      </metanorma-extension>
       </iso-standard>
     INPUT
     output =
@@ -266,6 +271,11 @@ RSpec.describe IsoDoc::Iec::Metadata do
         </strucuredidentifier>
         </ext>
       </bibdata>
+      <metanorma-extension>
+      <semantic-metadata>
+      <stage-published>false</stage-published>
+      </semantic-metadata>
+      </metanorma-extension>
       </iso-standard>
     INPUT
     output =
