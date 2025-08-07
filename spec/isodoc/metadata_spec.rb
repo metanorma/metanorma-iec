@@ -195,7 +195,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
         statusabbr: "3CD",
         tc: "TC 62",
         tc_docnumber: ["17301"],
-        unpublished: false,
+        unpublished: true,
         wg: "WG 62A1" }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
       .to be_equivalent_to output
@@ -308,7 +308,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
         stageabbr: "FDIS",
         statusabbr: "CFDIS",
         tc_docnumber: ["17301"],
-        unpublished: false }
+        unpublished: true }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
       .to be_equivalent_to output
   end
