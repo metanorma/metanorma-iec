@@ -119,11 +119,6 @@ RSpec.describe IsoDoc do
                 </copyright>
                 <ext>
                   <doctype>international-standard</doctype>
-                  <editorialgroup>
-                    <technical-committee/>
-                    <subcommittee/>
-                    <workgroup/>
-                  </editorialgroup>
                   <structuredidentifier>
                     <project-number>IEC 60050</project-number>
                   </structuredidentifier>
@@ -195,11 +190,6 @@ RSpec.describe IsoDoc do
             <doctype language=''>international-standard</doctype>
             <doctype language='fr'>Norme internationale</doctype>
             <doctype language='en'>International Standard</doctype>
-             <editorialgroup identifier='//'>
-              <technical-committee/>
-              <subcommittee/>
-              <workgroup/>
-            </editorialgroup>
             <structuredidentifier>
               <project-number>IEC 60050</project-number>
             </structuredidentifier>
