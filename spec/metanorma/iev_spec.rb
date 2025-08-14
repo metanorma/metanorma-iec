@@ -71,9 +71,6 @@ RSpec.describe Metanorma::Iec do
                    <doctype>standard</doctype>
                    <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
-                   <editorialgroup>
-                     <agency>IEC</agency>
-                   </editorialgroup>
                    <structuredidentifier>
                      <project-number>60050</project-number>
                    </structuredidentifier>
@@ -190,9 +187,6 @@ RSpec.describe Metanorma::Iec do
             <doctype>standard</doctype>
             <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
-            <editorialgroup>
-              <agency>IEC</agency>
-            </editorialgroup>
             <structuredidentifier>
               <project-number>60050</project-number>
             </structuredidentifier>
@@ -306,9 +300,6 @@ RSpec.describe Metanorma::Iec do
                <doctype>standard</doctype>
                <flavor>iec</flavor>
                         <subdoctype>vocabulary</subdoctype>
-               <editorialgroup>
-                 <agency>IEC</agency>
-               </editorialgroup>
                <structuredidentifier>
                  <project-number>60050</project-number>
                </structuredidentifier>
