@@ -166,8 +166,6 @@ module Metanorma
         a = node.attr("secretary") and xml.secretary a
         a = node.attr("interest-to-committees") and xml.interest_to_committees a
       end
-
-      def metadata_approval_committee(node, xml); end
     end
   end
 end

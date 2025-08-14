@@ -61,9 +61,6 @@ RSpec.describe Metanorma::Iec do
         <ext>
           <doctype>standard</doctype>
           <flavor>iec</flavor>
-        <editorialgroup>
-          <agency>IEC</agency>
-        </editorialgroup>
         <stagename abbreviation="IS">International Standard</stagename>
         <tc-sc-officers-note>
         <p id='_'>
