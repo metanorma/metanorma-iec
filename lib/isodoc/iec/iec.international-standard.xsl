@@ -3893,6 +3893,9 @@
 	<xsl:attribute-set name="feedback-statement-style">
 	</xsl:attribute-set> <!-- feedback-statement-style -->
 
+	<xsl:template name="refine_feedback-statement-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="feedback-statement-title-style">
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
@@ -3981,6 +3984,7 @@
 	<xsl:template match="mn:feedback-statement//mn:p">
 		<xsl:param name="margin"/>
 		<fo:block xsl:use-attribute-sets="feedback-statement-p-style">
+			<!-- <xsl:copy-of select="@id"/> -->
 			<xsl:apply-templates/>
 		</fo:block>
 
