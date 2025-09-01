@@ -114,10 +114,10 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~OUTPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title id="_" depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
              <pagebreak displayorder="2"/>
              <p class="zzSTDTitle1" displayorder="3">INTERNATIONAL ELECTROTECHNICAL COMMISSION</p>
@@ -129,7 +129,7 @@ RSpec.describe IsoDoc do
              <p class="zzSTDTitle1" displayorder="7"> </p>
              <foreword id="fwd" displayorder="8">
                 <title id="_">FOREWORD</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">FOREWORD</semx>
                 </fmt-title>
                 <table id="tableD-1" alt="tool tip" summary="long desc" width="70%" keep-with-next="true" keep-lines-together="true" autonum="1">
@@ -137,7 +137,7 @@ RSpec.describe IsoDoc do
                       Repeatability and reproducibility of
                       <em>husked</em>
                       rice yield
-                      <fn reference="1" original-reference="1" target="_" original-id="_">
+                      <fn reference="1" original-id="_" original-reference="1" id="_" target="_">
                          <p>X</p>
                          <fmt-fn-label>
                             <span class="fmt-caption-label">
@@ -364,7 +364,7 @@ RSpec.describe IsoDoc do
           <sections>
              <references id="_" obligation="informative" normative="true" displayorder="9">
                 <title id="_">Normative References</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -449,7 +449,7 @@ RSpec.describe IsoDoc do
           <bibliography>
          </bibliography>
           <fmt-footnote-container>
-             <fmt-fn-body id="_" target="_" reference="1">
+             <fmt-fn-body id="_" target="" reference="1">
                 <semx element="fn" source="_">
                    <p>
                       <fmt-fn-label>
@@ -467,7 +467,7 @@ RSpec.describe IsoDoc do
                 </semx>
              </fmt-fn-body>
           </fmt-footnote-container>
-       </iso-standard>  
+       </iso-standard>
     OUTPUT
 
     html = <<~OUTPUT
