@@ -102,14 +102,14 @@ RSpec.describe Metanorma::Iec do
       <?xml version="1.0" encoding="UTF-8"?>
             <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
           <bibdata type="standard">
-             <title language="en" format="text/plain" type="main">Introduction — Main Title — Title — Title Part</title>
-             <title language="en" format="text/plain" type="title-intro">Introduction</title>
-             <title language="en" format="text/plain" type="title-main">Main Title — Title</title>
-             <title language="en" format="text/plain" type="title-part">Title Part</title>
-             <title language="fr" format="text/plain" type="main">Introduction Française — Titre Principal — Part du Titre</title>
-             <title language="fr" format="text/plain" type="title-intro">Introduction Française</title>
-             <title language="fr" format="text/plain" type="title-main">Titre Principal</title>
-             <title language="fr" format="text/plain" type="title-part">Part du Titre</title>
+             <title language="en" type="main">Introduction — Main Title — Title — Title Part</title>
+             <title language="en" type="title-intro">Introduction</title>
+             <title language="en" type="title-main">Main Title — Title</title>
+             <title language="en" type="title-part">Title Part</title>
+             <title language="fr" type="main">Introduction Française — Titre Principal — Part du Titre</title>
+             <title language="fr" type="title-intro">Introduction Française</title>
+             <title language="fr" type="title-main">Titre Principal</title>
+             <title language="fr" type="title-part">Part du Titre</title>
              <docidentifier type="ISO" primary="true">IEC PNW 1000-1:2023 ED2</docidentifier>
              <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
              <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
