@@ -137,16 +137,8 @@ RSpec.describe IsoDoc do
                       Repeatability and reproducibility of
                       <em>husked</em>
                       rice yield
-                      <fn reference="1" original-id="_" original-reference="1" id="_" target="_">
+                      <fn original-id="_" original-reference="1">
                          <p>X</p>
-                         <fmt-fn-label>
-                            <span class="fmt-caption-label">
-                               <sup>
-                                  <semx element="autonum" source="_">1</semx>
-                                  <span class="fmt-label-delim">)</span>
-                               </sup>
-                            </span>
-                         </fmt-fn-label>
                       </fn>
                    </name>
                    <fmt-name id="_">
@@ -449,7 +441,7 @@ RSpec.describe IsoDoc do
           <bibliography>
          </bibliography>
           <fmt-footnote-container>
-             <fmt-fn-body id="_" target="" reference="1">
+             <fmt-fn-body id="_" target="_" reference="1">
                 <semx element="fn" source="_">
                    <p>
                       <fmt-fn-label>
