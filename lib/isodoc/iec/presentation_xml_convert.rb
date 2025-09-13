@@ -67,7 +67,8 @@ module IsoDoc
         CLAUSE
       end
 
-      def insert_middle_title(docxml)
+      # KILL
+      def insert_middle_titlex(docxml)
         ins = docxml.at(ns("//preface/clause[@type = 'toc']")) or return
         title1, title2 = middle_title_parts
         title2out = ""
@@ -84,6 +85,27 @@ module IsoDoc
         OUTPUT
       end
 
+      def insert_middle_title(docxml)
+        ins = docxml.at(ns("//preface/clause[@type = 'toc']")) or return
+        title = populate_template(preface_title_template, nil) or return
+        ins.next = title
+      end
+
+      def preface_title_template
+        <<~OUTPUT
+          <pagebreak/><p class="zzSTDTitle1">{{ labels["IEC"] }}</p>
+          <p class="zzSTDTitle1">____________</p><p class="zzSTDTitle1">&#xa0;</p>
+          <p class='zzSTDTitle1'><strong>{% if doctitleintro %}{{ doctitleintro | upcase -}}
+          &#x2014; {% endif %}{{ doctitlemain | upcase }}{% if doctitlepart %} &#x2014;{% endif %}</strong></p>
+          {% if doctitlepart %}<p class='zzSTDTitle1'>&#xa0;</p>
+          <p class='zzSTDTitle2'><strong>{% if doctitlepartlabel %}{{ doctitlepartlabel }}: {% endif -%}
+          {{ doctitlepart }}</strong><p>
+          {% endif %}
+          <p class='zzSTDTitle1'>&#xa0;</p>
+        OUTPUT
+      end
+
+      # KILL
       def middle_title_parts
         title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
         @meta.get[:doctitleintro] and
@@ -103,7 +125,8 @@ module IsoDoc
         [title1, title2]
       end
 
-      def middle_title(docxml)
+      # KILL
+      def middle_titlex(docxml)
         s = docxml.at(ns("//sections")) or return
         title1, title2 = middle_title_parts
         title1 || title2 or return
@@ -115,6 +138,18 @@ module IsoDoc
         TITLE
         ret += "<p class='zzSTDTitle1'>&#xa0;</p>"
         s.add_first_child ret
+      end
+
+      def middle_title_template
+        <<~OUTPUT
+          <p class='zzSTDTitle1'><strong>{% if doctitleintro %}{{ doctitleintro -}}
+          &#x2014; {% endif %}{{ doctitlemain }}{% if doctitlepart %} &#x2014;{% endif %}</strong></p>
+          {% if doctitlepart %}<p class='zzSTDTitle1'>&#xa0;</p>
+          <p class='zzSTDTitle2'><strong>{% if doctitlepartlabel %}{{ doctitlepartlabel }}: {% endif -%}
+          {{ doctitlepart }}</strong><p>
+          {% endif %}
+          <p class='zzSTDTitle1'>&#xa0;</p>
+        OUTPUT
       end
 
       def ul_label_list(_elem)
