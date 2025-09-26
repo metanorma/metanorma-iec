@@ -21,8 +21,9 @@ module IsoDoc
       end
 
       def bibrenderer
-        ::Relaton::Render::Iec::General.new(options.merge(language: @lang,
-                                            i18nhash: @i18n.get))
+        ::Relaton::Render::Iec::General
+          .new(options.merge(language: @lang, script: @script,
+                             i18nhash: @i18n.get))
       end
 
       def convert1(docxml, filename, dir)
