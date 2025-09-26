@@ -338,116 +338,12 @@
 				</fo:flow>
 			</fo:page-sequence> <!-- END: 1st Cover Page -->
 
-			<!-- 2nd Cover Page -->
-			<fo:page-sequence master-reference="cover_2nd" force-page-count="no-force" font-size="8pt">
-				<fo:flow flow-name="xsl-region-body">
-					<fo:block span="all">
-						<fo:block-container border="0.5pt solid black" margin-top="7mm">
-							<fo:block-container margin-left="2.5mm" margin-right="2.5mm" margin-top="1mm" margin-bottom="1mm">
-								<fo:block-container margin-left="0mm" margin-right="0mm">
-									<fo:table table-layout="fixed" width="100%">
-										<fo:table-column column-width="20mm"/>
-										<fo:table-column column-width="130mm"/>
-										<fo:table-body>
-											<fo:table-row>
-												<fo:table-cell>
-													<fo:block>
-														<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Attention))}" width="17.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
-													</fo:block>
-												</fo:table-cell>
-												<fo:table-cell font-size="10pt" font-weight="bold" display-align="after">
-													<fo:block margin-bottom="3pt">THIS PUBLICATION IS COPYRIGHT PROTECTED</fo:block>
-													<fo:block margin-bottom="10pt">
-														<!-- Example: Copyright © 2014 IEC, Geneva, Switzerland -->
-														<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-year')]"/>
-													</fo:block>
-												</fo:table-cell>
-											</fo:table-row>
-										</fo:table-body>
-									</fo:table>
-									<fo:block>
-										<fo:block margin-bottom="8pt" text-align="justify">
-										<!-- Example: All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized in any form
-	or by any means, electronic or mechanical, including photocopying and microfilm, without permission in writing from
-	either IEC or IEC's member National Committee in the country of the requester. If you have any questions about IEC
-	copyright or have an enquiry about obtaining additional rights to this publication, please contact the address below or
-	your local IEC member National Committee for further information. -->
-										<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-message')]"/>
-										</fo:block>
-										<!-- Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne peut être reproduite
-	ni utilisée sous quelque forme que ce soit et par aucun procédé, électronique ou mécanique, y compris la photocopie
-	et les microfilms, sans l'accord écrit de l'IEC ou du Comité national de l'IEC du pays du demandeur. Si vous avez des
-	questions sur le copyright de l'IEC ou si vous désirez obtenir des droits supplémentaires sur cette publication, utilisez
-	les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pays de résidence. -->
-										<fo:block margin-bottom="8pt" text-align="justify">
-											<xsl:apply-templates select="$updated_document2_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-message')]"/>
-										</fo:block>
-
-										<xsl:variable name="telpos" select="count($updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/text()[contains(., 'Tel.')]/preceding-sibling::node())"/>
-										<fo:table table-layout="fixed" width="100%">
-											<fo:table-column column-width="59mm"/>
-											<fo:table-column column-width="90mm"/>
-											<fo:table-body>
-												<fo:table-row>
-													<fo:table-cell>
-														<fo:block>
-															<!-- Example: IEC Central Office
-																3, rue de Varembé
-																CH-1211 Geneva 20
-																Switzerland -->
-															<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-name')]" mode="coverpage"/>
-															<xsl:choose>
-																<xsl:when test="$telpos != 0">
-																	<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/node()[position() &lt; $telpos]" mode="coverpage"/>
-																</xsl:when>
-																<xsl:otherwise>
-																	<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]" mode="coverpage"/>
-																</xsl:otherwise>
-															</xsl:choose>
-														</fo:block>
-													</fo:table-cell>
-													<fo:table-cell>
-														<fo:block>
-															<!-- Example: Tel.: +41 22 919 02 11
-															 Fax: +41 22 919 0
-															 info@iec.ch
-															www.iec.ch -->
-															<xsl:choose>
-																<xsl:when test="$telpos != 0">
-																	<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/node()[position() &gt; $telpos]" mode="coverpage"/>
-																</xsl:when>
-																<xsl:otherwise> </xsl:otherwise>
-															</xsl:choose>
-														</fo:block>
-													</fo:table-cell>
-												</fo:table-row>
-											</fo:table-body>
-										</fo:table>
-
-									</fo:block>
-								</fo:block-container>
-							</fo:block-container>
-						</fo:block-container>
-					</fo:block>
-
-					<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:feedback-statement"/> <!-- //mn:clause[not(@id) or @id != 'boilerplate-cenelec-attention'] -->
-					<fo:block span="all" border-bottom="0.5pt solid black"/>
-					<!-- About the IEC
-					The International Electrotechnical Commission (IEC) is the leading global organization that prepares and publishes
-					International Standards for all electrical, electronic and related technologies.
-					About IEC publications
-					The technical content of IEC publications is kept under constant review by the IEC. Please make sure that you have the
-					latest edition, a corrigenda or an amendment might have been published.
-					...
-					-->
-					<xsl:if test="$updated_document2_boilerplate/mn:boilerplate/mn:feedback-statement">
-						<xsl:apply-templates select="$updated_document2_boilerplate/mn:boilerplate/mn:feedback-statement"/>
-						<fo:block span="all"/>
-					</xsl:if>
-
-				</fo:flow>
-			</fo:page-sequence> <!-- END: 2nd Cover Page -->
+			<xsl:call-template name="inner-cover-page">
+				<xsl:with-param name="updated_document1_boilerplate" select="$updated_document1_boilerplate"/>
+				<xsl:with-param name="updated_document2_boilerplate" select="$updated_document2_boilerplate"/>
+			</xsl:call-template>
 		</xsl:if>
+
 		<xsl:variable name="lang_second" select="(//mn:metanorma)[2]/mn:bibdata/mn:language[@current = 'true']"/>
 		<!-- For 'Published' documents insert 3rd Cover Page 
 				OR insert first Cover Page for FDIS -->
@@ -985,6 +881,120 @@
 			</fo:page-sequence> <!-- END: cover-FDIS -->
 		</xsl:if>
 	</xsl:template>
+
+	<xsl:template name="inner-cover-page">
+		<xsl:param name="updated_document1_boilerplate"/>
+		<xsl:param name="updated_document2_boilerplate"/>
+		<!-- 2nd Cover Page -->
+		<fo:page-sequence master-reference="cover_2nd" force-page-count="no-force" font-size="8pt">
+			<fo:flow flow-name="xsl-region-body">
+				<fo:block span="all">
+					<fo:block-container border="0.5pt solid black" margin-top="7mm">
+						<fo:block-container margin-left="2.5mm" margin-right="2.5mm" margin-top="1mm" margin-bottom="1mm">
+							<fo:block-container margin-left="0mm" margin-right="0mm">
+								<fo:table table-layout="fixed" width="100%">
+									<fo:table-column column-width="20mm"/>
+									<fo:table-column column-width="130mm"/>
+									<fo:table-body>
+										<fo:table-row>
+											<fo:table-cell>
+												<fo:block>
+													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Attention))}" width="17.8mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell font-size="10pt" font-weight="bold" display-align="after">
+												<fo:block margin-bottom="3pt">THIS PUBLICATION IS COPYRIGHT PROTECTED</fo:block>
+												<fo:block margin-bottom="10pt">
+													<!-- Example: Copyright © 2014 IEC, Geneva, Switzerland -->
+													<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-year')]"/>
+												</fo:block>
+											</fo:table-cell>
+										</fo:table-row>
+									</fo:table-body>
+								</fo:table>
+								<fo:block>
+									<fo:block margin-bottom="8pt" text-align="justify">
+									<!-- Example: All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized in any form
+or by any means, electronic or mechanical, including photocopying and microfilm, without permission in writing from
+either IEC or IEC's member National Committee in the country of the requester. If you have any questions about IEC
+copyright or have an enquiry about obtaining additional rights to this publication, please contact the address below or
+your local IEC member National Committee for further information. -->
+									<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-message')]"/>
+									</fo:block>
+									<!-- Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne peut être reproduite
+ni utilisée sous quelque forme que ce soit et par aucun procédé, électronique ou mécanique, y compris la photocopie
+et les microfilms, sans l'accord écrit de l'IEC ou du Comité national de l'IEC du pays du demandeur. Si vous avez des
+questions sur le copyright de l'IEC ou si vous désirez obtenir des droits supplémentaires sur cette publication, utilisez
+les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pays de résidence. -->
+									<fo:block margin-bottom="8pt" text-align="justify">
+										<xsl:apply-templates select="$updated_document2_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-message')]"/>
+									</fo:block>
+
+									<xsl:variable name="telpos" select="count($updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/text()[contains(., 'Tel.')]/preceding-sibling::node())"/>
+									<fo:table table-layout="fixed" width="100%">
+										<fo:table-column column-width="59mm"/>
+										<fo:table-column column-width="90mm"/>
+										<fo:table-body>
+											<fo:table-row>
+												<fo:table-cell>
+													<fo:block>
+														<!-- Example: IEC Central Office
+															3, rue de Varembé
+															CH-1211 Geneva 20
+															Switzerland -->
+														<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-name')]" mode="coverpage"/>
+														<xsl:choose>
+															<xsl:when test="$telpos != 0">
+																<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/node()[position() &lt; $telpos]" mode="coverpage"/>
+															</xsl:when>
+															<xsl:otherwise>
+																<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]" mode="coverpage"/>
+															</xsl:otherwise>
+														</xsl:choose>
+													</fo:block>
+												</fo:table-cell>
+												<fo:table-cell>
+													<fo:block>
+														<!-- Example: Tel.: +41 22 919 02 11
+														 Fax: +41 22 919 0
+														 info@iec.ch
+														www.iec.ch -->
+														<xsl:choose>
+															<xsl:when test="$telpos != 0">
+																<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:copyright-statement/mn:clause/mn:p[contains(@id, 'boilerplate-address')]/node()[position() &gt; $telpos]" mode="coverpage"/>
+															</xsl:when>
+															<xsl:otherwise> </xsl:otherwise>
+														</xsl:choose>
+													</fo:block>
+												</fo:table-cell>
+											</fo:table-row>
+										</fo:table-body>
+									</fo:table>
+
+								</fo:block>
+							</fo:block-container>
+						</fo:block-container>
+					</fo:block-container>
+				</fo:block>
+
+				<xsl:apply-templates select="$updated_document1_boilerplate/mn:boilerplate/mn:feedback-statement"/> <!-- //mn:clause[not(@id) or @id != 'boilerplate-cenelec-attention'] -->
+				<fo:block span="all" border-bottom="0.5pt solid black"/>
+				<!-- About the IEC
+				The International Electrotechnical Commission (IEC) is the leading global organization that prepares and publishes
+				International Standards for all electrical, electronic and related technologies.
+				About IEC publications
+				The technical content of IEC publications is kept under constant review by the IEC. Please make sure that you have the
+				latest edition, a corrigenda or an amendment might have been published.
+				...
+				-->
+				<xsl:if test="$updated_document2_boilerplate/mn:boilerplate/mn:feedback-statement">
+					<xsl:apply-templates select="$updated_document2_boilerplate/mn:boilerplate/mn:feedback-statement"/>
+					<fo:block span="all"/>
+				</xsl:if>
+
+			</fo:flow>
+		</fo:page-sequence> <!-- END: 2nd Cover Page -->
+	</xsl:template> <!-- END: inner-cover-page -->
 
 	<xsl:template match="mn:pagebreak" priority="2">
 		<xsl:copy-of select="."/>
@@ -9811,17 +9821,24 @@
 	</xsl:attribute-set> <!-- quote-style -->
 
 	<xsl:template name="refine_quote-style">
-	</xsl:template>
+	</xsl:template> <!-- refine_quote-style -->
 
 	<xsl:attribute-set name="quote-source-style">
 		<xsl:attribute name="text-align">right</xsl:attribute>
 		<xsl:attribute name="margin-top">15pt</xsl:attribute>
 		<xsl:attribute name="margin-left">12mm</xsl:attribute>
 		<xsl:attribute name="margin-right">12mm</xsl:attribute>
-	</xsl:attribute-set>
+	</xsl:attribute-set> <!-- quote-source-style -->
 
 	<xsl:template name="refine_quote-source-style">
 	</xsl:template>
+
+	<xsl:attribute-set name="source-style">
+	</xsl:attribute-set> <!-- source-style -->
+
+	<xsl:template name="refine_source-style">
+
+	</xsl:template> <!-- refine_source-style -->
 
 	<!-- ====== -->
 	<!-- quote -->
@@ -9870,7 +9887,9 @@
 		</xsl:if>
 		<xsl:choose>
 			<xsl:when test="not(parent::quote)">
-				<fo:block>
+				<fo:block xsl:use-attribute-sets="source-style">
+					<xsl:call-template name="refine_source-style"/>
+
 					<xsl:call-template name="insert_basic_link">
 						<xsl:with-param name="element">
 							<fo:basic-link internal-destination="{@bibitemid}" fox:alt-text="{@citeas}">
@@ -11988,7 +12007,7 @@
 			<xsl:attribute name="baseline-shift">15%</xsl:attribute>
 		</xsl:if>
 		<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
-		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if><!-- <xsl:if test="$namespace = 'bsi' or $namespace = 'pas'"></xsl:if> -->
 	</xsl:template> <!-- refine_fn-reference-style -->
 
 	<xsl:attribute-set name="fn-style">
@@ -11999,7 +12018,9 @@
 	</xsl:template>
 
 	<xsl:attribute-set name="fn-num-style">
+		<xsl:attribute name="role">Reference</xsl:attribute>
 		<xsl:attribute name="keep-with-previous.within-line">always</xsl:attribute>
+		<xsl:attribute name="font-size">65%</xsl:attribute>
 		<xsl:attribute name="font-size">8pt</xsl:attribute>
 		<xsl:attribute name="baseline-shift">15%</xsl:attribute>
 	</xsl:attribute-set> <!-- fn-num-style -->
@@ -12072,33 +12093,16 @@
 		<xsl:variable name="ref_id" select="@target"/>
 
 		<xsl:variable name="footnote_inline">
-			<fo:inline role="Reference">
+			<fo:inline xsl:use-attribute-sets="fn-num-style">
 
-				<xsl:variable name="fn_styles">
-					<xsl:choose>
-						<xsl:when test="ancestor::mn:bibitem">
-							<fn_styles xsl:use-attribute-sets="bibitem-note-fn-style">
-								<xsl:call-template name="refine_bibitem-note-fn-style"/>
-							</fn_styles>
-						</xsl:when>
-						<xsl:otherwise>
-							<fn_styles xsl:use-attribute-sets="fn-num-style">
-								<xsl:call-template name="refine_fn-num-style"/>
-							</fn_styles>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:variable>
-
-				<xsl:for-each select="xalan:nodeset($fn_styles)/fn_styles/@*">
-					<xsl:copy-of select="."/>
-				</xsl:for-each>
+				<xsl:call-template name="refine_fn-num-style"/>
 
 				<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
 				<!-- <xsl:if test="following-sibling::node()[normalize-space() != ''][1][self::mn:fn]">
 					<xsl:attribute name="padding-right">0.5mm</xsl:attribute>
 				</xsl:if> -->
 
-				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if>
 
 				<xsl:call-template name="insert_basic_link">
 					<xsl:with-param name="element">
@@ -12401,33 +12405,6 @@
 
 	<xsl:template name="refine_bibitem-non-normative-list-body-style">
 	</xsl:template>
-
-	<!-- footnote reference number for bibitem, in the text  -->
-	<xsl:attribute-set name="bibitem-note-fn-style">
-		<xsl:attribute name="keep-with-previous.within-line">always</xsl:attribute>
-		<xsl:attribute name="font-size">65%</xsl:attribute>
-		<xsl:attribute name="font-size">8pt</xsl:attribute>
-		<xsl:attribute name="baseline-shift">15%</xsl:attribute>
-	</xsl:attribute-set> <!-- bibitem-note-fn-style -->
-
-	<xsl:template name="refine_bibitem-note-fn-style">
-	</xsl:template>
-
-	<!-- footnote number on the page bottom -->
-	<xsl:attribute-set name="bibitem-note-fn-number-style">
-		<xsl:attribute name="keep-with-next.within-line">always</xsl:attribute>
-		<xsl:attribute name="baseline-shift">15%</xsl:attribute>
-		<xsl:attribute name="padding-right">3mm</xsl:attribute>
-	</xsl:attribute-set> <!-- bibitem-note-fn-number-style -->
-
-	<!-- footnote body (text) on the page bottom -->
-	<xsl:attribute-set name="bibitem-note-fn-body-style">
-		<xsl:attribute name="font-size">10pt</xsl:attribute>
-		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
-		<xsl:attribute name="start-indent">0pt</xsl:attribute>
-		<xsl:attribute name="font-size">8pt</xsl:attribute>
-		<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
-	</xsl:attribute-set> <!-- bibitem-note-fn-body-style -->
 
 	<xsl:attribute-set name="references-non-normative-style">
 	</xsl:attribute-set> <!-- references-non-normative-style -->
@@ -14833,6 +14810,17 @@
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_clause-style">
+		<!-- commented for https://github.com/metanorma/metanorma-ribose/issues/421 -->
+		<!-- <xsl:if test="$namespace = 'rsd'">
+			<xsl:variable name="level">
+				<xsl:call-template name="getLevel">
+					<xsl:with-param name="depth" select="mn:fmt-title/@depth"/>
+				</xsl:call-template>
+			</xsl:variable>
+			<xsl:if test="$level &gt;= 4">
+				<xsl:attribute name="margin-left">13mm</xsl:attribute>
+			</xsl:if>
+		</xsl:if> -->
 	</xsl:template>
 
 	<!-- main sections -->
