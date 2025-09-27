@@ -3934,7 +3934,6 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set> <!-- feedback-statement-title-style -->
 
 	<xsl:template name="refine_feedback-statement-title-style">
-
 	</xsl:template>
 
 	<xsl:attribute-set name="feedback-statement-p-style">
