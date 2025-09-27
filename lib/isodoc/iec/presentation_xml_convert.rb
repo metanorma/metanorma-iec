@@ -67,24 +67,6 @@ module IsoDoc
         CLAUSE
       end
 
-      # KILL
-      def insert_middle_titlex(docxml)
-        ins = docxml.at(ns("//preface/clause[@type = 'toc']")) or return
-        title1, title2 = middle_title_parts
-        title2out = ""
-        title2 and title2out = <<~OUTPUT
-          <p class="zzSTDTitle1">&#xa0;</p>
-          <p class="zzSTDTitle2"><strong>#{title2}</strong></p>
-        OUTPUT
-        title1 &&= Metanorma::Utils.case_transform_xml(title1, :upcase)
-        ins.next = <<~OUTPUT
-          <pagebreak/><p class="zzSTDTitle1">#{@i18n.get['IEC']}</p>
-          <p class="zzSTDTitle1">____________</p><p class="zzSTDTitle1">&#xa0;</p>
-          <p class="zzSTDTitle1"><strong>#{title1}</strong></p>#{title2out}
-          <p class="zzSTDTitle1">&#xa0;</p>
-        OUTPUT
-      end
-
       def insert_middle_title(docxml)
         ins = docxml.at(ns("//preface/clause[@type = 'toc']")) or return
         title = populate_template(preface_title_template, nil) or return
@@ -105,16 +87,6 @@ module IsoDoc
         OUTPUT
       end
 
-      # KILL
-      def middle_title_parts
-        title1 = @meta.get[:doctitlemain]&.sub(/\s+$/, "")
-        @meta.get[:doctitleintro] and
-          title1 = "#{@meta.get[:doctitleintro]} \u2014 #{title1}"
-        title1, title2 = middle_title_part(title1, nil)
-        title1&.empty? and title1 = nil
-        [title1, title2]
-      end
-
       def middle_title_part(title1, title2)
         if @meta.get[:doctitlepart]
           title1 += " \u2014"
@@ -123,21 +95,6 @@ module IsoDoc
             title2 = "#{@meta.get[:doctitlepartlabel]}: #{title2}"
         end
         [title1, title2]
-      end
-
-      # KILL
-      def middle_titlex(docxml)
-        s = docxml.at(ns("//sections")) or return
-        title1, title2 = middle_title_parts
-        title1 || title2 or return
-        ret = ""
-        title1 and ret = "<p class='zzSTDTitle1'><strong>#{title1}</strong></p>"
-        title2 and ret += <<~TITLE
-          <p class='zzSTDTitle1'>&#xa0;</p>
-          <p class='zzSTDTitle2'><strong>#{title2}</strong><p>
-        TITLE
-        ret += "<p class='zzSTDTitle1'>&#xa0;</p>"
-        s.add_first_child ret
       end
 
       def middle_title_template

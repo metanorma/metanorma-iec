@@ -597,4 +597,462 @@ RSpec.describe IsoDoc::Iec do
       .convert("test", pres_output.gsub(%r{reference="[^"]+"}m, 'reference="1"'),
                true)))).to be_equivalent_to Canon.format_xml(html)
   end
+
+    it "renders bibliography [1] references" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <bibdata>
+      <language>en</language>
+      </bibdata>
+      <sections><clause id="_7f1f55f3-9959-408e-ce64-ba25716cb080" inline-header="false" obligation="normative">
+      <title id="_197c5920-4bbf-7c2e-7b8d-f4f455e85560">Clause</title>
+      <p id="_64d21512-c8ec-11c8-cd59-67dc0b878dcd">Sentence <eref type="inline" bibitemid="internet_standards" citeas="[1]"/>.</p>
+
+      <p id="_cad3c9fc-f546-d026-9efe-d850aa04137b">Sentence <eref type="inline" style="superscript" bibitemid="internet_standards" citeas="[1]"/>.</p>
+
+      <p id="_8ec8708e-8bda-b2a0-5b50-2cb5ea28519a">Sentence <erefstack><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/><eref connective="and" bibitemid="graphql" citeas="[2]" type="inline"/></erefstack>.</p>
+
+      <p id="_8ec8708e-8bda-b2a0-5b50-2cb5ea28519b">Sentence <erefstack><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/><eref connective="and" bibitemid="graphql" citeas="[2]" type="inline"/><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/></erefstack>.</p>
+
+      <p id="_77efedf3-56a3-f46e-3344-15dd295af592">Sentence <erefstack style="superscript"><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/><eref connective="and" bibitemid="graphql" citeas="[2]" type="inline"/></erefstack>.</p>
+
+      <p id="_77efedf3-56a3-f46e-3344-15dd295af593">Sentence <erefstack style="superscript"><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/><eref connective="and" bibitemid="graphql" citeas="[2]" type="inline"/><eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline"/></erefstack>.</p>
+
+      <p id="_15af3752-132c-5bf4-26b7-57522b8d5ce2">Sentence <eref type="inline" bibitemid="internet_standards" citeas="[1]"><localityStack><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack></eref>.</p>
+
+      <p id="_2d1771b1-38ac-7901-3b21-0e99c715f8f0">Sentence <eref type="inline" style="superscript" bibitemid="internet_standards" citeas="[1]"><localityStack><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack></eref>.</p>
+      </clause>
+
+      <terms id="_e124b581-f1d9-34be-9312-5b68ae58bc8a" obligation="normative">
+      <title id="_dfb2eab2-f980-6365-3c47-81d0eb272962">Terms and definitions</title><p id="_dcc01114-4d03-3550-1347-4ba901bda94c">For the purposes of this document, the following terms and definitions apply.</p>
+      <p id="_1df4aedb-297d-0c69-967f-f6a60db009d2">ISO and IEC maintain terminology databases for use in standardization at the following addresses:</p>
+
+      <ul id="_e6ddc246-88cc-2222-8452-b939a5cefa0e"><li><p id="_93880b15-0e52-9141-f887-d290dce89ffd">ISO Online browsing platform: available at <link target="https://www.iso.org/obp"/></p>
+      </li>
+      <li><p id="_8a7ecb99-412c-1138-ae9d-76c4ac7b7d43">IEC Electropedia: available at <link target="https://www.electropedia.org"/></p>
+      </li>
+      </ul>
+
+      <term id="_7d064b9d-3bb9-6e20-e22f-507f5e4097e5" anchor="term-Term-1"><preferred><expression>
+      <name>Term 1</name>
+      </expression>
+      </preferred>
+      <definition id="_cd3a2a7d-fa49-0f16-2345-d75a1af91f39"><verbal-definition id="_7d08bf49-9189-01ae-9a21-03260aea3f05"><p id="_08156712-5912-c3f8-37b4-963737b2f532">Definition</p></verbal-definition></definition>
+
+
+       <source status="identical" type="authoritative"><origin bibitemid="internet_standards" type="inline" citeas="[1]"><localityStack><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack></origin>
+      </source></term>
+
+      <term id="_2baf3b3d-7b0d-1d47-b78d-f0a037d0edf7" anchor="term-Term-2"><preferred><expression>
+      <name>Term 2</name>
+      </expression>
+      </preferred>
+      <definition id="_d0d28852-8399-7970-7330-4234dda15f4e"><verbal-definition id="_3e46d6f6-8d6f-ac46-c2b0-75a8936dec9b"><p id="_5cee8601-19f1-6e98-a5a7-2b12e954273a">Definition</p></verbal-definition></definition>
+
+       <source status="identical" type="authoritative"><origin bibitemid="internet_standards" type="inline" citeas="[1]"><localityStack><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack></origin>
+      </source><source status="identical" type="authoritative"><origin bibitemid="graphql" type="inline" citeas="[2]"><localityStack><locality type="clause"><referenceFrom>3</referenceFrom></locality></localityStack></origin>
+      </source></term>
+      </terms>
+      </sections>
+      <bibliography><references id="_cd4f6c9c-b025-1fdf-4aa5-9ef14295f99f" normative="false" obligation="informative">
+      <title id="_2b4ed339-a7ed-1bbb-9576-55fcbc1ace3a">Bibliography</title><bibitem anchor="internet_standards" id="_6ac01dcf-8be2-8d2b-cca7-47690ab0876d" type="webresource">
+        <title>Internet Standards</title>
+        <uri>https://www.rfc-editor.org/standards#IS</uri>
+        <docidentifier type="metanorma">[1]</docidentifier>
+        <date type="published">
+        <on>July 2024</on>
+      </date>
+        <contributor>
+        <role type="author"/>
+        <organization>
+          <name>Internet Engineering Task Force</name>
+        </organization>
+      </contributor>
+      </bibitem><bibitem anchor="graphql" id="_a42afe30-3f9a-2719-5872-73f49c6329e1" type="standard">
+        <title>The GraphQL Specification Project</title>
+        <uri>https://spec.graphql.org</uri>
+        <docidentifier type="metanorma">[2]</docidentifier>
+        <date type="published">
+        <on>October 2021</on>
+      </date>
+        <contributor>
+        <role type="author"/>
+        <organization>
+          <name>Joint Development Foundation Projects, LLC</name>
+        </organization>
+      </contributor>
+      </bibitem>
+      </references></bibliography>
+      </iso-standard>
+    INPUT
+    output = <<~OUTPUT
+       <sections>
+          <clause id="_" inline-header="false" obligation="normative" displayorder="8">
+             <title id="_">Clause</title>
+             <fmt-title depth="1" id="_">
+                <span class="fmt-caption-label">
+                   <semx element="autonum" source="_">1</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Clause</semx>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="_">1</semx>
+             </fmt-xref-label>
+             <p id="_">
+                Sentence
+                <eref type="inline" bibitemid="internet_standards" citeas="[1]" id="_"/>
+                <semx element="eref" source="_">
+                   Reference
+                   <fmt-xref type="inline" target="internet_standards">[1]</fmt-xref>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <eref type="inline" style="superscript" bibitemid="internet_standards" citeas="[1]" id="_"/>
+                <semx element="eref" source="_">
+                   <sup>
+                      <fmt-xref type="inline" style="superscript" target="internet_standards">[1]</fmt-xref>
+                   </sup>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <erefstack id="_">
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="graphql" citeas="[2]" type="inline" id="_"/>
+                </erefstack>
+                <semx element="erefstack" source="_">
+                   References
+                   <semx element="eref" source="_">
+                      <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                   </semx>
+                   <span class="fmt-conn">and</span>
+                   <semx element="eref" source="_">
+                      <fmt-xref connective="and" type="inline" target="graphql">[2]</fmt-xref>
+                   </semx>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <erefstack id="_">
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="graphql" citeas="[2]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                </erefstack>
+                <semx element="erefstack" source="_">
+                   References
+                   <semx element="eref" source="_">
+                      <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                   </semx>
+                   <span class="fmt-enum-comma">,</span>
+                   <semx element="eref" source="_">
+                      <fmt-xref connective="and" type="inline" target="graphql">[2]</fmt-xref>
+                   </semx>
+                   <span class="fmt-conn">and</span>
+                   <semx element="eref" source="_">
+                      <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                   </semx>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <erefstack style="superscript" id="_">
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="graphql" citeas="[2]" type="inline" id="_"/>
+                </erefstack>
+                <semx element="erefstack" source="_">
+                   <sup>
+                      <semx element="eref" source="_">
+                         <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                      </semx>
+                   </sup>
+                   <sup>
+                      <semx element="eref" source="_">
+                         <fmt-xref connective="and" type="inline" target="graphql">[2]</fmt-xref>
+                      </semx>
+                   </sup>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <erefstack style="superscript" id="_">
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="graphql" citeas="[2]" type="inline" id="_"/>
+                   <eref connective="and" bibitemid="internet_standards" citeas="[1]" type="inline" id="_"/>
+                </erefstack>
+                <semx element="erefstack" source="_">
+                   <sup>
+                      <semx element="eref" source="_">
+                         <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                      </semx>
+                   </sup>
+                   <sup>
+                      <semx element="eref" source="_">
+                         <fmt-xref connective="and" type="inline" target="graphql">[2]</fmt-xref>
+                      </semx>
+                   </sup>
+                   <sup>
+                      <semx element="eref" source="_">
+                         <fmt-xref connective="and" type="inline" target="internet_standards">[1]</fmt-xref>
+                      </semx>
+                   </sup>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <eref type="inline" bibitemid="internet_standards" citeas="[1]" id="_">
+                   <localityStack>
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                   </localityStack>
+                </eref>
+                <semx element="eref" source="_">
+                   Reference
+                   <fmt-xref type="inline" target="internet_standards">
+                      [1],
+                      <span class="citesec">Clause 3</span>
+                   </fmt-xref>
+                </semx>
+                .
+             </p>
+             <p id="_">
+                Sentence
+                <eref type="inline" style="superscript" bibitemid="internet_standards" citeas="[1]" id="_">
+                   <localityStack>
+                      <locality type="clause">
+                         <referenceFrom>3</referenceFrom>
+                      </locality>
+                   </localityStack>
+                </eref>
+                <semx element="eref" source="_">
+                   <sup>
+                      <fmt-xref type="inline" style="superscript" target="internet_standards">
+                         [1],
+                         <span class="citesec">Clause 3</span>
+                      </fmt-xref>
+                   </sup>
+                </semx>
+                .
+             </p>
+          </clause>
+          <terms id="_" obligation="normative" displayorder="9">
+             <title id="_">Terms and definitions</title>
+             <fmt-title depth="1" id="_">
+                <span class="fmt-caption-label">
+                   <semx element="autonum" source="_">2</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Terms and definitions</semx>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Clause</span>
+                <semx element="autonum" source="_">2</semx>
+             </fmt-xref-label>
+             <p id="_">For the purposes of this document, the following terms and definitions apply.</p>
+             <p id="_">ISO and IEC maintain terminology databases for use in standardization at the following addresses:</p>
+             <ul id="_">
+                <li id="_">
+                   <fmt-name id="_">
+                      <semx element="autonum" source="_">•</semx>
+                   </fmt-name>
+                   <p id="_">
+                      ISO Online browsing platform: available at
+                      <link target="https://www.iso.org/obp" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://www.iso.org/obp"/>
+                      </semx>
+                   </p>
+                </li>
+                <li id="_">
+                   <fmt-name id="_">
+                      <semx element="autonum" source="_">•</semx>
+                   </fmt-name>
+                   <p id="_">
+                      IEC Electropedia: available at
+                      <link target="https://www.electropedia.org" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://www.electropedia.org"/>
+                      </semx>
+                   </p>
+                </li>
+             </ul>
+             <term id="term-Term-1" anchor="term-Term-1">
+                <fmt-name id="_">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="_">2</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="term-Term-1">1</semx>
+                   </span>
+                </fmt-name>
+                <fmt-xref-label>
+                   <semx element="autonum" source="_">2</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="term-Term-1">1</semx>
+                </fmt-xref-label>
+                <preferred id="_">
+                   <expression>
+                      <name>Term 1</name>
+                   </expression>
+                </preferred>
+                <fmt-preferred>
+                   <p>
+                     <semx element="preferred" source="_">
+                         <strong>Term 1</strong>
+                      </semx>
+                   </p>
+                </fmt-preferred>
+                <definition id="_">
+                   <verbal-definition id="_">
+                      <p original-id="_">Definition</p>
+                   </verbal-definition>
+                </definition>
+                <fmt-definition id="_">
+                   <semx element="definition" source="_">
+                      <p id="_">Definition</p>
+                   </semx>
+                </fmt-definition>
+                <source status="identical" type="authoritative" id="_">
+                   <origin bibitemid="internet_standards" type="inline" citeas="[1]">
+                      <localityStack>
+                         <locality type="clause">
+                            <referenceFrom>3</referenceFrom>
+                         </locality>
+                      </localityStack>
+                   </origin>
+                </source>
+                <fmt-termsource status="identical" type="authoritative">
+                   [SOURCE:
+                   <semx element="source" source="_">
+                      <origin bibitemid="internet_standards" type="inline" citeas="[1]" id="_">
+                         <localityStack>
+                            <locality type="clause">
+                               <referenceFrom>3</referenceFrom>
+                            </locality>
+                         </localityStack>
+                      </origin>
+                      <semx element="origin" source="_">
+                         Reference
+                         <fmt-xref type="inline" target="internet_standards">
+                            [1],
+                            <span class="citesec">Clause 3</span>
+                         </fmt-xref>
+                      </semx>
+                   </semx>
+                   ]
+                </fmt-termsource>
+             </term>
+             <term id="term-Term-2" anchor="term-Term-2">
+                <fmt-name id="_">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="_">2</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="term-Term-2">2</semx>
+                   </span>
+                </fmt-name>
+                <fmt-xref-label>
+                   <semx element="autonum" source="_">2</semx>
+                   <span class="fmt-autonum-delim">.</span>
+                   <semx element="autonum" source="term-Term-2">2</semx>
+                </fmt-xref-label>
+                <preferred id="_">
+                   <expression>
+                      <name>Term 2</name>
+                   </expression>
+                </preferred>
+                <fmt-preferred>
+                   <p>
+                      <semx element="preferred" source="_">
+                         <strong>Term 2</strong>
+                      </semx>
+                   </p>
+                </fmt-preferred>
+                <definition id="_">
+                   <verbal-definition id="_">
+                      <p original-id="_">Definition</p>
+                   </verbal-definition>
+                </definition>
+                <fmt-definition id="_">
+                   <semx element="definition" source="_">
+                      <p id="_">Definition</p>
+                   </semx>
+                </fmt-definition>
+                <source status="identical" type="authoritative" id="_">
+                   <origin bibitemid="internet_standards" type="inline" citeas="[1]">
+                      <localityStack>
+                         <locality type="clause">
+                            <referenceFrom>3</referenceFrom>
+                         </locality>
+                      </localityStack>
+                   </origin>
+                </source>
+                <source status="identical" type="authoritative" id="_">
+                   <origin bibitemid="graphql" type="inline" citeas="[2]">
+                      <localityStack>
+                         <locality type="clause">
+                            <referenceFrom>3</referenceFrom>
+                         </locality>
+                      </localityStack>
+                   </origin>
+                </source>
+                <fmt-termsource status="identical" type="authoritative">
+                   [SOURCE:
+                   <semx element="source" source="_">
+                      <origin bibitemid="internet_standards" type="inline" citeas="[1]" id="_">
+                         <localityStack>
+                            <locality type="clause">
+                               <referenceFrom>3</referenceFrom>
+                            </locality>
+                         </localityStack>
+                      </origin>
+                      <semx element="origin" source="_">
+                         Reference
+                         <fmt-xref type="inline" target="internet_standards">
+                            [1],
+                            <span class="citesec">Clause 3</span>
+                         </fmt-xref>
+                      </semx>
+                   </semx>
+                   ;
+                   <semx element="source" source="_">
+                      <origin bibitemid="graphql" type="inline" citeas="[2]" id="_">
+                         <localityStack>
+                            <locality type="clause">
+                               <referenceFrom>3</referenceFrom>
+                            </locality>
+                         </localityStack>
+                      </origin>
+                      <semx element="origin" source="_">
+                         Reference
+                         <fmt-xref type="inline" target="graphql">
+                            [2],
+                            <span class="citesec">Clause 3</span>
+                         </fmt-xref>
+                      </semx>
+                   </semx>
+                   ]
+                </fmt-termsource>
+             </term>
+          </terms>
+       </sections>
+    OUTPUT
+    xml = Nokogiri::XML(IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true))
+    xml = xml.at("//xmlns:sections")
+    expect(Canon.format_xml(strip_guid(xml.to_xml)))
+      .to be_equivalent_to Canon.format_xml(output)
+  end
 end
