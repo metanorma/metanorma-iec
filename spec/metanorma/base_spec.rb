@@ -443,8 +443,7 @@ RSpec.describe Metanorma::Iec do
                       <contributor>
               <role type="authorizer"><description>Agency</description></role>
               <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
+                <name>IEC;IETF;ISO</name>
               </organization>
             </contributor>
           <language>el,sq</language>
