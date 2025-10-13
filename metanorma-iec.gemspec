@@ -45,6 +45,6 @@ spec.add_development_dependency "rubocop-performance"
   spec.add_development_dependency "sassc-embedded", "~> 1"
   spec.add_development_dependency "simplecov", "~> 0.15"
   spec.add_development_dependency "timecop", "~> 0.9"
-  spec.add_development_dependency "canon"
+  spec.add_development_dependency "canon", "= 0.1.3"
   # spec.metadata["rubygems_mfa_required"] = "true"
 end
