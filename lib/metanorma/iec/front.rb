@@ -153,8 +153,7 @@ module Metanorma
       def report_illegal_stage(stage, substage)
         out = stage || ""
         /[A-Z]/.match?(out) or out += ".#{substage}"
-        err = "Illegal document stage: #{out}"
-        @log.add("Document Attributes", nil, err)
+        @log.add("IEC_1", nil, params: [out])
       end
 
       def metadata_ext(node, xml)

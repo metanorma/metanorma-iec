@@ -33,12 +33,10 @@ module Metanorma
         %w(international-standard technical-specification technical-report
            publicly-available-specification international-workshop-agreement
            guide interpretation-sheet).include? @doctype or
-          @log.add("Document Attributes", nil,
-                   "#{@doctype} is not a recognised document type")
+          @log.add("IEC_2", nil, params: [@doctype])
         if function = xmldoc.at("//bibdata/ext/function")&.text
           %w(emc quality-assurance safety environment).include? function or
-            @log.add("Document Attributes", nil,
-                     "#{function} is not a recognised document function")
+            @log.add("IEC_3", nil, params: [function])
         end
       end
 
@@ -180,3 +178,5 @@ module Metanorma
     end
   end
 end
+
+require_relative "log"
