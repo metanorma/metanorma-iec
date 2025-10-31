@@ -193,6 +193,8 @@ RSpec.describe Metanorma::Iec do
             <abbreviation>ISO</abbreviation>
           </organization>
         </contributor>
+                    <language>en</language>
+            <script>Latn</script>
       </bibitem>
       </references></bibliography>
              </metanorma>
@@ -228,6 +230,8 @@ RSpec.describe Metanorma::Iec do
              <abbreviation>ISO</abbreviation>
            </organization>
          </contributor>
+                     <language>en</language>
+            <script>Latn</script>
        </bibitem>
       </references>
       </bibliography>
