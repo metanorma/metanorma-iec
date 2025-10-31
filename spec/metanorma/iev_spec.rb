@@ -115,6 +115,8 @@ RSpec.describe Metanorma::Iec do
                        <em>TITLE</em>
                      </formattedref>
                      <docidentifier>B</docidentifier>
+                   <language>en</language>
+                  <script>Latn</script>
                    </bibitem>
                  </references>
                </bibliography>
