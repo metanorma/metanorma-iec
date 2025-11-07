@@ -1823,34 +1823,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ====== -->
 	<!-- title      -->
 	<!-- ====== -->
-	<xsl:template match="mn:introduction/mn:fmt-title">
-		<fo:block font-size="12pt" text-align="center" margin-bottom="12pt" role="H1">
-			<xsl:apply-templates/>
-			<xsl:apply-templates select="following-sibling::*[1][self::mn:variant-title][@type = 'sub']" mode="subtitle"/>
-		</fo:block>
-	</xsl:template>
+	<!-- Introduction title text spacing -->
 	<xsl:template match="mn:introduction/mn:fmt-title/text()">
 		<xsl:call-template name="addLetterSpacing">
 			<xsl:with-param name="text" select="."/>
 		</xsl:call-template>
 	</xsl:template>
 
-	<xsl:template match="mn:annex/mn:fmt-title">
-		<xsl:call-template name="setNamedDestination"/>
-		<fo:block xsl:use-attribute-sets="annex-title-style">
-			<xsl:call-template name="refine_annex-title-style"/>
-
-			<xsl:apply-templates/>
-			<xsl:apply-templates select="following-sibling::*[1][self::mn:variant-title][@type = 'sub']" mode="subtitle"/>
-		</fo:block>
-	</xsl:template>
-
-	<!-- Bibliography -->
-	<xsl:template match="mn:references[not(@normative='true')]/mn:fmt-title">
-		<fo:block xsl:use-attribute-sets="references-non-normative-title-style">
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
+	<!-- Bibliography title text spacing -->
 	<xsl:template match="mn:references[not(@normative='true')]/mn:fmt-title/text()">
 		<xsl:call-template name="addLetterSpacing">
 			<xsl:with-param name="text" select="."/>
@@ -12339,15 +12319,18 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- END Admonition -->
 	<!-- ================ -->
 
-	<xsl:attribute-set name="references-non-normative-title-style">
+	<xsl:attribute-set name="bibliography-title-style">
 		<xsl:attribute name="font-size">12pt</xsl:attribute>
+		<xsl:attribute name="font-weight">normal</xsl:attribute>
 		<xsl:attribute name="text-align">center</xsl:attribute>
+		<xsl:attribute name="space-before">0pt</xsl:attribute>
+		<xsl:attribute name="margin-top">0pt</xsl:attribute>
 		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="role">H1</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_references-non-normative-title-style">
+	<xsl:template name="refine_bibliography-title-style">
 	</xsl:template>
 
 	<!-- bibitem in Normative References (references/@normative="true") -->
@@ -14459,15 +14442,16 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ===================================== -->
 
 	<xsl:attribute-set name="annex-title-style">
-		<xsl:attribute name="font-size">12pt</xsl:attribute>
-		<xsl:attribute name="text-align">center</xsl:attribute>
-		<xsl:attribute name="margin-bottom">32pt</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		<xsl:attribute name="font-size">12pt</xsl:attribute>
+		<xsl:attribute name="font-weight">normal</xsl:attribute>
+		<xsl:attribute name="text-align">center</xsl:attribute>
+		<xsl:attribute name="space-before">0</xsl:attribute>
+		<xsl:attribute name="margin-bottom">32pt</xsl:attribute>
 		<xsl:attribute name="role">H1</xsl:attribute>
 	</xsl:attribute-set> <!-- annex-title-style -->
 
 	<xsl:template name="refine_annex-title-style">
-		<!-- <xsl:call-template name="setIDforNamedDestination"/> -->
 	</xsl:template>
 
 	<xsl:attribute-set name="p-zzSTDTitle1-style">
@@ -14529,6 +14513,15 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:if test="(ancestor::mn:sections and $level = 1) or     (ancestor::mn:annex and $level &lt;= 2) or     (ancestor::mn:references[not (preceding-sibling::mn:references)])">
 			<xsl:attribute name="font-size">11pt</xsl:attribute>
 		</xsl:if>
+		<xsl:if test="$level = 1">
+			<xsl:if test="ancestor::mn:introduction">
+				<xsl:attribute name="font-size">12pt</xsl:attribute>
+				<xsl:attribute name="font-weight">normal</xsl:attribute>
+				<xsl:attribute name="text-align">center</xsl:attribute>
+				<xsl:attribute name="space-before">0pt</xsl:attribute>
+				<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+			</xsl:if>
+		</xsl:if>
 		<xsl:if test="$level &gt;= 2">
 			<xsl:attribute name="space-before">10pt</xsl:attribute>
 			<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
@@ -14544,7 +14537,18 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				<xsl:attribute name="space-before">5pt</xsl:attribute>
 			</xsl:if>
 		</xsl:if>
-
+		<xsl:if test="parent::mn:references[not(@normative='true')]"><!-- Bibliography section title -->
+			<xsl:variable name="bibliography_title_styles">
+				<styles xsl:use-attribute-sets="bibliography-title-style"><xsl:call-template name="refine_bibliography-title-style"/></styles>
+			</xsl:variable>
+			<xsl:copy-of select="xalan:nodeset($bibliography_title_styles)/styles/@*"/>
+		</xsl:if>
+		<xsl:if test="parent::mn:annex"><!-- Annex title -->
+			<xsl:variable name="annex_title_styles">
+				<styles xsl:use-attribute-sets="annex-title-style"><xsl:call-template name="refine_annex-title-style"/></styles>
+			</xsl:variable>
+			<xsl:copy-of select="xalan:nodeset($annex_title_styles)/styles/@*"/>
+		</xsl:if>
 		<!-- $namespace = 'iec' -->
 		<xsl:attribute name="role">H<xsl:value-of select="$level"/></xsl:attribute>
 	</xsl:template> <!-- refine_title-style -->
