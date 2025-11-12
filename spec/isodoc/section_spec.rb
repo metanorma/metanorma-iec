@@ -549,77 +549,141 @@ RSpec.describe IsoDoc do
               <p class="section-break"><br clear="all" class="section"/></p>
               <div class="WordSection3">
               #{IEC_TITLE1}
-                <div id="D">
-                  <h1>1<span style="mso-tab-count:1">&#160; </span>Scope</h1>
-                  <p id="E">Text</p>
+            <div id="D">
+                <h1>
+                   1
+                   <span style="mso-tab-count:1">  </span>
+                   Scope
+                </h1>
+                <p id="E">Text</p>
+             </div>
+             <div>
+                <h1>
+                   2
+                   <span style="mso-tab-count:1">  </span>
+                   Normative References
+                </h1>
+             </div>
+             <div id="H">
+                <h1>
+                   3
+                   <span style="mso-tab-count:1">  </span>
+                   Terms, definitions, symbols and abbreviated terms
+                </h1>
+                <div id="I">
+                   <h2>
+                      3.1
+                      <span style="mso-tab-count:1">  </span>
+                      Normal Terms
+                   </h2>
+                   <p class="TermNum" id="J">3.1.1</p>
+                   <p class="Terms" style="text-align:left;">
+                      <b>Term2</b>
+                   </p>
                 </div>
+                <div id="K">
+                   <h2>
+                      3.2
+                      <span style="mso-tab-count:1">  </span>
+                      Symbols
+                   </h2>
+                   <div align="left">
+                      <table class="dl">
+                         <tr>
+                            <td valign="top" align="left">
+                               <p align="left" style="margin-left:0pt;text-align:left;">Symbol</p>
+                            </td>
+                            <td valign="top">Definition</td>
+                         </tr>
+                      </table>
+                   </div>
+                </div>
+             </div>
+             <div id="L" class="Symbols">
+                <h1>
+                   4
+                   <span style="mso-tab-count:1">  </span>
+                   Symbols
+                </h1>
+                <div align="left">
+                   <table class="dl">
+                      <tr>
+                         <td valign="top" align="left">
+                            <p align="left" style="margin-left:0pt;text-align:left;">Symbol</p>
+                         </td>
+                         <td valign="top">Definition</td>
+                      </tr>
+                   </table>
+                </div>
+             </div>
+             <div id="M">
+                <h1>
+                   5
+                   <span style="mso-tab-count:1">  </span>
+                   Clause 4
+                </h1>
+                <div id="N">
+                   <h2>
+                      5.1
+                      <span style="mso-tab-count:1">  </span>
+                      Introduction
+                   </h2>
+                </div>
+                <div id="O">
+                   <h2>
+                      5.2
+                      <span style="mso-tab-count:1">  </span>
+                      Clause 4.2
+                   </h2>
+                </div>
+             </div>
+             <p class="page-break">
+                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div id="P" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex A</b>
+                   <br/>
+                   <span class="obligation">(normative)</span>
+                   <br/>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <div id="Q">
+                   <h2>
+                      A.1
+                      <span style="mso-tab-count:1">  </span>
+                      Annex A.1
+                   </h2>
+                   <div id="Q1">
+                      <h3>
+                         A.1.1
+                         <span style="mso-tab-count:1">  </span>
+                         Annex A.1a
+                      </h3>
+                   </div>
+                </div>
+                <div id="Q2">
+                   <h2>
+                      Appendix 1
+                      <span style="mso-tab-count:1">  </span>
+                      An Appendix
+                   </h2>
+                </div>
+             </div>
+             <p class="page-break">
+                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div>
+                <h1 class="Section3">Bibliography</h1>
                 <div>
-                  <h1>2<span style="mso-tab-count:1">&#160; </span>Normative References</h1>
+                   <h2 class="Section3">Bibliography Subsection</h2>
                 </div>
-                <div id="H"><h1>3<span style="mso-tab-count:1">&#160; </span>Terms, definitions, symbols and abbreviated terms</h1>
-        <div id="I">
-           <h2>3.1<span style="mso-tab-count:1">&#160; </span>Normal Terms</h2>
-           <p class="TermNum" id="J">3.1.1</p>
-           <p class="Terms" style="text-align:left;"><b>Term2</b></p>
-
-         </div><div id="K">
-                    <h2>
-              3.2
-              <span style="mso-tab-count:1">  </span>
-              Symbols
-           </h2>
-           <table class="dl"><tr><td valign="top" align="left"><p align="left" style="margin-left:0pt;text-align:left;">Symbol</p></td><td valign="top">Definition</td></tr></table>
-         </div></div>
-                <div id="L" class="Symbols">
-         <h1>
-            4
-            <span style="mso-tab-count:1">  </span>
-            Symbols
-         </h1>
-                  <table class="dl">
-                    <tr>
-                      <td valign="top" align="left">
-                        <p align="left" style="margin-left:0pt;text-align:left;">Symbol</p>
-                      </td>
-                      <td valign="top">Definition</td>
-                    </tr>
-                  </table>
-                </div>
-                <div id="M">
-                  <h1>5<span style="mso-tab-count:1">&#160; </span>Clause 4</h1>
-                  <div id="N">
-           <h2>5.1<span style="mso-tab-count:1">&#160; </span>Introduction</h2>
-         </div>
-                  <div id="O">
-           <h2>5.2<span style="mso-tab-count:1">&#160; </span>Clause 4.2</h2>
-         </div>
-                </div>
-                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-                <div id="P" class="Section3">
-                  <h1 class="Annex"><b>Annex A</b><br/>
-                  <span class="obligation">(normative)</span>
-                  <br/><br/><b>Annex</b></h1>
-                  <div id="Q">
-           <h2>A.1<span style="mso-tab-count:1">&#160; </span>Annex A.1</h2>
-           <div id="Q1">
-           <h3>A.1.1<span style="mso-tab-count:1">&#160; </span>Annex A.1a</h3>
-           </div>
-         </div>
-                  <div id="Q2">
-           <h2>Appendix 1<span style="mso-tab-count:1">&#160; </span>An Appendix</h2>
-         </div>
-                </div>
-                <p class="page-break"><br clear="all" style="mso-special-character:line-break;page-break-before:always"/></p>
-                <div>
-                  <h1 class="Section3">Bibliography</h1>
-                  <div>
-                    <h2 class="Section3">Bibliography Subsection</h2>
-                  </div>
-                </div>
-              </div>
-              <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-              <div class="colophon"/>
-            </body>
+             </div>
+          </div>
+          <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
+          <div class="colophon"/>
+       </body>
     OUTPUT
     pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)

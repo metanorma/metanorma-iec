@@ -377,7 +377,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Ribose Inc.</smallcap>. <em>metanorma-standoc</em>. Version 1.3.1. 2019. Available from: <span class='biburl'><link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</link></span>. [viewed: September 6, 2023].</formattedref>
+      <formattedref><smallcap>Ribose Inc.</smallcap>. <em>metanorma-standoc</em>. Version 1.3.1. 2019. Available from: <span class='biburl'><fmt-link target='https://github.com/metanorma/metanorma-standoc'>https://github.com/metanorma/metanorma-standoc</fmt-link></span>. [viewed: September 6, 2023].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -517,7 +517,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>S. Bradner</smallcap>. <em><span class='stddocTitle'>Intellectual Property Rights in IETF Technology</span></em>. RFC Series. Available from: <span class='biburl'><link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</link></span>.</formattedref>
+      <formattedref><smallcap>S. Bradner</smallcap>. <em><span class='stddocTitle'>Intellectual Property Rights in IETF Technology</span></em>. RFC Series. Available from: <span class='biburl'><fmt-link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</fmt-link></span>.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -577,7 +577,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><em><span class='stddocTitle'>Time Ontology in OWL</span></em>. Recommendation. Available from: <span class='biburl'><link target='https://www.w3.org/TR/owl-time/'>https://www.w3.org/TR/owl-time/</link></span>.</formattedref>
+      <formattedref><em><span class='stddocTitle'>Time Ontology in OWL</span></em>. Recommendation. Available from: <span class='biburl'><fmt-link target='https://www.w3.org/TR/owl-time/'>https://www.w3.org/TR/owl-time/</fmt-link></span>.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -619,7 +619,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Portes A., &#x26; Rumbaut R.G.</smallcap>. <em>Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520</em>. Version 2. Dataset. 2012. Available from: <span class='biburl'><link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</link></span>. 501 GB. [viewed: May 6, 2018].</formattedref>
+      <formattedref><smallcap>Portes A., &#x26; Rumbaut R.G.</smallcap>. <em>Children of Immigrants. Longitudinal Sudy (CILS) 1991–2006 ICPSR20520</em>. Version 2. Dataset. 2012. Available from: <span class='biburl'><fmt-link target='https://doi.org/10.3886/ICPSR20520.v2'>https://doi.org/10.3886/ICPSR20520.v2</fmt-link></span>. 501 GB. [viewed: May 6, 2018].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -654,7 +654,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Liberman M., &#x26; Pullum G.</smallcap>. <em><span class='stddocTitle'>Language Log</span></em> [website]. University of Pennsylvania. 2003–. Available from: <span class='biburl'><link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</link></span>. [viewed: September 3, 2019].</formattedref>
+      <formattedref><smallcap>Liberman M., &#x26; Pullum G.</smallcap>. <em><span class='stddocTitle'>Language Log</span></em> [website]. University of Pennsylvania. 2003–. Available from: <span class='biburl'><fmt-link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</fmt-link></span>. [viewed: September 3, 2019].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -686,7 +686,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Jenkins, &#x26; Ruostekoski J.</smallcap>. <em>Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice</em>. Preprint. 2012. Available from: <span class='biburl'><link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link></span>. [viewed: June 24, 2020].</formattedref>
+    <formattedref><smallcap>Jenkins, &#x26; Ruostekoski J.</smallcap>. <em>Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice</em>. Preprint. 2012. Available from: <span class='biburl'><fmt-link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</fmt-link></span>. [viewed: June 24, 2020].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -718,7 +718,7 @@ RSpec.describe Relaton::Render::Iso do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Jenkins, &#x26; Ruostekoski J.</smallcap>. <em>Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice</em>. Preprint. 2020. Available from: <span class='biburl'><link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</link></span>. [viewed: June 2020].</formattedref>
+      <formattedref><smallcap>Jenkins, &#x26; Ruostekoski J.</smallcap>. <em>Controlled manipulation of light by cooperativeresponse of atoms in an optical lattice</em>. Preprint. 2020. Available from: <span class='biburl'><fmt-link target='https://eprints.soton.ac.uk/338797/'>https://eprints.soton.ac.uk/338797/</fmt-link></span>. [viewed: June 2020].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
