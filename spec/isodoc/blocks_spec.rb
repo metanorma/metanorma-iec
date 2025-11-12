@@ -45,18 +45,20 @@ RSpec.describe IsoDoc::Iec do
                             <span class="stem">(#(r = 1 %)#)</span>
                          </p>
                       </div>
-                      <table id="_" class="dl">
-                         <tr>
-                            <td valign="top" align="left">
-                               <p align="left" style="margin-left:0pt;text-align:left;">
-                                  <span class="stem">(#(r)#)</span>
-                               </p>
-                            </td>
-                            <td valign="top">
-                               <p id="_">is the repeatability limit.</p>
-                            </td>
-                         </tr>
-                      </table>
+               <div align="left">
+                  <table id="_" class="dl">
+                     <tr>
+                        <td valign="top" align="left">
+                           <p align="left" style="margin-left:0pt;text-align:left;">
+                              <span class="stem">(#(r)#)</span>
+                           </p>
+                        </td>
+                        <td valign="top">
+                           <p id="_">is the repeatability limit.</p>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
                       <div id="_" class="Note">
                          <p class="Note">
                             <span class="note_label">
