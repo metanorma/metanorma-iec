@@ -14554,9 +14554,12 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template> <!-- refine_title-style -->
 
 	<xsl:template name="processPrefaceSectionsDefault">
+		<xsl:param name="num"/>
 		<xsl:for-each select="/*/mn:preface/*[not(self::mn:note or self::mn:admonition)]">
 			<xsl:sort select="@displayorder" data-type="number"/>
-			<xsl:apply-templates select="."/>
+			<xsl:apply-templates select=".">
+				<xsl:with-param name="num" select="$num"/>
+			</xsl:apply-templates>
 		</xsl:for-each>
 	</xsl:template>
 
