@@ -5568,6 +5568,12 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template name="refine_term-style">
 	</xsl:template>
 
+	<xsl:attribute-set name="term-kind-style">
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_term-kind-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="term-number-style">
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
