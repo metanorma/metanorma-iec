@@ -11996,6 +11996,12 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- END Lists processing -->
 	<!-- ===================================== -->
 
+	<xsl:attribute-set name="footnote-separator-block-style">
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_footnote-separator-block-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="footnote-separator-leader-style">
 	</xsl:attribute-set>
 
