@@ -16,6 +16,8 @@ RSpec.describe IsoDoc::Iec::Metadata do
           <title type="title-intro" language="fr" format="text/plain">Céréales et légumineuses</title>
           <title type="title-main" language="fr" format="text/plain">Spécification et méthodes d'essai</title>
           <title type="title-part" language="fr" format="text/plain">Riz</title>
+          <title language="en" type="title-part-prefix">Part 1</title>
+          <title language="fr" type="title-part-prefix">Partie 1</title>
         <docidentifier type="ISO">ISO/PreCD3 17301-1</docidentifier>
         <docidentifier type="iso-tc">17301</docidentifier>
         <docnumber>1730</docnumber>
@@ -153,7 +155,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
         createddate: "2010&#x2013;2011",
         docnumber: "ISO/PreCD3 17301-1",
         docnumeric: "1730",
-        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie&#xa0;1: Riz",
+        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie 1 : Riz",
         docsubtitleintro: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
         docsubtitlemain: "Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai",
         docsubtitlepart: "Riz",
@@ -215,6 +217,8 @@ RSpec.describe IsoDoc::Iec::Metadata do
           <title type="title-intro" language="fr" format="text/plain">Céréales et légumineuses</title>
           <title type="title-main" language="fr" format="text/plain">Spécification et méthodes d'essai</title>
           <title type="title-part" language="fr" format="text/plain">Riz</title>
+          <title language="en" type="title-part-prefix">Part 1-3</title>
+          <title language="fr" type="title-part-prefix">Partie 1-3</title>
         <docidentifier type="ISO">ISO/IEC/CD 17301-1-3</docidentifier>
         <docidentifier type="iso-tc">17301</docidentifier>
         <contributor>
@@ -281,16 +285,16 @@ RSpec.describe IsoDoc::Iec::Metadata do
     output =
       { agency: "ISO/IEC",
         docnumber: "ISO/IEC/CD 17301-1-3",
-        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie&#xa0;1&#x2013;3: Riz",
+        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie 1-3 : Riz",
         docsubtitleintro: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
         docsubtitlemain: "Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai",
         docsubtitlepart: "Riz",
-        docsubtitlepartlabel: "Partie&#xa0;1&#x2013;3",
-        doctitle: "Cereals and pulses&#xa0;&#x2014; Specifications and test methods&#xa0;&#x2014; Part&#xa0;1&#x2013;3: Rice",
+        docsubtitlepartlabel: "Partie 1-3",
+        doctitle: "Cereals and pulses&#xa0;&#x2014; Specifications and test methods&#xa0;&#x2014; Part 1-3: Rice",
         doctitleintro: "Cereals and pulses",
         doctitlemain: "Specifications and test methods",
         doctitlepart: "Rice",
-        doctitlepartlabel: "Part&#xa0;1&#x2013;3",
+        doctitlepartlabel: "Part 1-3",
         doctype: "Technical Report",
         doctype_display: "Technical Report",
         doctype_en: "Technical Report",
