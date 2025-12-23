@@ -106,10 +106,13 @@ RSpec.describe Metanorma::Iec do
              <title language="en" type="title-intro">Introduction</title>
              <title language="en" type="title-main">Main Title — Title</title>
              <title language="en" type="title-part">Title Part</title>
+             <title language="en" type="title-part-prefix">Part 1</title>
+      <title language="ru" type="title-part-prefix">Часть 1</title>
              <title language="fr" type="main">Introduction Française — Titre Principal — Part du Titre</title>
              <title language="fr" type="title-intro">Introduction Française</title>
              <title language="fr" type="title-main">Titre Principal</title>
              <title language="fr" type="title-part">Part du Titre</title>
+             <title language="fr" type="title-part-prefix">Partie 1</title>
              <docidentifier type="ISO" primary="true">IEC PNW 1000-1:2023 ED2</docidentifier>
              <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
              <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
@@ -393,7 +396,10 @@ RSpec.describe Metanorma::Iec do
     INPUT
     output = <<~OUTPUT
       <bibdata type='standard'>
-                                <docidentifier type="ISO" primary="true">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
+        <title language="en" type="title-part-prefix">Part 1–1</title>
+        <title language="ru" type="title-part-prefix">Часть 1–1</title>
+        <title language="fr" type="title-part-prefix">Partie 1–1</title>
+           <docidentifier type="ISO" primary="true">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
            <docidentifier type="iso-reference">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
            <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000:-1-1:2001:stage-40.99:el-sq</docidentifier>
            <docidentifier type="iso-undated">IEC/IETF/ISO TS CDV 1000-1-1</docidentifier>
