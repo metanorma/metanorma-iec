@@ -598,7 +598,7 @@ RSpec.describe IsoDoc::Iec do
                true)))).to be_equivalent_to Canon.format_xml(html)
   end
 
-    it "renders bibliography [1] references" do
+  it "renders bibliography [1] references" do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
       <bibdata>
@@ -944,14 +944,15 @@ RSpec.describe IsoDoc::Iec do
                          </localityStack>
                       </origin>
                       <semx element="origin" source="_">
-                         <fmt-xref type="inline" style="short" target="internet_standards">
-                            Internet Engineering Task Force.
+                         <fmt-origin bibitemid="internet_standards" type="inline" citeas="[1]" style="short">
+                            <fmt-xref target="internet_standards">Internet Engineering Task Force</fmt-xref>
+                            .
                             <em>Internet Standards</em>
                             . 2024.
                             <fmt-link target="https://www.rfc-editor.org/standards#IS">https://www.rfc-editor.org/standards#IS</fmt-link>
                             ,
                             <span class="citesec">Clause 3</span>
-                         </fmt-xref>
+                         </fmt-origin>
                          <fmt-xref target="internet_standards">
                             <sup>[1]</sup>
                          </fmt-xref>
@@ -1024,14 +1025,15 @@ RSpec.describe IsoDoc::Iec do
                          </localityStack>
                       </origin>
                       <semx element="origin" source="_">
-                         <fmt-xref type="inline" style="short" target="internet_standards">
-                            Internet Engineering Task Force.
+                         <fmt-origin bibitemid="internet_standards" type="inline" citeas="[1]" style="short">
+                            <fmt-xref target="internet_standards">Internet Engineering Task Force</fmt-xref>
+                            .
                             <em>Internet Standards</em>
                             . 2024.
                             <fmt-link target="https://www.rfc-editor.org/standards#IS">https://www.rfc-editor.org/standards#IS</fmt-link>
                             ,
                             <span class="citesec">Clause 3</span>
-                         </fmt-xref>
+                         </fmt-origin>
                          <fmt-xref target="internet_standards">
                             <sup>[1]</sup>
                          </fmt-xref>
@@ -1047,12 +1049,13 @@ RSpec.describe IsoDoc::Iec do
                          </localityStack>
                       </origin>
                       <semx element="origin" source="_">
-                         <fmt-xref type="inline" style="short" target="graphql">
-                            Joint Development Foundation Projects, LLC.
+                         <fmt-origin bibitemid="graphql" type="inline" citeas="[2]" style="short">
+                            <fmt-xref target="graphql">Joint Development Foundation Projects, LLC</fmt-xref>
+                            .
                             <em>The GraphQL Specification Project</em>
                             . 2021,
                             <span class="citesec">Clause 3</span>
-                         </fmt-xref>
+                         </fmt-origin>
                          <fmt-xref target="graphql">
                             <sup>[2]</sup>
                          </fmt-xref>
