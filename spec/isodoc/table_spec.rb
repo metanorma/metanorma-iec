@@ -56,11 +56,13 @@ RSpec.describe IsoDoc do
               <td align="center"><dl><dt>6,06</dt><dd>Definition</dd></dl></td>
             </tr>
           </tfoot>
-          <dl key="true">
+          <key>
              <name>Key</name>
+          <dl>
           <dt>Drago</dt>
         <dd>A type of rice</dd>
         </dl>
+        </key>
               <source status="generalisation">
           <origin bibitemid="ISO712" type="inline" citeas="">
             <localityStack>
@@ -253,14 +255,13 @@ RSpec.describe IsoDoc do
                          </td>
                       </tr>
                    </tfoot>
-                   <dl key="true">
-                      <name id="_">Key</name>
-                      <fmt-name id="_">
-                         <semx element="name" source="_">Key</semx>
-                      </fmt-name>
+            <key>
+               <name>Key</name>
+               <dl>
                       <dt>Drago</dt>
                       <dd>A type of rice</dd>
                    </dl>
+                   </key>
                    <source status="generalisation" id="_">
                       <origin bibitemid="ISO712" type="inline" citeas="">
                          <localityStack>
@@ -464,7 +465,7 @@ RSpec.describe IsoDoc do
 
     html = <<~OUTPUT
             #{HTML_HDR}
-                <div id="fwd">
+               <div id="fwd">
                    <h1 class="ForewordTitle">FOREWORD</h1>
                    <p class="TableTitle" style="text-align:center;">
                       Table 1 — Repeatability and reproducibility of
@@ -543,21 +544,25 @@ RSpec.describe IsoDoc do
                             </td>
                          </tr>
                       </tfoot>
-                      <div class="figdl">
-                         <p class="ListTitle">Key</p>
-                         <dl>
-                            <dt>
-                               <p>Drago</p>
-                            </dt>
-                            <dd>A type of rice</dd>
-                         </dl>
+                      <div class="key">
+                         <p style="page-break-after: avoid;">
+                            <b>Key</b>
+                         </p>
+                         <div class="figdl">
+                            <dl>
+                               <dt>
+                                  <p>Drago</p>
+                               </dt>
+                               <dd>A type of rice</dd>
+                            </dl>
+                         </div>
                       </div>
                       <div class="BlockSource">
                          <p>
                             [SOURCE:
-                            <a href="#ISO712">ISO 712, Section 1</a>
+                            <a href="#ISO712">ISO 712,  Section 1</a>
                             — with adjustments;
-                            <a href="#ISO712">ISO 712, Section 2</a>
+                            <a href="#ISO712">ISO 712,  Section 2</a>
                             ]
                          </p>
                       </div>
@@ -720,14 +725,18 @@ RSpec.describe IsoDoc do
                                </td>
                             </tr>
                          </tfoot>
-                         <div class="figdl">
-                            <p class="ListTitle">Key</p>
-                            <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;">
-                               Drago
-                               <span style="mso-tab-count:1">  </span>
-                               A type of rice
-                            </p>
-                         </div>
+                  <div class="key">
+                     <p style="page-break-after: avoid;">
+                        <b>Key</b>
+                     </p>
+                     <div class="figdl">
+                        <p style="text-indent: -2.0cm; margin-left: 2.0cm; tab-stops: 2.0cm;">
+                           Drago
+                           <span style="mso-tab-count:1">  </span>
+                           A type of rice
+                        </p>
+                     </div>
+                  </div>
                          <div class="BlockSource">
                             <p>
                                [SOURCE:
