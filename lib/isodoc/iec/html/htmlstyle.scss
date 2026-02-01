@@ -519,7 +519,7 @@ ol[class="roman_upper"] ol[class="roman_upper"] > li::before {
 */
 
 p.Biblio,
-p.NormRef {
+p.NormRef, div.Biblio, div.NormRef {
     margin-top: 1em;
     margin-left: 2em;
 }
