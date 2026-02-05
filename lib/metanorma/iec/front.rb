@@ -93,36 +93,23 @@ module Metanorma
       def iso_id_out_common(xml, params, _with_prf)
         add_noko_elem(xml, "docidentifier", iso_id_default(params).to_s,
                       type: "ISO", primary: "true")
-        # xml.docidentifier iso_id_default(params).to_s,
-        #                  **attr_code(type: "ISO", primary: "true")
         add_noko_elem(xml, "docidentifier", iso_id_reference(params).to_s,
                       type: "iso-reference")
-        # xml.docidentifier iso_id_reference(params).to_s,
-        #                   **attr_code(type: "iso-reference")
         @id_revdate and
           add_noko_elem(xml, "docidentifier",
                         iso_id_revdate(params.merge(year: @id_revdate)).to_s(
                           with_edition_month_date: true,
                         ),
                         type: "iso-revdate")
-        # xml.docidentifier iso_id_revdate(params.merge(year: @id_revdate))
-        #  .to_s(with_edition_month_date: true),
-        #                  **attr_code(type: "iso-revdate")
         add_noko_elem(xml, "docidentifier", iso_id_reference(params).urn,
                       type: "URN")
-        # xml.docidentifier iso_id_reference(params).urn,
-        #                  **attr_code(type: "URN")
       end
 
       def iso_id_out_non_amd(xml, params, _with_prf)
         add_noko_elem(xml, "docidentifier", iso_id_undated(params).to_s,
                       type: "iso-undated")
-        # xml.docidentifier iso_id_undated(params).to_s,
-        #                  **attr_code(type: "iso-undated")
         add_noko_elem(xml, "docidentifier", iso_id_with_lang(params).to_s,
                       type: "iso-with-lang")
-        # xml.docidentifier iso_id_with_lang(params).to_s,
-        #                   **attr_code(type: "iso-with-lang")
       end
 
       def iso_id_revdate(params)
@@ -177,18 +164,12 @@ module Metanorma
       def metadata_ext(node, xml)
         super
         add_noko_elem(xml, "function", node.attr("function"))
-        # a = node.attr("function") and xml.function a
         add_noko_elem(xml, "accessibility_color_inside",
                       node.attr("accessibility-color-inside"))
-        # a = node.attr("accessibility-color-inside") and
-        #  xml.accessibility_color_inside a
         add_noko_elem(xml, "cen_processing", node.attr("cen-processing"))
-        # a = node.attr("cen-processing") and xml.cen_processing a
         add_noko_elem(xml, "secretary", node.attr("secretary"))
-        # a = node.attr("secretary") and xml.secretary a
         add_noko_elem(xml, "interest_to_committees",
                       node.attr("interest-to-committees"))
-        # a = node.attr("interest-to-committees") and xml.interest_to_committees a
       end
     end
   end
