@@ -24,10 +24,8 @@ module Metanorma
         x = iso_id_default(iso_id_params(node)).stage
         xml.status do |s|
           add_noko_elem(s, "stage", x.harmonized_code.stage,
-                        abbreviation: x.abbr)
-          # s.stage x.harmonized_code.stage, **attr_code(abbreviation: x.abbr)
+                        abbreviation: node.attr("docstage-abbrev") || x.abbr)
           add_noko_elem(s, "substage", x.harmonized_code.substage)
-          # s.substage x.harmonized_code.substage
         end
       rescue *STAGE_ERROR
         report_illegal_stage(get_stage(node), get_substage(node))
