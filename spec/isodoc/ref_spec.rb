@@ -426,10 +426,10 @@ RSpec.describe IsoDoc::Iec do
                          <abbreviation>ISSN</abbreviation>
                       </organization>
                    </contributor>
-                   <note type="display" original-id="_" id="_" autonum="1">
+                   <note type="display" original-id="_" id="_">
                       <p>This is an annotation of document ISSN.</p>
                    </note>
-                   <note type="display" original-id="_" id="_" autonum="2">
+                   <note type="display" original-id="_" id="_">
                       <p>This is another annotation of document ISSN.</p>
                    </note>
                 </bibitem>
