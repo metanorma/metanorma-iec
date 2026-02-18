@@ -13371,6 +13371,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="toc-pagenumber-style">
+		<xsl:attribute name="role">SKIP</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_toc-pagenumber-style">
@@ -15248,7 +15249,12 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:variable name="external-destination" select="normalize-space(count($element_node/fo:basic-link/@external-destination[. != '']) = 1)"/>
 		<xsl:variable name="internal-destination" select="normalize-space(count($element_node/fo:basic-link/@internal-destination[. != '']) = 1)"/>
 		<xsl:choose>
-			<xsl:when test="$external-destination = 'true' or $internal-destination = 'true'">
+			<xsl:when test="$internal-destination = 'true'">
+				<fo:wrapper role="Reference">
+					<xsl:copy-of select="$element_node"/>
+				</fo:wrapper>
+			</xsl:when>
+			<xsl:when test="$external-destination = 'true'">
 				<xsl:copy-of select="$element_node"/>
 			</xsl:when>
 			<xsl:otherwise>
