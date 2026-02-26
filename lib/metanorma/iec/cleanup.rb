@@ -2,9 +2,6 @@ module Metanorma
   module Iec
     class Cleanup < ::Metanorma::Iso::Cleanup
       extend Forwardable
-
-      def_delegators :@converter, *delegator_methods
-
       def copied_instance_variables
         super + %i[is_iev]
       end

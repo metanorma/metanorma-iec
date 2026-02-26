@@ -3,8 +3,6 @@ module Metanorma
     class Validate < ::Metanorma::Iso::Validate
       extend Forwardable
 
-      def_delegators :@converter, *delegator_methods
-
       def doctype_validate(xmldoc)
         %w(international-standard technical-specification technical-report
            publicly-available-specification international-workshop-agreement
