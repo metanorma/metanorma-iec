@@ -281,7 +281,7 @@ nav {
     }
 }
 
-div.figure > img, div.figure > svg {
+figure > img, figure > svg {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -289,7 +289,7 @@ div.figure > img, div.figure > svg {
     height: auto;
 }
 
-table div.figure {
+table figure {
   padding: 0;
   margin: 0;
 }
@@ -532,7 +532,7 @@ p.NormRef, div.Biblio, div.NormRef {
 3.6 Source Code + figures
 */
 
-.figure,
+figure,
 pre,
 .pseudocode {
     @include pseudocodeBlock(#f5faff);
@@ -547,7 +547,7 @@ pre {
 @include recommendationBlock();
 @include listBlock();
 
-.FigureTitle,
+figcaption,
 .SourceTitle {
     @include blockTitle()
 }
@@ -617,7 +617,7 @@ table {
     }
 }
 
-p.TableTitle {
+table > caption {
     text-align: center;
     margin-top: 2.5em;
     font-weight: 800;

@@ -467,16 +467,14 @@ RSpec.describe IsoDoc do
             #{HTML_HDR}
                <div id="fwd">
                    <h1 class="ForewordTitle">FOREWORD</h1>
-                   <p class="TableTitle" style="text-align:center;">
+                   <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;width:70%;page-break-after: avoid;page-break-inside: avoid;table-layout:fixed;" title="tool tip">
+                      <caption>
                       Table 1 — Repeatability and reproducibility of
                       <i>husked</i>
                       rice yield
                       <a class="FootnoteRef" href="#_">
                          <sup>1)</sup>
                       </a>
-                   </p>
-                   <table id="tableD-1" class="MsoISOTable" style="border-width:1px;border-spacing:0;width:70%;page-break-after: avoid;page-break-inside: avoid;table-layout:fixed;" title="tool tip">
-                      <caption>
                          <span style="display:none">long desc</span>
                       </caption>
                       <colgroup>
@@ -603,16 +601,16 @@ RSpec.describe IsoDoc do
                       <br/>
                       <span class="obligation">(informative)</span>
                    </h1>
-                   <p class="TableTitle" style="text-align:center;">Table A.1</p>
                    <table id="AnnexTable" class="MsoISOTable" style="border-width:1px;border-spacing:0;">
+                   <caption>Table A.1</caption>
                       <tbody>
                          <tr>
                             <td style="border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">A</td>
                          </tr>
                       </tbody>
                    </table>
-                   <p class="TableTitle" style="text-align:center;">Table</p>
                    <table class="MsoISOTable" style="border-width:1px;border-spacing:0;">
+                   <caption>Table</caption>
                       <tbody>
                          <tr>
                             <td style="border-top:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;">B</td>
