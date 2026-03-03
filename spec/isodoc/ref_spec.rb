@@ -968,13 +968,15 @@ RSpec.describe IsoDoc::Iec do
                 </fmt-xref-label>
                 <preferred id="_">
                    <expression>
-                      <name>Term 1</name>
+                      <name id="_">Term 1</name>
                    </expression>
                 </preferred>
                 <fmt-preferred>
                    <p>
                       <semx element="preferred" source="_">
-                         <strong>Term 1</strong>
+                         <strong>
+                            <semx element="expression/name" source="_">Term 1</semx>
+                         </strong>
                       </semx>
                    </p>
                 </fmt-preferred>
@@ -1040,13 +1042,15 @@ RSpec.describe IsoDoc::Iec do
                 </fmt-xref-label>
                 <preferred id="_">
                    <expression>
-                      <name>Term 2</name>
+                      <name id="_">Term 2</name>
                    </expression>
                 </preferred>
                 <fmt-preferred>
                    <p>
                       <semx element="preferred" source="_">
-                         <strong>Term 2</strong>
+                         <strong>
+                            <semx element="expression/name" source="_">Term 2</semx>
+                         </strong>
                       </semx>
                    </p>
                 </fmt-preferred>
