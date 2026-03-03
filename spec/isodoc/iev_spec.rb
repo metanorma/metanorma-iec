@@ -332,7 +332,7 @@ RSpec.describe IsoDoc do
                  <docnumber>60050</docnumber>
           </bibdata>
           #{PREFACE}</preface>
-           <sections>
+          <sections>
              <clause id="_" obligation="normative" displayorder="8">
                 <title id="_">Terms and definitions</title>
                 <fmt-title depth="1" id="_">
@@ -376,13 +376,15 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>paddy</name>
+                            <name id="_">paddy</name>
                          </expression>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>paddy</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">paddy</semx>
+                               </strong>
                             </semx>
                          </p>
                       </fmt-preferred>
@@ -505,43 +507,51 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>paddy</name>
+                            <name id="_">paddy</name>
                          </expression>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>paddy</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">paddy</semx>
+                               </strong>
                             </semx>
                          </p>
                       </fmt-preferred>
                       <admitted id="_">
                          <expression>
-                            <name>paddy rice</name>
+                            <name id="_">paddy rice</name>
                          </expression>
                       </admitted>
                       <admitted id="_">
                          <expression>
-                            <name>rough rice</name>
+                            <name id="_">rough rice</name>
                          </expression>
                       </admitted>
                       <fmt-admitted>
                          <p>
-                            <semx element="admitted" source="_">paddy rice</semx>
+                            <semx element="admitted" source="_">
+                               <semx element="expression/name" source="_">paddy rice</semx>
+                            </semx>
                          </p>
                          <p>
-                            <semx element="admitted" source="_">rough rice</semx>
+                            <semx element="admitted" source="_">
+                               <semx element="expression/name" source="_">rough rice</semx>
+                            </semx>
                          </p>
                       </fmt-admitted>
                       <deprecates id="_">
                          <expression>
-                            <name>cargo rice</name>
+                            <name id="_">cargo rice</name>
                          </expression>
                       </deprecates>
                       <fmt-deprecates>
                          <p>
                             DEPRECATED:
-                            <semx element="deprecates" source="_">cargo rice</semx>
+                            <semx element="deprecates" source="_">
+                               <semx element="expression/name" source="_">cargo rice</semx>
+                            </semx>
                          </p>
                       </fmt-deprecates>
                       <domain>rice</domain>
@@ -669,8 +679,8 @@ RSpec.describe IsoDoc do
     html = <<~OUTPUT
       #{HTML_HDR}
                  #{IEC_TITLE1}
-                              <div id='_'>
-                                                 <h1>1  Terms and definitions</h1>
+                <div id="_">
+                   <h1>1  Terms and definitions</h1>
                    <br/>
                    <div id="_">
                       <h2 class="zzSTDTitle2">
@@ -678,7 +688,9 @@ RSpec.describe IsoDoc do
                       </h2>
                       <p class="TermNum" id="paddy1">192-01-01</p>
                       <p class="Terms" style="text-align:left;">
-                         <b>paddy</b>
+                         <b>
+                            <dfn>paddy</dfn>
+                         </b>
                       </p>
                       <p id="_">rice retaining its husk after threshing</p>
                       <div id="_" class="example">
@@ -706,11 +718,20 @@ RSpec.describe IsoDoc do
                       <p>SOURCE: ISO 7301:2011, 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                       <p class="TermNum" id="paddy">192-01-02</p>
                       <p class="Terms" style="text-align:left;">
-                         <b>paddy</b>
+                         <b>
+                            <dfn>paddy</dfn>
+                         </b>
                       </p>
-                      <p class="AltTerms" style="text-align:left;">paddy rice</p>
-                      <p class="AltTerms" style="text-align:left;">rough rice</p>
-                      <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                      <p class="AltTerms" style="text-align:left;">
+                         <dfn>paddy rice</dfn>
+                      </p>
+                      <p class="AltTerms" style="text-align:left;">
+                         <dfn>rough rice</dfn>
+                      </p>
+                      <p class="DeprecatedTerms" style="text-align:left;">
+                         DEPRECATED:
+                         <dfn>cargo rice</dfn>
+                      </p>
                       <p id="_">rice retaining its husk after threshing</p>
                       <div id="_" class="example">
                          <p>
@@ -792,7 +813,7 @@ RSpec.describe IsoDoc do
           <sections>
              <clause id="_" obligation="normative" displayorder="8">
                 <title id="_">Terms and definitions</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -833,13 +854,15 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>paddy</name>
+                            <name id="_">paddy</name>
                          </expression>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>paddy</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">paddy</semx>
+                               </strong>
                             </semx>
                          </p>
                       </fmt-preferred>
@@ -986,10 +1009,10 @@ RSpec.describe IsoDoc do
           </ext>
         </bibdata>
         #{PREFACE}</preface>
-          <sections>
+         <sections>
              <clause id="_" obligation="normative" displayorder="8">
                 <title id="_">Terms and definitions</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -1030,14 +1053,16 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>durability</name>
+                            <name id="_">durability</name>
                          </expression>
                          <field-of-application id="_">of an item</field-of-application>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>durability</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">durability</semx>
+                               </strong>
                                <span class="fmt-designation-field">
                                   , &lt;
                                   <semx element="field-of-application" source="_">of an item</semx>
@@ -1131,13 +1156,15 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>sub item</name>
+                            <name id="_">sub item</name>
                          </expression>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>sub item</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">sub item</semx>
+                               </strong>
                             </semx>
                          </p>
                       </fmt-preferred>
@@ -1279,13 +1306,13 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression language="en">
-                            <name>system</name>
+                            <name id="_">system</name>
                          </expression>
                          <field-of-application id="_">in dependability</field-of-application>
                       </preferred>
                       <preferred id="_">
                          <expression language="de">
-                            <name>Betrachtungseinheit</name>
+                            <name id="_">Betrachtungseinheit</name>
                             <grammar>
                                <gender>feminine</gender>
                             </grammar>
@@ -1293,12 +1320,12 @@ RSpec.describe IsoDoc do
                       </preferred>
                       <preferred id="_">
                          <expression language="ja">
-                            <name>アイテム</name>
+                            <name id="_">アイテム</name>
                          </expression>
                       </preferred>
                       <preferred id="_">
                          <expression language="de">
-                            <name>Einheit</name>
+                            <name id="_">Einheit</name>
                             <grammar>
                                <gender>feminine</gender>
                             </grammar>
@@ -1306,20 +1333,22 @@ RSpec.describe IsoDoc do
                       </preferred>
                       <preferred id="_">
                          <expression language="zh">
-                            <name>产品</name>
+                            <name id="_">产品</name>
                          </expression>
                          <field-of-application original-id="_" id="_">在可靠性方面</field-of-application>
                       </preferred>
                       <preferred id="_">
                          <expression language="ar">
-                            <name>نظام،</name>
+                            <name id="_">نظام،</name>
                          </expression>
                          <field-of-application original-id="_" id="_">في الاعتمادیة</field-of-application>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>system</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">system</semx>
+                               </strong>
                                <span class="fmt-designation-field">
                                   , &lt;
                                   <semx element="field-of-application" source="_">in dependability</semx>
@@ -1331,37 +1360,43 @@ RSpec.describe IsoDoc do
                       </fmt-preferred>
                       <admitted id="_">
                          <expression>
-                            <name>paddy rice</name>
+                            <name id="_">paddy rice</name>
                          </expression>
                       </admitted>
                       <admitted id="_">
                          <expression>
-                            <name>rough rice</name>
+                            <name id="_">rough rice</name>
                          </expression>
                       </admitted>
                       <fmt-admitted>
                          <p>
-                            <semx element="admitted" source="_">paddy rice</semx>
+                            <semx element="admitted" source="_">
+                               <semx element="expression/name" source="_">paddy rice</semx>
+                            </semx>
                          </p>
                          <p>
-                            <semx element="admitted" source="_">rough rice</semx>
+                            <semx element="admitted" source="_">
+                               <semx element="expression/name" source="_">rough rice</semx>
+                            </semx>
                          </p>
                       </fmt-admitted>
                       <deprecates id="_">
                          <expression>
-                            <name>cargo rice</name>
+                            <name id="_">cargo rice</name>
                          </expression>
                       </deprecates>
                       <fmt-deprecates>
                          <p>
                             DEPRECATED:
-                            <semx element="deprecates" source="_">cargo rice</semx>
+                            <semx element="deprecates" source="_">
+                               <semx element="expression/name" source="_">cargo rice</semx>
+                            </semx>
                          </p>
                       </fmt-deprecates>
                       <related type="contrast" id="_">
                          <preferred id="_">
                             <expression>
-                               <name>Fifth Designation</name>
+                               <name id="_">Fifth Designation</name>
                             </expression>
                          </preferred>
                          <xref target="paddy1"/>
@@ -1379,7 +1414,9 @@ RSpec.describe IsoDoc do
                             <p>
                                CONTRAST:
                                <semx element="preferred" source="_">
-                                  <strong>Fifth Designation</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">Fifth Designation</semx>
+                                  </strong>
                                </semx>
                                (
                                <xref target="paddy1" id="_"/>
@@ -1491,7 +1528,7 @@ RSpec.describe IsoDoc do
                       <semx element="term" source="item-fr">
                          <preferred id="_">
                             <expression language="fr">
-                               <name>entité</name>
+                               <name id="_">entité</name>
                                <grammar>
                                   <gender>masculine</gender>
                                </grammar>
@@ -1501,7 +1538,9 @@ RSpec.describe IsoDoc do
                          <fmt-preferred>
                             <p>
                                <semx element="preferred" source="_">
-                                  <strong>entité</strong>
+                                  <strong>
+                                     <semx element="expression/name" source="_">entité</semx>
+                                  </strong>
                                   <span class="fmt-designation-field">
                                      , &lt;
                                      <semx element="field-of-application" source="_">en sûreté de fonctionnement</semx>
@@ -1514,7 +1553,7 @@ RSpec.describe IsoDoc do
                          <related type="contrast" id="_">
                             <preferred id="_">
                                <expression>
-                                  <name>Designation cinquième</name>
+                                  <name id="_">Designation cinquième</name>
                                </expression>
                             </preferred>
                             <xref target="paddy1"/>
@@ -1522,7 +1561,7 @@ RSpec.describe IsoDoc do
                          <related type="see" id="_">
                             <preferred id="_">
                                <expression>
-                                  <name>Designation sixième</name>
+                                  <name id="_">Designation sixième</name>
                                </expression>
                             </preferred>
                             <xref target="paddy1"/>
@@ -1540,7 +1579,9 @@ RSpec.describe IsoDoc do
                                <p>
                                   CONTRASTEZ:
                                   <semx element="preferred" source="_">
-                                     <strong>Designation cinquième</strong>
+                                     <strong>
+                                        <semx element="expression/name" source="_">Designation cinquième</semx>
+                                     </strong>
                                   </semx>
                                   (
                                   <xref target="paddy1" id="_"/>
@@ -1560,7 +1601,9 @@ RSpec.describe IsoDoc do
                                <p>
                                   VOIR:
                                   <semx element="preferred" source="_">
-                                     <strong>Designation sixième</strong>
+                                     <strong>
+                                        <semx element="expression/name" source="_">Designation sixième</semx>
+                                     </strong>
                                   </semx>
                                   (
                                   <xref target="paddy1" id="_"/>
@@ -1674,7 +1717,9 @@ RSpec.describe IsoDoc do
                          <dt>ar</dt>
                          <dd id="_" language="ar" script="Arab">
                             <semx element="preferred" source="_">
-                               <strong>؜نظام،؜</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">؜نظام،؜</semx>
+                               </strong>
                                <span class="fmt-designation-field">
                                   ؜, &lt;؜
                                   <semx element="field-of-application" source="_">؜في الاعتمادیة؜</semx>
@@ -1685,26 +1730,34 @@ RSpec.describe IsoDoc do
                          <dt>de</dt>
                          <dd id="_" language="de" script="Latn">
                             <semx element="preferred" source="_">
-                               <strong>Betrachtungseinheit</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">Betrachtungseinheit</semx>
+                               </strong>
                                , f
                             </semx>
                             <semx element="preferred" source="_">
-                               <strong>Einheit</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">Einheit</semx>
+                               </strong>
                                , f
                             </semx>
                          </dd>
                          <dt>ja</dt>
                          <dd id="_" language="ja" script="Jpan">
                             <semx element="preferred" source="_">
-                               <strong>アイテム</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">アイテム</semx>
+                               </strong>
                             </semx>
                          </dd>
                          <dt>zh</dt>
                          <dd id="_" language="zh" script="Hans">
                             <semx element="preferred" source="_">
-                               <strong>产品</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">产品</semx>
+                               </strong>
                                <span class="fmt-designation-field">
-                                  ,
+                                  , &lt;
                                   <semx element="field-of-application" source="_">在可靠性方面</semx>
                                   &gt;
                                </span>
@@ -1715,7 +1768,7 @@ RSpec.describe IsoDoc do
                    <term id="item-fr" language="fr" tag="item" unnumbered="true">
                       <preferred original-id="_">
                          <expression language="fr">
-                            <name>entité</name>
+                            <name original-id="_">entité</name>
                             <grammar>
                                <gender>masculine</gender>
                             </grammar>
@@ -1725,7 +1778,7 @@ RSpec.describe IsoDoc do
                       <related type="contrast" original-id="_">
                          <preferred original-id="_">
                             <expression>
-                               <name>Designation cinquième</name>
+                               <name original-id="_">Designation cinquième</name>
                             </expression>
                          </preferred>
                          <xref target="paddy1"/>
@@ -1733,7 +1786,7 @@ RSpec.describe IsoDoc do
                       <related type="see" original-id="_">
                          <preferred original-id="_">
                             <expression>
-                               <name>Designation sixième</name>
+                               <name original-id="_">Designation sixième</name>
                             </expression>
                          </preferred>
                          <xref target="paddy1"/>
@@ -1777,13 +1830,15 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <preferred id="_">
                          <expression>
-                            <name>paddy</name>
+                            <name id="_">paddy</name>
                          </expression>
                       </preferred>
                       <fmt-preferred>
                          <p>
                             <semx element="preferred" source="_">
-                               <strong>paddy</strong>
+                               <strong>
+                                  <semx element="expression/name" source="_">paddy</semx>
+                               </strong>
                             </semx>
                          </p>
                       </fmt-preferred>
@@ -1805,7 +1860,7 @@ RSpec.describe IsoDoc do
     PRESXML
        html = <<~OUTPUT
              #{HTML_HDR}
-                <div id="_">
+               <div id="_">
                    <h1>1  Terms and definitions</h1>
                    <br/>
                    <div id="_">
@@ -1814,16 +1869,27 @@ RSpec.describe IsoDoc do
                       </h2>
                       <p class="TermNum" id="item">192-01-01</p>
                       <p class="Terms" style="text-align:left;">
-                         <b>system</b>
+                         <b>
+                            <dfn>system</dfn>
+                         </b>
                          , &lt;in dependability&gt;, en
                       </p>
-                      <p class="AltTerms" style="text-align:left;">paddy rice</p>
-                      <p class="AltTerms" style="text-align:left;">rough rice</p>
-                      <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                      <p class="AltTerms" style="text-align:left;">
+                         <dfn>paddy rice</dfn>
+                      </p>
+                      <p class="AltTerms" style="text-align:left;">
+                         <dfn>rough rice</dfn>
+                      </p>
+                      <p class="DeprecatedTerms" style="text-align:left;">
+                         DEPRECATED:
+                         <dfn>cargo rice</dfn>
+                      </p>
                       <p id="_">set of interrelated items that collectively fulfil a requirement</p>
                       <p>
                          CONTRAST:
-                         <b>Fifth Designation</b>
+                         <b>
+                            <dfn>Fifth Designation</dfn>
+                         </b>
                          (
                          <a href="#paddy1">
                             <span class="citesec">192-01-02</span>
@@ -1850,13 +1916,17 @@ RSpec.describe IsoDoc do
                       </div>
                       <p>SOURCE: ISO 7301:2011, 3.1, modified — modified by extension to suit the dependability context</p>
                       <p class="Terms" style="text-align:left;">
-                         <b>entité</b>
+                         <b>
+                            <dfn>entité</dfn>
+                         </b>
                          , &lt;en sûreté de fonctionnement&gt;, m, fr
                       </p>
                       <p id="_">ensemble d’entités reliées entre elles qui satisfont collectivement à une exigence</p>
                       <p>
                          CONTRASTEZ:
-                         <b>Designation cinquième</b>
+                         <b>
+                            <dfn>Designation cinquième</dfn>
+                         </b>
                          (
                          <a href="#paddy1">
                             <span class="citesec">192-01-02</span>
@@ -1865,7 +1935,9 @@ RSpec.describe IsoDoc do
                       </p>
                       <p>
                          VOIR:
-                         <b>Designation sixième</b>
+                         <b>
+                            <dfn>Designation sixième</dfn>
+                         </b>
                          (
                          <a href="#paddy1">
                             <span class="citesec">192-01-02</span>
@@ -1897,36 +1969,48 @@ RSpec.describe IsoDoc do
                                <p>ar</p>
                             </dt>
                             <dd id="_">
-                               <b>؜نظام،؜</b>
+                               <b>
+                                  <dfn>؜نظام،؜</dfn>
+                               </b>
                                ؜, &lt;؜؜في الاعتمادیة؜؜&gt;؜
                             </dd>
                             <dt>
                                <p>de</p>
                             </dt>
                             <dd id="_">
-                               <b>Betrachtungseinheit</b>
+                               <b>
+                                  <dfn>Betrachtungseinheit</dfn>
+                               </b>
                                , f
-                               <b>Einheit</b>
+                               <b>
+                                  <dfn>Einheit</dfn>
+                               </b>
                                , f
                             </dd>
                             <dt>
                                <p>ja</p>
                             </dt>
                             <dd id="_">
-                               <b>アイテム</b>
+                               <b>
+                                  <dfn>アイテム</dfn>
+                               </b>
                             </dd>
                             <dt>
                                <p>zh</p>
                             </dt>
                             <dd id="_">
-                               <b>产品</b>
-                               , 在可靠性方面&gt;
+                               <b>
+                                  <dfn>产品</dfn>
+                               </b>
+                               , &lt;在可靠性方面&gt;
                             </dd>
                          </dl>
                       </div>
                       <p class="TermNum" id="paddy1">192-01-02</p>
                       <p class="Terms" style="text-align:left;">
-                         <b>paddy</b>
+                         <b>
+                            <dfn>paddy</dfn>
+                         </b>
                       </p>
                       <p id="_">rice retaining its husk after threshing</p>
                    </div>
