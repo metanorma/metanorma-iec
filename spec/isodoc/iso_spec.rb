@@ -5,7 +5,7 @@ RSpec.describe IsoDoc::Iec do
   FileUtils.rm_f "test.html"
   it "processes isodoc as ISO: HTML output" do
     IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", <<~"INPUT", false)
+      .convert("test", <<~INPUT, false)
             <iso-standard xmlns="http://riboseinc.com/isoxml">
             <preface><foreword>
             <note>
@@ -23,7 +23,7 @@ RSpec.describe IsoDoc::Iec do
   it "processes isodoc as ISO: Chinese HTML output" do
     FileUtils.rm_f "test.html"
     IsoDoc::Iec::HtmlConvert.new({ script: "Hans" })
-      .convert("test", <<~"INPUT", false)
+      .convert("test", <<~INPUT, false)
             <iso-standard xmlns="http://riboseinc.com/isoxml">
             <preface><foreword>
             <note>
@@ -43,7 +43,7 @@ RSpec.describe IsoDoc::Iec do
     IsoDoc::Iec::HtmlConvert
       .new({ bodyfont: "Zapf Chancery", headerfont: "Comic Sans",
              monospacefont: "Andale Mono" })
-      .convert("test", <<~"INPUT", false)
+      .convert("test", <<~INPUT, false)
             <iso-standard xmlns="http://riboseinc.com/isoxml">
             <preface><foreword>
             <note>
@@ -61,7 +61,7 @@ RSpec.describe IsoDoc::Iec do
   it "processes isodoc as ISO: Word output" do
     FileUtils.rm_f "test.doc"
     IsoDoc::Iec::WordConvert.new({})
-      .convert("test", <<~"INPUT", false)
+      .convert("test", <<~INPUT, false)
             <iso-standard xmlns="http://riboseinc.com/isoxml">
             <preface><foreword>
             <note>
@@ -121,14 +121,14 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", input, true)))
-      .to be_equivalent_to Canon.format_xml(html)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::WordConvert.new({})
+    expect(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", input, true))
+      .to be_html5_equivalent_to html
+    expect(strip_guid(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
-      .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .sub(%r{</body>.*$}m, "</body>"))
+      .to be_html4_equivalent_to doc
   end
 
   it "processes sequences of examples" do
@@ -187,13 +187,13 @@ RSpec.describe IsoDoc::Iec do
         <div class="colophon"/>
       </body>
     OUTPUT
-    expect(Canon.format_xml(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", input, true)))
-      .to be_equivalent_to Canon.format_xml(html)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::WordConvert.new({})
+    expect(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", input, true))
+      .to be_html5_equivalent_to html
+    expect(strip_guid(IsoDoc::Iec::WordConvert.new({})
       .convert("test", input, true))
       .sub(/^.*<body/m, "<body")
-      .sub(%r{</body>.*$}m, "</body>")))
-      .to be_equivalent_to Canon.format_xml(doc)
+      .sub(%r{</body>.*$}m, "</body>"))
+      .to be_html4_equivalent_to doc
   end
 end

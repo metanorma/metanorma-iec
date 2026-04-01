@@ -91,9 +91,9 @@ RSpec.describe IsoDoc::Iec do
          </body>
        </html>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::WordConvert.new({})
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(IsoDoc::Iec::WordConvert.new({})
+      .convert("test", input, true)))
+      .to be_html4_equivalent_to output
   end
 
   it "cross-references formulae" do
@@ -271,11 +271,11 @@ RSpec.describe IsoDoc::Iec do
           </sections>
        </iso-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+    expect(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to Canon.format_xml(output)
+      .gsub(%r{</body>.*}m, "</body>")))
+      .to be_xml_equivalent_to output
   end
 
   it "does not ignore intervening ul in numbering ol" do
@@ -327,9 +327,9 @@ RSpec.describe IsoDoc::Iec do
           </preface>
        </iso-standard>
     INPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes unordered lists" do
@@ -416,9 +416,9 @@ RSpec.describe IsoDoc::Iec do
           </preface>
        </iso-standard>
     INPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes ordered lists" do
@@ -528,8 +528,8 @@ RSpec.describe IsoDoc::Iec do
          </preface>
       </iso-standard>
     INPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
-      .convert("test", input, true))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(strip_guid(IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
+      .convert("test", input, true)))
+      .to be_xml_equivalent_to presxml
   end
 end
