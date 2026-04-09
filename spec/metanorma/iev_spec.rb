@@ -27,7 +27,7 @@ RSpec.describe Metanorma::Iec do
                <bibdata type='standard'>
                           <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:::en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
                  <docnumber>60050</docnumber>
@@ -135,7 +135,7 @@ RSpec.describe Metanorma::Iec do
         <bibdata type='standard'>
                   <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:::en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
           <docnumber>60050</docnumber>
@@ -177,8 +177,8 @@ RSpec.describe Metanorma::Iec do
           </copyright>
           <ext>
             <doctype>standard</doctype>
-            <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
+            <flavor>iec</flavor>
             <structuredidentifier>
               <project-number>60050</project-number>
             </structuredidentifier>
@@ -238,7 +238,7 @@ RSpec.describe Metanorma::Iec do
            <bibdata type='standard'>
                       <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
            <docidentifier type="iso-reference">IEC 60050:#{Time.now.year}(en)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:en</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec:60050:#{Time.now.year}:::en</docidentifier>
            <docidentifier type="iso-undated">IEC 60050</docidentifier>
            <docidentifier type="iso-with-lang">IEC 60050:#{Time.now.year}(en)</docidentifier>
              <docnumber>60050</docnumber>
@@ -280,8 +280,8 @@ RSpec.describe Metanorma::Iec do
              </copyright>
              <ext>
                <doctype>standard</doctype>
-               <flavor>iec</flavor>
                         <subdoctype>vocabulary</subdoctype>
+               <flavor>iec</flavor>
                <structuredidentifier>
                  <project-number>60050</project-number>
                </structuredidentifier>
