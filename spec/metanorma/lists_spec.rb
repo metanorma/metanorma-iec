@@ -20,7 +20,7 @@ RSpec.describe Metanorma::Iec do
       List F:: List G
 
     INPUT
-    expect(Canon.format_xml(strip_guid(output))).to be_equivalent_to Canon.format_xml(<<~"OUTPUT")
+    expect(strip_guid(output)).to be_xml_equivalent_to <<~"OUTPUT"
       #{@blank_hdr}
       <sections>
         <ul id="_">
@@ -102,7 +102,7 @@ RSpec.describe Metanorma::Iec do
       Note 3.
 
     INPUT
-    expect(Canon.format_xml(strip_guid(output))).to be_equivalent_to Canon.format_xml(<<~"OUTPUT")
+    expect(strip_guid(output)).to be_xml_equivalent_to <<~"OUTPUT"
       #{@blank_hdr}
        <sections><ul id="_" anchor="id">
          <li>
@@ -190,8 +190,8 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor
-      .convert(input, backend: :iec, header_footer: true))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor
+      .convert(input, backend: :iec, header_footer: true)))
+      .to be_xml_equivalent_to output
   end
 end

@@ -13,6 +13,8 @@ require "metanorma/iec"
 require "iev"
 require "canon"
 
+Canon::Config.instance.profile = :metanorma
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
@@ -144,7 +146,6 @@ def boilerplate(xmldoc, lang: "en")
 end
 
 BLANK_HDR = <<~"HDR".freeze
-  <?xml version="1.0" encoding="UTF-8"?>
   <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
   <bibdata type="standard">
     <contributor>

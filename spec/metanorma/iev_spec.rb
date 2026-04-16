@@ -22,7 +22,6 @@ RSpec.describe Metanorma::Iec do
       * [[[A,B]]], _TITLE_
     INPUT
     output = <<~OUTPUT
-      <?xml version='1.0' encoding='UTF-8'?>
              <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
                <bibdata type='standard'>
                           <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
@@ -39,19 +38,19 @@ RSpec.describe Metanorma::Iec do
                    </organization>
                  </contributor>
                  <contributor>
-                   <role type='publisher'/>
-                   <organization>
-                     <name>International Electrotechnical Commission</name>
-                     <abbreviation>IEC</abbreviation>
-                   </organization>
-                 </contributor>
-                             <contributor>
-              <role type="authorizer"><description>Agency</description></role>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </contributor>
+                  <role type="authorizer"><description>Agency</description></role>
+                  <organization>
+                    <name>International Electrotechnical Commission</name>
+                    <abbreviation>IEC</abbreviation>
+                  </organization>
+                </contributor>
+                <contributor>
+                  <role type='publisher'/>
+                  <organization>
+                    <name>International Electrotechnical Commission</name>
+                    <abbreviation>IEC</abbreviation>
+                  </organization>
+                </contributor>
                  <language>en</language>
                  <script>Latn</script>
                  <status>
@@ -112,8 +111,8 @@ RSpec.describe Metanorma::Iec do
                </bibliography>
              </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "generates terms boilerplate for IEV" do
@@ -147,19 +146,19 @@ RSpec.describe Metanorma::Iec do
             </organization>
           </contributor>
           <contributor>
+              <role type="authorizer"><description>Agency</description></role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+          </contributor>
+          <contributor>
             <role type='publisher'/>
             <organization>
               <name>International Electrotechnical Commission</name>
               <abbreviation>IEC</abbreviation>
             </organization>
           </contributor>
-                      <contributor>
-              <role type="authorizer"><description>Agency</description></role>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </contributor>
           <language>en</language>
           <script>Latn</script>
           <status>
@@ -214,8 +213,8 @@ RSpec.describe Metanorma::Iec do
          </sections>
        </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "uses IEV introduction title" do
@@ -233,7 +232,6 @@ RSpec.describe Metanorma::Iec do
       Text
     INPUT
     output = <<~OUTPUT
-      <?xml version='1.0' encoding='UTF-8'?>
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
            <bibdata type='standard'>
                       <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
@@ -250,19 +248,19 @@ RSpec.describe Metanorma::Iec do
                </organization>
              </contributor>
              <contributor>
+              <role type="authorizer"><description>Agency</description></role>
+              <organization>
+                <name>International Electrotechnical Commission</name>
+                <abbreviation>IEC</abbreviation>
+              </organization>
+             </contributor>
+             <contributor>
                <role type='publisher'/>
                <organization>
                  <name>International Electrotechnical Commission</name>
                  <abbreviation>IEC</abbreviation>
                </organization>
              </contributor>
-                         <contributor>
-              <role type="authorizer"><description>Agency</description></role>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </contributor>
              <language>en</language>
              <script>Latn</script>
              <status>
@@ -309,7 +307,7 @@ RSpec.describe Metanorma::Iec do
              <sections> </sections>
            </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 end
