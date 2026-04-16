@@ -30,19 +30,19 @@ RSpec.describe Metanorma::Iec do
           </organization>
         </contributor>
         <contributor>
+          <role type="authorizer"><description>Agency</description></role>
+          <organization>
+            <name>International Electrotechnical Commission</name>
+            <abbreviation>IEC</abbreviation>
+          </organization>
+        </contributor>
+        <contributor>
           <role type="publisher"/>
           <organization>
             <name>International Electrotechnical Commission</name>
             <abbreviation>IEC</abbreviation>
           </organization>
         </contributor>
-                    <contributor>
-              <role type="authorizer"><description>Agency</description></role>
-              <organization>
-                <name>International Electrotechnical Commission</name>
-                <abbreviation>IEC</abbreviation>
-              </organization>
-            </contributor>
         <language>en</language>
         <script>Latn</script>
         <status>
@@ -93,8 +93,8 @@ RSpec.describe Metanorma::Iec do
              </sections>
              </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "removes empty text elements" do
@@ -111,8 +111,8 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "keeps any initial boilerplate from terms and definitions" do
@@ -148,8 +148,8 @@ RSpec.describe Metanorma::Iec do
              </sections>
              </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "strips type from xrefs" do
@@ -189,8 +189,8 @@ RSpec.describe Metanorma::Iec do
       </references></bibliography>
              </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "removes extraneous material from Normative References" do
@@ -227,8 +227,8 @@ RSpec.describe Metanorma::Iec do
       </bibliography>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "inserts IDs into paragraphs" do
@@ -243,8 +243,8 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "inserts IDs into notes" do
@@ -266,8 +266,8 @@ RSpec.describe Metanorma::Iec do
       </sections>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "moves footnotes inside figures" do
@@ -293,8 +293,8 @@ RSpec.describe Metanorma::Iec do
 
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "defaults section obligations" do
@@ -321,8 +321,8 @@ RSpec.describe Metanorma::Iec do
       </annex>
       </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 
   it "extends clause levels past 5" do
@@ -355,42 +355,42 @@ RSpec.describe Metanorma::Iec do
 
     INPUT
     output = <<~OUTPUT
-          #{@blank_hdr}
-            <sections>
-             <clause id="_" inline-header="false" obligation="normative">
-                <title id="_">Clause1</title>
-                <clause id="_" inline-header="false" obligation="normative">
-                   <title id="_">Clause2</title>
-                   <clause id="_" inline-header="false" obligation="normative">
-                      <title id="_">Clause3</title>
-                      <clause id="_" inline-header="false" obligation="normative">
-                         <title id="_">Clause4</title>
-                         <clause id="_" inline-header="false" obligation="normative">
-                            <title id="_">Clause 5</title>
-                            <clause id="_" inline-header="false" obligation="normative">
-                               <title id="_">Clause 6</title>
-                               <clause id="_" inline-header="false" obligation="normative">
-                                  <title id="_">Clause 7A</title>
-                               </clause>
-                               <clause id="_" inline-header="false" obligation="normative">
-                                  <title id="_">Clause 7B</title>
-                               </clause>
-                            </clause>
-                            <clause id="_" inline-header="false" obligation="normative">
-                               <title id="_">Clause 6B</title>
-                            </clause>
-                         </clause>
-                         <clause id="_" inline-header="false" obligation="normative">
-                            <title id="_">Clause 5B</title>
-                         </clause>
-                      </clause>
-                   </clause>
-                </clause>
-             </clause>
-          </sections>
-       </metanorma>
+         #{@blank_hdr}
+           <sections>
+            <clause id="_" inline-header="false" obligation="normative">
+               <title id="_">Clause1</title>
+               <clause id="_" inline-header="false" obligation="normative">
+                  <title id="_">Clause2</title>
+                  <clause id="_" inline-header="false" obligation="normative">
+                     <title id="_">Clause3</title>
+                     <clause id="_" inline-header="false" obligation="normative">
+                        <title id="_">Clause4</title>
+                        <clause id="_" inline-header="false" obligation="normative">
+                           <title id="_">Clause 5</title>
+                           <clause id="_" inline-header="false" obligation="normative">
+                              <title id="_">Clause 6</title>
+                              <clause id="_" inline-header="false" obligation="normative">
+                                 <title id="_">Clause 7A</title>
+                              </clause>
+                              <clause id="_" inline-header="false" obligation="normative">
+                                 <title id="_">Clause 7B</title>
+                              </clause>
+                           </clause>
+                           <clause id="_" inline-header="false" obligation="normative">
+                              <title id="_">Clause 6B</title>
+                           </clause>
+                        </clause>
+                        <clause id="_" inline-header="false" obligation="normative">
+                           <title id="_">Clause 5B</title>
+                        </clause>
+                     </clause>
+                  </clause>
+               </clause>
+            </clause>
+         </sections>
+      </metanorma>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
-      .to be_equivalent_to Canon.format_xml(output)
+    expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
+      .to be_xml_equivalent_to output
   end
 end

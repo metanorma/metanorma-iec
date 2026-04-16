@@ -444,111 +444,111 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     html = <<~OUTPUT
-       #{HTML_HDR}
-            <div id="_">
-              <h1 class="ForewordTitle">FOREWORD</h1>
-              <p id="A">This is a preamble</p>
-            </div>
-            <br/>
-            <div class="Section3" id="B">
-              <h1 class="IntroTitle">Introduction</h1>
-              <div id="C"><h2>0.1&#160; Introduction Subsection</h2>
+      #{HTML_HDR}
+           <div id="_">
+             <h1 class="ForewordTitle">FOREWORD</h1>
+             <p id="A">This is a preamble</p>
+           </div>
+           <br/>
+           <div class="Section3" id="B">
+             <h1 class="IntroTitle">Introduction</h1>
+             <div id="C"><h2>0.1&#160; Introduction Subsection</h2>
 
-       </div>
-              <p>This is patent boilerplate</p>
-            </div>
-            #{IEC_TITLE1}
-                           <div id="D">
-                   <h1>1  Scope</h1>
-                   <p id="E">Text</p>
-                </div>
-                <div>
-                   <h1>2  Normative References</h1>
-                </div>
-                <div id="H">
-                   <h1>3  Terms, definitions, symbols and abbreviated terms</h1>
-                   <div id="I">
-                      <h2>3.1  Normal Terms</h2>
-                      <p class="TermNum" id="J">3.1.1</p>
-                      <p class="Terms" style="text-align:left;"><b><dfn>Term2</dfn></b></p>
-                   </div>
-                   <div id="K">
-                      <h2>3.2  Symbols</h2>
-                      <div class="figdl">
-                         <dl>
-                            <dt>
-                               <p>Symbol</p>
-                            </dt>
-                            <dd>Definition</dd>
-                         </dl>
-                      </div>
-                   </div>
-                </div>
-                <div id="L" class="Symbols">
-                   <h1>4  Symbols</h1>
-                   <div class="figdl">
-                      <dl>
-                         <dt>
-                            <p>Symbol</p>
-                         </dt>
-                         <dd>Definition</dd>
-                      </dl>
-                   </div>
-                </div>
-                <div id="M">
-                   <h1>5  Clause 4</h1>
-                   <div id="N">
-                      <h2>5.1  Introduction</h2>
-                   </div>
-                   <div id="O">
-                      <h2>5.2  Clause 4.2</h2>
-                   </div>
-                </div>
-                <br/>
-                <div id="P" class="Section3">
-                   <h1 class="Annex">
-                      <b>Annex A</b>
-                      <br/>
-                      <span class="obligation">(normative)</span>
-                      <br/>
-                      <br/>
-                      <b>Annex</b>
-                   </h1>
-            <p style="display:none;" class="variant-title-toc">
-               Annex A
+      </div>
+             <p>This is patent boilerplate</p>
+           </div>
+           #{IEC_TITLE1}
+                          <div id="D">
+                  <h1>1  Scope</h1>
+                  <p id="E">Text</p>
+               </div>
+               <div>
+                  <h1>2  Normative References</h1>
+               </div>
+               <div id="H">
+                  <h1>3  Terms, definitions, symbols and abbreviated terms</h1>
+                  <div id="I">
+                     <h2>3.1  Normal Terms</h2>
+                     <p class="TermNum" id="J">3.1.1</p>
+                     <p class="Terms" style="text-align:left;"><b><dfn>Term2</dfn></b></p>
+                  </div>
+                  <div id="K">
+                     <h2>3.2  Symbols</h2>
+                     <div class="figdl">
+                        <dl>
+                           <dt>
+                              <p>Symbol</p>
+                           </dt>
+                           <dd>Definition</dd>
+                        </dl>
+                     </div>
+                  </div>
+               </div>
+               <div id="L" class="Symbols">
+                  <h1>4  Symbols</h1>
+                  <div class="figdl">
+                     <dl>
+                        <dt>
+                           <p>Symbol</p>
+                        </dt>
+                        <dd>Definition</dd>
+                     </dl>
+                  </div>
+               </div>
+               <div id="M">
+                  <h1>5  Clause 4</h1>
+                  <div id="N">
+                     <h2>5.1  Introduction</h2>
+                  </div>
+                  <div id="O">
+                     <h2>5.2  Clause 4.2</h2>
+                  </div>
+               </div>
                <br/>
-               <span class="obligation">(normative)</span>
-                 Annex
-            </p>
-                   <div id="Q">
-                      <h2>A.1  Annex A.1</h2>
-                      <div id="Q1">
-                         <h3>A.1.1  Annex A.1a</h3>
-                      </div>
-                   </div>
-                   <div id="Q2">
-                      <h2>Appendix 1  An Appendix</h2>
-                   </div>
-                </div>
-                <br/>
-                <div>
-                   <h1 class="Section3">Bibliography</h1>
-                   <div>
-                      <h2 class="Section3">Bibliography Subsection</h2>
-                   </div>
-                </div>
-             </div>
-          </body>
-       </html>
+               <div id="P" class="Section3">
+                  <h1 class="Annex">
+                     <b>Annex A</b>
+                     <br/>
+                     <span class="obligation">(normative)</span>
+                     <br/>
+                     <br/>
+                     <b>Annex</b>
+                  </h1>
+           <p style="display:none;" class="variant-title-toc">
+              Annex A
+              <br/>
+              <span class="obligation">(normative)</span>
+                Annex
+           </p>
+                  <div id="Q">
+                     <h2>A.1  Annex A.1</h2>
+                     <div id="Q1">
+                        <h3>A.1.1  Annex A.1a</h3>
+                     </div>
+                  </div>
+                  <div id="Q2">
+                     <h2>Appendix 1  An Appendix</h2>
+                  </div>
+               </div>
+               <br/>
+               <div>
+                  <h1 class="Section3">Bibliography</h1>
+                  <div>
+                     <h2 class="Section3">Bibliography Subsection</h2>
+                  </div>
+               </div>
+            </div>
+         </body>
+      </html>
     OUTPUT
     pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", pres_output, true))))
-      .to be_equivalent_to Canon.format_xml(html)
+    expect(strip_guid(pres_output
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", pres_output, true)))
+      .to be_html5_equivalent_to html
   end
 
   it "defaults to English" do
@@ -585,117 +585,117 @@ RSpec.describe IsoDoc do
        </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <annex id="P" inline-header="false" obligation="normative" autonum="A" displayorder="10">
-          <title id="_">Annex</title>
-          <fmt-title id="_">
-             <strong>
-                <span class="fmt-caption-label">
-                   <span class="fmt-element-name">Annex</span>
-                   <semx element="autonum" source="P">A</semx>
+          <annex id="P" inline-header="false" obligation="normative" autonum="A" displayorder="10">
+             <title id="_">Annex</title>
+             <fmt-title id="_">
+                <strong>
+                   <span class="fmt-caption-label">
+                      <span class="fmt-element-name">Annex</span>
+                      <semx element="autonum" source="P">A</semx>
+                   </span>
+                </strong>
+                <br/>
+                <span class="fmt-obligation">(normative)</span>
+                <span class="fmt-caption-delim">
+                   <br/>
+                   <br/>
                 </span>
-             </strong>
-             <br/>
-             <span class="fmt-obligation">(normative)</span>
-             <span class="fmt-caption-delim">
-                <br/>
-                <br/>
-             </span>
-             <semx element="title" source="_">
-                <strong>Annex</strong>
-             </semx>
-          </fmt-title>
-          <fmt-xref-label>
-             <span class="fmt-element-name">Annex</span>
-             <semx element="autonum" source="P">A</semx>
-          </fmt-xref-label>
-   <variant-title type="toc">
-      <span class="fmt-caption-label">
-         <span class="fmt-element-name">Annex</span>
-         <semx element="autonum" source="P">A</semx>
-      </span>
-      <br/>
-      <span class="fmt-obligation">(normative)</span>
-      <span class="fmt-caption-delim">
-         <tab/>
-      </span>
-      <semx element="title" source="_">Annex</semx>
-   </variant-title>
-          <clause id="Q" inline-header="false" obligation="normative">
-             <title id="_">Annex A.1</title>
-             <fmt-title id="_" depth="2">
-                <span class="fmt-caption-label">
+                <semx element="title" source="_">
+                   <strong>Annex</strong>
+                </semx>
+             </fmt-title>
+             <fmt-xref-label>
+                <span class="fmt-element-name">Annex</span>
+                <semx element="autonum" source="P">A</semx>
+             </fmt-xref-label>
+      <variant-title type="toc">
+         <span class="fmt-caption-label">
+            <span class="fmt-element-name">Annex</span>
+            <semx element="autonum" source="P">A</semx>
+         </span>
+         <br/>
+         <span class="fmt-obligation">(normative)</span>
+         <span class="fmt-caption-delim">
+            <tab/>
+         </span>
+         <semx element="title" source="_">Annex</semx>
+      </variant-title>
+             <clause id="Q" inline-header="false" obligation="normative">
+                <title id="_">Annex A.1</title>
+                <fmt-title id="_" depth="2">
+                   <span class="fmt-caption-label">
+                      <semx element="autonum" source="P">A</semx>
+                      <span class="fmt-autonum-delim">.</span>
+                      <semx element="autonum" source="Q">1</semx>
+                   </span>
+                   <span class="fmt-caption-delim">
+                      <tab/>
+                   </span>
+                   <semx element="title" source="_">Annex A.1</semx>
+                </fmt-title>
+                <fmt-xref-label>
+                   <span class="fmt-element-name">Clause</span>
                    <semx element="autonum" source="P">A</semx>
                    <span class="fmt-autonum-delim">.</span>
                    <semx element="autonum" source="Q">1</semx>
-                </span>
-                <span class="fmt-caption-delim">
-                   <tab/>
-                </span>
-                <semx element="title" source="_">Annex A.1</semx>
-             </fmt-title>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Clause</span>
-                <semx element="autonum" source="P">A</semx>
-                <span class="fmt-autonum-delim">.</span>
-                <semx element="autonum" source="Q">1</semx>
-             </fmt-xref-label>
-             <clause id="Q1" inline-header="false" obligation="normative">
-                <title id="_">Annex A.1a</title>
-                <fmt-title id="_" depth="3">
-                   <span class="fmt-caption-label">
+                </fmt-xref-label>
+                <clause id="Q1" inline-header="false" obligation="normative">
+                   <title id="_">Annex A.1a</title>
+                   <fmt-title id="_" depth="3">
+                      <span class="fmt-caption-label">
+                         <semx element="autonum" source="P">A</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         <semx element="autonum" source="Q">1</semx>
+                         <span class="fmt-autonum-delim">.</span>
+                         <semx element="autonum" source="Q1">1</semx>
+                      </span>
+                      <span class="fmt-caption-delim">
+                         <tab/>
+                      </span>
+                      <semx element="title" source="_">Annex A.1a</semx>
+                   </fmt-title>
+                   <fmt-xref-label>
                       <semx element="autonum" source="P">A</semx>
                       <span class="fmt-autonum-delim">.</span>
                       <semx element="autonum" source="Q">1</semx>
                       <span class="fmt-autonum-delim">.</span>
                       <semx element="autonum" source="Q1">1</semx>
+                   </fmt-xref-label>
+                </clause>
+             </clause>
+             <appendix id="Q2" inline-header="false" obligation="normative" autonum="1">
+                <title id="_">An Appendix</title>
+                <fmt-title id="_" depth="2">
+                   <span class="fmt-caption-label">
+                      <span class="fmt-element-name">Appendix</span>
+                      <semx element="autonum" source="Q2">1</semx>
                    </span>
                    <span class="fmt-caption-delim">
                       <tab/>
                    </span>
-                   <semx element="title" source="_">Annex A.1a</semx>
+                   <semx element="title" source="_">An Appendix</semx>
                 </fmt-title>
                 <fmt-xref-label>
-                   <semx element="autonum" source="P">A</semx>
-                   <span class="fmt-autonum-delim">.</span>
-                   <semx element="autonum" source="Q">1</semx>
-                   <span class="fmt-autonum-delim">.</span>
-                   <semx element="autonum" source="Q1">1</semx>
-                </fmt-xref-label>
-             </clause>
-          </clause>
-          <appendix id="Q2" inline-header="false" obligation="normative" autonum="1">
-             <title id="_">An Appendix</title>
-             <fmt-title id="_" depth="2">
-                <span class="fmt-caption-label">
                    <span class="fmt-element-name">Appendix</span>
                    <semx element="autonum" source="Q2">1</semx>
-                </span>
-                <span class="fmt-caption-delim">
-                   <tab/>
-                </span>
-                <semx element="title" source="_">An Appendix</semx>
-             </fmt-title>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Appendix</span>
-                <semx element="autonum" source="Q2">1</semx>
-             </fmt-xref-label>
-             <fmt-xref-label container="P">
-                <span class="fmt-xref-container">
-                   <span class="fmt-element-name">Annex</span>
-                   <semx element="autonum" source="P">A</semx>
-                </span>
-                <span class="fmt-comma">,</span>
-                <span class="fmt-element-name">Appendix</span>
-                <semx element="autonum" source="Q2">1</semx>
-             </fmt-xref-label>
-          </appendix>
-       </annex>
+                </fmt-xref-label>
+                <fmt-xref-label container="P">
+                   <span class="fmt-xref-container">
+                      <span class="fmt-element-name">Annex</span>
+                      <semx element="autonum" source="P">A</semx>
+                   </span>
+                   <span class="fmt-comma">,</span>
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="Q2">1</semx>
+                </fmt-xref-label>
+             </appendix>
+          </annex>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(IsoDoc::Iec::PresentationXMLConvert
+    expect(strip_guid(Nokogiri::XML(IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
-      .at("//xmlns:annex").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:annex").to_xml))
+      .to be_xml_equivalent_to output
   end
 
   it "processes French" do
@@ -782,7 +782,7 @@ RSpec.describe IsoDoc do
       <function language="">emc</function><function language="fr">Publication fondamentale en CEM</function><function language="en">Basic EMC Publication</function>
       </ext>
       </bibdata>
-      #{PREFACE.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')}
+      #{PREFACE.sub('Contents', 'Sommaire').sub('INTERNATIONAL ELECTROTECHNICAL COMMISSION', 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')}
             <foreword obligation="informative" displayorder="8" id="_">
                 <title id="_">AVANT-PROPOS</title>
                 <fmt-title id="_" depth="1">
@@ -1137,8 +1137,8 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     html = <<~OUTPUT
-      #{HTML_HDR.sub(/Contents/, 'Sommaire').sub(/INTERNATIONAL ELECTROTECHNICAL COMMISSION/, 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')
-      .gsub(/"en"/, '"fr"')}
+      #{HTML_HDR.sub('Contents', 'Sommaire').sub('INTERNATIONAL ELECTROTECHNICAL COMMISSION', 'COMMISSION ELECTROTECHNIQUE INTERNATIONALE')
+      .gsub('"en"', '"fr"')}
                <div id="_">
                  <h1 class="ForewordTitle">AVANT-PROPOS</h1>
                  <p id="A">This is a preamble</p>
@@ -1234,11 +1234,11 @@ RSpec.describe IsoDoc do
     OUTPUT
     pres_output = IsoDoc::Iec::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
-      .convert("test", pres_output, true))))
-      .to be_equivalent_to Canon.format_xml(html)
+    expect(strip_guid(pres_output
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(IsoDoc::Iec::HtmlConvert.new({})
+      .convert("test", pres_output, true)))
+      .to be_html5_equivalent_to html
   end
 end
