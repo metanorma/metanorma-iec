@@ -325,7 +325,6 @@ RSpec.describe IsoDoc do
     INPUT
 
     presxml = <<~INPUT
-         <?xml version='1.0'?>
          <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata type='standard'>
                 <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>
@@ -992,7 +991,6 @@ RSpec.describe IsoDoc do
             </iso-standard>
     INPUT
     presxml = <<~PRESXML
-       <?xml version='1.0'?>
          <iso-standard xmlns='http://riboseinc.com/isoxml' type='presentation'>
        <bibdata type='standard'>
          <docidentifier type='ISO'>IEC 60050-192 ED 1</docidentifier>

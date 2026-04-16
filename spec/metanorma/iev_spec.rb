@@ -22,7 +22,6 @@ RSpec.describe Metanorma::Iec do
       * [[[A,B]]], _TITLE_
     INPUT
     output = <<~OUTPUT
-      <?xml version='1.0' encoding='UTF-8'?>
              <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
                <bibdata type='standard'>
                           <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
@@ -233,7 +232,6 @@ RSpec.describe Metanorma::Iec do
       Text
     INPUT
     output = <<~OUTPUT
-      <?xml version='1.0' encoding='UTF-8'?>
       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type="semantic" version="#{Metanorma::Iec::VERSION}" flavor="iec">
            <bibdata type='standard'>
                       <docidentifier primary="true" type="ISO">IEC 60050:#{Time.now.year}</docidentifier>
