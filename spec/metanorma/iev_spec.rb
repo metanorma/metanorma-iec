@@ -177,8 +177,8 @@ RSpec.describe Metanorma::Iec do
           </copyright>
           <ext>
             <doctype>standard</doctype>
-            <flavor>iec</flavor>
                             <subdoctype>vocabulary</subdoctype>
+            <flavor>iec</flavor>
             <structuredidentifier>
               <project-number>60050</project-number>
             </structuredidentifier>
@@ -280,8 +280,8 @@ RSpec.describe Metanorma::Iec do
              </copyright>
              <ext>
                <doctype>standard</doctype>
-               <flavor>iec</flavor>
                         <subdoctype>vocabulary</subdoctype>
+               <flavor>iec</flavor>
                <structuredidentifier>
                  <project-number>60050</project-number>
                </structuredidentifier>
