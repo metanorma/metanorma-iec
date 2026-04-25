@@ -29,6 +29,7 @@ RSpec.describe IsoDoc::Iec do
     output = <<~OUTPUT
       <html xmlns:epub='http://www.idpf.org/2007/ops' lang='en'>
                <head>
+               <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
                  <style>
                  </style>
                  <style>

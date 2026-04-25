@@ -9,7 +9,7 @@ require "isodoc/iec/pdf_convert"
 require "isodoc/iec/presentation_xml_convert"
 require "isodoc/iec/metadata"
 require "isodoc/iec/xref"
-require "metanorma"
+require "metanorma-core"
 
 if defined? Metanorma::Registry
   require_relative "metanorma/iec"
