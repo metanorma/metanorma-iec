@@ -41,18 +41,13 @@ RSpec.describe IsoDoc::Iec do
                    <h1 class="ForewordTitle">FOREWORD</h1>
                    <div id="_">
                       <div class="formula">
-                         <p class="formula">
-                            <span style="mso-tab-count:1">  </span>
-                            <span class="stem">(#(r = 1 %)#)</span>
-                         </p>
+                         <p class="formula"><span style="mso-tab-count:1">  </span><span class="stem">(#(r = 1 %)#)</span></p>
                       </div>
                <div align="left">
                   <table id="_" class="dl">
                      <tr>
                         <td valign="top" align="left">
-                           <p align="left" style="margin-left:0pt;text-align:left;">
-                              <span class="stem">(#(r)#)</span>
-                           </p>
+                           <p align="left" style="margin-left:0pt;text-align:left;"><span class="stem">(#(r)#)</span></p>
                         </td>
                         <td valign="top">
                            <p id="_">is the repeatability limit.</p>
@@ -61,23 +56,12 @@ RSpec.describe IsoDoc::Iec do
                   </table>
                </div>
                       <div id="_" class="Note">
-                         <p class="Note">
-                            <span class="note_label">
-                               NOTE
-                               <span style="mso-tab-count:1">  </span>
-                            </span>
-                            [durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed.
-                         </p>
+                         <p class="Note"><span class="note_label">NOTE<span style="mso-tab-count:1">  </span></span>[durationUnits] is essentially a duration statement without the "P" prefix. "P" is unnecessary because between "G" and "U" duration is always expressed. </p>
                       </div>
                    </div>
                    <div id="_">
                       <div class="formula">
-                         <p class="formula">
-                            <span style="mso-tab-count:1">  </span>
-                            <span class="stem">(#(r = 1 %)#)</span>
-                            <span style="mso-tab-count:1">  </span>
-                            (1)
-                         </p>
+                         <p class="formula"><span style="mso-tab-count:1">  </span><span class="stem">(#(r = 1 %)#)</span><span style="mso-tab-count:1">  </span>(1)</p>
                       </div>
                    </div>
                 </div>
@@ -86,9 +70,9 @@ RSpec.describe IsoDoc::Iec do
              <p class="section-break">
                 <br clear="all" class="section"/>
              </p>
-             <div class="WordSection3"/>
+             <div class="WordSection3"></div>
            <br clear="all" style="page-break-before:left;mso-break-type:section-break"/>
-           <div class="colophon"/>
+           <div class="colophon"></div>
          </body>
        </html>
     OUTPUT

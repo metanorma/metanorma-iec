@@ -230,7 +230,7 @@ IEC_TITLE = <<~TITLE.freeze
               <p class="zzSTDTitle1">____________</p>
               <p class="zzSTDTitle1">&#160;</p>
               <p class="zzSTDTitle1">
-                <b/>
+                <b></b>
               </p>
               <p class="zzSTDTitle1">&#160;</p>
 TITLE
@@ -239,7 +239,7 @@ IEC_TITLE1 = "".freeze
 
 HTML_HDR = <<~HDR.freeze
   <html xmlns:epub="http://www.idpf.org/2007/ops" lang="en">
-    <head/>
+    <head></head>
     <body lang="en">
       <div class="title-section">
         <p>&#160;</p>
@@ -251,7 +251,7 @@ HTML_HDR = <<~HDR.freeze
       <br/>
       <div class="main-section">
        <br/>
-                    <div id="_" class="TOC">
+             <div id="_" class="TOC">
                <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
