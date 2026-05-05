@@ -926,7 +926,7 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to <<~OUTPUT
         <div class='WordSection3'>
              <div>
-               <a name='_' id='_'/>
+               <a name='_' id='_'></a>
                <h1 class='main'>
                  1
                  <span style='mso-tab-count:1'>&#xA0; </span>
@@ -936,17 +936,17 @@ RSpec.describe IsoDoc do
                  <br clear='all' style='mso-special-character:line-break;page-break-before:always'/>
                </p>
                <div>
-                 <a name='_' id='_'/>
+                 <a name='_' id='_'></a>
                  <h2 class='zzSTDTitle2'>
                    <b>192-01 General</b>
                  </h2>
                  <p class='TermNum'>
-                   <a name='paddy1' id='paddy1'/>
+                   <a name='paddy1' id='paddy1'></a>
                    192-01-01
                  </p>
                  <p class='Terms' style='text-align:left;'><b>paddy</b></p>
                  <p class='Definition'>
-                   <a name='_' id='_'/>
+                   <a name='_' id='_'></a>
                    rice retaining its husk after threshing
                  </p>
                  <p class='MsoNormal'>

@@ -506,20 +506,8 @@ RSpec.describe IsoDoc do
                </div>
                <br/>
                <div id="P" class="Section3">
-                  <h1 class="Annex">
-                     <b>Annex A</b>
-                     <br/>
-                     <span class="obligation">(normative)</span>
-                     <br/>
-                     <br/>
-                     <b>Annex</b>
-                  </h1>
-           <p style="display:none;" class="variant-title-toc">
-              Annex A
-              <br/>
-              <span class="obligation">(normative)</span>
-                Annex
-           </p>
+                  <h1 class="Annex"><b>Annex A</b><br/><span class="obligation">(normative)</span><br/><br/><b>Annex</b></h1>
+           <p style="display:none;" class="variant-title-toc">Annex A<br/><span class="obligation">(normative)</span>  Annex</p>
                   <div id="Q">
                      <h2>A.1  Annex A.1</h2>
                      <div id="Q1">
@@ -1200,16 +1188,7 @@ RSpec.describe IsoDoc do
                 </div>
                 <br/>
                 <div id="P" class="Section3">
-                   <h1 class="Annex">
-                      <b>
-         Annexe A
-       </b>
-                      <br/>
-                      <span class="obligation">(normative)</span>
-                      <br/>
-                      <br/>
-                      <b>Annex</b>
-                   </h1>
+                   <h1 class="Annex"><b>Annexe A</b><br/><span class="obligation">(normative)</span><br/><br/><b>Annex</b></h1>
                     <p style="display:none;" class="variant-title-toc">Annexe A  Annex</p>
                    <div id="Q">
                       <h2>A.1  Annex A.1</h2>
