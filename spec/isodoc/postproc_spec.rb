@@ -288,7 +288,7 @@ RSpec.describe IsoDoc do
                  <p class="Sourcecode"><a name="A" id="A"></a>puts "Hello, world."</p>
                             <div align='center' class='table_container'>
                <table class='MsoISOTable' style='mso-table-anchor-horizontal:column;mso-table-overlap:never;border-spacing:0;border-width:1px;'>
-                <a name='samplecode' id='samplecode'/>
+                <a name='samplecode' id='samplecode'></a>
                      <tbody>
                        <tr>
                          <td style="border-top:solid windowtext 1.5pt;mso-border-top-alt:solid windowtext 1.5pt;border-bottom:solid windowtext 1.5pt;mso-border-bottom-alt:solid windowtext 1.5pt;page-break-after:auto;" class="TABLE-cell">

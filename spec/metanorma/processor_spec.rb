@@ -146,39 +146,24 @@ RSpec.describe Metanorma::Iec::Processor do
       .gsub(%r{</main>.*}m, "</main>")))
       .to be_html5_equivalent_to <<~OUTPUT
         <main class="main-section">
-            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-            <br/>
-            <br/>
+            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br/><br/>
             <p class="zzSTDTitle1">COMMISSION ELECTROTECHNIQUE INTERNATIONALE</p>
             <p class="zzSTDTitle1">____________</p>
             <p class="zzSTDTitle1"> </p>
-            <p class="zzSTDTitle1">
-               <b>FRENCH</b>
-            </p>
+            <p class="zzSTDTitle1"><b>FRENCH</b></p>
             <p class="zzSTDTitle1"> </p>
             <div id="_">
-               <h1 class="ForewordTitle" id="_">
-                  <a class="anchor" href="#_"/>
-                  <a class="header" href="#_">AVANT-PROPOS</a>
-               </h1>
+               <h1 class="ForewordTitle" id="_"><a class="anchor" href="#_"/><a class="header" href="#_">AVANT-PROPOS</a></h1>
                <div id="_" class="boilerplate_legal">
                   <p>THIS IS A LEGAL STATEMENT</p>
                </div>
             </div>
-            <p class="zzSTDTitle1">
-               <b>French</b>
-            </p>
+            <p class="zzSTDTitle1"><b>French</b></p>
             <p class="zzSTDTitle1"> </p>
             <div id="H">
-               <h1 id="_">
-                  <a class="anchor" href="#H"/>
-                  <a class="header" href="#H">1  Terms, Definitions, Symbols and Abbreviated Terms</a>
-               </h1>
+               <h1 id="_"><a class="anchor" href="#H"/><a class="header" href="#H">1  Terms, Definitions, Symbols and Abbreviated Terms</a></h1>
                <div id="J">
-                  <h2 class="TermNum" id="_">
-                     <a class="anchor" href="#J"/>
-                     <a class="header" href="#J">1.1</a>
-                  </h2>
+                  <h2 class="TermNum" id="_"><a class="anchor" href="#J"/><a class="header" href="#J">1.1</a></h2>
                </div>
                <p class="Terms" style="text-align:left;">Term2</p>
             </div>
