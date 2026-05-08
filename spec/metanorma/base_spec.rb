@@ -118,6 +118,7 @@ RSpec.describe Metanorma::Iec do
              <docidentifier type="iso-undated">IEC PNW 1000-1 ED2</docidentifier>
              <docidentifier type="iso-with-lang">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
              <docnumber>1000</docnumber>
+             <date type="updated"><on>2000-01-01</on></date>
              <contributor>
                 <role type="author"/>
                 <organization>
@@ -242,10 +243,7 @@ RSpec.describe Metanorma::Iec do
                 </organization>
              </contributor>
              <edition>2</edition>
-             <version>
-                <revision-date>2000-01-01</revision-date>
-                <draft>0.3.4</draft>
-             </version>
+             <version>0.3.4</version>
              <language>en</language>
              <script>Latn</script>
              <status>
