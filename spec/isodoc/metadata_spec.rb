@@ -21,16 +21,14 @@ RSpec.describe IsoDoc::Iec::Metadata do
            <docidentifier type="ISO">ISO/PreCD3 17301-1</docidentifier>
            <docidentifier type="iso-tc">17301</docidentifier>
            <docnumber>1730</docnumber>
+           <date type="updated"><on>2016-05-01</on></date>
            <date type="published"><on>2011</on></date>
            <date type="accessed"><on>2012</on></date>
            <date type="created"><from>2010</from><to>2011</to></date>
            <date type="activated"><on>2013</on></date>
            <date type="obsoleted"><on>2014</on></date>
            <edition>2</edition>
-           <version>
-           <revision-date>2016-05-01</revision-date>
-           <draft>0.4</draft>
-         </version>
+           <version>0.4</version>
            <contributor>
              <role type="author"/>
              <organization>
