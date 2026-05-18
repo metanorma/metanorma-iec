@@ -32,8 +32,8 @@ module IsoDoc
         super
       end
 
-      def std_docid_semantic(text)
-        text
+      def annotate_docid?(_id)
+        false
       end
     end
   end
