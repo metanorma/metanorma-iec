@@ -1,0 +1,2 @@
+gem "isodoc", github: "metanorma/isodoc", branch: "feature/hoist-docid-semantic-annotation"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "fix/improved-pubid-annotation"
