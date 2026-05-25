@@ -153,16 +153,16 @@ RSpec.describe IsoDoc::Iec::Metadata do
         createddate: "2010&#x2013;2011",
         docnumber: "ISO/PreCD3 17301-1",
         docnumeric: "1730",
-        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie 1 : Riz",
-        docsubtitleintro: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
-        docsubtitlemain: "Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai",
+        docsubtitle:  "Céréales et légumineuses&#xa0;&#x2014; Spécification et méthodes d'essai&#xa0;&#x2014; Partie 1 : Riz",
+        docsubtitleintro: "Céréales et légumineuses",
+        docsubtitlemain: "Spécification et méthodes d'essai",
         docsubtitlepart: "Riz",
-        docsubtitlepartlabel: "Partie&#xa0;1",
-        doctitle: "Cereals and pulses&#xa0;&#x2014; Specifications and test methods&#xa0;&#x2014; Part&#xa0;1: Rice",
+        docsubtitlepartlabel: "Partie 1",
+        doctitle: "Cereals and pulses&#xa0;&#x2014; Specifications and test methods&#xa0;&#x2014; Part 1: Rice",
         doctitleintro: "Cereals and pulses",
         doctitlemain: "Specifications and test methods",
         doctitlepart: "Rice",
-        doctitlepartlabel: "Part&#xa0;1",
+        doctitlepartlabel: "Part 1",
         doctype: "International Standard",
         doctype_display: "International Standard",
         doctype_en: "International Standard",
@@ -196,9 +196,10 @@ RSpec.describe IsoDoc::Iec::Metadata do
         tc: "TC 62",
         tc_docnumber: ["17301"],
         unpublished: true,
+        updateddate: "2016-05-01",
         wg: "WG 62A1" }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
-      .to be_xml_equivalent_to output
+      .to be_equivalent_to output
   end
 
   it "processes IsoXML metadata #2" do
@@ -283,9 +284,9 @@ RSpec.describe IsoDoc::Iec::Metadata do
     output =
       { agency: "ISO/IEC",
         docnumber: "ISO/IEC/CD 17301-1-3",
-        docsubtitle: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses&#xa0;&#x2014; Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai&#xa0;&#x2014; Partie 1-3 : Riz",
-        docsubtitleintro: "C&#xe9;r&#xe9;ales et l&#xe9;gumineuses",
-        docsubtitlemain: "Sp&#xe9;cification et m&#xe9;thodes d&#x27;essai",
+        docsubtitle: "Céréales et légumineuses&#xa0;&#x2014; Spécification et méthodes d'essai&#xa0;&#x2014; Partie 1-3 : Riz",
+        docsubtitleintro: "Céréales et légumineuses",
+        docsubtitlemain: "Spécification et méthodes d'essai",
         docsubtitlepart: "Riz",
         docsubtitlepartlabel: "Partie 1-3",
         doctitle: "Cereals and pulses&#xa0;&#x2014; Specifications and test methods&#xa0;&#x2014; Part 1-3: Rice",
@@ -312,6 +313,6 @@ RSpec.describe IsoDoc::Iec::Metadata do
         tc_docnumber: ["17301"],
         unpublished: true }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
-      .to be_xml_equivalent_to output
+      .to be_equivalent_to output
   end
 end
