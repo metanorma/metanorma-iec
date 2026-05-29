@@ -6149,6 +6149,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	     text line 1
 			 text line 2
 	-->
+	<xsl:variable name="example_display_in"><!-- don't change here, only for override xsl --></xsl:variable> <!-- block or inline -->
 	<xsl:template match="mn:example" name="example">
 		<xsl:call-template name="setNamedDestination"/>
 		<fo:block-container id="{@id}" xsl:use-attribute-sets="example-style" role="SKIP">
@@ -6159,6 +6160,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 			<xsl:variable name="fo_element">
 				<xsl:if test=".//mn:table or .//mn:dl or *[not(self::mn:fmt-name)][1][self::mn:sourcecode]">block</xsl:if>
+				<xsl:if test="normalize-space($example_display_in) != ''"><xsl:value-of select="$example_display_in"/></xsl:if>
 						<xsl:choose>
 							<!-- if example contains only one (except 'name') element (paragraph for example), then display it on the same line as EXAMPLE title -->
 							<xsl:when test="count(*[not(self::mn:fmt-name)]) = 1">inline</xsl:when>
