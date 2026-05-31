@@ -4176,6 +4176,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set> <!-- sourcecode-style -->
 
 	<xsl:template name="refine_sourcecode-style">
+		<xsl:call-template name="setKeepAttributes"/>
 	</xsl:template> <!-- refine_sourcecode-style -->
 
 	<xsl:attribute-set name="sourcecode-number-style">
@@ -4914,8 +4915,36 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template name="refine_strike-style">
 	</xsl:template>
 
+	<xsl:attribute-set name="hr-block-style">
+		<xsl:attribute name="font-size">1pt</xsl:attribute>
+		<xsl:attribute name="keep-with-previous">always</xsl:attribute>
+		<xsl:attribute name="role">SKIP</xsl:attribute>
+		<xsl:attribute name="padding-top">-2pt</xsl:attribute>
+		<xsl:attribute name="space-after">4pt</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_hr-block-style">
+	</xsl:template>
+
+	<xsl:attribute-set name="hr-style">
+		<xsl:attribute name="leader-pattern">rule</xsl:attribute>
+		<xsl:attribute name="leader-length">100%</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_hr-style">
+	</xsl:template>
+
 	<xsl:template match="mn:br">
 		<xsl:value-of select="$linebreak"/>
+	</xsl:template>
+
+	<xsl:template match="mn:hr">
+		<fo:block xsl:use-attribute-sets="hr-block-style">
+			<xsl:call-template name="refine_hr-block-style"/>
+			<fo:leader xsl:use-attribute-sets="hr-style">
+				<xsl:call-template name="refine_hr-style"/>
+			</fo:leader>
+		</fo:block>
 	</xsl:template>
 
 	<xsl:template match="mn:em">
