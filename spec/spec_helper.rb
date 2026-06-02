@@ -290,37 +290,6 @@ WORD_HDR = <<~HDR.freeze
       <div class="WordSection3">
 HDR
 
-def stub_fetch_ref(**opts)
-  xml = ""
-
-  hit = double("hit")
-  expect(hit).to receive(:[]).with("title") do
-    Nokogiri::XML(xml).at("//docidentifier").content
-  end.at_least(:once)
-
-  hit_instance = double("hit_instance")
-  expect(hit_instance).to receive(:hit).and_return(hit).at_least(:once)
-  expect(hit_instance).to receive(:to_xml) do |builder, opt|
-    expect(builder).to be_instance_of Nokogiri::XML::Builder
-    expect(opt).to eq opts
-    builder << xml
-  end.at_least :once
-
-  hit_page = double("hit_page")
-  expect(hit_page).to receive(:first).and_return(hit_instance).at_least :once
-
-  hit_pages = double("hit_pages")
-  expect(hit_pages).to receive(:first).and_return(hit_page).at_least :once
-
-  expect(Isobib::IsoBibliography).to receive(:search)
-    .and_wrap_original do |search, *args|
-    code = args[0]
-    expect(code).to be_instance_of String
-    xml = get_xml(search, code, opts)
-    hit_pages
-  end.at_least :once
-end
-
 def mock_pdf
   allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
     FileUtils.cp(url.gsub('"', ""), output.gsub('"', ""))
