@@ -493,7 +493,7 @@ RSpec.describe IsoDoc::Iec do
                 </bibitem>
                 <bibitem id="ref12" type="standard">
                    <biblio-tag>
-                      [Citn]
+                      [8]
                       <tab/>
                       IETF RFC 20,
                    </biblio-tag>
@@ -502,6 +502,7 @@ RSpec.describe IsoDoc::Iec do
                       <em>How to cite a reference</em>
                       .
                    </formattedref>
+                   <docidentifier type="metanorma-ordinal">[8]</docidentifier>
                    <docidentifier type="metanorma">[Citn]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 20</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 20</docidentifier>
@@ -581,7 +582,7 @@ RSpec.describe IsoDoc::Iec do
                       <a href="http://www.icc.or.at">http://www.icc.or.at</a>
                       )
                    </p>
-                   <div id="_" class="Note NormRef">
+                   <div id="_" class="display Note NormRef">
                       <p>
                          <span class="note_label">NOTE  </span>
                          This is an annotation of ISO 20483:2013-2014
@@ -602,13 +603,13 @@ RSpec.describe IsoDoc::Iec do
                       <i>Instruments for analytical laboratory use</i>
                       . n.d.
                    </p>
-                   <div id="_" class="Note Biblio">
+                   <div id="_" class="display Note Biblio">
                       <p>
                          <span class="note_label">NOTE 1  </span>
                          This is an annotation of document ISSN.
                       </p>
                    </div>
-                   <div id="_" class="Note Biblio">
+                   <div id="_" class="display Note Biblio">
                       <p>
                          <span class="note_label">NOTE 2  </span>
                          This is another annotation of document ISSN.
@@ -638,7 +639,7 @@ RSpec.describe IsoDoc::Iec do
                       .
                    </p>
                    <p id="ref12" class="Biblio">
-                      [Citn]  IETF RFC 20, CitationWorks. 2019.
+                      [8]  IETF RFC 20, CitationWorks. 2019.
                       <i>How to cite a reference</i>
                       .
                    </p>
