@@ -1362,6 +1362,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:call-template name="insertListOf_Item"/>
 		</xsl:for-each>
 
+		<xsl:for-each select="$contents//mnx:examples/mnx:example">
+			<xsl:if test="position() = 1">
+				<fo:block margin-bottom="5pt" role="SKIP"><fo:wrapper role="artifact"> </fo:wrapper></fo:block>
+			</xsl:if>
+			<xsl:call-template name="insertListOf_Item"/>
+		</xsl:for-each>
+
 			<!-- </fo:block>
 		</fo:block-container> -->
 	</xsl:template> <!-- END: insertTOCpages -->
@@ -2339,6 +2346,16 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:if test="normalize-space($toc_figure_title) = ''">
 			<xsl:call-template name="getLocalizedString">
 				<xsl:with-param name="key">toc_figures</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>
+	</xsl:variable>
+
+	<xsl:variable name="title-list-examples">
+		<xsl:variable name="toc_example_title" select="//mn:metanorma/mn:metanorma-extension/mn:toc[@type='example']/mn:title"/>
+		<xsl:value-of select="$toc_example_title"/>
+		<xsl:if test="normalize-space($toc_example_title) = ''">
+			<xsl:call-template name="getLocalizedString">
+				<xsl:with-param name="key">toc_examples</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:variable>
@@ -13626,7 +13643,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template name="refine_toc-pagenumber-style">
 	</xsl:template>
 
-	<!-- List of Figures, Tables -->
+	<!-- List of Figures, Tables, Examples -->
 	<xsl:attribute-set name="toc-listof-title-style">
 	</xsl:attribute-set>
 
@@ -13728,6 +13745,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:if test="(//mn:metanorma/mn:metanorma-extension/mn:toc[@type='figure']/mn:title) or normalize-space($always) = 'true'">
 			<xsl:call-template name="processFigures_Contents"/>
 		</xsl:if>
+		<xsl:if test="(//mn:metanorma/mn:metanorma-extension/mn:toc[@type='example']/mn:title)">
+			<xsl:call-template name="processExamples_Contents"/>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template name="processTables_Contents">
@@ -13774,7 +13794,29 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</mnx:figures>
 	</xsl:template>
 
-	<xsl:template match="mn:figure/mn:name | mnx:figure/mn:name |                mn:table/mn:name | mnx:table/mn:name |               mn:permission/mn:name | mnx:permission/mn:name |               mn:recommendation/mn:name | mnx:recommendation/mn:name |               mn:requirement/mn:name | mnx:requirement/mn:name" mode="contents">
+	<xsl:template name="processExamples_Contents">
+		<mnx:examples>
+			<xsl:for-each select="//mn:example[@id and mn:fmt-name and not(@unnumbered = 'true') and normalize-space(@id) != '']">
+				<xsl:choose>
+					<xsl:when test="mn:fmt-name">
+						<xsl:variable name="fmt_name">
+							<xsl:apply-templates select="mn:fmt-name" mode="update_xml_step1"/>
+						</xsl:variable>
+						<mnx:example id="{@id}" alt-text="{normalize-space($fmt_name)}">
+							<xsl:copy-of select="$fmt_name"/>
+						</mnx:example>
+					</xsl:when>
+					<xsl:otherwise>
+						<mnx:example id="{@id}" alt-text="{mn:name}">
+							<xsl:copy-of select="mn:name"/>
+						</mnx:example>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
+		</mnx:examples>
+	</xsl:template>
+
+	<xsl:template match="mn:figure/mn:name | mnx:figure/mn:name |                mn:table/mn:name | mnx:table/mn:name |               mn:example/mn:name | mnx:example/mn:name |               mn:permission/mn:name | mnx:permission/mn:name |               mn:recommendation/mn:name | mnx:recommendation/mn:name |               mn:requirement/mn:name | mnx:requirement/mn:name" mode="contents">
 		<xsl:if test="not(following-sibling::*[1][self::mn:fmt-name])">
 			<xsl:apply-templates mode="contents"/>
 			<xsl:text> </xsl:text>
@@ -13783,40 +13825,40 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<xsl:template match="mn:title[following-sibling::*[1][self::mn:fmt-title]]" mode="contents"/>
 
-	<xsl:template match="mn:figure/mn:fmt-name | mnx:figure/mn:fmt-name |               mn:table/mn:fmt-name | mnx:table/mn:fmt-name |               mn:permission/mn:fmt-name | mnx:permission/mn:fmt-name |               mn:recommendation/mn:fmt-name | mnx:recommendation/mn:fmt-name |               mn:requirement/mn:fmt-name | mnx:requirement/mn:fmt-name" mode="contents">
+	<xsl:template match="mn:figure/mn:fmt-name | mnx:figure/mn:fmt-name |               mn:table/mn:fmt-name | mnx:table/mn:fmt-name |               mn:example/mn:fmt-name | mnx:example/mn:fmt-name |               mn:permission/mn:fmt-name | mnx:permission/mn:fmt-name |               mn:recommendation/mn:fmt-name | mnx:recommendation/mn:fmt-name |               mn:requirement/mn:fmt-name | mnx:requirement/mn:fmt-name" mode="contents">
 		<xsl:apply-templates mode="contents"/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="mn:figure/mn:name | mnx:figure/mn:name |                mn:table/mn:name | mnx:table/mn:name |               mn:permission/mn:name | mnx:permission/mn:name |               mn:recommendation/mn:name | mnx:recommendation/mn:name |               mn:requirement/mn:name | mnx:requirement/mn:name |               mn:sourcecode/mn:name" mode="bookmarks">
+	<xsl:template match="mn:figure/mn:name | mnx:figure/mn:name |                mn:table/mn:name | mnx:table/mn:name |               mn:example/mn:name | mnx:example/mn:name |               mn:permission/mn:name | mnx:permission/mn:name |               mn:recommendation/mn:name | mnx:recommendation/mn:name |               mn:requirement/mn:name | mnx:requirement/mn:name |               mn:sourcecode/mn:name" mode="bookmarks">
 		<xsl:if test="not(following-sibling::*[1][self::mn:fmt-name])">
 			<xsl:apply-templates mode="bookmarks"/>
 			<xsl:text> </xsl:text>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="mn:figure/mn:fmt-name | mnx:figure/mn:fmt-name |                mn:table/mn:fmt-name | mnx:table/mn:fmt-name |                mn:permission/mn:fmt-name | mnx:permission/mn:fmt-name |                mn:recommendation/mn:fmt-name | mnx:recommendation/mn:fmt-name |                mn:requirement/mn:fmt-name | mnx:requirement/mn:fmt-name |                mn:sourcecode/mn:fmt-name | mnx:sourcecode/mn:fmt-name" mode="bookmarks">
+	<xsl:template match="mn:figure/mn:fmt-name | mnx:figure/mn:fmt-name |                mn:table/mn:fmt-name | mnx:table/mn:fmt-name |                mn:example/mn:fmt-name | mnx:example/mn:fmt-name |                mn:permission/mn:fmt-name | mnx:permission/mn:fmt-name |                mn:recommendation/mn:fmt-name | mnx:recommendation/mn:fmt-name |                mn:requirement/mn:fmt-name | mnx:requirement/mn:fmt-name |                mn:sourcecode/mn:fmt-name | mnx:sourcecode/mn:fmt-name" mode="bookmarks">
 		<xsl:apply-templates mode="bookmarks"/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
-	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:permission or self::mn:recommendation or self::mn:requirement]/mn:name/text() |    *[self::mnx:figure or self::mnx:table or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement]/mn:name/text()" mode="contents" priority="2">
+	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:example or self::mn:permission or self::mn:recommendation or self::mn:requirement]/mn:name/text() |    *[self::mnx:figure or self::mnx:table or self::mnx:example or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement]/mn:name/text()" mode="contents" priority="2">
 		<xsl:if test="not(../following-sibling::*[1][self::mn:fmt-name])">
 			<xsl:value-of select="."/>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:permission or self::mn:recommendation or self::mn:requirement]/mn:fmt-name/text() |   *[self::mnx:figure or self::mnx:table or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement]/mn:fmt-name/text()" mode="contents" priority="2">
+	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:example or self::mn:permission or self::mn:recommendation or self::mn:requirement]/mn:fmt-name/text() |   *[self::mnx:figure or self::mnx:table or self::mnx:example or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement]/mn:fmt-name/text()" mode="contents" priority="2">
 		<xsl:value-of select="."/>
 	</xsl:template>
 
-	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:permission or self::mn:recommendation or self::mn:requirement or self::mn:sourcecode]/mn:name//text() |    *[self::mnx:figure or self::mnx:table or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement or self::mnx:sourcecode]/mn:name//text()" mode="bookmarks" priority="2">
+	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:example or self::mn:permission or self::mn:recommendation or self::mn:requirement or self::mn:sourcecode]/mn:name//text() |    *[self::mnx:figure or self::mnx:table or self::mnx:example or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement or self::mnx:sourcecode]/mn:name//text()" mode="bookmarks" priority="2">
 		<xsl:if test="not(../following-sibling::*[1][self::mn:fmt-name])">
 			<xsl:value-of select="."/>
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:permission or self::mn:recommendation or self::mn:requirement or self::mn:sourcecode]/mn:fmt-name//text() |    *[self::mnx:figure or self::mnx:table or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement or self::mnx:sourcecode]/mn:fmt-name//text()" mode="bookmarks" priority="2">
+	<xsl:template match="*[self::mn:figure or self::mn:table or self::mn:example or self::mn:permission or self::mn:recommendation or self::mn:requirement or self::mn:sourcecode]/mn:fmt-name//text() |    *[self::mnx:figure or self::mnx:table or self::mnx:example or self::mnx:permission or self::mnx:recommendation or self::mnx:requirement or self::mnx:sourcecode]/mn:fmt-name//text()" mode="bookmarks" priority="2">
 		<xsl:value-of select="."/>
 	</xsl:template>
 
@@ -14049,6 +14091,11 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 											<xsl:with-param name="lang" select="@lang"/>
 										</xsl:call-template>
 
+										<xsl:call-template name="insertExampleBookmarks">
+											<xsl:with-param name="contents" select="mnx:contents"/>
+											<xsl:with-param name="lang" select="@lang"/>
+										</xsl:call-template>
+
 									</fo:bookmark>
 
 								</xsl:for-each>
@@ -14067,6 +14114,11 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 										<xsl:with-param name="lang" select="@lang"/>
 									</xsl:call-template>
 
+									<xsl:call-template name="insertExampleBookmarks">
+										<xsl:with-param name="contents" select="mnx:contents"/>
+										<xsl:with-param name="lang" select="@lang"/>
+									</xsl:call-template>
+
 								</xsl:for-each>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -14079,6 +14131,11 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 						</xsl:call-template>
 
 						<xsl:call-template name="insertTableBookmarks">
+							<xsl:with-param name="contents" select="$contents_nodes/mnx:contents"/>
+							<xsl:with-param name="lang" select="@lang"/>
+						</xsl:call-template>
+
+						<xsl:call-template name="insertExampleBookmarks">
 							<xsl:with-param name="contents" select="$contents_nodes/mnx:contents"/>
 							<xsl:with-param name="lang" select="@lang"/>
 						</xsl:call-template>
@@ -14172,6 +14229,53 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			</fo:bookmark>
 		</xsl:if>
 	</xsl:template> <!-- insertTableBookmarks -->
+
+		<xsl:template name="insertExampleBookmarks">
+		<xsl:param name="contents"/>
+		<xsl:param name="lang"/>
+		<xsl:variable name="contents_nodes" select="xalan:nodeset($contents)"/>
+		<xsl:if test="$contents_nodes/mnx:example">
+			<fo:bookmark internal-destination="{$contents_nodes/mnx:example[1]/@id}" starting-state="hide">
+				<fo:bookmark-title>
+					<xsl:choose>
+						<xsl:when test="$lang = 'fr'">Exemples</xsl:when>
+						<xsl:otherwise>Examples</xsl:otherwise>
+					</xsl:choose>
+				</fo:bookmark-title>
+				<xsl:for-each select="$contents_nodes/mnx:example">
+					<fo:bookmark internal-destination="{@id}">
+						<fo:bookmark-title>
+							<xsl:value-of select="normalize-space(mnx:title)"/>
+						</fo:bookmark-title>
+					</fo:bookmark>
+				</xsl:for-each>
+			</fo:bookmark>
+		</xsl:if>
+		<xsl:if test="$contents_nodes//mnx:examples/mnx:example">
+			<fo:bookmark internal-destination="empty_bookmark" starting-state="hide">
+					<xsl:attribute name="internal-destination">
+						<xsl:value-of select="$contents_nodes//mnx:examples/mnx:example[1]/@id"/>
+					</xsl:attribute>
+
+				<xsl:variable name="bookmark-title">
+							<xsl:choose>
+								<xsl:when test="$lang = 'fr'">Exemples</xsl:when>
+								<xsl:otherwise>Examples</xsl:otherwise>
+							</xsl:choose>
+
+				</xsl:variable>
+
+				<fo:bookmark-title><xsl:value-of select="$bookmark-title"/></fo:bookmark-title>
+
+				<xsl:for-each select="$contents_nodes//mnx:examples/mnx:example">
+					<fo:bookmark internal-destination="{@id}">
+						<!-- <fo:bookmark-title><xsl:value-of select="normalize-space(.)"/></fo:bookmark-title> -->
+						<fo:bookmark-title><xsl:apply-templates mode="bookmark_clean"/></fo:bookmark-title>
+					</fo:bookmark>
+				</xsl:for-each>
+			</fo:bookmark>
+		</xsl:if>
+	</xsl:template> <!-- insertExampleBookmarks -->
 	<!-- End Bookmarks -->
 
 	<!-- ============================ -->
