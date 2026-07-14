@@ -10194,27 +10194,27 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ====== -->
 	<!-- ====== -->
 
-	<xsl:attribute-set name="figure-block-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-block-style">
 		<xsl:attribute name="role">SKIP</xsl:attribute>
 		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-block-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-block-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-style">
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-number-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-number-style">
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-number-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-number-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-name-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-name-style">
 		<xsl:attribute name="role">Caption</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="text-align">center</xsl:attribute>
@@ -10223,18 +10223,18 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:attribute name="keep-with-previous">always</xsl:attribute>
 	</xsl:attribute-set> <!-- figure-name-style -->
 
-	<xsl:template name="refine_figure-name-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-name-style">
 	</xsl:template> <!-- refine_figure-name-style -->
 
-	<xsl:attribute-set name="image-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="image-style">
 		<xsl:attribute name="role">SKIP</xsl:attribute>
 		<xsl:attribute name="text-align">center</xsl:attribute>
 	</xsl:attribute-set> <!-- image-style -->
 
-	<xsl:template name="refine_image-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_image-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="image-graphic-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="image-graphic-style">
 		<xsl:attribute name="width">100%</xsl:attribute>
 		<xsl:attribute name="content-height">100%</xsl:attribute>
 		<xsl:attribute name="scaling">uniform</xsl:attribute>
@@ -10242,55 +10242,55 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:attribute name="width">75%</xsl:attribute>
 	</xsl:attribute-set> <!-- image-graphic-style -->
 
-	<xsl:template name="refine_image-graphic-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_image-graphic-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-source-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-source-style">
 		<xsl:attribute name="font-size">6pt</xsl:attribute>
 		<xsl:attribute name="font-style">italic</xsl:attribute>
 		<xsl:attribute name="text-align">right</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-source-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-source-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-pseudocode-p-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-pseudocode-p-style">
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-pseudocode-p-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-pseudocode-p-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-fn-number-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-fn-number-style">
 		<xsl:attribute name="padding-right">5mm</xsl:attribute>
 	</xsl:attribute-set> <!-- figure-fn-number-style -->
 
-	<xsl:template name="refine_figure-fn-number-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-fn-number-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-fmt-fn-label-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-fmt-fn-label-style">
 		<xsl:attribute name="font-size">80%</xsl:attribute>
 		<xsl:attribute name="vertical-align">super</xsl:attribute>
 		<xsl:attribute name="baseline-shift">65%</xsl:attribute>
 	</xsl:attribute-set> <!-- figure-fmt-fn-label-style -->
 
-	<xsl:template name="refine_figure-fmt-fn-label-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-fmt-fn-label-style">
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-fn-body-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-fn-body-style">
 		<xsl:attribute name="text-align">justify</xsl:attribute>
 		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 		<xsl:attribute name="margin-top">5pt</xsl:attribute>
 		<xsl:attribute name="margin-bottom">10pt</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_figure-fn-body-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-fn-body-style">
 		<xsl:variable name="key_iso">true
 		</xsl:variable>
 		<xsl:if test="normalize-space($key_iso) = 'true'">
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:attribute-set name="figure-key-name-style">
+	<xsl:attribute-set xmlns:svg="http://www.w3.org/2000/svg" name="figure-key-name-style">
 		<xsl:attribute name="text-align">left</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
@@ -10300,7 +10300,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:attribute name="margin-bottom">8pt</xsl:attribute>
 	</xsl:attribute-set> <!-- figure-key-name-style -->
 
-	<xsl:template name="refine_figure-key-name-style">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="refine_figure-key-name-style">
 
 	</xsl:template> <!-- refine_figure-key-name-style -->
 
@@ -10309,10 +10309,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ============================ -->
 
 	<!-- figure/fmt-footnote-container -->
-	<xsl:template match="mn:figure//mn:fmt-footnote-container"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure//mn:fmt-footnote-container"/>
 
 	<!-- TO DO: remove, now the figure fn in figure/dl/... https://github.com/metanorma/isodoc/issues/658 -->
-	<xsl:template name="figure_fn_display">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="figure_fn_display">
 
 		<xsl:variable name="references">
 			<xsl:for-each select="./mn:fmt-footnote-container/mn:fmt-fn-body">
@@ -10432,7 +10432,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:if>
 	</xsl:template> <!-- figure_fn_display -->
 
-	<xsl:template match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label"> <!-- mn:fmt-footnote-container/ -->
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label"> <!-- mn:fmt-footnote-container/ -->
 		<xsl:param name="process">false</xsl:param>
 		<xsl:if test="$process = 'true'">
 			<fo:inline xsl:use-attribute-sets="figure-fn-number-style" role="SKIP">
@@ -10450,14 +10450,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:if>
 	</xsl:template> <!--  figure//fmt-fn-body//fmt-fn-label -->
 
-	<xsl:template match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label//mn:tab" priority="5">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label//mn:tab" priority="5">
 		<xsl:param name="process">false</xsl:param>
 		<xsl:if test="$process = 'true'">
 
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label//mn:sup" priority="5">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure//mn:fmt-fn-body//mn:fmt-fn-label//mn:sup" priority="5">
 		<fo:inline xsl:use-attribute-sets="figure-fmt-fn-label-style" role="SKIP">
 			<xsl:call-template name="refine_figure-fmt-fn-label-style"/>
 			<xsl:apply-templates/>
@@ -10467,7 +10467,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- added for https://github.com/metanorma/isodoc/issues/607 -->
 	<!-- figure's footnote label -->
 	<!-- figure/dl[@key = 'true']/dt/p/sup -->
-	<xsl:template match="mn:figure/mn:dl[@key = 'true']/mn:dt/     mn:p[count(node()[normalize-space() != '']) = 1]/mn:sup |     mn:figure/mn:key/mn:dl/mn:dt/     mn:p[count(node()[normalize-space() != '']) = 1]/mn:sup" priority="3">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:dl[@key = 'true']/mn:dt/     mn:p[count(node()[normalize-space() != '']) = 1]/mn:sup |     mn:figure/mn:key/mn:dl/mn:dt/     mn:p[count(node()[normalize-space() != '']) = 1]/mn:sup" priority="3">
 		<xsl:variable name="key_iso">true
 		</xsl:variable>
 		<xsl:if test="normalize-space($key_iso) = 'true'">
@@ -10486,7 +10486,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ============================ -->
 
 	<!-- caption for figure key and another caption, https://github.com/metanorma/isodoc/issues/607 -->
-	<xsl:template match="mn:figure/mn:p[@keep-with-next = 'true' and mn:strong] | mn:figure/mn:key/mn:name" priority="3">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:p[@keep-with-next = 'true' and mn:strong] | mn:figure/mn:key/mn:name" priority="3">
 		<fo:block xsl:use-attribute-sets="figure-key-name-style">
 			<xsl:call-template name="refine_figure-key-name-style"/>
 			<xsl:apply-templates/>
@@ -10499,10 +10499,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ====== -->
 
 	<!-- show figure's name 'before' or 'after' image -->
-	<xsl:variable name="figure-name-position"><xsl:text>after</xsl:text>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="figure-name-position"><xsl:text>after</xsl:text>
 	</xsl:variable>
 
-	<xsl:template match="mn:figure" name="figure">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure" name="figure">
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
 		<xsl:call-template name="setNamedDestination"/>
@@ -10552,7 +10552,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</fo:block-container>
 	</xsl:template>
 
-	<xsl:template name="showFigureKey">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="showFigureKey">
 		<xsl:for-each select="*[(self::mn:note and not(@type = 'units')) or self::mn:example]">
 			<xsl:choose>
 				<xsl:when test="self::mn:note">
@@ -10570,7 +10570,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:call-template name="figure_fn_display"/>
 	</xsl:template>
 
-	<xsl:template match="mn:figure[@class = 'pseudocode']">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[@class = 'pseudocode']">
 		<xsl:call-template name="setNamedDestination"/>
 		<fo:block id="{@id}">
 			<fo:block role="SKIP">
@@ -10583,7 +10583,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:apply-templates select="mn:fmt-name"/>
 	</xsl:template>
 
-	<xsl:template match="mn:figure[@class = 'pseudocode']//mn:p">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[@class = 'pseudocode']//mn:p">
 		<fo:block xsl:use-attribute-sets="figure-pseudocode-p-style">
 			<xsl:call-template name="refine_figure-pseudocode-p-style"/>
 			<xsl:apply-templates/>
@@ -10592,7 +10592,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<!-- SOURCE: ... -->
 	<!-- figure/source -->
-	<xsl:template match="mn:figure/mn:fmt-source" priority="2">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:fmt-source" priority="2">
 		<fo:block xsl:use-attribute-sets="figure-source-style">
 			<xsl:call-template name="refine_figure-source-style"/>
 			<xsl:apply-templates/>
@@ -10600,7 +10600,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	</xsl:template>
 
-	<xsl:template match="mn:image">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:image">
 		<xsl:param name="indent">0</xsl:param>
 		<xsl:param name="logo_width"/>
 		<xsl:variable name="isAdded" select="../@added"/>
@@ -10768,17 +10768,17 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="setImageWidth">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="setImageWidth">
 		<xsl:if test="@width != '' and @width != 'auto' and @width != 'text-width' and @width != 'full-page-width' and @width != 'narrow'">
 			<xsl:value-of select="@width"/>
 		</xsl:if>
 	</xsl:template>
-	<xsl:template name="setImageHeight">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="setImageHeight">
 		<xsl:if test="@height != '' and @height != 'auto'">
 			<xsl:value-of select="@height"/>
 		</xsl:if>
 	</xsl:template>
-	<xsl:template name="setImageWidthHeight">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="setImageWidthHeight">
 		<xsl:variable name="width">
 			<xsl:call-template name="setImageWidth"/>
 		</xsl:variable>
@@ -10797,7 +10797,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template name="getImageSrc">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="getImageSrc">
 		<xsl:choose>
 			<xsl:when test="not(starts-with(@src, 'data:'))">
 				<xsl:call-template name="getImageSrcExternal"/>
@@ -10806,7 +10806,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="getImageSrcExternal">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="getImageSrcExternal">
 		<xsl:choose>
 			<xsl:when test="@extracted = 'true'"> <!-- added in mn2pdf v1.97 -->
 				<xsl:value-of select="@src"/>
@@ -10832,7 +10832,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="getImageScale">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="getImageScale">
 		<xsl:param name="indent"/>
 		<xsl:variable name="indent_left">
 			<xsl:choose>
@@ -10858,7 +10858,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:value-of select="$scale"/>
 	</xsl:template>
 
-	<xsl:template name="image_src">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="image_src">
 		<xsl:choose>
 			<xsl:when test="@mimetype = 'image/svg+xml' and $images/images/image[@id = current()/@id]">
 				<xsl:value-of select="$images/images/image[@id = current()/@id]/@src"/>
@@ -10883,7 +10883,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="mn:image" mode="cross_image">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:image" mode="cross_image">
 		<xsl:choose>
 			<xsl:when test="@mimetype = 'image/svg+xml' and $images/images/image[@id = current()/@id]">
 				<xsl:variable name="src">
@@ -10926,7 +10926,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	</xsl:template>
 
-	<xsl:template name="svg_cross">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="svg_cross">
 		<xsl:param name="width"/>
 		<xsl:param name="height"/>
 		<line xmlns="http://www.w3.org/2000/svg" x1="0" y1="0" x2="{$width}" y2="{$height}" style="stroke: rgb(255, 0, 0); stroke-width:4px; "/>
@@ -10936,22 +10936,23 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- =================== -->
 	<!-- SVG images processing -->
 	<!-- =================== -->
-	<xsl:variable name="figure_name_height_">14
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="figure_name_height_">14
 	</xsl:variable>
-	<xsl:variable name="figure_name_height" select="number(normalize-space($figure_name_height_))"/>
-	<xsl:variable name="width_effective" select="$pageWidth - $marginLeftRight1 - $marginLeftRight2"/><!-- paper width minus margins -->
-	<xsl:variable name="height_effective" select="$pageHeight - $marginTop - $marginBottom - $figure_name_height"/><!-- paper height minus margins and title height -->
-	<xsl:variable name="image_dpi" select="96"/>
-	<xsl:variable name="width_effective_px" select="$width_effective div 25.4 * $image_dpi"/>
-	<xsl:variable name="height_effective_px" select="$height_effective div 25.4 * $image_dpi"/>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="figure_name_height" select="number(normalize-space($figure_name_height_))"/>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="width_effective" select="$pageWidth - $marginLeftRight1 - $marginLeftRight2"/><!-- paper width minus margins -->
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="height_effective" select="$pageHeight - $marginTop - $marginBottom - $figure_name_height"/><!-- paper height minus margins and title height -->
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="image_dpi" select="96"/>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="width_effective_px" select="$width_effective div 25.4 * $image_dpi"/>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="height_effective_px" select="$height_effective div 25.4 * $image_dpi"/>
 
-	<xsl:template match="mn:figure[not(mn:image) and *[local-name() = 'svg']]/mn:fmt-name/mn:bookmark" priority="2"/>
-	<xsl:template match="mn:figure[not(mn:image)]/*[local-name() = 'svg']" priority="2" name="image_svg">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[not(mn:image) and *[local-name() = 'svg']]/mn:fmt-name/mn:bookmark" priority="2"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[not(mn:image)]/*[local-name() = 'svg']" priority="2" name="image_svg">
 		<xsl:param name="name"/>
 
 		<xsl:variable name="svg_content">
 			<xsl:apply-templates select="." mode="svg_update"/>
 		</xsl:variable>
+		<!-- <svg_content><xsl:copy-of select="$svg_content"/></svg_content> -->
 
 		<xsl:variable name="alt-text">
 			<xsl:choose>
@@ -11160,21 +11161,21 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ============== -->
 	<!-- svg_update     -->
 	<!-- ============== -->
-	<xsl:template match="@*|node()" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="@*|node()" mode="svg_update">
 		<xsl:copy>
 				<xsl:apply-templates select="@*|node()" mode="svg_update"/>
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="mn:image/@href" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:image/@href | svg:image/@href" mode="svg_update">
 		<xsl:attribute name="href" namespace="http://www.w3.org/1999/xlink">
 			<xsl:value-of select="."/>
 		</xsl:attribute>
 	</xsl:template>
 
-	<xsl:variable name="regex_starts_with_digit">^[0-9].*</xsl:variable>
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="regex_starts_with_digit">^[0-9].*</xsl:variable>
 
-	<xsl:template match="*[local-name() = 'svg'][not(@width and @height)]" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'svg'][not(@width and @height)]" mode="svg_update">
 		<xsl:copy>
 			<xsl:apply-templates select="@*" mode="svg_update"/>
 			<xsl:variable name="viewbox_">
@@ -11215,7 +11216,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'svg']/@width" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'svg']/@width" mode="svg_update">
 		<!-- image[@width]/svg -->
 		<xsl:variable name="parent_image_width" select="normalize-space(ancestor::*[2][self::mn:image]/@width)"/>
 		<xsl:attribute name="width">
@@ -11226,7 +11227,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:attribute>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'svg']/@height" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'svg']/@height" mode="svg_update">
 		<!-- image[@height]/svg -->
 		<xsl:variable name="parent_image_height" select="normalize-space(ancestor::*[2][self::mn:image]/@height)"/>
 		<xsl:attribute name="height">
@@ -11238,8 +11239,8 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<!-- regex for 'display: inline-block;' -->
-	<xsl:variable name="regex_svg_style_notsupported">display(\s|\h)*:(\s|\h)*inline-block(\s|\h)*;</xsl:variable>
-	<xsl:template match="*[local-name() = 'svg']//*[local-name() = 'style']/text()" mode="svg_update">
+	<xsl:variable xmlns:svg="http://www.w3.org/2000/svg" name="regex_svg_style_notsupported">display(\s|\h)*:(\s|\h)*inline-block(\s|\h)*;</xsl:variable>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'svg']//*[local-name() = 'style']/text()" mode="svg_update">
 		<xsl:value-of select="java:replaceAll(java:java.lang.String.new(.), $regex_svg_style_notsupported, '')"/>
 	</xsl:template>
 
@@ -11248,7 +11249,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			stroke="rgb(r,g,b)" stroke-opacity="alpha", and
 			fill="rgba(r, g, b, alpha)" to 
 			fill="rgb(r,g,b)" fill-opacity="alpha" -->
-	<xsl:template match="@*[local-name() = 'stroke' or local-name() = 'fill'][starts-with(normalize-space(.), 'rgba')]" mode="svg_update">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="@*[local-name() = 'stroke' or local-name() = 'fill'][starts-with(normalize-space(.), 'rgba')]" mode="svg_update">
 		<xsl:variable name="components_">
 			<xsl:call-template name="split">
 				<xsl:with-param name="pText" select="substring-before(substring-after(., '('), ')')"/>
@@ -11266,7 +11267,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ============== -->
 
 	<!-- image with svg and emf -->
-	<xsl:template match="mn:figure/mn:image[*[local-name() = 'svg']]" priority="3">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:image[*[local-name() = 'svg']]" priority="3">
 		<xsl:variable name="name" select="ancestor::mn:figure/mn:fmt-name"/>
 		<xsl:for-each select="*[local-name() = 'svg']">
 			<xsl:call-template name="image_svg">
@@ -11276,14 +11277,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<!-- For the structures like: <dt><image src="" mimetype="image/svg+xml" height="" width=""><svg xmlns="http://www.w3.org/2000/svg" ... -->
-	<xsl:template match="*[not(self::mn:figure)]/mn:image[*[local-name() = 'svg']]" priority="3">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[not(self::mn:figure)]/mn:image[*[local-name() = 'svg']]" priority="3">
 		<xsl:for-each select="*[local-name() = 'svg']">
 			<xsl:call-template name="image_svg"/>
 		</xsl:for-each>
 	</xsl:template>
 
 	<!-- <p id="."><image id="" src="..." mimetype="image/svg+xml" height="auto" width="auto"/></p> -->
-	<xsl:template match="mn:figure/mn:image[@mimetype = 'image/svg+xml' and @src[not(starts-with(., 'data:image/'))]] |    *[not(self::mn:figure)]/mn:image[@mimetype = 'image/svg+xml' and @src[not(starts-with(., 'data:image/'))] and count(node()) = 0]" priority="2">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:image[@mimetype = 'image/svg+xml' and @src[not(starts-with(., 'data:image/'))]] |    *[not(self::mn:figure)]/mn:image[@mimetype = 'image/svg+xml' and @src[not(starts-with(., 'data:image/'))] and count(node()) = 0]" priority="2">
 		<xsl:variable name="src"><xsl:call-template name="getImageSrcExternal"/></xsl:variable>
 		<xsl:variable name="svg_content" select="document($src)"/>
 		<xsl:variable name="name" select="ancestor::mn:figure/mn:fmt-name"/>
@@ -11294,17 +11295,17 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template match="@*|node()" mode="svg_remove_a">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="@*|node()" mode="svg_remove_a">
 		<xsl:copy>
 				<xsl:apply-templates select="@*|node()" mode="svg_remove_a"/>
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'a']" mode="svg_remove_a">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'a']" mode="svg_remove_a">
 		<xsl:apply-templates mode="svg_remove_a"/>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'a']" mode="svg_imagemap_links">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="*[local-name() = 'a']" mode="svg_imagemap_links">
 		<xsl:param name="scale"/>
 		<xsl:variable name="dest">
 			<xsl:choose>
@@ -11377,7 +11378,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template name="insertSVGMapLink">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" name="insertSVGMapLink">
 		<xsl:param name="left"/>
 		<xsl:param name="top"/>
 		<xsl:param name="width"/>
@@ -11406,10 +11407,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- =================== -->
 
 	<!-- ignore emf processing (Apache FOP doesn't support EMF) -->
-	<xsl:template match="mn:emf"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:emf"/>
 
 	<!-- figure/name -->
-	<xsl:template match="mn:figure/mn:fmt-name |         mn:image/mn:fmt-name">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:fmt-name |         mn:image/mn:fmt-name">
 		<xsl:if test="normalize-space() != ''">
 			<fo:block xsl:use-attribute-sets="figure-name-style">
 
@@ -11421,15 +11422,15 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<!-- figure/fn -->
-	<xsl:template match="mn:figure[not(@class = 'pseudocode')]/mn:fn" priority="2"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[not(@class = 'pseudocode')]/mn:fn" priority="2"/>
 	<!-- figure/note -->
-	<xsl:template match="mn:figure[not(@class = 'pseudocode')]/mn:note" priority="2"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[not(@class = 'pseudocode')]/mn:note" priority="2"/>
 	<!-- figure/example -->
-	<xsl:template match="mn:figure[not(@class = 'pseudocode')]/mn:example" priority="2"/>
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure[not(@class = 'pseudocode')]/mn:example" priority="2"/>
 
 	<!-- figure/note[@type = 'units'] -->
 	<!-- image/note[@type = 'units'] -->
-	<xsl:template match="mn:figure/mn:note[@type = 'units'] |         mn:image/mn:note[@type = 'units']" priority="2">
+	<xsl:template xmlns:svg="http://www.w3.org/2000/svg" match="mn:figure/mn:note[@type = 'units'] |         mn:image/mn:note[@type = 'units']" priority="2">
 		<fo:block text-align="right" keep-with-next="always">
 			<xsl:apply-templates/>
 		</fo:block>
