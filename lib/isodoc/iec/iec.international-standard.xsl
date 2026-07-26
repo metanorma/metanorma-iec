@@ -15093,6 +15093,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ===================================== -->
 	<!-- ===================================== -->
 
+	<xsl:attribute-set name="annex-style">
+		<xsl:attribute name="role">Sect</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_annex-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="annex-title-style">
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="font-size">12pt</xsl:attribute>
@@ -15104,6 +15111,40 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set> <!-- annex-title-style -->
 
 	<xsl:template name="refine_annex-title-style">
+	</xsl:template>
+
+	<xsl:template match="mn:annex[normalize-space() != '']">
+		<xsl:choose>
+			<xsl:when test="@continue = 'true'"> <!-- it's using for figure/table on top level for block span -->
+				<fo:block role="SKIP">
+					<xsl:apply-templates/>
+				</fo:block>
+			</xsl:when>
+			<xsl:otherwise>
+
+				<fo:block break-after="page"/>
+				<xsl:call-template name="setNamedDestination"/>
+
+				<fo:block xsl:use-attribute-sets="annex-style">
+
+					<xsl:call-template name="setId"/>
+
+					<!-- <xsl:if test="$namespace = 'iso'"> -->
+					<xsl:call-template name="addTagElementT"/>
+					<!-- </xsl:if> -->
+
+					<xsl:call-template name="setBlockSpanAll"/>
+
+					<xsl:call-template name="refine_annex-style"/>
+
+					<xsl:apply-templates select="mn:fmt-title[@columns = 1]"/>
+
+					<fo:block role="SKIP">
+						<xsl:apply-templates select="node()[not(self::mn:fmt-title and @columns = 1)]"/>
+					</fo:block>
+				</fo:block>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:attribute-set name="p-zzSTDTitle1-style">
@@ -15612,6 +15653,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 			<xsl:call-template name="sections_element_style"/>
 
+			<!-- <xsl:if test="$namespace = 'rsd'"> -->
+			<xsl:call-template name="addTagElementT"/>
+			<!-- </xsl:if> -->
+
 			<xsl:call-template name="addReviewHelper"/>
 
 			<xsl:apply-templates/>
@@ -15688,45 +15733,6 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 			<xsl:apply-templates/>
 		</fo:block>
-	</xsl:template>
-
-	<xsl:template match="mn:annex[normalize-space() != '']">
-		<xsl:choose>
-			<xsl:when test="@continue = 'true'"> <!-- it's using for figure/table on top level for block span -->
-				<fo:block role="SKIP">
-					<xsl:apply-templates/>
-				</fo:block>
-			</xsl:when>
-			<xsl:otherwise>
-
-				<fo:block break-after="page"/>
-				<xsl:call-template name="setNamedDestination"/>
-
-				<fo:block>
-
-					<xsl:call-template name="setId"/>
-
-					<!-- <xsl:if test="$namespace = 'iso'"> -->
-					<xsl:attribute name="role">Sect</xsl:attribute>
-					<xsl:call-template name="addTagElementT"/>
-					<!-- </xsl:if> -->
-
-					<xsl:call-template name="setBlockSpanAll"/>
-
-					<xsl:call-template name="refine_annex-style"/>
-
-				</fo:block>
-
-				<xsl:apply-templates select="mn:fmt-title[@columns = 1]"/>
-
-				<fo:block>
-					<xsl:apply-templates select="node()[not(self::mn:fmt-title and @columns = 1)]"/>
-				</fo:block>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template name="refine_annex-style">
 	</xsl:template>
 
 	<xsl:template match="mn:name/text() | mn:fmt-name/text()">
@@ -15860,7 +15866,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				</xsl:choose>
 			</xsl:for-each>
 		</xsl:variable>
-		<xsl:variable name="title" select="normalize-space(translate($title__, concat($em_space,' '), '  '))"/>
+		<xsl:variable name="title" select="normalize-space(translate($title__, concat($em_space,' &#8232;'), '   '))"/>
 		<xsl:if test="$title != ''">
 			<xsl:attribute name="fox:title">
 				<xsl:if test="ancestor::mn:sections">
