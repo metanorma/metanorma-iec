@@ -2396,6 +2396,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<!-- Characters -->
 	<xsl:variable name="linebreak">&#8232;</xsl:variable>
+	<xsl:variable name="em_space"> </xsl:variable>
 	<xsl:variable name="tab_zh">　</xsl:variable>
 	<xsl:variable name="non_breaking_hyphen">‑</xsl:variable>
 	<xsl:variable name="thin_space"> </xsl:variable>
@@ -5776,7 +5777,15 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- END requirement, recommendation, permission table -->
 	<!-- ========== -->
 
+	<xsl:attribute-set name="terms-style">
+		<xsl:attribute name="role">Sect</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_terms-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="term-style">
+		<xsl:attribute name="role">Sect</xsl:attribute>
 	</xsl:attribute-set> <!-- term-style -->
 
 	<xsl:template name="refine_term-style">
@@ -5879,7 +5888,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template match="mn:terms">
 		<!-- <xsl:message>'terms' <xsl:number/> processing...</xsl:message> -->
 		<xsl:call-template name="setNamedDestination"/>
-		<fo:block id="{@id}">
+		<fo:block id="{@id}" xsl:use-attribute-sets="terms-style">
+			<xsl:call-template name="refine_terms-style"/>
+			<xsl:call-template name="addTagElementT"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -5888,6 +5900,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:call-template name="setNamedDestination"/>
 		<fo:block id="{@id}" xsl:use-attribute-sets="term-style">
 			<xsl:call-template name="refine_term-style"/>
+			<xsl:call-template name="addTagElementT"/>
 
 			<xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/>
 		</fo:block>
@@ -6118,7 +6131,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<xsl:template match="mn:definitions">
 		<xsl:call-template name="setNamedDestination"/>
-		<fo:block id="{@id}">
+		<fo:block id="{@id}" role="Sect">
+			<xsl:call-template name="addTagElementT"/>
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -6195,6 +6210,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template match="mn:termexample/mn:p">
 		<xsl:variable name="element">inline
 
+			<xsl:value-of select="$example_display_in"/>
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="contains($element, 'block')">
@@ -6606,6 +6622,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set><!-- table-note-style -->
 
 	<xsl:template name="refine_table-note-style">
+		<xsl:if test="self::mn:note">
+			<xsl:attribute name="role">Note</xsl:attribute>
+		</xsl:if>
 	</xsl:template> <!-- refine_table-note-style -->
 
 	<xsl:attribute-set name="table-fn-style">
@@ -7973,7 +7992,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template> <!-- table/note -->
 
 	<xsl:template match="mn:table/*[self::mn:note or self::mn:example]/mn:p |  mn:table/mn:tfoot//*[self::mn:note or self::mn:example]/mn:p" priority="2">
-		<xsl:apply-templates/>
+		<fo:inline role="P"><xsl:apply-templates/></fo:inline>
 	</xsl:template>
 
 	<!-- ============================ -->
@@ -8902,6 +8921,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ========================== -->
 
 	<xsl:attribute-set name="dl-block-style">
+		<xsl:attribute name="role">SKIP</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_dl-block-style">
@@ -8911,18 +8931,21 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="dt-row-style">
+		<xsl:attribute name="role">LI</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_dt-row-style">
 	</xsl:template>
 
 	<xsl:attribute-set name="dt-cell-style">
+		<xsl:attribute name="role">Lbl</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_dt-cell-style">
 	</xsl:template> <!-- refine_dt-cell-style -->
 
 	<xsl:attribute-set name="dt-block-style">
+		<xsl:attribute name="role">SKIP</xsl:attribute>
 		<xsl:attribute name="margin-top">0pt</xsl:attribute>
 	</xsl:attribute-set>
 
@@ -8939,6 +8962,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="dd-cell-style">
+		<xsl:attribute name="role">LBody</xsl:attribute>
 		<xsl:attribute name="padding-left">2mm</xsl:attribute>
 	</xsl:attribute-set>
 
@@ -8974,7 +8998,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
 		<!-- <dl><xsl:copy-of select="."/></dl> -->
-		<fo:block-container xsl:use-attribute-sets="dl-block-style" role="SKIP">
+		<fo:block-container xsl:use-attribute-sets="dl-block-style">
 
 			<xsl:call-template name="refine_dl-block-style"/>
 
@@ -9096,7 +9120,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 								<fo:block id="{concat('table_if_start_',@id)}" keep-with-next="always" font-size="1pt">Start table '<xsl:value-of select="@id"/>'.</fo:block>
 							</xsl:if>
 
-							<fo:table width="95%" table-layout="fixed">
+							<fo:table width="95%" table-layout="fixed" role="L">
 
 								<xsl:if test="$isGenerateTableIF = 'true'">
 									<xsl:attribute name="wrap-option">no-wrap</xsl:attribute>
@@ -9165,7 +9189,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 											<xsl:with-param name="table_or_dl">dl</xsl:with-param>
 										</xsl:apply-templates>
 
-									</xsl:when>
+									</xsl:when> <!-- $isGenerateTableIF = 'true' -->
 									<xsl:otherwise>
 
 										<xsl:variable name="simple-table">
@@ -9220,7 +9244,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 											<xsl:with-param name="isContainsKeepTogetherTag" select="$isContainsKeepTogetherTag"/>
 										</xsl:call-template>
 
-										<fo:table-body>
+										<fo:table-body role="SKIP">
 
 											<!-- DEBUG -->
 											<xsl:if test="$table_if_debug = 'true'">
@@ -9430,8 +9454,8 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<td number-columns-spanned="2">NOTE <xsl:apply-templates /> </td>
 		</tr> 
 		-->
-		<fo:table-row>
-			<fo:table-cell number-columns-spanned="2">
+		<fo:table-row role="SKIP">
+			<fo:table-cell number-columns-spanned="2" role="SKIP">
 				<fo:block role="SKIP">
 					<xsl:call-template name="note"/>
 				</fo:block>
@@ -9495,7 +9519,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:call-template name="refine_dt-cell-style"/>
 
 			<xsl:call-template name="setNamedDestination"/>
-			<fo:block xsl:use-attribute-sets="dt-block-style" role="SKIP">
+			<fo:block xsl:use-attribute-sets="dt-block-style">
 
 				<xsl:choose>
 					<xsl:when test="$isGenerateTableIF = 'true'">
@@ -9584,7 +9608,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$is_inline_element_after_where = 'true'">
-				<fo:inline><xsl:text> </xsl:text><xsl:apply-templates/></fo:inline>
+				<fo:inline role="SKIP"><xsl:text> </xsl:text><xsl:apply-templates/></fo:inline>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates select="."/>
@@ -9850,6 +9874,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ====== -->
 
 	<xsl:attribute-set name="note-style">
+		<xsl:attribute name="role">Note</xsl:attribute>
 		<xsl:attribute name="font-size">8pt</xsl:attribute>
 		<xsl:attribute name="margin-top">5pt</xsl:attribute>
 		<xsl:attribute name="margin-bottom">9pt</xsl:attribute>
@@ -9862,6 +9887,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:variable name="note-body-indent-table">5mm</xsl:variable>
 
 	<xsl:attribute-set name="note-name-style">
+		<xsl:attribute name="role">Lbl</xsl:attribute>
 		<xsl:attribute name="padding-right">6mm</xsl:attribute>
 	</xsl:attribute-set> <!-- note-name-style -->
 
@@ -9873,9 +9899,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_table-note-name-style">
+		<xsl:if test="self::mn:note">
+			<xsl:attribute name="role">Lbl</xsl:attribute>
+		</xsl:if>
 	</xsl:template> <!-- refine_table-note-name-style -->
 
 	<xsl:attribute-set name="note-p-style">
+		<xsl:attribute name="role">P</xsl:attribute>
 		<xsl:attribute name="margin-top">5pt</xsl:attribute>
 	</xsl:attribute-set> <!-- note-p-style -->
 
@@ -9883,6 +9913,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="termnote-style">
+		<xsl:attribute name="role">Note</xsl:attribute>
 		<xsl:attribute name="font-size">8pt</xsl:attribute>
 		<xsl:attribute name="margin-top">5pt</xsl:attribute>
 		<xsl:attribute name="margin-bottom">5pt</xsl:attribute>
@@ -9892,12 +9923,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template> <!-- refine_termnote-style -->
 
 	<xsl:attribute-set name="termnote-name-style">
+		<xsl:attribute name="role">Lbl</xsl:attribute>
 	</xsl:attribute-set> <!-- termnote-name-style -->
 
 	<xsl:template name="refine_termnote-name-style">
 	</xsl:template>
 
 	<xsl:attribute-set name="termnote-p-style">
+		<xsl:attribute name="role">P</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_termnote-p-style">
@@ -9912,7 +9945,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 		<xsl:call-template name="setNamedDestination"/>
 
-		<fo:block-container xsl:use-attribute-sets="note-style" role="SKIP">
+		<fo:block-container xsl:use-attribute-sets="note-style">
 			<xsl:if test="not(parent::mn:references)">
 				<xsl:copy-of select="@id"/>
 			</xsl:if>
@@ -9922,11 +9955,11 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:call-template name="refine_note-style"/>
 
 			<fo:block-container margin-left="0mm" margin-right="0mm" role="SKIP">
-						<fo:block>
+						<fo:block role="SKIP">
 
 							<xsl:call-template name="refine_note_block_style"/>
 
-							<fo:inline xsl:use-attribute-sets="note-name-style" role="SKIP">
+							<fo:inline xsl:use-attribute-sets="note-name-style">
 
 								<xsl:apply-templates select="mn:fmt-name/mn:tab" mode="tab"/>
 
@@ -9949,7 +9982,15 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 							</fo:inline>
 
-							<xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/>
+							<xsl:choose>
+								<xsl:when test="parent::mn:formattedref and ancestor::mn:bibitem">
+									<fo:inline role="P"><xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/></fo:inline>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:apply-templates select="node()[not(self::mn:fmt-name)]"/>
+								</xsl:otherwise>
+							</xsl:choose>
+
 						</fo:block>
 			</fo:block-container>
 		</fo:block-container>
@@ -9962,13 +10003,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:variable name="num"><xsl:number/></xsl:variable>
 		<xsl:choose>
 			<xsl:when test="$num = 1"> <!-- display first NOTE's paragraph in the same line with label NOTE -->
-				<fo:inline xsl:use-attribute-sets="note-p-style" role="SKIP">
+				<fo:inline xsl:use-attribute-sets="note-p-style">
 					<xsl:call-template name="refine_note-p-style"/>
 					<xsl:apply-templates/>
 				</fo:inline>
 			</xsl:when>
 			<xsl:otherwise>
-				<fo:block xsl:use-attribute-sets="note-p-style" role="SKIP">
+				<fo:block xsl:use-attribute-sets="note-p-style">
 					<xsl:call-template name="refine_note-p-style"/>
 					<xsl:apply-templates/>
 				</fo:block>
@@ -10632,7 +10673,8 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 					<!-- debug scale='<xsl:value-of select="$scale"/>', indent='<xsl:value-of select="$indent"/>' -->
 
-					<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" vertical-align="middle">
+					<fo:external-graphic src="{$src}" vertical-align="middle">
+						<xsl:call-template name="addAltText"/>
 
 						<xsl:if test="parent::mn:logo"> <!-- publisher's logo -->
 							<xsl:attribute name="scaling">uniform</xsl:attribute>
@@ -10696,11 +10738,12 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 					<xsl:choose>
 						<xsl:when test="$isDeleted = 'true'">
 							<!-- enclose in svg -->
-							<fo:instream-foreign-object fox:alt-text="Image {@alt}">
+							<fo:instream-foreign-object>
 								<xsl:attribute name="width">100%</xsl:attribute>
 								<xsl:attribute name="content-height">100%</xsl:attribute>
 								<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
 								<xsl:attribute name="scaling">uniform</xsl:attribute>
+								<xsl:call-template name="addAltText"/>
 
 								<xsl:apply-templates select="." mode="cross_image"/>
 
@@ -10716,7 +10759,8 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 							<xsl:value-of select="concat('scale=', $scale,', indent=', $indent)"/>
 							</fo:block> -->
 
-							<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}">
+							<fo:external-graphic src="{$src}">
+								<xsl:call-template name="addAltText"/>
 
 								<xsl:choose>
 									<!-- default -->
@@ -10774,6 +10818,25 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				</fo:block>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="addAltText">
+		<xsl:param name="name">Image</xsl:param>
+		<xsl:variable name="alt-text">
+			<xsl:choose>
+				<xsl:when test="self::mn:image and normalize-space(@alt) != ''">
+					<xsl:value-of select="@alt"/>
+				</xsl:when>
+				<xsl:when test="normalize-space(../@alt) != ''">
+					<xsl:value-of select="../@alt"/>
+				</xsl:when>
+				<xsl:when test="normalize-space(../mn:fmt-name) != ''">
+					<xsl:value-of select="../mn:fmt-name"/>
+				</xsl:when>
+				<xsl:otherwise><xsl:value-of select="$name"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:attribute name="fox:alt-text"><xsl:value-of select="$alt-text"/></xsl:attribute>
 	</xsl:template>
 
 	<xsl:template name="setImageWidth">
@@ -10964,6 +11027,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 		<xsl:variable name="alt-text">
 			<xsl:choose>
+				<xsl:when test="normalize-space(../@alt) != ''">
+					<xsl:value-of select="../@alt"/>
+				</xsl:when>
 				<xsl:when test="normalize-space(../mn:fmt-name) != ''">
 					<xsl:value-of select="../mn:fmt-name"/>
 				</xsl:when>
@@ -12568,6 +12634,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<!-- admonition -->
 	<xsl:attribute-set name="admonition-style">
+		<xsl:attribute name="role">Note</xsl:attribute>
 		<xsl:attribute name="border">0.5pt solid black</xsl:attribute>
 		<xsl:attribute name="margin-left">-2mm</xsl:attribute>
 		<xsl:attribute name="margin-right">-2mm</xsl:attribute>
@@ -12579,6 +12646,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="admonition-container-style">
+		<xsl:attribute name="role">SKIP</xsl:attribute>
 		<xsl:attribute name="margin-left">0mm</xsl:attribute>
 		<xsl:attribute name="margin-right">0mm</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
@@ -12590,6 +12658,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:template>
 
 	<xsl:attribute-set name="admonition-name-style">
+		<xsl:attribute name="role">Lbl</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 	</xsl:attribute-set> <!-- admonition-name-style -->
 
@@ -12614,7 +12683,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:call-template name="refine_admonition-style"/>
 
 			<xsl:call-template name="setBlockSpanAll"/>
-					<fo:block-container xsl:use-attribute-sets="admonition-container-style" role="SKIP">
+					<fo:block-container xsl:use-attribute-sets="admonition-container-style">
 
 						<xsl:call-template name="refine_admonition-container-style"/>
 								<fo:block text-align="justify">
@@ -13442,9 +13511,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template name="fo_inline_bookmark">
 		<xsl:param name="bookmark_id"/>
 		<!-- <fo:inline id="{@id}" font-size="1pt"/> -->
-		<fo:inline id="{@id}" font-size="1pt"><xsl:if test="preceding-sibling::node()[self::mn:fmt-annotation-start][@source = $bookmark_id] and      following-sibling::node()[self::mn:fmt-annotation-end][@source = $bookmark_id]"><xsl:attribute name="line-height">0.1</xsl:attribute></xsl:if><xsl:value-of select="$hair_space"/></fo:inline>
+		<fo:inline id="{@id}" font-size="1pt" role="SKIP"><xsl:if test="preceding-sibling::node()[self::mn:fmt-annotation-start][@source = $bookmark_id] and      following-sibling::node()[self::mn:fmt-annotation-end][@source = $bookmark_id]"><xsl:attribute name="line-height">0.1</xsl:attribute></xsl:if><fo:wrapper role="artifact"><xsl:value-of select="$hair_space"/></fo:wrapper></fo:inline>
 		<!-- we need to add zero-width space, otherwise this fo:inline is missing in IF xml -->
-		<xsl:if test="not(following-sibling::node()[normalize-space() != ''])"><fo:inline font-size="1pt"> </fo:inline></xsl:if>
+		<xsl:if test="not(following-sibling::node()[normalize-space() != ''])"><fo:inline font-size="1pt" role="SKIP"><fo:wrapper role="artifact"> </fo:wrapper></fo:inline></xsl:if>
 	</xsl:template>
 	<!-- =================== -->
 	<!-- End of Index processing -->
@@ -13611,6 +13680,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- =================== -->
 	<!-- End Form's elements processing -->
 	<!-- =================== -->
+
+	<xsl:attribute-set name="toc-container-style">
+		<xsl:attribute name="role">Sect</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_toc-container-style">
+	</xsl:template>
 
 	<xsl:attribute-set name="toc-style">
 	</xsl:attribute-set>
@@ -15050,6 +15126,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<!-- ===================================== -->
 	<!-- ===================================== -->
 
+	<xsl:attribute-set name="annex-style">
+		<xsl:attribute name="role">Sect</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_annex-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="annex-title-style">
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="font-size">12pt</xsl:attribute>
@@ -15061,6 +15144,40 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set> <!-- annex-title-style -->
 
 	<xsl:template name="refine_annex-title-style">
+	</xsl:template>
+
+	<xsl:template match="mn:annex[normalize-space() != '']">
+		<xsl:choose>
+			<xsl:when test="@continue = 'true'"> <!-- it's using for figure/table on top level for block span -->
+				<fo:block role="SKIP">
+					<xsl:apply-templates/>
+				</fo:block>
+			</xsl:when>
+			<xsl:otherwise>
+
+				<fo:block break-after="page"/>
+				<xsl:call-template name="setNamedDestination"/>
+
+				<fo:block xsl:use-attribute-sets="annex-style">
+
+					<xsl:call-template name="setId"/>
+
+					<!-- <xsl:if test="$namespace = 'iso'"> -->
+					<xsl:call-template name="addTagElementT"/>
+					<!-- </xsl:if> -->
+
+					<xsl:call-template name="setBlockSpanAll"/>
+
+					<xsl:call-template name="refine_annex-style"/>
+
+					<xsl:apply-templates select="mn:fmt-title[@columns = 1]"/>
+
+					<fo:block role="SKIP">
+						<xsl:apply-templates select="node()[not(self::mn:fmt-title and @columns = 1)]"/>
+					</fo:block>
+				</fo:block>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:attribute-set name="p-zzSTDTitle1-style">
@@ -15552,22 +15669,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	</xsl:attribute-set>
 
 	<xsl:attribute-set name="clause-style">
-
+		<xsl:attribute name="role">Sect</xsl:attribute>
 	</xsl:attribute-set>
 
 	<xsl:template name="refine_clause-style">
-		<!-- commented for https://github.com/metanorma/metanorma-ribose/issues/421 -->
-		<!-- <xsl:if test="$namespace = 'rsd'">
-			<xsl:variable name="level">
-				<xsl:call-template name="getLevel">
-					<xsl:with-param name="depth" select="mn:fmt-title/@depth"/>
-				</xsl:call-template>
-			</xsl:variable>
-			<xsl:if test="$level &gt;= 4">
-				<xsl:attribute name="margin-left">13mm</xsl:attribute>
-			</xsl:if>
-		</xsl:if> -->
-	</xsl:template>
+		<xsl:if test="parent::mn:copyright-statement">
+			<xsl:attribute name="role">SKIP</xsl:attribute>
+		</xsl:if>
+	</xsl:template> <!-- refine_clause-style -->
 
 	<!-- main sections -->
 	<xsl:template match="/*/mn:sections/*" name="sections_node" priority="2">
@@ -15576,6 +15685,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:call-template name="setId"/>
 
 			<xsl:call-template name="sections_element_style"/>
+
+			<!-- <xsl:if test="$namespace = 'rsd'"> -->
+			<xsl:call-template name="addTagElementT"/>
+			<!-- </xsl:if> -->
 
 			<xsl:call-template name="addReviewHelper"/>
 
@@ -15639,56 +15752,20 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 	<xsl:template match="mn:clause[normalize-space() != '' or mn:figure or @id]" name="template_clause"> <!-- if clause isn't empty -->
 		<xsl:call-template name="setNamedDestination"/>
-		<fo:block>
-			<xsl:if test="parent::mn:copyright-statement">
-				<xsl:attribute name="role">SKIP</xsl:attribute>
-			</xsl:if>
+		<fo:block role="Sect">
 
 			<xsl:call-template name="setId"/>
 
+			<xsl:call-template name="addTagElementT"/>
+
 			<xsl:call-template name="setBlockSpanAll"/>
 
-			<xsl:call-template name="refine_clause_style"/>
+			<xsl:call-template name="refine_clause-style"/>
 
 			<xsl:call-template name="addReviewHelper"/>
 
 			<xsl:apply-templates/>
 		</fo:block>
-	</xsl:template>
-
-	<xsl:template name="refine_clause_style">
-	</xsl:template> <!-- refine_clause_style -->
-
-	<xsl:template match="mn:annex[normalize-space() != '']">
-		<xsl:choose>
-			<xsl:when test="@continue = 'true'"> <!-- it's using for figure/table on top level for block span -->
-				<fo:block>
-					<xsl:apply-templates/>
-				</fo:block>
-			</xsl:when>
-			<xsl:otherwise>
-
-				<fo:block break-after="page"/>
-				<xsl:call-template name="setNamedDestination"/>
-
-				<fo:block id="{@id}">
-
-					<xsl:call-template name="setBlockSpanAll"/>
-
-					<xsl:call-template name="refine_annex_style"/>
-
-				</fo:block>
-
-				<xsl:apply-templates select="mn:fmt-title[@columns = 1]"/>
-
-				<fo:block>
-					<xsl:apply-templates select="node()[not(self::mn:fmt-title and @columns = 1)]"/>
-				</fo:block>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template name="refine_annex_style">
 	</xsl:template>
 
 	<xsl:template match="mn:name/text() | mn:fmt-name/text()">
@@ -15806,6 +15883,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template name="addTagElementT">
 		<xsl:variable name="title_">
 			<xsl:apply-templates select="mn:fmt-title"/>
+			<xsl:if test="not(mn:fmt-title) and self::mn:term">
+				<name>
+					<xsl:apply-templates select="mn:fmt-name"/>
+					<xsl:text> </xsl:text>
+					<xsl:apply-templates select="mn:fmt-preferred/node()[1]"/>
+				</name>
+			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="title__">
 			<xsl:for-each select="xalan:nodeset($title_)/*/node()">
@@ -15815,7 +15899,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				</xsl:choose>
 			</xsl:for-each>
 		</xsl:variable>
-		<xsl:variable name="title" select="normalize-space($title__)"/>
+		<xsl:variable name="title" select="normalize-space(translate($title__, concat($em_space,' &#8232;'), '   '))"/>
 		<xsl:if test="$title != ''">
 			<xsl:attribute name="fox:title">
 				<xsl:if test="ancestor::mn:sections">
