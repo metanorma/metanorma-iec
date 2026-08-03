@@ -13933,7 +13933,9 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				</xsl:variable>
 				<mnx:example id="{@id}" alt-text="{normalize-space($example_name)}">
 					<xsl:element name="fmt-name" namespace="{$namespace_full}">
-						<xsl:value-of select="mn:fmt-xref-label[@container]"/>
+						<xsl:call-template name="capitalize"><!-- https://github.com/metanorma/metanorma-pdfa/issues/72 -->
+							<xsl:with-param name="str" select="mn:fmt-xref-label[@container]"/>
+						</xsl:call-template>
 						<xsl:if test="normalize-space($example_name) != ''">
 							<xsl:value-of select="mn:fmt-name/mn:span[@class = 'fmt-caption-delim']"/>
 							<xsl:copy-of select="$example_name"/>
