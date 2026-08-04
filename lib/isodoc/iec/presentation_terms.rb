@@ -170,8 +170,14 @@ module IsoDoc
         @i18n = @i18n_lg[lg] if lg && @i18n_lg[lg]
         p, ref, orig = related1_prep(node)
         label = @i18n.relatedterms[orig["type"]].upcase
-        node.children = (l10n("<p>#{label}: " \
-                          "#{to_xml(p)} (#{Common::to_xml(ref)})</p>"))
+        err = node.at(ns("./errormsg"))
+        ret = if err
+                # generator-emitted term-resolution failure reports
+                # (metanorma-model-iso#144) render in boldface
+                "<strong>#{to_xml(err.children)}</strong>"
+              else "#{to_xml(p)} (#{Common::to_xml(ref)})"
+              end
+        node.children = (l10n("<p>#{label}: #{ret}</p>"))
         @i18n = @i18n_lg["default"]
       end
 
