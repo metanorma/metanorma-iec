@@ -543,4 +543,29 @@ RSpec.describe IsoDoc do
       .sub(%r{</body>.*$}m, "</body>")))
       .to be_html4_equivalent_to word
   end
+
+  it "renders generator errormsg in related in boldface" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <sections>
+      <terms id="T" obligation="normative"><title>Terms and definitions</title>
+      <term id="t1"><preferred><expression><name>paddy</name></expression></preferred>
+      <related type="contrast"><errormsg>term <tt>blah</tt> not resolved via ID <tt>blah</tt></errormsg></related>
+      <definition><verbal-definition><p id="d1">rice</p></verbal-definition></definition>
+      </term>
+      </terms>
+      </sections>
+      </iso-standard>
+    INPUT
+    pres_output = IsoDoc::Iec::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true)
+    xml = Nokogiri::XML(pres_output)
+    xml.remove_namespaces!
+    fmt = xml.at("//term//strong[tt]")
+    expect(fmt).not_to be_nil
+    expect(fmt.text).to include "not resolved via ID"
+    expect(xml.at("//term/related/errormsg")).not_to be_nil
+    expect(xml.at("//fmt-definition//errormsg")).to be_nil
+  end
 end
