@@ -15741,7 +15741,8 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 	<xsl:template match="//mn:metanorma/mn:preface/*" priority="2" name="preface_node"> <!-- /*/mn:preface/* -->
 		<fo:block break-after="page"/>
 		<xsl:call-template name="setNamedDestination"/>
-		<fo:block>
+		<fo:block role="Sect">
+			<xsl:call-template name="addTagElementT"/>
 			<xsl:call-template name="setId"/>
 			<xsl:call-template name="addReviewHelper"/>
 			<xsl:apply-templates/>
