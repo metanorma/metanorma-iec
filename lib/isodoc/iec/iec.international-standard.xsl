@@ -10685,7 +10685,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 					<!-- debug scale='<xsl:value-of select="$scale"/>', indent='<xsl:value-of select="$indent"/>' -->
 
-					<fo:external-graphic src="{$src}" vertical-align="middle">
+					<fo:external-graphic src="{$src}" vertical-align="middle" fox:placement="inline">
 						<xsl:call-template name="addAltText"/>
 
 						<xsl:if test="parent::mn:logo"> <!-- publisher's logo -->
@@ -11222,6 +11222,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 							<xsl:if test="$scale_y != 1">
 								<xsl:attribute name="content-height"><xsl:value-of select="round($scale_x * $scale_y * 100)"/>%</xsl:attribute>
+							</xsl:if>
+
+							<xsl:if test="self::fo:inline">
+								<xsl:attribute name="fox:placement">inline</xsl:attribute>
 							</xsl:if>
 
 							<xsl:copy-of select="$svg_content"/>
@@ -11774,7 +11778,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			<xsl:apply-templates select="." mode="mathml"/>
 		</xsl:variable>
 
-		<fo:instream-foreign-object fox:alt-text="Math" fox:actual-text="Math">
+		<fo:instream-foreign-object fox:alt-text="Math" fox:actual-text="Math" fox:placement="inline">
 
 			<xsl:call-template name="refine_mathml_insteam_object_style"/>
 
