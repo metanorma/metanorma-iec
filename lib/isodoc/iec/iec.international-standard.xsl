@@ -7505,7 +7505,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 
 			<xsl:variable name="tableWithNotesAndFootnotes">
 
-				<fo:table keep-with-previous="always" role="SKIP">
+				<fo:table keep-with-previous="always" role="TFoot">
 					<xsl:for-each select="xalan:nodeset($table_attributes)/table_attributes/@*">
 						<xsl:variable name="name" select="local-name()"/>
 						<xsl:choose>
@@ -7543,14 +7543,14 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 					</xsl:choose>
 
 					<fo:table-body role="SKIP">
-						<fo:table-row role="SKIP">
+						<fo:table-row>
 							<xsl:for-each select="ancestor::mn:table[1]">
 								<xsl:call-template name="setTableStyles">
 									<xsl:with-param name="scope">ancestor_table</xsl:with-param>
 								</xsl:call-template>
 							</xsl:for-each>
 
-							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}" role="SKIP">
+							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}">
 
 								<xsl:call-template name="refine_table-footer-cell-style"/>
 
