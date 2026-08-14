@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+require "metanorma/standoc"
+# Forward-declare parent namespace so this file is safe to require
+# directly (without first requiring metanorma/iec.rb).
+module Metanorma
+  module Iec
+  end
+end
+
+
+module Metanorma
+  module Iec::Document
+    autoload :Root, "metanorma/iec/document/root"
+  end
+end
+
+
+# Backwards-compat alias so external consumers that reference
+# Metanorma::IecDocument keep resolving during the transition.
+module Metanorma
+  existing = defined?(Metanorma::IecDocument) && Metanorma::IecDocument
+  if !existing.equal?(Metanorma::Iec::Document)
+    Metanorma.send(:remove_const, :IecDocument) if existing
+    IecDocument = Metanorma::Iec::Document
+  end
+end
+
+if defined?(Metanorma::Registers::Setup.setup_iec_register)
+  Metanorma::Registers::Setup.setup_iec_register
+end
+
+module Metanorma
+  deprecate_constant :IecDocument
+end
