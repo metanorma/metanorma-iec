@@ -29,6 +29,7 @@ gem "relaton", "~> 3.0.0.pre.alpha"
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
 gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
 # metanorma-standoc namespace rename (Metanorma::Standoc::Document)
