@@ -1,4 +1,4 @@
-require "pubid-iec"
+# pubid-iec merged into the new pubid monogem (github: "pubid/pubid", branch: "main")
 
 module Metanorma
   module Iec
