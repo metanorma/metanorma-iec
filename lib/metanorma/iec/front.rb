@@ -173,16 +173,15 @@ module Metanorma
       end
 
       def metadata_status(node, xml)
-        info = @iec_current_stage_info = iec_resolve_stage(node)
-        abbrev = node.attr("docstage-abbrev") || info[:abbr]
-        abbrev = nil if abbrev.to_s.empty?
+        stage = get_stage(node)
+        substage = get_substage(node)
         xml.status do |s|
-          add_noko_elem(s, "stage", info[:stage_num],
-                        **attr_code(abbreviation: abbrev))
-          add_noko_elem(s, "substage", info[:substage_num])
+          add_noko_elem(s, "stage", stage,
+                        abbreviation: node.attr("docstage-abbrev"))
+          add_noko_elem(s, "substage", substage)
         end
       rescue *STAGE_ERROR
-        report_illegal_stage(get_stage(node), get_substage(node))
+        report_illegal_stage(stage, substage)
       end
 
       def metadata_stage(node, xml)
@@ -259,8 +258,8 @@ module Metanorma
           add_noko_elem(xml, "docidentifier",
                         iso_id_revdate(params.merge(year: @id_revdate)).to_s,
                         type: "iso-revdate")
-        add_noko_elem(xml, "docidentifier",
-                      iso_id_reference(params).to_urn, type: "URN")
+        add_noko_elem(xml, "docidentifier", iso_id_reference(params).to_urn,
+                      type: "URN")
       end
 
       def iso_id_out_non_amd(xml, params)
