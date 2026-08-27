@@ -117,7 +117,7 @@ module Metanorma
         params1[:year] = m[1]
         params1[:month] = m[2].sub(/^-/, "")
         # skipping day for now
-        pubid_select(params1).create(**params1)
+        pubid_create(params1, lang_form: :none)
       end
 
       def status_abbrev1(node)
