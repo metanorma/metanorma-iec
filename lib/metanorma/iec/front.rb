@@ -273,10 +273,11 @@ module Metanorma
 
       def iso_id_revdate(params)
         params1 = params.dup.tap { |hs| hs.delete(:unpublished) }
-        # IEC revdate identifiers carry year-month only (day is dropped).
-        ym = params1[:year].to_s[/\A(\d{4}(?:-\d{2})?)/, 1]
-        params1[:year] = ym if ym
-        pubid_create(params1, lang_form: :long)
+        m = params1[:year].match(/^(\d{4})(-\d{2})?(-\d{2})?/)
+        params1[:year] = m[1]
+        params1[:month] = m[2].sub(/^-/, "")
+        # skipping day for now
+        pubid_create(params1, lang_form: :none)
       end
 
       def status_abbrev1(node)
