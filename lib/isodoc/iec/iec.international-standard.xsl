@@ -7058,6 +7058,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 				<!-- <Caption><P> tags, see https://github.com/metanorma/metanorma-pdfa/issues/81 -->
 				<fo:block role="P">
 
+					<xsl:if test="$continued = 'true'">
+						<xsl:attribute name="role">SKIP</xsl:attribute>
+					</xsl:if>
+
 					<xsl:choose>
 						<xsl:when test="$continued = 'true'">
 						</xsl:when>
@@ -7076,7 +7080,7 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 						</xsl:if>
 
 				</fo:block>
-			</fo:block>
+			</fo:block> <!-- END: Table name -->
 
 			<!-- <xsl:if test="$namespace = 'bsi' or $namespace = 'pas' or $namespace = 'iec' or $namespace = 'iso'"> -->
 			<xsl:if test="$continued = 'true'">
@@ -16000,13 +16004,13 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 			</xsl:if>
 		</xsl:variable>
 		<xsl:variable name="title__">
-			<xsl:for-each select="xalan:nodeset($title_)/*/node()">
-				<!-- <xsl:choose>
+			<!--  <xsl:for-each select="xalan:nodeset($title_)/*/node()">
+				<xsl:choose>
 					<xsl:when test="self::text()"><xsl:text> </xsl:text><xsl:value-of select="."/><xsl:text> </xsl:text></xsl:when>
 					<xsl:otherwise><xsl:text> </xsl:text><xsl:copy-of select="."/><xsl:text> </xsl:text></xsl:otherwise>
-				</xsl:choose> -->
-				<xsl:apply-templates select="xalan:nodeset($title_)" mode="addTagElementT"/>
-			</xsl:for-each>
+				</xsl:choose
+			</xsl:for-each> -->
+			<xsl:apply-templates select="xalan:nodeset($title_)" mode="addTagElementT"/>
 		</xsl:variable>
 		<xsl:variable name="title" select="normalize-space(translate($title__, concat($em_space,' &#8232;'), '   '))"/>
 		<xsl:if test="$title != ''">
