@@ -54,7 +54,7 @@ module Metanorma
       end
 
       def base_pubid
-        Pubid::Iec::Identifier
+        Pubid::Iec
       end
 
       def iso_id_params_core(node)
@@ -96,9 +96,7 @@ module Metanorma
                       type: "iso-reference")
         @id_revdate and
           add_noko_elem(xml, "docidentifier",
-                        iso_id_revdate(params.merge(year: @id_revdate)).to_s(
-                          with_edition_month_date: true,
-                        ),
+                        iso_id_revdate_out(params, @id_revdate),
                         type: "iso-revdate")
         add_noko_elem(xml, "docidentifier", iso_id_reference(params).to_urn,
                       type: "URN")
@@ -118,6 +116,16 @@ module Metanorma
         params1[:month] = m[2].sub(/^-/, "")
         # skipping day for now
         pubid_create(params1, lang_form: :none)
+      end
+
+      # pubid 2 dropped the with_edition_month_date rendering option; the
+      # revdate identifier renders year-month, so the month is spliced into
+      # the rendered year (the first 4-digit year after a colon).
+      def iso_id_revdate_out(params, revdate)
+        str = iso_id_revdate(params.merge(year: revdate)).to_s
+        m = revdate.match(/^(\d{4})(-\d{2})?/)
+        m[2] and str = str.sub(/:(#{m[1]})/) { ":#{$1}#{m[2]}" }
+        str
       end
 
       def status_abbrev1(node)
