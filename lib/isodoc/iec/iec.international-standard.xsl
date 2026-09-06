@@ -14568,6 +14568,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:variable name="link"><xsl:apply-templates select="."/></xsl:variable>
 		<xsl:value-of select="normalize-space($link)"/>
 	</xsl:template>
+
+	<xsl:template match="mn:image[normalize-space(@alt) != '']" mode="bookmark_clean">
+		<xsl:value-of select="concat('[', normalize-space(@alt), ']')"/>
+	</xsl:template>
 	<!-- ============================ -->
 	<!-- END: mode="bookmark_clean" -->
 	<!-- ============================ -->
