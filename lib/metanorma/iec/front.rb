@@ -1,4 +1,4 @@
-require "pubid-iec"
+# pubid-iec merged into the new pubid monogem (github: "pubid/pubid", branch: "main")
 
 module Metanorma
   module Iec
@@ -21,14 +21,15 @@ module Metanorma
       end
 
       def metadata_status(node, xml)
-        x = iso_id_default(iso_id_params(node)).stage
+        stage = get_stage(node)
+        substage = get_substage(node)
         xml.status do |s|
-          add_noko_elem(s, "stage", x.harmonized_code.stage,
-                        abbreviation: node.attr("docstage-abbrev") || x.abbr)
-          add_noko_elem(s, "substage", x.harmonized_code.substage)
+          add_noko_elem(s, "stage", stage,
+                        abbreviation: node.attr("docstage-abbrev"))
+          add_noko_elem(s, "substage", substage)
         end
       rescue *STAGE_ERROR
-        report_illegal_stage(get_stage(node), get_substage(node))
+        report_illegal_stage(stage, substage)
       end
 
       def get_typeabbr(node, amd: false)
@@ -83,12 +84,12 @@ module Metanorma
         ret
       end
 
-      def iso_id_out(xml, params, _with_prf)
+      def iso_id_out(xml, params)
         params[:stage] == "60.60" and params.delete(:stage)
         super
       end
 
-      def iso_id_out_common(xml, params, _with_prf)
+      def iso_id_out_common(xml, params)
         add_noko_elem(xml, "docidentifier", iso_id_default(params).to_s,
                       type: "ISO", primary: "true")
         add_noko_elem(xml, "docidentifier", iso_id_reference(params).to_s,
@@ -99,11 +100,11 @@ module Metanorma
                           with_edition_month_date: true,
                         ),
                         type: "iso-revdate")
-        add_noko_elem(xml, "docidentifier", iso_id_reference(params).urn,
+        add_noko_elem(xml, "docidentifier", iso_id_reference(params).to_urn,
                       type: "URN")
       end
 
-      def iso_id_out_non_amd(xml, params, _with_prf)
+      def iso_id_out_non_amd(xml, params)
         add_noko_elem(xml, "docidentifier", iso_id_undated(params).to_s,
                       type: "iso-undated")
         add_noko_elem(xml, "docidentifier", iso_id_with_lang(params).to_s,
@@ -116,7 +117,7 @@ module Metanorma
         params1[:year] = m[1]
         params1[:month] = m[2].sub(/^-/, "")
         # skipping day for now
-        pubid_select(params1).create(**params1)
+        pubid_create(params1, lang_form: :none)
       end
 
       def status_abbrev1(node)
