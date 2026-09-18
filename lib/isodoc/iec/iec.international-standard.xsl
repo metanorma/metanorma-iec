@@ -14781,6 +14781,10 @@ les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pa
 		<xsl:copy-of select="."/>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'padding']" mode="contents_item">
+		<xsl:text> </xsl:text>
+	</xsl:template>
+
 	<!-- =================== -->
 	<!-- Table of Contents (ToC) processing -->
 	<!-- =================== -->
