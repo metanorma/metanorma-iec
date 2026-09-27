@@ -27,9 +27,9 @@ module Metanorma
   end
 end
 
-if defined?(Metanorma::Registers::Setup.setup_iec_register)
-  Metanorma::Registers::Setup.setup_iec_register
-end
+require_relative "registers"
+
+Metanorma::Iec::Registers.setup
 
 module Metanorma
   deprecate_constant :IecDocument
