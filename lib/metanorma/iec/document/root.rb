@@ -11,10 +11,10 @@ module Metanorma
       end
 
       attribute :bibdata,
-                Metanorma::IsoDocument::Metadata::IsoBibliographicItem
-      attribute :preface, Metanorma::IsoDocument::Sections::IsoPreface
-      attribute :sections, Metanorma::IsoDocument::Sections::IsoSections
-      attribute :annex, Metanorma::IsoDocument::Sections::IsoAnnexSection,
+                Metanorma::Iso::Document::Metadata::IsoBibliographicItem
+      attribute :preface, Metanorma::Iso::Document::Sections::IsoPreface
+      attribute :sections, Metanorma::Iso::Document::Sections::IsoSections
+      attribute :annex, Metanorma::Iso::Document::Sections::IsoAnnexSection,
                 collection: true
 
       xml do
