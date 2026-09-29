@@ -63,7 +63,7 @@ RSpec.describe Metanorma::Iec do
         :docfile: test.adoc
         :nodoc:
         :no-isobib:
-        :docstage: A2CD
+        :docstage: PIZZA
 
         text
       INPUT
@@ -71,7 +71,7 @@ RSpec.describe Metanorma::Iec do
     rescue Error
     end
     expect(File.read("test.err.html"))
-      .to include("Illegal document stage: A2CD")
+      .to include("Illegal document stage: PIZZA")
     expect(File.exist?("test.xml")).to be false
   end
 

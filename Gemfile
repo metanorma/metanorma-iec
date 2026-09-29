@@ -6,4 +6,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
 
+gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
+
+# TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
+# metanorma-standoc namespace rename (Metanorma::Standoc::Document)
+# and the pubid-2 / relaton-bib 2.2 / metanorma-document 0.5 chain.
+# Revert each pin once the corresponding PR merges:
+#   - https://github.com/metanorma/metanorma-standoc/pull/1232
+#   - https://github.com/metanorma/metanorma-document/pull/45
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
+gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
+gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
+gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
+# Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
+# scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
+# CI resolve a newer pre-release, which wipes the vendored spec cache and
+# rewrites fixtures against live www.itu.int.
+gem "relaton", "3.0.0.pre.alpha.1"
+gem "pubid", "2.0.0.pre.alpha.13" # relaton 3.0.0.pre.alpha.1 pairs with pre-rename pubid; .alpha.9 renamed base_identifier->base
+
 eval_gemfile("Gemfile.devel") rescue nil
