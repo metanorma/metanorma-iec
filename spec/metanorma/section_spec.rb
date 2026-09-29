@@ -122,7 +122,8 @@ RSpec.describe Metanorma::Iec do
                  </references>
               </clause>
            </bibliography>
-        </metanorma>    OUTPUT
+        </metanorma>
+    OUTPUT
     expect(strip_guid(Asciidoctor.convert(input, *OPTIONS)))
       .to be_xml_equivalent_to output
   end
