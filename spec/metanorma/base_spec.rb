@@ -384,7 +384,7 @@ RSpec.describe Metanorma::Iec do
       <bibdata type='standard'>
            <docidentifier type="ISO" primary="true">IEC/IETF/ISO TS CDV 1000-1-1:2001</docidentifier>
            <docidentifier type="iso-reference">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
-           <docidentifier type="URN">urn:iec:std:iec-ietf-iso:ts:1000-1-1:2001:stage-40.99::el-sq</docidentifier>
+           <docidentifier type="URN">urn:iec:std:iec-ietf-iso:1000-1-1:2001:ts-stage-40.99::el-sq</docidentifier>
            <docidentifier type="iso-undated">IEC/IETF/ISO TS CDV 1000-1-1</docidentifier>
            <docidentifier type="iso-with-lang">IEC/IETF/ISO TS CDV 1000-1-1:2001(el-sq)</docidentifier>
            <docidentifier type="iso-tc">2000</docidentifier>
