@@ -1,7 +1,7 @@
-require "pubid"
-require "pubid/iec"
-
-# IEC house style joins multiple language codes with "-": "(el-sq)".
+# pubid-iec merged into the new pubid monogem; the flavors load through
+# the registry. The monogem's IEC renderer joins language codes with
+# ",", but IEC house style joins with "-" ("(el-sq)"), so the override
+# stays until pubid carries the house style itself.
 module Pubid
   module Iec
     class SingleIdentifier
