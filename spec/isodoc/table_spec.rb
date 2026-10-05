@@ -375,6 +375,7 @@ RSpec.describe IsoDoc do
                       <em>
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </em>
+                      .
                    </formattedref>
                    <title format="text/plain">Cereals or cereal products</title>
                    <title type="main" format="text/plain">Cereals and cereal products</title>
@@ -569,7 +570,7 @@ RSpec.describe IsoDoc do
              </div>
              <div>
                <h1>1&#xA0; Normative References</h1>
-               <p id="ISO712" class="NormRef">ISO&#xA0;712, <i><span class="stddocTitle">Cereals and cereal products</span></i></p>
+               <p id="ISO712" class="NormRef">ISO&#xA0;712, <i><span class="stddocTitle">Cereals and cereal products</span></i>.</p>
              </div>
              <br />
              <div id="Annex1" class="Section3">
@@ -716,7 +717,7 @@ RSpec.describe IsoDoc do
            <div class="WordSection3">
              <div>
                <h1>1<span style="mso-tab-count:1">&#xA0; </span>Normative References</h1>
-               <p id="ISO712" class="NormRef">ISO&#xA0;712, <i><span class="stddocTitle">Cereals and cereal products</span></i></p>
+               <p id="ISO712" class="NormRef">ISO&#xA0;712, <i><span class="stddocTitle">Cereals and cereal products</span></i>.</p>
              </div>
              <p class="page-break">
                <br clear="all" style="mso-special-character:line-break;page-break-before:always" />
