@@ -5,9 +5,12 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
+gem "relaton-render", path: "/Users/mulgogi/src/relaton/relaton-render" # TEMP: port validation
 
 gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
-gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
+# main carries the CitationStyle port: no lib/relaton load paths, so the
+# relaton-render facade autoload cannot be stolen at boot
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
 # metanorma-standoc namespace rename (Metanorma::Standoc::Document)
