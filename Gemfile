@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", path: "/Users/mulgogi/src/relaton/relaton-render" # TEMP: port validation
+gem "relaton-render", "3.0.0.pre.alpha.8"
 
 gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
 # main carries the CitationStyle port: no lib/relaton load paths, so the
