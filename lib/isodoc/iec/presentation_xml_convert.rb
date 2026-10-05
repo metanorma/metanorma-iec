@@ -1,6 +1,5 @@
 require_relative "init"
 require "isodoc"
-require_relative "../../relaton/render-iec/general"
 require_relative "presentation_terms"
 
 module IsoDoc
