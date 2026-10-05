@@ -21,6 +21,8 @@ module IsoDoc
       end
 
       def bibrenderer
+        require_relative "../../relaton/render-iec/general"
+
         ::Relaton::Render::Iec::General
           .new(options.merge(language: @lang, script: @script,
                              i18nhash: @i18n.get))
