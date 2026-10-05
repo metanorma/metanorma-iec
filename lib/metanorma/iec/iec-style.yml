@@ -43,32 +43,41 @@ templates:
   creators: "<smallcap>{{names}}</smallcap>"
   series: "({{series_title}} {{series_number}})"
   uri: "<span class='biburl'><fmt-link target='{{uri}}'>{{uri}}</fmt-link></span>"
+  uriShort: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
 perType:
   - type: monograph
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     template: "{{creator}}. {{title}}. {{medium}}. {{edition}}. {{series}}. {{production}}. {{date}}. {{size}}."
     noPlace: true
     fallbacks:
       date: "n.d"
   - type: component_part
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     template: "{{creator}}. {{title}}. {{componentpart}}. {{date}}. {{extent}}. {{access}}."
     noPlace: true
   - type: continuing
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     template: "{{title}}. {{date}}."
     fallbacks:
       date: "n.d"
   - type: serial_part
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     template: "{{creator}}. {{title}}. {{series}}. {{date}}, {{extent}}."
     series: "<em>{{series_title}}</em> ({{series_run}})"
   - type: report
     template: "{{creator}}. {{title}}. {{stddoc}}. {{location}}."
+    short: "{{creator}}. {{title}}. {{date}}"
     title: "<span class='stddocTitle'>{{title}}</span>"
     home: false
   - type: report
     template: "{{title}}"
+    short: "{{creator}}. {{title}}. {{date}}"
     title: "<span class='stddocTitle'>{{title}}</span>"
     home: true
   - type: online
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     template: "{{creator}}. {{title}}. {{edition}}. {{medium}}. {{production}}. {{date}}. {{location}}. {{size}}. {{access}}."
   - type: webdoc
     template: "{{creator}}. {{title}} {{medium}}. {{production}}. {{date}}. {{location}}. {{access}}."
+    short: "{{creator}}. {{title}}. {{date}}. {{location}}"
     title: "<span class='stddocTitle'>{{title}}</span>"
