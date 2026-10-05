@@ -21,9 +21,9 @@ module IsoDoc
       end
 
       def bibrenderer
-        require_relative "../../relaton/render-iec/general"
+        require_relative "../../metanorma/iec/citation_style"
 
-        ::Relaton::Render::Iec::General
+        Metanorma::Iec::CitationStyle
           .new(options.merge(language: @lang, script: @script,
                              i18nhash: @i18n.get))
       end

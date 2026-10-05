@@ -1,8 +1,9 @@
 # encoding: utf-8
 
 require "spec_helper"
+require_relative "../../lib/metanorma/iec/citation_style"
 
-RSpec.describe Relaton::Render::Iso do
+RSpec.describe Metanorma::Iec::CitationStyle do
   it "renders book, five editors with generic class" do
     input = <<~INPUT
       <bibitem type="book">
@@ -662,7 +663,7 @@ RSpec.describe Relaton::Render::Iso do
   private
 
   def renderer
-    Relaton::Render::Iec::General
+    Metanorma::Iec::CitationStyle
       .new("language" => "en", "script" => "Latn",
            "i18nhash" => IsoDoc::Iec::PresentationXMLConvert.new({})
       .i18n_init("en", "Latn", nil).get)
