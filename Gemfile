@@ -17,13 +17,14 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-vali
 #   - https://github.com/metanorma/metanorma-document/pull/45
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
 gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
-gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
+gem "isodoc", github: "metanorma/isodoc", branch: "main" # relaton-render range #846
 gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
 # Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
 # scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
 # CI resolve a newer pre-release, which wipes the vendored spec cache and
 # rewrites fixtures against live www.itu.int.
 gem "relaton", "3.0.0.pre.alpha.1"
-gem "pubid", "2.0.0.pre.alpha.13" # relaton 3.0.0.pre.alpha.1 pairs with pre-rename pubid; .alpha.9 renamed base_identifier->base
+# pubid resolves from the gemspec (~> 2.0.0.pre.alpha); the IEC
+# house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
 eval_gemfile("Gemfile.devel") rescue nil
