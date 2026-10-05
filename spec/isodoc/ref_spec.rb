@@ -195,6 +195,7 @@ RSpec.describe IsoDoc::Iec do
                       <em>
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </em>
+                      .
                    </formattedref>
                    <title format="text/plain">Cereals or cereal products</title>
                    <title type="main" format="text/plain">Cereals and cereal products</title>
@@ -254,6 +255,7 @@ RSpec.describe IsoDoc::Iec do
                       <em>
                          <span class="stddocTitle">Cereals and pulses</span>
                       </em>
+                      .
                    </formattedref>
                    <title format="text/plain">Cereals and pulses</title>
                    <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
@@ -555,6 +557,7 @@ RSpec.describe IsoDoc::Iec do
                       <i>
                          <span class="stddocTitle">Cereals and cereal products</span>
                       </i>
+                      .
                    </p>
                    <p id="ISO16634" class="NormRef">
                       ISO 16634:-- (all parts)
@@ -572,6 +575,7 @@ RSpec.describe IsoDoc::Iec do
                       <i>
                          <span class="stddocTitle">Cereals and pulses</span>
                       </i>
+                      .
                    </p>
                    <p id="ref1" class="NormRef">
                       ICC 167,
