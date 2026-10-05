@@ -1,20 +1,3 @@
-# pubid-iec merged into the new pubid monogem; the flavors load through
-# the registry. The monogem's IEC renderer joins language codes with
-# ",", but IEC house style joins with "-" ("(el-sq)"), so the override
-# stays until pubid carries the house style itself.
-module Pubid
-  module Iec
-    class SingleIdentifier
-      def language_portion(lang_single: false)
-        return "" unless languages&.any?
-
-        codes = languages.map { |lang| lang.to_s(lang_single: lang_single) }
-        "(#{codes.join("-")})"
-      end
-    end
-  end
-end
-
 module Metanorma
   module Iec
     class Converter < Iso::Converter
