@@ -32,8 +32,8 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-vali
 # Revert each pin once the corresponding PR merges:
 #   - https://github.com/metanorma/metanorma-standoc/pull/1232
 #   - https://github.com/metanorma/metanorma-document/pull/45
-gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
-gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
+gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main"
 gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
 gem "relaton-cli", github: "relaton/relaton", tag: "v3.0.0.pre.alpha.4", glob: "gems/relaton-cli/relaton-cli.gemspec"
 gem "pubid", github: "pubid/pubid", branch: "main"
