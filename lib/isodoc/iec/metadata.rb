@@ -12,7 +12,14 @@ module IsoDoc
           set(:stage, docstatus.text)
           set(:stage_int, docstatus.text.to_i)
           set(:statusabbr, substage["abbreviation"])
-          !published and set(:stageabbr, docstatus["abbreviation"])
+          # the standoc pipeline no longer stamps stage/@abbreviation;
+          # it lands as the first token of stagename instead. Directly
+          # authored IsoXML still carries the attribute.
+          !published and
+            set(:stageabbr,
+                isoxml.at(ns("//bibdata/ext/stagename"))
+                  &.attr("abbreviation")&.split&.first ||
+                docstatus["abbreviation"])
         end
         revdate = isoxml.at(ns("//bibdata/date[@type = 'updated']/on"))
         set(:revdate, revdate&.text)
