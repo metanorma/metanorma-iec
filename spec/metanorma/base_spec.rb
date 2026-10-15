@@ -113,7 +113,7 @@ RSpec.describe Metanorma::Iec do
              <title language="fr" type="title-part-prefix">Partie 1</title>
              <docidentifier type="ISO" primary="true">IEC PNW 1000-1:2023 ED2</docidentifier>
              <docidentifier type="iso-reference">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
-             <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2(en)</docidentifier>
+             <docidentifier type="iso-revdate">IEC PNW 1000-1:2000-01 ED2</docidentifier>
              <docidentifier type="URN">urn:iec:std:iec:1000-1:2023:stage-10.20:ed-2:en</docidentifier>
              <docidentifier type="iso-undated">IEC PNW 1000-1 ED2</docidentifier>
              <docidentifier type="iso-with-lang">IEC PNW 1000-1:2023 ED2(en)</docidentifier>
@@ -247,7 +247,7 @@ RSpec.describe Metanorma::Iec do
              <language>en</language>
              <script>Latn</script>
              <status>
-                <stage abbreviation="PNW">10</stage>
+                <stage>10</stage>
                 <substage>20</substage>
              </status>
              <copyright>
@@ -438,8 +438,8 @@ RSpec.describe Metanorma::Iec do
           <language>el,sq</language>
           <script>Grek</script>
           <status>
-            <stage abbreviation='ADTS'>40</stage>
-            <substage>99</substage>
+            <stage>ADTS</stage>
+            <substage>00</substage>
           </status>
           <copyright>
             <from>2001</from>
@@ -526,8 +526,8 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="PNW">10</stage>
-          <substage>20</substage>
+          <stage>PNW</stage>
+          <substage>00</substage>
         </status>
         <copyright>
           <from>#{Date.today.year}</from>
@@ -637,7 +637,7 @@ RSpec.describe Metanorma::Iec do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage abbreviation="CDV">40</stage>
+          <stage>40</stage>
           <substage>20</substage>
         </status>
         <copyright>

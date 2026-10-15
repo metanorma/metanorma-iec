@@ -177,6 +177,9 @@ module Metanorma
       def metadata_status(node, xml)
         stage = get_stage(node)
         substage = get_substage(node)
+        # validate the stage through the pubid resolver: an illegal
+        # docstage must abort here, not flow into bibdata unchecked
+        @iec_current_stage_info = iec_resolve_stage(node)
         xml.status do |s|
           add_noko_elem(s, "stage", stage,
                         abbreviation: node.attr("docstage-abbrev"))
