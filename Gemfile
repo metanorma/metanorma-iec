@@ -24,7 +24,7 @@ gem "relaton", "= 3.0.0.pre.alpha.4"
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
 gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
-gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
 # metanorma-standoc namespace rename (Metanorma::Standoc::Document)
@@ -34,7 +34,7 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-vali
 #   - https://github.com/metanorma/metanorma-document/pull/45
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main"
-gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
+gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "relaton-cli", github: "relaton/relaton", tag: "v3.0.0.pre.alpha.4", glob: "gems/relaton-cli/relaton-cli.gemspec"
 gem "pubid", github: "pubid/pubid", branch: "main"
 
