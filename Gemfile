@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", "3.0.0.pre.alpha.8"
+gem "relaton-render", "~> 3.0"
 
 # main carries the CitationStyle port: no lib/relaton load paths, so the
 # relaton-render facade autoload cannot be stolen at boot
@@ -19,7 +19,7 @@ gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # GcB
 # scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
 # CI resolve a newer pre-release, which wipes the vendored spec cache and
 # rewrites fixtures against live www.itu.int.
-gem "relaton", "= 3.0.0.pre.alpha.4"
+gem "relaton", "~> 3.0"
 # pubid resolves from the gemspec (~> 2.0.0.pre.alpha); the IEC
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
@@ -35,7 +35,7 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
 gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main"
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
-gem "relaton-cli", github: "relaton/relaton", tag: "v3.0.0.pre.alpha.4", glob: "gems/relaton-cli/relaton-cli.gemspec"
+gem "relaton-cli", "~> 3.0"
 gem "pubid", github: "pubid/pubid", branch: "main"
 
 eval_gemfile("Gemfile.devel") rescue nil
