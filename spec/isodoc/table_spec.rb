@@ -278,7 +278,6 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    File.write("/tmp/actual-iec-table.xml", strip_guid(pres_output))
     expect(strip_guid(pres_output))
       .to be_xml_equivalent_to presxml
     html_actual = strip_guid(IsoDoc::Iec::HtmlConvert.new({})

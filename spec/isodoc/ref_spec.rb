@@ -302,7 +302,6 @@ RSpec.describe IsoDoc::Iec do
     pres_output = IsoDoc::Iec::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    File.write("/tmp/actual-iec-ref.xml", strip_guid(pres_output))
     expect(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")
       .gsub(%r{reference="[^"]+"}m, 'reference="1"')))
