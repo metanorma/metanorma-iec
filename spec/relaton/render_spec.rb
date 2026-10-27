@@ -56,7 +56,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., &#x26; Payne S.</smallcap> (eds.). <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>. First edition. (London Mathematical Society Lecture Note Series 472). n.p.: Cambridge University Press. 2022. 1 vol.</formattedref>
+      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., & Payne S.</smallcap> (eds.). <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>. First edition. (London Mathematical Society Lecture Note Series 472). n.p.: Cambridge University Press. 2022. vol. 1.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -119,7 +119,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., &#x26; Payne S.</smallcap> (eds.). <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>. First edition. (London Mathematical Society Lecture Note Series 472). Cambridge, Cambridgeshire, UK: Cambridge University Press. 2022. 1 vol.</formattedref>
+      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., & Payne S.</smallcap> (eds.). <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>. First edition. (London Mathematical Society Lecture Note Series 472). Cambridge, Cambridgeshire, UK: Cambridge University Press. 2022. vol. 1.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -196,7 +196,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Ramsey J.K., &#x26; McGrew W.C.</smallcap>. Object play in great apes: Studies in nature and captivity. <em>The nature of play: Great apes and humans</em> (eds. Pellegrini A.D., &#x26; Smith P.K.). Third edition. New York, NY: Guilford Press. 2005. pp. 89–112. [viewed: September 3, 2019].</formattedref>
+      <formattedref><smallcap>Ramsey J.K., & McGrew W.C.</smallcap>. <em>Object play in great apes: Studies in nature and captivity</em>. <em>The nature of play: Great apes and humans</em> (eds. Pellegrini, A.D., & P.K. Smith). Third edition. New York, NY: Guilford Press. 2005. pp. 89–112. [viewed: September 3, 2019].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -282,7 +282,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., &#x26; Payne S.</smallcap> (eds.). Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday. <em>London Mathematical Society Lecture Note Series</em> (N.S.). 2022, vol. 1 no. 7, pp. 89–112.</formattedref>
+      <formattedref><smallcap>Aluffi P., Anderson D., Hering M., Mustaţă M., & Payne S.</smallcap> (eds.). <em>Facets of Algebraic Geometry: A Collection in Honor of William Fulton's 80th Birthday</em>. <em>London Mathematical Society Lecture Note Series</em> (N.S.). 2022, vol. 1 no. 7, pp. 89–112.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -382,7 +382,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><em><span class='stddocTitle'>Latex, rubber - Determination of total solids content</span></em></formattedref>
+      <formattedref><span class='stddocTitle'>Latex, rubber - Determination of total solids content</span></formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -452,7 +452,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>S. Bradner</smallcap>. <em><span class='stddocTitle'>Intellectual Property Rights in IETF Technology</span></em>. RFC Series. Available at: <span class='biburl'><fmt-link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</fmt-link></span>.</formattedref>
+      <formattedref><smallcap>S. Bradner</smallcap>. <span class='stddocTitle'>Intellectual Property Rights in IETF Technology</span>. RFC Series. Available at: <span class='biburl'><fmt-link target='https://www.rfc-editor.org/info/rfc3979'>https://www.rfc-editor.org/info/rfc3979</fmt-link></span>.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -512,7 +512,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><em><span class='stddocTitle'>Time Ontology in OWL</span></em>. Recommendation. Available at: <span class='biburl'><fmt-link target='https://www.w3.org/TR/owl-time/'>https://www.w3.org/TR/owl-time/</fmt-link></span>.</formattedref>
+      <formattedref><span class='stddocTitle'>Time Ontology in OWL</span>. Recommendation. Available at: <span class='biburl'><fmt-link target='https://www.w3.org/TR/owl-time/'>https://www.w3.org/TR/owl-time/</fmt-link></span>.</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
@@ -589,7 +589,7 @@ RSpec.describe Metanorma::Iec::CitationStyle do
       </bibitem>
     INPUT
     output = <<~OUTPUT
-      <formattedref><smallcap>Liberman M., &#x26; Pullum G.</smallcap>. <em><span class='stddocTitle'>Language Log</span></em> [website]. University of Pennsylvania. 2003–. Available at: <span class='biburl'><fmt-link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</fmt-link></span>. [viewed: September 3, 2019].</formattedref>
+      <formattedref><smallcap>Liberman M., & Pullum G.</smallcap>. <span class='stddocTitle'>Language Log</span> [website]. University of Pennsylvania. 2003–. Available at: <span class='biburl'><fmt-link target='https://languagelog.ldc.upenn.edu/nll/'>https://languagelog.ldc.upenn.edu/nll/</fmt-link></span>. [viewed: September 3, 2019].</formattedref>
     OUTPUT
     p = renderer
     expect(p.render(input))
