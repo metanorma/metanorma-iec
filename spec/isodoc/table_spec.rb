@@ -282,17 +282,11 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to presxml
     html_actual = strip_guid(IsoDoc::Iec::HtmlConvert.new({})
       .convert("test", pres_output, true))
-    File.write("/tmp/actual-iec-table.html", html_actual)
     expect(html_actual).to be_html5_equivalent_to html
-    File.write("/tmp/actual-iec-table-word.html", strip_guid(IsoDoc::Iec::WordConvert.new({})
-      .convert("test", pres_output, true)
-      .gsub(%r{<head>.*</head>}m, "")
-      .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref")))
     word_actual = strip_guid(IsoDoc::Iec::WordConvert.new({})
       .convert("test", pres_output, true)
       .gsub(%r{<head>.*</head>}m, "")
       .gsub(/mso-bookmark:_Ref\d+/, "mso-bookmark:_Ref"))
-    File.write("/tmp/actual-iec-table-word.html", word_actual)
     expect(word_actual).to be_html4_equivalent_to word
   end
 end

@@ -310,7 +310,6 @@ RSpec.describe IsoDoc::Iec do
       .convert("test",
                pres_output.gsub(%r{reference="[^"]+"}m, 'reference="1"'),
                true))
-    File.write("/tmp/actual-iec-ref.html", html_actual)
     expect(html_actual).to be_html5_equivalent_to html
   end
 
