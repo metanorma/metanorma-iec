@@ -14,11 +14,8 @@ gem "relaton-render", "~> 3.0"
 #   - https://github.com/metanorma/metanorma-standoc/pull/1232
 #   - https://github.com/metanorma/metanorma-document/pull/45
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main" # LutamlDataPreprocessor, unreleased
-gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # GcBudget, unreleased past 2.0.7
-# Pin relaton: Its VERSION is the cache grammar_hash and it ships the ITU
-# scraper. A floating `>= 3.0.0.pre.alpha.1` (via metanorma-document) lets
-# CI resolve a newer pre-release, which wipes the vendored spec cache and
-# rewrites fixtures against live www.itu.int.
+gem "metanorma-utils", "~> 2.0" # GcBudget
+# relaton's VERSION is the cache grammar_hash and it ships the ITU scraper.
 gem "relaton", "~> 3.0"
 # pubid resolves from the gemspec (~> 2.0.0.pre.alpha); the IEC
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
@@ -26,16 +23,10 @@ gem "relaton", "~> 3.0"
 gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
-# TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
-# metanorma-standoc namespace rename (Metanorma::Standoc::Document)
-# and the pubid-2 / relaton-bib 2.2 / metanorma-document 0.5 chain.
-# Revert each pin once the corresponding PR merges:
-#   - https://github.com/metanorma/metanorma-standoc/pull/1232
-#   - https://github.com/metanorma/metanorma-document/pull/45
-gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
-gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main"
-gem "isodoc", github: "metanorma/isodoc", branch: "main"
+gem "metanorma-standoc", "~> 3.5.1.pre.alpha" # Standoc::Document rename
+gem "metanorma-document", "~> 0.5.2.pre.alpha"
+gem "isodoc", "~> 3.7.4.pre.alpha"
 gem "relaton-cli", "~> 3.0"
-gem "pubid", github: "pubid/pubid", branch: "main"
+gem "pubid", "~> 2.0"
 
 eval_gemfile("Gemfile.devel") rescue nil
