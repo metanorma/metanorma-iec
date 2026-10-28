@@ -20,7 +20,7 @@ gem "relaton", "~> 3.0"
 # pubid resolves from the gemspec (~> 2.0.0.pre.alpha); the IEC
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
-gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
+gem "metanorma-core", "~> 0.2.5.pre.alpha" # published flavor/taste table (metanorma-core#18)
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
 gem "metanorma-standoc", "~> 3.5.1.pre.alpha" # Standoc::Document rename
