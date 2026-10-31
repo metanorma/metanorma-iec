@@ -199,7 +199,7 @@ RSpec.describe IsoDoc::Iec::Metadata do
         updateddate: "2016-05-01",
         wg: "WG 62A1" }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
-      .to be_equivalent_to output
+      .to eq output
   end
 
   it "processes IsoXML metadata #2" do
@@ -313,6 +313,6 @@ RSpec.describe IsoDoc::Iec::Metadata do
         tc_docnumber: ["17301"],
         unpublished: true }
     expect(metadata(c.info(Nokogiri::XML(input), nil)))
-      .to be_equivalent_to output
+      .to eq output
   end
 end
