@@ -33,9 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "metanorma-iso", ">= 3.4.2" # relaxed until the model-migration wave releases
   spec.add_dependency "pubid"
 
-  spec.add_development_dependency "canon"
   spec.add_development_dependency "debug"
-  spec.add_development_dependency "equivalent-xml", "~> 0.6"
+  spec.add_development_dependency "canon", "~> 0.3"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "iev", "~> 0.3.0"
