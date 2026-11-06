@@ -32,7 +32,7 @@ GIT
 PATH
   remote: .
   specs:
-    metanorma-iec (2.9.1)
+    metanorma-iec (2.9.2)
       metanorma-iso (>= 3.4.2)
       pubid (~> 2.0.3)
 
@@ -1388,7 +1388,7 @@ CHECKSUMS
   memo_wise (1.13.0) sha256=30220c38c4cef410849bc73553c58664dc2c91c6379e4a1df22aea02358b716b
   metanorma-core (0.2.7) sha256=c4e58b263b32ecfc8a053da93c2be2c5b9ee9407d5b1e2b3dbd4cb2bc76db0c0
   metanorma-document (0.5.4) sha256=36981c50804455555a1c97398e4c02710e5deb58dae1a18f471c02e3b1430149
-  metanorma-iec (2.9.1)
+  metanorma-iec (2.9.2)
   metanorma-iso (3.5.1.pre.alpha.3)
   metanorma-mirror (1.0.0) sha256=46bcfd1ea62b5225b031e4f8262ce4917107f65c5939ba45afaccaaf796c24d0
   metanorma-plugin-asciichem (0.1.4) sha256=47711680f202c60f9f698b721e1df3c3e6dcb1b9d6683cb1edcef84d6cda61a8
