@@ -16,7 +16,6 @@ gem "relaton-render", "~> 3.0"
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main" # LutamlDataPreprocessor, unreleased
 gem "metanorma-utils", "~> 2.0" # GcBudget
 # relaton's VERSION is the cache grammar_hash and it ships the ITU scraper.
-gem "relaton", "~> 3.0"
 # pubid resolves from the gemspec (~> 2.0.0.pre.alpha); the IEC
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
@@ -26,7 +25,6 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 gem "metanorma-standoc", "~> 3.5.7" # Standoc::Document rename
 gem "metanorma-document", "~> 0.5.4"
 gem "isodoc", "~> 3.7.4"
-gem "relaton-cli", "~> 3.0"
 gem "pubid", "~> 2.0"
 
 eval_gemfile("Gemfile.devel") rescue nil
