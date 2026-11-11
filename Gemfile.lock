@@ -890,8 +890,6 @@ GEM
       relaton-core (~> 0.0.8)
       relaton-logger (~> 0.2.0)
       rfcxml (~> 0.4.3)
-    relaton-cli (3.1.0)
-      relaton (>= 3.0.7, < 5)
     relaton-core (0.0.13)
       nokogiri (>= 1.16)
       psych (~> 5.2.0)
@@ -1217,8 +1215,6 @@ DEPENDENCIES
   metanorma-utils (~> 2.0)
   pubid (~> 2.0)
   rake (~> 13.0)
-  relaton (~> 3.0)
-  relaton-cli (~> 3.0)
   relaton-render (~> 3.0)
   rspec (~> 3.6)
   rubocop (~> 1)
@@ -1479,7 +1475,6 @@ CHECKSUMS
   regexp_parser (2.13.1) sha256=5aedb6b7c35688f51e86eef17a15374dfd287c83f4ca644b2c5f3ec50a33b44b
   relaton (3.0.8) sha256=95334b9ead833a644b9b83801ff4b86b847153dee9402013814855ac2444e296
   relaton-bib (2.1.9) sha256=559c47a88862ef359305b96fc27c994fe58df4912591a816b16318a5ec5f97ce
-  relaton-cli (3.1.0) sha256=6e88582f0e4987897c38f1e7273691259742d6faf95d21c95c65b17f9e11b375
   relaton-core (0.0.13) sha256=10eef0d4bdff18a9058114ca46323508972b8caed872212992c4f9ced7375881
   relaton-iev (2.0.2) sha256=ec77f5ad4700c8856aaacf9655eaf026c4a87acdfb17eca9af53520e8bf5b638
   relaton-logger (0.2.4) sha256=1494cc7330e6d654afcb825904361371010b1d83d13705314a10a147f7f53358
