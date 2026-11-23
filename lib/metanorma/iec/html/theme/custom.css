@@ -1,0 +1,44 @@
+/* IEC titlepage proportions follow the flavor's HTML titlepage, while the
+   shared document renderer continues to provide reader navigation and colors. */
+.iec-title-section .cover-publishers {
+  margin-bottom: 1.5rem;
+}
+
+.iec-cover-identity {
+  margin-bottom: 2rem;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 0.9em;
+}
+
+.iec-cover-identity p {
+  margin: 0.35em 0;
+}
+
+.iec-title-section .cover-title {
+  margin: 1em 0;
+  font-family: var(--font-sans);
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.iec-title-section .cover-title-fr {
+  margin: 1em 0;
+  font-family: var(--font-sans);
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.iec-title-section .cover-stage {
+  margin: 2em 0;
+}
+
+@media (max-width: 600px) {
+  .iec-title-section .cover-title { font-size: 1.6em; }
+  .iec-title-section .cover-title-fr { font-size: 1.2em; }
+}
