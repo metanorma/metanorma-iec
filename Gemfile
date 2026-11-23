@@ -30,6 +30,6 @@ gem "pubid", "~> 2.0"
 # Native Collection consolidation is needed for bilingual title groups.
 # Remove after https://github.com/lutaml/lutaml-model/pull/1174 is released.
 gem "lutaml-model", github: "lutaml/lutaml-model",
-    ref: "991d8f7c74de35a20014f318b799309d9e207356"
+    ref: "420e09adb0862967df14aa06e81951591245f8a5"
 
 eval_gemfile("Gemfile.devel") rescue nil
