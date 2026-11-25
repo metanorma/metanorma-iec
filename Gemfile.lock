@@ -57,10 +57,10 @@ GIT
 
 GIT
   remote: https://github.com/metanorma/metanorma-standoc.git
-  revision: 38133f98ab62f5bcbc93851b6b06792f49239c71
-  ref: 38133f98ab62f5bcbc93851b6b06792f49239c71
+  revision: 616176097fa21dd6124f26f8075fe89201db0c05
+  ref: 616176097fa21dd6124f26f8075fe89201db0c05
   specs:
-    metanorma-standoc (3.5.24)
+    metanorma-standoc (3.5.25)
       addressable (~> 2.8)
       asciidoctor (~> 2.0.0)
       base64
@@ -1420,7 +1420,7 @@ CHECKSUMS
   metanorma-plugin-glossarist (0.5.2) sha256=d1b05bf76162412d7cabe2c99034a287fdf684f822d87eff762fcaf64a35766e
   metanorma-plugin-lutaml (0.7.81) sha256=c03e1641a75d756bedf5e714bbbc5fc4c760798d837a2f864c7f393ab4889aa6
   metanorma-plugin-plantuml (1.0.16) sha256=0152005ce066a1f91db71465ca905dc1399f01d946574c76c95ba83e19fd8d75
-  metanorma-standoc (3.5.24)
+  metanorma-standoc (3.5.25)
   metanorma-taste (1.1.12)
   metanorma-utils (2.0.12) sha256=bdc134f797af5c8a9ab953acbb002a62a523a98788e9d653e299a7e45ebafd86
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
