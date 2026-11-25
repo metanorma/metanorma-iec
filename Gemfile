@@ -2,7 +2,6 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", "~> 3.0"
 
 # main carries the CitationStyle port: no lib/relaton load paths, so the
 # relaton-render facade autoload cannot be stolen at boot
