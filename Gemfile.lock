@@ -724,11 +724,12 @@ GEM
     mml (2.4.7)
       lutaml-model (~> 0.8.155)
       moxml (~> 0.6.1)
-    mn-requirements (0.5.14)
+    mn-requirements (0.5.17)
       isodoc-i18n (>= 1.2.0)
       metanorma-core (>= 0.1.0)
       metanorma-utils (>= 2.0.0)
-      relaton-render (~> 3.0.0.pre.alpha)
+      tsort
+      uri
     mn2pdf (2.73)
     mnconvert (1.89.0)
     moxml (0.6.4)
@@ -926,12 +927,6 @@ GEM
       nokogiri (>= 1.13.0)
       relaton (>= 2.0.0.pre.alpha.1, < 4)
       uuidtools
-    relaton-render (3.0.0)
-      htmlentities
-      liquid (~> 5)
-      lutaml-model (~> 0.8)
-      nokogiri
-      twitter_cldr
     reline (0.7.0)
       io-console (~> 0.5)
     reverse_markdown (2.1.1)
@@ -1249,7 +1244,6 @@ DEPENDENCIES
   metanorma-utils (~> 2.0)
   pubid (~> 2.0)
   rake (~> 13.0)
-  relaton-render (~> 3.0)
   rspec (~> 3.6)
   rubocop (~> 1)
   rubocop-performance
@@ -1435,7 +1429,7 @@ CHECKSUMS
   mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
   mml (2.4.7) sha256=477d52e2147227124274f069b23764a3e9bffa7b7fcb34bb870d3449f5f83bbe
-  mn-requirements (0.5.14) sha256=fd7554d58a1bfea4a53197802a5779cb55622712ce3cd95a762a081b2482a233
+  mn-requirements (0.5.17) sha256=28e54938a9dfebf824370d8cf5eb9a4dd04e2c777dc40072b6c6219c28458fcd
   mn2pdf (2.73) sha256=f8ac12b84662cba4fb18ed87f21336d0428f5f71abad6a30261a30d8493ebd38
   mnconvert (1.89.0) sha256=02edfbf41118a8ff767f7c04f44db0c1faaed84e326f417fb24c4ed4e25f4b53
   moxml (0.6.4) sha256=2038a222a367132b5fdcc40d669d67e6bb913145e4b5e5bd3b7b62fd73a25912
@@ -1510,7 +1504,6 @@ CHECKSUMS
   regexp_parser (2.13.1) sha256=5aedb6b7c35688f51e86eef17a15374dfd287c83f4ca644b2c5f3ec50a33b44b
   relaton (3.1.2) sha256=d860ea225b0a1e1148a8e648f0d0d1daa576404b9b096a876225234333372df6
   relaton-iev (2.0.2) sha256=ec77f5ad4700c8856aaacf9655eaf026c4a87acdfb17eca9af53520e8bf5b638
-  relaton-render (3.0.0) sha256=1fdc95c19aa99f50041b0f449d8c0fc132c8083e3cbe7721a9fb7b134b473c67
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
   reverse_markdown (2.1.1) sha256=b2206466b682ac1177b6b8ec321d00a84fca02d096c5d676a7a0cc5838dc0701
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
