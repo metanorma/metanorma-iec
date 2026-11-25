@@ -1,0 +1,88 @@
+# Default IEC HTML theme. Colors follow IEC's own web identity (iec.ch:
+# theme-color and primary buttons #0060AA, text #12375F, dark blue
+# #003863, link #0194CB) and the IEC converter's cover colors (#485094
+# identity block, #f36f36 warning rules). Typography follows the IEC
+# converter (Arial body and headings, Courier New code). Element styles
+# are in custom.css next to this file; the bilingual cover is in
+# templates/_standard_cover.html.liquid. The renderer swaps the fonts
+# for documents in Hans script.
+
+# Palette
+primary: "#0060aa"
+accent: "#0060aa"
+accent_deep: "#003863"
+gradient: "linear-gradient(135deg, #003863 0%, #0060aa 100%)"
+primary_light: "#e8f1f8"
+accent_light: "#e8f1f8"
+primary_dark: "#003863"
+warm: "#f36f36"
+warm_light: "#fef1ea"
+
+# Text and backgrounds
+text_color: "#12375f"
+text_light: "#3a5476"
+text_muted: "#5f6f82"
+bg: "#ffffff"
+bg_light: "#f4f7fa"
+border: "#d5dee8"
+sidebar_bg: "#f8fafc"
+
+# Typography: the IEC converter's Arial and Courier New, no web font
+font_body: '"Arial", sans-serif'
+font_sans: '"Arial", sans-serif'
+font_mono: '"Courier New", monospace'
+font_url: ~
+
+# Layout
+content_max_width: "60em"
+sidebar_width: "320px"
+
+# Blocks: notes small and plain, examples in a light blue panel
+note_color: "#5f6f82"
+note_bg: "transparent"
+note_border: "transparent"
+example_color: "#12375f"
+example_bg: "#e1eef1"
+example_border: "#0060aa"
+admonition_color: "#c0460f"
+admonition_bg: "#fef1ea"
+admonition_border: "#f36f36"
+
+# Reader chrome and cover
+header_background: "linear-gradient(135deg, #003863 0%, #0060aa 100%)"
+cover_background: "linear-gradient(175deg, #00284a 0%, #003863 45%, #0060aa 100%)"
+cover_after_bg: "height: 3px; background: #f36f36"
+progress_bar_color: "#0060aa"
+footer_border_color: "#0060aa"
+cover_separator_color: "rgba(0,96,170,0.25)"
+
+# Dark mode
+dark_bg: "#10161d"
+dark_bg_light: "#161e27"
+dark_border: "#2b3947"
+dark_sidebar: "#161e27"
+dark_text: "#e4ebf2"
+dark_text_light: "#bfccda"
+dark_text_muted: "#93a3b5"
+dark_primary_light: "#18293a"
+dark_accent_light: "#18293a"
+dark_note_bg: "transparent"
+dark_example_bg: "#18293a"
+dark_admonition_bg: "#2b1d15"
+
+# Publisher metadata
+publishers:
+  - "IEC"
+publisher_name: "IEC"
+logos_light:
+  "IEC": "iec-logo.svg"
+
+# Section ordering
+preface_order:
+  - foreword
+  - introduction
+  - abstract
+  - clause
+  - acknowledgements
+  - executivesummary
+toc_filter_types: []
