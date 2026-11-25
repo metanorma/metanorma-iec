@@ -9,23 +9,18 @@ module Metanorma
       class Renderer < Metanorma::Iso::Html::Renderer
         register_render "Metanorma::Iec::Document::Root", :render_document
 
-        # Keep the common IEC palette and publisher assets while letting this
-        # flavor own its titlepage and the typography used by the IEC HTML
-        # converter. Explicit organization/user themes remain authoritative.
+        # The IEC theme (lib/metanorma/iec/themes/iec) carries the IEC
+        # palette, Arial typography and bilingual cover. Documents in Hans
+        # script use the IEC converter's Source Han Sans instead. Explicit
+        # organization/user themes remain authoritative.
         def resolve_theme
           return super if @theme_override
 
           theme = Metanorma::Html::Theme.load(:iec)
-          theme.font_body = hans_script? ? '"Source Han Sans", serif' : '"Arial", sans-serif'
-          theme.font_sans = hans_script? ? '"Source Han Sans", sans-serif' : '"Arial", sans-serif'
-          theme.font_mono = '"Courier New", monospace'
-          theme.font_url = nil
-
-          if theme.respond_to?(:inherited_theme_dirs=)
-            theme.inherited_theme_dirs = [theme.theme_dir,
-                                          *Array(theme.inherited_theme_dirs)].compact
+          if hans_script?
+            theme.font_body = '"Source Han Sans", serif'
+            theme.font_sans = '"Source Han Sans", sans-serif'
           end
-          theme.theme_dir = File.join(__dir__, "theme")
           theme
         end
 
