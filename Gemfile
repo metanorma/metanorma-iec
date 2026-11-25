@@ -2,7 +2,6 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", "~> 3.0"
 
 # main carries the CitationStyle port: no lib/relaton load paths, so the
 # relaton-render facade autoload cannot be stolen at boot
@@ -27,9 +26,8 @@ gem "metanorma-document", "~> 0.5.4"
 gem "isodoc", "~> 3.7.4"
 gem "pubid", "~> 2.0"
 
-# Native Collection consolidation is needed for bilingual title groups.
-# Remove after https://github.com/lutaml/lutaml-model/pull/1174 is released.
-gem "lutaml-model", github: "lutaml/lutaml-model",
-    ref: "420e09adb0862967df14aa06e81951591245f8a5"
+# Native Collection consolidation is needed for bilingual title groups
+# (lutaml-model#1174, released in 0.8.182).
+gem "lutaml-model", ">= 0.8.182"
 
 eval_gemfile("Gemfile.devel") rescue nil
