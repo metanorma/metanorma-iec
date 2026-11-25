@@ -31,7 +31,7 @@ gem "amath", "= 0.2.0"
 gem "bigdecimal", "= 3.3.1"
 
 gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc.git",
-    ref: "38133f98ab62f5bcbc93851b6b06792f49239c71"
+    ref: "616176097fa21dd6124f26f8075fe89201db0c05"
 gem "metanorma-document", git: "https://github.com/metanorma/metanorma-document.git",
     ref: "3911acbb4ce9d8497a94579610a42d663b8a78cd"
 gem "isodoc", "~> 3.7.4"
