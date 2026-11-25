@@ -32,15 +32,39 @@ RSpec.describe "IEC-owned HTML theme" do
     instance
   end
 
-  it "retains IEC publisher identity and colors without changing the shared theme" do
-    shared = Metanorma::Html::Theme.load(:iec)
-    theme = renderer.theme
+  let(:themes_dir) { File.expand_path("../lib/metanorma/iec/themes", __dir__) }
 
-    expect(theme.publisher_name).to eq("IEC")
-    expect(theme.publishers).to eq(shared.publishers)
-    expect(theme.primary).to eq(shared.primary)
-    expect(theme.logos_light).to eq(shared.logos_light)
-    expect(Metanorma::Html::Theme.load(:iec).font_body).to eq(shared.font_body)
+  it "registers the IEC theme from this gem" do
+    theme = Metanorma::Html::Theme.load(:iec)
+
+    expect(theme).to have_attributes(
+      theme_dir: File.join(themes_dir, "iec"), publisher_name: "IEC",
+      publishers: ["IEC"], logos_light: { "IEC" => "iec-logo.svg" },
+    )
+  end
+
+  it "uses the IEC web palette" do
+    expect(Metanorma::Html::Theme.load(:iec)).to have_attributes(
+      primary: "#0060aa", accent_deep: "#003863", text_color: "#12375f",
+      warm: "#f36f36", dark_bg: "#10161d",
+    )
+  end
+
+  it "styles the body elements of an IEC document" do
+    css = File.read(File.join(themes_dir, "iec", "custom.css"))
+    selectors = [
+      ".main-section :is(h1, h2, h3, h4, h5, h6) > .caption-label",
+      ".main-section .annex-title", ".main-section .TermNum",
+      ".main-section p.term-source", ".main-section .note-block",
+      ".main-section .example", ".main-section .mn-labeled-list .li-label",
+      ".main-section .table-caption", ".main-section table.table-block",
+      ".main-section .TableFootnoteRef", ".main-section figcaption",
+      ".main-section .footnotes .footnote", ".main-section .biblio-entry",
+      '[data-theme="dark"], [data-theme="oled"]',
+      ".iec-title-section .cover-title-fr"
+    ]
+
+    expect(selectors.reject { |selector| css.include?(selector) }).to be_empty
   end
 
   it "uses the IEC converter's body, heading and code fonts" do
@@ -55,6 +79,7 @@ RSpec.describe "IEC-owned HTML theme" do
 
     expect(renderer.theme.font_body).to eq('"Source Han Sans", serif')
     expect(renderer.theme.font_sans).to eq('"Source Han Sans", sans-serif')
+    expect(Metanorma::Html::Theme.load(:iec).font_body).to eq('"Arial", sans-serif')
   end
 
   it "renders one title per language with draft identity and document body" do
@@ -71,7 +96,10 @@ RSpec.describe "IEC-owned HTML theme" do
     expect(cover.text).to match(/CD.*stage/)
     expect(cover.at(".cover-secretariat")).to be_nil
     expect(page.at("#scope-text").text).to eq("IEC body content stays available.")
-    expect(page.css("style").text).to include('.iec-cover-identity', '--font-body: "Arial", sans-serif')
+    expect(page.css("style").text).to include(
+      "--mn-primary: #0060aa;", "--iec-link: var(--mn-primary);",
+      ".iec-cover-identity", '--font-body: "Arial", sans-serif'
+    )
   end
 
   it "does not replace an explicit theme object" do
