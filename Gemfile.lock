@@ -1,20 +1,4 @@
 GIT
-  remote: https://github.com/lutaml/lutaml-model
-  revision: 420e09adb0862967df14aa06e81951591245f8a5
-  ref: 420e09adb0862967df14aa06e81951591245f8a5
-  specs:
-    lutaml-model (0.8.176)
-      base64 (>= 0.1.1)
-      bigdecimal
-      canon
-      concurrent-ruby
-      liquid (>= 4.0, < 6.0)
-      moxml (~> 0.6.1)
-      ostruct
-      rubyzip (~> 3.7)
-      thor (~> 1.4)
-
-GIT
   remote: https://github.com/metanorma/metanorma-iso
   revision: a02a1fbb2072b23d39d6c444bd826d2708339310
   branch: main
@@ -597,6 +581,16 @@ GEM
       moxml (>= 0.1.24)
       parsanol (~> 1.3.68)
       ruby-graphviz
+    lutaml-model (0.8.182)
+      base64 (>= 0.1.1)
+      bigdecimal
+      canon
+      concurrent-ruby
+      liquid (>= 4.0, < 6.0)
+      moxml (~> 0.6.1)
+      ostruct
+      rubyzip (~> 3.7)
+      thor (~> 1.4)
     lutaml-path (0.2.4)
       lutaml-model (~> 0.8.159)
       parsanol (~> 1.3)
@@ -1212,7 +1206,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   iev (~> 0.3.0)
   isodoc (~> 3.7.4)
-  lutaml-model!
+  lutaml-model (>= 0.8.182)
   metanorma-core (~> 0.2.7)
   metanorma-document (~> 0.5.4)
   metanorma-iec!
@@ -1381,7 +1375,7 @@ CHECKSUMS
   lumberjack (1.4.2) sha256=40de5ae46321380c835031bcc1370f13bba304d29f2b5f5bb152061a5a191b95
   lutaml-hal (0.2.9) sha256=a685015d43ff7fa17e486991d8bd6d965186c2c36bd67c2c79946b0c0338f5db
   lutaml-lml (0.3.6) sha256=b25a1fd5969b5bb9e3f2477f79bf4b358f94c7bdb3a86f530a3fc504b450772c
-  lutaml-model (0.8.176)
+  lutaml-model (0.8.182) sha256=e3db27220a97f1713391c8ac589c44b6ce6abf038ca2b42c88f6ef179cd27222
   lutaml-path (0.2.4) sha256=cbcc1c78e3630a35bb3a33cfc2a616329b771af690faa1584f6af962d05b8be2
   lutaml-store (0.3.14) sha256=3d0004ac724ef591defe8903bcc4adce6d64c314f4a69b982ade41cd81945452
   lutaml-uml (1.0.3) sha256=1eb6fe347eecc0fcdc4880ad44a5456c25a34977ca6960a1423eb1cb162c3813
