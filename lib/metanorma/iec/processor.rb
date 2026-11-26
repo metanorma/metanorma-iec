@@ -33,6 +33,12 @@ module Metanorma
         "Metanorma::Iec #{Metanorma::Iec::VERSION}"
       end
 
+      def use_presentation_xml(ext)
+        return true if ext == :sts
+
+        super
+      end
+
       def output(isodoc_node, inname, outname, format, options = {})
         options_preprocess(options)
         case format
