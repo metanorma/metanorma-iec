@@ -143,7 +143,7 @@ RSpec.describe IsoDoc do
       #{IEC_TITLE1.gsub('&#160;', '&#xA0;')}
                  <div><a name="_terms_and_definitions" id="_terms_and_definitions"></a><h1 class="main">1<span style="mso-tab-count:1">&#xA0; </span>Terms and Definitions</h1>
          <p class="TermNum"><a name="paddy1" id="paddy1"></a>1.1</p><p class="Terms" style="text-align:left;">paddy</p>
-         <p class="Definition"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
+         <p class="Definition" style="margin-top:12.0pt;"><a name="_eb29b35e-123e-4d1c-b50b-2714d41e747f" id="_eb29b35e-123e-4d1c-b50b-2714d41e747f"></a>rice retaining its husk after threshing</p>
          <p class="MsoNormal">[SOURCE: ISO 7301:2011, 3.1, modified &#x2014; The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p></div>
                </div>
     OUTPUT

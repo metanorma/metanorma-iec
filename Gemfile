@@ -2,7 +2,6 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", "~> 3.0"
 
 # main carries the CitationStyle port: no lib/relaton load paths, so the
 # relaton-render facade autoload cannot be stolen at boot
@@ -20,7 +19,7 @@ gem "metanorma-utils", "~> 2.0" # GcBudget
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
 gem "metanorma-core", "~> 0.2.7" # published flavor/taste table (metanorma-core#18)
-gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
+gem "metanorma-iso", ">= 3.5.31"
 
 gem "metanorma-standoc", "~> 3.5.7" # Standoc::Document rename
 gem "metanorma-document", "~> 0.5.4"
