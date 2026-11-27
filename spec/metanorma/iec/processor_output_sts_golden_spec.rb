@@ -1,4 +1,5 @@
 require "spec_helper"
+require "relaton-render"
 require "nokogiri"
 require "sts"
 require "tmpdir"
@@ -62,7 +63,10 @@ RSpec.describe Metanorma::Iec::Processor, "#output" do
     File.write(semantic, processor.input_to_isodoc(input, adoc),
                encoding: "utf-8")
     semantic_xml = File.read(semantic, encoding: "utf-8")
-    processor.output(semantic_xml, semantic, sts, :sts)
+    # The sts leg consumes presentation XML, as the compile chain hands it over.
+    presentation = "#{base}.presentation.xml"
+    processor.output(semantic_xml, semantic, presentation, :presentation)
+    processor.output(nil, presentation, sts, :sts)
   end
 
   def compile_sts(source)
@@ -91,9 +95,37 @@ RSpec.describe Metanorma::Iec::Processor, "#output" do
         expect(current).to eq(File.read(golden_path, encoding: "utf-8"))
       end
 
+      # The one schema finding allowed is the <processing-meta> mismatch: it is
+      # valid in NISO STS extended-1.2 (the delivery-gate schema), which is not
+      # vendored here, while the extended-1 XSD in the sts gem has no slot for
+      # it. Any other schema finding fails the example.
       it "validates against the NISO STS extended XSD" do
         doc = Nokogiri::XML(compile_sts(source))
-        expect(schema.validate(doc).map(&:to_s)).to be_empty
+        findings = schema.validate(doc).map(&:to_s)
+        known = findings.grep(/Element 'processing-meta': This element is not expected/)
+        expect(known.size).to eq(1)
+        expect(findings - known).to be_empty
+      end
+
+      # Known content findings, listed explicitly per rule. Anything beyond
+      # this list (a new rule, or a count change) fails the example.
+      let(:known_findings) do
+        {
+        "iec-rice-en" => { "iso-gdg-4.4.2-5" => 1, "iso-gdg-5.6-2" => 1,
+                           "iso-gdg-6.2.2-1" => 1, "iso-gdg-10.1.6-1" => 1 },
+        "iec-rice-fr" => { "iso-gdg-4.4.2-5" => 1, "iso-gdg-5.6-2" => 1,
+                           "iso-gdg-6.2.2-1" => 1, "iso-gdg-10.1.6-1" => 1,
+                           "iso-gdg-7.1-2" => 2 },
+        "synthetic-techreport" => { "iso-gdg-4.4.2-2" => 1,
+                                    "iso-gdg-4.4.2-3" => 1,
+                                    "iso-gdg-4.4.2-8" => 1 },
+        }.fetch(slug)
+      end
+
+      it "reports only the known content validator findings" do
+        report = Metanorma::Iso::Sts.validate(compile_sts(source))
+        tally = report.errors.group_by(&:rule_id).transform_values(&:size)
+        expect(tally).to eq(known_findings)
       end
     end
   end

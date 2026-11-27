@@ -52,14 +52,28 @@ module Metanorma
           IsoDoc::Iec::PdfConvert.new(options)
             .convert(inname, isodoc_node, nil, outname)
         when :sts
-          IsoDoc::Iso::StsConvert.new(options)
-            .convert(inname, isodoc_node, nil, outname)
+          # Native metanorma-document STS transformer on the shared engine
+          # (metanorma-iso#1760, metanorma-document#165 "iec via iso"); the
+          # mnconvert leg (IsoDoc::Iso::StsConvert) is no longer used.
+          File.write(outname, sts_xml(isodoc_node, inname), encoding: "utf-8")
         when :presentation
           IsoDoc::Iec::PresentationXMLConvert.new(options)
             .convert(inname, isodoc_node, nil, outname)
         else
           super
         end
+      end
+
+      private
+
+      # The sts leg takes presentation XML: a String when the caller hands
+      # it over, otherwise the file path (isodoc_node nil).
+      def sts_xml(isodoc_node, inname)
+        case isodoc_node
+        when String then isodoc_node
+        when nil then File.read(inname, encoding: "utf-8")
+        else isodoc_node.to_xml
+        end.then { |xml| Metanorma::Iso::Sts.convert(xml) }
       end
     end
   end
