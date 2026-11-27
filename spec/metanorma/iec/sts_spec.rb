@@ -40,7 +40,7 @@ RSpec.describe Metanorma::Iec::Sts do
 
   it "keys term sections on the presentation term number" do
     xml = presentation_xml.sub(
-      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
+      %r{<clause id="c1".*?</clause>},
       <<~XML.chomp,
         <clause id="c1" type="terms" obligation="normative" displayorder="1"><title>Terms</title>
           <term id="paddy" anchor="paddy"><fmt-name><span class="fmt-caption-label"><span class="fmt-autonum">3</span><span class="fmt-autonum-delim">.</span><span class="fmt-autonum">1</span></span></fmt-name><fmt-xref-label>3.1</fmt-xref-label><preferred><expression><name>paddy</name></expression></preferred></term>
@@ -52,7 +52,7 @@ RSpec.describe Metanorma::Iec::Sts do
 
   it "types term-entry cross-references" do
     xml = presentation_xml.sub(
-      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
+      %r{<clause id="c1".*?</clause>},
       <<~XML.chomp,
         <clause id="c1" type="terms" obligation="normative" displayorder="1"><title>Terms</title>
           <term id="paddy" anchor="paddy"><fmt-name><span class="fmt-caption-label"><span class="fmt-autonum">3</span><span class="fmt-autonum-delim">.</span><span class="fmt-autonum">1</span></span></fmt-name><fmt-xref-label>3.1</fmt-xref-label><preferred><expression><name>paddy</name></expression></preferred></term>
@@ -67,10 +67,13 @@ RSpec.describe Metanorma::Iec::Sts do
 
   it "keeps no-break spaces in standard references" do
     xml = presentation_xml.sub(
-      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
-      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title><p id="p1">Part 2 applies to Table 3.</p></clause>),
+      %r{<clause id="c1".*?</clause>},
+      <<~XML.chomp,
+        <clause id="c1" obligation="normative" displayorder="1"><title>Scope</title><p id="p1">Part\u00A02 applies to Table\u00A03.</p></clause>
+      XML
     )
-    expect(described_class.convert(xml)).to include("Part 2 applies to Table 3.")
+    output = described_class.convert(xml)
+    expect(output).to include("Part\u00A02 applies to Table\u00A03.")
   end
 
   it "builds the IEC std-ident and std-org from the publisher" do
