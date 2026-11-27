@@ -30,7 +30,10 @@ Gem::Specification.new do |spec|
   spec.test_files = `git ls-files -- {spec}/*`.split("\n")
   spec.required_ruby_version = Gem::Requirement.new(">= 3.3.0")
 
-  spec.add_dependency "metanorma-iso", ">= 3.5.31" # relaxed until the model-migration wave releases
+  spec.add_dependency "metanorma-iso", "~> 3.5.32" # the shared STS engine line (metanorma-iso#1760)
+  spec.add_dependency "metanorma-document", "~> 0.5.15"
+  spec.add_dependency "lutaml-model", ">= 0.8.182"
+  spec.add_dependency "ladl", "~> 0.1"
   spec.add_dependency "pubid", "~> 2.0.3"
 
   spec.add_development_dependency "debug"

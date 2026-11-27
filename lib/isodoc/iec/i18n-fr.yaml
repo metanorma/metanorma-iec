@@ -33,3 +33,5 @@ horizontal_dict:
   "true": Norme horizontale
   "false":
 
+punct:
+  biblio-terminator: "."
