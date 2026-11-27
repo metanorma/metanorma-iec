@@ -1,0 +1,53 @@
+<standard xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en" dtd-version="1.0">
+  <processing-meta tagset-family="sts" base-tagset="interchange" table-model="xhtml" mathml-version="3.0" math-representation="mathml" terminology-model="tbx"><custom-meta-group><custom-meta><meta-name>iec_iso_coding_guidelines_edition</meta-name><meta-value>2.1</meta-value></custom-meta></custom-meta-group></processing-meta>
+  <front>
+    <std-meta>
+      <proj-id>3</proj-id>
+      <release-version>IS</release-version>
+      <std-ident>
+        <originator>IEC</originator>
+        <doc-type>TR</doc-type>
+        <doc-number>3</doc-number>
+        <edition>1</edition>
+      </std-ident>
+      <std-org std-org-type="sdo">
+        <std-org-abbrev>IEC</std-org-abbrev>
+      </std-org>
+      <content-language>en</content-language>
+      <std-ref type="dated">IEC TR 3:2026 ED1</std-ref>
+      <doc-ref>IEC TR 3:2026 ED1(E)</doc-ref>
+      <permissions>
+        <copyright-statement>© 2026 International Electrotechnical Commission</copyright-statement>
+        <copyright-year>2026</copyright-year>
+        <copyright-holder>International Electrotechnical Commission</copyright-holder>
+      </permissions>
+    </std-meta>
+    <sec sec-type="foreword">
+      <title>Foreword</title>
+    </sec>
+    <sec id="_ca2a8787-cdbb-b186-2454-2c74f28dd14d" sec-type="intro">
+      <title>INTRODUCTION</title>
+      <p id="_ac1fa5a8-d277-212b-960c-67eed2748046">Introductory text of the technical report.</p>
+    </sec>
+  </front>
+  <body>
+    <sec id="_9f0f435b-deb7-f444-1e15-3849dcb40b0d">
+      <label>1</label>
+      <title>Background</title>
+      <p id="_1d5e0ddf-3a18-08a6-9b61-34630b6184b1">Background text.</p>
+      <sec id="_c63e3b58-2558-4b11-bce3-8d38e4d2d7a6">
+        <label>1.1</label>
+        <title>Sub-clause</title>
+        <p id="_29465ec4-33d8-1e29-a8a2-95a3dceb46cc">Nested clause text with a list:</p>
+        <list list-type="bullet">
+          <list-item>
+            <p id="_ddb95574-6156-0a82-d20a-a4ed875f252c">item one</p>
+          </list-item>
+          <list-item>
+            <p id="_e9dd3f09-12cc-14ca-f708-84e11b6960ad">item two</p>
+          </list-item>
+        </list>
+      </sec>
+    </sec>
+  </body>
+</standard>

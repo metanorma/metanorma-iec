@@ -1,0 +1,26 @@
+= Synthetic technical report
+Author
+:docfile: synthetic-techreport.adoc
+:novalid:
+:no-isobib:
+:docnumber: 3
+:edition: 1
+:docstage: 60
+:docsubstage: 60
+:doctype: technical-report
+:language: en
+
+== Introduction
+
+Introductory text of the technical report.
+
+== Background
+
+Background text.
+
+=== Sub-clause
+
+Nested clause text with a list:
+
+* item one
+* item two
