@@ -25,12 +25,12 @@ RSpec.describe Metanorma::Iec::Processor, "#output sts leg" do
       pres = File.join(dir, "doc.presentation.xml")
       out = File.join(dir, "doc.sts.xml")
       File.write(pres, "<iec-standard/>")
-      allow(Metanorma::Iso::Sts).to receive(:convert).and_return("<standard/>")
+      allow(Metanorma::Iec::Sts).to receive(:convert).and_return("<standard/>")
       expect(IsoDoc::Iso::StsConvert).not_to receive(:new)
 
       processor.output(nil, pres, out, :sts)
 
-      expect(Metanorma::Iso::Sts).to have_received(:convert)
+      expect(Metanorma::Iec::Sts).to have_received(:convert)
         .with("<iec-standard/>")
       expect(File.read(out, encoding: "utf-8")).to eq("<standard/>")
     end

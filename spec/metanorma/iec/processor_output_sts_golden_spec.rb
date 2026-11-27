@@ -123,7 +123,7 @@ RSpec.describe Metanorma::Iec::Processor, "#output" do
       end
 
       it "reports only the known content validator findings" do
-        report = Metanorma::Iso::Sts.validate(compile_sts(source))
+        report = Metanorma::Iec::Sts.validate(compile_sts(source))
         tally = report.errors.group_by(&:rule_id).transform_values(&:size)
         expect(tally).to eq(known_findings)
       end

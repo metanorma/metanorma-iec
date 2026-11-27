@@ -73,7 +73,7 @@ module Metanorma
         when String then isodoc_node
         when nil then File.read(inname, encoding: "utf-8")
         else isodoc_node.to_xml
-        end.then { |xml| Metanorma::Iso::Sts.convert(xml) }
+        end.then { |xml| Metanorma::Iec::Sts.convert(xml) }
       end
     end
   end
