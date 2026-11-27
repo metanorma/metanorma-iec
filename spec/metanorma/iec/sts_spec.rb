@@ -65,6 +65,14 @@ RSpec.describe Metanorma::Iec::Sts do
     )
   end
 
+  it "keeps no-break spaces in standard references" do
+    xml = presentation_xml.sub(
+      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
+      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title><p id="p1">Part 2 applies to Table 3.</p></clause>),
+    )
+    expect(described_class.convert(xml)).to include("Part 2 applies to Table 3.")
+  end
+
   it "builds the IEC std-ident and std-org from the publisher" do
     xml = described_class.convert(presentation_xml)
     expect(xml).to include("<originator>IEC</originator>")

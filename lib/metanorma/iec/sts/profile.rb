@@ -25,7 +25,10 @@ module Metanorma
             org_abbrev: "IEC",
             reader_class: Metanorma::Iec::Document::Root,
             processing_meta: PROCESSING_META,
-            post_processors: [Metanorma::Iso::Sts.method(:inject_term_entry_type)],
+            post_processors: [
+              Metanorma::Iso::Sts.method(:inject_term_entry_type),
+              Metanorma::Iso::Sts::Transformer::NbspProcessor.method(:apply_to_text),
+            ],
             term_classes: [Metanorma::IsoDocument::Terms::IsoTerm],
             class_overrides: Metanorma::Iso::Sts::Profile.overrides,
           ).freeze.tap { |p| Metanorma::Document::Sts::Profiles.register(p) }
