@@ -25,6 +25,7 @@ module Metanorma
             org_abbrev: "IEC",
             reader_class: Metanorma::Iec::Document::Root,
             processing_meta: PROCESSING_META,
+            validator_class: Metanorma::Iso::Sts::Validator,
             post_processors: [
               Metanorma::Iso::Sts.method(:inject_term_entry_type),
               Metanorma::Iso::Sts::Transformer::NbspProcessor.method(:apply_to_text),

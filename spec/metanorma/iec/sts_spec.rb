@@ -85,6 +85,12 @@ RSpec.describe Metanorma::Iec::Sts do
     )
   end
 
+  it "validates IEC output against the IEC/ISO coding guideline rules" do
+    xml = described_class.convert(presentation_xml)
+    expect(described_class.validate(xml).errors.map(&:rule_id))
+      .to eq(Metanorma::Iso::Sts.validate(xml).errors.map(&:rule_id))
+  end
+
   it "loads the canonical IEC label style profile through the ladl engine" do
     profile = described_class.label_profile
     expect(profile).to be_a(Ladl::Profile)
