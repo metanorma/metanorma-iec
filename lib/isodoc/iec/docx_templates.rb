@@ -17,6 +17,16 @@ module IsoDoc
 
         m[1].to_i <= SIMPLE_MAX_STAGE ? :simple : :dis
       end
+
+      # Reads bibdata/status/stage from presentation XML, namespace-agnostic.
+      # A project abbreviation (PNW, ADTS) is not numeric, so it gets :dis.
+      def for_document(docxml)
+        stage = docxml.at(
+          "//*[local-name()='bibdata']/*[local-name()='status']" \
+          "/*[local-name()='stage']",
+        )
+        for_stage(stage&.text&.strip)
+      end
     end
   end
 end

@@ -2,6 +2,7 @@ require "isodoc"
 require "metanorma-iso"
 require_relative "base_convert"
 require_relative "init"
+require_relative "docx_templates"
 
 module IsoDoc
   module Iec
@@ -23,6 +24,15 @@ module IsoDoc
         postprocess(result, output_filename, dir)
         FileUtils.rm_rf dir
       end
+
+      # Stage template chosen from bibdata stage; no template assets yet,
+      # so this records the selection without changing output.
+      def convert1(docxml, filename, dir)
+        @docx_template = DocxTemplates.for_document(docxml)
+        super
+      end
+
+      attr_reader :docx_template
 
       def font_choice(options)
         if options[:script] == "Hans" then '"Source Han Sans",serif'

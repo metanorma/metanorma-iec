@@ -26,4 +26,30 @@ RSpec.describe IsoDoc::Iec::DocxTemplates do
       expect(described_class.for_stage("PNW")).to eq(:dis)
     end
   end
+
+  describe ".for_document" do
+    def doc_with_stage(stage)
+      Nokogiri::XML(<<~XML)
+        <iec-standard xmlns="https://www.metanorma.org/ns/iec">
+          <bibdata>
+            <status><stage>#{stage}</stage></status>
+          </bibdata>
+        </iec-standard>
+      XML
+    end
+
+    it "reads the bibdata stage from presentation XML" do
+      expect(described_class.for_document(doc_with_stage("30"))).to eq(:simple)
+      expect(described_class.for_document(doc_with_stage("40.20"))).to eq(:dis)
+    end
+
+    it "falls back to the DIS template when bibdata has no stage" do
+      xml = Nokogiri::XML(<<~XML)
+        <iec-standard xmlns="https://www.metanorma.org/ns/iec">
+          <bibdata/>
+        </iec-standard>
+      XML
+      expect(described_class.for_document(xml)).to eq(:dis)
+    end
+  end
 end
