@@ -1,0 +1,59 @@
+{% comment %} isodoc titlepage parity: the identity line is the dated
+  primary identifier ("IEC CD 17301-1:2016 ED2") plus the language mark
+  "(E)", not the undated one. {% endcomment %}
+{% assign cover_id = "" %}
+{% for ident in cover.doc_identifier %}{% if cover_id == "" and ident.type == "ISO" %}{% assign cover_id = ident.value | append: "(E)" %}{% endif %}{% endfor %}
+{% if cover_id == "" and cover.docnumber_undated %}{% assign cover_id = cover.docnumber_undated %}{% endif %}
+<section class="title-section iec-title-section" aria-label="IEC publication">
+  {% if publisher_logos %}
+  <div class="cover-publishers">
+    {% for logo in publisher_logos %}{{ logo }}{% endfor %}
+  </div>
+  {% endif %}
+  <div class="iec-cover-identity">
+    {% if cover.tc_docnumber.size > 0 %}
+      {% for num in cover.tc_docnumber %}
+    <p class="cover-doc-id">{{ num | escape }}</p>
+      {% endfor %}
+    {% elsif cover_id != "" %}
+    <p class="cover-doc-id">{{ cover_id | escape }}{% if cover.draftinfo %} {{ cover.draftinfo | escape }}{% endif %}</p>
+    {% elsif doc_id %}
+    <p class="cover-doc-id">{{ doc_id | escape }}</p>
+    {% endif %}
+    {% if cover.edition_display %}
+    <p class="cover-doc-id">{{ cover.edition_display | escape }}</p>
+    {% endif %}
+    {% if cover.revdate %}
+    <p class="cover-date">Date: {{ cover.revdate | escape }}</p>
+    {% endif %}
+    {% if cover.tc_docnumber.size > 0 and cover_id != "" %}
+    <p class="cover-doc-id">{{ cover_id | escape }}{% if cover.draftinfo %} {{ cover.draftinfo | escape }}{% endif %}</p>
+    {% endif %}
+    {% if cover.editorialgroup %}
+    <p class="cover-committee">{{ cover.editorialgroup | escape }}</p>
+    {% endif %}
+    {% if cover.secretariat %}
+    <p class="cover-secretariat">Secretariat: {{ cover.secretariat | escape }}</p>
+    {% endif %}
+  </div>
+  {% if title %}
+  <div class="cover-title" lang="en"><span>{{ title | escape }}</span></div>
+  {% endif %}
+  {% if title_fr %}
+  <div class="cover-title-fr" lang="fr"><span>{{ title_fr | escape }}</span></div>
+  {% endif %}
+  {% if stage %}
+  {% assign stage_code = cover.stage_abbreviation | split: " " | first %}
+  <div class="cover-stage"><p>{% if stage_code %}{{ stage_code | escape }} stage{% else %}{{ stage | escape }}{% endif %}</p></div>
+  {% endif %}
+  {% if cover.ics %}
+  <p class="cover-ics"><strong>ICS:</strong> {{ cover.ics | escape }}</p>
+  {% endif %}
+  {% if doctype %}
+  <p class="cover-doctype">{{ doctype | escape }}</p>
+  {% endif %}
+  {% if cover.ext.subdoctype %}
+  <p class="cover-docsubtype">Document subtype: {{ cover.ext.subdoctype | capitalize | escape }}</p>
+  {% endif %}
+</section>
+<hr class="cover-separator" />

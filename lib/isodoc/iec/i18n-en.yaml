@@ -30,3 +30,5 @@ function_dict:
 horizontal_dict:
   "true": Horizontal Standard
   "false": 
+punct:
+  biblio-terminator: "."

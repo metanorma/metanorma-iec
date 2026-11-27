@@ -104,66 +104,54 @@ RSpec.describe Metanorma::Iec do
     INPUT
     expect(strip_guid(output)).to be_xml_equivalent_to <<~"OUTPUT"
       #{@blank_hdr}
-       <sections><ul id="_" anchor="id">
-         <li>
-           <p id="_">First</p>
-         </li>
-         <li><p id="_">Second</p><p id="_">entry1</p>
-       <p id="_">entry2</p></li>
-       </ul>
-       <ol id="_" anchor="id1">
-         <li>
-           <p id="_">First</p>
-         </li>
-         <li>
-           <p id="_">Second</p>
-           <ol id="_">
-         <li>
-           <p id="_">Third</p>
-         </li>
-         <li>
-           <p id="_">Fourth</p>
-         </li>
-       </ol>
-         </li>
-         <li>
-           <p id="_">Fifth</p>
-         </li>
-         <li>
-           <p id="_">Sixth</p>
-         </li>
-       </ol>
-       <ol id="_">
-         <li>
-           <p id="_">A</p>
-         </li>
-         <li>
-           <p id="_">B</p>
-           <ol id="_">
-         <li>
-           <p id="_">C</p>
-         </li>
-         <li>
-           <p id="_">D</p>
-           <ol id="_">
-         <li>
-           <p id="_">E</p>
-         </li>
-         <li>
-           <p id="_">F</p>
-           <dl id="_">
-         <dt>Notes1</dt>
-         <dd/>
-         <dt>Notes</dt>
-         <dd id="_"><p id="_">Note 1.</p><p id="_">Note 2.</p>
-       <p id="_">Note 3.</p></dd>
-       </dl>
-         </li>
-       </ol>
-         </li>
-       </ol>
-         </li>
-       </ol></sections>
+       <sections><ul id="_" anchor="id"><li><p id="_">First</p>
+</li>
+<li><p id="_">Second</p>
+<p id="_">entry1</p>
+
+<p id="_">entry2</p>
+</li>
+</ul>
+
+<ol id="_" anchor="id1"><li><p id="_">First</p>
+</li>
+<li><p id="_">Second</p>
+<ol id="_"><li><p id="_">Third</p>
+</li>
+<li><p id="_">Fourth</p>
+</li>
+</ol>
+</li>
+<li><p id="_">Fifth</p>
+</li>
+<li><p id="_">Sixth</p>
+</li>
+<li><p id="_">A</p>
+</li>
+<li><p id="_">B</p>
+<ol id="_"><li><p id="_">C</p>
+</li>
+<li><p id="_">D</p>
+<ol id="_"><li><p id="_">E</p>
+</li>
+<li><p id="_">F</p>
+<dl id="_"><dt>Notes1</dt>
+<dd/><dt>Notes</dt>
+<dd id="_"><p id="_">Note 1.</p>
+<p id="_">Note 2.</p>
+
+<p id="_">Note 3.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+
+</sections>
        </metanorma>
     OUTPUT
   end

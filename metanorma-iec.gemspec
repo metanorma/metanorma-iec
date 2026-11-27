@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "metanorma-iso", "~> 3.5.32" # the shared STS engine line (metanorma-iso#1760)
   spec.add_dependency "metanorma-document", "~> 0.5.15"
+  spec.add_dependency "lutaml-model", ">= 0.8.182"
   spec.add_dependency "ladl", "~> 0.1"
   spec.add_dependency "pubid", "~> 2.0.3"
 
