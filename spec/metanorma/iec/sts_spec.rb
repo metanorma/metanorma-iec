@@ -49,6 +49,12 @@ RSpec.describe Metanorma::Iec::Sts do
     expect(described_class.convert(xml)).to include(%(<term-sec id="sec_3.1">))
   end
 
+  it "declares the IEC/ISO coding profile in processing-meta" do
+    expect(described_class.convert(presentation_xml)).to include(
+      %(<processing-meta tagset-family="sts" base-tagset="interchange"),
+    )
+  end
+
   it "loads the canonical IEC label style profile through the ladl engine" do
     profile = described_class.label_profile
     expect(profile).to be_a(Ladl::Profile)
