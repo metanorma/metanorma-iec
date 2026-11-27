@@ -50,13 +50,7 @@ RSpec.describe Metanorma::Iec::Sts do
     expect(described_class.convert(xml)).to include(%(<term-sec id="sec_3.1">))
   end
 
-  it "builds the IEC std-ident and std-org from the publisher" do
-    xml = described_class.convert(presentation_xml)
-    expect(xml).to include("<originator>IEC</originator>")
-    expect(xml).to include("<std-org-abbrev>IEC</std-org-abbrev>")
-  end
-
-  it "links a term reference to the referenced term entry" do
+  it "types term-entry cross-references" do
     xml = presentation_xml.sub(
       %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
       <<~XML.chomp,
@@ -66,7 +60,15 @@ RSpec.describe Metanorma::Iec::Sts do
         </clause>
       XML
     )
-    expect(described_class.convert(xml)).to include(%(<xref ref-type="custom" rid="term_3.1">))
+    expect(described_class.convert(xml)).to include(
+      %(<xref ref-type="custom" custom-type="term-entry" rid="term_3.1">),
+    )
+  end
+
+  it "builds the IEC std-ident and std-org from the publisher" do
+    xml = described_class.convert(presentation_xml)
+    expect(xml).to include("<originator>IEC</originator>")
+    expect(xml).to include("<std-org-abbrev>IEC</std-org-abbrev>")
   end
 
   it "declares the IEC/ISO coding profile in processing-meta" do
