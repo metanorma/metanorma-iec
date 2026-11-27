@@ -20,7 +20,7 @@ gem "metanorma-utils", "~> 2.0" # GcBudget
 # house-style language join (pubid#491/#492) needs >= 2.0.0.pre.alpha.27
 
 gem "metanorma-core", "~> 0.2.7" # published flavor/taste table (metanorma-core#18)
-gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "fix/iso-sts-label-gaps"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
 gem "metanorma-standoc", "~> 3.5.7" # Standoc::Document rename
 gem "metanorma-document", "~> 0.5.4"
