@@ -13,6 +13,7 @@ RSpec.describe Metanorma::Iec::Sts do
           <language>en</language>
           <script>Latn</script>
           <status><stage>40</stage><substage>60</substage></status>
+          <contributor><role type="publisher"/><organization><name>International Electrotechnical Commission</name><abbreviation>IEC</abbreviation></organization></contributor>
           <copyright><owner><organization><abbreviation>IEC</abbreviation></organization></owner></copyright>
         </bibdata>
         <sections>
@@ -47,6 +48,25 @@ RSpec.describe Metanorma::Iec::Sts do
       XML
     )
     expect(described_class.convert(xml)).to include(%(<term-sec id="sec_3.1">))
+  end
+
+  it "builds the IEC std-ident and std-org from the publisher" do
+    xml = described_class.convert(presentation_xml)
+    expect(xml).to include("<originator>IEC</originator>")
+    expect(xml).to include("<std-org-abbrev>IEC</std-org-abbrev>")
+  end
+
+  it "links a term reference to the referenced term entry" do
+    xml = presentation_xml.sub(
+      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
+      <<~XML.chomp,
+        <clause id="c1" type="terms" obligation="normative" displayorder="1"><title>Terms</title>
+          <term id="paddy" anchor="paddy"><fmt-name><span class="fmt-caption-label"><span class="fmt-autonum">3</span><span class="fmt-autonum-delim">.</span><span class="fmt-autonum">1</span></span></fmt-name><fmt-xref-label>3.1</fmt-xref-label><preferred><expression><name>paddy</name></expression></preferred></term>
+          <term id="husked" anchor="husked"><fmt-name><span class="fmt-caption-label"><span class="fmt-autonum">3</span><span class="fmt-autonum-delim">.</span><span class="fmt-autonum">2</span></span></fmt-name><fmt-xref-label>3.2</fmt-xref-label><preferred><expression><name>husked</name></expression></preferred><definition><verbal-definition><p>from <xref target="paddy" style="short"/></p></verbal-definition></definition></term>
+        </clause>
+      XML
+    )
+    expect(described_class.convert(xml)).to include(%(<xref ref-type="custom" rid="term_3.1">))
   end
 
   it "declares the IEC/ISO coding profile in processing-meta" do

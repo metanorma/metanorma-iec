@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "metanorma/iec/document"
+require "metanorma/iso/sts"
+require "metanorma/iso/sts/profile"
 
 module Metanorma
   module Iec
@@ -24,7 +26,7 @@ module Metanorma
             reader_class: Metanorma::Iec::Document::Root,
             processing_meta: PROCESSING_META,
             term_classes: [Metanorma::IsoDocument::Terms::IsoTerm],
-            class_overrides: {},
+            class_overrides: Metanorma::Iso::Sts::Profile.overrides,
           ).freeze.tap { |p| Metanorma::Document::Sts::Profiles.register(p) }
         end
       end
