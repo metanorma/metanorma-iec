@@ -16,6 +16,7 @@ module Metanorma
             name: :iec,
             org_abbrev: "IEC",
             reader_class: Metanorma::Iec::Document::Root,
+            term_classes: [Metanorma::IsoDocument::Terms::IsoTerm],
             class_overrides: {},
           ).freeze.tap { |p| Metanorma::Document::Sts::Profiles.register(p) }
         end

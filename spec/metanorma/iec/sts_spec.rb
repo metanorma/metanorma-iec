@@ -37,6 +37,18 @@ RSpec.describe Metanorma::Iec::Sts do
     expect(xml).to include("Test IEC document")
   end
 
+  it "keys term sections on the presentation term number" do
+    xml = presentation_xml.sub(
+      %(<clause id="c1" obligation="normative" displayorder="1"><title>Scope</title></clause>),
+      <<~XML.chomp,
+        <clause id="c1" type="terms" obligation="normative" displayorder="1"><title>Terms</title>
+          <term id="paddy" anchor="paddy"><fmt-name><span class="fmt-caption-label"><span class="fmt-autonum">3</span><span class="fmt-autonum-delim">.</span><span class="fmt-autonum">1</span></span></fmt-name><fmt-xref-label>3.1</fmt-xref-label><preferred><expression><name>paddy</name></expression></preferred></term>
+        </clause>
+      XML
+    )
+    expect(described_class.convert(xml)).to include(%(<term-sec id="sec_3.1">))
+  end
+
   it "loads the canonical IEC label style profile through the ladl engine" do
     profile = described_class.label_profile
     expect(profile).to be_a(Ladl::Profile)
