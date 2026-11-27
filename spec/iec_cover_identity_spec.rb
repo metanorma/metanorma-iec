@@ -29,3 +29,25 @@ RSpec.describe "IEC HTML cover identity" do
     expect(cover.at(".cover-stage").text.strip).to eq("CD stage")
   end
 end
+
+# isodoc shows "<abbr> stage" only while the document is unpublished
+# (html_iec_titlepage.html); a published document has no stage line.
+RSpec.describe "IEC HTML cover stage on a published document" do
+  let(:fixture) do
+    File.expand_path("fixtures/iec/iec-rice-fr.presentation.xml", __dir__)
+  end
+  let(:cover) do
+    xml = File.read(fixture)
+                .gsub(%r{<stage abbreviation="CD" language="">30</stage>},
+                      '<stage abbreviation="IS" language="">60</stage>')
+                .gsub(%r{<substage>92</substage>}, "<substage>60</substage>")
+    model = Metanorma::Iec::Document::Root.from_xml(xml)
+    Nokogiri::HTML(Metanorma::Html::Generator.generate(model))
+      .at(".iec-title-section")
+  end
+
+  it "renders no stage line for stage 60.60" do
+    expect(cover).not_to be_nil
+    expect(cover.at(".cover-stage")).to be_nil
+  end
+end
