@@ -39,7 +39,7 @@ PATH
   specs:
     metanorma-iec (2.9.3)
       ladl (~> 0.1)
-      metanorma-document (~> 0.5.15)
+      metanorma-document (~> 0.5.17)
       metanorma-iso (~> 3.5.32)
       pubid (~> 2.0.3)
 
@@ -739,7 +739,7 @@ GEM
       metanorma-utils
       nokogiri (~> 1.19)
       singleton
-    metanorma-document (0.5.16)
+    metanorma-document (0.5.17)
       base64
       glossarist (~> 2.14)
       isodoc-i18n (~> 1.5)
@@ -1508,7 +1508,7 @@ CHECKSUMS
   mechanize (2.14.2) sha256=aaf0a91dad80a2a72f51054780731d42ffed564fc530d6cffa8022717508e23e
   memo_wise (1.13.0) sha256=30220c38c4cef410849bc73553c58664dc2c91c6379e4a1df22aea02358b716b
   metanorma-core (0.2.11) sha256=0e977856122a9fb5f96db17dbe1b299a9090233f24c049367735d4527e0e6240
-  metanorma-document (0.5.16) sha256=d2b40556dfc729e67ed9b80e99ce7d0c01fb7b797ace963848dd436d41553de9
+  metanorma-document (0.5.17) sha256=ace5e374afddcecc29b159d4fa1c7d230ef2cb5b8f31992c602c0c50ea9f1683
   metanorma-iec (2.9.3)
   metanorma-iso (3.5.32)
   metanorma-mirror (1.0.0) sha256=46bcfd1ea62b5225b031e4f8262ce4917107f65c5939ba45afaccaaf796c24d0
