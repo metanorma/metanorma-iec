@@ -25,8 +25,8 @@ gem "metanorma-core", "~> 0.2.7" # published flavor/taste table (metanorma-core#
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
 
 gem "metanorma-standoc", "~> 3.5.7" # Standoc::Document rename
-gem "metanorma-document", "~> 0.5.4"
-gem "isodoc", "~> 3.7.4"
+gem "metanorma-document", "~> 0.5.15"
+gem "isodoc", "~> 3.7.9"
 gem "pubid", "~> 2.0"
 
 eval_gemfile("Gemfile.devel") rescue nil
