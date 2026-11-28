@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 3.3.0")
 
   spec.add_dependency "metanorma-iso", "~> 3.5.32" # the shared STS engine line (metanorma-iso#1760)
-  spec.add_dependency "metanorma-document", "~> 0.5.15"
+  spec.add_dependency "metanorma-document", "~> 0.5.17" # fn-spacing + xref-label engine fixes (metanorma-document#202)
   spec.add_dependency "ladl", "~> 0.1"
   spec.add_dependency "pubid", "~> 2.0.3"
 
