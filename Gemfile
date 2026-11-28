@@ -2,10 +2,12 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 
 gemspec
-gem "relaton-render", "~> 3.0"
-
-# main carries the CitationStyle port: no lib/relaton load paths, so the
-# relaton-render facade autoload cannot be stolen at boot
+# The CitationStyle facade (lib/metanorma/iec/citation_style.rb) serves
+# from relaton's consolidated copy: require "relaton/render" resolves to
+# the relaton gem itself, and the retired standalone relaton-render gem
+# must NOT be in the bundle - its lib/relaton/render.rb shadows the
+# consolidated one without defining Relaton::Render::Unrenderable, which
+# the validate lane requires.
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
 # metanorma-standoc namespace rename (Metanorma::Standoc::Document)

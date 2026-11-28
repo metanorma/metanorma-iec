@@ -1021,12 +1021,6 @@ GEM
       nokogiri (>= 1.13.0)
       relaton (>= 2.0.0.pre.alpha.1, < 4)
       uuidtools
-    relaton-render (3.0.0)
-      htmlentities
-      liquid (~> 5)
-      lutaml-model (~> 0.8)
-      nokogiri
-      twitter_cldr
     reline (0.7.0)
       io-console (~> 0.5)
     rexml (3.4.4)
@@ -1334,7 +1328,6 @@ DEPENDENCIES
   metanorma-utils (~> 2.0)
   pubid (~> 2.0)
   rake (~> 13.0)
-  relaton-render (~> 3.0)
   rspec (~> 3.6)
   rubocop (~> 1)
   rubocop-performance
@@ -1612,7 +1605,6 @@ CHECKSUMS
   regexp_parser (2.13.4) sha256=1d0547814f57e6f00946957bd0ca201bc42f42cfb08eee89df60998aedcd8a3b
   relaton (3.1.14) sha256=fe1b104a4ecc3b7efadf90459448e6f6fb585dc5be77f57092b780127e875a99
   relaton-iev (2.0.2) sha256=ec77f5ad4700c8856aaacf9655eaf026c4a87acdfb17eca9af53520e8bf5b638
-  relaton-render (3.0.0) sha256=1fdc95c19aa99f50041b0f449d8c0fc132c8083e3cbe7721a9fb7b134b473c67
   reline (0.7.0) sha256=5b012d8e55dbf9d450f12bde2cf7d15ff546ae80b3f8f3b30e570d431815583d
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rfcxml (0.4.5) sha256=64e116de26cb5447bcd9132c4324844a55ce30dd033fd1e35ca08a9693c4ce02
